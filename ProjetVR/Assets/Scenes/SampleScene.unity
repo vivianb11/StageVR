@@ -254,10 +254,10 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayerMask:
+    serializedVersion: 2
     m_Bits: 1
   m_InteractionLayers:
     m_Bits: 1
-    m_Mask: 1
   m_DistanceCalculationMode: 1
   m_SelectMode: 1
   m_FocusMode: 1
@@ -272,99 +272,75 @@ MonoBehaviour:
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastFocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_RegisteredInteractionManager: {fileID: 0}
   m_OnFirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnLastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectCanceled:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnActivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 1
@@ -393,8 +369,10 @@ MonoBehaviour:
   m_ThrowOnDetach: 1
   m_ThrowSmoothingDuration: 0.25
   m_ThrowSmoothingCurve:
+    serializedVersion: 2
     m_Curve:
-    - time: 1
+    - serializedVersion: 3
+      time: 1
       value: 1
       inSlope: 0
       outSlope: 0
@@ -413,34 +391,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  m_GrabCountChanged: 0
-  m_IsProcessingGrabTransformers: 0
-  m_DropTransformersCount: 0
-  m_TargetPose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_TargetLocalScale: {x: 0, y: 0, z: 0}
-  m_IsTargetPoseDirty: 0
-  m_IsTargetLocalScaleDirty: 0
-  m_CurrentAttachEaseTime: 0
-  m_CurrentMovementType: 0
-  m_DetachInLateUpdate: 0
-  m_DetachVelocity: {x: 0, y: 0, z: 0}
-  m_DetachAngularVelocity: {x: 0, y: 0, z: 0}
-  m_ThrowSmoothingCurrentFrame: 0
-  m_ThrowSmoothingFirstUpdate: 0
-  m_LastThrowReferencePose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_Rigidbody: {fileID: 0}
-  m_WasKinematic: 0
-  m_UsedGravity: 0
-  m_OldDrag: 0
-  m_OldAngularDrag: 0
-  m_IgnoringCharacterCollision: 0
-  m_StopIgnoringCollisionInLateUpdate: 0
-  m_SelectingCharacterController: {fileID: 0}
-  m_OriginalSceneParent: {fileID: 0}
 --- !u!64 &17355326
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2261,6 +2211,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 1
   m_VerticalFit: 0
+--- !u!1001 &230215797
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1825262783}
+    m_Modifications:
+    - target: {fileID: 1910490718626378842, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_Name
+      value: LeftEyeInteractor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155659579317544270, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: ReferenceFrame
+      value: 
+      objectReference: {fileID: 922463439}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+--- !u!4 &230215798 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+  m_PrefabInstance: {fileID: 230215797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &237400192
 GameObject:
   m_ObjectHideFlags: 0
@@ -2434,10 +2450,10 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayerMask:
+    serializedVersion: 2
     m_Bits: 1
   m_InteractionLayers:
     m_Bits: 1
-    m_Mask: 1
   m_DistanceCalculationMode: 1
   m_SelectMode: 1
   m_FocusMode: 1
@@ -2452,99 +2468,75 @@ MonoBehaviour:
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastFocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_RegisteredInteractionManager: {fileID: 0}
   m_OnFirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnLastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectCanceled:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnActivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 1
@@ -2573,8 +2565,10 @@ MonoBehaviour:
   m_ThrowOnDetach: 1
   m_ThrowSmoothingDuration: 0.25
   m_ThrowSmoothingCurve:
+    serializedVersion: 2
     m_Curve:
-    - time: 1
+    - serializedVersion: 3
+      time: 1
       value: 1
       inSlope: 0
       outSlope: 0
@@ -2593,34 +2587,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  m_GrabCountChanged: 0
-  m_IsProcessingGrabTransformers: 0
-  m_DropTransformersCount: 0
-  m_TargetPose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_TargetLocalScale: {x: 0, y: 0, z: 0}
-  m_IsTargetPoseDirty: 0
-  m_IsTargetLocalScaleDirty: 0
-  m_CurrentAttachEaseTime: 0
-  m_CurrentMovementType: 0
-  m_DetachInLateUpdate: 0
-  m_DetachVelocity: {x: 0, y: 0, z: 0}
-  m_DetachAngularVelocity: {x: 0, y: 0, z: 0}
-  m_ThrowSmoothingCurrentFrame: 0
-  m_ThrowSmoothingFirstUpdate: 0
-  m_LastThrowReferencePose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_Rigidbody: {fileID: 0}
-  m_WasKinematic: 0
-  m_UsedGravity: 0
-  m_OldDrag: 0
-  m_OldAngularDrag: 0
-  m_IgnoringCharacterCollision: 0
-  m_StopIgnoringCollisionInLateUpdate: 0
-  m_SelectingCharacterController: {fileID: 0}
-  m_OriginalSceneParent: {fileID: 0}
 --- !u!54 &239857490
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3629,10 +3595,10 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayerMask:
+    serializedVersion: 2
     m_Bits: 1
   m_InteractionLayers:
     m_Bits: 1
-    m_Mask: 1
   m_DistanceCalculationMode: 1
   m_SelectMode: 1
   m_FocusMode: 1
@@ -3647,99 +3613,75 @@ MonoBehaviour:
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastFocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_RegisteredInteractionManager: {fileID: 0}
   m_OnFirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnLastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectCanceled:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnActivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 1
@@ -3768,8 +3710,10 @@ MonoBehaviour:
   m_ThrowOnDetach: 1
   m_ThrowSmoothingDuration: 0.25
   m_ThrowSmoothingCurve:
+    serializedVersion: 2
     m_Curve:
-    - time: 1
+    - serializedVersion: 3
+      time: 1
       value: 1
       inSlope: 0
       outSlope: 0
@@ -3788,34 +3732,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  m_GrabCountChanged: 0
-  m_IsProcessingGrabTransformers: 0
-  m_DropTransformersCount: 0
-  m_TargetPose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_TargetLocalScale: {x: 0, y: 0, z: 0}
-  m_IsTargetPoseDirty: 0
-  m_IsTargetLocalScaleDirty: 0
-  m_CurrentAttachEaseTime: 0
-  m_CurrentMovementType: 0
-  m_DetachInLateUpdate: 0
-  m_DetachVelocity: {x: 0, y: 0, z: 0}
-  m_DetachAngularVelocity: {x: 0, y: 0, z: 0}
-  m_ThrowSmoothingCurrentFrame: 0
-  m_ThrowSmoothingFirstUpdate: 0
-  m_LastThrowReferencePose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_Rigidbody: {fileID: 0}
-  m_WasKinematic: 0
-  m_UsedGravity: 0
-  m_OldDrag: 0
-  m_OldAngularDrag: 0
-  m_IgnoringCharacterCollision: 0
-  m_StopIgnoringCollisionInLateUpdate: 0
-  m_SelectingCharacterController: {fileID: 0}
-  m_OriginalSceneParent: {fileID: 0}
 --- !u!54 &392840061
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6052,10 +5968,10 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayerMask:
+    serializedVersion: 2
     m_Bits: 1
   m_InteractionLayers:
     m_Bits: 1
-    m_Mask: 1
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -6070,99 +5986,75 @@ MonoBehaviour:
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastFocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_RegisteredInteractionManager: {fileID: 0}
   m_OnFirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnLastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectCanceled:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnActivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 1
@@ -6191,8 +6083,10 @@ MonoBehaviour:
   m_ThrowOnDetach: 0
   m_ThrowSmoothingDuration: 0.25
   m_ThrowSmoothingCurve:
+    serializedVersion: 2
     m_Curve:
-    - time: 1
+    - serializedVersion: 3
+      time: 1
       value: 1
       inSlope: 0
       outSlope: 0
@@ -6211,34 +6105,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  m_GrabCountChanged: 0
-  m_IsProcessingGrabTransformers: 0
-  m_DropTransformersCount: 0
-  m_TargetPose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_TargetLocalScale: {x: 0, y: 0, z: 0}
-  m_IsTargetPoseDirty: 0
-  m_IsTargetLocalScaleDirty: 0
-  m_CurrentAttachEaseTime: 0
-  m_CurrentMovementType: 0
-  m_DetachInLateUpdate: 0
-  m_DetachVelocity: {x: 0, y: 0, z: 0}
-  m_DetachAngularVelocity: {x: 0, y: 0, z: 0}
-  m_ThrowSmoothingCurrentFrame: 0
-  m_ThrowSmoothingFirstUpdate: 0
-  m_LastThrowReferencePose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_Rigidbody: {fileID: 0}
-  m_WasKinematic: 0
-  m_UsedGravity: 0
-  m_OldDrag: 0
-  m_OldAngularDrag: 0
-  m_IgnoringCharacterCollision: 0
-  m_StopIgnoringCollisionInLateUpdate: 0
-  m_SelectingCharacterController: {fileID: 0}
-  m_OriginalSceneParent: {fileID: 0}
 --- !u!54 &546380352
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8657,6 +8523,52 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &787574910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 787574912}
+  - component: {fileID: 787574911}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &787574911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787574910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41294f478d862140b9800916e3a2658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseEyeTracking: 1
+  UseDynamicFoveatedRendering: 0
+--- !u!4 &787574912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787574910}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.088426, y: -1.7930015, z: -3.1706429}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &807051347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8824,10 +8736,10 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayerMask:
+    serializedVersion: 2
     m_Bits: 1
   m_InteractionLayers:
     m_Bits: 1
-    m_Mask: 1
   m_DistanceCalculationMode: 1
   m_SelectMode: 1
   m_FocusMode: 1
@@ -8842,99 +8754,75 @@ MonoBehaviour:
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastFocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_RegisteredInteractionManager: {fileID: 0}
   m_OnFirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnLastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectCanceled:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnActivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 1
@@ -8963,8 +8851,10 @@ MonoBehaviour:
   m_ThrowOnDetach: 0
   m_ThrowSmoothingDuration: 0.25
   m_ThrowSmoothingCurve:
+    serializedVersion: 2
     m_Curve:
-    - time: 1
+    - serializedVersion: 3
+      time: 1
       value: 1
       inSlope: 0
       outSlope: 0
@@ -8983,34 +8873,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  m_GrabCountChanged: 0
-  m_IsProcessingGrabTransformers: 0
-  m_DropTransformersCount: 0
-  m_TargetPose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_TargetLocalScale: {x: 0, y: 0, z: 0}
-  m_IsTargetPoseDirty: 0
-  m_IsTargetLocalScaleDirty: 0
-  m_CurrentAttachEaseTime: 0
-  m_CurrentMovementType: 0
-  m_DetachInLateUpdate: 0
-  m_DetachVelocity: {x: 0, y: 0, z: 0}
-  m_DetachAngularVelocity: {x: 0, y: 0, z: 0}
-  m_ThrowSmoothingCurrentFrame: 0
-  m_ThrowSmoothingFirstUpdate: 0
-  m_LastThrowReferencePose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_Rigidbody: {fileID: 0}
-  m_WasKinematic: 0
-  m_UsedGravity: 0
-  m_OldDrag: 0
-  m_OldAngularDrag: 0
-  m_IgnoringCharacterCollision: 0
-  m_StopIgnoringCollisionInLateUpdate: 0
-  m_SelectingCharacterController: {fileID: 0}
-  m_OriginalSceneParent: {fileID: 0}
 --- !u!65 &807051353
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9768,10 +9630,10 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayerMask:
+    serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 1
-    m_Mask: 1
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -9786,99 +9648,75 @@ MonoBehaviour:
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastFocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_RegisteredInteractionManager: {fileID: 0}
   m_OnFirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnLastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectCanceled:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnActivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_AttachTransform: {fileID: 1374588836}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 0
@@ -9907,8 +9745,10 @@ MonoBehaviour:
   m_ThrowOnDetach: 1
   m_ThrowSmoothingDuration: 0.25
   m_ThrowSmoothingCurve:
+    serializedVersion: 2
     m_Curve:
-    - time: 1
+    - serializedVersion: 3
+      time: 1
       value: 1
       inSlope: 0
       outSlope: 0
@@ -9927,34 +9767,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  m_GrabCountChanged: 0
-  m_IsProcessingGrabTransformers: 0
-  m_DropTransformersCount: 0
-  m_TargetPose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_TargetLocalScale: {x: 0, y: 0, z: 0}
-  m_IsTargetPoseDirty: 0
-  m_IsTargetLocalScaleDirty: 0
-  m_CurrentAttachEaseTime: 0
-  m_CurrentMovementType: 0
-  m_DetachInLateUpdate: 0
-  m_DetachVelocity: {x: 0, y: 0, z: 0}
-  m_DetachAngularVelocity: {x: 0, y: 0, z: 0}
-  m_ThrowSmoothingCurrentFrame: 0
-  m_ThrowSmoothingFirstUpdate: 0
-  m_LastThrowReferencePose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_Rigidbody: {fileID: 0}
-  m_WasKinematic: 0
-  m_UsedGravity: 0
-  m_OldDrag: 0
-  m_OldAngularDrag: 0
-  m_IgnoringCharacterCollision: 0
-  m_StopIgnoringCollisionInLateUpdate: 0
-  m_SelectingCharacterController: {fileID: 0}
-  m_OriginalSceneParent: {fileID: 0}
 --- !u!54 &863846741
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10398,6 +10210,76 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908128896}
   m_CullTransparentMesh: 1
+--- !u!1001 &909882487
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1825262783}
+    m_Modifications:
+    - target: {fileID: 1910490718626378842, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_Name
+      value: RightEyeInteractor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155659579317544270, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: Eye
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155659579317544270, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: ReferenceFrame
+      value: 
+      objectReference: {fileID: 922463439}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+--- !u!4 &909882488 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4999935807938471050, guid: 00b29fcb40ee77547ab7c6e21e2c6620, type: 3}
+  m_PrefabInstance: {fileID: 909882487}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &915057045
 GameObject:
   m_ObjectHideFlags: 0
@@ -10473,6 +10355,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915057045}
   m_CullTransparentMesh: 1
+--- !u!1 &922463438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 922463439}
+  m_Layer: 2
+  m_Name: ReferenceFrame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &922463439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922463438}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1825262783}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &928976476
 GameObject:
   m_ObjectHideFlags: 0
@@ -11068,10 +10981,10 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayerMask:
+    serializedVersion: 2
     m_Bits: 1
   m_InteractionLayers:
     m_Bits: 1
-    m_Mask: 1
   m_DistanceCalculationMode: 1
   m_SelectMode: 1
   m_FocusMode: 1
@@ -11086,99 +10999,75 @@ MonoBehaviour:
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastFocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_RegisteredInteractionManager: {fileID: 0}
   m_OnFirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnLastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectCanceled:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnActivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 1
@@ -11207,8 +11096,10 @@ MonoBehaviour:
   m_ThrowOnDetach: 1
   m_ThrowSmoothingDuration: 0.25
   m_ThrowSmoothingCurve:
+    serializedVersion: 2
     m_Curve:
-    - time: 1
+    - serializedVersion: 3
+      time: 1
       value: 1
       inSlope: 0
       outSlope: 0
@@ -11227,34 +11118,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  m_GrabCountChanged: 0
-  m_IsProcessingGrabTransformers: 0
-  m_DropTransformersCount: 0
-  m_TargetPose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_TargetLocalScale: {x: 0, y: 0, z: 0}
-  m_IsTargetPoseDirty: 0
-  m_IsTargetLocalScaleDirty: 0
-  m_CurrentAttachEaseTime: 0
-  m_CurrentMovementType: 0
-  m_DetachInLateUpdate: 0
-  m_DetachVelocity: {x: 0, y: 0, z: 0}
-  m_DetachAngularVelocity: {x: 0, y: 0, z: 0}
-  m_ThrowSmoothingCurrentFrame: 0
-  m_ThrowSmoothingFirstUpdate: 0
-  m_LastThrowReferencePose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_Rigidbody: {fileID: 0}
-  m_WasKinematic: 0
-  m_UsedGravity: 0
-  m_OldDrag: 0
-  m_OldAngularDrag: 0
-  m_IgnoringCharacterCollision: 0
-  m_StopIgnoringCollisionInLateUpdate: 0
-  m_SelectingCharacterController: {fileID: 0}
-  m_OriginalSceneParent: {fileID: 0}
 --- !u!54 &986458568
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11567,7 +11430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4704240698125147210, guid: 048249d9a15aa3c459399751e860bde7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 59.955
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4704240698125147210, guid: 048249d9a15aa3c459399751e860bde7, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -13808,10 +13671,10 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayerMask:
+    serializedVersion: 2
     m_Bits: 1
   m_InteractionLayers:
     m_Bits: 1
-    m_Mask: 1
   m_DistanceCalculationMode: 1
   m_SelectMode: 1
   m_FocusMode: 1
@@ -13826,99 +13689,75 @@ MonoBehaviour:
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastFocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_RegisteredInteractionManager: {fileID: 0}
   m_OnFirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnLastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectCanceled:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnActivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 1
@@ -13947,8 +13786,10 @@ MonoBehaviour:
   m_ThrowOnDetach: 1
   m_ThrowSmoothingDuration: 0.25
   m_ThrowSmoothingCurve:
+    serializedVersion: 2
     m_Curve:
-    - time: 1
+    - serializedVersion: 3
+      time: 1
       value: 1
       inSlope: 0
       outSlope: 0
@@ -13967,34 +13808,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  m_GrabCountChanged: 0
-  m_IsProcessingGrabTransformers: 0
-  m_DropTransformersCount: 0
-  m_TargetPose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_TargetLocalScale: {x: 0, y: 0, z: 0}
-  m_IsTargetPoseDirty: 0
-  m_IsTargetLocalScaleDirty: 0
-  m_CurrentAttachEaseTime: 0
-  m_CurrentMovementType: 0
-  m_DetachInLateUpdate: 0
-  m_DetachVelocity: {x: 0, y: 0, z: 0}
-  m_DetachAngularVelocity: {x: 0, y: 0, z: 0}
-  m_ThrowSmoothingCurrentFrame: 0
-  m_ThrowSmoothingFirstUpdate: 0
-  m_LastThrowReferencePose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_Rigidbody: {fileID: 0}
-  m_WasKinematic: 0
-  m_UsedGravity: 0
-  m_OldDrag: 0
-  m_OldAngularDrag: 0
-  m_IgnoringCharacterCollision: 0
-  m_StopIgnoringCollisionInLateUpdate: 0
-  m_SelectingCharacterController: {fileID: 0}
-  m_OriginalSceneParent: {fileID: 0}
 --- !u!54 &1277723417
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16932,10 +16745,10 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayerMask:
+    serializedVersion: 2
     m_Bits: 1
   m_InteractionLayers:
     m_Bits: 1
-    m_Mask: 1
   m_DistanceCalculationMode: 1
   m_SelectMode: 1
   m_FocusMode: 1
@@ -16950,99 +16763,75 @@ MonoBehaviour:
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastFocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_RegisteredInteractionManager: {fileID: 0}
   m_OnFirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnLastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnSelectCanceled:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnActivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 1
@@ -17071,8 +16860,10 @@ MonoBehaviour:
   m_ThrowOnDetach: 1
   m_ThrowSmoothingDuration: 0.25
   m_ThrowSmoothingCurve:
+    serializedVersion: 2
     m_Curve:
-    - time: 1
+    - serializedVersion: 3
+      time: 1
       value: 1
       inSlope: 0
       outSlope: 0
@@ -17091,34 +16882,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  m_GrabCountChanged: 0
-  m_IsProcessingGrabTransformers: 0
-  m_DropTransformersCount: 0
-  m_TargetPose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_TargetLocalScale: {x: 0, y: 0, z: 0}
-  m_IsTargetPoseDirty: 0
-  m_IsTargetLocalScaleDirty: 0
-  m_CurrentAttachEaseTime: 0
-  m_CurrentMovementType: 0
-  m_DetachInLateUpdate: 0
-  m_DetachVelocity: {x: 0, y: 0, z: 0}
-  m_DetachAngularVelocity: {x: 0, y: 0, z: 0}
-  m_ThrowSmoothingCurrentFrame: 0
-  m_ThrowSmoothingFirstUpdate: 0
-  m_LastThrowReferencePose:
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_Rigidbody: {fileID: 0}
-  m_WasKinematic: 0
-  m_UsedGravity: 0
-  m_OldDrag: 0
-  m_OldAngularDrag: 0
-  m_IgnoringCharacterCollision: 0
-  m_StopIgnoringCollisionInLateUpdate: 0
-  m_SelectingCharacterController: {fileID: 0}
-  m_OriginalSceneParent: {fileID: 0}
 --- !u!54 &1573382089
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18620,7 +18383,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 3e-45, z: 7.596e-42, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 3.6017765e-38}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -18693,10 +18456,10 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayerMask:
+    serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 1
-    m_Mask: 1
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -18711,55 +18474,137 @@ MonoBehaviour:
   m_FirstHoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastHoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastSelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_LastFocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusEntered:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_FocusExited:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   m_Activated:
     m_PersistentCalls:
       m_Calls:
-      - {m_Target: {fileID: 1823426893}, m_TargetAssemblyTypeName: UnityEngine.XR.Content.Interaction.LaunchProjectile, Assembly-CSharp: }
+      - m_Target: {fileID: 1823426893}
+        m_TargetAssemblyTypeName: UnityEngine.XR.Content.Interaction.LaunchProjectile
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_AttachTransform: {fileID: 0}
+  m_SecondaryAttachTransform: {fileID: 0}
+  m_UseDynamicAttach: 0
+  m_MatchAttachPosition: 1
+  m_MatchAttachRotation: 1
+  m_SnapToColliderVolume: 1
+  m_ReinitializeDynamicAttachEverySingleGrab: 1
+  m_AttachEaseInTime: 0.15
+  m_MovementType: 2
+  m_VelocityDamping: 1
+  m_VelocityScale: 1
+  m_AngularVelocityDamping: 1
+  m_AngularVelocityScale: 1
+  m_TrackPosition: 1
+  m_SmoothPosition: 0
+  m_SmoothPositionAmount: 8
+  m_TightenPosition: 0.1
+  m_TrackRotation: 1
+  m_SmoothRotation: 0
+  m_SmoothRotationAmount: 8
+  m_TightenRotation: 0.1
+  m_TrackScale: 1
+  m_SmoothScale: 0
+  m_SmoothScaleAmount: 8
+  m_TightenScale: 0.1
+  m_ThrowOnDetach: 1
+  m_ThrowSmoothingDuration: 0.25
+  m_ThrowSmoothingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_ThrowVelocityScale: 1.5
+  m_ThrowAngularVelocityScale: 1
+  m_ForceGravityOnDetach: 0
+  m_RetainTransformParent: 1
+  m_AttachPointCompatibilityMode: 0
+  m_StartingSingleGrabTransformers: []
+  m_StartingMultipleGrabTransformers: []
+  m_AddDefaultGrabTransformers: 1
 --- !u!114 &1823426893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18886,7 +18731,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1984668758913251958, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 44.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1984668758913251958, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -18914,7 +18759,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1984668759388320319, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1984668759388320319, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -18950,7 +18795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1984668759906836222, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1984668759906836222, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -18970,7 +18815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1984668759991436502, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1984668759991436502, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -19006,7 +18851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1984668760453204319, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 44.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1984668760453204319, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -19026,7 +18871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1984668760497519799, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1984668760497519799, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -19054,7 +18899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1984668760711245992, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1984668760711245992, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -19111,11 +18956,25 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3462571325970164592, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 922463439}
+    - targetCorrespondingSourceObject: {fileID: 3462571325970164592, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 230215798}
+    - targetCorrespondingSourceObject: {fileID: 3462571325970164592, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 909882488}
     - targetCorrespondingSourceObject: {fileID: 2871854915951832589, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 827015713}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+--- !u!4 &1825262783 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3462571325970164592, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+  m_PrefabInstance: {fileID: 1825262782}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1859349198 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7785151267686525226, guid: 048249d9a15aa3c459399751e860bde7, type: 3}
@@ -24842,6 +24701,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 787574912}
   - {fileID: 1825262782}
   - {fileID: 817075156}
   - {fileID: 2046629159}

@@ -6,17 +6,19 @@ using NaughtyAttributes;
 public class Interacable : MonoBehaviour
 {
     [Foldout("Events")]
-    public UnityEvent select;
+    public UnityEvent selected;
     [Foldout("Events")]
-    public UnityEvent deSelect;
+    public UnityEvent deSelected;
+
+    public virtual void Interact() { }
 
     public void Select()
     {
-        select?.Invoke();
+        selected?.Invoke();
     }
 
     public void DeSelect()
     {
-        deSelect?.Invoke();
+        deSelected?.Invoke();
     }
 }

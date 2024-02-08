@@ -9,10 +9,9 @@ public class EyeRaycaster : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * 500, Color.red);
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit))
         {
-
             if (hit.collider.TryGetComponent(out Interacable component))
             {
-                component.Select();
+                component.Interact();
             }
         }
     }

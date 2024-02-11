@@ -48,14 +48,21 @@ public class EyeRaycaster : MonoBehaviour
             interacable.DeInteract();
             interacable = null;
         }
-
-        if (follow)
-            follow.MovePosition(transform.position + transform.forward * distance);
     }
 
-    public void SetFollow(EyeGrabable followTarget)
+    private void FixedUpdate()
     {
-        follow = followTarget.rb;
+        if (follow)
+        {
+            Vector3 direction = ((transform.position + transform.forward * distance) - follow.position).normalized;
+            follow.AddForce(direction * 50);
+        }
+    }
+
+    public void SetFollow(Rigidbody followTarget)
+    {
+        follow = followTarget;
+        follow.useGravity = false;
         distance = Vector3.Distance(transform.position, follow.transform.position);
     }
 }

@@ -16,8 +16,15 @@ public class Interacable : MonoBehaviour
     public List<Conditions> deselectConditions;
     public UnityEvent onDeselected;
 
+    public Rigidbody rb;
+
     private bool selected;
-    
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     public void Interact() 
     {
         if (selected)

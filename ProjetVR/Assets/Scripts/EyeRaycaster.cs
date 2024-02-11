@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class EyeRaycaster : MonoBehaviour
@@ -10,12 +6,15 @@ public class EyeRaycaster : MonoBehaviour
 
     private Interacable interacable;
 
-    private Rigidbody follow;
+    public float force = 35f;
     private float distance;
+    private Rigidbody grabbedBody;
 
     private void Awake()
     {
         Instance = this;
+
+        //GetComponent<OVREyeGaze>().
     }
 
     private void Update()
@@ -52,17 +51,22 @@ public class EyeRaycaster : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (follow)
+        if (grabbedBody)
         {
-            Vector3 direction = ((transform.position + transform.forward * distance) - follow.position).normalized;
-            follow.AddForce(direction * 50);
+            Vector3 direction = ((transform.position + transform.forward * distance) - grabbedBody.position).normalized;
+            grabbedBody.AddForce(direction * force);
         }
+    }
+
+    public Vector3 GetGrabbedBodyDestination()
+    {
+        return (transform.position + transform.forward * distance) - grabbedBody.position;
     }
 
     public void SetFollow(Rigidbody followTarget)
     {
-        follow = followTarget;
-        follow.useGravity = false;
-        distance = Vector3.Distance(transform.position, follow.transform.position);
+        grabbedBody = followTarget;
+        grabbedBody.useGravity = false;
+        distance = Vector3.Distance(transform.position, grabbedBody.transform.position);
     }
 }

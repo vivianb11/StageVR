@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
-using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
 

@@ -16,21 +16,46 @@ public class Interacable : MonoBehaviour
     public List<Conditions> deselectConditions;
     public UnityEvent onDeselected;
 
+    private bool selected;
     
-    public virtual void Interact() { }
-
-    private void Start()
+    public void Interact() 
     {
-        selectConditions.Add(new Conditions(Conditions.ConditionActor.LookAt, Conditions.ConditionAction.Time, 1f));
+        if (selected)
+            return;
+
+        int temp = 0;
+
+        for (int i = 0; i < selectConditions.Count; i++)
+        {
+            temp += selectConditions[i].CheckCondition() ? 1 : 0;
+        }
+
+        if (temp == selectConditions.Count)
+            Select();
+    }
+
+    public void DeInteract() 
+    {
+        for (int i = 0; i < selectConditions.Count; i++)
+        {
+            selectConditions[i].Reset();
+        }
     }
 
     public void Select()
     {
+        for(int i = 0;i < selectConditions.Count;i++)
+        {
+            selectConditions[i].Reset();
+        }
+
+        selected = true;
         onSelected?.Invoke();
     }
 
     public void DeSelect()
     {
+        selected = false;
         onDeselected?.Invoke();
     }
 
@@ -39,21 +64,16 @@ public class Interacable : MonoBehaviour
 [Serializable]
 public class Conditions
 {
-    public enum ConditionActor
-    {
-        LookAt, Cursor, Blink, Grab, Pinch, Touch
-    }
-
-    public enum ConditionAction
-    {
-        Time, Amount, Distance
-    }
-
     public ConditionActor conditionType;
 
     public ConditionAction conditionAction;
 
     public float conditionValue;
+
+    // Variable instance
+    private float timer;
+    private float distance;
+    private int count;
 
     public Conditions(ConditionActor type , ConditionAction action, float value)
     {
@@ -62,13 +82,19 @@ public class Conditions
         conditionValue = value;
     }
 
+    public void Reset()
+    {
+        timer = 0;
+        count = 0;
+        distance = 0;
+    }
 
     public bool CheckCondition()
     {
         switch (conditionType)
         {
             case ConditionActor.LookAt:
-                return true;
+                return LookAtCheck();
             case ConditionActor.Blink:
                 return true;
             default:
@@ -81,7 +107,7 @@ public class Conditions
         switch (conditionAction)
         {
             case ConditionAction.Time:
-                return true;
+                return LookAtTimer(conditionValue);
             case ConditionAction.Amount:
                 return true;
             case ConditionAction.Distance:
@@ -90,4 +116,26 @@ public class Conditions
                 return false;
         }
     }
+
+    public bool LookAtTimer(float time)
+    {
+        timer += Time.deltaTime;
+
+        return timer >= time;
+    }
+}
+
+public enum ConditionActor
+{
+    LookAt, Cursor, Blink, Grab, Pinch, Touch
+}
+
+public enum ConditionAction
+{
+    Time, Amount, Distance
+}
+
+public enum GrabType
+{
+    EYE, HAND
 }

@@ -2,20 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Properties;
 using UnityEngine;
+using NaughtyAttributes;
 
 public class Limiteur : MonoBehaviour
 {
+    [Header("Visual")]
     public bool showVisual = true;
 
-    public GameObject center;
+    EyeRaycaster eyeRaycaster;
 
-    public float maxDistance;
+    private Interacable interacable;
 
-    private void Update()
+    [Header("Limiteur Params")]
+    public bool useObjectPosition = false;
+
+    [ShowIf("useObjectPosition")]
+    [Space(10)]
+    public Transform objectCenter;
+
+    private Vector3 center;
+
+    [Space(10)]
+    public float maxDistance = 1f;
+    public float errorBuffer = 0.1f;
+
+    private void Awake()
     {
-        if (Vector3.Distance(center.transform.position, transform.position) > maxDistance)
+        eyeRaycaster = EyeRaycaster.Instance;
+        interacable = GetComponent<Interacable>();
+
+        if (!useObjectPosition)
+            center = transform.position;
+    }
+
+    private void FixedUpdate()
+    {
+        if (Vector3.Distance(center, transform.position) > maxDistance)
         {
-            transform.position = center.transform.position + (transform.position - center.transform.position).normalized * maxDistance;
+            transform.position = center + (transform.position - center).normalized * maxDistance;
+            interacable.rb.velocity = Vector3.zero;
+
+        }
+        if (Vector3.Distance(eyeRaycaster.GetGrabbedBodyDestination(),center) > maxDistance + errorBuffer)
+        {
+            interacable.DeSelect();
         }
     }
 
@@ -24,7 +54,13 @@ public class Limiteur : MonoBehaviour
         Gizmos.color = Color.red;
         
         if (showVisual)
-            Gizmos.DrawWireSphere(center.transform.position, maxDistance);
-    }
+        {
+            if (!useObjectPosition)
+                center = transform.position;
 
+            Gizmos.DrawWireSphere(center, maxDistance);
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(center, maxDistance + errorBuffer);
+        }
+    }
 }

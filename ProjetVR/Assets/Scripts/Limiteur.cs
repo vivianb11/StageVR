@@ -14,9 +14,9 @@ public class Limiteur : MonoBehaviour
     private Interacable interacable;
 
     [Header("Limiteur Params")]
-    public bool useObjectPosition = false;
+    public bool useTargetPosition = false;
 
-    [ShowIf("useObjectPosition")]
+    [ShowIf("useTargetPosition")]
     [Space(10)]
     public Transform objectCenter;
 
@@ -28,10 +28,16 @@ public class Limiteur : MonoBehaviour
 
     private void Awake()
     {
-        eyeRaycaster = EyeRaycaster.Instance;
         interacable = GetComponent<Interacable>();
+    }
 
-        if (!useObjectPosition)
+    private void Start()
+    {
+        eyeRaycaster = EyeRaycaster.Instance;
+
+        if (useTargetPosition && objectCenter)
+            center = objectCenter.transform.position;
+        else
             center = transform.position;
     }
 
@@ -41,11 +47,14 @@ public class Limiteur : MonoBehaviour
         {
             transform.position = center + (transform.position - center).normalized * maxDistance;
             interacable.rb.velocity = Vector3.zero;
-
         }
-        if (Vector3.Distance(eyeRaycaster.GetGrabbedBodyDestination(),center) > maxDistance + errorBuffer)
+
+        if (eyeRaycaster.GetGrabbedBody())
         {
-            interacable.DeSelect();
+            if (Vector3.Distance(eyeRaycaster.GetGrabbedBodyDestination(),center) > maxDistance + errorBuffer)
+            {
+                interacable.DeSelect();
+            }
         }
     }
 
@@ -55,9 +64,6 @@ public class Limiteur : MonoBehaviour
         
         if (showVisual)
         {
-            if (!useObjectPosition)
-                center = transform.position;
-
             Gizmos.DrawWireSphere(center, maxDistance);
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(center, maxDistance + errorBuffer);

@@ -12,18 +12,27 @@ public class Grabable : MonoBehaviour
     {
         interacable = GetComponent<Interacable>();
         interacable.onSelected.AddListener(OnSelected);
+        interacable.onDeselected.AddListener(OnDeselected);
     }
 
     private void OnSelected()
     {
+        interacable.rb.useGravity = false;
+
         switch (grabType)
         {
             case GrabType.EYE:
-                EyeRaycaster.Instance.SetFollow(interacable.rb);
+                EyeRaycaster.Instance.SetGrabbedBody(interacable.rb);
                 break;
             case GrabType.HAND:
-                EyeRaycaster.Instance.SetFollow(interacable.rb);
+                EyeRaycaster.Instance.SetGrabbedBody(interacable.rb);
                 break;
         }
+    }
+
+    private void OnDeselected()
+    {
+        interacable.rb.useGravity = true;
+        EyeRaycaster.Instance.SetGrabbedBody(null);
     }
 }

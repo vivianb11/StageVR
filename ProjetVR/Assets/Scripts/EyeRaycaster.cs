@@ -1,4 +1,7 @@
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class EyeRaycaster : MonoBehaviour
 {
@@ -13,8 +16,6 @@ public class EyeRaycaster : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
-        //GetComponent<OVREyeGaze>().
     }
 
     private void Update()
@@ -63,10 +64,17 @@ public class EyeRaycaster : MonoBehaviour
         return (transform.position + transform.forward * distance) - grabbedBody.position;
     }
 
-    public void SetFollow(Rigidbody followTarget)
+    public Rigidbody GetGrabbedBody()
+    {
+        return grabbedBody;
+    }
+
+    public void SetGrabbedBody(Rigidbody followTarget)
     {
         grabbedBody = followTarget;
-        grabbedBody.useGravity = false;
+
+        if (!grabbedBody)
+            return;
         distance = Vector3.Distance(transform.position, grabbedBody.transform.position);
     }
 }

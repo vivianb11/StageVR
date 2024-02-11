@@ -7,13 +7,13 @@ using System.Collections.Generic;
 
 public class Interacable : MonoBehaviour
 {
-    [Foldout("Selection")]
+    [Header("Selection")]
+    [Space(10)]
     public List<Conditions> selectConditions;
-    [Foldout("Selection")]
     public UnityEvent onSelected;
-    [Foldout("Deselection")]
+    [Header("Deselection")]
+    [Space(10)]
     public List<Conditions> deselectConditions;
-    [Foldout("Deselection")]
     public UnityEvent onDeselected;
 
     

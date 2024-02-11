@@ -2,6 +2,7 @@
 using UnityEngine.Events;
 using System;
 using System.Collections.Generic;
+using NaughtyAttributes;
 
 public class Interacable : MonoBehaviour
 {
@@ -75,10 +76,20 @@ public class Conditions
 
     public float conditionValue;
 
+    [ShowIf("conditionAction", ConditionAction.Amount)]
+    public float DetectionInterval = 1f;
+
     // Variable instance
     private float timer;
     private float distance;
     private int count;
+
+    public Conditions()
+    {
+        conditionType = ConditionActor.LookAt;
+        conditionAction = ConditionAction.Time;
+        conditionValue = 0;
+    }
 
     public Conditions(ConditionActor type , ConditionAction action, float value)
     {

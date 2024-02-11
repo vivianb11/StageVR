@@ -5,22 +5,8 @@ using NaughtyAttributes;
 
 public class EyeInteractable : Interacable
 {
-    public enum InteractionType
-    {
-        StareTime,BlinkTime,BlinkAmount
-    }  
-
-    public InteractionType interactionEnterType;
-    public InteractionType interactionQuitType;
-
-    [ShowIf("interactionType", InteractionType.StareTime)]
-    public float stareTime = 2f;
-
-    [ShowIf("interactionType", InteractionType.BlinkTime)]
-    public float blinkTime = 2f;
-
-    [ShowIf("interactionType", InteractionType.BlinkAmount)]
-    public int blinkAmount = 2;
+    // temporaire a enlever
+    public float blinkTime = 0.5f;
 
     private float timer = 0f;
 

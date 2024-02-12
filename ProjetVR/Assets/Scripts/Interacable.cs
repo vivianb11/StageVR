@@ -26,7 +26,10 @@ public class Interacable : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+    }
 
+    private void Start()
+    {
         eyeRaycaster = EyeRaycaster.Instance;
         eyeRaycaster.blink.AddListener(CheckIfBlinked);
     }

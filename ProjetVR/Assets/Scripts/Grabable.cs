@@ -22,10 +22,10 @@ public class Grabable : MonoBehaviour
         switch (grabType)
         {
             case GrabType.EYE:
-                EyeRaycaster.Instance.SetGrabbedBody(interacable.rb);
+                EyeManager.Instance.SetGrabbedBody(interacable.rb);
                 break;
             case GrabType.HAND:
-                EyeRaycaster.Instance.SetGrabbedBody(interacable.rb);
+                EyeManager.Instance.SetGrabbedBody(interacable.rb);
                 break;
         }
     }
@@ -33,6 +33,6 @@ public class Grabable : MonoBehaviour
     private void OnDeselected()
     {
         interacable.rb.useGravity = true;
-        EyeRaycaster.Instance.SetGrabbedBody(null);
+        EyeManager.Instance.SetGrabbedBody(null);
     }
 }

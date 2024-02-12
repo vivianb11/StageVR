@@ -6089,26 +6089,20 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   deselectConditions: []
   onDeselected:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   onBlinked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 517287029}
-        m_TargetAssemblyTypeName: DebugCube, Assembly-CSharp
-        m_MethodName: IncreaseSize
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0.1
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      - {m_Target: {fileID: 517287029}, m_TargetAssemblyTypeName: DebugCube, Assembly-CSharp, m_MethodName: IncreaseSize, m_Mode: 4, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0, m_FloatArgument: 0.1, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
+    m_CallsDirty: 1
   rb: {fileID: 0}
+  selected: 0
+  eyeRaycaster: {fileID: 0}
 --- !u!54 &517287024
 Rigidbody:
   m_ObjectHideFlags: 0

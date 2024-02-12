@@ -9,7 +9,7 @@ public class Limiteur : MonoBehaviour
     [Header("Visual")]
     public bool showVisual = true;
 
-    EyeRaycaster eyeRaycaster;
+    EyeManager eyeRaycaster;
 
     private Interacable interacable;
 
@@ -33,7 +33,7 @@ public class Limiteur : MonoBehaviour
 
     private void Start()
     {
-        eyeRaycaster = EyeRaycaster.Instance;
+        eyeRaycaster = EyeManager.Instance;
 
         if (useTargetPosition && objectCenter)
             center = objectCenter.transform.position;

@@ -21,7 +21,7 @@ public class Interacable : MonoBehaviour
 
     private bool selected;
 
-    private EyeRaycaster eyeRaycaster;
+    private EyeManager eyeRaycaster;
 
     private void Awake()
     {
@@ -30,7 +30,7 @@ public class Interacable : MonoBehaviour
 
     private void Start()
     {
-        eyeRaycaster = EyeRaycaster.Instance;
+        eyeRaycaster = EyeManager.Instance;
         eyeRaycaster.blink.AddListener(CheckIfBlinked);
     }
 

@@ -2,14 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EyeRaycaster : MonoBehaviour
+public class EyeManager : MonoBehaviour
 {
     public enum EyeState
     {
         OPENED, CLOSED
     }
 
-    public static EyeRaycaster Instance;
+    public static EyeManager Instance;
 
     public Interacable interacable { get; private set; }
 

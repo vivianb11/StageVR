@@ -86,7 +86,7 @@ public class Interacable : MonoBehaviour
 [Serializable]
 public class Conditions
 {
-    public ConditionActor conditionType;
+    public ConditionType conditionType;
 
     public ConditionAction conditionAction;
 
@@ -102,12 +102,12 @@ public class Conditions
 
     public Conditions()
     {
-        conditionType = ConditionActor.LookAt;
+        conditionType = ConditionType.LookAt;
         conditionAction = ConditionAction.Time;
         conditionValue = 0;
     }
 
-    public Conditions(ConditionActor type , ConditionAction action, float value)
+    public Conditions(ConditionType type , ConditionAction action, float value)
     {
         conditionType = type;
         conditionAction = action;
@@ -125,10 +125,37 @@ public class Conditions
     {
         switch (conditionType)
         {
-            case ConditionActor.LookAt:
+            case ConditionType.LookAt:
                 return LookAtCheck();
-            case ConditionActor.EyeBlink:
+
+            case ConditionType.NotLooking:
+                Debug.LogWarning("NotLooking not implemented yet");
                 return true;
+
+            case ConditionType.EyeBlink:
+                Debug.LogWarning("EyeBlink not implemented yet");
+                return true;
+
+            case ConditionType.EyeClosed:
+                Debug.LogWarning("EyeClosed not implemented yet");
+                return true;
+
+            case ConditionType.Cursor:
+                Debug.LogWarning("Cursor not implemented yet");
+                return true;
+
+            case ConditionType.Grab:
+                Debug.LogWarning("Grab not implemented yet");
+                return true;
+
+            case ConditionType.Pinch:
+                Debug.LogWarning("Pinch not implemented yet");
+                return true;
+
+            case ConditionType.Touch:
+                Debug.LogWarning("Touch not implemented yet");
+                return true;
+
             default:
                 return false;
         }
@@ -143,6 +170,133 @@ public class Conditions
             case ConditionAction.Amount:
                 return true;
             case ConditionAction.Distance:
+                Debug.LogWarning("Distance not implemented for LookAt yet");
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private bool NotLookingCheck()
+    {
+        switch (conditionAction)
+        {
+            case ConditionAction.Time:
+                Debug.LogWarning("Time not implemented for NotLooking yet");
+                return true;
+            case ConditionAction.Amount:
+                Debug.LogWarning("Amount not implemented for NotLooking yet");
+                return true;
+            case ConditionAction.Distance:
+                Debug.LogWarning("Distance not implemented for NotLooking yet");
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private bool EyeBlinkCheck()
+    {
+        switch (conditionAction)
+        {
+            case ConditionAction.Time:
+                Debug.LogWarning("Time not implemented for EyeBlink yet");
+                return true;
+            case ConditionAction.Amount:
+                Debug.LogWarning("Amount not implemented for EyeBlink yet");
+                return true;
+            case ConditionAction.Distance:
+                Debug.LogWarning("Distance not implemented for EyeBlink yet");
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private bool EyeClosedCheck()
+    {
+        switch (conditionAction)
+        {
+            case ConditionAction.Time:
+                Debug.LogWarning("Time not implemented for EyeClosed yet");
+                return true;
+            case ConditionAction.Amount:
+                Debug.LogWarning("Amount not implemented for EyeClosed yet");
+                return true;
+            case ConditionAction.Distance:
+                Debug.LogWarning("Distance not implemented for EyeClosed yet");
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private bool CursorCheck()
+    {
+        switch (conditionAction)
+        {
+            case ConditionAction.Time:
+                Debug.LogWarning("Time not implemented for Cursor yet");
+                return true;
+            case ConditionAction.Amount:
+                Debug.LogWarning("Amount not implemented for Cursor yet");
+                return true;
+            case ConditionAction.Distance:
+                Debug.LogWarning("Distance not implemented for Cursor yet");
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private bool GrabCheck()
+    {
+        switch (conditionAction)
+        {
+            case ConditionAction.Time:
+                Debug.LogWarning("Time not implemented for Grab yet");
+                return true;
+            case ConditionAction.Amount:
+                Debug.LogWarning("Amount not implemented for Grab yet");
+                return true;
+            case ConditionAction.Distance:
+                Debug.LogWarning("Distance not implemented for Grab yet");
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private bool PinchCheck()
+    {
+        switch (conditionAction)
+        {
+            case ConditionAction.Time:
+                Debug.LogWarning("Time not implemented for Pinch yet");
+                return true;
+            case ConditionAction.Amount:
+                Debug.LogWarning("Amount not implemented for Pinch yet");
+                return true;
+            case ConditionAction.Distance:
+                Debug.LogWarning("Distance not implemented for Pinch yet");
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private bool TouchCheck()
+    {
+        switch (conditionAction)
+        {
+            case ConditionAction.Time:
+                Debug.LogWarning("Time not implemented for Touch yet");
+                return true;
+            case ConditionAction.Amount:
+                Debug.LogWarning("Amount not implemented for Touch yet");
+                return true;
+            case ConditionAction.Distance:
+                Debug.LogWarning("Distance not implemented for Touch yet");
                 return true;
             default:
                 return false;
@@ -157,9 +311,9 @@ public class Conditions
     }
 }
 
-public enum ConditionActor
+public enum ConditionType
 {
-    LookAt, Cursor, EyeBlink, EyeClosed, Grab, Pinch, Touch
+    LookAt, NotLooking, Cursor, EyeBlink, EyeClosed, Grab, Pinch, Touch
 }
 
 public enum ConditionAction

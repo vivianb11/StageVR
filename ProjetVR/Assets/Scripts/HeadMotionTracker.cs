@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HeadMotionTracker : MonoBehaviour
 {
-    private List<float> distances;
+    private List<float> distances = new();
 
     private Vector3 lastPosition, secndLastPosition;
 
@@ -18,6 +18,11 @@ public class HeadMotionTracker : MonoBehaviour
         head = new GameObject("Tracker");
         head.transform.SetParent(transform);
         head.transform.localPosition = new Vector3(0, 0, 1);
+
+        for (int i = 0; i < recordedTime / Time.fixedDeltaTime; i++)
+        {
+            distances.Add(0);
+        }
     }
 
     private void FixedUpdate()

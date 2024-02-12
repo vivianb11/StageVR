@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using System;
 using System.Collections.Generic;
 using NaughtyAttributes;
+using JetBrains.Annotations;
 
 public class Interacable : MonoBehaviour
 {
@@ -26,12 +27,19 @@ public class Interacable : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
+        for (int i = 0; i < selectConditions.Count; i++)
+        {
+            var condition = selectConditions[i];
+            
+            if (condition.conditionType == ConditionsEye.EyeBlink)
+                eyeRaycaster.blink.AddListener(CheckIfBlinked);
+        }
     }
 
     private void Start()
     {
         eyeRaycaster = EyeManager.Instance;
-        eyeRaycaster.blink.AddListener(CheckIfBlinked);
     }
 
     public void CheckIfBlinked()
@@ -86,7 +94,7 @@ public class Interacable : MonoBehaviour
 [Serializable]
 public class Conditions
 {
-    public ConditionType conditionType;
+    public ConditionsEye conditionType;
 
     public ConditionAction conditionAction;
 
@@ -102,12 +110,12 @@ public class Conditions
 
     public Conditions()
     {
-        conditionType = ConditionType.LookAt;
+        conditionType = ConditionsEye.LookAt;
         conditionAction = ConditionAction.Time;
         conditionValue = 0;
     }
 
-    public Conditions(ConditionType type , ConditionAction action, float value)
+    public Conditions(ConditionsEye type , ConditionAction action, float value)
     {
         conditionType = type;
         conditionAction = action;
@@ -121,187 +129,184 @@ public class Conditions
         distance = 0;
     }
 
-    public bool CheckCondition()
-    {
-        switch (conditionType)
-        {
-            case ConditionType.LookAt:
-                return LookAtCheck();
+    //public bool CheckCondition()
+    //{
+    //    switch (conditionType)
+    //    {
+    //        case ConditionType.LookAt:
+    //            return LookAtCheck();
 
-            case ConditionType.NotLooking:
-                Debug.LogWarning("NotLooking not implemented yet");
-                return true;
+    //        case ConditionType.NotLooking:
+    //            Debug.LogWarning("NotLooking not implemented yet");
+    //            return true;
 
-            case ConditionType.EyeBlink:
-                Debug.LogWarning("EyeBlink not implemented yet");
-                return true;
+    //        case ConditionType.EyeBlink:
+    //            Debug.LogWarning("EyeBlink not implemented yet");
+    //            return true;
 
-            case ConditionType.EyeClosed:
-                Debug.LogWarning("EyeClosed not implemented yet");
-                return true;
+    //        case ConditionType.EyeClosed:
+    //            Debug.LogWarning("EyeClosed not implemented yet");
+    //            return true;
 
-            case ConditionType.Cursor:
-                Debug.LogWarning("Cursor not implemented yet");
-                return true;
+    //        case ConditionType.Cursor:
+    //            Debug.LogWarning("Cursor not implemented yet");
+    //            return true;
 
-            case ConditionType.Grab:
-                Debug.LogWarning("Grab not implemented yet");
-                return true;
+    //        case ConditionType.Grab:
+    //            Debug.LogWarning("Grab not implemented yet");
+    //            return true;
 
-            case ConditionType.Pinch:
-                Debug.LogWarning("Pinch not implemented yet");
-                return true;
+    //        case ConditionType.Pinch:
+    //            Debug.LogWarning("Pinch not implemented yet");
+    //            return true;
 
-            case ConditionType.Touch:
-                Debug.LogWarning("Touch not implemented yet");
-                return true;
+    //        case ConditionType.Touch:
+    //            Debug.LogWarning("Touch not implemented yet");
+    //            return true;
 
-            default:
-                return false;
-        }
-    }
+    //        default:
+    //            return false;
+    //    }
+    //}
 
-    private bool LookAtCheck()
-    {
-        switch (conditionAction)
-        {
-            case ConditionAction.Time:
-                return LookAtTimer(conditionValue);
-            case ConditionAction.Amount:
-                return true;
-            case ConditionAction.Distance:
-                Debug.LogWarning("Distance not implemented for LookAt yet");
-                return true;
-            default:
-                return false;
-        }
-    }
+    //private bool LookAtCheck()
+    //{
+    //    switch (conditionAction)
+    //    {
+    //        case ConditionAction.Time:
+    //            return LookAtTimer(conditionValue);
+    //        case ConditionAction.Amount:
+    //            return true;
+    //        case ConditionAction.Distance:
+    //            Debug.LogWarning("Distance not implemented for LookAt yet");
+    //            return true;
+    //        default:
+    //            return false;
+    //    }
+    //}
 
-    private bool NotLookingCheck()
-    {
-        switch (conditionAction)
-        {
-            case ConditionAction.Time:
-                Debug.LogWarning("Time not implemented for NotLooking yet");
-                return true;
-            case ConditionAction.Amount:
-                Debug.LogWarning("Amount not implemented for NotLooking yet");
-                return true;
-            case ConditionAction.Distance:
-                Debug.LogWarning("Distance not implemented for NotLooking yet");
-                return true;
-            default:
-                return false;
-        }
-    }
+    //private bool NotLookingCheck()
+    //{
+    //    switch (conditionAction)
+    //    {
+    //        case ConditionAction.Time:
+    //            Debug.LogWarning("Time not implemented for NotLooking yet");
+    //            return true;
+    //        case ConditionAction.Distance:
+    //            Debug.LogWarning("Distance not implemented for NotLooking yet");
+    //            return true;
+    //        default:
+    //            return false;
+    //    }
+    //}
 
-    private bool EyeBlinkCheck()
-    {
-        switch (conditionAction)
-        {
-            case ConditionAction.Time:
-                Debug.LogWarning("Time not implemented for EyeBlink yet");
-                return true;
-            case ConditionAction.Amount:
-                Debug.LogWarning("Amount not implemented for EyeBlink yet");
-                return true;
-            case ConditionAction.Distance:
-                Debug.LogWarning("Distance not implemented for EyeBlink yet");
-                return true;
-            default:
-                return false;
-        }
-    }
+    //private bool EyeBlinkCheck()
+    //{
+    //    switch (conditionAction)
+    //    {
+    //        case ConditionAction.Time:
+    //            Debug.LogWarning("Time not implemented for EyeBlink yet");
+    //            return true;
+    //        case ConditionAction.Amount:
+    //            Debug.LogWarning("Amount not implemented for EyeBlink yet");
+    //            return true;
+    //        case ConditionAction.Distance:
+    //            Debug.LogWarning("Distance not implemented for EyeBlink yet");
+    //            return true;
+    //        default:
+    //            return false;
+    //    }
+    //}
 
-    private bool EyeClosedCheck()
-    {
-        switch (conditionAction)
-        {
-            case ConditionAction.Time:
-                Debug.LogWarning("Time not implemented for EyeClosed yet");
-                return true;
-            case ConditionAction.Amount:
-                Debug.LogWarning("Amount not implemented for EyeClosed yet");
-                return true;
-            case ConditionAction.Distance:
-                Debug.LogWarning("Distance not implemented for EyeClosed yet");
-                return true;
-            default:
-                return false;
-        }
-    }
+    //private bool EyeClosedCheck()
+    //{
+    //    switch (conditionAction)
+    //    {
+    //        case ConditionAction.Time:
+    //            Debug.LogWarning("Time not implemented for EyeClosed yet");
+    //            return true;
+    //        case ConditionAction.Amount:
+    //            Debug.LogWarning("Amount not implemented for EyeClosed yet");
+    //            return true;
+    //        case ConditionAction.Distance:
+    //            Debug.LogWarning("Distance not implemented for EyeClosed yet");
+    //            return true;
+    //        default:
+    //            return false;
+    //    }
+    //}
 
-    private bool CursorCheck()
-    {
-        switch (conditionAction)
-        {
-            case ConditionAction.Time:
-                Debug.LogWarning("Time not implemented for Cursor yet");
-                return true;
-            case ConditionAction.Amount:
-                Debug.LogWarning("Amount not implemented for Cursor yet");
-                return true;
-            case ConditionAction.Distance:
-                Debug.LogWarning("Distance not implemented for Cursor yet");
-                return true;
-            default:
-                return false;
-        }
-    }
+    //private bool CursorCheck()
+    //{
+    //    switch (conditionAction)
+    //    {
+    //        case ConditionAction.Time:
+    //            Debug.LogWarning("Time not implemented for Cursor yet");
+    //            return true;
+    //        case ConditionAction.Amount:
+    //            Debug.LogWarning("Amount not implemented for Cursor yet");
+    //            return true;
+    //        case ConditionAction.Distance:
+    //            Debug.LogWarning("Distance not implemented for Cursor yet");
+    //            return true;
+    //        default:
+    //            return false;
+    //    }
+    //}
 
-    private bool GrabCheck()
-    {
-        switch (conditionAction)
-        {
-            case ConditionAction.Time:
-                Debug.LogWarning("Time not implemented for Grab yet");
-                return true;
-            case ConditionAction.Amount:
-                Debug.LogWarning("Amount not implemented for Grab yet");
-                return true;
-            case ConditionAction.Distance:
-                Debug.LogWarning("Distance not implemented for Grab yet");
-                return true;
-            default:
-                return false;
-        }
-    }
+    //private bool GrabCheck()
+    //{
+    //    switch (conditionAction)
+    //    {
+    //        case ConditionAction.Time:
+    //            Debug.LogWarning("Time not implemented for Grab yet");
+    //            return true;
+    //        case ConditionAction.Amount:
+    //            Debug.LogWarning("Amount not implemented for Grab yet");
+    //            return true;
+    //        case ConditionAction.Distance:
+    //            Debug.LogWarning("Distance not implemented for Grab yet");
+    //            return true;
+    //        default:
+    //            return false;
+    //    }
+    //}
 
-    private bool PinchCheck()
-    {
-        switch (conditionAction)
-        {
-            case ConditionAction.Time:
-                Debug.LogWarning("Time not implemented for Pinch yet");
-                return true;
-            case ConditionAction.Amount:
-                Debug.LogWarning("Amount not implemented for Pinch yet");
-                return true;
-            case ConditionAction.Distance:
-                Debug.LogWarning("Distance not implemented for Pinch yet");
-                return true;
-            default:
-                return false;
-        }
-    }
+    //private bool PinchCheck()
+    //{
+    //    switch (conditionAction)
+    //    {
+    //        case ConditionAction.Time:
+    //            Debug.LogWarning("Time not implemented for Pinch yet");
+    //            return true;
+    //        case ConditionAction.Amount:
+    //            Debug.LogWarning("Amount not implemented for Pinch yet");
+    //            return true;
+    //        case ConditionAction.Distance:
+    //            Debug.LogWarning("Distance not implemented for Pinch yet");
+    //            return true;
+    //        default:
+    //            return false;
+    //    }
+    //}
 
-    private bool TouchCheck()
-    {
-        switch (conditionAction)
-        {
-            case ConditionAction.Time:
-                Debug.LogWarning("Time not implemented for Touch yet");
-                return true;
-            case ConditionAction.Amount:
-                Debug.LogWarning("Amount not implemented for Touch yet");
-                return true;
-            case ConditionAction.Distance:
-                Debug.LogWarning("Distance not implemented for Touch yet");
-                return true;
-            default:
-                return false;
-        }
-    }
+    //private bool TouchCheck()
+    //{
+    //    switch (conditionAction)
+    //    {
+    //        case ConditionAction.Time:
+    //            Debug.LogWarning("Time not implemented for Touch yet");
+    //            return true;
+    //        case ConditionAction.Amount:
+    //            Debug.LogWarning("Amount not implemented for Touch yet");
+    //            return true;
+    //        case ConditionAction.Distance:
+    //            Debug.LogWarning("Distance not implemented for Touch yet");
+    //            return true;
+    //        default:
+    //            return false;
+    //    }
+    //}
 
     public bool LookAtTimer(float time)
     {
@@ -311,17 +316,22 @@ public class Conditions
     }
 }
 
-public enum ConditionType
+public enum ConditionsEye
 {
-    LookAt, NotLooking, Cursor, EyeBlink, EyeClosed, Grab, Pinch, Touch
+    LookAt, NotLooking, Cursor, EyeBlink, EyeClosed
 }
 
-public enum ConditionAction
+public enum ConditionsHand
 {
-    Time, Amount, Distance
+    Grab, Pinch, Touch
 }
 
 public enum GrabType
 {
     EYE, HAND
+}
+
+public enum ConditionAction
+{
+    Time, Amount, Distance
 }

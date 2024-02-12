@@ -78,6 +78,30 @@ public class EyeManager : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
             rightEyeOpeningPercent = Mathf.Clamp(rightEyeOpeningPercent + Input.mouseScrollDelta.y * 0.1f, 0f, 1f);
 
+        HandleEyesStats();
+
+        RaycastInteractable();
+    }
+
+    private void FixedUpdate()
+    {
+        if (grabbedBody)
+        {
+            Vector3 direction = ((transform.position + transform.forward * distance) - grabbedBody.position).normalized;
+            grabbedBody.AddForce(direction * force);
+        }
+    }
+
+    private IEnumerator BlinkBuffer(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (leftEyeOpeningPercent > 0 && rightEyeOpeningPercent > 0)
+            blink?.Invoke();
+    }
+
+    private void HandleEyesStats()
+    {
         //Left Eye
         if (leftEyeOpeningPercent == 0f && leftEyeState == EyeState.OPENED)
         {
@@ -109,7 +133,7 @@ public class EyeManager : MonoBehaviour
             closedTime += Time.deltaTime;
         }
 
-        if (rightEyeState == EyeState.OPENED && rightEyeState == EyeState.OPENED)
+        if (rightEyeState == EyeState.OPENED || rightEyeState == EyeState.OPENED)
         {
             preBlink = false;
         }
@@ -118,28 +142,6 @@ public class EyeManager : MonoBehaviour
         {
             preBlink = true;
             StartCoroutine(BlinkBuffer(blinkBuffer));
-        }
-
-        RaycastInteractable();
-    }
-
-    private void FixedUpdate()
-    {
-        if (grabbedBody)
-        {
-            Vector3 direction = ((transform.position + transform.forward * distance) - grabbedBody.position).normalized;
-            grabbedBody.AddForce(direction * force);
-        }
-    }
-
-    private IEnumerator BlinkBuffer(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        if (leftEyeOpeningPercent > 0 && rightEyeOpeningPercent > 0)
-        {
-            blink?.Invoke();
-            Debug.Log("Blink");
         }
     }
 

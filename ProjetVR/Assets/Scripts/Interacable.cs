@@ -36,12 +36,8 @@ public class Interacable : MonoBehaviour
 
     public void CheckIfBlinked()
     {
-        Debug.Log("Check blink");
         if (eyeRaycaster.interacable == this)
-        {
-            Debug.Log("Blinked !");
             onBlinked?.Invoke();
-        }
     }
 
     public void Interact() 

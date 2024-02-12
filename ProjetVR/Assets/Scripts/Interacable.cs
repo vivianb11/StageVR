@@ -111,7 +111,7 @@ public class Conditions
         {
             case ConditionActor.LookAt:
                 return LookAtCheck();
-            case ConditionActor.Blink:
+            case ConditionActor.EyeBlink:
                 return true;
             default:
                 return false;
@@ -143,7 +143,7 @@ public class Conditions
 
 public enum ConditionActor
 {
-    LookAt, Cursor, Blink, Grab, Pinch, Touch
+    LookAt, Cursor, EyeBlink, EyeClosed, Grab, Pinch, Touch
 }
 
 public enum ConditionAction

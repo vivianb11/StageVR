@@ -15,13 +15,31 @@ public class Interacable : MonoBehaviour
     public List<Conditions> deselectConditions;
     public UnityEvent onDeselected;
 
+    public UnityEvent onBlinked;
+
     public Rigidbody rb;
 
     private bool selected;
 
+    private EyeRaycaster eyeRaycaster;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    private void Start()
+    {
+        eyeRaycaster = EyeRaycaster.Instance;
+        eyeRaycaster.blink.AddListener(CheckIfBlinked);
+    }
+
+    public void CheckIfBlinked()
+    {
+        if (eyeRaycaster.interacable == this)
+        {
+            onBlinked?.Invoke();
+        }
     }
 
     public void Interact() 

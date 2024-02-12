@@ -94,7 +94,13 @@ public class Interacable : MonoBehaviour
 [Serializable]
 public class Conditions
 {
+    public SelectType selectType;
+
+    [ShowIf("selectType", SelectType.EYE)]
     public ConditionsEye conditionType;
+
+    [ShowIf("selectType", SelectType.HAND)]
+    public ConditionsHand conditionHand;
 
     public ConditionAction conditionAction;
 
@@ -314,7 +320,7 @@ public enum ConditionsHand
     Grab, Pinch, Touch
 }
 
-public enum GrabType
+public enum SelectType
 {
     EYE, HAND
 }

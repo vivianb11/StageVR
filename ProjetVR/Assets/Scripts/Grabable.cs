@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Grabable : MonoBehaviour
 {
-    public GrabType grabType;
+    public SelectType grabType;
 
     private Interacable interacable;
 
@@ -21,10 +21,10 @@ public class Grabable : MonoBehaviour
 
         switch (grabType)
         {
-            case GrabType.EYE:
+            case SelectType.EYE:
                 EyeManager.Instance.SetGrabbedBody(interacable.rb);
                 break;
-            case GrabType.HAND:
+            case SelectType.HAND:
                 EyeManager.Instance.SetGrabbedBody(interacable.rb);
                 break;
         }

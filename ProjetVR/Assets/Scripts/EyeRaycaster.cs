@@ -20,8 +20,8 @@ public class EyeRaycaster : MonoBehaviour
     private bool preBlink = false;
 
     [Header("Data")]
-    public float leftEyeOpeningPercent;
-    public float rightEyeOpeningPercent;
+    public float leftEyeOpeningPercent = 1f;
+    public float rightEyeOpeningPercent = 1f;
     [SerializeField]
     private float closedTime;
     [SerializeField]

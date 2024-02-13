@@ -10,19 +10,22 @@ public class Interacable : MonoBehaviour
     [Header("Selection")]
     [Space(10)]
     public List<Conditions> selectConditions;
-    public UnityEvent onSelected;
     [Header("Deselection")]
     [Space(10)]
     public List<Conditions> deselectConditions;
-    public UnityEvent onDeselected;
-
-    public UnityEvent onBlinked;
 
     public Rigidbody rb;
 
     private bool selected;
 
     private EyeManager eyeRaycaster;
+
+    [Header("Events")]
+    public UnityEvent onInteracted;
+    public UnityEvent onDeInteracted;
+    public UnityEvent onSelected;
+    public UnityEvent onDeselected;
+    public UnityEvent onBlinked;
 
     private void Awake()
     {
@@ -53,6 +56,8 @@ public class Interacable : MonoBehaviour
         if (selected)
             return;
 
+        onInteracted?.Invoke();
+
         int temp = 0;
 
         for (int i = 0; i < selectConditions.Count; i++)
@@ -66,6 +71,18 @@ public class Interacable : MonoBehaviour
 
     public void DeInteract() 
     {
+        onDeInteracted?.Invoke();
+
+        int temp = 0;
+
+        for (int i = 0; i < selectConditions.Count; i++)
+        {
+            temp += deselectConditions[i].CheckCondition() ? 1 : 0;
+        }
+
+        if (temp == selectConditions.Count)
+            DeSelect();
+
         for (int i = 0; i < selectConditions.Count; i++)
         {
             selectConditions[i].Reset();
@@ -309,6 +326,7 @@ public class Conditions
     {
         timer += Time.deltaTime;
 
+        Debug.Log(timer);
         return timer >= time;
     }
 }

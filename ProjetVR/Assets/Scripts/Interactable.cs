@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using JetBrains.Annotations;
+using System.Collections;
 
 public class Interactable : MonoBehaviour
 {
@@ -21,10 +22,12 @@ public class Interactable : MonoBehaviour
     private EyeManager eyeRaycaster;
 
     [Header("Events")]
-    public UnityEvent onInteracted;
-    public UnityEvent onDeInteracted;
     public UnityEvent onSelected;
     public UnityEvent onDeselected;
+    [Space(10)]
+    public UnityEvent onInteracted;
+    public UnityEvent onDeInteracted;
+    [Space(10)]
     public UnityEvent onBlinked;
 
     private void Awake()
@@ -163,8 +166,7 @@ public class Conditions
                 return LookAtCheck();
 
             case ConditionsEye.NotLooking:
-                Debug.LogWarning("NotLooking not implemented yet");
-                return true;
+                return NotLookingCheck();
 
             case ConditionsEye.EyeBlink:
                 Debug.LogWarning("EyeBlink not implemented yet");
@@ -188,7 +190,7 @@ public class Conditions
         switch (conditionAction)
         {
             case ConditionAction.Time:
-                return LookAtTimer(conditionValue);
+                return Timer(conditionValue);
             case ConditionAction.Amount:
                 return true;
             case ConditionAction.Distance:
@@ -204,8 +206,7 @@ public class Conditions
         switch (conditionAction)
         {
             case ConditionAction.Time:
-                Debug.LogWarning("Time not implemented for NotLooking yet");
-                return true;
+                return Timer(conditionValue);
             case ConditionAction.Distance:
                 Debug.LogWarning("Distance not implemented for NotLooking yet");
                 return true;
@@ -322,7 +323,7 @@ public class Conditions
         }
     }
 
-    public bool LookAtTimer(float time)
+    public bool Timer(float time)
     {
         timer += Time.deltaTime;
 

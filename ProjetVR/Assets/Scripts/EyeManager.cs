@@ -4,22 +4,13 @@ using UnityEngine.Events;
 
 public class EyeManager : MonoBehaviour
 {
+    #region Eyes
     public enum EyeState
     {
         OPENED, CLOSED
     }
 
-    public static EyeManager Instance;
-
-    public Interactable interactable { get; private set; }
-
-    public float force = 35f;
-    private float distance;
-    private Rigidbody grabbedBody;
-
-    private bool preBlink = false;
-
-    [Header("Data")]
+    [Header("Eyes Datas")]
     public float leftEyeOpeningPercent = 1f;
     public float rightEyeOpeningPercent = 1f;
     [SerializeField]
@@ -31,6 +22,26 @@ public class EyeManager : MonoBehaviour
     private EyeState leftEyeState = EyeState.OPENED;
     [SerializeField]
     private EyeState rightEyeState = EyeState.OPENED;
+    #endregion
+
+    public enum ManagerState
+    {
+        SELECTION, PAINT
+    }
+
+    public ManagerState managerState = ManagerState.SELECTION;
+
+    public static EyeManager Instance;
+
+    public Interactable interactable { get; private set; }
+
+    public float force = 35f;
+    private float distance;
+    private Rigidbody grabbedBody;
+
+    private bool preBlink = false;
+
+    public Vector3 hitPosition;
 
     [Header("Events")]
     public UnityEvent leftEyeClosed;
@@ -48,6 +59,7 @@ public class EyeManager : MonoBehaviour
 
     private void Update()
     {
+        #region Debug
         if (Input.GetKey(KeyCode.UpArrow))
         {
             leftEyeOpeningPercent = 1;
@@ -77,10 +89,19 @@ public class EyeManager : MonoBehaviour
             leftEyeOpeningPercent = Mathf.Clamp(leftEyeOpeningPercent + Input.mouseScrollDelta.y * 0.1f, 0f, 1f);
         if (Input.GetKey(KeyCode.RightArrow))
             rightEyeOpeningPercent = Mathf.Clamp(rightEyeOpeningPercent + Input.mouseScrollDelta.y * 0.1f, 0f, 1f);
+        #endregion
 
         HandleEyesStats();
 
-        RaycastInteractable();
+        switch (managerState)
+        {
+            case ManagerState.SELECTION:
+                RaycastInteractable();
+                break;
+            case ManagerState.PAINT:
+                Paint();
+                break;
+        }
     }
 
     private void FixedUpdate()
@@ -92,6 +113,7 @@ public class EyeManager : MonoBehaviour
         }
     }
 
+    #region Eyes Methods
     private IEnumerator BlinkBuffer(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -144,11 +166,28 @@ public class EyeManager : MonoBehaviour
             StartCoroutine(BlinkBuffer(blinkBuffer));
         }
     }
+    #endregion
+
+    private void SwitchState(ManagerState newState)
+    {
+        managerState = newState;
+    }
+
+    private bool RaycastForward(out RaycastHit hit)
+    {
+        Debug.DrawRay(transform.position, transform.forward, Color.red);
+
+        bool hitSuccessful = Physics.Raycast(transform.position, transform.forward, out hit);
+
+        if (hitSuccessful)
+            hitPosition = hit.point;
+
+        return hitSuccessful;
+    }
 
     private void RaycastInteractable()
     {
-        Debug.DrawRay(transform.position, transform.forward * 500, Color.red);
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit))
+        if (RaycastForward(out RaycastHit hit))
         {
             if (hit.collider.TryGetComponent(out Interactable component))
             {
@@ -175,6 +214,12 @@ public class EyeManager : MonoBehaviour
             interactable.DeInteract();
             interactable = null;
         }
+    }
+
+    private void Paint()
+    {
+        if (RaycastForward(out RaycastHit hit))
+            Debug.Log("Paint");
     }
 
     public Vector3 GetGrabbedBodyDestination()

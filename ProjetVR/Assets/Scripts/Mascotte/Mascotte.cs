@@ -1,73 +1,149 @@
 using UnityEngine;
 using System.Linq;
+using System.Collections;
 
 public class Mascotte : MonoBehaviour
 {
-    [SerializeField]
-    private MeshRenderer mesh;
+    public enum MascotteState
+    {
+        IDLE, TRAVEL_SPAWN, TRAVEL_TEETH, CLEANING
+    }
+
+    public MascotteState state;
 
     [SerializeField]
-    private Color[] colors;
+    private float range = 2f;
 
-    private int index;
+    [SerializeField]
+    private float interactionDelay = 2f;
+
+    [SerializeField]
+    private float cleanCooldown = 5f;
+
+    [SerializeField]
+    private MeshRenderer meshRenderer;
+
+    private bool canClean = true;
 
     private Teeth[] teeths;
+    private Teeth teethTarget;
 
+    private Vector3 startPos;
     private Vector3 targetPosition;
+
+    private Interactable interacable;
 
     private void Start()
     {
         teeths = FindObjectsOfType<Teeth>();
+        startPos = transform.position;
         targetPosition = transform.position;
+
+        interacable = GetComponent<Interactable>();
+        meshRenderer.material.color = Color.green;
     }
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime);
+        switch (state)
+        {
+            case MascotteState.TRAVEL_TEETH:
+                if (TravelToDestination(targetPosition, range)) SwitchState(MascotteState.CLEANING);
+                break;
+            case MascotteState.TRAVEL_SPAWN:
+                if (TravelToDestination(targetPosition, 0)) SwitchState(MascotteState.IDLE);
+                break;
+        }
     }
 
-    public void ChangeColor()
+    private bool TravelToDestination(Vector3 destination, float destinationRange)
     {
-        index++;
-        if (index == colors.Length)
-            index = 0;
+        if (Vector3.Distance(transform.position, destination) <= destinationRange)
+            return true;
 
-        mesh.material.color = colors[index];
+        transform.LookAt(destination);
+        transform.position = Vector3.MoveTowards(transform.position, destination, Time.deltaTime);
+
+        return false;
     }
 
-    private Teeth GetClosestTeeth()
+    private IEnumerator InteractionDelay(float delay)
     {
-        Teeth closest = null;
+        yield return new WaitForSeconds(delay);
 
-        Teeth[] dirtyTeeth = teeths.Where(item => item.state != Teeth.TeethState.GREEN).ToArray();
+        teethTarget.CleanTeeth();
+
+        SwitchState(MascotteState.TRAVEL_SPAWN);
+    }
+
+    private IEnumerator CleanCooldown(float delay)
+    {
+        meshRenderer.material.color = Color.red;
+        yield return new WaitForSeconds(delay);
+        meshRenderer.material.color = Color.green;
+
+        canClean = true;
+    }
+
+    private void SwitchState(MascotteState newState)
+    {
+        state = newState;
+
+        switch (state)
+        {
+            case MascotteState.IDLE:
+                interacable.DeSelect();
+                StartCoroutine(CleanCooldown(cleanCooldown));
+                break;
+            case MascotteState.TRAVEL_SPAWN:
+                targetPosition = startPos;
+                teethTarget = null;
+                break;
+            case MascotteState.TRAVEL_TEETH:
+                canClean = false;
+                break;
+            case MascotteState.CLEANING:
+                StartCoroutine(InteractionDelay(interactionDelay));
+                break;
+        }
+    }
+
+    private bool GetClosestTeeth(out Teeth closestTeeth)
+    {
+        closestTeeth = null;
+
+        Teeth[] dirtyTeeth = teeths.Where(item => item.state != Teeth.TeethState.WHITE).ToArray();
+
+        if (dirtyTeeth.Length == 0)
+            return false;
+
+        closestTeeth = dirtyTeeth[0];
 
         foreach (Teeth t in dirtyTeeth)
         {
-            if (closest == null)
-            {
-                closest = t;
-                continue;
-            }
-
-            if (((int)closest.state) > ((int)closest.state))
-            {
-                closest = t;
-                continue;
-            }
-
-            float closestTeethDistance = Vector3.Distance(closest.transform.position, transform.position);
+            float closestTeethDistance = Vector3.Distance(closestTeeth.transform.position, transform.position);
             float currentTeethDistance = Vector3.Distance(t.transform.position, transform.position);
 
+            if (((int)t.state) < ((int)closestTeeth.state))
+                continue;
+
             if (currentTeethDistance < closestTeethDistance)
-                closest = t;
+                closestTeeth = t;
         }
 
-        return closest;
+        return true;
     }
+
 
     public void SetTask()
     {
-        if (GetClosestTeeth())
-            targetPosition = GetClosestTeeth().transform.position;
+        if (!canClean)
+            return;
+        
+        if (GetClosestTeeth(out teethTarget))
+        {
+            targetPosition = teethTarget.transform.position;
+            SwitchState(MascotteState.TRAVEL_TEETH);
+        }
     }
 }

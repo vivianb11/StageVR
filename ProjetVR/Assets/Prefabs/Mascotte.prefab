@@ -131,11 +131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c2eaadb3c6a2543ba7d16fd49216df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: {fileID: 2134742529517328850}
-  colors:
-  - {r: 1, g: 0, b: 0, a: 0}
-  - {r: 0, g: 1, b: 0, a: 0}
-  - {r: 0, g: 0, b: 1, a: 0}
+  state: 0
+  range: 2
+  interactionDelay: 2
+  cleanCooldown: 5
+  meshRenderer: {fileID: 2134742529517328850}
 --- !u!114 &1571244665301501261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +163,7 @@ MonoBehaviour:
     conditionValue: 0
     DetectionInterval: 0
   rb: {fileID: 0}
+  selected: 0
   onInteracted:
     m_PersistentCalls:
       m_Calls: []

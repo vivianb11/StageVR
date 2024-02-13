@@ -17,6 +17,14 @@ public class Mascotte : MonoBehaviour
     [SerializeField]
     private float interactionDelay = 2f;
 
+    [SerializeField]
+    private float cleanCooldown = 5f;
+
+    [SerializeField]
+    private MeshRenderer meshRenderer;
+
+    private bool canClean = true;
+
     private Teeth[] teeths;
     private Teeth teethTarget;
 
@@ -32,12 +40,11 @@ public class Mascotte : MonoBehaviour
         targetPosition = transform.position;
 
         interacable = GetComponent<Interactable>();
+        meshRenderer.material.color = Color.green;
     }
 
     private void FixedUpdate()
     {
-        TravelToDestination(targetPosition, range);
-
         switch (state)
         {
             case MascotteState.TRAVEL_TEETH:
@@ -51,7 +58,7 @@ public class Mascotte : MonoBehaviour
 
     private bool TravelToDestination(Vector3 destination, float destinationRange)
     {
-        if (Vector3.Distance(transform.position, destination) < destinationRange)
+        if (Vector3.Distance(transform.position, destination) <= destinationRange)
             return true;
 
         transform.LookAt(destination);
@@ -69,6 +76,15 @@ public class Mascotte : MonoBehaviour
         SwitchState(MascotteState.TRAVEL_SPAWN);
     }
 
+    private IEnumerator CleanCooldown(float delay)
+    {
+        meshRenderer.material.color = Color.red;
+        yield return new WaitForSeconds(delay);
+        meshRenderer.material.color = Color.green;
+
+        canClean = true;
+    }
+
     private void SwitchState(MascotteState newState)
     {
         state = newState;
@@ -77,10 +93,14 @@ public class Mascotte : MonoBehaviour
         {
             case MascotteState.IDLE:
                 interacable.DeSelect();
+                StartCoroutine(CleanCooldown(cleanCooldown));
                 break;
             case MascotteState.TRAVEL_SPAWN:
                 targetPosition = startPos;
                 teethTarget = null;
+                break;
+            case MascotteState.TRAVEL_TEETH:
+                canClean = false;
                 break;
             case MascotteState.CLEANING:
                 StartCoroutine(InteractionDelay(interactionDelay));
@@ -104,11 +124,8 @@ public class Mascotte : MonoBehaviour
             float closestTeethDistance = Vector3.Distance(closestTeeth.transform.position, transform.position);
             float currentTeethDistance = Vector3.Distance(t.transform.position, transform.position);
 
-            if (((int)t.state) > ((int)closestTeeth.state))
-            {
-                closestTeeth = t;
+            if (((int)t.state) < ((int)closestTeeth.state))
                 continue;
-            }
 
             if (currentTeethDistance < closestTeethDistance)
                 closestTeeth = t;
@@ -120,6 +137,9 @@ public class Mascotte : MonoBehaviour
 
     public void SetTask()
     {
+        if (!canClean)
+            return;
+        
         if (GetClosestTeeth(out teethTarget))
         {
             targetPosition = teethTarget.transform.position;

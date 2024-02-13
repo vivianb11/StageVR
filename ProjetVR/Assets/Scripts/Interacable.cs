@@ -32,7 +32,7 @@ public class Interacable : MonoBehaviour
         {
             var condition = selectConditions[i];
             
-            if (condition.conditionType == ConditionsEye.EyeBlink)
+            if (condition.conditionEye == ConditionsEye.EyeBlink)
                 eyeRaycaster.blink.AddListener(CheckIfBlinked);
         }
     }
@@ -97,13 +97,16 @@ public class Conditions
     public SelectType selectType;
 
     [ShowIf("selectType", SelectType.EYE)]
-    public ConditionsEye conditionType;
+    [Space(10)]
+    public ConditionsEye conditionEye;
 
     [ShowIf("selectType", SelectType.HAND)]
     public ConditionsHand conditionHand;
 
+    [Space(10)]
     public ConditionAction conditionAction;
 
+    [Space(10)]
     public float conditionValue;
 
     [ShowIf("conditionAction", ConditionAction.Amount)]
@@ -116,14 +119,14 @@ public class Conditions
 
     public Conditions()
     {
-        conditionType = ConditionsEye.LookAt;
+        conditionEye = ConditionsEye.LookAt;
         conditionAction = ConditionAction.Time;
         conditionValue = 0;
     }
 
     public Conditions(ConditionsEye type , ConditionAction action, float value)
     {
-        conditionType = type;
+        conditionEye = type;
         conditionAction = action;
         conditionValue = value;
     }
@@ -137,7 +140,7 @@ public class Conditions
 
     public bool CheckCondition()
     {
-        switch (conditionType)
+        switch (conditionEye)
         {
             case ConditionsEye.LookAt:
                 return LookAtCheck();

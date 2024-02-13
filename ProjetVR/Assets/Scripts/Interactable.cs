@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 using JetBrains.Annotations;
 
-public class Interacable : MonoBehaviour
+public class Interactable : MonoBehaviour
 {
     [Header("Selection")]
     [Space(10)]
@@ -47,7 +47,7 @@ public class Interacable : MonoBehaviour
 
     public void CheckIfBlinked()
     {
-        if (eyeRaycaster.interacable == this)
+        if (eyeRaycaster.interactable == this)
             onBlinked?.Invoke();
     }
 

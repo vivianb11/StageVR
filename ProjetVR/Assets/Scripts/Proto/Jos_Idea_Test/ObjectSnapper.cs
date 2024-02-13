@@ -46,7 +46,7 @@ public class ObjectSnapper : MonoBehaviour
             isSnapped = false;
             onUnsnapped.Invoke();
             
-            if (snappedObject.TryGetComponent(out Interacable interacable))
+            if (snappedObject.TryGetComponent(out Interactable interacable))
             {
                 interacable.DeInteract();
             }
@@ -69,7 +69,7 @@ public class ObjectSnapper : MonoBehaviour
                 if (!interactableAfterSnapped)
                 {
                     other.GetComponent<Rigidbody>().isKinematic = true;
-                    other.GetComponent<Interacable>().enabled = false;
+                    other.GetComponent<Interactable>().enabled = false;
                 }
                 else
                 {

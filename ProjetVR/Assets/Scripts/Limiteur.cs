@@ -11,7 +11,7 @@ public class Limiteur : MonoBehaviour
 
     EyeManager eyeRaycaster;
 
-    private Interacable interacable;
+    private Interactable interacable;
 
     [Header("Limiteur Params")]
     public bool useTargetPosition = false;
@@ -28,7 +28,7 @@ public class Limiteur : MonoBehaviour
 
     private void Awake()
     {
-        interacable = GetComponent<Interacable>();
+        interacable = GetComponent<Interactable>();
     }
 
     private void Start()

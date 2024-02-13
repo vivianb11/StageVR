@@ -11,7 +11,7 @@ public class EyeManager : MonoBehaviour
 
     public static EyeManager Instance;
 
-    public Interacable interacable { get; private set; }
+    public Interactable interactable { get; private set; }
 
     public float force = 35f;
     private float distance;
@@ -150,30 +150,30 @@ public class EyeManager : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * 500, Color.red);
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit))
         {
-            if (hit.collider.TryGetComponent(out Interacable component))
+            if (hit.collider.TryGetComponent(out Interactable component))
             {
-                if (!interacable)
-                    interacable = component;
+                if (!interactable)
+                    interactable = component;
 
-                if (interacable != component)
+                if (interactable != component)
                 {
-                    interacable.DeInteract();
-                    interacable = component;
+                    interactable.DeInteract();
+                    interactable = component;
                 }
 
-                if (interacable)
-                    interacable.Interact();
+                if (interactable)
+                    interactable.Interact();
             }
-            else if (interacable)
+            else if (interactable)
             {
-                interacable.DeInteract();
-                interacable = null;
+                interactable.DeInteract();
+                interactable = null;
             }
         }
-        else if (interacable)
+        else if (interactable)
         {
-            interacable.DeInteract();
-            interacable = null;
+            interactable.DeInteract();
+            interactable = null;
         }
     }
 

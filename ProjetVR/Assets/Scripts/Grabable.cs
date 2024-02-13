@@ -1,16 +1,16 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Interacable))]
+[RequireComponent(typeof(Interactable))]
 [RequireComponent(typeof(Rigidbody))]
 public class Grabable : MonoBehaviour
 {
     public SelectType grabType;
 
-    private Interacable interacable;
+    private Interactable interacable;
 
     private void Awake()
     {
-        interacable = GetComponent<Interacable>();
+        interacable = GetComponent<Interactable>();
         interacable.onSelected.AddListener(OnSelected);
         interacable.onDeselected.AddListener(OnDeselected);
     }

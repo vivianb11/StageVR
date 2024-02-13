@@ -17,7 +17,7 @@ public class Interactable : MonoBehaviour
 
     public Rigidbody rb;
 
-    private bool selected;
+    public bool selected;
 
     private EyeManager eyeRaycaster;
 
@@ -76,12 +76,12 @@ public class Interactable : MonoBehaviour
 
         int temp = 0;
 
-        for (int i = 0; i < selectConditions.Count; i++)
+        for (int i = 0; i < deselectConditions.Count; i++)
         {
             temp += deselectConditions[i].CheckCondition() ? 1 : 0;
         }
 
-        if (temp == selectConditions.Count)
+        if (temp == deselectConditions.Count)
             DeSelect();
 
         for (int i = 0; i < selectConditions.Count; i++)

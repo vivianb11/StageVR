@@ -41,6 +41,8 @@ public class EyeManager : MonoBehaviour
 
     private bool preBlink = false;
 
+    public Vector3 hitPosition;
+
     [Header("Events")]
     public UnityEvent leftEyeClosed;
     public UnityEvent rightEyeClosed;
@@ -174,7 +176,13 @@ public class EyeManager : MonoBehaviour
     private bool RaycastForward(out RaycastHit hit)
     {
         Debug.DrawRay(transform.position, transform.forward, Color.red);
-        return Physics.Raycast(transform.position, transform.forward, out hit);
+
+        bool hitSuccessful = Physics.Raycast(transform.position, transform.forward, out hit);
+
+        if (hitSuccessful)
+            hitPosition = hit.point;
+
+        return hitSuccessful;
     }
 
     private void RaycastInteractable()

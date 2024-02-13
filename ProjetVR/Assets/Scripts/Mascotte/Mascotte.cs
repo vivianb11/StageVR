@@ -104,6 +104,12 @@ public class Mascotte : MonoBehaviour
             float closestTeethDistance = Vector3.Distance(closestTeeth.transform.position, transform.position);
             float currentTeethDistance = Vector3.Distance(t.transform.position, transform.position);
 
+            if (((int)t.state) > ((int)closestTeeth.state))
+            {
+                closestTeeth = t;
+                continue;
+            }
+
             if (currentTeethDistance < closestTeethDistance)
                 closestTeeth = t;
         }

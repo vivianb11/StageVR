@@ -10,7 +10,9 @@ public class ObjectSnapper : MonoBehaviour
     private Material material;
     private bool isSnapped = false;
     private GameObject snappedObject;
+    private SphereCollider sphereCollider;
 
+    [Space(10)]
     public bool interactableAfterSnapped = false;
 
     [Foldout("Events")]
@@ -18,7 +20,7 @@ public class ObjectSnapper : MonoBehaviour
     [Foldout("Events")]
     public UnityEvent onUnsnapped;
 
-    public SphereCollider sphereCollider;
+    [Space(10)]
     public float detectionRadius = 0.1f;
     public float snapDistance = 0.1f;
 
@@ -43,6 +45,12 @@ public class ObjectSnapper : MonoBehaviour
         {
             isSnapped = false;
             onUnsnapped.Invoke();
+            
+            if (snappedObject.TryGetComponent(out Interacable interacable))
+            {
+                interacable.DeInteract();
+            }
+            
             snappedObject = null;
         }
     }

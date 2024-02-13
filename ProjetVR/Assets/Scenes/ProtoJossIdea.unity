@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 73007510}
   - component: {fileID: 73007509}
   - component: {fileID: 73007512}
+  - component: {fileID: 73007513}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -278,9 +279,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6017c2c9df24de24cb6eb744be270a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableAfterSnapped: 0
+  onSnapped:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 73007510}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onUnsnapped:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 73007510}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  sphereCollider: {fileID: 0}
+  detectionRadius: 0.1
   snapDistance: 0.1
   snappableObjects:
   - {fileID: 1439111352}
+--- !u!135 &73007513
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73007506}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &198459294
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,6 +384,7 @@ GameObject:
   - component: {fileID: 284881675}
   - component: {fileID: 284881674}
   - component: {fileID: 284881677}
+  - component: {fileID: 284881678}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -440,9 +496,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6017c2c9df24de24cb6eb744be270a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableAfterSnapped: 0
+  onSnapped:
+    m_PersistentCalls:
+      m_Calls: []
+  onUnsnapped:
+    m_PersistentCalls:
+      m_Calls: []
+  sphereCollider: {fileID: 0}
+  detectionRadius: 0.1
   snapDistance: 0.1
   snappableObjects:
   - {fileID: 1217985953}
+--- !u!135 &284881678
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284881671}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &397044015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,6 +1158,7 @@ GameObject:
   - component: {fileID: 989724530}
   - component: {fileID: 989724529}
   - component: {fileID: 989724528}
+  - component: {fileID: 989724535}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1100,19 +1187,7 @@ MonoBehaviour:
     DetectionInterval: 0
   onSelected:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 537017998}
-        m_TargetAssemblyTypeName: EyeManager, Assembly-CSharp
-        m_MethodName: SetGrabbedBody
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   deselectConditions: []
   onDeselected:
     m_PersistentCalls:
@@ -1251,6 +1326,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &989724535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989724527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd37726e5f9a49d4b9f92b1818b0ea3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabType: 0
 --- !u!1 &1002402922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,6 +1689,7 @@ GameObject:
   - component: {fileID: 1217985956}
   - component: {fileID: 1217985955}
   - component: {fileID: 1217985954}
+  - component: {fileID: 1217985961}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -1629,19 +1718,7 @@ MonoBehaviour:
     DetectionInterval: 0
   onSelected:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 537017998}
-        m_TargetAssemblyTypeName: EyeManager, Assembly-CSharp
-        m_MethodName: SetGrabbedBody
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   deselectConditions: []
   onDeselected:
     m_PersistentCalls:
@@ -1782,6 +1859,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1217985961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217985953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd37726e5f9a49d4b9f92b1818b0ea3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabType: 0
 --- !u!1 &1219134613
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,6 +1887,7 @@ GameObject:
   - component: {fileID: 1219134616}
   - component: {fileID: 1219134615}
   - component: {fileID: 1219134614}
+  - component: {fileID: 1219134621}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -1825,19 +1916,7 @@ MonoBehaviour:
     DetectionInterval: 0
   onSelected:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 537017998}
-        m_TargetAssemblyTypeName: EyeManager, Assembly-CSharp
-        m_MethodName: SetGrabbedBody
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   deselectConditions: []
   onDeselected:
     m_PersistentCalls:
@@ -1978,6 +2057,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1219134621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219134613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd37726e5f9a49d4b9f92b1818b0ea3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabType: 0
 --- !u!1 &1223418312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1991,6 +2083,7 @@ GameObject:
   - component: {fileID: 1223418316}
   - component: {fileID: 1223418315}
   - component: {fileID: 1223418318}
+  - component: {fileID: 1223418319}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -2102,9 +2195,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6017c2c9df24de24cb6eb744be270a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableAfterSnapped: 0
+  onSnapped:
+    m_PersistentCalls:
+      m_Calls: []
+  onUnsnapped:
+    m_PersistentCalls:
+      m_Calls: []
+  sphereCollider: {fileID: 0}
+  detectionRadius: 0.1
   snapDistance: 0.1
   snappableObjects:
   - {fileID: 1219134613}
+--- !u!135 &1223418319
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223418312}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1228242798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2515,6 +2638,7 @@ GameObject:
   - component: {fileID: 1352134269}
   - component: {fileID: 1352134268}
   - component: {fileID: 1352134271}
+  - component: {fileID: 1352134272}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -2626,9 +2750,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6017c2c9df24de24cb6eb744be270a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableAfterSnapped: 0
+  onSnapped:
+    m_PersistentCalls:
+      m_Calls: []
+  onUnsnapped:
+    m_PersistentCalls:
+      m_Calls: []
+  sphereCollider: {fileID: 0}
+  detectionRadius: 0.1
   snapDistance: 0.1
   snappableObjects:
   - {fileID: 989724527}
+--- !u!135 &1352134272
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352134265}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1355915792
 GameObject:
   m_ObjectHideFlags: 0
@@ -2693,6 +2847,7 @@ GameObject:
   - component: {fileID: 1439111355}
   - component: {fileID: 1439111354}
   - component: {fileID: 1439111353}
+  - component: {fileID: 1439111360}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2721,19 +2876,7 @@ MonoBehaviour:
     DetectionInterval: 0
   onSelected:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 537017998}
-        m_TargetAssemblyTypeName: EyeManager, Assembly-CSharp
-        m_MethodName: SetGrabbedBody
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   deselectConditions: []
   onDeselected:
     m_PersistentCalls:
@@ -2872,6 +3015,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1439111360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439111352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd37726e5f9a49d4b9f92b1818b0ea3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabType: 0
 --- !u!1 &1467370383
 GameObject:
   m_ObjectHideFlags: 0

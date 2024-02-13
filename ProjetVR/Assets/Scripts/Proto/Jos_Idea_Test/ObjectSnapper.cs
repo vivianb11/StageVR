@@ -1,47 +1,72 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(SphereCollider))]
 public class ObjectSnapper : MonoBehaviour
 {
     private Material material;
+    private bool isSnapped = false;
+    private GameObject snappedObject;
 
     public bool interactableAfterSnapped = false;
 
-    UnityEvent onSnapped;
+    [Foldout("Events")]
+    public UnityEvent onSnapped;
+    [Foldout("Events")]
+    public UnityEvent onUnsnapped;
 
+    public SphereCollider sphereCollider;
+    public float detectionRadius = 0.1f;
     public float snapDistance = 0.1f;
 
     public List<GameObject> snappableObjects = new();
 
     private void Awake()
     {
+        sphereCollider = GetComponent<SphereCollider>();
+        sphereCollider.isTrigger = true;
+        sphereCollider.radius = detectionRadius;
+
+        this.transform.localScale += new Vector3(0.1f,0.1f,0.1f);
+
         material = GetComponent<MeshRenderer>().material;
 
-        // keep the color of the old material & add transparency
         material.color = new Color(material.color.r, material.color.g, material.color.b, 0.5f);
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (snappableObjects.Count > 0)
+        if (isSnapped && Vector3.Distance(snappedObject.transform.position, transform.position) > snapDistance)
         {
-            for (int i = 0; i < snappableObjects.Count; i++)
-            {
-                if (Vector3.Distance(transform.position, snappableObjects[i].transform.position) < snapDistance)
-                {
-                    snappableObjects[i].transform.position = transform.position;
-                    snappableObjects[i].transform.rotation = transform.rotation;
-                    
-                    onSnapped?.Invoke();
+            isSnapped = false;
+            onUnsnapped.Invoke();
+            snappedObject = null;
+        }
+    }
 
-                    if (!interactableAfterSnapped)
-                    {
-                        snappableObjects[i].GetComponent<Rigidbody>().isKinematic = true;
-                        snappableObjects[i].GetComponent<Interacable>().enabled = false;
-                    }
+    private void OnTriggerStay(Collider other)
+    {
+        foreach (GameObject gameObject in snappableObjects)
+        {
+            if(gameObject == other.gameObject && Vector3.Distance(other.transform.position, transform.position) < snapDistance)
+            {
+                other.transform.position = transform.position;
+                other.transform.rotation = transform.rotation;
+
+                onSnapped?.Invoke();
+
+                if (!interactableAfterSnapped)
+                {
+                    other.GetComponent<Rigidbody>().isKinematic = true;
+                    other.GetComponent<Interacable>().enabled = false;
+                }
+                else
+                {
+                    isSnapped = true;
+                    snappedObject = other.gameObject;
                 }
             }
         }

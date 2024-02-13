@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using JetBrains.Annotations;
+using System.Collections;
 
 public class Interactable : MonoBehaviour
 {
@@ -326,7 +327,6 @@ public class Conditions
     {
         timer += Time.deltaTime;
 
-        Debug.Log(timer);
         return timer >= time;
     }
 }

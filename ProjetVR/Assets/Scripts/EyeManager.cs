@@ -34,7 +34,7 @@ public class EyeManager : MonoBehaviour
 
     public enum ManagerState
     {
-        SELECTION, PAINT
+        SELECTION, SHOOT
     }
 
     public ManagerState managerState = ManagerState.SELECTION;
@@ -47,6 +47,9 @@ public class EyeManager : MonoBehaviour
     private bool preBlink = false;
 
     public Vector3 hitPosition;
+
+    public float shootSpeed = 2f;
+    public Projectil projectil;
 
     [Header("Events")]
     public UnityEvent leftEyeClosed;
@@ -104,8 +107,8 @@ public class EyeManager : MonoBehaviour
             case ManagerState.SELECTION:
                 RaycastInteractable();
                 break;
-            case ManagerState.PAINT:
-                Paint();
+            case ManagerState.SHOOT:
+                Shoot();
                 break;
         }
     }
@@ -239,10 +242,20 @@ public class EyeManager : MonoBehaviour
         }
     }
 
-    private void Paint()
+    private void Shoot()
     {
         if (RaycastForward(out RaycastHit hit))
-            Debug.Log("Paint");
+        {
+            slider.maxValue = shootSpeed;
+            slider.value += Time.deltaTime;
+
+            if (slider.value == slider.maxValue)
+            {
+                slider.value = 0;
+
+                Instantiate(projectil, transform.position, Quaternion.identity).transform.LookAt(cursor.position + cursor.forward);
+            }
+        }
     }
 
     public Vector3 GetGrabbedBodyDestination()

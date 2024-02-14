@@ -84,7 +84,7 @@ public class Interactable : MonoBehaviour
             temp += deselectConditions[i].CheckCondition() ? 1 : 0;
         }
 
-        if (temp == deselectConditions.Count)
+        if (temp == deselectConditions.Count && deselectConditions.Count > 0)
             DeSelect();
 
         for (int i = 0; i < selectConditions.Count; i++)

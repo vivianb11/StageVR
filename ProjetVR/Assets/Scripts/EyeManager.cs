@@ -35,9 +35,8 @@ public class EyeManager : MonoBehaviour
 
     public Interactable interactable { get; private set; }
 
-    public float force = 35f;
     private float distance;
-    private Rigidbody grabbedBody;
+    private Grabable grabbedBody;
 
     private bool preBlink = false;
 
@@ -108,8 +107,8 @@ public class EyeManager : MonoBehaviour
     {
         if (grabbedBody)
         {
-            Vector3 direction = ((transform.position + transform.forward * distance) - grabbedBody.position).normalized;
-            grabbedBody.MovePosition(direction * force);
+            Vector3 targetPos = transform.position + transform.forward * distance;
+            grabbedBody.MoveTo(targetPos);
         }
     }
 
@@ -224,15 +223,15 @@ public class EyeManager : MonoBehaviour
 
     public Vector3 GetGrabbedBodyDestination()
     {
-        return (transform.position + transform.forward * distance) - grabbedBody.position;
+        return (transform.position + transform.forward * distance) - grabbedBody.transform.position;
     }
 
-    public Rigidbody GetGrabbedBody()
+    public Grabable GetGrabbedBody()
     {
         return grabbedBody;
     }
 
-    public void SetGrabbedBody(Rigidbody followTarget)
+    public void SetGrabbedBody(Grabable followTarget)
     {
         grabbedBody = followTarget;
 

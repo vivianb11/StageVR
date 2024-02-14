@@ -45,6 +45,7 @@ public class ObjectSnapper : MonoBehaviour
         {
             isSnapped = false;
             onUnsnapped.Invoke();
+            snappedObject.GetComponent<Rigidbody>().isKinematic = false;
             
             if (snappedObject.TryGetComponent(out Interactable interacable))
             {
@@ -63,12 +64,12 @@ public class ObjectSnapper : MonoBehaviour
             {
                 other.transform.position = transform.position;
                 other.transform.rotation = transform.rotation;
+                other.GetComponent<Rigidbody>().isKinematic = true;
 
                 onSnapped?.Invoke();
 
                 if (!interactableAfterSnapped)
                 {
-                    other.GetComponent<Rigidbody>().isKinematic = true;
                     other.GetComponent<Interactable>().enabled = false;
                 }
                 else

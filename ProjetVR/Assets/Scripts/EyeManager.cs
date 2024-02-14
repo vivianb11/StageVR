@@ -109,7 +109,7 @@ public class EyeManager : MonoBehaviour
         if (grabbedBody)
         {
             Vector3 direction = ((transform.position + transform.forward * distance) - grabbedBody.position).normalized;
-            grabbedBody.AddForce(direction * force);
+            grabbedBody.MovePosition(direction * force);
         }
     }
 

@@ -1,7 +1,6 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Interactable))]
-[RequireComponent(typeof(Rigidbody))]
 public class Grabable : MonoBehaviour
 {
     public SelectType grabType;
@@ -13,6 +12,8 @@ public class Grabable : MonoBehaviour
         interacable = GetComponent<Interactable>();
         interacable.onSelected.AddListener(OnSelected);
         interacable.onDeselected.AddListener(OnDeselected);
+
+        interacable.rb.isKinematic = true;
     }
 
     private void OnSelected()

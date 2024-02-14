@@ -6,6 +6,7 @@ using NaughtyAttributes;
 using JetBrains.Annotations;
 using System.Collections;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Interactable : MonoBehaviour
 {
     [Header("Selection")]

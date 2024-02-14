@@ -83,6 +83,7 @@ public class Mascotte : MonoBehaviour
         meshRenderer.material.color = Color.green;
 
         canClean = true;
+        interacable.SetCanBeInteracted(true);
     }
 
     private void SwitchState(MascotteState newState)
@@ -101,6 +102,7 @@ public class Mascotte : MonoBehaviour
                 break;
             case MascotteState.TRAVEL_TEETH:
                 canClean = false;
+                interacable.SetCanBeInteracted(false);
                 break;
             case MascotteState.CLEANING:
                 StartCoroutine(InteractionDelay(interactionDelay));
@@ -145,5 +147,7 @@ public class Mascotte : MonoBehaviour
             targetPosition = teethTarget.transform.position;
             SwitchState(MascotteState.TRAVEL_TEETH);
         }
+        else
+            interacable.DeSelect();
     }
 }

@@ -1,9 +1,15 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class EyeManager : MonoBehaviour
 {
+    public static EyeManager Instance;
+
+    [SerializeField]
+    private Transform cursor;
+
     #region Eyes
     public enum EyeState
     {
@@ -31,8 +37,6 @@ public class EyeManager : MonoBehaviour
 
     public ManagerState managerState = ManagerState.SELECTION;
 
-    public static EyeManager Instance;
-
     public Interactable interactable { get; private set; }
 
     private float distance;
@@ -51,9 +55,12 @@ public class EyeManager : MonoBehaviour
 
     public UnityEvent blink;
 
+    public Slider slider;
+
     private void Awake()
     {
         Instance = this;
+        slider.value = 0;
     }
 
     private void Update()
@@ -107,7 +114,7 @@ public class EyeManager : MonoBehaviour
     {
         if (grabbedBody)
         {
-            Vector3 targetPos = transform.position + transform.forward * distance;
+            Vector3 targetPos = transform.position + cursor.forward * distance;
             grabbedBody.MoveTo(targetPos);
         }
     }
@@ -172,11 +179,16 @@ public class EyeManager : MonoBehaviour
         managerState = newState;
     }
 
+    private void OnInteractableSelected()
+    {
+        slider.value = 0;
+    }
+
     private bool RaycastForward(out RaycastHit hit)
     {
-        Debug.DrawRay(transform.position, transform.forward, Color.red);
+        Debug.DrawRay(transform.position, cursor.forward, Color.red);
 
-        bool hitSuccessful = Physics.Raycast(transform.position, transform.forward, out hit);
+        bool hitSuccessful = Physics.Raycast(transform.position, cursor.forward, out hit);
 
         if (hitSuccessful)
             hitPosition = hit.point;
@@ -191,26 +203,38 @@ public class EyeManager : MonoBehaviour
             if (hit.collider.TryGetComponent(out Interactable component))
             {
                 if (!interactable)
+                {
                     interactable = component;
+                    interactable.onSelected.AddListener(OnInteractableSelected);
+                }
 
                 if (interactable != component)
                 {
+                    slider.value = 0;
                     interactable.DeInteract();
+                    interactable.onSelected.RemoveListener(OnInteractableSelected);
                     interactable = component;
+                    interactable.onSelected.AddListener(OnInteractableSelected);
                 }
 
                 if (interactable)
-                    interactable.Interact();
+                {
+                    interactable.Interact(slider);
+                }
             }
             else if (interactable)
             {
+                slider.value = 0;
                 interactable.DeInteract();
+                interactable.onSelected.RemoveListener(OnInteractableSelected);
                 interactable = null;
             }
         }
         else if (interactable)
         {
+            slider.value = 0;
             interactable.DeInteract();
+            interactable.onSelected.RemoveListener(OnInteractableSelected);
             interactable = null;
         }
     }
@@ -223,7 +247,7 @@ public class EyeManager : MonoBehaviour
 
     public Vector3 GetGrabbedBodyDestination()
     {
-        return (transform.position + transform.forward * distance) - grabbedBody.transform.position;
+        return (transform.position + cursor.forward * distance) - grabbedBody.transform.position;
     }
 
     public Grabable GetGrabbedBody()

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 using JetBrains.Annotations;
 using System.Collections;
+using UnityEngine.UI;
+using System.Linq;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Interactable : MonoBehaviour
@@ -18,9 +20,13 @@ public class Interactable : MonoBehaviour
 
     public Rigidbody rb;
 
+    private bool canBeInteracted = true;
+
     public bool selected;
 
     private EyeManager eyeRaycaster;
+
+    public float interactionTime;
 
     [Header("Events")]
     public UnityEvent onSelected;
@@ -55,10 +61,16 @@ public class Interactable : MonoBehaviour
             onBlinked?.Invoke();
     }
 
-    public void Interact() 
+    public void Interact(Slider slider) 
     {
-        if (selected)
+        if (selected || !canBeInteracted)
             return;
+
+        if (selectConditions.Where(item => item.conditionEye == ConditionsEye.LookAt).ToArray().Length > 0)
+        {
+            slider.maxValue = selectConditions.Where(item => item.conditionEye == ConditionsEye.LookAt).ToArray()[0].conditionValue;
+            slider.value += Time.deltaTime;
+        }
 
         onInteracted?.Invoke();
 
@@ -110,6 +122,10 @@ public class Interactable : MonoBehaviour
         onDeselected?.Invoke();
     }
 
+    public void SetCanBeInteracted(bool value)
+    {
+        canBeInteracted = value;
+    }
 }
 
 [Serializable]

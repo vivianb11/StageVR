@@ -10,6 +10,8 @@ public class EyeManager : MonoBehaviour
     [SerializeField]
     private Transform cursor;
 
+    public Slider slider;
+
     #region Eyes
     public enum EyeState
     {
@@ -54,8 +56,6 @@ public class EyeManager : MonoBehaviour
     public UnityEvent rightEyeOpened;
 
     public UnityEvent blink;
-
-    public Slider slider;
 
     private void Awake()
     {

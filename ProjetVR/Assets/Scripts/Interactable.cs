@@ -24,7 +24,7 @@ public class Interactable : MonoBehaviour
 
     public bool selected;
 
-    private EyeManager eyeRaycaster;
+    private EyeManager eyeManager;
 
     public float interactionTime;
 
@@ -40,24 +40,38 @@ public class Interactable : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-
-        for (int i = 0; i < selectConditions.Count; i++)
-        {
-            var condition = selectConditions[i];
-            
-            if (condition.conditionEye == ConditionsEye.EyeBlink)
-                eyeRaycaster.blink.AddListener(CheckIfBlinked);
-        }
     }
 
     private void Start()
     {
-        eyeRaycaster = EyeManager.Instance;
+        eyeManager = EyeManager.Instance;
+    }
+
+    private void OnEnable()
+    {
+        for (int i = 0; i < selectConditions.Count; i++)
+        {
+            var condition = selectConditions[i];
+
+            if (condition.conditionEye == ConditionsEye.EyeBlink)
+                eyeManager.blink.AddListener(CheckIfBlinked);
+        }
+    }
+
+    private void OnDisable()
+    {
+        for (int i = 0; i < selectConditions.Count; i++)
+        {
+            var condition = selectConditions[i];
+
+            if (condition.conditionEye == ConditionsEye.EyeBlink)
+                eyeManager.blink.RemoveListener(CheckIfBlinked);
+        }
     }
 
     public void CheckIfBlinked()
     {
-        if (eyeRaycaster.interactable == this)
+        if (eyeManager.interactable == this)
             onBlinked?.Invoke();
     }
 

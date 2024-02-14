@@ -22,6 +22,12 @@ public class BeatManager : MonoBehaviour
         audioSource.pitch = playSpeed;
     }
 
+    [Button]
+    public void ApplyChanges()
+    {
+        audioSource.pitch = playSpeed;
+    }
+
     private void Update()
     {
         if (visualFeedback.Count > 0)

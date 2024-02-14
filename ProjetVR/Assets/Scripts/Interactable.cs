@@ -18,6 +18,12 @@ public class Interactable : MonoBehaviour
     [Space(10)]
     public List<Conditions> deselectConditions;
 
+    [SerializeField]
+    private bool autoDeselection;
+
+    [ShowIf("autoDeselection")]
+    public float deselectionTime;
+
     public Rigidbody rb;
 
     private bool canBeInteracted = true;
@@ -126,6 +132,9 @@ public class Interactable : MonoBehaviour
             selectConditions[i].Reset();
         }
 
+        if (autoDeselection)
+            StartCoroutine(AutoDeselectionTimer(deselectionTime));
+
         selected = true;
         onSelected?.Invoke();
     }
@@ -139,6 +148,13 @@ public class Interactable : MonoBehaviour
     public void SetCanBeInteracted(bool value)
     {
         canBeInteracted = value;
+    }
+
+    private IEnumerator AutoDeselectionTimer(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        DeSelect();
     }
 }
 

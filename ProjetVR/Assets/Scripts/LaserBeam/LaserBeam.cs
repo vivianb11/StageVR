@@ -52,6 +52,18 @@ public class LaserBeam : MonoBehaviour
         StartCoroutine(ShootDelay());
     }
 
+    public void EnableLaser()
+    {
+        lineRenderer.enabled = true;
+        activated = true;
+    }
+
+    public void DisableLaser()
+    {
+        lineRenderer.enabled = false;
+        activated = false;
+    }
+
     private IEnumerator ShootDelay()
     {
         lineRenderer.enabled = true;

@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using UnityEngineInternal;
 
 public class EyeManager : MonoBehaviour
 {
@@ -52,8 +51,6 @@ public class EyeManager : MonoBehaviour
 
     public Vector3 hitPosition;
 
-    public float shootSpeed = 2f;
-
     [Header("Events")]
     public UnityEvent leftEyeClosed;
     public UnityEvent rightEyeClosed;
@@ -63,7 +60,7 @@ public class EyeManager : MonoBehaviour
 
     public UnityEvent blink;
 
-    public UnityEvent shoot;
+    public UnityEvent<ManagerState> stateChanged;
 
     private void Awake()
     {
@@ -103,6 +100,9 @@ public class EyeManager : MonoBehaviour
             leftEyeOpeningPercent = Mathf.Clamp(leftEyeOpeningPercent + Input.mouseScrollDelta.y * 0.1f, 0f, 1f);
         if (Input.GetKey(KeyCode.RightArrow))
             rightEyeOpeningPercent = Mathf.Clamp(rightEyeOpeningPercent + Input.mouseScrollDelta.y * 0.1f, 0f, 1f);
+
+        if (Input.GetKeyDown(KeyCode.S))
+            SwitchState(ManagerState.SHOOT);
         #endregion
 
         HandleEyesStats();
@@ -111,9 +111,6 @@ public class EyeManager : MonoBehaviour
         {
             case ManagerState.SELECTION:
                 RaycastInteractable();
-                break;
-            case ManagerState.SHOOT:
-                Shoot();
                 break;
         }
     }
@@ -191,9 +188,11 @@ public class EyeManager : MonoBehaviour
     }
     #endregion
 
-    private void SwitchState(ManagerState newState)
+    public void SwitchState(ManagerState newState)
     {
         managerState = newState;
+
+        stateChanged?.Invoke(managerState);
     }
 
     private void OnInteractableSelected()
@@ -201,7 +200,12 @@ public class EyeManager : MonoBehaviour
         slider.value = 0;
     }
 
-    private bool RaycastForward(out RaycastHit hit)
+    public Vector3 GetCursorForward()
+    {
+        return cursor.forward;
+    }
+
+    public bool RaycastForward(out RaycastHit hit)
     {
         Debug.DrawRay(transform.position, cursor.forward, Color.red);
 
@@ -253,26 +257,6 @@ public class EyeManager : MonoBehaviour
             interactable.DeInteract();
             interactable.onSelected.RemoveListener(OnInteractableSelected);
             interactable = null;
-        }
-    }
-
-    private void Shoot()
-    {
-        if (!RaycastForward(out RaycastHit hit))
-            return;
-
-        if (!hit.collider.TryGetComponent(out IDamageable damageable))
-            return;
-
-        slider.maxValue = shootSpeed * 4;
-        slider.value += Time.deltaTime;
-
-        if (slider.value >= slider.maxValue / 4)
-        {
-            damageable.Kill();
-            slider.value = 0;
-
-            shoot?.Invoke();
         }
     }
 

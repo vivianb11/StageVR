@@ -54,6 +54,7 @@ public class Grabable : MonoBehaviour
     private void OnSelected()
     {
         interacable.rb.useGravity = false;
+        interacable.rb.isKinematic = false;
 
         gameObject.layer = LayerMask.NameToLayer("Ignore");
 
@@ -71,6 +72,7 @@ public class Grabable : MonoBehaviour
     private void OnDeselected()
     {
         interacable.rb.useGravity = true;
+
         gameObject.layer = 0;
 
         EyeManager.Instance.SetGrabbedBody(null);

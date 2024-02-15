@@ -9,7 +9,7 @@ public class ObjectSnapper : MonoBehaviour
 {
     private Material material;
     private bool isSnapped = false;
-    private GameObject snappedObject;
+    private Interactable snappedObject;
     private SphereCollider sphereCollider;
 
     [Space(10)]
@@ -34,7 +34,10 @@ public class ObjectSnapper : MonoBehaviour
 
         this.transform.localScale += new Vector3(0.1f,0.1f,0.1f);
 
-        material = GetComponent<MeshRenderer>().material;
+        if (TryGetComponent(out MeshRenderer mehs))
+            material = mehs.material;
+        else
+            material = GetComponentInChildren<MeshRenderer>().material;
 
         material.color = new Color(material.color.r, material.color.g, material.color.b, 0.5f);
     }
@@ -45,39 +48,35 @@ public class ObjectSnapper : MonoBehaviour
         {
             isSnapped = false;
             onUnsnapped.Invoke();
-            snappedObject.GetComponent<Rigidbody>().isKinematic = false;
-            
-            if (snappedObject.TryGetComponent(out Interactable interacable))
-            {
-                interacable.DeInteract();
-            }
-            
+
             snappedObject = null;
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        foreach (GameObject gameObject in snappableObjects)
+        if (isSnapped)
+            return;
+
+        if (!snappableObjects.Contains(other.gameObject))
+            return;
+        
+        if (other.TryGetComponent(out Interactable interacable))
         {
-            if(gameObject == other.gameObject && Vector3.Distance(other.transform.position, transform.position) < snapDistance)
-            {
-                other.transform.position = transform.position;
-                other.transform.rotation = transform.rotation;
-                other.GetComponent<Rigidbody>().isKinematic = true;
+            onSnapped?.Invoke();
+            interacable.DeSelect();
 
-                onSnapped?.Invoke();
+            interacable.rb.isKinematic = true;
+            Debug.Log("Feur");
 
-                if (!interactableAfterSnapped)
-                {
-                    other.GetComponent<Interactable>().enabled = false;
-                }
-                else
-                {
-                    isSnapped = true;
-                    snappedObject = other.gameObject;
-                }
-            }
+            interacable.transform.position = transform.position;
+            interacable.transform.rotation = transform.rotation;
+
+            isSnapped = true;
+            snappedObject = interacable;
+
+            if (!interactableAfterSnapped)
+                interacable.SetCanBeInteracted(false);
         }
     }
 }

@@ -67,7 +67,6 @@ public class ObjectSnapper : MonoBehaviour
             interacable.DeSelect();
 
             interacable.rb.isKinematic = true;
-            Debug.Log("Feur");
 
             interacable.transform.position = transform.position;
             interacable.transform.rotation = transform.rotation;

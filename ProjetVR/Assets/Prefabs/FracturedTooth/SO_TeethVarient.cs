@@ -6,14 +6,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TeethVarient_", menuName = "ScriptableObject/TeethVarients", order = 0)]
 public class SO_TeethVarient : ScriptableObject
 {
-    public enum TeethState
-    {
-        Healthy,
-        Dirty,
-        Fractured,
-        Tartar
-    }
-
     public enum ExperimenalMode
     {
         WithGameobject,
@@ -52,30 +44,46 @@ public class SO_TeethVarient : ScriptableObject
         switch (teethState)
         {
             case TeethState.Healthy:
+                
                 if (experimenalMode == ExperimenalMode.WithGameobject)
                     return healthyTeeth;
                 else
+                {
                     healthyTeeth.GetComponent<MeshRenderer>().material = healthyTeethMaterial;
                     return healthyTeeth;
-                case TeethState.Dirty:
+                }
+
+            case TeethState.Dirty:
+                
                 if (experimenalMode == ExperimenalMode.WithGameobject)
-                        return dirtyTeeth;
-                    else
-                        dirtyTeeth.GetComponent<MeshRenderer>().material = dirtyTeethMaterial;
-                        return dirtyTeeth;
-                case TeethState.Fractured:
+                    return dirtyTeeth;
+                else
+                {
+                    healthyTeeth.GetComponent<MeshRenderer>().material = dirtyTeethMaterial;
+                    return healthyTeeth;
+                }
+            
+            case TeethState.Fractured:
+                
                 if (experimenalMode == ExperimenalMode.WithGameobject)
                         return fracturedTeeth;
-                    else
-                        fracturedTeeth.GetComponent<MeshRenderer>().material = fracturedTeethMaterial;
-                        return fracturedTeeth;
-                case TeethState.Tartar:
+                else
+                {
+                    healthyTeeth.GetComponent<MeshRenderer>().material = fracturedTeethMaterial;
+                    return healthyTeeth;
+                }
+            
+            case TeethState.Tartar:
+                
                 if (experimenalMode == ExperimenalMode.WithGameobject)
-                        return tartarTeeth;
-                    else
-                        tartarTeeth.GetComponent<MeshRenderer>().material = tartarTeethMaterial;
-                        return tartarTeeth;
-                default:
+                     return tartarTeeth;
+                else
+                {
+                    healthyTeeth.GetComponent<MeshRenderer>().material = tartarTeethMaterial;
+                    return healthyTeeth;
+                }
+            
+            default:
                 return healthyTeeth;
         }
     }
@@ -84,4 +92,12 @@ public class SO_TeethVarient : ScriptableObject
     {
         teethState = (TeethState)Random.Range(0, 4);
     }
+}
+
+public enum TeethState
+{
+    Healthy,
+    Dirty,
+    Fractured,
+    Tartar
 }

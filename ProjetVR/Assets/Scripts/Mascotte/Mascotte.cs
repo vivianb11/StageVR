@@ -23,6 +23,15 @@ public class Mascotte : MonoBehaviour
     [SerializeField]
     private MeshRenderer meshRenderer;
 
+    [SerializeField]
+    private AudioSource enterClean;
+
+    [SerializeField]
+    private AudioSource enterPause;
+
+    [SerializeField]
+    private AudioSource exitPause;
+
     private bool canClean = true;
 
     private Teeth[] teeths;
@@ -84,6 +93,7 @@ public class Mascotte : MonoBehaviour
 
         canClean = true;
         interacable.SetCanBeInteracted(true);
+        exitPause.Play();
     }
 
     private void SwitchState(MascotteState newState)
@@ -95,6 +105,7 @@ public class Mascotte : MonoBehaviour
             case MascotteState.IDLE:
                 interacable.DeSelect();
                 StartCoroutine(CleanCooldown(cleanCooldown));
+                enterPause.Play();
                 break;
             case MascotteState.TRAVEL_SPAWN:
                 targetPosition = startPos;
@@ -103,6 +114,7 @@ public class Mascotte : MonoBehaviour
             case MascotteState.TRAVEL_TEETH:
                 canClean = false;
                 interacable.SetCanBeInteracted(false);
+                enterClean.Play();
                 break;
             case MascotteState.CLEANING:
                 StartCoroutine(InteractionDelay(interactionDelay));

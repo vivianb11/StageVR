@@ -53,7 +53,6 @@ public class EyeManager : MonoBehaviour
     public Vector3 hitPosition;
 
     public float shootSpeed = 2f;
-    public Projectil projectil;
 
     [Header("Events")]
     public UnityEvent leftEyeClosed;
@@ -63,6 +62,8 @@ public class EyeManager : MonoBehaviour
     public UnityEvent rightEyeOpened;
 
     public UnityEvent blink;
+
+    public UnityEvent shoot;
 
     private void Awake()
     {
@@ -257,17 +258,21 @@ public class EyeManager : MonoBehaviour
 
     private void Shoot()
     {
-        if (RaycastForward(out RaycastHit hit))
+        if (!RaycastForward(out RaycastHit hit))
+            return;
+
+        if (!hit.collider.TryGetComponent(out IDamageable damageable))
+            return;
+
+        slider.maxValue = shootSpeed * 4;
+        slider.value += Time.deltaTime;
+
+        if (slider.value >= slider.maxValue / 4)
         {
-            slider.maxValue = shootSpeed;
-            slider.value += Time.deltaTime;
+            damageable.Kill();
+            slider.value = 0;
 
-            if (slider.value == slider.maxValue)
-            {
-                slider.value = 0;
-
-                Instantiate(projectil, transform.position, Quaternion.identity).transform.LookAt(cursor.position + cursor.forward);
-            }
+            shoot?.Invoke();
         }
     }
 

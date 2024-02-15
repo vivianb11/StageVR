@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Dummy : MonoBehaviour, IDamageable
@@ -10,7 +11,12 @@ public class Dummy : MonoBehaviour, IDamageable
     {
         health -= damage;
 
-        if (health <= 0 )
-            Destroy(gameObject);
+        if (health <= 0)
+            Kill();
+    }
+
+    public void Kill()
+    {
+        Destroy(gameObject);
     }
 }

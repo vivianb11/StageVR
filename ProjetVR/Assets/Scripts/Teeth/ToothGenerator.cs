@@ -25,7 +25,15 @@ public class ToothGenerator : MonoBehaviour
         Tooth.SetActive(false);
     }
 
-    
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            ResetTeeth();
+        }
+    }
+
+
     private void SetupCells()
     {
         foreach (GameObject cellPos in teethCellsPosition)
@@ -40,5 +48,17 @@ public class ToothGenerator : MonoBehaviour
 
             //Destroy(cellPos);
         }
+    }
+
+    private void ResetTeeth()
+    {
+        foreach (GameObject cell in teethCells)
+        {
+            Destroy(cell);
+        }
+
+        teethCells.Clear();
+
+        SetupCells();
     }
 }

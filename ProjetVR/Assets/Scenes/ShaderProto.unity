@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originalObject: {fileID: 473388177}
-  splitObject: {fileID: 514651208}
+  splitObject: {fileID: 0}
   splitMaterial: {fileID: -876546973899608171, guid: c8ace06167de11c46b7df3715af3e64e, type: 3}
 --- !u!135 &473388179
 SphereCollider:
@@ -479,37 +479,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1523648235}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &514651208
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 514651209}
-  m_Layer: 0
-  m_Name: Decomposed Tooth
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &514651209
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514651208}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0066501, y: 1.4312531, z: -1.1635673}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &537017996
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,6 +534,7 @@ MonoBehaviour:
   leftEyeState: 0
   rightEyeState: 0
   managerState: 0
+  normalOffset: 0.5
   hitPosition: {x: 0, y: 0, z: 0}
   shootSpeed: 2
   projectil: {fileID: 0}
@@ -777,7 +747,7 @@ Transform:
   m_GameObject: {fileID: 774206313}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.535, z: 0}
+  m_LocalPosition: {x: 1.31, y: 0.535, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -970,6 +940,78 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &833724192
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6290987444862888409, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3796548272275778310, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2955889124442827351, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+      propertyPath: m_Name
+      value: ToothFractured
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9033577800765101526}
+  m_SourcePrefab: {fileID: 100100000, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
 --- !u!1 &834094374
 GameObject:
   m_ObjectHideFlags: 0
@@ -2520,6 +2562,27 @@ MonoBehaviour:
   usePerEyeCameras: 0
   useFixedUpdateForTracking: 0
   disableEyeAnchorCameras: 0
+--- !u!1 &9033577800765101525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+  m_PrefabInstance: {fileID: 833724192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9033577800765101526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9033577800765101525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9f0b39d91eb02448e8bde2884f09ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snaping: 1
+  rotationControleurs: {fileID: 2260892525599216025, guid: 6a24d2d736b2d934fa7b913806fa0dc7, type: 3}
+  controlerSpacing: 5
+  snapValue: 90
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2531,4 +2594,4 @@ SceneRoots:
   - {fileID: 774206317}
   - {fileID: 473388182}
   - {fileID: 809736185}
-  - {fileID: 514651209}
+  - {fileID: 833724192}

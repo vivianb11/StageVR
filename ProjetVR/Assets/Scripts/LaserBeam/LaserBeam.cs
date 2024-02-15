@@ -42,6 +42,7 @@ public class LaserBeam : MonoBehaviour
     public void ToogleActivation()
     {
         activated = !activated;
+        lineRenderer.enabled = activated;
 
         interactable.selected = false;
     }

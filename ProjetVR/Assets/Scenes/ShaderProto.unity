@@ -339,7 +339,6 @@ GameObject:
   - component: {fileID: 473388181}
   - component: {fileID: 473388180}
   - component: {fileID: 473388179}
-  - component: {fileID: 473388178}
   m_Layer: 0
   m_Name: Tooth
   m_TagString: Untagged
@@ -347,18 +346,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &473388178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473388177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4870f2b10c566742bed9ea0b83d6297, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &473388179
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -533,7 +520,6 @@ MonoBehaviour:
   managerState: 0
   normalOffset: 0.5
   hitPosition: {x: 0, y: 0, z: 0}
-  shootSpeed: 2
   leftEyeClosed:
     m_PersistentCalls:
       m_Calls: []
@@ -549,7 +535,7 @@ MonoBehaviour:
   blink:
     m_PersistentCalls:
       m_Calls: []
-  shoot:
+  stateChanged:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &537017999
@@ -2673,6 +2659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teethVarientData: {fileID: 11400000, guid: be07bfae90b5d9042b17a20c1c003cb6, type: 2}
+  teethCleaned: 0
 --- !u!1 &6267482912704465545 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2955889124442827351, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
@@ -2711,6 +2698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teethVarientData: {fileID: 11400000, guid: 6d18bd3dfb0494b4ba7767382efefa0e, type: 2}
+  teethCleaned: 0
 --- !u!114 &7787721179013862265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2724,6 +2712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teethVarientData: {fileID: 11400000, guid: 2cfe9724c2d195948b71de77a2cf35af, type: 2}
+  teethCleaned: 0
 --- !u!1 &8141004722801381023 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1082367313792265793, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
@@ -2742,6 +2731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teethVarientData: {fileID: 11400000, guid: 1d1cfa2c2d6418d469fcb4654ae03daa, type: 2}
+  teethCleaned: 0
 --- !u!114 &8325255802086756336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2755,6 +2745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teethVarientData: {fileID: 11400000, guid: 9f1c1db5be8ffc54193391d28f570b70, type: 2}
+  teethCleaned: 0
 --- !u!114 &8407227891315125692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2768,6 +2759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teethVarientData: {fileID: 11400000, guid: 3cfb5579976782e498a0578c9d03b4f2, type: 2}
+  teethCleaned: 0
 --- !u!114 &8541707297341396543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2781,6 +2773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teethVarientData: {fileID: 11400000, guid: 7c8cb054b6a2e4449bf8ad0e959eaa20, type: 2}
+  teethCleaned: 0
 --- !u!114 &8841577168803397843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2794,6 +2787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teethVarientData: {fileID: 11400000, guid: c05c1bf09a3f79341af979d99d71fe67, type: 2}
+  teethCleaned: 0
 --- !u!114 &8890204397527171413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2807,6 +2801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teethVarientData: {fileID: 11400000, guid: fe36706afe825b1489b08ae1ea89d38b, type: 2}
+  teethCleaned: 0
 --- !u!114 &9033577800765101527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2838,6 +2833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teethVarientData: {fileID: 11400000, guid: c223b6ba370e0b941be7a5622191554d, type: 2}
+  teethCleaned: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

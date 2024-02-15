@@ -43,7 +43,7 @@ public class SO_TeethVarient : ScriptableObject
     {
         switch (teethState)
         {
-            case TeethState.Healthy:
+            case TeethState.Clean:
                 
                 if (experimenalMode == ExperimenalMode.WithGameobject)
                     return healthyTeeth;
@@ -96,8 +96,8 @@ public class SO_TeethVarient : ScriptableObject
 
 public enum TeethState
 {
-    Healthy,
+    Clean,
     Dirty,
-    Fractured,
-    Tartar
+    Tartar,
+    Fractured
 }

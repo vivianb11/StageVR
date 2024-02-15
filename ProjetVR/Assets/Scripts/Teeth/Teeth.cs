@@ -6,7 +6,7 @@ public class Teeth : MonoBehaviour
 {
     public enum TeethState
     {
-        WHITE, YELLOW, RED, BLACK
+        WHITE, YELLOW, BLACK
     }
 
     public TeethState state;
@@ -32,9 +32,6 @@ public class Teeth : MonoBehaviour
                 break;
             case TeethState.YELLOW:
                 mesh.material.color = Color.yellow;
-                break;
-            case TeethState.RED:
-                mesh.material.color = Color.red;
                 break;
             case TeethState.BLACK:
                 mesh.material.color = Color.black;

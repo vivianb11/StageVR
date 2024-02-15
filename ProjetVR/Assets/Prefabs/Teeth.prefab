@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5894924524173506396}
+  - {fileID: 8160107840249500099}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &486706279439631300
@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  mesh: {fileID: 4721415371595598899}
+  mesh: {fileID: 7022706128495340204}
   dirtyDelay: 5
---- !u!1001 &6216168024687562935
+--- !u!1001 &8553531573479077416
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 47f7f100ec0e28e4d8eafcccfa01f5cb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -8848810374240701247, guid: 436757056de26e144b330984c539cecd, type: 3}
     - target: {fileID: 919132149155446097, guid: 47f7f100ec0e28e4d8eafcccfa01f5cb, type: 3}
       propertyPath: m_Name
       value: Tooth
@@ -121,13 +125,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47f7f100ec0e28e4d8eafcccfa01f5cb, type: 3}
---- !u!23 &4721415371595598899 stripped
+--- !u!23 &7022706128495340204 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 47f7f100ec0e28e4d8eafcccfa01f5cb, type: 3}
-  m_PrefabInstance: {fileID: 6216168024687562935}
+  m_PrefabInstance: {fileID: 8553531573479077416}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &5894924524173506396 stripped
+--- !u!4 &8160107840249500099 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 47f7f100ec0e28e4d8eafcccfa01f5cb, type: 3}
-  m_PrefabInstance: {fileID: 6216168024687562935}
+  m_PrefabInstance: {fileID: 8553531573479077416}
   m_PrefabAsset: {fileID: 0}

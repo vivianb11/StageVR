@@ -968,8 +968,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2916222617393038150, guid: 59e0dc2c17b593742844d3730fcb8c92, type: 3}
       propertyPath: m_Name
-      value: Teeth (5)
+      value: Snap
       objectReference: {fileID: 0}
+    - target: {fileID: 7022706128495340204, guid: 59e0dc2c17b593742844d3730fcb8c92, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bd575f04a36958544bd89dc78e39c905, type: 2}
     m_RemovedComponents:
     - {fileID: 486706279439631300, guid: 59e0dc2c17b593742844d3730fcb8c92, type: 3}
     m_RemovedGameObjects: []
@@ -2622,7 +2626,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 1.46e-43, z: 1.0712e-41, w: 3.7667e-41}
+  m_BoundingSphereOverride: {x: 3.67342e-40, y: 4.316268e-39, z: 0, w: -8.416412e-39}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

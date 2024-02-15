@@ -65,6 +65,12 @@ public class Shooter : MonoBehaviour
     private void OnManagerStateChanged(EyeManager.ManagerState state)
     {
         canShoot = state == EyeManager.ManagerState.SHOOT;
+
+        if (!canShoot)
+        {
+            leftLaser.DisableLaser();
+            rightLaser.DisableLaser();
+        }
     }
 
     private void SwitchShootType(ShootType newShootType)

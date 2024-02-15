@@ -107,12 +107,7 @@ public class EyeManager : MonoBehaviour
 
         HandleEyesStats();
 
-        switch (managerState)
-        {
-            case ManagerState.SELECTION:
-                RaycastInteractable();
-                break;
-        }
+        RaycastInteractable();
     }
 
     private void FixedUpdate()
@@ -191,8 +186,16 @@ public class EyeManager : MonoBehaviour
     public void SwitchState(ManagerState newState)
     {
         managerState = newState;
-
         stateChanged?.Invoke(managerState);
+
+        switch (managerState)
+        {
+            case ManagerState.SELECTION:
+                break;
+            case ManagerState.SHOOT:
+                interactable.DeSelect();
+                break;
+        }
     }
 
     private void OnInteractableSelected()

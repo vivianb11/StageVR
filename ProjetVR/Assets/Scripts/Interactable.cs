@@ -18,6 +18,10 @@ public class Interactable : MonoBehaviour
     [Space(10)]
     public List<Conditions> deselectConditions;
 
+    public bool canAlwaysInteract;
+
+    private bool isInteractable = true;
+
     [SerializeField]
     private bool autoDeselection;
 
@@ -52,6 +56,22 @@ public class Interactable : MonoBehaviour
     private void Start()
     {
         eyeManager = EyeManager.Instance;
+
+        eyeManager.stateChanged.AddListener(OnManagerStateChanged);
+    }
+
+    private void OnManagerStateChanged(EyeManager.ManagerState managerState)
+    {
+        switch (managerState)
+        {
+            case EyeManager.ManagerState.SELECTION:
+                isInteractable = true;
+                break;
+            case EyeManager.ManagerState.SHOOT:
+                if (!canAlwaysInteract)
+                    isInteractable = false;
+                break;
+        }
     }
 
     private void OnEnable()
@@ -84,7 +104,7 @@ public class Interactable : MonoBehaviour
 
     public void Interact(Slider slider) 
     {
-        if (selected || !canBeInteracted)
+        if (selected || !canBeInteracted || !isInteractable)
             return;
 
         if (selectConditions.Where(item => item.conditionEye == ConditionsEye.LookAt).ToArray().Length > 0)

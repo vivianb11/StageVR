@@ -602,11 +602,11 @@ MonoBehaviour:
     conditionEye: 0
     conditionHand: 0
     conditionAction: 0
-    conditionValue: 5
+    conditionValue: 2
     DetectionInterval: 0
   deselectConditions: []
   autoDeselection: 1
-  deselectionTime: 3
+  deselectionTime: 10
   rb: {fileID: 0}
   selected: 0
   interactionTime: 0
@@ -1755,7 +1755,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.836709e-39, y: -9.1835e-41, z: 0, w: 1.3144809e-28}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 4e-45, z: 1.1925e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

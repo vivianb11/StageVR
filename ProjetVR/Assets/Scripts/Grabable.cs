@@ -55,6 +55,8 @@ public class Grabable : MonoBehaviour
     {
         interacable.rb.useGravity = false;
 
+        gameObject.layer = LayerMask.NameToLayer("Ignore");
+
         switch (grabType)
         {
             case SelectType.EYE:
@@ -69,6 +71,7 @@ public class Grabable : MonoBehaviour
     private void OnDeselected()
     {
         interacable.rb.useGravity = true;
+        gameObject.layer = 0;
 
         EyeManager.Instance.SetGrabbedBody(null);
     }

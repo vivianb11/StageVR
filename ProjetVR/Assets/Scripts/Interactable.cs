@@ -24,6 +24,7 @@ public class Interactable : MonoBehaviour
     [ShowIf("autoDeselection")]
     public float deselectionTime;
 
+    [HideInInspector]
     public Rigidbody rb;
 
     private bool canBeInteracted = true;

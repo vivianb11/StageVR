@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngineInternal;
 
 public class EyeManager : MonoBehaviour
 {
@@ -41,6 +42,9 @@ public class EyeManager : MonoBehaviour
 
     public Interactable interactable { get; private set; }
 
+    [Header("Grab")]
+    [SerializeField]
+    private float normalOffset= 0.5f;
     private float distance;
     private Grabable grabbedBody;
 
@@ -117,8 +121,17 @@ public class EyeManager : MonoBehaviour
     {
         if (grabbedBody)
         {
-            Vector3 targetPos = transform.position + cursor.forward * distance;
-            grabbedBody.MoveTo(targetPos);
+            if (RaycastForward(out RaycastHit hit))
+            {
+                grabbedBody.MoveTo(hit.point + hit.normal * normalOffset);
+            }
+            else
+            {
+                Vector3 targetPos = transform.position + cursor.forward * distance;
+
+                grabbedBody.MoveTo(targetPos);
+            }
+
         }
     }
 
@@ -191,7 +204,7 @@ public class EyeManager : MonoBehaviour
     {
         Debug.DrawRay(transform.position, cursor.forward, Color.red);
 
-        bool hitSuccessful = Physics.Raycast(transform.position, cursor.forward, out hit);
+        bool hitSuccessful = Physics.Raycast(transform.position, cursor.forward, out hit, Mathf.Infinity, LayerMask.NameToLayer("Ignore"));
 
         if (hitSuccessful)
             hitPosition = hit.point;

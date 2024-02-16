@@ -911,6 +911,34 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: lookInTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: lookOutTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: canAlwaysInteract
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: selectionCondition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: deSelectionCondition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: activeStats.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: onSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6860579192178518838, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.543
@@ -1340,6 +1368,34 @@ PrefabInstance:
     - target: {fileID: 4320199879939465893, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: m_IsKinematic
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: lookInTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: lookOutTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: canAlwaysInteract
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: selectionCondition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: deSelectionCondition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: activeStats.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: onSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6860579192178518838, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1897,6 +1953,30 @@ PrefabInstance:
     - target: {fileID: 2828208742055690575, guid: 0370848ce8d99534ca312b86fd9a4b65, type: 3}
       propertyPath: m_Name
       value: LaserBeam
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961515622445182488, guid: 0370848ce8d99534ca312b86fd9a4b65, type: 3}
+      propertyPath: lookInTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961515622445182488, guid: 0370848ce8d99534ca312b86fd9a4b65, type: 3}
+      propertyPath: lookOutTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961515622445182488, guid: 0370848ce8d99534ca312b86fd9a4b65, type: 3}
+      propertyPath: selectionCondition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961515622445182488, guid: 0370848ce8d99534ca312b86fd9a4b65, type: 3}
+      propertyPath: deSelectionCondition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961515622445182488, guid: 0370848ce8d99534ca312b86fd9a4b65, type: 3}
+      propertyPath: activeStats.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961515622445182488, guid: 0370848ce8d99534ca312b86fd9a4b65, type: 3}
+      propertyPath: onSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2527,54 +2607,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1571244665301501261, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
-      propertyPath: deselectConditions.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1571244665301501261, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
-      propertyPath: selectConditions.Array.data[0].conditionValue
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1571244665301501261, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
-      propertyPath: onSelected.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1571244665301501261, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
-      propertyPath: onInteracted.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1571244665301501261, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
-      propertyPath: onInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1571244665301501261, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
-      propertyPath: onInteracted.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1571244665301501261, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
-      propertyPath: onSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTask
-      objectReference: {fileID: 0}
-    - target: {fileID: 1571244665301501261, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
-      propertyPath: onInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1571244665301501261, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
-      propertyPath: onInteracted.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5862919521580615026, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
-      propertyPath: range
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5862919521580615026, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
-      propertyPath: cleanCooldown
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5862919521580615026, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
-      propertyPath: interactionDelay
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5916763766991782060, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
       propertyPath: m_Name
       value: Mascotte
@@ -2803,8 +2835,36 @@ PrefabInstance:
       value: StateModifier (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
+      propertyPath: lookInTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
+      propertyPath: lookOutTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
       propertyPath: autoDeselection
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
+      propertyPath: canAlwaysInteract
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
+      propertyPath: selectionCondition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
+      propertyPath: deSelectionCondition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
+      propertyPath: activeStats.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
+      propertyPath: onSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4861434662870990660, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3042,6 +3102,38 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: selected
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: lookInTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: lookOutTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: canAlwaysInteract
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: selectionCondition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: deSelectionCondition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: activeStats.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: onSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6860579192178518838, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.9692725
@@ -3147,7 +3239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd37726e5f9a49d4b9f92b1818b0ea3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabType: 0
   moveSpeed: 2
   movementType: 0
   chainLength: 1
@@ -3163,33 +3254,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af0805536d4d3954db43464ca4cbd840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectConditions:
-  - selectType: 0
-    conditionEye: 0
-    conditionHand: 0
-    conditionAction: 0
-    conditionValue: 3
-    DetectionInterval: 0
-  deselectConditions: []
-  canAlwaysInteract: 0
-  autoDeselection: 0
-  deselectionTime: 0
   rb: {fileID: 0}
+  selectionCondition: 1
+  lookInTime: 1
+  currentLookInTime: 0
+  deSelectionCondition: 3
+  lookOutTime: 300
+  lookOutDistance: 0
+  autoTime: 30
+  activeStats: 00000000
+  canAlwaysInteract: 0
   selected: 0
-  interactionTime: 0
   onSelected:
     m_PersistentCalls:
       m_Calls: []
   onDeselected:
     m_PersistentCalls:
       m_Calls: []
-  onInteracted:
+  lookIn:
     m_PersistentCalls:
       m_Calls: []
-  onDeInteracted:
-    m_PersistentCalls:
-      m_Calls: []
-  onBlinked:
+  lookOut:
     m_PersistentCalls:
       m_Calls: []
 --- !u!54 &1746850401
@@ -3453,7 +3538,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1.8049922e-35, z: 8.53e-43, w: 9.0859285e-36}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 2.7e-44, z: 1.403e-42, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -3514,6 +3599,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 467728120850050362, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 955128539315713503, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+      propertyPath: usePerEyeCameras
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1198391135184439891, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
@@ -3776,6 +3865,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -23
       objectReference: {fileID: 0}
+    - target: {fileID: 2871854915733156393, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2871854915827847854, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3862,7 +3955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8356527430050283726, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 4096
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8575046591034035823, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_LeftHand
@@ -3874,7 +3967,7 @@ PrefabInstance:
       objectReference: {fileID: 1856859711}
     - target: {fileID: 9129792089464977378, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       propertyPath: m_CameraType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4586,8 +4679,36 @@ PrefabInstance:
       value: StateModifier
       objectReference: {fileID: 0}
     - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
+      propertyPath: lookInTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
+      propertyPath: lookOutTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
       propertyPath: autoDeselection
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
+      propertyPath: canAlwaysInteract
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
+      propertyPath: selectionCondition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
+      propertyPath: deSelectionCondition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
+      propertyPath: activeStats.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
+      propertyPath: onSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4861434662870990660, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
       propertyPath: m_LocalPosition.x

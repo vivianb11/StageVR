@@ -11,42 +11,60 @@ using System.Linq;
 [RequireComponent(typeof(Rigidbody))]
 public class Interactable : MonoBehaviour
 {
-    [Header("Selection")]
-    [Space(10)]
-    public List<Conditions> selectConditions;
-    [Header("Deselection")]
-    [Space(10)]
-    public List<Conditions> deselectConditions;
+    public enum SelectionCondition
+    {
+        LookIn, LookInTime
+    }
 
-    public bool canAlwaysInteract;
+    public enum DeSelectionCondition
+    {
+        LookOut, LookOutTime, LookDistance, AutoTime
+    }
 
-    private bool isInteractable = true;
-
-    [SerializeField]
-    private bool autoDeselection;
-
-    [ShowIf("autoDeselection")]
-    public float deselectionTime;
+    private EyeManager eyeManager;
 
     [HideInInspector]
     public Rigidbody rb;
 
-    private bool canBeInteracted = true;
+    [Header("Selection Condition")]
+    public SelectionCondition selectionCondition = SelectionCondition.LookInTime;
+
+    [ShowIf("selectionCondition", SelectionCondition.LookInTime)]
+    public float lookInTime = 1f;
+    [HideInInspector]
+    public float currentLookInTime;
+
+    [Header("Deselection Condition")]
+    public DeSelectionCondition deSelectionCondition = DeSelectionCondition.LookOutTime;
+    [ShowIf("deSelectionCondition", DeSelectionCondition.LookOutTime)]
+    public float lookOutTime = 1;
+    private Coroutine lookOutCoroutine;
+
+    [ShowIf("deSelectionCondition", DeSelectionCondition.LookDistance)]
+    public float lookOutDistance;
+
+    [ShowIf("deSelectionCondition", DeSelectionCondition.AutoTime)]
+    public float autoTime;
+
+    [Header("Active In State")]
+    public List<EyeManager.ManagerState> activeStats = new List<EyeManager.ManagerState> { EyeManager.ManagerState.SELECTION };
+
+    [Header("General Parameters")]
+    public bool canAlwaysInteract;
+
+    [HideInInspector]
+    public bool activated { get; private set; } = true;
+    [HideInInspector]
+    public bool canBeInteracted { get; private set; } = true;
 
     public bool selected;
-
-    private EyeManager eyeManager;
-
-    public float interactionTime;
 
     [Header("Events")]
     public UnityEvent onSelected;
     public UnityEvent onDeselected;
     [Space(10)]
-    public UnityEvent onInteracted;
-    public UnityEvent onDeInteracted;
-    [Space(10)]
-    public UnityEvent onBlinked;
+    public UnityEvent lookIn;
+    public UnityEvent lookOut;
 
     private void Awake()
     {
@@ -62,99 +80,55 @@ public class Interactable : MonoBehaviour
 
     private void OnManagerStateChanged(EyeManager.ManagerState managerState)
     {
-        switch (managerState)
-        {
-            case EyeManager.ManagerState.SELECTION:
-                isInteractable = true;
-                break;
-            case EyeManager.ManagerState.SHOOT:
-                if (!canAlwaysInteract)
-                    isInteractable = false;
-                break;
-        }
+        activated = activeStats.Contains(managerState) || canAlwaysInteract;
     }
 
-    private void OnEnable()
+    public void LookIn() 
     {
-        for (int i = 0; i < selectConditions.Count; i++)
+        lookIn?.Invoke();
+
+        if (lookOutCoroutine != null)
         {
-            var condition = selectConditions[i];
-
-            if (condition.conditionEye == ConditionsEye.EyeBlink)
-                eyeManager.blink.AddListener(CheckIfBlinked);
-        }
-    }
-
-    private void OnDisable()
-    {
-        for (int i = 0; i < selectConditions.Count; i++)
-        {
-            var condition = selectConditions[i];
-
-            if (condition.conditionEye == ConditionsEye.EyeBlink)
-                eyeManager.blink.RemoveListener(CheckIfBlinked);
-        }
-    }
-
-    public void CheckIfBlinked()
-    {
-        if (eyeManager.interactable == this)
-            onBlinked?.Invoke();
-    }
-
-    public void Interact(Slider slider) 
-    {
-        if (selected || !canBeInteracted || !isInteractable)
-            return;
-
-        if (selectConditions.Where(item => item.conditionEye == ConditionsEye.LookAt).ToArray().Length > 0)
-        {
-            slider.maxValue = selectConditions.Where(item => item.conditionEye == ConditionsEye.LookAt).ToArray()[0].conditionValue;
-            slider.value += Time.deltaTime;
+            StopCoroutine(lookOutCoroutine);
+            lookOutCoroutine = null;
         }
 
-        onInteracted?.Invoke();
-
-        int temp = 0;
-
-        for (int i = 0; i < selectConditions.Count; i++)
-        {
-            temp += selectConditions[i].CheckCondition() ? 1 : 0;
-        }
-
-        if (temp == selectConditions.Count)
+        if (selectionCondition == SelectionCondition.LookIn)
             Select();
     }
 
-    public void DeInteract() 
+    public void LookStay()
     {
-        onDeInteracted?.Invoke();
-
-        int temp = 0;
-
-        for (int i = 0; i < deselectConditions.Count; i++)
+        if (selectionCondition == SelectionCondition.LookInTime)
         {
-            temp += deselectConditions[i].CheckCondition() ? 1 : 0;
-        }
+            currentLookInTime = Mathf.Clamp(currentLookInTime + Time.deltaTime, 0, lookInTime);
 
-        if (temp == deselectConditions.Count && deselectConditions.Count > 0)
+            if (currentLookInTime == lookInTime)
+                Select();
+        }
+    }
+
+    public void LookOut()
+    {
+        lookOut?.Invoke();
+
+        ResetSelectionValues();
+
+        if (deSelectionCondition == DeSelectionCondition.LookOut)
             DeSelect();
-
-        for (int i = 0; i < selectConditions.Count; i++)
-        {
-            selectConditions[i].Reset();
-        }
+        else if (deSelectionCondition == DeSelectionCondition.LookOutTime)
+            lookOutCoroutine = StartCoroutine(DeselectionTimer(lookOutTime));
     }
 
     public void Select()
     {
-        for(int i = 0;i < selectConditions.Count;i++)
-        {
-            selectConditions[i].Reset();
-        }
+        if (selected)
+            return;
 
-        if (autoDeselection)
-            StartCoroutine(AutoDeselectionTimer(deselectionTime));
+        ResetSelectionValues();
+
+        if (deSelectionCondition == DeSelectionCondition.AutoTime)
+            StartCoroutine(DeselectionTimer(autoTime));
 
         selected = true;
         onSelected?.Invoke();
@@ -162,8 +136,15 @@ public class Interactable : MonoBehaviour
 
     public void DeSelect()
     {
+        StopAllCoroutines();
+
         selected = false;
         onDeselected?.Invoke();
+    }
+
+    private void ResetSelectionValues()
+    {
+        currentLookInTime = 0;
     }
 
     public void SetCanBeInteracted(bool value)
@@ -171,250 +152,9 @@ public class Interactable : MonoBehaviour
         canBeInteracted = value;
     }
 
-    private IEnumerator AutoDeselectionTimer(float delay)
+    private IEnumerator DeselectionTimer(float delay)
     {
         yield return new WaitForSeconds(delay);
-
         DeSelect();
     }
-}
-
-[Serializable]
-public class Conditions
-{
-    public SelectType selectType;
-
-    [ShowIf("selectType", SelectType.EYE)]
-    [Space(10)]
-    public ConditionsEye conditionEye;
-
-    [ShowIf("selectType", SelectType.HAND)]
-    public ConditionsHand conditionHand;
-
-    [Space(10)]
-    public ConditionAction conditionAction;
-
-    [Space(10)]
-    public float conditionValue;
-
-    [ShowIf("conditionAction", ConditionAction.Amount)]
-    public float DetectionInterval = 1f;
-
-    // Variable instance
-    private float timer;
-    private float distance;
-    private int count;
-
-    public Conditions()
-    {
-        conditionEye = ConditionsEye.LookAt;
-        conditionAction = ConditionAction.Time;
-        conditionValue = 0;
-    }
-
-    public Conditions(ConditionsEye type , ConditionAction action, float value)
-    {
-        conditionEye = type;
-        conditionAction = action;
-        conditionValue = value;
-    }
-
-    public void Reset()
-    {
-        timer = 0;
-        count = 0;
-        distance = 0;
-    }
-
-    public bool CheckCondition()
-    {
-        switch (conditionEye)
-        {
-            case ConditionsEye.LookAt:
-                return LookAtCheck();
-
-            case ConditionsEye.NotLooking:
-                return NotLookingCheck();
-
-            case ConditionsEye.EyeBlink:
-                Debug.LogWarning("EyeBlink not implemented yet");
-                return true;
-
-            case ConditionsEye.EyeClosed:
-                Debug.LogWarning("EyeClosed not implemented yet");
-                return true;
-
-            case ConditionsEye.Cursor:
-                Debug.LogWarning("Cursor not implemented yet");
-                return true;
-
-            default:
-                return false;
-        }
-    }
-
-    private bool LookAtCheck()
-    {
-        switch (conditionAction)
-        {
-            case ConditionAction.Time:
-                return Timer(conditionValue);
-            case ConditionAction.Amount:
-                return true;
-            case ConditionAction.Distance:
-                Debug.LogWarning("Distance not implemented for LookAt yet");
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    private bool NotLookingCheck()
-    {
-        switch (conditionAction)
-        {
-            case ConditionAction.Time:
-                return Timer(conditionValue);
-            case ConditionAction.Distance:
-                Debug.LogWarning("Distance not implemented for NotLooking yet");
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    private bool EyeBlinkCheck()
-    {
-        switch (conditionAction)
-        {
-            case ConditionAction.Time:
-                Debug.LogWarning("Time not implemented for EyeBlink yet");
-                return true;
-            case ConditionAction.Amount:
-                Debug.LogWarning("Amount not implemented for EyeBlink yet");
-                return true;
-            case ConditionAction.Distance:
-                Debug.LogWarning("Distance not implemented for EyeBlink yet");
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    private bool EyeClosedCheck()
-    {
-        switch (conditionAction)
-        {
-            case ConditionAction.Time:
-                Debug.LogWarning("Time not implemented for EyeClosed yet");
-                return true;
-            case ConditionAction.Amount:
-                Debug.LogWarning("Amount not implemented for EyeClosed yet");
-                return true;
-            case ConditionAction.Distance:
-                Debug.LogWarning("Distance not implemented for EyeClosed yet");
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    private bool CursorCheck()
-    {
-        switch (conditionAction)
-        {
-            case ConditionAction.Time:
-                Debug.LogWarning("Time not implemented for Cursor yet");
-                return true;
-            case ConditionAction.Amount:
-                Debug.LogWarning("Amount not implemented for Cursor yet");
-                return true;
-            case ConditionAction.Distance:
-                Debug.LogWarning("Distance not implemented for Cursor yet");
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    private bool GrabCheck()
-    {
-        switch (conditionAction)
-        {
-            case ConditionAction.Time:
-                Debug.LogWarning("Time not implemented for Grab yet");
-                return true;
-            case ConditionAction.Amount:
-                Debug.LogWarning("Amount not implemented for Grab yet");
-                return true;
-            case ConditionAction.Distance:
-                Debug.LogWarning("Distance not implemented for Grab yet");
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    private bool PinchCheck()
-    {
-        switch (conditionAction)
-        {
-            case ConditionAction.Time:
-                Debug.LogWarning("Time not implemented for Pinch yet");
-                return true;
-            case ConditionAction.Amount:
-                Debug.LogWarning("Amount not implemented for Pinch yet");
-                return true;
-            case ConditionAction.Distance:
-                Debug.LogWarning("Distance not implemented for Pinch yet");
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    private bool TouchCheck()
-    {
-        switch (conditionAction)
-        {
-            case ConditionAction.Time:
-                Debug.LogWarning("Time not implemented for Touch yet");
-                return true;
-            case ConditionAction.Amount:
-                Debug.LogWarning("Amount not implemented for Touch yet");
-                return true;
-            case ConditionAction.Distance:
-                Debug.LogWarning("Distance not implemented for Touch yet");
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    public bool Timer(float time)
-    {
-        timer += Time.deltaTime;
-
-        return timer >= time;
-    }
-}
-
-public enum ConditionsEye
-{
-    LookAt, NotLooking, Cursor, EyeBlink, EyeClosed
-}
-
-public enum ConditionsHand
-{
-    Grab, Pinch, Touch
-}
-
-public enum SelectType
-{
-    EYE, HAND
-}
-
-public enum ConditionAction
-{
-    Time, Amount, Distance
 }

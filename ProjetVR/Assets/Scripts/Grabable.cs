@@ -4,8 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(Interactable))]
 public class Grabable : MonoBehaviour
 {
-    public SelectType grabType;
-
     private Interactable interacable;
 
     public float moveSpeed = 2f;
@@ -58,15 +56,7 @@ public class Grabable : MonoBehaviour
 
         gameObject.layer = LayerMask.NameToLayer("Ignore");
 
-        switch (grabType)
-        {
-            case SelectType.EYE:
-                EyeManager.Instance.SetGrabbedBody(this);
-                break;
-            case SelectType.HAND:
-                EyeManager.Instance.SetGrabbedBody(this);
-                break;
-        }
+        EyeManager.Instance.SetGrabbedBody(this);
     }
 
     private void OnDeselected()

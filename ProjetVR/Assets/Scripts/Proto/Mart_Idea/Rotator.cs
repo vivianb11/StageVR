@@ -49,8 +49,6 @@ public class Rotator : MonoBehaviour
     private void SetupInteractable(GameObject go)
     {
         Interactable inter = go.GetComponent<Interactable>();
-        inter.selectConditions[0].conditionValue = 1f;
-        inter.deselectConditions[0].conditionValue = 0f;
         inter.onSelected.AddListener(() => RotateTowards(go));
     }
 

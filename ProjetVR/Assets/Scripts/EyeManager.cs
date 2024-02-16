@@ -226,27 +226,31 @@ public class EyeManager : MonoBehaviour
                 if (!interactable)
                 {
                     interactable = component;
+                    interactable.LookIn();
                     interactable.onSelected.AddListener(OnInteractableSelected);
                 }
 
-                if (interactable != component)
+                if (interactable != component && component.activated && component.canBeInteracted)
                 {
                     slider.value = 0;
-                    interactable.DeInteract();
+                    interactable.LookOut();
                     interactable.onSelected.RemoveListener(OnInteractableSelected);
                     interactable = component;
+                    interactable.LookIn();
                     interactable.onSelected.AddListener(OnInteractableSelected);
                 }
 
-                if (interactable)
+                if (interactable && !interactable.selected)
                 {
-                    interactable.Interact(slider);
+                    interactable.LookStay();
+                    slider.maxValue = interactable.lookInTime;
+                    slider.value = interactable.currentLookInTime;
                 }
             }
             else if (interactable)
             {
                 slider.value = 0;
-                interactable.DeInteract();
+                interactable.LookOut();
                 interactable.onSelected.RemoveListener(OnInteractableSelected);
                 interactable = null;
             }
@@ -254,7 +258,7 @@ public class EyeManager : MonoBehaviour
         else if (interactable)
         {
             slider.value = 0;
-            interactable.DeInteract();
+            interactable.LookOut();
             interactable.onSelected.RemoveListener(OnInteractableSelected);
             interactable = null;
         }

@@ -146,50 +146,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af0805536d4d3954db43464ca4cbd840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectConditions:
-  - selectType: 0
-    conditionEye: 0
-    conditionHand: 0
-    conditionAction: 0
-    conditionValue: 0.5
-    DetectionInterval: 0
-  deselectConditions:
-  - selectType: 0
-    conditionEye: 0
-    conditionHand: 0
-    conditionAction: 0
-    conditionValue: 0
-    DetectionInterval: 0
-  canAlwaysInteract: 0
-  autoDeselection: 1
-  deselectionTime: 0
   rb: {fileID: 8335338428221802606}
+  selectionCondition: 1
+  lookInTime: 1
+  currentLookInTime: 0
+  deSelectionCondition: 3
+  lookOutTime: 0
+  lookOutDistance: 0
+  autoTime: 0
+  activeStats: 00000000
+  canAlwaysInteract: 0
   selected: 0
-  interactionTime: 0
   onSelected:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Rotator, Assembly-CSharp
-        m_MethodName: ZRotate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onDeselected:
     m_PersistentCalls:
       m_Calls: []
-  onInteracted:
+  lookIn:
     m_PersistentCalls:
       m_Calls: []
-  onDeInteracted:
-    m_PersistentCalls:
-      m_Calls: []
-  onBlinked:
+  lookOut:
     m_PersistentCalls:
       m_Calls: []

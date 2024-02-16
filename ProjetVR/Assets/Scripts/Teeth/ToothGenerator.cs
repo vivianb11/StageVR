@@ -45,8 +45,6 @@ public class ToothGenerator : MonoBehaviour
             GameObject go = Instantiate(cellData.GetTeeth(), cellPos.transform.position, cellPos.transform.rotation, cellPos.transform);
 
             teethCells.Add(go);
-
-            //Destroy(cellPos);
         }
     }
 

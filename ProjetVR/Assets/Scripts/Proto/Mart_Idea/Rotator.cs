@@ -57,11 +57,32 @@ public class Rotator : MonoBehaviour
     public void RotateTowards(GameObject gameObject)
     {
         Vector3 direction = gameObject.transform.up;
-        
-        if (snaping)
-            this.transform.RotateAround(this.transform.position, direction, snapValue);
-        else
-            this.transform.RotateAround(this.transform.position, direction, 1);
 
+        if (snaping)
+        {
+            StartCoroutine(SmoothRotate(this.transform, direction, snapValue));
+        }
+        else
+        {
+            StartCoroutine(SmoothRotate(this.transform, direction, 1));
+        }
+    }
+
+    private IEnumerator SmoothRotate(Transform target, Vector3 axis, float angle)
+    {
+        float elapsedTime = 0;
+        float duration = 0.5f; // Adjust the duration as needed for the desired rotation speed
+
+        Quaternion startRotation = target.rotation;
+        Quaternion endRotation = Quaternion.AngleAxis(angle, axis) * startRotation;
+
+        while (elapsedTime < duration)
+        {
+            target.rotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        target.rotation = endRotation; // Ensure the final rotation is exactly as desired
     }
 }

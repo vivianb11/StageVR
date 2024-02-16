@@ -33,7 +33,15 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        if (other.gameObject.tag != "Cell")
+            Destroy(gameObject);
+
+        if (other.GetComponentInParent<TeethCellManager>().teethCleaned)
+            Destroy(gameObject);
+
+        body.velocity = Vector3.zero;
+        StopCoroutine(KillTimer());
+        body.isKinematic = true;
     }
 
     private IEnumerator KillTimer()

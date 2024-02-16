@@ -73,7 +73,7 @@ public class Shooter : MonoBehaviour
         }
     }
 
-    private void SwitchShootType(ShootType newShootType)
+    public void SwitchShootType(ShootType newShootType)
     {
         shootType = newShootType;
 

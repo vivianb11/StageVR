@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6930364848707900339}
   - component: {fileID: 7978827798364021631}
   - component: {fileID: 7606149544405558591}
+  - component: {fileID: 5821660670805322889}
   m_Layer: 0
   m_Name: Tooth_cell
   m_TagString: Cell
@@ -106,3 +107,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2787656952363038098, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+--- !u!114 &5821660670805322889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5179198719514140047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e7db7c6306dd94dbba6e323269d847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teethState: 0

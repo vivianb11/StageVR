@@ -2256,6 +2256,71 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d5cee929b4cf9148a726cbaa6b3dec0, type: 3}
+--- !u!1 &1370909841 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2871854915733156399, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+  m_PrefabInstance: {fileID: 1825262782}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1370909846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370909841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea25d0a3abc8a047af75e57dc815f35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RecordingSample: 2
+  ExcitedThreshold: 0.5
+  NormalThreshold: 0.1
+  Excited:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 787574913}
+        m_TargetAssemblyTypeName: VivDebuger, Assembly-CSharp
+        m_MethodName: EventTextDebuger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Excited
+          m_BoolArgument: 0
+        m_CallState: 2
+  Normal:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 787574913}
+        m_TargetAssemblyTypeName: VivDebuger, Assembly-CSharp
+        m_MethodName: EventTextDebuger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Normal
+          m_BoolArgument: 0
+        m_CallState: 2
+  Calme:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 787574913}
+        m_TargetAssemblyTypeName: VivDebuger, Assembly-CSharp
+        m_MethodName: EventTextDebuger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Calm
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1418717313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3283,7 +3348,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: -1.06e-43}
+  m_BoundingSphereOverride: {x: 0, y: 1.8049922e-35, z: 8.53e-43, w: 9.0859285e-36}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -3715,7 +3780,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2871854915733156396, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2061948523}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2871854915733156399, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1370909846}
   m_SourcePrefab: {fileID: 100100000, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
 --- !u!1 &1837482109
 GameObject:

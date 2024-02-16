@@ -32,6 +32,9 @@ public class Mascotte : MonoBehaviour
     [SerializeField]
     private AudioSource exitPause;
 
+    [SerializeField]
+    private AudioSource toothBrush;
+
     private bool canClean = true;
 
     private Teeth[] teeths;
@@ -117,6 +120,7 @@ public class Mascotte : MonoBehaviour
                 enterClean.Play();
                 break;
             case MascotteState.CLEANING:
+                toothBrush.Play();
                 StartCoroutine(InteractionDelay(interactionDelay));
                 break;
         }

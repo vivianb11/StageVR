@@ -116,10 +116,16 @@ public class Shooter : MonoBehaviour
     private void ShootBlaster()
     {
         if (!EyeManager.Instance.RaycastForward(out RaycastHit hit))
+        {
+            slider.value = 0f;
             return;
+        }
 
         if (!hit.collider.TryGetComponent(out IDamageable damageable))
+        {
+            slider.value = 0f;
             return;
+        }
 
         slider.maxValue = blasterShootSpeed * 4;
         slider.value += Time.deltaTime;

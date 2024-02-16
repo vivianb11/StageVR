@@ -100,9 +100,6 @@ public class EyeManager : MonoBehaviour
             leftEyeOpeningPercent = Mathf.Clamp(leftEyeOpeningPercent + Input.mouseScrollDelta.y * 0.1f, 0f, 1f);
         if (Input.GetKey(KeyCode.RightArrow))
             rightEyeOpeningPercent = Mathf.Clamp(rightEyeOpeningPercent + Input.mouseScrollDelta.y * 0.1f, 0f, 1f);
-
-        if (Input.GetKeyDown(KeyCode.S))
-            SwitchState(ManagerState.SHOOT);
         #endregion
 
         HandleEyesStats();

@@ -240,7 +240,7 @@ public class EyeManager : MonoBehaviour
                     interactable.onSelected.AddListener(OnInteractableSelected);
                 }
 
-                if (interactable && !interactable.selected)
+                if (interactable && !interactable.selected && interactable.canBeInteracted)
                 {
                     interactable.LookStay();
                     slider.maxValue = interactable.lookInTime;

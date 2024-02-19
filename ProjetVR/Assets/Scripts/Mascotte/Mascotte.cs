@@ -12,6 +12,9 @@ public class Mascotte : MonoBehaviour
     public MascotteState state;
 
     [SerializeField]
+    private Animator animator;
+
+    [SerializeField]
     private float range = 2f;
 
     [SerializeField]
@@ -74,6 +77,7 @@ public class Mascotte : MonoBehaviour
             return true;
 
         transform.LookAt(destination);
+        transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
         transform.position = Vector3.MoveTowards(transform.position, destination, Time.deltaTime);
 
         return false;
@@ -109,19 +113,23 @@ public class Mascotte : MonoBehaviour
                 interacable.DeSelect();
                 StartCoroutine(CleanCooldown(cleanCooldown));
                 enterPause.Play();
+                animator.SetBool("walk", false);
                 break;
             case MascotteState.TRAVEL_SPAWN:
                 targetPosition = startPos;
                 teethTarget = null;
+                animator.SetBool("walk", true);
                 break;
             case MascotteState.TRAVEL_TEETH:
                 canClean = false;
                 interacable.SetCanBeInteracted(false);
                 enterClean.Play();
+                animator.SetBool("walk", true);
                 break;
             case MascotteState.CLEANING:
                 toothBrush.Play();
                 StartCoroutine(InteractionDelay(interactionDelay));
+                animator.SetBool("walk", false);
                 break;
         }
     }

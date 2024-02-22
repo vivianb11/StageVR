@@ -6,9 +6,9 @@ public class ToothGenerator : MonoBehaviour
 {
     public GameObject Tooth;
 
-    private List<GameObject> teethCellsPosition = new List<GameObject>();
-
     private List<GameObject> teethCells = new List<GameObject>();
+
+    public int CleanAmount = 0;
 
     void Start()
     {
@@ -17,7 +17,7 @@ public class ToothGenerator : MonoBehaviour
             if (child.gameObject == Tooth)
                 continue;
 
-            teethCellsPosition.Add(child.gameObject);
+            teethCells.Add(child.gameObject);
         }
 
         SetupCells();
@@ -33,7 +33,6 @@ public class ToothGenerator : MonoBehaviour
         }
     }
 
-
     private void SetupCells()
     {
         throw new System.NotImplementedException();
@@ -41,13 +40,6 @@ public class ToothGenerator : MonoBehaviour
 
     private void ResetTeeth()
     {
-        foreach (GameObject cell in teethCells)
-        {
-            Destroy(cell);
-        }
-
-        teethCells.Clear();
-
         SetupCells();
     }
 }

@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(CellManager))]
 public class CellBehavior : MonoBehaviour
@@ -8,6 +7,8 @@ public class CellBehavior : MonoBehaviour
     public TeethState teethState;
 
     private CellManager teethCellManager;
+
+    public UnityEvent OnClean;
 
     // Start is called before the first frame update
     void Start()

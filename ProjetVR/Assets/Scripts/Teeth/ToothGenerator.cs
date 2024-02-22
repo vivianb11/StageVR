@@ -36,16 +36,7 @@ public class ToothGenerator : MonoBehaviour
 
     private void SetupCells()
     {
-        foreach (GameObject cellPos in teethCellsPosition)
-        {
-            var cellData = cellPos.GetComponent<TeethCellManager>().teethVarientData;
-
-            cellData.RandomState();
-
-            GameObject go = Instantiate(cellData.GetTeeth(), cellPos.transform.position, cellPos.transform.rotation, cellPos.transform);
-
-            teethCells.Add(go);
-        }
+        throw new System.NotImplementedException();
     }
 
     private void ResetTeeth()

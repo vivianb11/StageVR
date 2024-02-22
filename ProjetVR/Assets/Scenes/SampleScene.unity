@@ -683,6 +683,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59e0dc2c17b593742844d3730fcb8c92, type: 3}
+--- !u!1 &414778611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 414778612}
+  m_Layer: 0
+  m_Name: ToothSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &414778612
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414778611}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.761, y: 0.665, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &421334953
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1784,6 +1815,7 @@ GameObject:
   - component: {fileID: 787574912}
   - component: {fileID: 787574911}
   - component: {fileID: 787574913}
+  - component: {fileID: 787574914}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1832,6 +1864,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ec68b01ea7c534faa6199347cf0967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &787574914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787574910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789a78f53f5880d479e8f8b8233ef8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooth: {fileID: 6056224882789707400, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+  toothSpawnPoint: {fileID: 414778611}
+  startDelay: 3
 --- !u!1 &827015712
 GameObject:
   m_ObjectHideFlags: 0
@@ -5003,3 +5050,4 @@ SceneRoots:
   - {fileID: 672008758}
   - {fileID: 1264988157}
   - {fileID: 272081788}
+  - {fileID: 414778612}

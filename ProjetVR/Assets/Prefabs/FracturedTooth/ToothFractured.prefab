@@ -14,11 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.74
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.258
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
       propertyPath: m_LocalRotation.w
@@ -63,7 +63,7 @@ PrefabInstance:
     - target: {fileID: -5244010412256143776, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bd575f04a36958544bd89dc78e39c905, type: 2}
+      objectReference: {fileID: 2100000, guid: 9c6103d2ad98b544b82572d8025d27d2, type: 2}
     - target: {fileID: -3796548272275778310, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
       propertyPath: m_Name
       value: Tooth_cell.000
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2f1b9995ca7b9479d1d3c3c97cdf78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 11400000, guid: 6d18bd3dfb0494b4ba7767382efefa0e, type: 2}
+  teethVarientData: {fileID: 11400000, guid: be07bfae90b5d9042b17a20c1c003cb6, type: 2}
   teethCleaned: 0
 --- !u!1 &403798057526998160 stripped
 GameObject:
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2f1b9995ca7b9479d1d3c3c97cdf78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 11400000, guid: 3cfb5579976782e498a0578c9d03b4f2, type: 2}
+  teethVarientData: {fileID: 11400000, guid: be07bfae90b5d9042b17a20c1c003cb6, type: 2}
   teethCleaned: 0
 --- !u!1 &1024554762783671920 stripped
 GameObject:
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2f1b9995ca7b9479d1d3c3c97cdf78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 11400000, guid: c05c1bf09a3f79341af979d99d71fe67, type: 2}
+  teethVarientData: {fileID: 11400000, guid: be07bfae90b5d9042b17a20c1c003cb6, type: 2}
   teethCleaned: 0
 --- !u!1 &1405847483340539683 stripped
 GameObject:
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2f1b9995ca7b9479d1d3c3c97cdf78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 11400000, guid: c223b6ba370e0b941be7a5622191554d, type: 2}
+  teethVarientData: {fileID: 11400000, guid: be07bfae90b5d9042b17a20c1c003cb6, type: 2}
   teethCleaned: 0
 --- !u!1 &2898005929459565158 stripped
 GameObject:
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2f1b9995ca7b9479d1d3c3c97cdf78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 11400000, guid: 1d1cfa2c2d6418d469fcb4654ae03daa, type: 2}
+  teethVarientData: {fileID: 11400000, guid: be07bfae90b5d9042b17a20c1c003cb6, type: 2}
   teethCleaned: 0
 --- !u!1 &4232723044598889322 stripped
 GameObject:
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2f1b9995ca7b9479d1d3c3c97cdf78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 11400000, guid: 9f1c1db5be8ffc54193391d28f570b70, type: 2}
+  teethVarientData: {fileID: 11400000, guid: be07bfae90b5d9042b17a20c1c003cb6, type: 2}
   teethCleaned: 0
 --- !u!1 &4262968661179086388 stripped
 GameObject:
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2f1b9995ca7b9479d1d3c3c97cdf78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 11400000, guid: fe36706afe825b1489b08ae1ea89d38b, type: 2}
+  teethVarientData: {fileID: 11400000, guid: be07bfae90b5d9042b17a20c1c003cb6, type: 2}
   teethCleaned: 0
 --- !u!1 &5153327300865840695 stripped
 GameObject:
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2f1b9995ca7b9479d1d3c3c97cdf78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 11400000, guid: 7c8cb054b6a2e4449bf8ad0e959eaa20, type: 2}
+  teethVarientData: {fileID: 11400000, guid: be07bfae90b5d9042b17a20c1c003cb6, type: 2}
   teethCleaned: 0
 --- !u!1 &6056224882789707400 stripped
 GameObject:
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2f1b9995ca7b9479d1d3c3c97cdf78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 11400000, guid: 2cfe9724c2d195948b71de77a2cf35af, type: 2}
+  teethVarientData: {fileID: 11400000, guid: be07bfae90b5d9042b17a20c1c003cb6, type: 2}
   teethCleaned: 0
 --- !u!1 &8105509145681298942 stripped
 GameObject:

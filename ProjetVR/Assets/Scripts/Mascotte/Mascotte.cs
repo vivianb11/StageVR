@@ -6,7 +6,7 @@ public class Mascotte : MonoBehaviour
 {
     public enum MascotteState
     {
-        IDLE, TRAVEL_SPAWN, TRAVEL_TEETH, CLEANING
+        IDLE, TRAVEL_SPAWN, TRAVEL_TEETH, CLEANING, PAUSE
     }
 
     public MascotteState state;
@@ -66,7 +66,11 @@ public class Mascotte : MonoBehaviour
                 if (TravelToDestination(targetPosition, range)) SwitchState(MascotteState.CLEANING);
                 break;
             case MascotteState.TRAVEL_SPAWN:
-                if (TravelToDestination(targetPosition, 0)) SwitchState(MascotteState.IDLE);
+                if (TravelToDestination(targetPosition, 0))
+                { 
+                    SwitchState(MascotteState.PAUSE);
+                    StartCoroutine(CleanCooldown(cleanCooldown));
+                } 
                 break;
         }
     }
@@ -94,13 +98,9 @@ public class Mascotte : MonoBehaviour
 
     private IEnumerator CleanCooldown(float delay)
     {
-        meshRenderer.material.color = Color.red;
         yield return new WaitForSeconds(delay);
-        meshRenderer.material.color = Color.green;
 
-        canClean = true;
-        interacable.SetCanBeInteracted(true);
-        exitPause.Play();
+        SwitchState(MascotteState.IDLE);
     }
 
     private void SwitchState(MascotteState newState)
@@ -110,9 +110,10 @@ public class Mascotte : MonoBehaviour
         switch (state)
         {
             case MascotteState.IDLE:
+                canClean = true;
                 interacable.DeSelect();
-                StartCoroutine(CleanCooldown(cleanCooldown));
-                enterPause.Play();
+                interacable.SetCanBeInteracted(true);
+                exitPause.Play();
                 animator.SetBool("walk", false);
                 break;
             case MascotteState.TRAVEL_SPAWN:
@@ -129,6 +130,11 @@ public class Mascotte : MonoBehaviour
             case MascotteState.CLEANING:
                 toothBrush.Play();
                 StartCoroutine(InteractionDelay(interactionDelay));
+                animator.SetBool("walk", false);
+                break;
+            case MascotteState.PAUSE:
+                canClean = false;
+                enterPause.Play();
                 animator.SetBool("walk", false);
                 break;
         }

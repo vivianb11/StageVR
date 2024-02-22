@@ -13,12 +13,12 @@ public class Interactable : MonoBehaviour
 {
     public enum SelectionCondition
     {
-        LookIn, LookInTime
+        LOOK_IN, LOOK_IN_TIME
     }
 
     public enum DeSelectionCondition
     {
-        LookOut, LookOutTime, LookDistance, AutoTime
+        LOOK_OUT, LOOK_OUT_TIME, LOOK_DISTANCE, AUTO_TIME, NONE
     }
 
     private EyeManager eyeManager;
@@ -27,23 +27,23 @@ public class Interactable : MonoBehaviour
     public Rigidbody rb;
 
     [Header("Selection Condition")]
-    public SelectionCondition selectionCondition = SelectionCondition.LookInTime;
+    public SelectionCondition selectionCondition = SelectionCondition.LOOK_IN_TIME;
 
-    [ShowIf("selectionCondition", SelectionCondition.LookInTime)]
+    [ShowIf("selectionCondition", SelectionCondition.LOOK_IN_TIME)]
     public float lookInTime = 1f;
     [HideInInspector]
     public float currentLookInTime;
 
     [Header("Deselection Condition")]
-    public DeSelectionCondition deSelectionCondition = DeSelectionCondition.LookOutTime;
-    [ShowIf("deSelectionCondition", DeSelectionCondition.LookOutTime)]
+    public DeSelectionCondition deSelectionCondition = DeSelectionCondition.LOOK_OUT_TIME;
+    [ShowIf("deSelectionCondition", DeSelectionCondition.LOOK_OUT_TIME)]
     public float lookOutTime = 1;
     private Coroutine lookOutCoroutine;
 
-    [ShowIf("deSelectionCondition", DeSelectionCondition.LookDistance)]
+    [ShowIf("deSelectionCondition", DeSelectionCondition.LOOK_DISTANCE)]
     public float lookOutDistance;
 
-    [ShowIf("deSelectionCondition", DeSelectionCondition.AutoTime)]
+    [ShowIf("deSelectionCondition", DeSelectionCondition.AUTO_TIME)]
     public float autoTime;
 
     [Header("Active In State")]
@@ -59,7 +59,11 @@ public class Interactable : MonoBehaviour
 
     public bool selected;
 
+
     [Header("Events")]
+    public EventDelay[] selectedEventsDelay;
+    public EventDelay[] deSelectedEventsDelay;
+    [Space(10)]
     public UnityEvent onSelected;
     public UnityEvent onDeselected;
     [Space(10)]
@@ -93,13 +97,13 @@ public class Interactable : MonoBehaviour
             lookOutCoroutine = null;
         }
 
-        if (selectionCondition == SelectionCondition.LookIn)
+        if (selectionCondition == SelectionCondition.LOOK_IN)
             Select();
     }
 
     public void LookStay()
     {
-        if (selectionCondition == SelectionCondition.LookInTime)
+        if (selectionCondition == SelectionCondition.LOOK_IN_TIME)
         {
             currentLookInTime = Mathf.Clamp(currentLookInTime + Time.deltaTime, 0, lookInTime);
 
@@ -114,9 +118,9 @@ public class Interactable : MonoBehaviour
 
         ResetSelectionValues();
 
-        if (deSelectionCondition == DeSelectionCondition.LookOut)
+        if (deSelectionCondition == DeSelectionCondition.LOOK_OUT)
             DeSelect();
-        else if (deSelectionCondition == DeSelectionCondition.LookOutTime)
+        else if (deSelectionCondition == DeSelectionCondition.LOOK_OUT_TIME)
             lookOutCoroutine = StartCoroutine(DeselectionTimer(lookOutTime));
     }
 
@@ -125,9 +129,14 @@ public class Interactable : MonoBehaviour
         if (selected)
             return;
 
+        foreach (EventDelay eventDelay in selectedEventsDelay)
+        {
+            StartCoroutine(CallEventWithDelay(eventDelay));
+        }
+
         ResetSelectionValues();
 
-        if (deSelectionCondition == DeSelectionCondition.AutoTime)
+        if (deSelectionCondition == DeSelectionCondition.AUTO_TIME)
             StartCoroutine(DeselectionTimer(autoTime));
 
         selected = true;
@@ -137,6 +146,11 @@ public class Interactable : MonoBehaviour
     public void DeSelect()
     {
         StopAllCoroutines();
+
+        foreach (EventDelay eventDelay in deSelectedEventsDelay)
+        {
+            StartCoroutine(CallEventWithDelay(eventDelay));
+        }
 
         selected = false;
         onDeselected?.Invoke();
@@ -157,4 +171,18 @@ public class Interactable : MonoBehaviour
         yield return new WaitForSeconds(delay);
         DeSelect();
     }
+
+    private IEnumerator CallEventWithDelay(EventDelay eventDelay)
+    {
+        yield return new WaitForSeconds(eventDelay.delay);
+
+        eventDelay.unityEvent?.Invoke();
+    }
+}
+
+[Serializable]
+public struct EventDelay
+{
+    public float delay;
+    public UnityEvent unityEvent;
 }

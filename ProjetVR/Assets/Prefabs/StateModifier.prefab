@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7909543005189230990}
   - component: {fileID: 1415125378685018430}
   - component: {fileID: 7363347286970257783}
+  - component: {fileID: 2798922898388456504}
   m_Layer: 0
   m_Name: StateModifier
   m_TagString: Untagged
@@ -95,20 +96,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af0805536d4d3954db43464ca4cbd840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectConditions:
-  - selectType: 0
-    conditionEye: 0
-    conditionHand: 0
-    conditionAction: 0
-    conditionValue: 1.5
-    DetectionInterval: 0
-  deselectConditions: []
-  canAlwaysInteract: 1
-  autoDeselection: 0
-  deselectionTime: 0
   rb: {fileID: 0}
+  selectionCondition: 1
+  lookInTime: 1
+  currentLookInTime: 0
+  deSelectionCondition: 1
+  lookOutTime: 1
+  lookOutDistance: 0
+  autoTime: 0
+  activeStats: 00000000
+  canAlwaysInteract: 1
   selected: 0
-  interactionTime: 0
   onSelected:
     m_PersistentCalls:
       m_Calls:
@@ -127,15 +125,36 @@ MonoBehaviour:
   onDeselected:
     m_PersistentCalls:
       m_Calls: []
-  onInteracted:
+  lookIn:
     m_PersistentCalls:
-      m_Calls: []
-  onDeInteracted:
+      m_Calls:
+      - m_Target: {fileID: 2798922898388456504}
+        m_TargetAssemblyTypeName: ScaleFeedback, Assembly-CSharp
+        m_MethodName: ScaleIn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  lookOut:
     m_PersistentCalls:
-      m_Calls: []
-  onBlinked:
-    m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2798922898388456504}
+        m_TargetAssemblyTypeName: ScaleFeedback, Assembly-CSharp
+        m_MethodName: ScaleOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7363347286970257783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,3 +168,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   managerState: 0
+--- !u!114 &2798922898388456504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126838963202697087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleOffset: 0.25
+  scaleLerpSpeed: 0.15

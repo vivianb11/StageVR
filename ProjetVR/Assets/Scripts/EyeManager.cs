@@ -113,13 +113,13 @@ public class EyeManager : MonoBehaviour
         {
             if (RaycastForward(out RaycastHit hit))
             {
-                grabbedBody.MoveTo(hit.point + hit.normal * normalOffset);
+                grabbedBody.MoveTo(hit.point, hit.normal);
             }
             else
             {
                 Vector3 targetPos = transform.position + cursor.forward * distance;
 
-                grabbedBody.MoveTo(targetPos);
+                grabbedBody.MoveTo(targetPos, hit.normal);
             }
 
         }

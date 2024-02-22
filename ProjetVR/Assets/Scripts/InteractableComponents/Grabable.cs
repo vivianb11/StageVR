@@ -4,9 +4,22 @@ using UnityEngine;
 [RequireComponent(typeof(Interactable))]
 public class Grabable : MonoBehaviour
 {
+    public enum AlignDirection
+    {
+        UP, DOWN, LEFT, RIGHT, FORWARD, BACKWARD
+    }
+
     private Interactable interacable;
 
     public float moveSpeed = 2f;
+
+    public bool alignToNormal;
+
+    [ShowIf("alignToNormal")]
+    public AlignDirection alignDirection = AlignDirection.UP;
+
+    [ShowIf("alignToNormal")]
+    public float distanceToPoint = 0.5f;
 
     public enum MovementType
     {
@@ -31,13 +44,42 @@ public class Grabable : MonoBehaviour
         interacable.rb.angularDrag = 1f;
     }
 
-    public void MoveTo(Vector3 targetPos)
+    public void AlignToNormal(Vector3 normal)
     {
-        Vector3 directionToTarget = targetPos - transform.position;
+        switch (alignDirection)
+        {
+            case AlignDirection.UP:
+                transform.up = normal;
+                break;
+            case AlignDirection.DOWN:
+                transform.up = -normal;
+                break;
+            case AlignDirection.LEFT:
+                transform.right = -normal;
+                break;
+            case AlignDirection.RIGHT:
+                transform.right = normal;
+                break;
+            case AlignDirection.FORWARD:
+                transform.forward = normal;
+                break;
+            case AlignDirection.BACKWARD:
+                transform.forward = -normal;
+                break;
+        }
+    }
+
+    public void MoveTo(Vector3 targetPos, Vector3 normal)
+    {
+        Vector3 targetNormalPos = targetPos + normal * distanceToPoint;
+        Vector3 directionToTarget = targetNormalPos - transform.position;
 
         switch (movementType)
         {
             case MovementType.NORMAL:
+                if (alignToNormal)
+                    AlignToNormal(normal);
+
                 interacable.rb.velocity = Vector3.Lerp(interacable.rb.velocity, directionToTarget * moveSpeed, 1f);
                 break;
             case MovementType.CHAIN:

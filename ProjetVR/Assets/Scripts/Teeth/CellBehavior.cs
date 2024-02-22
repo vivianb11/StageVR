@@ -2,24 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[RequireComponent(typeof(CellManager))]
 public class CellBehavior : MonoBehaviour
 {
     public TeethState teethState;
 
-    private TeethCellManager teethCellManager;
+    private CellManager teethCellManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        teethCellManager = transform.parent.GetComponent<TeethCellManager>();
+        teethCellManager = transform.GetComponent<CellManager>();
 
-        teethState = teethCellManager.teethVarientData.teethState;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        teethState = teethCellManager.teethVarientData.RandomState();
 
         if (teethState == TeethState.Clean)
             teethCellManager.SetCleanState(true);

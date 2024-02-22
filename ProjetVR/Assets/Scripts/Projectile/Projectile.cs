@@ -39,7 +39,7 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        if (other.GetComponentInParent<TeethCellManager>().teethCleaned)
+        if (other.GetComponentInParent<CellManager>().teethCleaned)
         { 
             Destroy(gameObject);
             return;

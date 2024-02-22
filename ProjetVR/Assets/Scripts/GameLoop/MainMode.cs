@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG;
 
 public class MainMode : MonoBehaviour
 {
@@ -19,6 +17,6 @@ public class MainMode : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        GameObject instance = Instantiate(tooth, toothSpawnPoint.transform);   
+        GameObject instance = Instantiate(tooth, toothSpawnPoint.transform);
     }
 }

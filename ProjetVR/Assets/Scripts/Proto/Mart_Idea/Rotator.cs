@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Rotator : MonoBehaviour
@@ -10,14 +9,16 @@ public class Rotator : MonoBehaviour
 
     public float controlerSpacing = 5f;
 
+    private Camera _camera;
+    
     [SerializeField]
     private int snapValue = 90;
 
     public void Awake()
     {
-        Camera camera = Camera.main;
+          _camera = Camera.main;
 
-        this.transform.LookAt(camera.transform);
+        this.transform.LookAt(_camera.transform);
 
         GameObject go = Instantiate(rotationControleurs);
         go.transform.position = this.transform.position + this.transform.up * controlerSpacing;
@@ -64,6 +65,22 @@ public class Rotator : MonoBehaviour
         {
             StartCoroutine(SmoothRotate(this.transform, direction, 1));
         }
+    }
+
+    public void SetAsChild(GameObject gameObject)
+    {
+        gameObject.transform.parent = this.transform;
+    }
+
+    public void YeetTheCild(GameObject gameObject)
+    {
+        gameObject.transform.parent = null;
+    }
+
+    public void ResetRotator()
+    {
+        StopAllCoroutines(); 
+        this.transform.LookAt(_camera.transform);
     }
 
     private IEnumerator SmoothRotate(Transform target, Vector3 axis, float angle)

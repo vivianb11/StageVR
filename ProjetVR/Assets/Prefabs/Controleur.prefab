@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1a26fa64c4e1c6949b01069c951dcb00, type: 2}
+  - {fileID: 2100000, guid: 185d30be8b3dd1848a8653dcdbe671bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -157,6 +157,8 @@ MonoBehaviour:
   activeStats: 00000000
   canAlwaysInteract: 0
   selected: 0
+  selectedEventsDelay: []
+  deSelectedEventsDelay: []
   onSelected:
     m_PersistentCalls:
       m_Calls: []

@@ -13,7 +13,7 @@ public class Interactable : MonoBehaviour
 {
     public enum SelectionCondition
     {
-        LOOK_IN, LOOK_IN_TIME
+        LOOK_IN, LOOK_IN_TIME, NONE
     }
 
     public enum DeSelectionCondition

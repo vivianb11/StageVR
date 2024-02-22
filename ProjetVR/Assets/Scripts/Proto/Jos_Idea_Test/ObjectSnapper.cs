@@ -16,7 +16,7 @@ public class ObjectSnapper : MonoBehaviour
     public bool interactableAfterSnapped = false;
 
     [Foldout("Events")]
-    public UnityEvent onSnapped;
+    public UnityEvent<Transform> onSnapped;
     [Foldout("Events")]
     public UnityEvent onUnsnapped;
 
@@ -36,10 +36,11 @@ public class ObjectSnapper : MonoBehaviour
 
         if (TryGetComponent(out MeshRenderer mehs))
             material = mehs.material;
-        else
+        else if (GetComponentInChildren<MeshRenderer>())
             material = GetComponentInChildren<MeshRenderer>().material;
 
-        material.color = new Color(material.color.r, material.color.g, material.color.b, 0.5f);
+        if (material)
+            material.color = new Color(material.color.r, material.color.g, material.color.b, 0.5f);
     }
 
     void FixedUpdate()
@@ -63,7 +64,7 @@ public class ObjectSnapper : MonoBehaviour
         
         if (other.TryGetComponent(out Interactable interacable))
         {
-            onSnapped?.Invoke();
+            onSnapped?.Invoke(interacable.transform);
             interacable.DeSelect();
 
             interacable.rb.isKinematic = true;

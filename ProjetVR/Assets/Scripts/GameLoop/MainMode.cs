@@ -18,5 +18,8 @@ public class MainMode : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         GameObject instance = Instantiate(tooth, toothSpawnPoint.transform);
+
+        instance.transform.localScale = Vector3.zero;
+        instance.transform.DoScale(Vector3.one, 5f);
     }
 }

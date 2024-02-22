@@ -26,11 +26,6 @@ public class Projectile : MonoBehaviour
         StartCoroutine(KillTimer());
     }
 
-    private void FixedUpdate()
-    {
-        body.AddForce(Vector3.down);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag != "Cell")

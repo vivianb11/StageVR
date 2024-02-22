@@ -8,40 +8,41 @@ public class Rotator : MonoBehaviour
     public GameObject rotationControleurs;
 
     public float controlerSpacing = 5f;
-
-    private Camera _camera;
     
     [SerializeField]
     private int snapValue = 90;
 
+    private Transform camera;
+
     public void Awake()
     {
-          _camera = Camera.main;
+        camera = Camera.main.transform;
 
-        this.transform.LookAt(_camera.transform);
+        transform.LookAt(camera.position);
+        transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, transform.localEulerAngles.z);
 
         GameObject go = Instantiate(rotationControleurs);
-        go.transform.position = this.transform.position + this.transform.up * controlerSpacing;
-        go.transform.rotation = this.transform.rotation;
+        go.transform.position = transform.position + transform.up * controlerSpacing;
+        go.transform.rotation = transform.rotation;
         go.transform.Rotate(0, 0, 90);
         SetupInteractable(go);
 
 
         go = Instantiate(rotationControleurs);
-        go.transform.position = this.transform.position - this.transform.up * controlerSpacing;
-        go.transform.rotation = this.transform.rotation;
+        go.transform.position = transform.position - transform.up * controlerSpacing;
+        go.transform.rotation = transform.rotation;
         go.transform.Rotate(0, 0, -90);
         SetupInteractable(go);
 
         go = Instantiate(rotationControleurs);
-        go.transform.position = this.transform.position + this.transform.right * controlerSpacing;
-        go.transform.rotation = this.transform.rotation;
+        go.transform.position = transform.position + transform.right * controlerSpacing;
+        go.transform.rotation = transform.rotation;
         go.transform.Rotate(0, 90, 0);
         SetupInteractable(go);
 
         go = Instantiate(rotationControleurs);
-        go.transform.position = this.transform.position - this.transform.right * controlerSpacing;
-        go.transform.rotation = this.transform.rotation;
+        go.transform.position = transform.position - transform.right * controlerSpacing;
+        go.transform.rotation = transform.rotation;
         go.transform.Rotate(0, 0, 180);
         SetupInteractable(go);
 
@@ -59,28 +60,30 @@ public class Rotator : MonoBehaviour
 
         if (snaping)
         {
-            StartCoroutine(SmoothRotate(this.transform, direction, snapValue));
+            StartCoroutine(SmoothRotate(transform, direction, snapValue));
         }
         else
         {
-            StartCoroutine(SmoothRotate(this.transform, direction, 1));
+            StartCoroutine(SmoothRotate(transform, direction, 1));
         }
     }
 
-    public void SetAsChild(GameObject gameObject)
+    public void SetAsChild(Transform objectTransform)
     {
-        gameObject.transform.parent = this.transform;
+        objectTransform.parent = transform;
     }
 
-    public void YeetTheCild(GameObject gameObject)
+    public void YeetTheCild()
     {
-        gameObject.transform.parent = null;
+        transform.GetChild(0).transform.parent = null;
     }
 
     public void ResetRotator()
     {
-        StopAllCoroutines(); 
-        this.transform.LookAt(_camera.transform);
+        StopAllCoroutines();
+
+        transform.LookAt(camera.position);
+        transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, transform.localEulerAngles.z);
     }
 
     private IEnumerator SmoothRotate(Transform target, Vector3 axis, float angle)

@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,15 @@ using UnityEngine;
 public class ToothGenerator : MonoBehaviour
 {
     public GameObject Tooth;
+
+    [Foldout("Materials")]
+    public Material cleanMaterial;
+    [Foldout("Materials")]
+    public Material dirtyMaterial;
+    [Foldout("Materials")]
+    public Material tartarMaterial;
+    [Foldout("Materials")]
+    public Material decayMaterial;
 
     private List<GameObject> teethCells = new List<GameObject>();
 

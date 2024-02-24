@@ -185,9 +185,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccd1403dc8cd8844a834d33b75682f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 0}
-  teethState: 0
+  toothGenerator: {fileID: 0}
   teethCleaned: 0
+  OnClean:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5809970587398190389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,9 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e7db7c6306dd94dbba6e323269d847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClean:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &403798057526998160 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2497257461654657207, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
@@ -220,9 +219,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccd1403dc8cd8844a834d33b75682f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 0}
-  teethState: 0
+  toothGenerator: {fileID: 0}
   teethCleaned: 0
+  OnClean:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8669741701568819590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,9 +236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e7db7c6306dd94dbba6e323269d847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClean:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1024554762783671920 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2955889124442827351, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
@@ -255,9 +253,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccd1403dc8cd8844a834d33b75682f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 0}
-  teethState: 0
+  toothGenerator: {fileID: 0}
   teethCleaned: 0
+  OnClean:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4352928675960300622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,9 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e7db7c6306dd94dbba6e323269d847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClean:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1405847483340539683 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3796548272275778310, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
@@ -290,9 +287,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccd1403dc8cd8844a834d33b75682f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 0}
-  teethState: 0
+  toothGenerator: {fileID: 0}
   teethCleaned: 0
+  OnClean:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1624670990630528900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,9 +304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e7db7c6306dd94dbba6e323269d847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClean:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2761996443622041261 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9122591358500550004, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
@@ -325,9 +321,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccd1403dc8cd8844a834d33b75682f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 0}
-  teethState: 0
+  toothGenerator: {fileID: 0}
   teethCleaned: 0
+  OnClean:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2413388274841436382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,9 +338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e7db7c6306dd94dbba6e323269d847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClean:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2898005929459565158 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1082367313792265793, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
@@ -360,9 +355,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccd1403dc8cd8844a834d33b75682f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 0}
-  teethState: 0
+  toothGenerator: {fileID: 0}
   teethCleaned: 0
+  OnClean:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3045650896185039240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,9 +372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e7db7c6306dd94dbba6e323269d847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClean:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &4232723044598889322 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2129984308017895245, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
@@ -395,9 +389,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccd1403dc8cd8844a834d33b75682f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 0}
-  teethState: 0
+  toothGenerator: {fileID: 0}
   teethCleaned: 0
+  OnClean:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1158057734536199390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,9 +406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e7db7c6306dd94dbba6e323269d847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClean:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &4262968661179086388 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2025358927818824211, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
@@ -430,9 +423,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccd1403dc8cd8844a834d33b75682f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 0}
-  teethState: 0
+  toothGenerator: {fileID: 0}
   teethCleaned: 0
+  OnClean:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6057273668262312094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,9 +440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e7db7c6306dd94dbba6e323269d847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClean:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &5153327300865840695 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6968992493510818322, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
@@ -465,9 +457,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccd1403dc8cd8844a834d33b75682f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 0}
-  teethState: 0
+  toothGenerator: {fileID: 0}
   teethCleaned: 0
+  OnClean:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &384485724580089823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,9 +474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e7db7c6306dd94dbba6e323269d847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClean:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &6056224882789707400 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
@@ -501,7 +492,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tooth: {fileID: 8105509145681298942}
-  CleanAmount: 0
+  cleanMaterial: {fileID: 2100000, guid: 9c6103d2ad98b544b82572d8025d27d2, type: 2}
+  dirtyMaterial: {fileID: 2100000, guid: d753c80c86f4b3f41a62ece4b7c1c9e8, type: 2}
+  tartarMaterial: {fileID: 2100000, guid: d10d6b4f3512dbd4fa03be219e911ecb, type: 2}
+  decayMaterial: {fileID: 2100000, guid: af921ee7af8d1204b993352f51214eaa, type: 2}
 --- !u!1 &7587050978364518386 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3569101651563297835, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
@@ -519,9 +513,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccd1403dc8cd8844a834d33b75682f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teethVarientData: {fileID: 0}
-  teethState: 0
+  toothGenerator: {fileID: 0}
   teethCleaned: 0
+  OnClean:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4497381379037746307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,9 +530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e7db7c6306dd94dbba6e323269d847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClean:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &8105509145681298942 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6290987444862888409, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}

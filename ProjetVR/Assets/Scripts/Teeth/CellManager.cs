@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class CellManager : MonoBehaviour
 {
     [HideInInspector]
-    public ToothGenerator toothGenerator;
+    public ToothManager toothGenerator;
 
     private TeethState localTeethState;
     public TeethState teethState
@@ -31,11 +31,4 @@ public class CellManager : MonoBehaviour
     public bool teethCleaned = false;
 
     public UnityEvent OnClean;
-
-    private void Awake()
-    {
-        toothGenerator = this.transform.parent.GetComponent<ToothGenerator>();
-
-        teethState = (TeethState)Random.Range(0, (Enum.GetValues(typeof (TeethState)).Length));
-    }
 }

@@ -21,8 +21,6 @@ public class Interactable : MonoBehaviour
         LOOK_OUT, LOOK_OUT_TIME, LOOK_DISTANCE, AUTO_TIME, NONE
     }
 
-    private EyeManager eyeManager;
-
     [HideInInspector]
     public Rigidbody rb;
 
@@ -49,16 +47,11 @@ public class Interactable : MonoBehaviour
     [Header("Active In State")]
     public List<EyeManager.ManagerState> activeStats = new List<EyeManager.ManagerState> { EyeManager.ManagerState.SELECTION };
 
-    [Header("General Parameters")]
-    public bool canAlwaysInteract;
-
-    [HideInInspector]
-    public bool activated { get; private set; } = true;
+    public bool activated = true;
     [HideInInspector]
     public bool canBeInteracted { get; private set; } = true;
 
     public bool selected;
-
 
     [Header("Events")]
     public EventDelay[] selectedEventsDelay;
@@ -77,14 +70,16 @@ public class Interactable : MonoBehaviour
 
     private void Start()
     {
-        eyeManager = EyeManager.Instance;
+        EyeManager eyeManager = EyeManager.Instance;
 
         eyeManager.stateChanged.AddListener(OnManagerStateChanged);
+
+        OnManagerStateChanged(eyeManager.managerState);
     }
 
     private void OnManagerStateChanged(EyeManager.ManagerState managerState)
     {
-        activated = activeStats.Contains(managerState) || canAlwaysInteract;
+        activated = activeStats.Contains(managerState) || activeStats.Count == 0;
     }
 
     public void LookIn() 

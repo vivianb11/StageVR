@@ -104,9 +104,11 @@ MonoBehaviour:
   lookOutTime: 1
   lookOutDistance: 0
   autoTime: 0
-  activeStats: 00000000
-  canAlwaysInteract: 1
+  activeStats: 
+  activated: 1
   selected: 0
+  selectedEventsDelay: []
+  deSelectedEventsDelay: []
   onSelected:
     m_PersistentCalls:
       m_Calls:
@@ -180,5 +182,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleOffset: 0.25
+  scaleOffset: 1.5
   scaleLerpSpeed: 0.15

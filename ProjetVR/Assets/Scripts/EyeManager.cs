@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -37,18 +38,18 @@ public class EyeManager : MonoBehaviour
         SELECTION, SHOOT
     }
 
-    public ManagerState managerState = ManagerState.SELECTION;
+    public ManagerState managerState { get; private set; } = ManagerState.SELECTION;
 
     public Interactable interactable { get; private set; }
 
     [Header("Grab")]
     [SerializeField]
-    private float normalOffset= 0.5f;
     private float distance;
     private Grabable grabbedBody;
 
     private bool preBlink = false;
 
+    public bool hitSuccessful;
     public Vector3 hitPosition;
 
     [Header("Events")]
@@ -207,12 +208,12 @@ public class EyeManager : MonoBehaviour
 
     public bool RaycastForward(out RaycastHit hit)
     {
-        Debug.DrawRay(transform.position, cursor.forward, Color.red);
-
-        bool hitSuccessful = Physics.Raycast(transform.position, cursor.forward, out hit, Mathf.Infinity, LayerMask.NameToLayer("Ignore"));
+        hitSuccessful = Physics.Raycast(transform.position, cursor.forward, out hit, Mathf.Infinity, LayerMask.NameToLayer("Ignore"));
 
         if (hitSuccessful)
             hitPosition = hit.point;
+        else
+            hitPosition = transform.position + cursor.forward * 1000f;
 
         return hitSuccessful;
     }
@@ -223,7 +224,7 @@ public class EyeManager : MonoBehaviour
         {
             if (hit.collider.TryGetComponent(out Interactable component))
             {
-                if (!interactable)
+                if (!interactable && component.activated)
                 {
                     interactable = component;
                     interactable.LookIn();

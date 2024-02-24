@@ -21,9 +21,12 @@ public class LaserBeam : MonoBehaviour
 
     private Interactable interactable;
 
+    private EyeManager eyeManager;
+
     private void Start()
     {
         interactable = GetComponent<Interactable>();
+        eyeManager = EyeManager.Instance;
 
         lineRenderer.enabled = false;
         lineRenderer.widthMultiplier = laserThickness;
@@ -34,8 +37,7 @@ public class LaserBeam : MonoBehaviour
     {
         if (activated)
         {
-            transform.LookAt(EyeManager.Instance.hitPosition);
-            lineRenderer.SetPosition(1, transform.InverseTransformPoint(EyeManager.Instance.hitPosition));
+            lineRenderer.SetPosition(1, transform.InverseTransformPoint(eyeManager.hitPosition));
         }
     }
 

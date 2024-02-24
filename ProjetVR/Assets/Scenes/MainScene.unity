@@ -895,7 +895,7 @@ PrefabInstance:
     - target: {fileID: 523380734999268644, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: shooter
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2135208179}
     - target: {fileID: 523380734999268644, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: shootType
       value: 1
@@ -1012,7 +1012,7 @@ PrefabInstance:
     - target: {fileID: 523380734999268644, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: shooter
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2135208179}
     - target: {fileID: 523380734999268644, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: shootType
       value: 2
@@ -1309,7 +1309,6 @@ MonoBehaviour:
   blinkBuffer: 1
   leftEyeState: 0
   rightEyeState: 0
-  managerState: 0
   distance: 0
   hitPosition: {x: 0, y: 0, z: 0}
   leftEyeClosed:
@@ -2834,7 +2833,7 @@ PrefabInstance:
     - target: {fileID: 523380734999268644, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: shooter
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2135208179}
     - target: {fileID: 4085762076734583372, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: m_Name
       value: ShootTypeSwitcher
@@ -3017,6 +3016,7 @@ MonoBehaviour:
   lookOutDistance: 0
   autoTime: 30
   activeStats: 00000000
+  activated: 1
   selected: 0
   selectedEventsDelay: []
   deSelectedEventsDelay:
@@ -3269,7 +3269,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 1.1e-44, z: 1.317e-41, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 6e-44, z: 2.1e-44, w: 7.704e-42}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -3714,6 +3714,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2018994015059704635, guid: ca11aa9f8f2562d40bc53c22b23a9536, type: 3}
   m_PrefabInstance: {fileID: 4872153516195932837}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2135208179 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6304446536996827163, guid: ca11aa9f8f2562d40bc53c22b23a9536, type: 3}
+  m_PrefabInstance: {fileID: 4872153516195932837}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf36f830b4fe9a4ca3fbef3fdb5722d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2141625184
 GameObject:
   m_ObjectHideFlags: 0
@@ -3966,7 +3977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2018994015059704635, guid: ca11aa9f8f2562d40bc53c22b23a9536, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: 2018994015059704635, guid: ca11aa9f8f2562d40bc53c22b23a9536, type: 3}
       propertyPath: m_LocalPosition.z

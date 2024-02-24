@@ -5,8 +5,15 @@ using UnityEngine;
 
 public class ScaleFeedback : MonoBehaviour
 {
-    [SerializeField] float scaleOffset = 1.0f;
-    [SerializeField] [Range(0f, 1f)] float scaleLerpSpeed;
+    [SerializeField] float scaleOffset = 1.05f;
+    [SerializeField] [Range(0f, 1f)] float scaleLerpSpeed = 0.15f;
+
+    private Vector3 originalScale;
+
+    private void Start()
+    {
+        originalScale = transform.localScale;
+    }
 
     private IEnumerator ScaleTimer(Vector3 targetScale)
     {
@@ -21,7 +28,7 @@ public class ScaleFeedback : MonoBehaviour
     {
         StopAllCoroutines();
 
-        Vector3 targetScale = transform.localScale + new Vector3(scaleOffset, scaleOffset, scaleOffset);
+        Vector3 targetScale = originalScale * scaleOffset;
         StartCoroutine(ScaleTimer(targetScale));
     }
 
@@ -29,7 +36,6 @@ public class ScaleFeedback : MonoBehaviour
     {
         StopAllCoroutines();
 
-        Vector3 targetScale = transform.localScale - new Vector3(scaleOffset, scaleOffset, scaleOffset);
-        StartCoroutine(ScaleTimer(targetScale));
+        StartCoroutine(ScaleTimer(originalScale));
     }
 }

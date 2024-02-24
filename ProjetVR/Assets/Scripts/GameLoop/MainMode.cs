@@ -20,6 +20,6 @@ public class MainMode : MonoBehaviour
         GameObject instance = Instantiate(tooth, toothSpawnPoint.transform);
 
         instance.transform.localScale = Vector3.zero;
-        instance.transform.DoScale(Vector3.one, 5f);
+        instance.transform.DoScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
     }
 }

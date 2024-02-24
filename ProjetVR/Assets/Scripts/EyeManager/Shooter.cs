@@ -25,11 +25,6 @@ public class Shooter : MonoBehaviour
     public float projectileShootSpeed = 0.25f;
     private float currentProjectileShootSpeed;
 
-    private void Start()
-    {
-        EyeManager.Instance.stateChanged.AddListener(OnManagerStateChanged);
-    }
-
     private void Update()
     {
         //Debug
@@ -62,15 +57,17 @@ public class Shooter : MonoBehaviour
         }
     }
 
-    private void OnManagerStateChanged(EyeManager.ManagerState state)
+    public void EnableShoot()
     {
-        canShoot = state == EyeManager.ManagerState.SHOOT;
+        canShoot = true;
+    }
 
-        if (!canShoot)
-        {
-            leftLaser.DisableLaser();
-            rightLaser.DisableLaser();
-        }
+    public void DisableShoot()
+    { 
+        canShoot = false;
+
+        leftLaser.DisableLaser();
+        rightLaser.DisableLaser();
     }
 
     public void SwitchShootType(ShootType newShootType)

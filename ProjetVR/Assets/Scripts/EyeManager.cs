@@ -33,13 +33,6 @@ public class EyeManager : MonoBehaviour
     private EyeState rightEyeState = EyeState.OPENED;
     #endregion
 
-    public enum ManagerState
-    {
-        SELECTION, SHOOT
-    }
-
-    public ManagerState managerState { get; private set; } = ManagerState.SELECTION;
-
     public Interactable interactable { get; private set; }
 
     [Header("Grab")]
@@ -60,8 +53,6 @@ public class EyeManager : MonoBehaviour
     public UnityEvent rightEyeOpened;
 
     public UnityEvent blink;
-
-    public UnityEvent<ManagerState> stateChanged;
 
     private void Awake()
     {
@@ -180,21 +171,6 @@ public class EyeManager : MonoBehaviour
         }
     }
     #endregion
-
-    public void SwitchState(ManagerState newState)
-    {
-        managerState = newState;
-        stateChanged?.Invoke(managerState);
-
-        switch (managerState)
-        {
-            case ManagerState.SELECTION:
-                break;
-            case ManagerState.SHOOT:
-                interactable.DeSelect();
-                break;
-        }
-    }
 
     private void OnInteractableSelected()
     {

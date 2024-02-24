@@ -25,19 +25,6 @@ public class Shooter : MonoBehaviour
     public float projectileShootSpeed = 0.25f;
     private float currentProjectileShootSpeed;
 
-    private void Update()
-    {
-        //Debug
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            shootType++;
-            if (((int)shootType) > 2)
-                shootType = 0;
-
-            SwitchShootType(shootType);
-        }
-    }
-
     private void FixedUpdate()
     {
         if (!canShoot)

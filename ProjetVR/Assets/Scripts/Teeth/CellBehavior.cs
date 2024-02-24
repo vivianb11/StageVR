@@ -18,40 +18,47 @@ public class CellBehavior : MonoBehaviour
         }
         set
         {
-            teethCellManager.teethCleaned = value;
+            teethCellManager.teethState = TeethState.Clean;
         }
     }
 
-    public bool Activated
+    private bool _localActivated;
+
+    public bool activated
     {
         get
         {
-            return Activated;
+            return _localActivated;
         }
         set
         {
-            Activated = value;
+            _localActivated = value;
             if (value)
             {
-                switch (teethCellManager.teethState)
-                {
-                    case TeethState.Dirty:
-                        this.GetComponent<MeshRenderer>().material = toothGenerator.dirtyMaterial;
-                        break;
-                    case TeethState.Tartar:
-                        this.GetComponent<MeshRenderer>().material = toothGenerator.tartarMaterial;
-                        break;
-                    case TeethState.Decay:
-                        this.GetComponent<MeshRenderer>().material = toothGenerator.decayMaterial;
-                        break;
-                }
+                SetMaterials();
             }
+        }
+    }
+
+    private void SetMaterials()
+    {
+        switch (teethCellManager.teethState)
+        {
+            case TeethState.Dirty:
+                this.GetComponent<MeshRenderer>().material = toothGenerator.dirtyMaterial;
+                break;
+            case TeethState.Tartar:
+                this.GetComponent<MeshRenderer>().material = toothGenerator.tartarMaterial;
+                break;
+            case TeethState.Decay:
+                this.GetComponent<MeshRenderer>().material = toothGenerator.decayMaterial;
+                break;
         }
     }
 
     private void Awake()
     {
-        Activated = false;
+        _localActivated = false;
     }
 
     void Start()
@@ -62,7 +69,7 @@ public class CellBehavior : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (!Activated || Cleaned)
+        if (!_localActivated || Cleaned)
             return;
 
         switch(teethCellManager.teethState)

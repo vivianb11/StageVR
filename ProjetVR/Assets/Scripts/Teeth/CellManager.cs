@@ -8,15 +8,16 @@ public class CellManager : MonoBehaviour
     [HideInInspector]
     public ToothGenerator toothGenerator;
 
+    private TeethState localTeethState;
     public TeethState teethState
     {
         get
         {
-            return teethState;
+            return localTeethState;
         }
         set
         {
-            teethState = value;
+            localTeethState = value;
             
             if (value == TeethState.Clean)
             {

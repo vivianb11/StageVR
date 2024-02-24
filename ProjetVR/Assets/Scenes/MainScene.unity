@@ -932,14 +932,6 @@ PrefabInstance:
       propertyPath: deSelectionCondition
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
-      propertyPath: activeStats.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
-      propertyPath: onSelected.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6860579192178518838, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1056,14 +1048,6 @@ PrefabInstance:
     - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: deSelectionCondition
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
-      propertyPath: activeStats.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
-      propertyPath: onSelected.m_PersistentCalls.m_Calls.Array.size
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6860579192178518838, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: m_LocalScale.x
@@ -1326,7 +1310,7 @@ MonoBehaviour:
   leftEyeState: 0
   rightEyeState: 0
   managerState: 0
-  normalOffset: 0.5
+  distance: 0
   hitPosition: {x: 0, y: 0, z: 0}
   leftEyeClosed:
     m_PersistentCalls:
@@ -2213,7 +2197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1335629872053293077, guid: 59e0dc2c17b593742844d3730fcb8c92, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.531
+      value: -1.412
       objectReference: {fileID: 0}
     - target: {fileID: 1335629872053293077, guid: 59e0dc2c17b593742844d3730fcb8c92, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2221,23 +2205,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1335629872053293077, guid: 59e0dc2c17b593742844d3730fcb8c92, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.262
+      value: 0.101
       objectReference: {fileID: 0}
     - target: {fileID: 1335629872053293077, guid: 59e0dc2c17b593742844d3730fcb8c92, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.76008946
       objectReference: {fileID: 0}
     - target: {fileID: 1335629872053293077, guid: 59e0dc2c17b593742844d3730fcb8c92, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1335629872053293077, guid: 59e0dc2c17b593742844d3730fcb8c92, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.6498185
       objectReference: {fileID: 0}
     - target: {fileID: 1335629872053293077, guid: 59e0dc2c17b593742844d3730fcb8c92, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1335629872053293077, guid: 59e0dc2c17b593742844d3730fcb8c92, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2245,7 +2229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1335629872053293077, guid: 59e0dc2c17b593742844d3730fcb8c92, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -81.056
       objectReference: {fileID: 0}
     - target: {fileID: 1335629872053293077, guid: 59e0dc2c17b593742844d3730fcb8c92, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2595,10 +2579,6 @@ PrefabInstance:
       propertyPath: deSelectionCondition
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
-      propertyPath: activeStats.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4861434662870990660, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.25
@@ -2891,14 +2871,6 @@ PrefabInstance:
       propertyPath: deSelectionCondition
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
-      propertyPath: activeStats.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5574805091260862722, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
-      propertyPath: onSelected.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6860579192178518838, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -3045,7 +3017,6 @@ MonoBehaviour:
   lookOutDistance: 0
   autoTime: 30
   activeStats: 00000000
-  canAlwaysInteract: 0
   selected: 0
   selectedEventsDelay: []
   deSelectedEventsDelay:
@@ -3298,7 +3269,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.3958644e+10, y: 3015.1533, z: 7.564175e+28, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 1.1e-44, z: 1.317e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -3882,10 +3853,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
       propertyPath: deSelectionCondition
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}
-      propertyPath: activeStats.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1415125378685018430, guid: 6d4bd354fa7ba1745944088b05eaa9b4, type: 3}

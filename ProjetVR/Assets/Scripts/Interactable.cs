@@ -7,6 +7,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using UnityEngine.UI;
 using System.Linq;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Interactable : MonoBehaviour
@@ -44,10 +45,8 @@ public class Interactable : MonoBehaviour
     [ShowIf("deSelectionCondition", DeSelectionCondition.AUTO_TIME)]
     public float autoTime;
 
-    [Header("Active In State")]
-    public List<EyeManager.ManagerState> activeStats = new List<EyeManager.ManagerState> { EyeManager.ManagerState.SELECTION };
+    public bool activated { get; set; } = true;
 
-    public bool activated = true;
     [HideInInspector]
     public bool canBeInteracted { get; private set; } = true;
 
@@ -63,6 +62,8 @@ public class Interactable : MonoBehaviour
     public UnityEvent lookIn;
     public UnityEvent lookOut;
 
+    public UnityEvent<bool> activeStateChanged;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -71,15 +72,14 @@ public class Interactable : MonoBehaviour
     private void Start()
     {
         EyeManager eyeManager = EyeManager.Instance;
-
-        eyeManager.stateChanged.AddListener(OnManagerStateChanged);
-
-        OnManagerStateChanged(eyeManager.managerState);
     }
 
-    private void OnManagerStateChanged(EyeManager.ManagerState managerState)
+    public void SetActivateState(bool value)
     {
-        activated = activeStats.Contains(managerState) || activeStats.Count == 0;
+        if (activated != value)
+            activeStateChanged?.Invoke(value);
+
+        activated = value;
     }
 
     public void LookIn() 

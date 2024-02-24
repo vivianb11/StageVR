@@ -376,6 +376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2018994015059704635}
   - component: {fileID: 6304446536996827163}
+  - component: {fileID: 199010179334806657}
   m_Layer: 0
   m_Name: Shooter
   m_TagString: Untagged
@@ -419,3 +420,50 @@ MonoBehaviour:
   rightLaser: {fileID: 6273801822263842070}
   projectile: {fileID: 3322682745765520677, guid: b55206dfe2b981a4c84e5268e37f573d, type: 3}
   projectileShootSpeed: 0.05
+--- !u!114 &199010179334806657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8796759962804992029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79ed2aff5135e64888d5865c96135dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal:
+  - {fileID: 11400000, guid: 8d13342a7545c6849ac4960193887a3e, type: 2}
+  - {fileID: 11400000, guid: a6242dd3c656efa48a0d64afac9482d4, type: 2}
+  - {fileID: 11400000, guid: 2afc53e7bb0f4444fbec1b469ca83f4d, type: 2}
+  - {fileID: 11400000, guid: 86f185bb16d43b64594e952a07688fa1, type: 2}
+  signalReceived:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6304446536996827163}
+        m_TargetAssemblyTypeName: Shooter, Assembly-CSharp
+        m_MethodName: EnableShoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  signalLost:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6304446536996827163}
+        m_TargetAssemblyTypeName: Shooter, Assembly-CSharp
+        m_MethodName: DisableShoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

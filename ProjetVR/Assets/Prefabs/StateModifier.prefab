@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6306701896898565398}
   - component: {fileID: 7909543005189230990}
   - component: {fileID: 1415125378685018430}
-  - component: {fileID: 7363347286970257783}
   - component: {fileID: 2798922898388456504}
   m_Layer: 0
   m_Name: StateModifier
@@ -104,17 +103,15 @@ MonoBehaviour:
   lookOutTime: 1
   lookOutDistance: 0
   autoTime: 0
-  activeStats: 
-  activated: 1
   selected: 0
   selectedEventsDelay: []
   deSelectedEventsDelay: []
   onSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7363347286970257783}
-        m_TargetAssemblyTypeName: StateSwitcher, Assembly-CSharp
-        m_MethodName: SetManagerState
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SignalEmitter, Assembly-CSharp
+        m_MethodName: RequestSignalCall
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -157,19 +154,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7363347286970257783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1126838963202697087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 215230d6ee6e9354283ab196eb3a3d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  managerState: 0
+  activeStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2798922898388456504
 MonoBehaviour:
   m_ObjectHideFlags: 0

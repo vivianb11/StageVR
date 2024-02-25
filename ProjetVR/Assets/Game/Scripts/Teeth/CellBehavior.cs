@@ -2,29 +2,46 @@ using System;
 using UnityEngine;
 using NaughtyAttributes;
 using UnityEngine.Events;
-using System.ComponentModel;
+using SignalSystem;
 
 public class CellBehavior : MonoBehaviour
 {
     public TeethState teethState;
 
-    public UnityEvent OnClean;
+    public UnityEvent OnClean = new UnityEvent();
 
-    private float maxToothPasteAmount;
-    private float toothPasteAmount;
+    private int maxToothPasteAmount = 10;
+    public int toothPasteAmount;
 
-    private ToothManager toothGenerator;
+    private bool selected;
+
+    private ToothManager toothManager;
     private MeshRenderer mR;
 
     private void Start()
     {
-        toothGenerator = transform.parent.GetComponent<ToothManager>();
+        toothManager = transform.parent.GetComponent<ToothManager>();
         mR = GetComponent<MeshRenderer>();
+
+        Interactable interactable = gameObject.AddComponent<Interactable>();
+        SignalListener signalListener = gameObject.AddComponent<SignalListener>();
+
+        interactable.onSelected.AddListener(TartarBehavior);
+        interactable.deSelectionCondition = Interactable.DeSelectionCondition.LOOK_OUT;
+
+        interactable.lookIn.AddListener(() => SetSelected(true));
+        interactable.lookOut.AddListener(() => SetSelected(false));
+
+        signalListener.signal.Add(toothManager.brushSignal);
+        signalListener.signalReceived.AddListener(() => interactable.SetActivateState(true));
+        signalListener.signalLost.AddListener(() => interactable.SetActivateState(false));
+
+        OnClean.AddListener(() => interactable.enabled = false);
     }
 
     public void FixedUpdate()
     {
-        if (teethState == TeethState.Clean)
+        if (!selected)
             return;
 
         switch(teethState)
@@ -41,9 +58,24 @@ public class CellBehavior : MonoBehaviour
         }
     }
 
-    private void SetMaterials()
+    public void SetSelected(bool value)
     {
-        switch (teethState)
+        selected = value;
+    }
+
+    public bool ToothPasteFull()
+    {
+        return toothPasteAmount == maxToothPasteAmount;
+    }
+
+    public void IncreaseToothPasteAmount()
+    {
+        toothPasteAmount = Mathf.Clamp(toothPasteAmount + 1, 0, maxToothPasteAmount);
+    }
+
+    private void SetMaterials(TeethState state)
+    {
+        switch (state)
         {
             case TeethState.Clean:
                 mR.material = toothGenerator.cleanMat;
@@ -64,28 +96,33 @@ public class CellBehavior : MonoBehaviour
     {
         teethState = newTeethState;
 
-        SetMaterials();
+        SetMaterials(teethState);
     }
 
     [Button("Clean Cell")]
     private void CleanCell()
     {
-        teethState = TeethState.Clean;
+        SwitchTeethState(TeethState.Clean);
+        toothPasteAmount = 0;
 
         OnClean.Invoke();
+        Debug.Log("Clean Cell");
     }
 
-    private void DecayBehavior()
+    public void DecayBehavior()
     {
         Debug.LogWarning("DecayBehavior Not Implemented!");
     }
 
-    private void TartarBehavior()
+    public void TartarBehavior()
     {
-        Debug.LogWarning("TartarBehavior Not Implemented!");
+        if (!ToothPasteFull())
+            return;
+
+        CleanCell();
     }
 
-    private void DirtyBehavior()
+    public void DirtyBehavior()
     {
         Debug.LogWarning("DirtyBehavior Not Implemented!");
     }

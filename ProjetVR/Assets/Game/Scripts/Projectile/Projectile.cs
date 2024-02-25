@@ -34,16 +34,22 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        if (other.GetComponentInParent<CellBehavior>().teethState == TeethState.Clean)
-        { 
-            Destroy(gameObject);
+        if (other.TryGetComponent(out CellBehavior cell) && cell.teethState == TeethState.Tartar && !cell.ToothPasteFull())
+        {
+            body.velocity = Vector3.zero;
+            GetComponent<Collider>().enabled = false;
+
+            StopAllCoroutines();
+            body.isKinematic = true;
+            transform.parent = other.transform;
+
+            cell.IncreaseToothPasteAmount();
+            cell.OnClean.AddListener(() => Destroy(gameObject));
+
             return;
         }
 
-        body.velocity = Vector3.zero;
-        StopAllCoroutines();
-        body.isKinematic = true;
-        transform.parent = other.transform;
+        Destroy(gameObject);
     }
 
     private IEnumerator KillTimer()

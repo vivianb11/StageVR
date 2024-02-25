@@ -4,6 +4,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using NaughtyAttributes;
 using System.Linq;
+using SignalSystem;
 
 public class ToothManager : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class ToothManager : MonoBehaviour
     public Material tartarMat;
     [Foldout("Materials")]
     public Material decayMat;
+
+    public SO_Signal brushSignal;
 
     private List<GameObject> teethCells = new List<GameObject>();
 

@@ -46,16 +46,16 @@ public class CellBehavior : MonoBehaviour
         switch (teethState)
         {
             case TeethState.Clean:
-                mR.material = toothGenerator.cleanMaterial;
+                mR.material = toothGenerator.cleanMat;
                 break;
             case TeethState.Dirty:
-                mR.material = toothGenerator.dirtyMaterial;
+                mR.material = toothGenerator.dirtyMat;
                 break;
             case TeethState.Tartar:
-                mR.material = toothGenerator.tartarMaterial;
+                mR.material = toothGenerator.tartarMat;
                 break;
             case TeethState.Decay:
-                mR.material = toothGenerator.decayMaterial;
+                mR.material = toothGenerator.decayMat;
                 break;
         }
     }

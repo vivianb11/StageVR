@@ -8,13 +8,15 @@ public class SO_TeethGrenration : ScriptableObject
     [Header("Generation Settings")]
     public int numberOfPeices;
 
+    public bool hasDirty, hasTartar, hasDecay;
+
     [Space(10)]
     [Range(0, 10)]
     public int minClean;
     [Space(10)]
     [MinMaxSlider(0, 10)]
-    public Vector2Int minMaxAnomalies;
-    public AnimationCurve anomalieChance;
+    public Vector2Int minMaxUnClean;
+    public AnimationCurve unCleanChance;
 
 
     [ShowIf("Dirty")]

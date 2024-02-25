@@ -1,9 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "New Signal", menuName = "ScriptableObject/Signal")]
-public class SO_Signal : ScriptableObject
+namespace SignalSystem
 {
-    public string signalName;
+    [CreateAssetMenu(fileName = "New Signal", menuName = "ScriptableObject/Signal")]
+    public class SO_Signal : ScriptableObject
+    {
+        public string signalName;
+    }
 }

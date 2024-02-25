@@ -1,30 +1,33 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SignalListener : MonoBehaviour
+namespace SignalSystem
 {
-    public SO_Signal[] signal;
-
-    public UnityEvent signalReceived;
-
-    public UnityEvent signalLost;
-
-    private void Start()
+    public class SignalListener : MonoBehaviour
     {
-        SignalManager.Instance.signalCalled.AddListener(OnSignalReceived);
-    }
+        public SO_Signal[] signal;
 
-    private void OnSignalReceived(string value)
-    {
-        foreach (SO_Signal eventName in signal)
+        public UnityEvent signalReceived;
+
+        public UnityEvent signalLost;
+
+        private void Start()
         {
-            if (eventName.signalName == value)
-            {
-                signalReceived?.Invoke();
-                return;
-            }
+            SignalManager.Instance.signalCalled.AddListener(OnSignalReceived);
         }
 
-        signalLost?.Invoke();
+        private void OnSignalReceived(string value)
+        {
+            foreach (SO_Signal soSignal in signal)
+            {
+                if (soSignal.signalName == value)
+                {
+                    signalReceived?.Invoke();
+                    return;
+                }
+            }
+
+            signalLost?.Invoke();
+        }
     }
 }

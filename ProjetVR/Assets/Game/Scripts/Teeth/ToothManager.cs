@@ -34,8 +34,6 @@ public class ToothManager : MonoBehaviour
 
     private List<GameObject> teethCells = new List<GameObject>();
 
-    public List<int> test;
-
     public float CleanAmount
     {
         get
@@ -76,9 +74,6 @@ public class ToothManager : MonoBehaviour
         {
             Debug.Log(CleanAmount);
         }
-
-        Debug.Log(test[0]);
-        test.Shuffle();
     }
 
     private void ResetTeeth()

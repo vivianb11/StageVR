@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -15,6 +14,9 @@ public class ToothManager : MonoBehaviour
     }
 
     public GenerationMode generationMode = GenerationMode.Random;
+
+    List<int> cellsState;
+    private List<bool> settedCells;
 
     public GameObject Tooth;
 
@@ -99,14 +101,20 @@ public class ToothManager : MonoBehaviour
 
     private void SetupCells()
     {
-        List<int> cellsState = new List<int>(teethCells.Count);
-        List<bool> settedCells = new List<bool>(teethCells.Count);
+        cellsState = new List<int>(teethCells.Count);
+        settedCells = new List<bool>(teethCells.Count);
 
         for (int i = 0; i < teethCells.Count; i++)
         {
-            List<int> unChangedCells = new List<int>(settedCells.Where(x => x == false).ToList().Count);
+            cellsState.Add(0);
+            settedCells.Add(false);
+        }
 
-            for (int j = 0; j < teethCells.Count; j++)
+        for (int i = 0; i < teethCells.Count; i++)
+        {
+            List<int> unChangedCells = new List<int>(settedCells.Where(x => x == false).Count());
+
+            for (int j = 0; j < settedCells.Count; j++)
             {
                 if (settedCells[j] == false)
                 {
@@ -114,41 +122,23 @@ public class ToothManager : MonoBehaviour
                 }
             }
 
-            int cellIndex = unChangedCells[Random.Range(0, unChangedCells.Count)];
+            int y = Random.Range(0, unChangedCells.Count);
+
+            int cellIndex = unChangedCells[y];
 
             settedCells[cellIndex] = true;
 
-            if (cellsState.Where(cellsState => cellsState == (int)TeethState.Clean).Count() < generationParameter.minClean)
+            if (cellsState.Where(cellsState => cellsState == (int)TeethState.Clean).Count() < generationParameter.minMaxClean.x)
             {
                 cellsState[cellIndex] = (int)TeethState.Clean;
             }
+            else if (cellsState.Where(cellsState => cellsState == (int)TeethState.Clean).Count() > generationParameter.minMaxClean.y)
+            {
+                ChooseAnomaly(cellIndex, true);
+            }
             else
             {
-                int randomState = (int)Random.Range(0, 101);
-
-                if (randomState < generationParameter.unCleanChance.Evaluate((float)cellsState.Where(cellsState => cellsState == (int)TeethState.Clean).Count() / generationParameter.numberOfPeices))
-                {
-                    cellsState[cellIndex] = (int)TeethState.Clean;
-                }
-                else
-                {
-                    //chooses a random anomalie depending if it has it or not
-                    List<bool> activeAnomalies = new List<bool> { generationParameter.hasDirty, generationParameter.hasTartar, generationParameter.hasDecay };
-                    int randomAnomalie = Random.Range(0, activeAnomalies.Where(x => x == true).Count());
-
-                    if (randomAnomalie == 0)
-                    {
-                        cellsState[cellIndex] = DirtyGeneration();
-                    }
-                    else if (randomAnomalie == 1)
-                    {
-                        cellsState[cellIndex] = TartarGeneration();
-                    }
-                    else if (randomAnomalie == 2)
-                    {
-                        cellsState[cellIndex] = DecayGeneration();
-                    }
-                }
+                ChooseAnomaly(cellIndex);
             }
         }
 
@@ -158,18 +148,90 @@ public class ToothManager : MonoBehaviour
         }
     }
 
-    private int DirtyGeneration()
+    private void ChooseAnomaly(int cellIndex)
     {
-        return Random.Range(0, 101) < generationParameter.dirtyChance.Evaluate(Random.Range(0, 1)) ? (int)TeethState.Dirty : (int)TeethState.Clean;
+        List<TeethState> activeAnomalies = generationParameter.GetActives(false);
+
+        TeethState teethState = activeAnomalies[Random.Range(0, activeAnomalies.Count)];
+
+        switch (teethState)
+        {
+            case TeethState.Dirty:
+                cellsState[cellIndex] = DirtyGeneration(cellIndex, false);
+                break;
+            case TeethState.Tartar:
+                cellsState[cellIndex] = TartarGeneration(cellIndex, false);
+                break;
+            case TeethState.Decay:
+                cellsState[cellIndex] = DecayGeneration(cellIndex, false);
+                break;
+        }
     }
 
-    private int TartarGeneration()
+    private void ChooseAnomaly(int cellIndex, bool withClean)
     {
-        return Random.Range(0, 101) < generationParameter.tartarChance.Evaluate(Random.Range(0, 1)) ? (int)TeethState.Tartar : (int)TeethState.Clean;
+        List<TeethState> activeAnomalies = generationParameter.GetActives(withClean);
+
+        TeethState teethState = activeAnomalies[Random.Range(0, activeAnomalies.Count)];
+
+        switch (teethState)
+        {
+            case TeethState.Dirty:
+                cellsState[cellIndex] = DirtyGeneration(cellIndex, withClean);
+                break;
+            case TeethState.Tartar:
+                cellsState[cellIndex] = TartarGeneration(cellIndex, withClean);
+                break;
+            case TeethState.Decay:
+                cellsState[cellIndex] = DecayGeneration(cellIndex, withClean);
+                break;
+            case TeethState.Clean:
+                cellsState[cellIndex] = CleanGeneration(cellIndex, withClean);
+                break;
+        }
     }
 
-    private int DecayGeneration()
+    private int DirtyGeneration(int cellIndex, bool withClean)
     {
-        return Random.Range(0, 101) < generationParameter.decayChance.Evaluate(Random.Range(0, 1)) ? (int)TeethState.Decay : (int)TeethState.Clean;
+        int x = Random.Range(0, 1) < generationParameter.dirtyChance.Evaluate(Random.Range(0, 1)) ? (int)TeethState.Dirty : (int)TeethState.Clean;
+
+        if (x == (int)TeethState.Clean)
+        {
+            CleanGeneration(cellIndex, withClean);
+        }
+        return x;
+    }
+
+    private int TartarGeneration(int cellIndex, bool withClean)
+    {
+        int x = Random.Range(0, 1) < generationParameter.tartarChance.Evaluate(Random.Range(0, 1)) ? (int)TeethState.Tartar : (int)TeethState.Clean;
+
+        if (x == (int)TeethState.Clean)
+        {
+            CleanGeneration(cellIndex, withClean);
+        }
+        return x;
+    }
+
+    private int DecayGeneration(int cellIndex, bool WithClean)
+    {
+        int x = Random.Range(0, 1) < generationParameter.decayChance.Evaluate(Random.Range(0, 1)) ? (int)TeethState.Decay : (int)TeethState.Clean;
+
+        if (x == (int)TeethState.Clean)
+        {
+            CleanGeneration(cellIndex, WithClean);
+        }
+        return x;
+    }
+
+    private int CleanGeneration(int cellIndex, bool withClean)
+    {
+        int x = Random.Range(0, 1) < generationParameter.weightClean ? (int)TeethState.Clean : (int)TeethState.Dirty;
+
+        if (x != (int)TeethState.Clean)
+        {
+            DirtyGeneration(cellIndex, withClean);
+        }
+        return x;
     }
 }

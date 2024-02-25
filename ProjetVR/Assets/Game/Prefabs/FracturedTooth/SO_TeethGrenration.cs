@@ -1,6 +1,5 @@
 using NaughtyAttributes;
 using System;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "TeethGeneration_", menuName = "ScriptableObject/TeethGeneration", order = 0)]

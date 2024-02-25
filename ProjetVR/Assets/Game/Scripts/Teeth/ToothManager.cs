@@ -23,7 +23,7 @@ public class ToothManager : MonoBehaviour
     {
         get
         {
-            float cleandCells = teethCells.FindAll(x => x.GetComponent<CellManager>().teethState == TeethState.Clean).Count;
+            float cleandCells = teethCells.FindAll(x => x.GetComponent<CellBehavior>().teethState == TeethState.Clean).Count;
             float totalCells = teethCells.Count;
 
             return cleandCells / totalCells;
@@ -61,19 +61,17 @@ public class ToothManager : MonoBehaviour
         }
     }
 
+    private void ResetTeeth()
+    {
+        SetupCells();
+    }
+
     private void SetupCells()
     {
         foreach (var cell in teethCells)
         {
-            var cellManager = cell.GetComponent<CellManager>();
-            cellManager.toothGenerator = this;
-            cellManager.teethState = (TeethState)Random.Range(0, Enum.GetValues(typeof (TeethState)).Length);
-            cellManager.GetComponent<CellBehavior>().activated = true;
+            var cellBehaviour = cell.GetComponent<CellBehavior>();
+            cellBehaviour.SwitchTeethState((TeethState)Random.Range(0, Enum.GetValues(typeof (TeethState)).Length));
         }
-    }
-
-    private void ResetTeeth()
-    {
-        SetupCells();
     }
 }

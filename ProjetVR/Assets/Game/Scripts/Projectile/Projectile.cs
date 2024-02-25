@@ -34,7 +34,7 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        if (other.GetComponentInParent<CellManager>().teethCleaned)
+        if (other.GetComponentInParent<CellBehavior>().teethState == TeethState.Clean)
         { 
             Destroy(gameObject);
             return;

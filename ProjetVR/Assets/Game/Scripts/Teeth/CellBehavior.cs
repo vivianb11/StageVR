@@ -1,55 +1,49 @@
 using System;
 using UnityEngine;
 using NaughtyAttributes;
+using UnityEngine.Events;
+using System.ComponentModel;
 
-[RequireComponent(typeof(CellManager))]
 public class CellBehavior : MonoBehaviour
 {
-    private CellManager teethCellManager;
+    public TeethState teethState;
+
+    public UnityEvent OnClean;
+
+    private float maxToothPasteAmount;
+    private float toothPasteAmount;
 
     private ToothManager toothGenerator;
-
     private MeshRenderer mR;
 
-    public bool Cleaned
+    private void Start()
     {
-        get
-        {
-            return teethCellManager.teethCleaned;
-        }
-        set
-        {
-            if (value)
-            {
-                teethCellManager.teethState = TeethState.Clean; 
-                SetMaterials();
-
-                activated = false;
-            }
-            else
-                Debug.LogWarning("Cannot unclean a cell");
-        }
+        toothGenerator = transform.parent.GetComponent<ToothManager>();
+        mR = GetComponent<MeshRenderer>();
     }
 
-    private bool _localActivated;
-
-    public bool activated
+    public void FixedUpdate()
     {
-        get
+        if (teethState == TeethState.Clean)
+            return;
+
+        switch(teethState)
         {
-            return _localActivated;
-        }
-        set
-        {
-            _localActivated = value;
-            
-            SetMaterials();
+            case TeethState.Dirty:
+                DirtyBehavior();
+                break;
+            case TeethState.Tartar:
+                TartarBehavior();
+                break;
+            case TeethState.Decay:
+                DecayBehavior();
+                break;
         }
     }
 
     private void SetMaterials()
     {
-        switch (teethCellManager.teethState)
+        switch (teethState)
         {
             case TeethState.Clean:
                 mR.material = toothGenerator.cleanMaterial;
@@ -66,54 +60,33 @@ public class CellBehavior : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void SwitchTeethState(TeethState newTeethState)
     {
-        teethCellManager = GetComponent<CellManager>();
-        toothGenerator = transform.parent.GetComponent<ToothManager>();
+        teethState = newTeethState;
 
-        mR = GetComponent<MeshRenderer>();
-
-        activated = true;
-        activated = false;
-    }
-
-    public void FixedUpdate()
-    {
-        if (Cleaned || activated)
-            return;
-
-        switch(teethCellManager.teethState)
-        {
-            case TeethState.Dirty:
-                DirtyBehavior();
-                break;
-            case TeethState.Tartar:
-                TartarBehavior();
-                break;
-            case TeethState.Decay:
-                DecayBehavior();
-                break;
-        }
+        SetMaterials();
     }
 
     [Button("Clean Cell")]
     private void CleanCell()
     {
-        Cleaned = true;
+        teethState = TeethState.Clean;
+
+        OnClean.Invoke();
     }
 
     private void DecayBehavior()
     {
-        throw new NotImplementedException();
+        Debug.LogWarning("DecayBehavior Not Implemented!");
     }
 
     private void TartarBehavior()
     {
-        throw new NotImplementedException();
+        Debug.LogWarning("TartarBehavior Not Implemented!");
     }
 
     private void DirtyBehavior()
     {
-        throw new NotImplementedException();
+        Debug.LogWarning("DirtyBehavior Not Implemented!");
     }
 }

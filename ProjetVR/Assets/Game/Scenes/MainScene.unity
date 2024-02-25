@@ -451,6 +451,11 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1 &347741928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5916763766991782060, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
+  m_PrefabInstance: {fileID: 1426553059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &383678131
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,7 +744,7 @@ GameObject:
   m_Component:
   - component: {fileID: 437110776}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2281,7 +2286,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7993601657887319411, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 532045217}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5916763766991782060, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1821299266}
   m_SourcePrefab: {fileID: 100100000, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
 --- !u!1 &1442063702
 GameObject:
@@ -3001,7 +3009,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 0, z: 0, w: 2.4551715e-35}
+  m_BoundingSphereOverride: {x: -3.725737e+36, y: 6e-44, z: 9e-44, w: 1.4509e-41}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -3049,7 +3057,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5862919521580615026, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
   m_PrefabInstance: {fileID: 1426553059}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 347741928}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46c2eaadb3c6a2543ba7d16fd49216df, type: 3}
@@ -3060,6 +3068,61 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7993601657887319411, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
   m_PrefabInstance: {fileID: 1426553059}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1821299265 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1571244665301501261, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
+  m_PrefabInstance: {fileID: 1426553059}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347741928}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af0805536d4d3954db43464ca4cbd840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1821299266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347741928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79ed2aff5135e64888d5865c96135dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal:
+  - {fileID: 11400000, guid: 117d694d618b2ab43b6beb0bf6c8330a, type: 2}
+  signalReceived:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1821299265}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetActivateState
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  signalLost:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1821299265}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: SetActivateState
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1938690155
 GameObject:
   m_ObjectHideFlags: 0
@@ -3707,6 +3770,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 814633531}
     m_Modifications:
+    - target: {fileID: 199010179334806657, guid: ca11aa9f8f2562d40bc53c22b23a9536, type: 3}
+      propertyPath: signal.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2018994015059704635, guid: ca11aa9f8f2562d40bc53c22b23a9536, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

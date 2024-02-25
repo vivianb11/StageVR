@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using NaughtyAttributes;
+using SignalSystem;
 
 public class ToothManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class ToothManager : MonoBehaviour
     public Material tartarMaterial;
     [Foldout("Materials")]
     public Material decayMaterial;
+
+    public SO_Signal brushSignal;
 
     private List<GameObject> teethCells = new List<GameObject>();
 

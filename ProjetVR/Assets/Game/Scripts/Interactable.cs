@@ -53,16 +53,16 @@ public class Interactable : MonoBehaviour
     public bool selected;
 
     [Header("Events")]
-    public EventDelay[] selectedEventsDelay;
-    public EventDelay[] deSelectedEventsDelay;
+    public EventDelay[] selectedEventsDelay = new EventDelay[0];
+    public EventDelay[] deSelectedEventsDelay = new EventDelay[0];
     [Space(10)]
-    public UnityEvent onSelected;
-    public UnityEvent onDeselected;
+    public UnityEvent onSelected = new UnityEvent();
+    public UnityEvent onDeselected = new UnityEvent();
     [Space(10)]
-    public UnityEvent lookIn;
-    public UnityEvent lookOut;
+    public UnityEvent lookIn = new UnityEvent();
+    public UnityEvent lookOut = new UnityEvent();
 
-    public UnityEvent<bool> activeStateChanged;
+    public UnityEvent<bool> activeStateChanged = new UnityEvent<bool>();
 
     private void Awake()
     {

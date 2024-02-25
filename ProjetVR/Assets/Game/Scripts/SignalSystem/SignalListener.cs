@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,11 +6,11 @@ namespace SignalSystem
 {
     public class SignalListener : MonoBehaviour
     {
-        public SO_Signal[] signal;
+        public List<SO_Signal> signal = new List<SO_Signal>();
 
-        public UnityEvent signalReceived;
+        public UnityEvent signalReceived = new UnityEvent();
 
-        public UnityEvent signalLost;
+        public UnityEvent signalLost = new UnityEvent();
 
         private void Start()
         {

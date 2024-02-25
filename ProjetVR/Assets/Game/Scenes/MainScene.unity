@@ -1001,6 +1001,18 @@ PrefabInstance:
       propertyPath: signal
       value: 
       objectReference: {fileID: 11400000, guid: 8d13342a7545c6849ac4960193887a3e, type: 2}
+    - target: {fileID: 7700673980156593859, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: signal.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700673980156593859, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: signal.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d13342a7545c6849ac4960193887a3e, type: 2}
+    - target: {fileID: 7700673980156593859, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: signal.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: fd50f06be32fee7448d872b89abecf9f, type: 2}
     m_RemovedComponents:
     - {fileID: 4357408738829577742, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
     m_RemovedGameObjects: []
@@ -1127,6 +1139,10 @@ PrefabInstance:
       propertyPath: signal
       value: 
       objectReference: {fileID: 11400000, guid: 8d13342a7545c6849ac4960193887a3e, type: 2}
+    - target: {fileID: 7700673980156593859, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: signal.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d13342a7545c6849ac4960193887a3e, type: 2}
     m_RemovedComponents:
     - {fileID: 4357408738829577742, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
     m_RemovedGameObjects: []
@@ -1153,6 +1169,7 @@ GameObject:
   - component: {fileID: 787574911}
   - component: {fileID: 787574913}
   - component: {fileID: 787574916}
+  - component: {fileID: 787574917}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1167,13 +1184,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787574910}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f41294f478d862140b9800916e3a2658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UseEyeTracking: 0
   UseDynamicFoveatedRendering: 0
+  signalEmitter: {fileID: 787574917}
 --- !u!4 &787574912
 Transform:
   m_ObjectHideFlags: 0
@@ -1216,6 +1234,20 @@ MonoBehaviour:
   signalCalled:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &787574917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787574910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dae52e83b0b07c443897220b727e59c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal:
+  - {fileID: 11400000, guid: 117d694d618b2ab43b6beb0bf6c8330a, type: 2}
 --- !u!1 &814633530
 GameObject:
   m_ObjectHideFlags: 0
@@ -2790,6 +2822,10 @@ PrefabInstance:
       propertyPath: signal
       value: 
       objectReference: {fileID: 11400000, guid: 8d13342a7545c6849ac4960193887a3e, type: 2}
+    - target: {fileID: 7700673980156593859, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: signal.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d13342a7545c6849ac4960193887a3e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -3009,7 +3045,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: -3.725737e+36, y: 6e-44, z: 9e-44, w: 1.4509e-41}
+  m_BoundingSphereOverride: {x: 7.2e-43, y: 1.36e-43, z: 3.0314e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -3761,7 +3797,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dae52e83b0b07c443897220b727e59c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: 117d694d618b2ab43b6beb0bf6c8330a, type: 2}
+  signal:
+  - {fileID: 11400000, guid: 117d694d618b2ab43b6beb0bf6c8330a, type: 2}
 --- !u!1001 &4872153516195932837
 PrefabInstance:
   m_ObjectHideFlags: 0

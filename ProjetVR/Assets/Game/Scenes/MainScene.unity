@@ -451,11 +451,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!1 &347741928 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5916763766991782060, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
-  m_PrefabInstance: {fileID: 1426553059}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &383678131
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,7 +670,7 @@ MonoBehaviour:
         m_MethodName: SetAsChild
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 1192642885}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -820,10 +815,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1821299261}
         m_TargetAssemblyTypeName: Mascotte, Assembly-CSharp
         m_MethodName: SetTask
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1192642889}
+          m_ObjectArgumentAssemblyTypeName: ToothManager, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -835,7 +830,7 @@ MonoBehaviour:
   detectionRadius: 0.1
   snapDistance: 0.1
   snappableObjects:
-  - {fileID: 0}
+  - {fileID: 1192642884}
 --- !u!135 &532045219
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1778,6 +1773,670 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 414778612}
     m_Modifications:
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].MontageName
+      value: Spawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].MontageName
+      value: Spawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].MontageName
+      value: DeSpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].waitPreviousMontage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].to.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].to.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].to.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[0].to.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[0].to.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[0].to.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[1].to.z
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].to.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].to.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[3].to.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].to.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].to.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].to.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].to.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].to.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].to.z
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].duration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[0].duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[1].duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].duration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[3].duration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].duration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].duration
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].propertie
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[1].propertie
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].propertie
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[3].propertie
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].propertie
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].propertie
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].useDynamicFrom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[1].useDynamicFrom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].useDynamicFrom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[3].useDynamicFrom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].useDynamicFrom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].useDynamicFrom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_PreInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[1].curve.m_PreInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_PreInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[3].curve.m_PreInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].curve.m_PreInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].curve.m_PreInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[1].curve.m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[3].curve.m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].curve.m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].curve.m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[0].curve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[1].curve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[3].curve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].curve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].curve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].waitForPreviousTweenProperty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[3].waitForPreviousTweenProperty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[1].time
+      value: 0.336583
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[2].time
+      value: 0.550666
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[3].time
+      value: 0.779498
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[4].time
+      value: 0.897999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[5].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[0].curve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[1].curve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[2].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[3].curve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].curve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].curve.m_Curve.Array.data[2].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].curve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].curve.m_Curve.Array.data[2].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[1].value
+      value: 0.828268
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[2].value
+      value: 1.079651
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[3].value
+      value: 0.974607
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[4].value
+      value: 1.003668
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[5].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[0].curve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[1].curve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[2].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[3].curve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].curve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].curve.m_Curve.Array.data[2].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].curve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].curve.m_Curve.Array.data[2].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[1].inSlope
+      value: 1.7675189
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[2].inSlope
+      value: 0.30952567
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[3].inSlope
+      value: -0.23213644
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[4].inSlope
+      value: 0.27978534
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[5].inSlope
+      value: -0.20239142
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[0].curve.m_Curve.Array.data[1].inSlope
+      value: 4.7015834
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[1].curve.m_Curve.Array.data[1].inSlope
+      value: 4.7015834
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[2].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[3].curve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].curve.m_Curve.Array.data[1].inSlope
+      value: 4.7015834
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].curve.m_Curve.Array.data[1].inSlope
+      value: 4.7015834
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[0].outSlope
+      value: 3.5822635
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[1].inWeight
+      value: 0.43742254
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[1].outSlope
+      value: 1.7674915
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[2].inWeight
+      value: 0.4695607
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[2].outSlope
+      value: 0.30952752
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[3].inWeight
+      value: 0.35856426
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[3].outSlope
+      value: -0.23214284
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[4].inWeight
+      value: 0.33310264
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[4].outSlope
+      value: 0.27974313
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[5].inWeight
+      value: 0.3296829
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[0].curve.m_Curve.Array.data[1].inWeight
+      value: 0.33333302
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[0].curve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[1].curve.m_Curve.Array.data[1].inWeight
+      value: 0.33333302
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[0].outSlope
+      value: 4.701584
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[1].inWeight
+      value: 0.33333302
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[2].inWeight
+      value: 0.33333272
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[2].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[3].curve.m_Curve.Array.data[0].outSlope
+      value: 2.000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[3].curve.m_Curve.Array.data[1].inWeight
+      value: 0.33333302
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].curve.m_Curve.Array.data[1].inWeight
+      value: 0.33333302
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].curve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].curve.m_Curve.Array.data[2].inWeight
+      value: 0.33333397
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].curve.m_Curve.Array.data[1].inWeight
+      value: 0.33333302
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].curve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].curve.m_Curve.Array.data[2].inWeight
+      value: 0.33333397
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[0].outWeight
+      value: 0.23852958
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[1].outWeight
+      value: 0.22151233
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[2].outWeight
+      value: 0.41548836
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[3].outWeight
+      value: 0.36235142
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[4].outWeight
+      value: 0.33069265
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[0].curve.m_Curve.Array.data[0].outWeight
+      value: 0.333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[0].curve.m_Curve.Array.data[1].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[1].curve.m_Curve.Array.data[0].outWeight
+      value: 0.333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[0].outWeight
+      value: 0.333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[1].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[3].curve.m_Curve.Array.data[0].outWeight
+      value: 0.333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].curve.m_Curve.Array.data[0].outWeight
+      value: 0.333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].curve.m_Curve.Array.data[1].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].curve.m_Curve.Array.data[0].outWeight
+      value: 0.333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].curve.m_Curve.Array.data[1].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[0].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[1].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[2].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[3].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[4].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].curve.m_Curve.Array.data[5].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[1].curve.m_Curve.Array.data[0].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[1].curve.m_Curve.Array.data[1].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[0].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[1].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[2].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[3].curve.m_Curve.Array.data[0].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[3].curve.m_Curve.Array.data[1].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].curve.m_Curve.Array.data[0].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].curve.m_Curve.Array.data[1].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[0].curve.m_Curve.Array.data[2].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].curve.m_Curve.Array.data[0].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].curve.m_Curve.Array.data[1].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.data[1].curve.m_Curve.Array.data[2].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: generationMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: test.Array.size
       value: 3
@@ -1793,6 +2452,10 @@ PrefabInstance:
     - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: test.Array.data[2]
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898065625639481835, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6056224882789707400, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: m_Name
@@ -1853,10 +2516,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6056224882789707400, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1192642888}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
 --- !u!1 &1077782176
 GameObject:
@@ -2009,192 +2669,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6865694600787375154, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
   m_PrefabInstance: {fileID: 1049907642}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1192642888
+--- !u!114 &1192642889 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+  m_PrefabInstance: {fileID: 1049907642}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1192642884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2f9fcf52fd23e949be2a4294fb4537c, type: 3}
+  m_Script: {fileID: 11500000, guid: e9e09d3021298154dbc1b1a38a20e95e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  tweenMontages:
-  - waitPreviousMontage: 0
-    tweenProperties:
-    - propertie: 3
-      waitForPreviousTweenProperty: 0
-      useDynamicFrom: 0
-      from: {x: 180, y: 180, z: 0}
-      to: {x: 0, y: 0, z: 0}
-      duration: 0.5
-      curve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 3.5822635
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0
-          outWeight: 0.23852958
-        - serializedVersion: 3
-          time: 0.336583
-          value: 0.828268
-          inSlope: 1.7675189
-          outSlope: 1.7674915
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.43742254
-          outWeight: 0.22151233
-        - serializedVersion: 3
-          time: 0.550666
-          value: 1.079651
-          inSlope: 0.30952567
-          outSlope: 0.30952752
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.4695607
-          outWeight: 0.41548836
-        - serializedVersion: 3
-          time: 0.779498
-          value: 0.974607
-          inSlope: -0.23213644
-          outSlope: -0.23214284
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.35856426
-          outWeight: 0.36235142
-        - serializedVersion: 3
-          time: 0.897999
-          value: 1.003668
-          inSlope: 0.27978534
-          outSlope: 0.27974313
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.33310264
-          outWeight: 0.33069265
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: -0.20239142
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.3296829
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 0
-    - propertie: 2
-      waitForPreviousTweenProperty: 0
-      useDynamicFrom: 0
-      from: {x: 0, y: 0, z: 0}
-      to: {x: 0.5, y: 0.5, z: 0.5}
-      duration: 0.5
-      curve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0.0021623534
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0
-          outWeight: 0.554026
-        - serializedVersion: 3
-          time: 0.5
-          value: 0.5
-          inSlope: 461.77032
-          outSlope: 461.74738
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.0011979938
-          outWeight: 0.0011980534
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0.0021624498
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.554026
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 0
-  - waitPreviousMontage: 1
-    tweenProperties:
-    - propertie: 2
-      waitForPreviousTweenProperty: 0
-      useDynamicFrom: 1
-      from: {x: 0, y: 0, z: 0}
-      to: {x: 1, y: 1, z: 1}
-      duration: 0.5
-      curve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0
-          outWeight: 0.333334
-        - serializedVersion: 3
-          time: 0.5
-          value: 0.5
-          inSlope: 5.594898
-          outSlope: 5.594899
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.33333403
-          outWeight: 0.33333397
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.33333397
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 0
-  playOnStart: 1
 --- !u!1 &1287122212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,10 +2855,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7993601657887319411, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 532045217}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5916763766991782060, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1821299266}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
 --- !u!1 &1442063702
 GameObject:
@@ -3145,7 +3627,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5862919521580615026, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
   m_PrefabInstance: {fileID: 1426553059}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 347741928}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46c2eaadb3c6a2543ba7d16fd49216df, type: 3}
@@ -3156,61 +3638,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7993601657887319411, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
   m_PrefabInstance: {fileID: 1426553059}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1821299265 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1571244665301501261, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
-  m_PrefabInstance: {fileID: 1426553059}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 347741928}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0805536d4d3954db43464ca4cbd840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1821299266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 347741928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e79ed2aff5135e64888d5865c96135dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  signal:
-  - {fileID: 11400000, guid: 117d694d618b2ab43b6beb0bf6c8330a, type: 2}
-  signalReceived:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1821299265}
-        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
-        m_MethodName: SetActivateState
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  signalLost:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1821299265}
-        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
-        m_MethodName: SetActivateState
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1938690155
 GameObject:
   m_ObjectHideFlags: 0

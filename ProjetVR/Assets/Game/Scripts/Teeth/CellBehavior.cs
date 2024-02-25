@@ -98,7 +98,7 @@ public class CellBehavior : MonoBehaviour
     }
 
     [Button("Clean Cell")]
-    private void CleanCell()
+    public void CleanCell()
     {
         SwitchTeethState(TeethState.Clean);
         toothPasteAmount = 0;

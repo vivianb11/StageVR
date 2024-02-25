@@ -34,7 +34,11 @@ public class ToothManager : MonoBehaviour
     public SO_Signal brushSignal;
     public SO_Signal brossetteSignal;
 
-    private List<GameObject> teethCells = new List<GameObject>();
+    public Tween tweener;
+    private List<CellBehavior> teethCells = new List<CellBehavior>();
+
+    [SerializeField] int dirtyCellsCount;
+    [SerializeField] int cleanedCell;
 
     public float CleanAmount
     {
@@ -58,12 +62,14 @@ public class ToothManager : MonoBehaviour
             if (child.gameObject == Tooth)
                 continue;
 
-            teethCells.Add(child.gameObject);
+            teethCells.Add(child.GetComponent<CellBehavior>());
         }
 
         ResetTeeth();
 
         Tooth.SetActive(false);
+
+        tweener.PlayTween(0);
     }
 
     private void Update()
@@ -78,8 +84,26 @@ public class ToothManager : MonoBehaviour
         }
     }
 
+    public void CleanTeeth()
+    {
+        GetComponent<Collider>().enabled = true;
+
+        foreach (var cell in teethCells)
+        {
+            cell.CleanCell();
+        }
+
+        tweener.PlayTween(1);
+    }
+
     private void ResetTeeth()
     {
+        tweener.PlayTween(0);
+
+        transform.localPosition = Vector3.zero;
+
+        GetComponent<Collider>().enabled = false;
+
         switch (generationMode)
         {
             case GenerationMode.Random:
@@ -93,9 +117,34 @@ public class ToothManager : MonoBehaviour
 
     private void RandomCellSetup()
     {
-        foreach (GameObject cell in teethCells)
+        foreach (CellBehavior cell in teethCells)
         {
-            cell.GetComponent<CellBehavior>().SwitchTeethState((TeethState)Random.Range(0, 4));
+            cell.SwitchTeethState((TeethState)Random.Range(0, 4));
+        }
+    }
+
+    private void OnCellCleaned()
+    {
+        cleanedCell++;
+
+        if (cleanedCell == dirtyCellsCount)
+        {
+            foreach (var cell in teethCells)
+            {
+                if (cell.teethState != TeethState.Clean)
+                {
+                    GetComponent<Collider>().enabled = true;
+
+                    foreach (Transform child in transform)
+                    {
+                        child.GetComponent<Collider>().enabled = false;
+                    }
+
+                    return;
+                }
+            }
+
+            tweener.PlayTween(1);
         }
     }
 
@@ -144,31 +193,12 @@ public class ToothManager : MonoBehaviour
 
         for (int i = 0; i < teethCells.Count; i++)
         {
-            teethCells[i].GetComponent<CellBehavior>().SwitchTeethState((TeethState)cellsState[i]);
+            teethCells[i].SwitchTeethState((TeethState)cellsState[i]);
+            teethCells[i].OnClean.AddListener(OnCellCleaned);
         }
     }
 
-    private void ChooseAnomaly(int cellIndex)
-    {
-        List<TeethState> activeAnomalies = generationParameter.GetActives(false);
-
-        TeethState teethState = activeAnomalies[Random.Range(0, activeAnomalies.Count)];
-
-        switch (teethState)
-        {
-            case TeethState.Dirty:
-                cellsState[cellIndex] = DirtyGeneration(cellIndex, false);
-                break;
-            case TeethState.Tartar:
-                cellsState[cellIndex] = TartarGeneration(cellIndex, false);
-                break;
-            case TeethState.Decay:
-                cellsState[cellIndex] = DecayGeneration(cellIndex, false);
-                break;
-        }
-    }
-
-    private void ChooseAnomaly(int cellIndex, bool withClean)
+    private void ChooseAnomaly(int cellIndex, bool withClean = false)
     {
         List<TeethState> activeAnomalies = generationParameter.GetActives(withClean);
 
@@ -178,9 +208,11 @@ public class ToothManager : MonoBehaviour
         {
             case TeethState.Dirty:
                 cellsState[cellIndex] = DirtyGeneration(cellIndex, withClean);
+                dirtyCellsCount++;
                 break;
             case TeethState.Tartar:
                 cellsState[cellIndex] = TartarGeneration(cellIndex, withClean);
+                dirtyCellsCount++;
                 break;
             case TeethState.Decay:
                 cellsState[cellIndex] = DecayGeneration(cellIndex, withClean);

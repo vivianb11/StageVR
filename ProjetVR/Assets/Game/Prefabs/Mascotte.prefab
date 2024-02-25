@@ -349,7 +349,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7993601657887319411}
   - component: {fileID: 5862919521580615026}
-  - component: {fileID: 1571244665301501261}
   - component: {fileID: 5278505086853000614}
   - component: {fileID: 8580624708418188722}
   m_Layer: 0
@@ -402,53 +401,6 @@ MonoBehaviour:
   enterPause: {fileID: 7741695554156234528}
   exitPause: {fileID: 4921376406203183804}
   toothBrush: {fileID: 4197612541025598779}
---- !u!114 &1571244665301501261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5916763766991782060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0805536d4d3954db43464ca4cbd840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  selectionCondition: 1
-  lookInTime: 2
-  currentLookInTime: 0
-  deSelectionCondition: 3
-  lookOutTime: 1
-  lookOutDistance: 0
-  autoTime: 0
-  activeStats: 00000000
-  canAlwaysInteract: 0
-  selected: 0
-  onSelected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5862919521580615026}
-        m_TargetAssemblyTypeName: Mascotte, Assembly-CSharp
-        m_MethodName: SetTask
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onDeselected:
-    m_PersistentCalls:
-      m_Calls: []
-  lookIn:
-    m_PersistentCalls:
-      m_Calls: []
-  lookOut:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!136 &5278505086853000614
 CapsuleCollider:
   m_ObjectHideFlags: 0

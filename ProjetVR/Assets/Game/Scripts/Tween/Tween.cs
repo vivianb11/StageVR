@@ -1,7 +1,6 @@
 using NaughtyAttributes;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Tween : MonoBehaviour
@@ -11,18 +10,33 @@ public class Tween : MonoBehaviour
     [SerializeField]
     public TweenMontage[] tweenMontages = new TweenMontage[0];
 
-    public bool playOnStart;
+    public bool autoPlayMontage;
 
-    private void Start()
+    private void OnEnable()
     {
-        if (playOnStart)
-            Play();
+        if (autoPlayMontage)
+            PlayMontage();
     }
 
     [Button]
-    public void Play()
+    public void PlayMontage()
     {
         StartCoroutine(TweenMontage(tweenMontages));
+    }
+
+#if UNITY_EDITOR
+    public int tweenIndex;
+
+    [Button]
+    public void PlayIndex()
+    {
+        PlayTween(tweenIndex);
+    }
+#endif
+
+    public void PlayTween(int index)
+    {
+        StartCoroutine(TweenCoroutine(tweenMontages[index].tweenProperties));
     }
 
     public void TweenMove(Vector3 targetPosition, float tweenTime)
@@ -180,7 +194,6 @@ public class Tween : MonoBehaviour
 
         return x == 0 ? 0 : x == 1 ? 1 : -(float)Mathf.Pow(2, 10 * x - 10) * Mathf.Sin((x * 10 - 10.75f) * c4);
     }
-
 }
 
 [Serializable]

@@ -22,6 +22,7 @@ public class ToothManager : MonoBehaviour
     public Material decayMat;
 
     public SO_Signal brushSignal;
+    public SO_Signal brossetteSignal;
 
     private List<GameObject> teethCells = new List<GameObject>();
 

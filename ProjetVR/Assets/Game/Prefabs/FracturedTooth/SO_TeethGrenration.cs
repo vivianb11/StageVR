@@ -1,5 +1,7 @@
 using NaughtyAttributes;
 using System;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "TeethGeneration_", menuName = "ScriptableObject/TeethGeneration", order = 0)]
@@ -11,34 +13,57 @@ public class SO_TeethGrenration : ScriptableObject
     public bool hasDirty, hasTartar, hasDecay;
 
     [Space(10)]
-    [Range(0, 10)]
-    public int minClean;
-    [Space(10)]
     [MinMaxSlider(0, 10)]
-    public Vector2Int minMaxUnClean;
-    public AnimationCurve unCleanChance;
+    public Vector2Int minMaxClean;
+    public int weightClean;
 
-
-    [ShowIf("Dirty")]
+    [ShowIf("hasDirty")]
     [Header("Dirty Settings")]
     [MinMaxSlider(0, 10)]
     public Vector2Int minMaxDirty;
-    [ShowIf("Dirty")]
+    [ShowIf("hasDirty")]
     public AnimationCurve dirtyChance;
 
-    [ShowIf("Tartar")]
+    [ShowIf("hasTartar")]
     [Header("Tartar Settings")]
     [MinMaxSlider(0, 10)]
     public Vector2Int minMaxTartar;
-    [ShowIf("Tartar")]
+    [ShowIf("hasTartar")]
     public AnimationCurve tartarChance;
 
-    [ShowIf("Decay")]
+    [ShowIf("hasDecay")]
     [Header("Decay Settings")]
     [MinMaxSlider(0, 10)]
     public Vector2Int minMaxDecay;
-    [ShowIf("Decay")]
+    [ShowIf("hasDecay")]
     public AnimationCurve decayChance;
+
+    public List<TeethState> GetActives(bool withClean)
+    {
+        List<TeethState> actives = new List<TeethState>();
+
+        if (hasDirty)
+        {
+            actives.Add(TeethState.Dirty);
+        }
+
+        if (hasTartar)
+        {
+            actives.Add(TeethState.Tartar);
+        }
+
+        if (hasDecay)
+        {
+            actives.Add(TeethState.Decay);
+        }
+
+        if (withClean)
+        {
+            actives.Add(TeethState.Clean);
+        }
+
+        return actives;
+    }
 }
 
 public enum TeethState

@@ -124,4 +124,9 @@ public class CellBehavior : MonoBehaviour
     {
         CleanCell();
     }
+
+    private void SpawnFood()
+    {
+
+    }
 }

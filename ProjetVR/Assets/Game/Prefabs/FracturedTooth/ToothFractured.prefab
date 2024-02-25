@@ -147,6 +147,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4074167816967472744}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2177507039290541273}
     - targetCorrespondingSourceObject: {fileID: -3796548272275778310, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1624670990630528900}
@@ -1248,6 +1251,219 @@ MonoBehaviour:
   decayMat: {fileID: 2100000, guid: af921ee7af8d1204b993352f51214eaa, type: 2}
   brushSignal: {fileID: 11400000, guid: fd50f06be32fee7448d872b89abecf9f, type: 2}
   brossetteSignal: {fileID: 11400000, guid: 00371841a0ed18048891fe0e7e5540fa, type: 2}
+--- !u!114 &2177507039290541273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056224882789707400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f9fcf52fd23e949be2a4294fb4537c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  tweenMontages:
+  - waitPreviousMontage: 0
+    tweenProperties:
+    - propertie: 3
+      waitForPreviousTweenProperty: 0
+      useDynamicFrom: 0
+      from: {x: 180, y: 180, z: 0}
+      to: {x: 0, y: 0, z: 0}
+      duration: 0.5
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 3.5822635
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.23852958
+        - serializedVersion: 3
+          time: 0.336583
+          value: 0.828268
+          inSlope: 1.7675189
+          outSlope: 1.7674915
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.43742254
+          outWeight: 0.22151233
+        - serializedVersion: 3
+          time: 0.550666
+          value: 1.079651
+          inSlope: 0.30952567
+          outSlope: 0.30952752
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.4695607
+          outWeight: 0.41548836
+        - serializedVersion: 3
+          time: 0.779498
+          value: 0.974607
+          inSlope: -0.23213644
+          outSlope: -0.23214284
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.35856426
+          outWeight: 0.36235142
+        - serializedVersion: 3
+          time: 0.897999
+          value: 1.003668
+          inSlope: 0.27978534
+          outSlope: 0.27974313
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33310264
+          outWeight: 0.33069265
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: -0.20239142
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.3296829
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+    - propertie: 2
+      waitForPreviousTweenProperty: 0
+      useDynamicFrom: 0
+      from: {x: 0, y: 0, z: 0}
+      to: {x: 0.5, y: 0.5, z: 0.5}
+      duration: 0.5
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 3.5822635
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.23852958
+        - serializedVersion: 3
+          time: 0.336583
+          value: 0.828268
+          inSlope: 1.7675189
+          outSlope: 1.7674915
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.43742254
+          outWeight: 0.22151233
+        - serializedVersion: 3
+          time: 0.550666
+          value: 1.079651
+          inSlope: 0.30952567
+          outSlope: 0.30952752
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.4695607
+          outWeight: 0.41548836
+        - serializedVersion: 3
+          time: 0.779498
+          value: 0.974607
+          inSlope: -0.23213644
+          outSlope: -0.23214284
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.35856426
+          outWeight: 0.36235142
+        - serializedVersion: 3
+          time: 0.897999
+          value: 1.003668
+          inSlope: 0.27978534
+          outSlope: 0.27974313
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33310264
+          outWeight: 0.33069265
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: -0.20239142
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.3296829
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+  - waitPreviousMontage: 1
+    tweenProperties:
+    - propertie: 2
+      waitForPreviousTweenProperty: 0
+      useDynamicFrom: 1
+      from: {x: 0, y: 0, z: 0}
+      to: {x: 1, y: 1, z: 1}
+      duration: 0.5
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.333334
+        - serializedVersion: 3
+          time: 0.5
+          value: 0.5
+          inSlope: 5.594898
+          outSlope: 5.594899
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333403
+          outWeight: 0.33333397
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333397
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+  playOnStart: 1
 --- !u!1 &7587050978364518386 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3569101651563297835, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}

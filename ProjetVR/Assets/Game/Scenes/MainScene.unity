@@ -1045,7 +1045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4085762076734583372, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: m_Name
-      value: BainDeBouche
+      value: Brossette
       objectReference: {fileID: 0}
     - target: {fileID: 4320199879939465893, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: m_UseGravity
@@ -1140,9 +1140,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 8d13342a7545c6849ac4960193887a3e, type: 2}
     - target: {fileID: 7700673980156593859, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: signal.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700673980156593859, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: signal.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 8d13342a7545c6849ac4960193887a3e, type: 2}
+    - target: {fileID: 7700673980156593859, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
+      propertyPath: signal.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 00371841a0ed18048891fe0e7e5540fa, type: 2}
     m_RemovedComponents:
     - {fileID: 4357408738829577742, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
     m_RemovedGameObjects: []
@@ -1191,6 +1199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UseEyeTracking: 0
   UseDynamicFoveatedRendering: 0
+  startDelay: 1
   signalEmitter: {fileID: 787574917}
 --- !u!4 &787574912
 Transform:

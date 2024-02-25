@@ -3,37 +3,33 @@ using UnityEngine;
 using NaughtyAttributes;
 using UnityEngine.Events;
 using SignalSystem;
+using System.Collections.Generic;
 
+[RequireComponent(typeof(Interactable))]
+[RequireComponent(typeof(SignalListener))]
 public class CellBehavior : MonoBehaviour
 {
     public TeethState teethState;
 
+    public SO_CellData cellData;
+
     public UnityEvent OnClean = new UnityEvent();
 
-    private int maxToothPasteAmount = 10;
-    public int toothPasteAmount;
-
-    private bool selected;
-
+    private int toothPasteAmount;
     private ToothManager toothManager;
     private MeshRenderer mR;
+    private Interactable interactable;
     private SignalListener signalListener;
 
     private void Start()
     {
         toothManager = transform.parent.GetComponent<ToothManager>();
         mR = GetComponent<MeshRenderer>();
-
-        Interactable interactable = gameObject.AddComponent<Interactable>();
+        interactable = GetComponent<Interactable>();
+        signalListener = GetComponent<SignalListener>();
         GetComponent<Rigidbody>().isKinematic = true;
 
-        signalListener = gameObject.AddComponent<SignalListener>();
-
-        interactable.onSelected.AddListener(TartarBehavior);
         interactable.deSelectionCondition = Interactable.DeSelectionCondition.LOOK_OUT;
-
-        interactable.lookIn.AddListener(() => SetSelected(true));
-        interactable.lookOut.AddListener(() => SetSelected(false));
 
         signalListener.signalReceived.AddListener(() => interactable.SetActivateState(true));
         signalListener.signalLost.AddListener(() => interactable.SetActivateState(false));
@@ -41,38 +37,14 @@ public class CellBehavior : MonoBehaviour
         OnClean.AddListener(() => interactable.enabled = false);
     }
 
-    public void FixedUpdate()
-    {
-        if (!selected)
-            return;
-
-        switch(teethState)
-        {
-            case TeethState.Dirty:
-                DirtyBehavior();
-                break;
-            case TeethState.Tartar:
-                TartarBehavior();
-                break;
-            case TeethState.Decay:
-                DecayBehavior();
-                break;
-        }
-    }
-
-    public void SetSelected(bool value)
-    {
-        selected = value;
-    }
-
     public bool ToothPasteFull()
     {
-        return toothPasteAmount == maxToothPasteAmount;
+        return toothPasteAmount == cellData.maxToothPasteCount;
     }
 
     public void IncreaseToothPasteAmount()
     {
-        toothPasteAmount = Mathf.Clamp(toothPasteAmount + 1, 0, maxToothPasteAmount);
+        toothPasteAmount = Mathf.Clamp(toothPasteAmount + 1, 0, cellData.maxToothPasteCount);
     }
 
     private void SetMaterials(TeethState state)
@@ -94,27 +66,35 @@ public class CellBehavior : MonoBehaviour
         }
     }
 
-    public void SwitchTeethState(TeethState newTeethState)
+    private void SetSignalListener(TeethState state)
     {
-        teethState = newTeethState;
-
-        switch (teethState)
+        switch (state)
         {
             case TeethState.Clean:
                 break;
             case TeethState.Dirty:
                 signalListener.signal.Clear();
                 signalListener.signal.Add(toothManager.brossetteSignal);
+                interactable.onSelected.RemoveListener(TartarBehavior);
+                interactable.onSelected.AddListener(DirtyBehavior);
+                interactable.lookInTime = cellData.dirtryInteractionTime;
                 break;
             case TeethState.Tartar:
                 signalListener.signal.Clear();
                 signalListener.signal.Add(toothManager.brushSignal);
-                break;
-            case TeethState.Decay:
+                interactable.onSelected.RemoveListener(DirtyBehavior);
+                interactable.onSelected.AddListener(TartarBehavior);
+                interactable.lookInTime = cellData.tartarInteractionTime;
                 break;
         }
+    }
 
-        SetMaterials(teethState);
+    public void SwitchTeethState(TeethState newTeethState)
+    {
+        teethState = newTeethState;
+
+        SetMaterials(newTeethState);
+        SetSignalListener(newTeethState);
     }
 
     [Button("Clean Cell")]
@@ -142,6 +122,6 @@ public class CellBehavior : MonoBehaviour
 
     public void DirtyBehavior()
     {
-        Debug.LogWarning("DirtyBehavior Not Implemented!");
+        CleanCell();
     }
 }

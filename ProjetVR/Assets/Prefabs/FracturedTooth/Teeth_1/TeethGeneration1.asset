@@ -12,13 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf283e02c123044c8d4ec5a0c72ac94, type: 3}
   m_Name: TeethGeneration1
   m_EditorClassIdentifier: 
-  teethState: 3
-  experimenalMode: 1
-  healthyTeeth: {fileID: 5179198719514140047, guid: c58136856ea0c944a9eb6de9de9390cf, type: 3}
-  dirtyTeeth: {fileID: 0}
-  fracturedTeeth: {fileID: 0}
-  tartarTeeth: {fileID: 0}
-  healthyTeethMaterial: {fileID: 2100000, guid: bd575f04a36958544bd89dc78e39c905, type: 2}
-  dirtyTeethMaterial: {fileID: 2100000, guid: ffa81d269a421b745942ac1834c6cb75, type: 2}
-  fracturedTeethMaterial: {fileID: 2100000, guid: af921ee7af8d1204b993352f51214eaa, type: 2}
-  tartarTeethMaterial: {fileID: 2100000, guid: d10d6b4f3512dbd4fa03be219e911ecb, type: 2}
+  numberOfPeices: 0
+  minClean: 0
+  minMaxAnomalies: {x: 0, y: 0}
+  anomalieChance:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  minMaxDirty: {x: 0, y: 0}
+  dirtyChance:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  minMaxTartar: {x: 0, y: 0}
+  tartarChance:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  minMaxDecay: {x: 0, y: 0}
+  decayChance:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

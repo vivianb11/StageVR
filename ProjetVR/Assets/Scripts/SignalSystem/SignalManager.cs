@@ -1,21 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SignalManager : MonoBehaviour
+namespace SignalSystem
 {
-    public static SignalManager Instance { get; private set; }
-
-    public UnityEvent<string> signalCalled;
-
-    private void Awake()
+    public class SignalManager : MonoBehaviour
     {
-        Instance = this;
-    }
+        public static SignalManager Instance { get; private set; }
 
-    public void EmitSignal(string value)
-    {
-        signalCalled?.Invoke(value);
+        public UnityEvent<string> signalCalled;
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else if (Instance != this)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        public void EmitSignal(string value)
+        {
+            signalCalled?.Invoke(value);
+        }
     }
 }

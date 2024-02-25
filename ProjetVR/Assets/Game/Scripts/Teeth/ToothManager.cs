@@ -8,6 +8,14 @@ using SignalSystem;
 
 public class ToothManager : MonoBehaviour
 {
+    public enum GenerationMode
+    {
+        Random,
+        Custom
+    }
+
+    public GenerationMode generationMode = GenerationMode.Random;
+
     public GameObject Tooth;
 
     public SO_TeethGrenration generationParameter;
@@ -51,7 +59,7 @@ public class ToothManager : MonoBehaviour
             teethCells.Add(child.gameObject);
         }
 
-        SetupCells();
+        ResetTeeth();
 
         Tooth.SetActive(false);
     }
@@ -70,7 +78,23 @@ public class ToothManager : MonoBehaviour
 
     private void ResetTeeth()
     {
-        SetupCells();
+        switch (generationMode)
+        {
+            case GenerationMode.Random:
+                RandomCellSetup();
+                break;
+            case GenerationMode.Custom:
+                SetupCells();
+                break;
+        }
+    }
+
+    private void RandomCellSetup()
+    {
+        foreach (GameObject cell in teethCells)
+        {
+            cell.GetComponent<CellBehavior>().SwitchTeethState((TeethState)Random.Range(0, 4));
+        }
     }
 
     private void SetupCells()

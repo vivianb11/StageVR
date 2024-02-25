@@ -17,6 +17,7 @@ public class CellBehavior : MonoBehaviour
 
     private ToothManager toothManager;
     private MeshRenderer mR;
+    private SignalListener signalListener;
 
     private void Start()
     {
@@ -24,7 +25,9 @@ public class CellBehavior : MonoBehaviour
         mR = GetComponent<MeshRenderer>();
 
         Interactable interactable = gameObject.AddComponent<Interactable>();
-        SignalListener signalListener = gameObject.AddComponent<SignalListener>();
+        GetComponent<Rigidbody>().isKinematic = true;
+
+        signalListener = gameObject.AddComponent<SignalListener>();
 
         interactable.onSelected.AddListener(TartarBehavior);
         interactable.deSelectionCondition = Interactable.DeSelectionCondition.LOOK_OUT;
@@ -32,7 +35,6 @@ public class CellBehavior : MonoBehaviour
         interactable.lookIn.AddListener(() => SetSelected(true));
         interactable.lookOut.AddListener(() => SetSelected(false));
 
-        signalListener.signal.Add(toothManager.brushSignal);
         signalListener.signalReceived.AddListener(() => interactable.SetActivateState(true));
         signalListener.signalLost.AddListener(() => interactable.SetActivateState(false));
 
@@ -95,6 +97,22 @@ public class CellBehavior : MonoBehaviour
     public void SwitchTeethState(TeethState newTeethState)
     {
         teethState = newTeethState;
+
+        switch (teethState)
+        {
+            case TeethState.Clean:
+                break;
+            case TeethState.Dirty:
+                signalListener.signal.Clear();
+                signalListener.signal.Add(toothManager.brossetteSignal);
+                break;
+            case TeethState.Tartar:
+                signalListener.signal.Clear();
+                signalListener.signal.Add(toothManager.brushSignal);
+                break;
+            case TeethState.Decay:
+                break;
+        }
 
         SetMaterials(teethState);
     }

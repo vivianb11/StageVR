@@ -40,6 +40,7 @@ public class Interactable : MonoBehaviour
     [ShowIf("deSelectionCondition", DeSelectionCondition.AUTO_TIME)]
     public float autoTime;
 
+    [HideInInspector]
     public bool activated { get; set; } = true;
     private bool preActivated;
 

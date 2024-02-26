@@ -77,6 +77,8 @@ public class ObjectSnapper : MonoBehaviour
 
             if (!interactableAfterSnapped)
                 interacable.SetCanBeInteracted(false);
+            else
+                interacable.SetActivateState(true);
         }
     }
 }

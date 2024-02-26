@@ -1,13 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using System;
-using System.Collections.Generic;
 using NaughtyAttributes;
-using JetBrains.Annotations;
 using System.Collections;
-using UnityEngine.UI;
-using System.Linq;
-using Unity.VisualScripting;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Interactable : MonoBehaviour
@@ -46,6 +41,7 @@ public class Interactable : MonoBehaviour
     public float autoTime;
 
     public bool activated { get; set; } = true;
+    private bool preActivated;
 
     [HideInInspector]
     public bool canBeInteracted { get; private set; } = true;
@@ -74,12 +70,23 @@ public class Interactable : MonoBehaviour
         EyeManager eyeManager = EyeManager.Instance;
     }
 
+    private void OnEnable()
+    {
+        activated = preActivated;
+    }
+
+    private void OnDisable()
+    {
+        activated = false;
+    }
+
     public void SetActivateState(bool value)
     {
         if (activated != value)
             activeStateChanged?.Invoke(value);
 
         activated = value;
+        preActivated = value;
     }
 
     public void LookIn() 

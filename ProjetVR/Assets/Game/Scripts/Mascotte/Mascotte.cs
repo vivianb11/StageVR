@@ -185,8 +185,10 @@ public class Mascotte : MonoBehaviour
 
     private IEnumerator CleanTeeth(float delay, ToothManager toothManager)
     {
+        enterClean.Play();
         yield return new WaitForSeconds(delay);
 
         toothManager.CleanTeeth();
+        toothBrush.Play();
     }
 }

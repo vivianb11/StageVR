@@ -1775,11 +1775,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: tweenIndex
-      value: 1
+      value: spawn
       objectReference: {fileID: 0}
     - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: tweenMontages.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[0].name
+      value: spawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].name
+      value: despawn
       objectReference: {fileID: 0}
     - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: tweenMontages.Array.data[0].MontageName
@@ -1803,7 +1811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: tweenMontages.Array.data[2].tweenProperties.Array.size
@@ -1835,11 +1843,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[1].to.z
-      value: 360
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].to.y
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].to.z
@@ -2027,6 +2035,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[2].waitForPreviousTweenProperty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].waitForPreviousTweenProperty
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
@@ -2247,7 +2259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[0].outSlope
-      value: 4.701584
+      value: 2.000003
       objectReference: {fileID: 0}
     - target: {fileID: 2177507039290541273, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: tweenMontages.Array.data[1].tweenProperties.Array.data[2].curve.m_Curve.Array.data[1].inWeight
@@ -3579,7 +3591,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.2e-43, y: 1.36e-43, z: 3.0314e-41, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: -7.0294816e+32}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

@@ -69,7 +69,7 @@ public class ToothManager : MonoBehaviour
 
         Tooth.SetActive(false);
 
-        tweener.PlayTween(0);
+        tweener.PlayTween("spawn");
     }
 
     private void Update()
@@ -93,12 +93,12 @@ public class ToothManager : MonoBehaviour
             cell.CleanCell();
         }
 
-        tweener.PlayTween(1);
+        tweener.PlayTween("despawn");
     }
 
     private void ResetTeeth()
     {
-        tweener.PlayTween(0);
+        tweener.PlayTween("spawn");
 
         transform.localPosition = Vector3.zero;
 
@@ -144,7 +144,7 @@ public class ToothManager : MonoBehaviour
                 }
             }
 
-            tweener.PlayTween(1);
+            tweener.PlayTween("despawn");
         }
     }
 

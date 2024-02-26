@@ -1,7 +1,9 @@
 using NaughtyAttributes;
 using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Tween : MonoBehaviour
 {
@@ -25,7 +27,7 @@ public class Tween : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    public int tweenIndex;
+    public string tweenIndex;
 
     [Button]
     public void PlayIndex()
@@ -34,9 +36,9 @@ public class Tween : MonoBehaviour
     }
 #endif
 
-    public void PlayTween(int index)
+    public void PlayTween(string key)
     {
-        StartCoroutine(TweenCoroutine(tweenMontages[index].tweenProperties));
+        StartCoroutine(TweenCoroutine(tweenMontages.Where(item => item.name == key).ToArray()[0].tweenProperties));
     }
 
     public void TweenMove(Vector3 targetPosition, float tweenTime)
@@ -219,6 +221,8 @@ public struct TweenProperty
 [Serializable]
 public struct TweenMontage
 {
+    public string name;
+
     public bool waitPreviousMontage;
 
     public TweenProperty[] tweenProperties;

@@ -68,8 +68,6 @@ public class ToothManager : MonoBehaviour
         ResetTeeth();
 
         Tooth.SetActive(false);
-
-        tweener.PlayTween("spawn");
     }
 
     private void Update()

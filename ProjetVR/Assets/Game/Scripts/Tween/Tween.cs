@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
+using UnityEngine.Events;
 
 public class Tween : MonoBehaviour
 {
@@ -20,21 +20,21 @@ public class Tween : MonoBehaviour
             PlayMontage();
     }
 
+#if UNITY_EDITOR
+    public string tweenIndex;
+
+    [Button]
+    public void PlayTween()
+    {
+        PlayTween(tweenIndex);
+    }
+#endif
+
     [Button]
     public void PlayMontage()
     {
         StartCoroutine(TweenMontage(tweenMontages));
     }
-
-#if UNITY_EDITOR
-    public string tweenIndex;
-
-    [Button]
-    public void PlayIndex()
-    {
-        PlayTween(tweenIndex);
-    }
-#endif
 
     public void PlayTween(string key)
     {
@@ -59,6 +59,34 @@ public class Tween : MonoBehaviour
     public void TweenRotation(Vector3 targetRotation, float tweenTime)
     {
         StartCoroutine(TweenPropertyCoroutine(TweenProperty.Properties.ROTATION, transform.eulerAngles, targetRotation, tweenTime, curve));
+    }
+
+    public void SetEase(Ease ease)
+    {
+        curve.ClearKeys();
+
+        switch (ease)
+        {
+            case Ease.Linear:
+                curve.AddKey(0f, 0f);
+                curve.AddKey(1f, 1f);
+                break;
+            case Ease.InOut:
+                curve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+                break;
+            case Ease.OutBack:
+                for (float t = 0; t <= 1; t += 0.01f)
+                {
+                    curve.AddKey(new Keyframe(t, EaseOutBack(t)));
+                }
+                break;
+            case Ease.InElastic:
+                for (float t = 0; t <= 1; t += 0.01f)
+                {
+                    curve.AddKey(new Keyframe(t, EaseInElastic(t)));
+                }
+                break;
+        }
     }
 
     private float GetMontageDuration(TweenMontage montage)
@@ -133,6 +161,7 @@ public class Tween : MonoBehaviour
             }
 
             StartCoroutine(TweenPropertyCoroutine(tween.propertie, from, tween.to, tween.duration, tween.curve));
+            StartCoroutine(InvokeDelay(tween.completed, tween.duration));
         }
     }
 
@@ -154,32 +183,11 @@ public class Tween : MonoBehaviour
         SetProperty(property, targetPosition);
     }
 
-    public void SetEase(Ease ease)
+    private IEnumerator InvokeDelay(UnityEvent unityEvent, float delay)
     {
-        curve.ClearKeys();
+        yield return new WaitForSeconds(delay);
 
-        switch (ease)
-        {
-            case Ease.Linear:
-                curve.AddKey(0f, 0f);
-                curve.AddKey(1f, 1f);
-                break;
-            case Ease.InOut:
-                curve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
-                break;
-            case Ease.OutBack:
-                for (float t = 0; t <= 1; t += 0.01f)
-                {
-                    curve.AddKey(new Keyframe(t, EaseOutBack(t)));
-                }
-                break;
-            case Ease.InElastic:
-                for (float t = 0; t <= 1; t += 0.01f)
-                {
-                    curve.AddKey(new Keyframe(t, EaseInElastic(t)));
-                }
-                break;
-        }
+        unityEvent?.Invoke();
     }
 
     private static float EaseOutBack(float x)
@@ -207,15 +215,19 @@ public struct TweenProperty
     }
 
     public Properties propertie;
-    [Space(10)]
     public bool waitForPreviousTweenProperty;
+
+    [Space(20)]
     public bool useDynamicFrom;
     public Vector3 from;
     public Vector3 to;
-    [Space(10)]
-    public float duration;
 
+    [Space(20)]
+    public float duration;
     public AnimationCurve curve;
+
+    [Space(20)]
+    public UnityEvent completed;
 }
 
 [Serializable]

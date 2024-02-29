@@ -10,9 +10,25 @@ public class TeethProgress : MonoBehaviour
 
     public Transform toothPrefab;
 
-    [Button]
-    private void SpawnTeeth()
+    [SerializeField] Material cleanMaterial;
+    private int cleanedTeeth;
+
+    public void SetFullTooth()
     {
+        if (cleanedTeeth == transform.childCount)
+            return;
+
+        transform.GetChild(cleanedTeeth).GetComponent<MeshRenderer>().material = cleanMaterial;
+        transform.GetChild(cleanedTeeth).GetComponent<Tween>().PlayTween("bump");
+
+        cleanedTeeth++;
+    }
+
+    [Button]
+    public void SpawnTeeth()
+    {
+        cleanedTeeth = 0;
+
         StopAllCoroutines();
 
         foreach (Transform child in transform)

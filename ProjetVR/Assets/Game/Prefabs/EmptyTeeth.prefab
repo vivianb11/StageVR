@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.22500001, y: 0, z: 0}
-  m_LocalScale: {x: 0.04, y: 0.1, z: 0.04}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2504516506940294678, guid: aff2ae892ac69124eb8000bd96c5a64e, type: 3}
+  - {fileID: 2100000, guid: 94eebd9d324eddd49be6e843f56d7ec0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -222,28 +222,19 @@ MonoBehaviour:
           time: 0
           value: 0
           inSlope: 0
-          outSlope: 0
+          outSlope: 1
           tangentMode: 0
-          weightedMode: 3
+          weightedMode: 0
           inWeight: 0
-          outWeight: 0.333334
-        - serializedVersion: 3
-          time: 0.5
-          value: 0.5
-          inSlope: 1.9999939
-          outSlope: 1.9999943
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.33333403
-          outWeight: 0.33333397
+          outWeight: 0
         - serializedVersion: 3
           time: 1
           value: 1
-          inSlope: 0
+          inSlope: 1
           outSlope: 0
           tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.33333397
+          weightedMode: 0
+          inWeight: 0
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -256,6 +247,79 @@ MonoBehaviour:
       useDynamicFrom: 1
       from: {x: 0, y: 0, z: 0}
       to: {x: 0.07, y: 0.07, z: 0.07}
+      duration: 0.5
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 3.5822635
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.23852958
+        - serializedVersion: 3
+          time: 0.336583
+          value: 0.828268
+          inSlope: 1.7675189
+          outSlope: 1.7674915
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.43742254
+          outWeight: 0.22151233
+        - serializedVersion: 3
+          time: 0.550666
+          value: 1.079651
+          inSlope: 0.30952567
+          outSlope: 0.30952752
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.4695607
+          outWeight: 0.41548836
+        - serializedVersion: 3
+          time: 0.779498
+          value: 0.974607
+          inSlope: -0.23213644
+          outSlope: -0.23214284
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.35856426
+          outWeight: 0.36235142
+        - serializedVersion: 3
+          time: 0.897999
+          value: 1.003668
+          inSlope: 0.27978534
+          outSlope: 0.27974313
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33310264
+          outWeight: 0.33069265
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: -0.20239142
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.3296829
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      completed:
+        m_PersistentCalls:
+          m_Calls: []
+  - name: bump
+    waitPreviousMontage: 0
+    speed: 1
+    tweenProperties:
+    - propertie: 2
+      waitForPreviousTweenProperty: 0
+      useDynamicFrom: 1
+      from: {x: 0, y: 0, z: 0}
+      to: {x: 0.1, y: 0.1, z: 0.1}
       duration: 0.25
       curve:
         serializedVersion: 2
@@ -264,28 +328,52 @@ MonoBehaviour:
           time: 0
           value: 0
           inSlope: 0
-          outSlope: -0.0012029491
+          outSlope: 6.8154325
           tangentMode: 0
           weightedMode: 3
           inWeight: 0
-          outWeight: 0.36078
-        - serializedVersion: 3
-          time: 0.5
-          value: 0.5
-          inSlope: 1.5725082
-          outSlope: 1.5733721
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.326514
-          outWeight: 0.33093
+          outWeight: 0.155667
         - serializedVersion: 3
           time: 1
           value: 1
-          inSlope: -0.0009312395
+          inSlope: 0.031243537
           outSlope: 0
           tangentMode: 0
           weightedMode: 3
-          inWeight: 0.358688
+          inWeight: 0.636963
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      completed:
+        m_PersistentCalls:
+          m_Calls: []
+    - propertie: 2
+      waitForPreviousTweenProperty: 1
+      useDynamicFrom: 1
+      from: {x: 0, y: 0, z: 0}
+      to: {x: 0.07, y: 0.07, z: 0.07}
+      duration: 0.5
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 4.701584
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.333333
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333302
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2

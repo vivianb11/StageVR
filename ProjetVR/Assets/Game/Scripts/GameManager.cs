@@ -1,15 +1,19 @@
 using SignalSystem;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
     public bool UseEyeTracking;
     public bool UseDynamicFoveatedRendering;
 
     public float startDelay = 1f;
 
-    public static GameManager Instance;
+    public UnityEvent gameStarted;
+
     public GameObject player { get; private set; }
 
     [SerializeField] SignalEmitter signalEmitter;
@@ -48,5 +52,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         signalEmitter.RequestSignalCall();
+        gameStarted?.Invoke();
     }
 }

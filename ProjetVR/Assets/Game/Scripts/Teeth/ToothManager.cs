@@ -83,6 +83,12 @@ public class ToothManager : MonoBehaviour
         ResetTeeth();
 
         Tooth.SetActive(false);
+
+        for (int i = 0; i < teethCells.Count; i++)
+        {
+            teethCells[i].SwitchTeethState((TeethState)cellsState[i]);
+            teethCells[i].OnClean.AddListener(OnCellCleaned);
+        }
     }
 
     private void Update()
@@ -235,12 +241,6 @@ public class ToothManager : MonoBehaviour
             {
                 ChooseAnomaly(cellIndex);
             }
-        }
-
-        for (int i = 0; i < teethCells.Count; i++)
-        {
-            teethCells[i].SwitchTeethState((TeethState)cellsState[i]);
-            teethCells[i].OnClean.AddListener(OnCellCleaned);
         }
 
         if (dirtyCellsCount == 0)

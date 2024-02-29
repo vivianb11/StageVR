@@ -1663,7 +1663,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UseEyeTracking: 0
   UseDynamicFoveatedRendering: 0
-  startDelay: 1
+  startDelay: 3
+  gameStarted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2036903304}
+        m_TargetAssemblyTypeName: TeethProgress, Assembly-CSharp
+        m_MethodName: SpawnTeeth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   signalEmitter: {fileID: 787574917}
 --- !u!4 &787574912
 Transform:
@@ -3034,6 +3049,34 @@ PrefabInstance:
     - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: test.Array.data[2]
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: OnTeethCleaned.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: OnTeethCleaned.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: OnTeethCleaned.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2036903304}
+    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: OnTeethCleaned.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: OnTeethCleaned.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetFullTooth
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: OnTeethCleaned.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TeethProgress, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: OnTeethCleaned.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5898065625639481835, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: m_IsTrigger
@@ -5478,9 +5521,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3224bb36f4ca79b4ea9d1b1645894045, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toothCount: 10
+  toothCount: 5
   animationDelay: 0.15
   toothPrefab: {fileID: 5552061895131566892, guid: aa683f1f35ca79946a872b96bc084483, type: 3}
+  cleanMaterial: {fileID: 2100000, guid: 9c6103d2ad98b544b82572d8025d27d2, type: 2}
 --- !u!1 &2040536640
 GameObject:
   m_ObjectHideFlags: 0

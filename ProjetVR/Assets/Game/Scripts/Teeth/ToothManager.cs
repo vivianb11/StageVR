@@ -32,6 +32,8 @@ public class ToothManager : MonoBehaviour
     [Foldout("Materials")]
     public Material decayMat;
 
+    private Collider grabCollider;
+    private Interactable grabIntractable;
     public SO_Signal brushSignal;
     public SO_Signal brossetteSignal;
 
@@ -43,6 +45,9 @@ public class ToothManager : MonoBehaviour
 
     [Foldout("Events")]
     public UnityEvent OnTeethCleaned;
+    [Foldout("Events")]
+    [InfoBox("Returns a float")]
+    public UnityEvent<float> OnCleanAmountChange;
     
     public float CleanAmount
     {
@@ -57,6 +62,12 @@ public class ToothManager : MonoBehaviour
         {
             Debug.LogWarning("CleanAmount is read only");
         }
+    }
+
+    private void Awake()
+    {
+        grabCollider = GetComponent<Collider>();
+        grabIntractable = GetComponent<Interactable>();
     }
 
     void Start()
@@ -125,6 +136,8 @@ public class ToothManager : MonoBehaviour
                 SetupCells();
                 break;
         }
+
+        OnCleanAmountChange?.Invoke(CleanAmount);
     }
 
     private void RandomCellSetup()
@@ -137,7 +150,7 @@ public class ToothManager : MonoBehaviour
 
     private void EnableGrab()
     {
-        GetComponent<Collider>().enabled = true;
+        grabCollider.enabled = true;
 
         foreach (Transform child in transform)
         {
@@ -147,7 +160,10 @@ public class ToothManager : MonoBehaviour
 
     private void DisableGrab()
     {
-        GetComponent<Collider>().enabled = false;
+        grabCollider.enabled = false;
+        
+        if (grabIntractable.selected)
+            grabIntractable.DeSelect();
 
         foreach (Transform child in transform)
         {
@@ -173,6 +189,8 @@ public class ToothManager : MonoBehaviour
 
             tweener.PlayTween("despawn");
         }
+
+        OnCleanAmountChange?.Invoke(CleanAmount);
     }
 
     private void SetupCells()

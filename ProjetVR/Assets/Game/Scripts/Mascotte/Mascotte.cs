@@ -15,13 +15,7 @@ public class Mascotte : MonoBehaviour
     private Animator animator;
 
     [SerializeField]
-    private float range = 2f;
-
-    [SerializeField]
     private float interactionDelay = 2f;
-
-    [SerializeField]
-    private float cleanCooldown = 5f;
 
     [SerializeField]
     private MeshRenderer meshRenderer;

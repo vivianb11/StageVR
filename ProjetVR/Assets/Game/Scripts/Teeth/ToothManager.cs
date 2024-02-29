@@ -117,6 +117,7 @@ public class ToothManager : MonoBehaviour
         tweener.PlayTween("spawn");
         transform.localPosition = Vector3.zero;
         dirtyCellsCount = 0;
+        cleanedCell = 0;
 
         DisableGrab();
 

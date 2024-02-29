@@ -8,6 +8,7 @@ using UnityEngine;
 public class SO_TeethGrenration : ScriptableObject
 {
     [Header("Generation Settings")]
+    [InfoBox("The number of peices must be a square number", EInfoBoxType.Warning)]
     public int numberOfPeices;
 
     public bool hasDirty, hasTartar, hasDecay;

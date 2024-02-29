@@ -15,22 +15,16 @@ public class Grabable : MonoBehaviour
 
     public bool alignToNormal;
 
+    public bool lookAtCamera;
+
     [ShowIf("alignToNormal")]
     public AlignDirection alignDirection = AlignDirection.UP;
 
     [ShowIf("alignToNormal")]
     public float distanceToPoint = 0.5f;
 
-    public enum MovementType
-    {
-        NORMAL, CHAIN
-    }
-
-    public MovementType movementType = MovementType.NORMAL;
-
-    [ShowIf("movementType", MovementType.CHAIN)]
-    [SerializeField]
-    private float chainLength = 1f;
+    private bool preUseGravity;
+    private bool preIsKinematic;
 
     private void Awake()
     {
@@ -74,25 +68,20 @@ public class Grabable : MonoBehaviour
         Vector3 targetNormalPos = targetPos + normal * distanceToPoint;
         Vector3 directionToTarget = targetNormalPos - transform.position;
 
-        switch (movementType)
-        {
-            case MovementType.NORMAL:
-                if (alignToNormal)
-                    AlignToNormal(normal);
+        if (alignToNormal)
+            AlignToNormal(normal);
 
-                interacable.rb.velocity = Vector3.Lerp(interacable.rb.velocity, directionToTarget * moveSpeed, 1f);
-                break;
-            case MovementType.CHAIN:
-                if (Vector3.Distance(transform.position, targetPos) > chainLength)
-                    interacable.rb.velocity = Vector3.Lerp(interacable.rb.velocity, directionToTarget * moveSpeed, 1f);
-                else
-                    interacable.rb.velocity = Vector3.Lerp(interacable.rb.velocity, Vector3.zero, 0.5f);
-                break;
-        }
+        if (lookAtCamera)
+            transform.LookAt(Camera.main.transform.position, normal);
+
+        interacable.rb.velocity = Vector3.Lerp(interacable.rb.velocity, directionToTarget * moveSpeed, 1f);
     }
 
     private void OnSelected()
     {
+        preUseGravity = interacable.rb.useGravity;
+        preIsKinematic = interacable.rb.isKinematic;
+
         interacable.rb.useGravity = false;
         interacable.rb.isKinematic = false;
 
@@ -103,7 +92,8 @@ public class Grabable : MonoBehaviour
 
     private void OnDeselected()
     {
-        interacable.rb.useGravity = true;
+        interacable.rb.useGravity = preUseGravity;
+        interacable.rb.isKinematic = preIsKinematic;
 
         gameObject.layer = 0;
 

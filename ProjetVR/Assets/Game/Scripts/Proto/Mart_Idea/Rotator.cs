@@ -70,12 +70,13 @@ public class Rotator : MonoBehaviour
 
     public void SetAsChild(Transform objectTransform)
     {
-        objectTransform.parent = transform;
+        objectTransform.SetParent(transform, true);
+        objectTransform.localPosition = Vector3.zero;
     }
 
     public void YeetTheCild()
     {
-        transform.GetChild(0).transform.parent = null;
+        transform.GetChild(0).transform.SetParent(null);
     }
 
     public void ResetRotator()

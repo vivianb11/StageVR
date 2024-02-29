@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,11 +45,13 @@ public class Shooter : MonoBehaviour
         }
     }
 
+    [Button]
     public void EnableShoot()
     {
         canShoot = true;
     }
 
+    [Button]
     public void DisableShoot()
     { 
         canShoot = false;

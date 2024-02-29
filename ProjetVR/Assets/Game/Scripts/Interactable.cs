@@ -42,7 +42,7 @@ public class Interactable : MonoBehaviour
 
     [HideInInspector]
     public bool activated { get; set; } = true;
-    private bool preActivated;
+    private bool preActivated = true;
 
     [HideInInspector]
     public bool canBeInteracted { get; private set; } = true;

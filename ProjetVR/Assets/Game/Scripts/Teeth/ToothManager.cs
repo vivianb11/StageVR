@@ -76,12 +76,9 @@ public class ToothManager : MonoBehaviour
         {
             ResetTeeth();
         }
-        if(Input.GetKeyDown(KeyCode.S))
-        {
-            Debug.Log(CleanAmount);
-        }
     }
 
+    [Button]
     public void CleanTeeth()
     {
         GetComponent<Collider>().enabled = true;
@@ -89,18 +86,28 @@ public class ToothManager : MonoBehaviour
         foreach (var cell in teethCells)
         {
             cell.CleanCell();
+            cell.gameObject.SetActive(false);
         }
 
+        DisableGrab();
+        Tooth.SetActive(true);
         tweener.PlayTween("despawn");
     }
 
-    private void ResetTeeth()
+    public void ResetTeeth()
     {
         tweener.PlayTween("spawn");
-
         transform.localPosition = Vector3.zero;
+        dirtyCellsCount = 0;
 
-        GetComponent<Collider>().enabled = false;
+        DisableGrab();
+
+        foreach (var cell in teethCells)
+        {
+            cell.gameObject.SetActive(true);
+        }
+
+        Tooth.SetActive(false);
 
         switch (generationMode)
         {
@@ -121,6 +128,26 @@ public class ToothManager : MonoBehaviour
         }
     }
 
+    private void EnableGrab()
+    {
+        GetComponent<Collider>().enabled = true;
+
+        foreach (Transform child in transform)
+        {
+            child.GetComponent<Collider>().enabled = false;
+        }
+    }
+
+    private void DisableGrab()
+    {
+        GetComponent<Collider>().enabled = false;
+
+        foreach (Transform child in transform)
+        {
+            child.GetComponent<Collider>().enabled = true;
+        }
+    }
+
     private void OnCellCleaned()
     {
         cleanedCell++;
@@ -131,12 +158,7 @@ public class ToothManager : MonoBehaviour
             {
                 if (cell.teethState != TeethState.Clean)
                 {
-                    GetComponent<Collider>().enabled = true;
-
-                    foreach (Transform child in transform)
-                    {
-                        child.GetComponent<Collider>().enabled = false;
-                    }
+                    EnableGrab();
 
                     return;
                 }
@@ -194,6 +216,9 @@ public class ToothManager : MonoBehaviour
             teethCells[i].SwitchTeethState((TeethState)cellsState[i]);
             teethCells[i].OnClean.AddListener(OnCellCleaned);
         }
+
+        if (dirtyCellsCount == 0)
+            EnableGrab();
     }
 
     private void ChooseAnomaly(int cellIndex, bool withClean = false)

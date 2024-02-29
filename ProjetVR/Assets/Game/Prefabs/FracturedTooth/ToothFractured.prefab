@@ -392,9 +392,9 @@ MonoBehaviour:
   selectionCondition: 1
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 1
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []
@@ -498,9 +498,9 @@ MonoBehaviour:
   selectionCondition: 1
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 1
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []
@@ -604,9 +604,9 @@ MonoBehaviour:
   selectionCondition: 1
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 1
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []
@@ -710,9 +710,9 @@ MonoBehaviour:
   selectionCondition: 1
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 1
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []
@@ -816,9 +816,9 @@ MonoBehaviour:
   selectionCondition: 1
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 1
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []
@@ -922,9 +922,9 @@ MonoBehaviour:
   selectionCondition: 1
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 1
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []
@@ -1028,9 +1028,9 @@ MonoBehaviour:
   selectionCondition: 1
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 1
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []
@@ -1134,9 +1134,9 @@ MonoBehaviour:
   selectionCondition: 1
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 1
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []
@@ -1240,9 +1240,9 @@ MonoBehaviour:
   selectionCondition: 1
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 1
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []
@@ -1395,7 +1395,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   tweenMontages:
-  - name: 
+  - name: spawn
     waitPreviousMontage: 0
     tweenProperties:
     - propertie: 3
@@ -1536,11 +1536,8 @@ MonoBehaviour:
       completed:
         m_PersistentCalls:
           m_Calls: []
-  - name: 
-    waitPreviousMontage: 1
-    tweenProperties:
     - propertie: 2
-      waitForPreviousTweenProperty: 0
+      waitForPreviousTweenProperty: 1
       useDynamicFrom: 1
       from: {x: 0, y: 0, z: 0}
       to: {x: 1, y: 1, z: 1}
@@ -1552,28 +1549,103 @@ MonoBehaviour:
           time: 0
           value: 0
           inSlope: 0
-          outSlope: 0
+          outSlope: 3.5822635
           tangentMode: 0
           weightedMode: 3
           inWeight: 0
-          outWeight: 0.333334
+          outWeight: 0.23852958
         - serializedVersion: 3
-          time: 0.5
-          value: 0.5
-          inSlope: 5.594898
-          outSlope: 5.594899
+          time: 0.336583
+          value: 0.828268
+          inSlope: 1.7675189
+          outSlope: 1.7674915
           tangentMode: 0
           weightedMode: 3
-          inWeight: 0.33333403
-          outWeight: 0.33333397
+          inWeight: 0.43742254
+          outWeight: 0.22151233
+        - serializedVersion: 3
+          time: 0.550666
+          value: 1.079651
+          inSlope: 0.30952567
+          outSlope: 0.30952752
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.4695607
+          outWeight: 0.41548836
+        - serializedVersion: 3
+          time: 0.779498
+          value: 0.974607
+          inSlope: -0.23213644
+          outSlope: -0.23214284
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.35856426
+          outWeight: 0.36235142
+        - serializedVersion: 3
+          time: 0.897999
+          value: 1.003668
+          inSlope: 0.27978534
+          outSlope: 0.27974313
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33310264
+          outWeight: 0.33069265
         - serializedVersion: 3
           time: 1
           value: 1
+          inSlope: -0.20239142
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.3296829
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      completed:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 0}
+            m_TargetAssemblyTypeName: VivDebuger, Assembly-CSharp
+            m_MethodName: EventTextDebuger
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: Spawn finished
+              m_BoolArgument: 0
+            m_CallState: 2
+  - name: despawn
+    waitPreviousMontage: 1
+    tweenProperties:
+    - propertie: 2
+      waitForPreviousTweenProperty: 0
+      useDynamicFrom: 1
+      from: {x: 0, y: 0, z: 0}
+      to: {x: 0, y: 0, z: 0}
+      duration: 1
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
           inSlope: 0
           outSlope: 0
           tangentMode: 0
           weightedMode: 3
-          inWeight: 0.33333397
+          inWeight: 0
+          outWeight: 0.333333
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 4.7015834
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333302
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -1581,6 +1653,111 @@ MonoBehaviour:
       completed:
         m_PersistentCalls:
           m_Calls: []
+    - propertie: 3
+      waitForPreviousTweenProperty: 0
+      useDynamicFrom: 1
+      from: {x: 0, y: 0, z: 0}
+      to: {x: 1, y: 1, z: 180}
+      duration: 1
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.333333
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 4.7015834
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333302
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      completed:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 2177507039290541273}
+            m_TargetAssemblyTypeName: Tween, Assembly-CSharp
+            m_MethodName: PlayTween
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: respawn
+              m_BoolArgument: 0
+            m_CallState: 2
+  - name: respawn
+    waitPreviousMontage: 1
+    tweenProperties:
+    - propertie: 2
+      waitForPreviousTweenProperty: 0
+      useDynamicFrom: 0
+      from: {x: 0, y: 0, z: 0}
+      to: {x: 0, y: 0, z: 0}
+      duration: 2
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.333333
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 4.7015834
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333302
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      completed:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 2177507039290541273}
+            m_TargetAssemblyTypeName: Tween, Assembly-CSharp
+            m_MethodName: PlayTween
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: spawn
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 4074167816967472744}
+            m_TargetAssemblyTypeName: ToothManager, Assembly-CSharp
+            m_MethodName: ResetTeeth
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
   autoPlayMontage: 0
   tweenIndex: 0
 --- !u!114 &3723574441070924649
@@ -1599,9 +1776,9 @@ MonoBehaviour:
   selectionCondition: 1
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 4
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []
@@ -1635,10 +1812,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   alignToNormal: 0
+  lookAtCamera: 0
   alignDirection: 0
   distanceToPoint: 0.5
-  movementType: 0
-  chainLength: 1
 --- !u!1 &7587050978364518386 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3569101651563297835, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
@@ -1704,9 +1880,9 @@ MonoBehaviour:
   selectionCondition: 1
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 1
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []

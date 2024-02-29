@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6860579192178518838}
   - component: {fileID: 4320199879939465893}
   - component: {fileID: 6664188860802712630}
-  - component: {fileID: 523380734999268644}
   - component: {fileID: 5574805091260862722}
   - component: {fileID: 843441191709160747}
   - component: {fileID: 7700673980156593859}
@@ -85,20 +84,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.25, y: 0.25, z: 0.25}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &523380734999268644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4085762076734583372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c94a03cf23aba0499bece7ca1c53a80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shooter: {fileID: 0}
-  shootType: 0
 --- !u!114 &5574805091260862722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,18 +100,17 @@ MonoBehaviour:
   selectionCondition: 1
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 1
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
-  activeStats: 
   selected: 0
   selectedEventsDelay: []
   deSelectedEventsDelay: []
   onSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 523380734999268644}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShooterStateSwitcher, Assembly-CSharp
         m_MethodName: SwitchState
         m_Mode: 1
@@ -212,4 +196,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dae52e83b0b07c443897220b727e59c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signal: {fileID: 0}
+  signal:
+  - {fileID: 0}

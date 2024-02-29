@@ -1,62 +1,43 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 public class Rotator : MonoBehaviour
 {
     public bool snaping = true;
 
-    public GameObject rotationControleurs;
+    [SerializeField] int snapValue = 90;
+    [SerializeField] Transform trakinckPoint;
 
-    public float controlerSpacing = 5f;
-    
-    [SerializeField]
-    private int snapValue = 90;
-
-    private Transform camera;
+    private Transform cameraTarget;
 
     public void Awake()
     {
-        camera = Camera.main.transform;
+        cameraTarget = Camera.main.transform;
 
-        transform.LookAt(camera.position);
+        transform.LookAt(cameraTarget.position);
         transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, transform.localEulerAngles.z);
-
-        GameObject go = Instantiate(rotationControleurs);
-        go.transform.position = transform.position + transform.up * controlerSpacing;
-        go.transform.rotation = transform.rotation;
-        go.transform.Rotate(0, 0, 90);
-        SetupInteractable(go);
-
-
-        go = Instantiate(rotationControleurs);
-        go.transform.position = transform.position - transform.up * controlerSpacing;
-        go.transform.rotation = transform.rotation;
-        go.transform.Rotate(0, 0, -90);
-        SetupInteractable(go);
-
-        go = Instantiate(rotationControleurs);
-        go.transform.position = transform.position + transform.right * controlerSpacing;
-        go.transform.rotation = transform.rotation;
-        go.transform.Rotate(0, 90, 0);
-        SetupInteractable(go);
-
-        go = Instantiate(rotationControleurs);
-        go.transform.position = transform.position - transform.right * controlerSpacing;
-        go.transform.rotation = transform.rotation;
-        go.transform.Rotate(0, 0, 180);
-        SetupInteractable(go);
-
     }
 
-    private void SetupInteractable(GameObject go)
+    public void RotateTowards(RotatorController rotatorController)
     {
-        Interactable inter = go.GetComponent<Interactable>();
-        inter.onSelected.AddListener(() => RotateTowards(go));
-    }
+        Vector3 direction = Vector3.zero;
 
-    public void RotateTowards(GameObject gameObject)
-    {
-        Vector3 direction = gameObject.transform.up;
+        switch (rotatorController.direction)
+        {
+            case RotatorController.RotationDirection.UP:
+                direction = trakinckPoint.right;
+                break;
+            case RotatorController.RotationDirection.DOWN:
+                direction = -trakinckPoint.right;
+                break;
+            case RotatorController.RotationDirection.LEFT:
+                direction = trakinckPoint.up;
+                break;
+            case RotatorController.RotationDirection.RIGHT:
+                direction = -trakinckPoint.up;
+                break;
+        }
 
         if (snaping)
         {
@@ -83,7 +64,7 @@ public class Rotator : MonoBehaviour
     {
         StopAllCoroutines();
 
-        transform.LookAt(camera.position);
+        transform.LookAt(cameraTarget.position);
         transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, transform.localEulerAngles.z);
     }
 

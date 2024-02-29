@@ -4,6 +4,7 @@ using Random = UnityEngine.Random;
 using NaughtyAttributes;
 using System.Linq;
 using SignalSystem;
+using UnityEngine.Events;
 
 public class ToothManager : MonoBehaviour
 {
@@ -40,6 +41,9 @@ public class ToothManager : MonoBehaviour
     [SerializeField] int dirtyCellsCount;
     [SerializeField] int cleanedCell;
 
+    [Foldout("Events")]
+    public UnityEvent OnTeethCleaned;
+    
     public float CleanAmount
     {
         get
@@ -91,6 +95,9 @@ public class ToothManager : MonoBehaviour
 
         DisableGrab();
         Tooth.SetActive(true);
+
+        OnTeethCleaned?.Invoke();
+
         tweener.PlayTween("despawn");
     }
 

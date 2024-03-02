@@ -5,15 +5,41 @@ using UnityEngine;
 
 public class CleanTeethHologram : MonoBehaviour
 {
+    [SerializeField] [Range(0f, 1f)] float lerpSpeed;
+
     [SerializeField] ToothManager toothManager;
+    [SerializeField] MeshRenderer mesh;
+    [SerializeField] Wobble wobble;
+
+    private float currentValue;
 
     private void Awake()
     {
-        
+        toothManager.OnCleanAmountChange.AddListener(OnCleanAmountChanged);
     }
 
-    private void FixedUpdate()
+    private IEnumerator LerpCoroutine(float b, float lerp)
     {
-        print(toothManager.CleanAmount);
+        float difference = Mathf.Abs(currentValue - b);
+
+        while (difference > 0.01f)
+        {
+            currentValue = Mathf.Lerp(currentValue, b, lerp);
+            mesh.material.SetFloat("_fill", currentValue);
+            difference = Mathf.Abs(currentValue - b);
+
+            yield return null;
+        }
+
+        currentValue = b;
+        mesh.material.SetFloat("_fill", currentValue);
+    }
+
+    private void OnCleanAmountChanged(float amount)
+    {
+        wobble.wobbleAmountToAddX = amount * 2f;
+        wobble.wobbleAmountToAddZ = amount * 2f;
+
+        StartCoroutine(LerpCoroutine(amount, lerpSpeed));
     }
 }

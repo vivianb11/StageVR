@@ -178,7 +178,7 @@ public class Mascotte : MonoBehaviour
         enterClean.Play();
         yield return new WaitForSeconds(delay);
 
-        toothManager.CleanTeeth();
+        toothManager.CleanTooth();
         toothBrush.Play();
     }
 }

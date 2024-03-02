@@ -2,6 +2,9 @@ using UnityEngine;
 using NaughtyAttributes;
 using UnityEngine.Events;
 using SignalSystem;
+using System.Collections.Generic;
+using System.Collections;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(Interactable))]
 [RequireComponent(typeof(SignalListener))]
@@ -13,7 +16,7 @@ public class CellBehavior : MonoBehaviour
 
     public Transform[] foodPrefab;
 
-    public Transform[] neighbors;
+    public List<Transform> neighbors;
 
     public UnityEvent OnClean = new UnityEvent();
 
@@ -138,8 +141,39 @@ public class CellBehavior : MonoBehaviour
         CleanCell();
     }
 
-    private void SpawnFood()
+    [Button("Set Neighbours")]
+    public void SetNeighboursButton()
     {
+        StartCoroutine(SetNeighbours());
+    }
 
+    private IEnumerator SetNeighbours()
+    {
+        neighbors.Clear();
+
+        MeshCollider mCol = GetComponent<MeshCollider>();
+        mCol.isTrigger = true;
+
+        gameObject.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+
+        yield return new WaitForSeconds(0.1f);
+
+        gameObject.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+
+        mCol.isTrigger = false;
+
+        //trie les cells par nom
+        neighbors.Sort((x, y) => x.name.CompareTo(y.name));
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Trigger Enter");
+
+        if (other.CompareTag("Cell"))
+        {
+            if (!neighbors.Contains(other.transform))
+                neighbors.Add(other.transform);
+        }
     }
 }

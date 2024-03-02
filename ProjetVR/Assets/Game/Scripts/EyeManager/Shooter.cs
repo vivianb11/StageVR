@@ -43,7 +43,7 @@ public class Shooter : MonoBehaviour
         {
             currentProjectileShootSpeed = 0f;
 
-            Instantiate(projectile, transform.position, Quaternion.identity).transform.LookAt(transform.position + EyeManager.Instance.GetCursorForward());
+            Instantiate(projectile, transform.position, Quaternion.identity).transform.LookAt(EyeManager.Instance.hitPosition);
         }
     }
 }

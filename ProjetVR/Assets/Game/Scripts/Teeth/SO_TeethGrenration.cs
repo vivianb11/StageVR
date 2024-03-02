@@ -10,7 +10,7 @@ public class SO_TeethGrenration : ScriptableObject
     [Header("Generation Settings")]
     public int numberOfPeices;
 
-    public bool hasDirty, hasTartar, hasDecay;
+    public bool hasDirty, hasTartar, hasDecay, hasSmell;
 
     [Space(10)]
     [MinMaxSlider(0, 10)]
@@ -19,6 +19,8 @@ public class SO_TeethGrenration : ScriptableObject
 
     [ShowIf("hasDirty")]
     [Header("Dirty Settings")]
+    public int weightDirty;
+    [ShowIf("hasDirty")]
     [MinMaxSlider(0, 10)]
     public Vector2Int minMaxDirty;
     [ShowIf("hasDirty")]
@@ -26,6 +28,8 @@ public class SO_TeethGrenration : ScriptableObject
 
     [ShowIf("hasTartar")]
     [Header("Tartar Settings")]
+    public int weightTartar;
+    [ShowIf("hasTartar")]
     [MinMaxSlider(0, 10)]
     public Vector2Int minMaxTartar;
     [ShowIf("hasTartar")]
@@ -33,10 +37,16 @@ public class SO_TeethGrenration : ScriptableObject
 
     [ShowIf("hasDecay")]
     [Header("Decay Settings")]
+    public int weightDecay;
+    [ShowIf("hasDecay")]
     [MinMaxSlider(0, 10)]
     public Vector2Int minMaxDecay;
     [ShowIf("hasDecay")]
     public AnimationCurve decayChance;
+
+    [ShowIf("hasSmell")]
+    [Header("BadSmell")]
+    public int smellWeight;
 
     public List<TeethState> GetActives(bool withClean)
     {

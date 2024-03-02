@@ -16,10 +16,11 @@ public class ToothManager : MonoBehaviour
 
     public GenerationMode generationMode = GenerationMode.Random;
 
-    List<int> cellsState;
+    private List<int> cellsState;
     private List<bool> settedCells;
 
     public GameObject Tooth;
+    public List<CellBehavior> teethCells = new List<CellBehavior>();
 
     public SO_TeethGrenration generationParameter;
 
@@ -37,11 +38,12 @@ public class ToothManager : MonoBehaviour
     public SO_Signal brushSignal;
     public SO_Signal brossetteSignal;
 
-    public Tween tweener;
-    private List<CellBehavior> teethCells = new List<CellBehavior>();
+    private Tween tweener;
 
-    [SerializeField] int dirtyCellsCount;
-    [SerializeField] int cleanedCell;
+    int dirtyCellsCount;
+    int cleanedCell;
+
+    bool smells;
 
     [Foldout("Events")]
     public UnityEvent OnTeethCleaned;
@@ -56,6 +58,9 @@ public class ToothManager : MonoBehaviour
             float cleandCells = teethCells.FindAll(x => x.GetComponent<CellBehavior>().teethState == TeethState.Clean).Count;
             float totalCells = teethCells.Count;
 
+            if (smells)
+                cleandCells--;
+
             return cleandCells / totalCells;
         }
         private set
@@ -68,18 +73,11 @@ public class ToothManager : MonoBehaviour
     {
         grabCollider = GetComponent<Collider>();
         grabIntractable = GetComponent<Interactable>();
+        tweener = GetComponent<Tween>();
     }
 
     void Start()
     {
-        foreach (Transform child in transform)
-        {
-            if (child.gameObject == Tooth)
-                continue;
-
-            teethCells.Add(child.GetComponent<CellBehavior>());
-        }
-
         ResetTeeth();
 
         Tooth.SetActive(false);
@@ -124,6 +122,7 @@ public class ToothManager : MonoBehaviour
         transform.localPosition = Vector3.zero;
         dirtyCellsCount = 0;
         cleanedCell = 0;
+        smells = false;
 
         DisableGrab();
 
@@ -153,6 +152,8 @@ public class ToothManager : MonoBehaviour
         {
             cell.SwitchTeethState((TeethState)Random.Range(0, 4));
         }
+
+        smells = Random.Range(0, 1) < 0.5f ? true : false;
     }
 
     private void EnableGrab()

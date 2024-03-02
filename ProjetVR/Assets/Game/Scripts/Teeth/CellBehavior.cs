@@ -29,8 +29,10 @@ public class CellBehavior : MonoBehaviour
         mR = GetComponent<MeshRenderer>();
         interactable = GetComponent<Interactable>();
         signalListener = GetComponent<SignalListener>();
+
         GetComponent<Rigidbody>().isKinematic = true;
 
+        interactable.SetActivateState(false);
         interactable.deSelectionCondition = Interactable.DeSelectionCondition.LOOK_OUT;
 
         signalListener.signalReceived.AddListener(() => interactable.SetActivateState(true));

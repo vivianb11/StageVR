@@ -1904,45 +1904,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1734883847}
     m_Modifications:
-    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
-      propertyPath: generationMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
-      propertyPath: OnCleanAmountChange.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
-      propertyPath: OnCleanAmountChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
-      propertyPath: OnCleanAmountChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
-      propertyPath: OnCleanAmountChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
-      propertyPath: OnCleanAmountChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
-      propertyPath: OnCleanAmountChange.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
-      propertyPath: OnCleanAmountChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
-      propertyPath: OnCleanAmountChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6056224882789707400, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: m_Name
       value: ToothFractured
+      objectReference: {fileID: 0}
+    - target: {fileID: 6056224882789707400, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6865694600787375154, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3907,6 +3875,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2031814983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &851527130 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8617926115049754981, guid: f5322f3c254a6474c97c9f5c4e2a9763, type: 3}
+  m_PrefabInstance: {fileID: 9027213870660387988}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &864387908
 GameObject:
   m_ObjectHideFlags: 0
@@ -9330,6 +9303,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1409794330}
+  - {fileID: 851527130}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1735632335
@@ -11276,6 +11250,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9741bb470de02524b9e6328ffcd5fb58, type: 3}
+--- !u!1001 &9027213870660387988
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1734883847}
+    m_Modifications:
+    - target: {fileID: 8617926115049754981, guid: f5322f3c254a6474c97c9f5c4e2a9763, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617926115049754981, guid: f5322f3c254a6474c97c9f5c4e2a9763, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617926115049754981, guid: f5322f3c254a6474c97c9f5c4e2a9763, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.7980001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617926115049754981, guid: f5322f3c254a6474c97c9f5c4e2a9763, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617926115049754981, guid: f5322f3c254a6474c97c9f5c4e2a9763, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617926115049754981, guid: f5322f3c254a6474c97c9f5c4e2a9763, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617926115049754981, guid: f5322f3c254a6474c97c9f5c4e2a9763, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617926115049754981, guid: f5322f3c254a6474c97c9f5c4e2a9763, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617926115049754981, guid: f5322f3c254a6474c97c9f5c4e2a9763, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617926115049754981, guid: f5322f3c254a6474c97c9f5c4e2a9763, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8994487288883448799, guid: f5322f3c254a6474c97c9f5c4e2a9763, type: 3}
+      propertyPath: m_Name
+      value: ToothFracturedV2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f5322f3c254a6474c97c9f5c4e2a9763, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

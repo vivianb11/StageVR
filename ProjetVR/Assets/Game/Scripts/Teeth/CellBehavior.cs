@@ -11,6 +11,7 @@ using Unity.VisualScripting;
 public class CellBehavior : MonoBehaviour
 {
     public TeethState teethState;
+    public ToothManager toothManager { get; private set; }
 
     public SO_CellData cellData;
 
@@ -21,7 +22,6 @@ public class CellBehavior : MonoBehaviour
     public UnityEvent OnClean = new UnityEvent();
 
     private int toothPasteAmount;
-    private ToothManager toothManager;
     private MeshRenderer mR;
     private Interactable interactable;
     private SignalListener signalListener;
@@ -168,8 +168,6 @@ public class CellBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger Enter");
-
         if (other.CompareTag("Cell"))
         {
             if (!neighbors.Contains(other.transform))

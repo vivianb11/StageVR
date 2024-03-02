@@ -44,6 +44,9 @@ public class ToothManager : MonoBehaviour
 
     private bool smells;
 
+    public int maxSmellAmount = 10;
+    private int smellAmount = 10;
+
     [Foldout("Events")]
     public UnityEvent OnTeethCleaned;
     [Foldout("Events")]
@@ -55,6 +58,8 @@ public class ToothManager : MonoBehaviour
         grabCollider = GetComponent<Collider>();
         grabIntractable = GetComponent<Interactable>();
         tweener = GetComponent<Tween>();
+
+        smellAmount = maxSmellAmount;
     }
 
     void Start()
@@ -83,6 +88,8 @@ public class ToothManager : MonoBehaviour
     {
         smells = value;
 
+        smellAmount = maxSmellAmount;
+
         if (value)
             smellVFX.SetActive(true);
         else
@@ -97,6 +104,17 @@ public class ToothManager : MonoBehaviour
         OnCleanAmountChange?.Invoke(GetToothCleanPercent());
 
         CheckIfToothCleaned();
+    }
+
+    public void RemoveSmellAmount()
+    {
+        if (smells)
+            return;
+
+        smellAmount -= 1;
+
+        if (smellAmount <= 0)
+            CleanSmell();
     }
 
     public float GetToothCleanPercent()

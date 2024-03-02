@@ -12,6 +12,8 @@ public class Projectile : MonoBehaviour
 
     private Rigidbody body;
 
+    private bool canCollid = true;
+
     private void Awake()
     {
         body = GetComponent<Rigidbody>();
@@ -28,6 +30,9 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!canCollid)
+            return;
+        
         if (other.gameObject.tag != "Cell")
         {
             Destroy(gameObject);
@@ -44,7 +49,8 @@ public class Projectile : MonoBehaviour
             transform.parent = other.transform;
 
             cell.IncreaseToothPasteAmount();
-            cell.OnClean.AddListener(() => Destroy(gameObject));
+
+            canCollid = true;
 
             return;
         }

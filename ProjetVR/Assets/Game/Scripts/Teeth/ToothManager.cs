@@ -231,17 +231,17 @@ public class ToothManager : MonoBehaviour
 
             settedCells[cellIndex] = true;
 
-            if (cellsState.Where(cellsState => cellsState == (int)TeethState.Clean).Count() < generationParameter.minMaxClean.x)
+            if (cellsState.Where(cellsState => cellsState == (int)TeethState.Clean).Count() <= generationParameter.minMaxClean.x)
             {
                 cellsState[cellIndex] = (int)TeethState.Clean;
             }
             else if (cellsState.Where(cellsState => cellsState == (int)TeethState.Clean).Count() > generationParameter.minMaxClean.y)
             {
-                ChooseAnomaly(cellIndex, true);
+                ChooseAnomaly(cellIndex);
             }
             else
             {
-                ChooseAnomaly(cellIndex);
+                ChooseAnomaly(cellIndex, true);
             }
         }
 
@@ -259,22 +259,52 @@ public class ToothManager : MonoBehaviour
     {
         List<TeethState> activeAnomalies = generationParameter.GetActives(withClean);
 
-        TeethState teethState = activeAnomalies[Random.Range(0, activeAnomalies.Count)];
+        int maxwheight = 0;
 
-        switch (teethState)
+        foreach (var anomaly in activeAnomalies)
         {
-            case TeethState.Dirty:
+            if (anomaly == TeethState.Clean)
+            {
+                maxwheight += generationParameter.weightClean;
+            }
+            else if (anomaly == TeethState.Dirty)
+            {
+                maxwheight += generationParameter.weightDirty;
+            }
+            else if (anomaly == TeethState.Tartar)
+            {
+                maxwheight += generationParameter.weightTartar;
+            }
+            else if (anomaly == TeethState.Decay)
+            {
+                maxwheight += generationParameter.weightDecay;
+            }
+        }
+
+        int random = Random.Range(0, maxwheight);
+
+        foreach (var anomaly in activeAnomalies)
+        {
+            if (random < generationParameter.weightClean)
+            {
+                cellsState[cellIndex] = (int)TeethState.Clean;
+                return;
+            }
+            else if (random < generationParameter.weightClean + generationParameter.weightDirty)
+            {
                 cellsState[cellIndex] = DirtyGeneration(cellIndex, withClean);
-                break;
-            case TeethState.Tartar:
+                return;
+            }
+            else if (random < generationParameter.weightClean + generationParameter.weightDirty + generationParameter.weightTartar)
+            {
                 cellsState[cellIndex] = TartarGeneration(cellIndex, withClean);
-                break;
-            case TeethState.Decay:
+                return;
+            }
+            else if (random < generationParameter.weightClean + generationParameter.weightDirty + generationParameter.weightTartar + generationParameter.weightDecay)
+            {
                 cellsState[cellIndex] = DecayGeneration(cellIndex, withClean);
-                break;
-            case TeethState.Clean:
-                cellsState[cellIndex] = CleanGeneration(cellIndex, withClean);
-                break;
+                return;
+            }
         }
     }
 
@@ -282,9 +312,9 @@ public class ToothManager : MonoBehaviour
     {
         int x = Random.Range(0, 1) < generationParameter.dirtyChance.Evaluate(Random.Range(0, 1)) ? (int)TeethState.Dirty : (int)TeethState.Clean;
 
-        if (x == (int)TeethState.Clean)
+        if (x == (int)TeethState.Clean && !withClean)
         {
-            CleanGeneration(cellIndex, withClean);
+            ChooseAnomaly(cellIndex, withClean);
         }
         return x;
     }
@@ -293,20 +323,20 @@ public class ToothManager : MonoBehaviour
     {
         int x = Random.Range(0, 1) < generationParameter.tartarChance.Evaluate(Random.Range(0, 1)) ? (int)TeethState.Tartar : (int)TeethState.Clean;
 
-        if (x == (int)TeethState.Clean)
+        if (x == (int)TeethState.Clean && !withClean)
         {
-            CleanGeneration(cellIndex, withClean);
+            ChooseAnomaly(cellIndex, withClean);
         }
         return x;
     }
 
-    private int DecayGeneration(int cellIndex, bool WithClean)
+    private int DecayGeneration(int cellIndex, bool withClean)
     {
         int x = Random.Range(0, 1) < generationParameter.decayChance.Evaluate(Random.Range(0, 1)) ? (int)TeethState.Decay : (int)TeethState.Clean;
 
-        if (x == (int)TeethState.Clean)
+        if (x == (int)TeethState.Clean && !withClean)
         {
-            CleanGeneration(cellIndex, WithClean);
+            ChooseAnomaly(cellIndex, withClean);
         }
         return x;
     }
@@ -317,8 +347,28 @@ public class ToothManager : MonoBehaviour
 
         if (x != (int)TeethState.Clean)
         {
-            DirtyGeneration(cellIndex, withClean);
+            ChooseAnomaly(cellIndex, withClean);
         }
         return x;
+    }
+
+    public void SetCellState(int index, TeethState teethState)
+    {
+        teethCells[index].SwitchTeethState(teethState);
+    }
+
+    public void SetCellState(int index, int teethState)
+    {
+        teethCells[index].SwitchTeethState((TeethState)teethState);
+    }
+
+    public void SetCellState(CellBehavior cell, int teethState)
+    {
+        cell.SwitchTeethState((TeethState)teethState);
+    }
+
+    public void SetCellState(CellBehavior cell, TeethState teethState)
+    {
+        cell.SwitchTeethState(teethState);
     }
 }

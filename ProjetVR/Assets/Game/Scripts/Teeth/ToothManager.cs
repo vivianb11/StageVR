@@ -84,7 +84,6 @@ public class ToothManager : MonoBehaviour
 
         for (int i = 0; i < teethCells.Count; i++)
         {
-            teethCells[i].SwitchTeethState((TeethState)cellsState[i]);
             teethCells[i].OnClean.AddListener(OnCellCleaned);
         }
     }
@@ -100,7 +99,7 @@ public class ToothManager : MonoBehaviour
     [Button]
     public void CleanTeeth()
     {
-        GetComponent<Collider>().enabled = true;
+        grabCollider.enabled = true;
 
         foreach (var cell in teethCells)
         {
@@ -246,6 +245,12 @@ public class ToothManager : MonoBehaviour
             }
         }
 
+        for (int i = 0; i < teethCells.Count; i++)
+        {
+            dirtyCellsCount += (TeethState)cellsState[i] != TeethState.Clean && (TeethState)cellsState[i] != TeethState.Decay ? 1 : 0;
+            teethCells[i].SwitchTeethState((TeethState)cellsState[i]);
+        }
+
         if (dirtyCellsCount == 0)
             EnableGrab();
     }
@@ -260,11 +265,9 @@ public class ToothManager : MonoBehaviour
         {
             case TeethState.Dirty:
                 cellsState[cellIndex] = DirtyGeneration(cellIndex, withClean);
-                dirtyCellsCount++;
                 break;
             case TeethState.Tartar:
                 cellsState[cellIndex] = TartarGeneration(cellIndex, withClean);
-                dirtyCellsCount++;
                 break;
             case TeethState.Decay:
                 cellsState[cellIndex] = DecayGeneration(cellIndex, withClean);

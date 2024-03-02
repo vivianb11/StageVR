@@ -150,7 +150,9 @@ public class ToothManager : MonoBehaviour
     {
         foreach (CellBehavior cell in teethCells)
         {
-            cell.SwitchTeethState((TeethState)Random.Range(0, 4));
+            TeethState teethState = (TeethState)Random.Range(0, 4);
+            dirtyCellsCount += teethState != TeethState.Clean && teethState != TeethState.Decay ? 1 : 0;
+            cell.SwitchTeethState(teethState);
         }
 
         smells = Random.Range(0, 1) < 0.5f ? true : false;

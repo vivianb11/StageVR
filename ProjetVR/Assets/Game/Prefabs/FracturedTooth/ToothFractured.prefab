@@ -1600,6 +1600,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generationMode: 0
   Tooth: {fileID: 8105509145681298942}
+  teethCells:
+  - {fileID: 1624670990630528900}
+  - {fileID: 1158057734536199390}
+  - {fileID: 4352928675960300622}
+  - {fileID: 3045650896185039240}
+  - {fileID: 6057273668262312094}
+  - {fileID: 5809970587398190389}
+  - {fileID: 8669741701568819590}
+  - {fileID: 4497381379037746307}
+  - {fileID: 384485724580089823}
+  - {fileID: 2413388274841436382}
   generationParameter: {fileID: 11400000, guid: be07bfae90b5d9042b17a20c1c003cb6, type: 2}
   cleanMat: {fileID: 2100000, guid: 9c6103d2ad98b544b82572d8025d27d2, type: 2}
   dirtyMat: {fileID: 2100000, guid: d753c80c86f4b3f41a62ece4b7c1c9e8, type: 2}
@@ -1607,9 +1618,6 @@ MonoBehaviour:
   decayMat: {fileID: 2100000, guid: af921ee7af8d1204b993352f51214eaa, type: 2}
   brushSignal: {fileID: 11400000, guid: fd50f06be32fee7448d872b89abecf9f, type: 2}
   brossetteSignal: {fileID: 11400000, guid: 00371841a0ed18048891fe0e7e5540fa, type: 2}
-  tweener: {fileID: 2177507039290541273}
-  dirtyCellsCount: 0
-  cleanedCell: 0
   OnTeethCleaned:
     m_PersistentCalls:
       m_Calls: []

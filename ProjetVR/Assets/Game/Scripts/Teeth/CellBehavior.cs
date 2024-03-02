@@ -1,9 +1,7 @@
-using System;
 using UnityEngine;
 using NaughtyAttributes;
 using UnityEngine.Events;
 using SignalSystem;
-using System.Collections.Generic;
 
 [RequireComponent(typeof(Interactable))]
 [RequireComponent(typeof(SignalListener))]
@@ -12,6 +10,10 @@ public class CellBehavior : MonoBehaviour
     public TeethState teethState;
 
     public SO_CellData cellData;
+
+    public Transform[] foodPrefab;
+
+    public Transform[] neighbors;
 
     public UnityEvent OnClean = new UnityEvent();
 
@@ -92,6 +94,15 @@ public class CellBehavior : MonoBehaviour
     public void SwitchTeethState(TeethState newTeethState)
     {
         teethState = newTeethState;
+
+        foreach (Transform child in transform)
+            Destroy(child.gameObject);
+
+        if (teethState == TeethState.Dirty)
+        {
+            Transform food = Instantiate(foodPrefab.PickRandom(), transform);
+            food.rotation = Quaternion.Euler(new Vector3(Random.Range(0f, 180f), Random.Range(0f, 180f), Random.Range(0f, 180f)));
+        }
 
         SetMaterials(newTeethState);
         SetSignalListener(newTeethState);

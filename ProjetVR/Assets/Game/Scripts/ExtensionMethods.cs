@@ -49,4 +49,11 @@ public static class ExtensionMethods
             list[n] = value;
         }
     }
+
+    public static T PickRandom<T>(this IList<T> list)
+    {
+        T item = list[Random.Range(0, list.Count)];
+
+        return item;
+    }
 }

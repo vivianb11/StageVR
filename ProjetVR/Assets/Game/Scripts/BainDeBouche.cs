@@ -9,18 +9,41 @@ public class BainDeBouche : MonoBehaviour
 
     [SerializeField] GameObject projectile;
 
-    private void Start()
-    {
-        InvokeRepeating(nameof(Shoot), 0f, shootDelay);
-    }
+    private bool followHitPosition;
+
+    private float currentShootDelay;
 
     void Update()
     {
-        transform.position = EyeManager.Instance.hitPosition + Vector3.up * distance;
+        if (followHitPosition)
+        {
+            transform.position = EyeManager.Instance.hitPosition + Vector3.up * distance;
+            ShootProjectile();
+        }
     }
 
-    private void Shoot()
+    public void EnableShoot()
     {
-        Instantiate(projectile, transform.position, Quaternion.identity);
+        followHitPosition = true;
+    }
+
+    public void DisableShoot()
+    {
+        followHitPosition = false;
+
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+    }
+
+    private void ShootProjectile()
+    {
+        currentShootDelay += Time.deltaTime;
+
+        if (currentShootDelay >= shootDelay)
+        {
+            currentShootDelay = 0f;
+
+            Instantiate(projectile, transform.position, Quaternion.identity);
+        }
     }
 }

@@ -108,7 +108,7 @@ public class ToothManager : MonoBehaviour
 
     public void RemoveSmellAmount()
     {
-        if (smells)
+        if (!smells)
             return;
 
         smellAmount -= 1;

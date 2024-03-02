@@ -1,13 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using System;
-using System.Collections.Generic;
 using NaughtyAttributes;
-using JetBrains.Annotations;
 using System.Collections;
-using UnityEngine.UI;
-using System.Linq;
-using Unity.VisualScripting;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Interactable : MonoBehaviour
@@ -45,7 +40,9 @@ public class Interactable : MonoBehaviour
     [ShowIf("deSelectionCondition", DeSelectionCondition.AUTO_TIME)]
     public float autoTime;
 
+    [HideInInspector]
     public bool activated { get; set; } = true;
+    private bool preActivated = true;
 
     [HideInInspector]
     public bool canBeInteracted { get; private set; } = true;
@@ -53,16 +50,16 @@ public class Interactable : MonoBehaviour
     public bool selected;
 
     [Header("Events")]
-    public EventDelay[] selectedEventsDelay;
-    public EventDelay[] deSelectedEventsDelay;
+    public EventDelay[] selectedEventsDelay = new EventDelay[0];
+    public EventDelay[] deSelectedEventsDelay = new EventDelay[0];
     [Space(10)]
-    public UnityEvent onSelected;
-    public UnityEvent onDeselected;
+    public UnityEvent onSelected = new UnityEvent();
+    public UnityEvent onDeselected = new UnityEvent();
     [Space(10)]
-    public UnityEvent lookIn;
-    public UnityEvent lookOut;
+    public UnityEvent lookIn = new UnityEvent();
+    public UnityEvent lookOut = new UnityEvent();
 
-    public UnityEvent<bool> activeStateChanged;
+    public UnityEvent<bool> activeStateChanged = new UnityEvent<bool>();
 
     private void Awake()
     {
@@ -74,12 +71,23 @@ public class Interactable : MonoBehaviour
         EyeManager eyeManager = EyeManager.Instance;
     }
 
+    private void OnEnable()
+    {
+        activated = preActivated;
+    }
+
+    private void OnDisable()
+    {
+        activated = false;
+    }
+
     public void SetActivateState(bool value)
     {
         if (activated != value)
             activeStateChanged?.Invoke(value);
 
         activated = value;
+        preActivated = value;
     }
 
     public void LookIn() 

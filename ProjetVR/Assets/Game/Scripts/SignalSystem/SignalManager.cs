@@ -7,7 +7,7 @@ namespace SignalSystem
     {
         public static SignalManager Instance { get; private set; }
 
-        public UnityEvent<string> signalCalled;
+        public UnityEvent<string> signalCalled = new UnityEvent<string>();
 
         private void Awake()
         {

@@ -34,9 +34,6 @@ public class Mascotte : MonoBehaviour
 
     private bool canClean = true;
 
-    private Teeth[] teeths;
-    private Teeth teethTarget;
-
     private Vector3 startPos;
     private Vector3 targetPosition;
 
@@ -44,7 +41,6 @@ public class Mascotte : MonoBehaviour
 
     private void Start()
     {
-        teeths = FindObjectsOfType<Teeth>();
         startPos = transform.position;
         targetPosition = transform.position;
 

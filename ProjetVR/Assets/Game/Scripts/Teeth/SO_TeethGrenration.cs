@@ -11,6 +11,9 @@ public class SO_TeethGrenration : ScriptableObject
     public int numberOfPeices;
 
     public bool hasDirty, hasTartar, hasDecay, hasSmell;
+    [ShowIf("hasSmell")]
+    [Range(0, 1)]
+    public float smellSpawnChance;
 
     [Space(10)]
     [MinMaxSlider(0, 10)]
@@ -44,9 +47,7 @@ public class SO_TeethGrenration : ScriptableObject
     [ShowIf("hasDecay")]
     public AnimationCurve decayChance;
 
-    [ShowIf("hasSmell")]
-    [Header("BadSmell")]
-    public int smellWeight;
+    
 
     public List<TeethState> GetActives(bool withClean)
     {
@@ -67,6 +68,11 @@ public class SO_TeethGrenration : ScriptableObject
             actives.Add(TeethState.Decay);
         }
 
+        if (hasSmell)
+        {
+            actives.Add(TeethState.Smell);
+        }
+
         if (withClean)
         {
             actives.Add(TeethState.Clean);
@@ -81,5 +87,6 @@ public enum TeethState
     Clean,
     Dirty,
     Tartar,
-    Decay
+    Decay,
+    Smell
 }

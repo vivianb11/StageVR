@@ -43,7 +43,25 @@ public class ToothManager : MonoBehaviour
     int dirtyCellsCount;
     int cleanedCell;
 
+    public GameObject smellVFX;
     bool smells;
+
+    public bool Smells
+    {
+        set
+        {
+            if(value)
+                smellVFX.SetActive(true);
+            else
+                smellVFX.SetActive(false);
+
+            smells = value;
+        }
+        get
+        {
+            return smells;
+        }
+    }
 
     [Foldout("Events")]
     public UnityEvent OnTeethCleaned;
@@ -161,9 +179,9 @@ public class ToothManager : MonoBehaviour
     {
         grabCollider.enabled = true;
 
-        foreach (Transform child in transform)
+        foreach (CellBehavior cell in teethCells)
         {
-            child.GetComponent<Collider>().enabled = false;
+            cell.gameObject.GetComponent<Collider>().enabled = false;
         }
     }
 
@@ -174,9 +192,9 @@ public class ToothManager : MonoBehaviour
         if (grabIntractable.selected)
             grabIntractable.DeSelect();
 
-        foreach (Transform child in transform)
+        foreach (CellBehavior cell in teethCells)
         {
-            child.GetComponent<Collider>().enabled = true;
+            cell.gameObject.GetComponent<Collider>().enabled = true;
         }
     }
 
@@ -204,6 +222,8 @@ public class ToothManager : MonoBehaviour
 
     private void SetupCells()
     {
+        Smells = Random.Range(0f,1f) < generationParameter.smellSpawnChance;
+
         cellsState = new List<int>(teethCells.Count);
         settedCells = new List<bool>(teethCells.Count);
 

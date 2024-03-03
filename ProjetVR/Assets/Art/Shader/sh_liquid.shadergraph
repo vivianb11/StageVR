@@ -23,6 +23,9 @@
         },
         {
             "m_Id": "d19bf26651ed4c67bb90f7c9bd4bb1f9"
+        },
+        {
+            "m_Id": "c76a4ab8dbfb4465b01bbde7cd8c2ce0"
         }
     ],
     "m_Keywords": [],
@@ -1561,10 +1564,10 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 3.0,
-    "m_FloatType": 0,
+    "m_Value": 1.0,
+    "m_FloatType": 1,
     "m_RangeValues": {
-        "x": 0.0,
+        "x": -1.0,
         "y": 1.0
     }
 }
@@ -1639,8 +1642,8 @@
     "m_ObjectId": "541a213a74c544f989826882ece1fa5e",
     "m_Title": "Height",
     "m_Position": {
-        "x": -1679.502685546875,
-        "y": 389.7291259765625
+        "x": -2229.0,
+        "y": 390.0
     }
 }
 
@@ -2011,10 +2014,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -612.9998779296875,
-            "y": 449.0,
-            "width": 207.99990844726563,
-            "height": 301.99993896484377
+            "x": -456.0,
+            "y": 459.0,
+            "width": 208.00001525878907,
+            "height": 302.0
         }
     },
     "m_Slots": [
@@ -2080,7 +2083,7 @@
     "m_SurfaceType": 0,
     "m_ZTestMode": 4,
     "m_ZWriteControl": 0,
-    "m_AlphaMode": 0,
+    "m_AlphaMode": 1,
     "m_RenderFace": 0,
     "m_AlphaClip": true,
     "m_CastShadows": true,
@@ -2449,6 +2452,9 @@
         },
         {
             "m_Id": "d19bf26651ed4c67bb90f7c9bd4bb1f9"
+        },
+        {
+            "m_Id": "c76a4ab8dbfb4465b01bbde7cd8c2ce0"
         }
     ]
 }
@@ -2860,6 +2866,34 @@
         "e31": 0.0,
         "e32": 0.0,
         "e33": 1.0
+    }
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "c76a4ab8dbfb4465b01bbde7cd8c2ce0",
+    "m_Guid": {
+        "m_GuidSerialized": "5abb25ad-bf10-4196-8d4b-6d21e0fc49d5"
+    },
+    "m_Name": "alpha",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "alpha",
+    "m_DefaultReferenceName": "_alpha",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 1.0,
+    "m_FloatType": 1,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
     }
 }
 

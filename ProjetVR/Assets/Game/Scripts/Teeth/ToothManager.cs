@@ -51,6 +51,8 @@ public class ToothManager : MonoBehaviour
     [Foldout("Events")]
     [InfoBox("Returns a float")]
     public UnityEvent<float> OnCleanAmountChange;
+    [Foldout("Events")]
+    public UnityEvent OnToothPreCleaned;
 
     private void Awake()
     {
@@ -218,6 +220,8 @@ public class ToothManager : MonoBehaviour
         if (IsToothCleaned())
         {
             EnableGrab();
+
+            OnToothPreCleaned?.Invoke();
         }
         else if (OnlyDecayRemaining())
         {

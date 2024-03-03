@@ -8,6 +8,7 @@ public class Rotator : MonoBehaviour
 
     [SerializeField] int snapValue = 90;
     [SerializeField] Transform trakinckPoint;
+    [SerializeField] AnimationCurve curve;
 
     private Transform cameraTarget;
 
@@ -78,7 +79,7 @@ public class Rotator : MonoBehaviour
 
         while (elapsedTime < duration)
         {
-            target.rotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime / duration);
+            target.rotation = Quaternion.Slerp(startRotation, endRotation, curve.Evaluate(elapsedTime / duration));
             elapsedTime += Time.deltaTime;
             yield return null;
         }

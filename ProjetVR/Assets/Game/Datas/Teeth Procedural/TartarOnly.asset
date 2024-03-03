@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: TartarOnly
   m_EditorClassIdentifier: 
   numberOfPeices: 10
-  hasDirty: 0
+  hasDirty: 1
   hasTartar: 1
-  hasDecay: 0
-  hasSmell: 0
+  hasDecay: 1
+  hasSmell: 1
   smellSpawnChance: 0
-  minMaxClean: {x: 3, y: 4}
-  weightClean: 0
+  minMaxClean: {x: 1, y: 1}
+  weightClean: 1
   weightDirty: 0
   minMaxDirty: {x: 0, y: 0}
   dirtyChance:
@@ -28,8 +28,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  weightTartar: 1
-  minMaxTartar: {x: 3, y: 6}
+  weightTartar: 2
+  minMaxTartar: {x: 9, y: 9}
   tartarChance:
     serializedVersion: 2
     m_Curve:
@@ -37,7 +37,7 @@ MonoBehaviour:
       time: 0
       value: 0
       inSlope: 0
-      outSlope: 0
+      outSlope: 3.000003
       tangentMode: 0
       weightedMode: 3
       inWeight: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2.0000029
+      inSlope: 0
       outSlope: 0
       tangentMode: 0
       weightedMode: 3

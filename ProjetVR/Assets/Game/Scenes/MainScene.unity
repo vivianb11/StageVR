@@ -1448,7 +1448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6017c2c9df24de24cb6eb744be270a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableAfterSnapped: 0
+  interactableAfterSnapped: 1
   onSnapped:
     m_PersistentCalls:
       m_Calls:
@@ -2177,6 +2177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41294f478d862140b9800916e3a2658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  signalEmitter: {fileID: 787574917}
   UseEyeTracking: 0
   UseDynamicFoveatedRendering: 0
   startDelay: 3
@@ -2195,7 +2196,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  signalEmitter: {fileID: 787574917}
 --- !u!4 &787574912
 Transform:
   m_ObjectHideFlags: 0
@@ -3231,6 +3231,18 @@ PrefabInstance:
       propertyPath: maxSmellAmount
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: datas.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: datas.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: a75a50e4ac0791147a41b3f85f76ef0f, type: 2}
+    - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
+      propertyPath: datas.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: be07bfae90b5d9042b17a20c1c003cb6, type: 2}
     - target: {fileID: 4074167816967472744, guid: 71a1a581856e5304990bb2eea3338fec, type: 3}
       propertyPath: OnToothPreCleaned.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -10051,7 +10063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6017c2c9df24de24cb6eb744be270a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableAfterSnapped: 0
+  interactableAfterSnapped: 1
   onSnapped:
     m_PersistentCalls:
       m_Calls:

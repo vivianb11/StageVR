@@ -22,7 +22,8 @@ public class ToothManager : MonoBehaviour
     public GameObject Tooth;
     public List<CellBehavior> teethCells = new List<CellBehavior>();
 
-    public SO_TeethGrenration gP;
+    public SO_TeethGeneration[] datas;
+    private int dataIndex;
 
     [Foldout("Materials")]
     public Material cleanMat;
@@ -106,7 +107,7 @@ public class ToothManager : MonoBehaviour
 
         CheckIfToothCleaned();
 
-        Debug.Log(GetToothCleanPercent());
+        dataIndex = Mathf.Clamp(dataIndex + 1, 0, datas.Length - 1);
     }
 
     public void RemoveSmellAmount()
@@ -246,11 +247,13 @@ public class ToothManager : MonoBehaviour
             cell.SwitchTeethState(teethState);
         }
 
-        SetSmell(Random.Range(0, 1) < 0.5f ? true : false);
+        SetSmell(Random.Range(0f, 1f) < 0.5f ? true : false);
     }
 
     private void SetupCells()
     {
+        SO_TeethGeneration gP = datas[dataIndex];
+
         SetSmell(Random.Range(0f, 1f) < gP.smellSpawnChance);
 
         cellsState = new List<int>(teethCells.Count);
@@ -347,6 +350,8 @@ public class ToothManager : MonoBehaviour
 
     private void ChooseAnomaly(int cellIndex, bool withClean = false)
     {
+        SO_TeethGeneration gP = datas[dataIndex];
+
         List<TeethState> activeAnomalies = gP.GetActives(withClean);
 
         int maxwheight = 0;
@@ -400,7 +405,9 @@ public class ToothManager : MonoBehaviour
 
     private int DirtyGeneration(int cellIndex, bool withClean)
     {
-        int x = Random.Range(0, 1) < gP.dirtyChance.Evaluate(Random.Range(0, 1)) ? (int)TeethState.Dirty : (int)TeethState.Clean;
+        SO_TeethGeneration gP = datas[dataIndex];
+
+        int x = Random.Range(0f, 1f) < gP.dirtyChance.Evaluate(Random.Range(0f, 1f)) ? (int)TeethState.Dirty : (int)TeethState.Clean;
 
         if (x == (int)TeethState.Clean && !withClean)
         {
@@ -411,7 +418,9 @@ public class ToothManager : MonoBehaviour
 
     private int TartarGeneration(int cellIndex, bool withClean)
     {
-        int x = Random.Range(0, 1) < gP.tartarChance.Evaluate(Random.Range(0, 1)) ? (int)TeethState.Tartar : (int)TeethState.Clean;
+        SO_TeethGeneration gP = datas[dataIndex];
+
+        int x = Random.Range(0f, 1f) < gP.tartarChance.Evaluate(Random.Range(0f, 1f)) ? (int)TeethState.Tartar : (int)TeethState.Clean;
 
         if (x == (int)TeethState.Clean && !withClean)
         {
@@ -422,7 +431,9 @@ public class ToothManager : MonoBehaviour
 
     private int DecayGeneration(int cellIndex, bool withClean)
     {
-        int x = Random.Range(0, 1) < gP.decayChance.Evaluate(Random.Range(0, 1)) ? (int)TeethState.Decay : (int)TeethState.Clean;
+        SO_TeethGeneration gP = datas[dataIndex];
+
+        int x = Random.Range(0f, 1f) < gP.decayChance.Evaluate(Random.Range(0f, 1f)) ? (int)TeethState.Decay : (int)TeethState.Clean;
 
         if (x == (int)TeethState.Clean && !withClean)
         {
@@ -433,7 +444,9 @@ public class ToothManager : MonoBehaviour
 
     private int CleanGeneration(int cellIndex, bool withClean)
     {
-        int x = Random.Range(0, 1) < gP.weightClean ? (int)TeethState.Clean : (int)TeethState.Dirty;
+        SO_TeethGeneration gP = datas[dataIndex];
+
+        int x = Random.Range(0f, 1f) < gP.weightClean ? (int)TeethState.Clean : (int)TeethState.Dirty;
 
         if (x != (int)TeethState.Clean)
         {

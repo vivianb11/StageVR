@@ -77,7 +77,7 @@ public class GenerationParameterTool : EditorWindow
 
     private void OnSelectionChange()
     {
-        SO_TeethGrenration so = Selection.activeObject as SO_TeethGrenration;
+        SO_TeethGeneration so = Selection.activeObject as SO_TeethGeneration;
         if (so != null)
         {
             numberOfPeices = so.numberOfPeices;
@@ -175,7 +175,7 @@ public class GenerationParameterTool : EditorWindow
     public void Generate()
     {
         // si un scriptable object de type SO_TeethGrenration est selectionné alors on modifie ses valeurs
-        SO_TeethGrenration so = Selection.activeObject as SO_TeethGrenration;
+        SO_TeethGeneration so = Selection.activeObject as SO_TeethGeneration;
         if (so != null)
         {
             so.numberOfPeices = numberOfPeices;
@@ -193,7 +193,7 @@ public class GenerationParameterTool : EditorWindow
         }
         else
         {
-            so = ScriptableObject.CreateInstance<SO_TeethGrenration>();
+            so = ScriptableObject.CreateInstance<SO_TeethGeneration>();
             so.numberOfPeices = numberOfPeices;
             so.numberOfPeices = numberOfPeices;
 

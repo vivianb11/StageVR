@@ -5,10 +5,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "TeethGeneration_", menuName = "ScriptableObject/TeethGeneration", order = 0)]
-public class SO_TeethGrenration : ScriptableObject
+public class SO_TeethGeneration : ScriptableObject
 {
     [Header("Generation Settings")]
-    public int numberOfPeices;
+    public int numberOfPeices = 10;
 
     public bool hasDirty, hasTartar, hasDecay, hasSmell;
     [ShowIf("hasSmell")]
@@ -47,8 +47,6 @@ public class SO_TeethGrenration : ScriptableObject
     [ShowIf("hasDecay")]
     public AnimationCurve decayChance;
 
-    
-
     public List<TeethState> GetActives(bool withClean)
     {
         List<TeethState> actives = new List<TeethState>();
@@ -68,11 +66,6 @@ public class SO_TeethGrenration : ScriptableObject
             actives.Add(TeethState.Decay);
         }
 
-        if (hasSmell)
-        {
-            actives.Add(TeethState.Smell);
-        }
-
         if (withClean)
         {
             actives.Add(TeethState.Clean);
@@ -87,6 +80,5 @@ public enum TeethState
     Clean,
     Dirty,
     Tartar,
-    Decay,
-    Smell
+    Decay
 }

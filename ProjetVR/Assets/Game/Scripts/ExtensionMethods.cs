@@ -82,7 +82,7 @@ public static class ExtensionMethods
 
         for (int i = 0; i < list.Count; i++)
         {
-            debugString += list[i].ToString() + "\n";
+            debugString += list[i].ToString() + ", ";
         }
 
         Debug.Log(debugString);

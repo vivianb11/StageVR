@@ -1163,6 +1163,30 @@ MonoBehaviour:
   snaping: 1
   snapValue: 90
   trakinckPoint: {fileID: 420537704}
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 6.8154325
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0
+      outWeight: 0.155667
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.031243537
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.636963
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &414778614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1220,8 +1244,7 @@ MonoBehaviour:
         m_CallState: 2
   detectionRadius: 0.1
   snapDistance: 0.1
-  snappableObjects:
-  - {fileID: 0}
+  snappableObjects: []
 --- !u!135 &414778615
 SphereCollider:
   m_ObjectHideFlags: 0

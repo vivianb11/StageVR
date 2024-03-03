@@ -7,6 +7,9 @@ public class CleanTeethHologram : MonoBehaviour
 {
     [SerializeField] [Range(0f, 1f)] float lerpSpeed;
 
+    [SerializeField] Material liquideMaterial;
+    [SerializeField] Material snapMaterial;
+
     [SerializeField] ToothManager toothManager;
     [SerializeField] MeshRenderer mesh;
     [SerializeField] Wobble wobble;
@@ -37,6 +40,11 @@ public class CleanTeethHologram : MonoBehaviour
 
     private void OnCleanAmountChanged(float amount)
     {
+        if (amount == 1)
+            mesh.material = snapMaterial;
+        else
+            mesh.material = liquideMaterial;
+
         wobble.wobbleAmountToAddX = amount * 2f;
         wobble.wobbleAmountToAddZ = amount * 2f;
 

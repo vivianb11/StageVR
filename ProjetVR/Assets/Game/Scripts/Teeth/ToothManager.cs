@@ -262,24 +262,10 @@ public class ToothManager : MonoBehaviour
         cellsState = new List<int>(teethCells.Count);
         settedCells = new List<bool>(teethCells.Count);
 
-        List<int> highNeighbourCells = new List<int>();
-
-        for (int i = 0; i < teethCells.Count; i++)
-        {
-            cellsState.Add(0);
-            settedCells.Add(false);
-
-            if (teethCells[i].neighbors.Count >= 5)
-            {
-                highNeighbourCells.Add(i);
-            }
-        }
-
-        highNeighbourCells = highNeighbourCells.OrderBy(x => teethCells[x].neighbors.Count).ToList();
-
         List<CellBehavior> cleanedCells = new List<CellBehavior>();
+        List<TeethState> teethStates = new List<TeethState>();
 
-        teethCells.ForEach((item) => cleanedCells.Add(item));
+        teethCells.ForEach(item => cleanedCells.Add(item));
 
         foreach (Anomaly anomaly in gP.anomalies)
         {
@@ -292,7 +278,29 @@ public class ToothManager : MonoBehaviour
             {
                 CellBehavior cellBehavior = cleanedCells.PickRandom();
                 cleanedCells.Remove(cellBehavior);
-                cellBehavior.SwitchTeethState(anomaly.teethState);
+
+                teethStates.Add(anomaly.teethState);
+            }
+        }
+
+        for (int i = 0; i < teethCells.Count; i++)
+        {
+            bool flag = true;
+
+            foreach (Transform c in teethCells[i].neighbors)
+            {
+                if (c.GetComponent<CellBehavior>().teethState != TeethState.Clean)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            
+            if (flag)
+            {
+                TeethState teethState = teethStates.PickRandom();
+                teethStates.Remove(teethState);
+                teethCells[i].SwitchTeethState(teethState);
             }
         }
 

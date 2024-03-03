@@ -14,6 +14,17 @@ public class SO_TeethGeneration : ScriptableObject
 
     [Range(0, 1)]
     public float smellSpawnChance;
+
+    public int GetTotalPossibleAnomalies()
+    {
+        int count = 0;
+        foreach (var item in anomalies)
+        {
+            count += item.minMax.x;
+        }
+
+        return count;
+    }
 }
 
 [Serializable]

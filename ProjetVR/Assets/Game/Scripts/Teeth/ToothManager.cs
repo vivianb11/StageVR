@@ -170,12 +170,12 @@ public class ToothManager : MonoBehaviour
         Tooth.SetActive(false);
         tweener.PlayTween("spawn");
 
-        DisableGrab();
-
         foreach (var cell in teethCells)
         {
             cell.gameObject.SetActive(true);
         }
+        
+        DisableGrab();
 
         switch (generationMode)
         {
@@ -217,7 +217,7 @@ public class ToothManager : MonoBehaviour
     {
         if (IsToothCleaned())
         {
-            CleanTooth();
+            EnableGrab();
         }
         else if (OnlyDecayRemaining())
         {

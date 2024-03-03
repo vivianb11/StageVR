@@ -4,8 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Projectile : MonoBehaviour
 {
-    public int damage;
-
     public float projectilSpeed;
     public float randomness = 0.5f;
     public float lifeTime;

@@ -18,10 +18,10 @@ MonoBehaviour:
   hasDecay: 1
   hasSmell: 1
   smellSpawnChance: 0.495
-  minMaxClean: {x: 9, y: 9}
+  minMaxClean: {x: 3, y: 3}
   weightClean: 1
   weightDirty: 5
-  minMaxDirty: {x: 0, y: 1}
+  minMaxDirty: {x: 4, y: 6}
   dirtyChance:
     serializedVersion: 2
     m_Curve:
@@ -47,7 +47,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   weightTartar: 10
-  minMaxTartar: {x: 1, y: 2}
+  minMaxTartar: {x: 3, y: 5}
   tartarChance:
     serializedVersion: 2
     m_Curve:
@@ -73,7 +73,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   weightDecay: 5
-  minMaxDecay: {x: 0, y: 4}
+  minMaxDecay: {x: 2, y: 6}
   decayChance:
     serializedVersion: 2
     m_Curve:

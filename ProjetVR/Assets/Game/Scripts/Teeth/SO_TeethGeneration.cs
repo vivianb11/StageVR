@@ -10,69 +10,21 @@ public class SO_TeethGeneration : ScriptableObject
     [Header("Generation Settings")]
     public int numberOfPeices = 10;
 
-    public bool hasDirty, hasTartar, hasDecay, hasSmell;
-    [ShowIf("hasSmell")]
+    public Anomaly[] anomalies;
+
     [Range(0, 1)]
     public float smellSpawnChance;
+}
 
-    [Space(10)]
+[Serializable]
+public struct Anomaly
+{
+    public TeethState teethState;
+
     [MinMaxSlider(0, 10)]
-    public Vector2Int minMaxClean;
-    public int weightClean;
+    public Vector2Int minMax;
 
-    [ShowIf("hasDirty")]
-    [Header("Dirty Settings")]
-    public int weightDirty;
-    [ShowIf("hasDirty")]
-    [MinMaxSlider(0, 10)]
-    public Vector2Int minMaxDirty;
-    [ShowIf("hasDirty")]
-    public AnimationCurve dirtyChance;
-
-    [ShowIf("hasTartar")]
-    [Header("Tartar Settings")]
-    public int weightTartar;
-    [ShowIf("hasTartar")]
-    [MinMaxSlider(0, 10)]
-    public Vector2Int minMaxTartar;
-    [ShowIf("hasTartar")]
-    public AnimationCurve tartarChance;
-
-    [ShowIf("hasDecay")]
-    [Header("Decay Settings")]
-    public int weightDecay;
-    [ShowIf("hasDecay")]
-    [MinMaxSlider(0, 10)]
-    public Vector2Int minMaxDecay;
-    [ShowIf("hasDecay")]
-    public AnimationCurve decayChance;
-
-    public List<TeethState> GetActives(bool withClean)
-    {
-        List<TeethState> actives = new List<TeethState>();
-
-        if (hasDirty)
-        {
-            actives.Add(TeethState.Dirty);
-        }
-
-        if (hasTartar)
-        {
-            actives.Add(TeethState.Tartar);
-        }
-
-        if (hasDecay)
-        {
-            actives.Add(TeethState.Decay);
-        }
-
-        if (withClean)
-        {
-            actives.Add(TeethState.Clean);
-        }
-
-        return actives;
-    }
+    public AnimationCurve curve;
 }
 
 public enum TeethState

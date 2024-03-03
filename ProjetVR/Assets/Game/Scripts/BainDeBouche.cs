@@ -8,6 +8,7 @@ public class BainDeBouche : MonoBehaviour
     [SerializeField] float shootDelay;
 
     [SerializeField] GameObject projectile;
+    [SerializeField] GameObject particles;
 
     private bool followHitPosition;
 
@@ -25,6 +26,8 @@ public class BainDeBouche : MonoBehaviour
     public void EnableShoot()
     {
         followHitPosition = true;
+
+        particles.SetActive(true);
     }
 
     public void DisableShoot()
@@ -33,6 +36,8 @@ public class BainDeBouche : MonoBehaviour
 
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
+
+        particles.SetActive(false);
     }
 
     private void ShootProjectile()

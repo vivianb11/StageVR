@@ -17,11 +17,11 @@ MonoBehaviour:
   hasTartar: 1
   hasDecay: 1
   hasSmell: 1
-  smellSpawnChance: 0
-  minMaxClean: {x: 1, y: 1}
+  smellSpawnChance: 0.495
+  minMaxClean: {x: 7, y: 7}
   weightClean: 1
-  weightDirty: 0
-  minMaxDirty: {x: 0, y: 0}
+  weightDirty: 5
+  minMaxDirty: {x: 4, y: 6}
   dirtyChance:
     serializedVersion: 2
     m_Curve:
@@ -46,35 +46,17 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  weightTartar: 2
-  minMaxTartar: {x: 9, y: 9}
+  weightTartar: 10
+  minMaxTartar: {x: 3, y: 5}
   tartarChance:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.5
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.5
       value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 0
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
@@ -83,15 +65,15 @@ MonoBehaviour:
       value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 0
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  weightDecay: 0
-  minMaxDecay: {x: 0, y: 0}
+  weightDecay: 5
+  minMaxDecay: {x: 2, y: 6}
   decayChance:
     serializedVersion: 2
     m_Curve:

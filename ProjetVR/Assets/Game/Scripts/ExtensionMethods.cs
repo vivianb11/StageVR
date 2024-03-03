@@ -32,6 +32,66 @@ public static class ExtensionMethods
     }
     #endregion
 
+    #region TextMesh
+
+    public static int GetNumberOfLines(this TextMesh textMesh)
+    {
+        return textMesh.text.Split('\n').Length;
+    }
+
+    public static string[] GetLines(this TextMesh textMesh)
+    {
+        return textMesh.text.Split('\n');
+    }
+
+    public static string GetLongestLine(this TextMesh textMesh)
+    {
+        string[] lines = textMesh.GetLines();
+        int longestLineIndex = 0;
+
+        for (int i = 1; i < lines.Length; i++)
+        {
+            if (lines[i].Length > lines[longestLineIndex].Length)
+                longestLineIndex = i;
+        }
+
+        return lines[longestLineIndex];
+    }
+
+    public static string GetShortestLine(this TextMesh textMesh)
+    {
+        string[] lines = textMesh.GetLines();
+        int shortestLineIndex = 0;
+
+        for (int i = 1; i < lines.Length; i++)
+        {
+            if (lines[i].Length < lines[shortestLineIndex].Length)
+                shortestLineIndex = i;
+        }
+
+        return lines[shortestLineIndex];
+    }
+
+    #endregion
+
+    #region List
+
+    public static T DebugList<T>(this List<T> list)
+    {
+        string debugString = "";
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            debugString += list[i].ToString() + "\n";
+        }
+
+        Debug.Log(debugString);
+
+        return default;
+    }
+
+    #endregion
+
     private static System.Random rng = new System.Random();
 
     public static void Shuffle<T>(this IList<T> list)

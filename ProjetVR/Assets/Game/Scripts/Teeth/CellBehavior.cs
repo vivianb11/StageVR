@@ -26,10 +26,14 @@ public class CellBehavior : MonoBehaviour
     private Interactable interactable;
     private SignalListener signalListener;
 
+    private void Awake()
+    {
+        mR = GetComponent<MeshRenderer>();
+        toothManager = transform.parent.GetComponent<ToothManager>();
+    }
+
     private void Start()
     {
-        toothManager = transform.parent.GetComponent<ToothManager>();
-        mR = GetComponent<MeshRenderer>();
         interactable = GetComponent<Interactable>();
         signalListener = GetComponent<SignalListener>();
 
@@ -119,7 +123,7 @@ public class CellBehavior : MonoBehaviour
         SwitchTeethState(TeethState.Clean);
         toothPasteAmount = 0;
 
-        OnClean.Invoke();
+        OnClean?.Invoke();
         Debug.Log("Clean Cell");
     }
 

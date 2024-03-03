@@ -103,6 +103,8 @@ public class ToothManager : MonoBehaviour
         OnCleanAmountChange?.Invoke(GetToothCleanPercent());
 
         CheckIfToothCleaned();
+
+        Debug.Log(GetToothCleanPercent());
     }
 
     public void RemoveSmellAmount()
@@ -228,6 +230,8 @@ public class ToothManager : MonoBehaviour
         OnCleanAmountChange?.Invoke(GetToothCleanPercent());
 
         CheckIfToothCleaned();
+
+        Debug.Log(GetToothCleanPercent());
     }
 
     private void RandomCellSetup()

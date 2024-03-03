@@ -5,6 +5,8 @@ using NaughtyAttributes;
 using System.Linq;
 using SignalSystem;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
+using System;
 
 public class ToothManager : MonoBehaviour
 {
@@ -176,6 +178,7 @@ public class ToothManager : MonoBehaviour
         foreach (var cell in teethCells)
         {
             cell.gameObject.SetActive(true);
+            cell.SwitchTeethState(TeethState.Clean);
         }
         
         DisableGrab();
@@ -259,7 +262,7 @@ public class ToothManager : MonoBehaviour
         cellsState = new List<int>(teethCells.Count);
         settedCells = new List<bool>(teethCells.Count);
 
-        List<int> highNeighbourCells = new List<int>(gP.numberOfPeices);
+        List<int> highNeighbourCells = new List<int>();
 
         for (int i = 0; i < teethCells.Count; i++)
         {
@@ -274,204 +277,26 @@ public class ToothManager : MonoBehaviour
 
         highNeighbourCells = highNeighbourCells.OrderBy(x => teethCells[x].neighbors.Count).ToList();
 
-        for (int i = 0; i < teethCells.Count; i++)
+        List<CellBehavior> cleanedCells = new List<CellBehavior>();
+
+        teethCells.ForEach((item) => cleanedCells.Add(item));
+
+        foreach (Anomaly anomaly in gP.anomalies)
         {
-            int cleanCells = cellsState.Where(cellsState => cellsState == (int)TeethState.Clean).Count();
+            float weight = anomaly.curve.Evaluate(Random.Range(0f, 1f));
+            
+            int amount = ((int)Mathf.Lerp(anomaly.minMax.x, anomaly.minMax.y, weight));
+            int count = Mathf.Min(cleanedCells.Count, amount);
 
-            if (gP.minMaxClean.x >= cleanCells && i < highNeighbourCells.Count && gP.minMaxClean.y >= gP.numberOfPeices - 3)
+            for (int i = 0; i < count; i++)
             {
-                cellsState[i] = (int)TeethState.Clean;
-                settedCells[i] = true;
-                continue;
+                CellBehavior cellBehavior = cleanedCells.PickRandom();
+                cleanedCells.Remove(cellBehavior);
+                cellBehavior.SwitchTeethState(anomaly.teethState);
             }
-
-            List<int> unChangedCells = new List<int>(settedCells.Where(x => x == false).Count());
-
-            for (int j = 0; j < settedCells.Count; j++)
-            {
-                if (settedCells[j] == false)
-                {
-                    unChangedCells.Add(j);
-                }
-            }
-
-            int y = Random.Range(0, unChangedCells.Count);
-
-            int cellIndex = unChangedCells[y];
-
-            settedCells[cellIndex] = true;
-
-            if (cleanCells <= gP.minMaxClean.x)
-            {
-                cellsState[cellIndex] = (int)TeethState.Clean;
-            }
-            else if (cleanCells > gP.minMaxClean.y)
-            {
-                ChooseAnomaly(cellIndex);
-            }
-            else
-            {
-                ChooseAnomaly(cellIndex, true);
-            }
-        }
-
-        //List<CellBehavior> uncleanedCells = teethCells.Where(x => x.teethState != TeethState.Clean).ToList();
-
-        //bool restart = false;
-
-        //if (uncleanedCells.Count <= 3)
-        //{
-        //    foreach (var cell in uncleanedCells)
-        //    {
-        //        foreach (var neighbor in cell.neighbors)
-        //        {
-        //            if (neighbor.GetComponent<CellBehavior>().teethState == TeethState.Clean)
-        //            {
-        //                SetupCells();
-        //                restart = true;
-        //                break;
-        //            }
-        //        }
-        //        if (restart)
-        //            break;
-        //    }
-        //    if (restart)
-        //        return;
-        //}
-        
-        for (int i = 0; i < teethCells.Count; i++)
-        {
-            SetCellState(i, cellsState[i]);
         }
 
         if (OnlyDecayRemaining())
             EnableGrab();
-    }
-
-    private void ChooseAnomaly(int cellIndex, bool withClean = false)
-    {
-        SO_TeethGeneration gP = datas[dataIndex];
-
-        List<TeethState> activeAnomalies = gP.GetActives(withClean);
-
-        int maxwheight = 0;
-
-        foreach (var anomaly in activeAnomalies)
-        {
-            if (anomaly == TeethState.Clean)
-            {
-                maxwheight += gP.weightClean;
-            }
-            else if (anomaly == TeethState.Dirty)
-            {
-                maxwheight += gP.weightDirty;
-            }
-            else if (anomaly == TeethState.Tartar)
-            {
-                maxwheight += gP.weightTartar;
-            }
-            else if (anomaly == TeethState.Decay)
-            {
-                maxwheight += gP.weightDecay;
-            }
-        }
-
-        int random = Random.Range(0, maxwheight);
-
-        foreach (var anomaly in activeAnomalies)
-        {
-            if (random < gP.weightClean)
-            {
-                cellsState[cellIndex] = (int)TeethState.Clean;
-                return;
-            }
-            else if (random < gP.weightClean + gP.weightDirty)
-            {
-                cellsState[cellIndex] = DirtyGeneration(cellIndex, withClean);
-                return;
-            }
-            else if (random < gP.weightClean + gP.weightDirty + gP.weightTartar)
-            {
-                cellsState[cellIndex] = TartarGeneration(cellIndex, withClean);
-                return;
-            }
-            else if (random < gP.weightClean + gP.weightDirty + gP.weightTartar + gP.weightDecay)
-            {
-                cellsState[cellIndex] = DecayGeneration(cellIndex, withClean);
-                return;
-            }
-        }
-    }
-
-    private int DirtyGeneration(int cellIndex, bool withClean)
-    {
-        SO_TeethGeneration gP = datas[dataIndex];
-
-        int x = Random.Range(0f, 1f) < gP.dirtyChance.Evaluate(Random.Range(0f, 1f)) ? (int)TeethState.Dirty : (int)TeethState.Clean;
-
-        if (x == (int)TeethState.Clean && !withClean)
-        {
-            ChooseAnomaly(cellIndex, withClean);
-        }
-        return x;
-    }
-
-    private int TartarGeneration(int cellIndex, bool withClean)
-    {
-        SO_TeethGeneration gP = datas[dataIndex];
-
-        int x = Random.Range(0f, 1f) < gP.tartarChance.Evaluate(Random.Range(0f, 1f)) ? (int)TeethState.Tartar : (int)TeethState.Clean;
-
-        if (x == (int)TeethState.Clean && !withClean)
-        {
-            ChooseAnomaly(cellIndex, withClean);
-        }
-        return x;
-    }
-
-    private int DecayGeneration(int cellIndex, bool withClean)
-    {
-        SO_TeethGeneration gP = datas[dataIndex];
-
-        int x = Random.Range(0f, 1f) < gP.decayChance.Evaluate(Random.Range(0f, 1f)) ? (int)TeethState.Decay : (int)TeethState.Clean;
-
-        if (x == (int)TeethState.Clean && !withClean)
-        {
-            ChooseAnomaly(cellIndex, withClean);
-        }
-        return x;
-    }
-
-    private int CleanGeneration(int cellIndex, bool withClean)
-    {
-        SO_TeethGeneration gP = datas[dataIndex];
-
-        int x = Random.Range(0f, 1f) < gP.weightClean ? (int)TeethState.Clean : (int)TeethState.Dirty;
-
-        if (x != (int)TeethState.Clean)
-        {
-            ChooseAnomaly(cellIndex, withClean);
-        }
-        return x;
-    }
-
-    public void SetCellState(int index, TeethState teethState)
-    {
-        teethCells[index].SwitchTeethState(teethState);
-    }
-
-    public void SetCellState(int index, int teethState)
-    {
-        teethCells[index].SwitchTeethState((TeethState)teethState);
-    }
-
-    public void SetCellState(CellBehavior cell, int teethState)
-    {
-        cell.SwitchTeethState((TeethState)teethState);
-    }
-
-    public void SetCellState(CellBehavior cell, TeethState teethState)
-    {
-        cell.SwitchTeethState(teethState);
     }
 }

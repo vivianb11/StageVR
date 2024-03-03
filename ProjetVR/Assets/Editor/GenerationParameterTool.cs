@@ -1,11 +1,11 @@
 using NaughtyAttributes;
 using UnityEditor;
-using UnityEditor.EditorTools;
 using UnityEngine;
 
 [ExecuteInEditMode]
 public class GenerationParameterTool : EditorWindow
 {
+#if UNITY_EDITOR
     [Header("Generation Settings")]
     public int numberOfPeices;
     [MinMaxSlider(0, 10)]
@@ -215,4 +215,5 @@ public class GenerationParameterTool : EditorWindow
             Selection.activeObject = so;
         }
     }
+#endif
 }

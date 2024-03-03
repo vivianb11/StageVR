@@ -5,7 +5,6 @@ using NaughtyAttributes;
 using System.Linq;
 using SignalSystem;
 using UnityEngine.Events;
-using System.Threading.Tasks;
 
 public class ToothManager : MonoBehaviour
 {

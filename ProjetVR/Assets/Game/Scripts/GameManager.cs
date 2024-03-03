@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] SignalEmitter signalEmitter;
+
     public static GameManager Instance;
 
     public bool UseEyeTracking;
@@ -16,7 +18,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject player { get; private set; }
 
-    [SerializeField] SignalEmitter signalEmitter;
 
     private void Awake()
     {
@@ -45,6 +46,8 @@ public class GameManager : MonoBehaviour
         }
 
         StartCoroutine(StartDelay(startDelay));
+
+        OVRManager.display.RecenterPose();
     }
 
     private IEnumerator StartDelay(float delay)

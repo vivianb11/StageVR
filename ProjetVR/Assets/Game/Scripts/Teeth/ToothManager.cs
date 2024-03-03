@@ -263,7 +263,7 @@ public class ToothManager : MonoBehaviour
             cellsState.Add(0);
             settedCells.Add(false);
 
-            if (teethCells[i].neighbors.Count > 5)
+            if (teethCells[i].neighbors.Count >= 5)
             {
                 highNeighbourCells.Add(i);
             }

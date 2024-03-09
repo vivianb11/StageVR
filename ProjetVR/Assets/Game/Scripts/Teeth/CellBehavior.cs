@@ -40,7 +40,7 @@ public class CellBehavior : MonoBehaviour
         GetComponent<Rigidbody>().isKinematic = true;
 
         ResetTooth();
-        interactable.deSelectionCondition = Interactable.DeSelectionCondition.LOOK_OUT;
+        interactable.deSelectionCondition = DeSelectionCondition.LOOK_OUT;
 
         signalListener.signalReceived.AddListener(() => interactable.SetActivateState(true));
         signalListener.signalLost.AddListener(() => interactable.SetActivateState(false));

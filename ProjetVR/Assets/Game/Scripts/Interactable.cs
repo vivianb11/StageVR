@@ -7,16 +7,6 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody))]
 public class Interactable : MonoBehaviour
 {
-    public enum SelectionCondition
-    {
-        LOOK_IN, LOOK_IN_TIME, NONE
-    }
-
-    public enum DeSelectionCondition
-    {
-        LOOK_OUT, LOOK_OUT_TIME, AUTO_TIME, NONE
-    }
-
     [HideInInspector]
     public Rigidbody rb;
 
@@ -188,4 +178,14 @@ public struct EventDelay
 {
     public float delay;
     public UnityEvent unityEvent;
+}
+
+public enum SelectionCondition
+{
+    LOOK_IN, LOOK_IN_TIME, NONE
+}
+
+public enum DeSelectionCondition
+{
+    LOOK_OUT, LOOK_OUT_TIME, AUTO_TIME, NONE
 }

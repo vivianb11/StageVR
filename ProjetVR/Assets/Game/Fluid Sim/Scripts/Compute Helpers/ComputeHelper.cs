@@ -322,7 +322,7 @@ public static class ComputeHelper
         args[1] = (uint)numInstances;
         args[2] = (uint)mesh.GetIndexStart(subMeshIndex);
         args[3] = (uint)mesh.GetBaseVertex(subMeshIndex);
-        args[4] = 0; // offset
+        args[4] = 0; // widthOffset
 
         ComputeBuffer argsBuffer = new ComputeBuffer(1, 5 * sizeof(uint), ComputeBufferType.IndirectArguments);
         argsBuffer.SetData(args);

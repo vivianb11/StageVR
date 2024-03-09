@@ -124,6 +124,9 @@ public static class ExtensionMethods
 
     public static T PickRandom<T>(this IList<T> list)
     {
+        if (list.Count == 0)
+            return default;
+
         T item = list[Random.Range(0, list.Count)];
 
         return item;

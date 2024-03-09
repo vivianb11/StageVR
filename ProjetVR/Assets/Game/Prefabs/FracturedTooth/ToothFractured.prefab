@@ -2527,7 +2527,30 @@ MonoBehaviour:
   - {fileID: 694940887758564484}
   - {fileID: 6688536756420813675}
   - {fileID: 7317516504580573697}
-  datas: []
+  notNeighborsCells:
+  - cells:
+    - {fileID: 2297286957324191263}
+    - {fileID: 2300716754318108125}
+    - {fileID: 8055880577183395569}
+  - cells:
+    - {fileID: 2297286957324191263}
+    - {fileID: 2300716754318108125}
+    - {fileID: 694940887758564484}
+  - cells:
+    - {fileID: 6560181477854605475}
+    - {fileID: 7205976928817725530}
+    - {fileID: 2300716754318108125}
+  - cells:
+    - {fileID: 7205976928817725530}
+    - {fileID: 2300716754318108125}
+    - {fileID: 8055880577183395569}
+  - cells:
+    - {fileID: 694940887758564484}
+    - {fileID: 6688536756420813675}
+    - {fileID: 7317516504580573697}
+  datas:
+  - {fileID: 11400000, guid: a75a50e4ac0791147a41b3f85f76ef0f, type: 2}
+  - {fileID: 11400000, guid: be07bfae90b5d9042b17a20c1c003cb6, type: 2}
   cleanMat: {fileID: 2100000, guid: 9c6103d2ad98b544b82572d8025d27d2, type: 2}
   dirtyMat: {fileID: 2100000, guid: d753c80c86f4b3f41a62ece4b7c1c9e8, type: 2}
   tartarMat: {fileID: 2100000, guid: d10d6b4f3512dbd4fa03be219e911ecb, type: 2}

@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(StartDelay(startDelay));
 
-        OVRManager.InputFocusAcquired += OVRManager.display.RecenterPose;
+        //OVRManager.InputFocusAcquired += OVRManager.display.RecenterPose;
     }
 
     private IEnumerator StartDelay(float delay)

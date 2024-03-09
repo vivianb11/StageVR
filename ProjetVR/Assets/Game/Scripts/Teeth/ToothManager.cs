@@ -18,11 +18,10 @@ public class ToothManager : MonoBehaviour
 
     public GenerationMode generationMode = GenerationMode.Random;
 
-    private List<int> cellsState;
-    private List<bool> settedCells;
-
     public GameObject Tooth;
     public List<CellBehavior> teethCells = new List<CellBehavior>();
+
+    [SerializeField] List<CellList> notNeighborsCells;
 
     public SO_TeethGeneration[] datas;
     private int dataIndex;
@@ -108,8 +107,6 @@ public class ToothManager : MonoBehaviour
         OnCleanAmountChange?.Invoke(GetToothCleanPercent());
 
         CheckIfToothCleaned();
-
-        dataIndex = Mathf.Clamp(dataIndex + 1, 0, datas.Length - 1);
     }
 
     public void RemoveSmellAmount()
@@ -162,6 +159,7 @@ public class ToothManager : MonoBehaviour
         tweener.PlayTween("despawn");
 
         DisableGrab();
+        dataIndex = Mathf.Clamp(dataIndex + 1, 0, datas.Length - 1);
 
         OnCleanAmountChange?.Invoke(1);
         OnTeethCleaned?.Invoke();
@@ -259,9 +257,6 @@ public class ToothManager : MonoBehaviour
 
         SetSmell(Random.Range(0f, 1f) < gP.smellSpawnChance);
 
-        cellsState = new List<int>(teethCells.Count);
-        settedCells = new List<bool>(teethCells.Count);
-
         List<CellBehavior> cleanedCells = new List<CellBehavior>();
         List<TeethState> teethStates = new List<TeethState>();
 
@@ -283,28 +278,31 @@ public class ToothManager : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < teethCells.Count; i++)
-        {
-            bool flag = true;
+        teethCells.Shuffle();
 
-            foreach (Transform c in teethCells[i].neighbors)
+        if (teethStates.Count > 3)
+        {
+            for (int i = 0; i < teethStates.Count; i++)
+                teethCells[i].SwitchTeethState(teethStates[i]);
+        }
+        else
+        {
+            CellList cellList = notNeighborsCells.PickRandom();
+            Debug.Log("Selected list index: " + notNeighborsCells.IndexOf(cellList));
+
+            for (int i = 0; i < teethStates.Count; i++)
             {
-                if (c.GetComponent<CellBehavior>().teethState != TeethState.Clean)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            
-            if (flag)
-            {
-                TeethState teethState = teethStates.PickRandom();
-                teethStates.Remove(teethState);
-                teethCells[i].SwitchTeethState(teethState);
+                cellList.cells[i].SwitchTeethState(teethStates[i]);
             }
         }
 
         if (OnlyDecayRemaining())
             EnableGrab();
     }
+}
+
+[Serializable]
+public struct CellList
+{
+    public List<CellBehavior> cells;
 }

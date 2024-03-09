@@ -90,6 +90,20 @@ public static class ExtensionMethods
         return default;
     }
 
+    public static T DebugList<T>(this List<T> list, string message)
+    {
+        string debugString = message + " ";
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            debugString += list[i].ToString() + ", ";
+        }
+
+        Debug.Log(debugString);
+
+        return default;
+    }
+
     #endregion
 
     private static System.Random rng = new System.Random();

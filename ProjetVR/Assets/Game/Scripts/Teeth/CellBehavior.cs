@@ -39,13 +39,20 @@ public class CellBehavior : MonoBehaviour
 
         GetComponent<Rigidbody>().isKinematic = true;
 
-        interactable.SetActivateState(false);
+        ResetTooth();
         interactable.deSelectionCondition = Interactable.DeSelectionCondition.LOOK_OUT;
 
         signalListener.signalReceived.AddListener(() => interactable.SetActivateState(true));
         signalListener.signalLost.AddListener(() => interactable.SetActivateState(false));
 
         OnClean.AddListener(() => interactable.enabled = false);
+    }
+
+    public void ResetTooth()
+    {
+        SwitchTeethState(TeethState.Clean);
+        interactable.SetActivateState(false);
+        interactable.SetCanBeInteracted(false);
     }
 
     public bool ToothPasteFull()
@@ -56,6 +63,9 @@ public class CellBehavior : MonoBehaviour
     public void IncreaseToothPasteAmount()
     {
         toothPasteAmount = Mathf.Clamp(toothPasteAmount + 1, 0, cellData.maxToothPasteCount);
+
+        if (toothPasteAmount == cellData.maxToothPasteCount)
+            interactable.SetCanBeInteracted(true);
     }
 
     private void SetMaterials(TeethState state)
@@ -111,6 +121,7 @@ public class CellBehavior : MonoBehaviour
         {
             Transform food = Instantiate(foodPrefab.PickRandom(), transform);
             food.rotation = Quaternion.Euler(new Vector3(Random.Range(0f, 180f), Random.Range(0f, 180f), Random.Range(0f, 180f)));
+            interactable.SetCanBeInteracted(true);
         }
 
         SetMaterials(newTeethState);

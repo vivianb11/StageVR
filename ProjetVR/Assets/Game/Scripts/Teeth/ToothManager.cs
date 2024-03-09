@@ -2,10 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using NaughtyAttributes;
-using System.Linq;
 using SignalSystem;
 using UnityEngine.Events;
-using UnityEngine.Rendering;
 using System;
 
 public class ToothManager : MonoBehaviour
@@ -176,7 +174,7 @@ public class ToothManager : MonoBehaviour
         foreach (var cell in teethCells)
         {
             cell.gameObject.SetActive(true);
-            cell.SwitchTeethState(TeethState.Clean);
+            cell.ResetTooth();
         }
         
         DisableGrab();

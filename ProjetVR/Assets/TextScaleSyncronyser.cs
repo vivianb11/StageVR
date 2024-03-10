@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -26,6 +24,8 @@ public class TextScaleSyncronyser : MonoBehaviour
             if (oldTarget != null)
                 oldTarget.transform.localScale = dS;
 
+            oldTarget = null;
+
             return;
         }
 
@@ -47,6 +47,6 @@ public class TextScaleSyncronyser : MonoBehaviour
         newScale.y = tMesh.GetNumberOfLines() * charHeight + dS.y;
         newScale.z = dS.z;
 
-        target.transform.localScale = newScale;
+        target.transform.localScale = Vector3.Lerp(target.transform.localScale, newScale, 0.1f);
     }
 }

@@ -11,6 +11,8 @@ public class PanelBehavior : MonoBehaviour
 
     public AudioClip textAudio;
 
+    public Coroutine textCoroutine;
+
     public TextMesh text;
 
     private void Awake()
@@ -21,12 +23,16 @@ public class PanelBehavior : MonoBehaviour
 
     public void SetText(string newText)
     {
+        ResetText();
+
         text.text = newText;
     }
 
     public void SetText(string newText, float time)
     {
-        StartCoroutine(SetTextWithTime(newText, time));
+        ResetText();
+
+        textCoroutine = StartCoroutine(SetTextWithTime(newText, time));
     }
 
     IEnumerator SetTextWithTime(string newText, float time)
@@ -40,6 +46,34 @@ public class PanelBehavior : MonoBehaviour
 
             yield return new WaitForSeconds((time / newText.Length));
         }
+        
+        textCoroutine = null;
+    }
+
+    public void ShakeText() 
+    {
+        InvokeRepeating("ShakeTextCoroutine", 0, 0.01f);
+    }
+
+    IEnumerator ShakeTextCoroutine(float fortime)
+    {
+        Vector3 originalPos = text.transform.position;
+        float time = 0;
+        while (time < fortime)
+        {
+            text.transform.position = originalPos + Random.insideUnitSphere * 0.1f;
+            time += Time.deltaTime;
+            yield return null;
+        }
+        text.transform.position = originalPos;
+    }
+
+    public void ResetText()
+    {
+        if (textCoroutine != null)
+            StopCoroutine(textCoroutine);
+        else
+            text.text = "";
     }
 
     public void PlaySFX(AudioClip audio)

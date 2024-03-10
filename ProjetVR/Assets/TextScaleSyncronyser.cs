@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -17,6 +15,7 @@ public class TextScaleSyncronyser : MonoBehaviour
 
     Vector3 newScale;
     float charWidth;
+    float charHeight;
 
     public void Update()
     {
@@ -24,6 +23,8 @@ public class TextScaleSyncronyser : MonoBehaviour
         {
             if (oldTarget != null)
                 oldTarget.transform.localScale = dS;
+
+            oldTarget = null;
 
             return;
         }
@@ -40,11 +41,12 @@ public class TextScaleSyncronyser : MonoBehaviour
         }
 
         charWidth = (tMesh.characterSize / tMesh.fontSize) * widthOffset;
+        charHeight = (tMesh.characterSize / tMesh.fontSize) * heightOffset;
 
         newScale.x = (tMesh.GetLongestLine()).Length * charWidth + dS.x;
-        newScale.y = tMesh.GetNumberOfLines() * charWidth + dS.y;
+        newScale.y = tMesh.GetNumberOfLines() * charHeight + dS.y;
         newScale.z = dS.z;
 
-        target.transform.localScale = newScale;
+        target.transform.localScale = Vector3.Lerp(target.transform.localScale, newScale, 0.1f);
     }
 }

@@ -18,6 +18,8 @@ public class Dialoger : MonoBehaviour
 #if UNITY_EDITOR
     [Header("Play Dialog")]
     public string dialogName;
+#endif
+
     [Button]
     public void PlayDiolog()
     {
@@ -54,7 +56,6 @@ public class Dialoger : MonoBehaviour
 
         StartCoroutine(PlayDialog(dialog));
     }
-#endif
 
     private void Awake()
     {

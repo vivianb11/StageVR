@@ -42,8 +42,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5ad14af446070b0419b6de32ba6b39be, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -430,6 +430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueAudioSource: {fileID: 8599387579559837038}
   sfxAudioSource: {fileID: 5097887652690005390}
+  textAudio: {fileID: 8300000, guid: 086ba42f804ba6245ad78e6ef0b69eb3, type: 3}
   text: {fileID: 3011789382470639039}
 --- !u!114 &8695492294304982299
 MonoBehaviour:
@@ -507,8 +508,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 53fbb752b4f817d4db785165de863f52, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

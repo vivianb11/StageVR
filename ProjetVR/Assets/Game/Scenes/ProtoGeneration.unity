@@ -651,6 +651,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1451713007}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &155210071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2472055617163586031, guid: b5d7710091792b94ebccc8d0e08d565f, type: 3}
+  m_PrefabInstance: {fileID: 306843917964873030}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &175495238
 GameObject:
   m_ObjectHideFlags: 0
@@ -11238,6 +11243,38 @@ PrefabInstance:
     - target: {fileID: 1051452772007222544, guid: b5d7710091792b94ebccc8d0e08d565f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079744736786626078, guid: b5d7710091792b94ebccc8d0e08d565f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.9413275
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079744736786626078, guid: b5d7710091792b94ebccc8d0e08d565f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.45452875
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299431605582992777, guid: b5d7710091792b94ebccc8d0e08d565f, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 155210071}
+    - target: {fileID: 3299431605582992777, guid: b5d7710091792b94ebccc8d0e08d565f, type: 3}
+      propertyPath: scaleChange.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299431605582992777, guid: b5d7710091792b94ebccc8d0e08d565f, type: 3}
+      propertyPath: scaleChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299431605582992777, guid: b5d7710091792b94ebccc8d0e08d565f, type: 3}
+      propertyPath: scaleChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299431605582992777, guid: b5d7710091792b94ebccc8d0e08d565f, type: 3}
+      propertyPath: scaleChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299431605582992777, guid: b5d7710091792b94ebccc8d0e08d565f, type: 3}
+      propertyPath: scaleChange.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Tween, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7447576817621775451, guid: b5d7710091792b94ebccc8d0e08d565f, type: 3}
       propertyPath: m_Name

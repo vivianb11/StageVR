@@ -1,0 +1,50 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[ExecuteInEditMode]
+public class TextScaleSyncronyser : MonoBehaviour
+{
+    public TextMesh tMesh;
+
+    public GameObject target;
+
+    public float widthOffset = 5f;
+    public float heightOffset = 10f;
+
+    private GameObject oldTarget;
+    private Vector3 dS;
+
+    Vector3 newScale;
+    float charWidth;
+
+    public void Update()
+    {
+        if (target == null)
+        {
+            if (oldTarget != null)
+                oldTarget.transform.localScale = dS;
+
+            return;
+        }
+
+        if (target != oldTarget)
+        {
+            if (oldTarget != null)
+                oldTarget.transform.localScale = dS;
+
+            oldTarget = target;
+
+            charWidth = (tMesh.characterSize / tMesh.fontSize) * widthOffset;
+            dS = target.transform.localScale;
+        }
+
+        charWidth = (tMesh.characterSize / tMesh.fontSize) * widthOffset;
+
+        newScale.x = (tMesh.GetLongestLine()).Length * charWidth + dS.x;
+        newScale.y = tMesh.GetNumberOfLines() * charWidth + dS.y;
+        newScale.z = dS.z;
+
+        target.transform.localScale = newScale;
+    }
+}

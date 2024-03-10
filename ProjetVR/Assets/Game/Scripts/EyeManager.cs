@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -228,6 +229,11 @@ public class EyeManager : MonoBehaviour
             interactable.LookOut();
             interactable.onSelected.RemoveListener(OnInteractableSelected);
             interactable = null;
+        }
+
+        if (Physics.Raycast(transform.position, cursor.forward, out hit, Mathf.Infinity, LayerMask.NameToLayer("Ignore")) && hit.collider.TryGetComponent(out TestImageGenerator generator))
+        {
+            generator.SetPixel(hit.textureCoord, Color.red, 0);
         }
     }
 

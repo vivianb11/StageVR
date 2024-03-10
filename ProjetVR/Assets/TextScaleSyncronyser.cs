@@ -17,6 +17,7 @@ public class TextScaleSyncronyser : MonoBehaviour
 
     Vector3 newScale;
     float charWidth;
+    float charHeight;
 
     public void Update()
     {
@@ -40,9 +41,10 @@ public class TextScaleSyncronyser : MonoBehaviour
         }
 
         charWidth = (tMesh.characterSize / tMesh.fontSize) * widthOffset;
+        charHeight = (tMesh.characterSize / tMesh.fontSize) * heightOffset;
 
         newScale.x = (tMesh.GetLongestLine()).Length * charWidth + dS.x;
-        newScale.y = tMesh.GetNumberOfLines() * charWidth + dS.y;
+        newScale.y = tMesh.GetNumberOfLines() * charHeight + dS.y;
         newScale.z = dS.z;
 
         target.transform.localScale = newScale;

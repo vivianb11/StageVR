@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using NaughtyAttributes;
-using System.Linq;
 using SignalSystem;
+using UnityEngine.Events;
+using System;
 
 public class ToothManager : MonoBehaviour
 {
@@ -15,12 +16,13 @@ public class ToothManager : MonoBehaviour
 
     public GenerationMode generationMode = GenerationMode.Random;
 
-    List<int> cellsState;
-    private List<bool> settedCells;
-
     public GameObject Tooth;
+    public List<CellBehavior> teethCells = new List<CellBehavior>();
 
-    public SO_TeethGrenration generationParameter;
+    [SerializeField] List<CellList> notNeighborsCells;
+
+    public SO_TeethGeneration[] datas;
+    private int dataIndex;
 
     [Foldout("Materials")]
     public Material cleanMat;
@@ -31,83 +33,151 @@ public class ToothManager : MonoBehaviour
     [Foldout("Materials")]
     public Material decayMat;
 
+    private Collider grabCollider;
+    private Interactable grabIntractable;
     public SO_Signal brushSignal;
     public SO_Signal brossetteSignal;
 
-    public Tween tweener;
-    private List<CellBehavior> teethCells = new List<CellBehavior>();
+    private Tween tweener;
+    public GameObject smellVFX;
 
-    [SerializeField] int dirtyCellsCount;
-    [SerializeField] int cleanedCell;
+    private bool smells;
 
-    public float CleanAmount
+    public int maxSmellAmount = 10;
+    private int smellAmount = 10;
+
+    [Foldout("Events")]
+    public UnityEvent OnTeethCleaned;
+    [Foldout("Events")]
+    [InfoBox("Returns a float")]
+    public UnityEvent<float> OnCleanAmountChange;
+    [Foldout("Events")]
+    public UnityEvent OnToothPreCleaned;
+
+    private void Awake()
     {
-        get
-        {
-            float cleandCells = teethCells.FindAll(x => x.GetComponent<CellBehavior>().teethState == TeethState.Clean).Count;
-            float totalCells = teethCells.Count;
+        grabCollider = GetComponent<Collider>();
+        grabIntractable = GetComponent<Interactable>();
+        tweener = GetComponent<Tween>();
 
-            return cleandCells / totalCells;
-        }
-        private set
-        {
-            Debug.LogWarning("CleanAmount is read only");
-        }
+        smellAmount = maxSmellAmount;
     }
 
     void Start()
     {
-        foreach (Transform child in transform)
-        {
-            if (child.gameObject == Tooth)
-                continue;
-
-            teethCells.Add(child.GetComponent<CellBehavior>());
-        }
-
-        ResetTeeth();
+        ResetTooth();
 
         Tooth.SetActive(false);
+
+        for (int i = 0; i < teethCells.Count; i++)
+        {
+            teethCells[i].OnClean.AddListener(OnCellCleaned);
+        }
+
+        OnCleanAmountChange?.Invoke(GetToothCleanPercent());
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.R))
         {
-            ResetTeeth();
+            ResetTooth();
         }
+    }
+
+    public void SetSmell(bool value)
+    {
+        smells = value;
+
+        smellAmount = maxSmellAmount;
+
+        if (value)
+            smellVFX.SetActive(true);
+        else
+            smellVFX.SetActive(false);
     }
 
     [Button]
-    public void CleanTeeth()
+    public void CleanSmell()
     {
-        GetComponent<Collider>().enabled = true;
+        SetSmell(false);
 
+        OnCleanAmountChange?.Invoke(GetToothCleanPercent());
+
+        CheckIfToothCleaned();
+    }
+
+    public void RemoveSmellAmount()
+    {
+        if (!smells)
+            return;
+
+        smellAmount -= 1;
+
+        if (smellAmount <= 0)
+            CleanSmell();
+    }
+
+    public float GetToothCleanPercent()
+    {
+        float cleandCells = teethCells.FindAll(x => x.teethState == TeethState.Clean).Count;
+        float totalCells = teethCells.Count;
+
+        return (cleandCells / totalCells) - (smells ? 0.1f : 0f);
+    }
+
+    public bool IsToothCleaned()
+    {
+        return GetToothCleanPercent() == 1;
+    }
+
+    public bool OnlyDecayRemaining()
+    {
+        if (smells)
+            return false;
+
+        foreach (var teethCell in teethCells)
+        {
+            if (teethCell.teethState != TeethState.Decay && teethCell.teethState != TeethState.Clean)
+                return false;
+        }
+
+        return true;
+    }
+
+    [Button]
+    public void CleanTooth()
+    {
         foreach (var cell in teethCells)
         {
-            cell.CleanCell();
             cell.gameObject.SetActive(false);
         }
 
-        DisableGrab();
         Tooth.SetActive(true);
         tweener.PlayTween("despawn");
-    }
-
-    public void ResetTeeth()
-    {
-        tweener.PlayTween("spawn");
-        transform.localPosition = Vector3.zero;
-        dirtyCellsCount = 0;
 
         DisableGrab();
+        dataIndex = Mathf.Clamp(dataIndex + 1, 0, datas.Length - 1);
+
+        OnCleanAmountChange?.Invoke(1);
+        OnTeethCleaned?.Invoke();
+    }
+
+    public void ResetTooth()
+    {
+        transform.localPosition = Vector3.zero;
+        SetSmell(false);
+
+        Tooth.SetActive(false);
+        tweener.PlayTween("spawn");
 
         foreach (var cell in teethCells)
         {
             cell.gameObject.SetActive(true);
+            cell.ResetTooth();
         }
-
-        Tooth.SetActive(false);
+        
+        DisableGrab();
 
         switch (generationMode)
         {
@@ -118,175 +188,119 @@ public class ToothManager : MonoBehaviour
                 SetupCells();
                 break;
         }
+
+        OnCleanAmountChange?.Invoke(GetToothCleanPercent());
+    }
+
+    private void EnableGrab()
+    {
+        grabCollider.enabled = true;
+
+        foreach (CellBehavior cell in teethCells)
+        {
+            cell.gameObject.GetComponent<Collider>().enabled = false;
+        }
+    }
+
+    private void DisableGrab()
+    {
+        grabCollider.enabled = false;
+
+        if (grabIntractable.selected)
+            grabIntractable.DeSelect();
+
+        foreach (CellBehavior cell in teethCells)
+        {
+            cell.gameObject.GetComponent<Collider>().enabled = true;
+        }
+    }
+
+    private void CheckIfToothCleaned()
+    {
+        if (IsToothCleaned())
+        {
+            EnableGrab();
+
+            OnToothPreCleaned?.Invoke();
+        }
+        else if (OnlyDecayRemaining())
+        {
+            EnableGrab();
+        }
+    }
+
+    private void OnCellCleaned()
+    {
+        OnCleanAmountChange?.Invoke(GetToothCleanPercent());
+
+        CheckIfToothCleaned();
+
+        Debug.Log(GetToothCleanPercent());
     }
 
     private void RandomCellSetup()
     {
         foreach (CellBehavior cell in teethCells)
         {
-            cell.SwitchTeethState((TeethState)Random.Range(0, 4));
+            TeethState teethState = (TeethState)Random.Range(0, 4);
+            cell.SwitchTeethState(teethState);
         }
-    }
 
-    private void EnableGrab()
-    {
-        GetComponent<Collider>().enabled = true;
-
-        foreach (Transform child in transform)
-        {
-            child.GetComponent<Collider>().enabled = false;
-        }
-    }
-
-    private void DisableGrab()
-    {
-        GetComponent<Collider>().enabled = false;
-
-        foreach (Transform child in transform)
-        {
-            child.GetComponent<Collider>().enabled = true;
-        }
-    }
-
-    private void OnCellCleaned()
-    {
-        cleanedCell++;
-
-        if (cleanedCell == dirtyCellsCount)
-        {
-            foreach (var cell in teethCells)
-            {
-                if (cell.teethState != TeethState.Clean)
-                {
-                    EnableGrab();
-
-                    return;
-                }
-            }
-
-            tweener.PlayTween("despawn");
-        }
+        SetSmell(Random.Range(0f, 1f) < 0.5f ? true : false);
     }
 
     private void SetupCells()
     {
-        cellsState = new List<int>(teethCells.Count);
-        settedCells = new List<bool>(teethCells.Count);
+        SO_TeethGeneration gP = datas[dataIndex];
 
-        for (int i = 0; i < teethCells.Count; i++)
+        SetSmell(Random.Range(0f, 1f) < gP.smellSpawnChance);
+
+        List<CellBehavior> cleanedCells = new List<CellBehavior>();
+        List<TeethState> teethStates = new List<TeethState>();
+
+        teethCells.ForEach(item => cleanedCells.Add(item));
+
+        foreach (Anomaly anomaly in gP.anomalies)
         {
-            cellsState.Add(0);
-            settedCells.Add(false);
-        }
+            float weight = anomaly.curve.Evaluate(Random.Range(0f, 1f));
+            
+            int amount = ((int)Mathf.Lerp(anomaly.minMax.x, anomaly.minMax.y, weight));
+            int count = Mathf.Min(cleanedCells.Count, amount);
 
-        for (int i = 0; i < teethCells.Count; i++)
-        {
-            List<int> unChangedCells = new List<int>(settedCells.Where(x => x == false).Count());
-
-            for (int j = 0; j < settedCells.Count; j++)
+            for (int i = 0; i < count; i++)
             {
-                if (settedCells[j] == false)
-                {
-                    unChangedCells.Add(j);
-                }
-            }
+                CellBehavior cellBehavior = cleanedCells.PickRandom();
+                cleanedCells.Remove(cellBehavior);
 
-            int y = Random.Range(0, unChangedCells.Count);
-
-            int cellIndex = unChangedCells[y];
-
-            settedCells[cellIndex] = true;
-
-            if (cellsState.Where(cellsState => cellsState == (int)TeethState.Clean).Count() < generationParameter.minMaxClean.x)
-            {
-                cellsState[cellIndex] = (int)TeethState.Clean;
-            }
-            else if (cellsState.Where(cellsState => cellsState == (int)TeethState.Clean).Count() > generationParameter.minMaxClean.y)
-            {
-                ChooseAnomaly(cellIndex, true);
-            }
-            else
-            {
-                ChooseAnomaly(cellIndex);
+                teethStates.Add(anomaly.teethState);
             }
         }
 
-        for (int i = 0; i < teethCells.Count; i++)
+        teethCells.Shuffle();
+
+        if (teethStates.Count > 3)
         {
-            teethCells[i].SwitchTeethState((TeethState)cellsState[i]);
-            teethCells[i].OnClean.AddListener(OnCellCleaned);
+            for (int i = 0; i < teethStates.Count; i++)
+                teethCells[i].SwitchTeethState(teethStates[i]);
+        }
+        else
+        {
+            CellList cellList = notNeighborsCells.PickRandom();
+            Debug.Log("Selected list index: " + notNeighborsCells.IndexOf(cellList));
+
+            for (int i = 0; i < teethStates.Count; i++)
+            {
+                cellList.cells[i].SwitchTeethState(teethStates[i]);
+            }
         }
 
-        if (dirtyCellsCount == 0)
+        if (OnlyDecayRemaining())
             EnableGrab();
     }
+}
 
-    private void ChooseAnomaly(int cellIndex, bool withClean = false)
-    {
-        List<TeethState> activeAnomalies = generationParameter.GetActives(withClean);
-
-        TeethState teethState = activeAnomalies[Random.Range(0, activeAnomalies.Count)];
-
-        switch (teethState)
-        {
-            case TeethState.Dirty:
-                cellsState[cellIndex] = DirtyGeneration(cellIndex, withClean);
-                dirtyCellsCount++;
-                break;
-            case TeethState.Tartar:
-                cellsState[cellIndex] = TartarGeneration(cellIndex, withClean);
-                dirtyCellsCount++;
-                break;
-            case TeethState.Decay:
-                cellsState[cellIndex] = DecayGeneration(cellIndex, withClean);
-                break;
-            case TeethState.Clean:
-                cellsState[cellIndex] = CleanGeneration(cellIndex, withClean);
-                break;
-        }
-    }
-
-    private int DirtyGeneration(int cellIndex, bool withClean)
-    {
-        int x = Random.Range(0, 1) < generationParameter.dirtyChance.Evaluate(Random.Range(0, 1)) ? (int)TeethState.Dirty : (int)TeethState.Clean;
-
-        if (x == (int)TeethState.Clean)
-        {
-            CleanGeneration(cellIndex, withClean);
-        }
-        return x;
-    }
-
-    private int TartarGeneration(int cellIndex, bool withClean)
-    {
-        int x = Random.Range(0, 1) < generationParameter.tartarChance.Evaluate(Random.Range(0, 1)) ? (int)TeethState.Tartar : (int)TeethState.Clean;
-
-        if (x == (int)TeethState.Clean)
-        {
-            CleanGeneration(cellIndex, withClean);
-        }
-        return x;
-    }
-
-    private int DecayGeneration(int cellIndex, bool WithClean)
-    {
-        int x = Random.Range(0, 1) < generationParameter.decayChance.Evaluate(Random.Range(0, 1)) ? (int)TeethState.Decay : (int)TeethState.Clean;
-
-        if (x == (int)TeethState.Clean)
-        {
-            CleanGeneration(cellIndex, WithClean);
-        }
-        return x;
-    }
-
-    private int CleanGeneration(int cellIndex, bool withClean)
-    {
-        int x = Random.Range(0, 1) < generationParameter.weightClean ? (int)TeethState.Clean : (int)TeethState.Dirty;
-
-        if (x != (int)TeethState.Clean)
-        {
-            DirtyGeneration(cellIndex, withClean);
-        }
-        return x;
-    }
+[Serializable]
+public struct CellList
+{
+    public List<CellBehavior> cells;
 }

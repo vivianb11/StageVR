@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -196,40 +197,30 @@ public class EyeManager : MonoBehaviour
 
     private void RaycastInteractable()
     {
-        if (RaycastForward(out RaycastHit hit))
+        if (RaycastForward(out RaycastHit hit) && hit.collider.TryGetComponent(out Interactable component) && component.activated)
         {
-            if (hit.collider.TryGetComponent(out Interactable component))
+            if (!interactable && component.activated)
             {
-                if (!interactable && component.activated)
-                {
-                    interactable = component;
-                    interactable.LookIn();
-                    interactable.onSelected.AddListener(OnInteractableSelected);
-                }
-
-                if (interactable != component && component.activated && component.canBeInteracted)
-                {
-                    slider.value = 0;
-                    interactable.LookOut();
-                    interactable.onSelected.RemoveListener(OnInteractableSelected);
-                    interactable = component;
-                    interactable.LookIn();
-                    interactable.onSelected.AddListener(OnInteractableSelected);
-                }
-
-                if (interactable && !interactable.selected && interactable.canBeInteracted)
-                {
-                    interactable.LookStay();
-                    slider.maxValue = interactable.lookInTime;
-                    slider.value = interactable.currentLookInTime;
-                }
+                interactable = component;
+                interactable.LookIn();
+                interactable.onSelected.AddListener(OnInteractableSelected);
             }
-            else if (interactable)
+
+            if (interactable != component && component.activated && component.canBeInteracted)
             {
                 slider.value = 0;
                 interactable.LookOut();
                 interactable.onSelected.RemoveListener(OnInteractableSelected);
-                interactable = null;
+                interactable = component;
+                interactable.LookIn();
+                interactable.onSelected.AddListener(OnInteractableSelected);
+            }
+
+            if (interactable && !interactable.selected && interactable.canBeInteracted)
+            {
+                interactable.LookStay();
+                slider.maxValue = interactable.lookInTime;
+                slider.value = interactable.currentLookInTime;
             }
         }
         else if (interactable)
@@ -238,6 +229,11 @@ public class EyeManager : MonoBehaviour
             interactable.LookOut();
             interactable.onSelected.RemoveListener(OnInteractableSelected);
             interactable = null;
+        }
+
+        if (Physics.Raycast(transform.position, cursor.forward, out hit, Mathf.Infinity, LayerMask.NameToLayer("Ignore")) && hit.collider.TryGetComponent(out TestImageGenerator generator))
+        {
+            generator.SetPixel(hit.textureCoord, Color.red, 0);
         }
     }
 

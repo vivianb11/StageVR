@@ -38,7 +38,9 @@ public class Tween : MonoBehaviour
 
     public void PlayTween(string key)
     {
-        StartCoroutine(TweenCoroutine(tweenMontages.Where(item => item.name == key).ToArray()[0].tweenProperties));
+        TweenMontage montage = tweenMontages.Where(item => item.name == key).ToArray()[0];
+
+        StartCoroutine(TweenCoroutine(montage.tweenProperties, montage.speed));
     }
 
     public void TweenMove(Vector3 targetPosition, float tweenTime)
@@ -98,23 +100,23 @@ public class Tween : MonoBehaviour
             duration += item.duration;
         }
 
-        return duration;
+        return duration / montage.speed;
     }
 
     private void SetProperty(TweenProperty.Properties property, Vector3 value)
     {
         switch (property)
         {
-            case global::TweenProperty.Properties.POSITION:
+            case TweenProperty.Properties.POSITION:
                 transform.position = value;
                 break;
-            case global::TweenProperty.Properties.LOCAL_POSITION:
+            case TweenProperty.Properties.LOCAL_POSITION:
                 transform.localPosition = value;
                 break;
-            case global::TweenProperty.Properties.SCALE:
+            case TweenProperty.Properties.SCALE:
                 transform.localScale = value;
                 break;
-            case global::TweenProperty.Properties.ROTATION:
+            case TweenProperty.Properties.ROTATION:
                 transform.rotation = Quaternion.Euler(value);
                 break;
         }
@@ -129,18 +131,18 @@ public class Tween : MonoBehaviour
             if (i > 0 && montage.waitPreviousMontage)
                 yield return new WaitForSeconds(GetMontageDuration(montages[i - 1]));
 
-            StartCoroutine(TweenCoroutine(montage.tweenProperties));
+            StartCoroutine(TweenCoroutine(montage.tweenProperties, montage.speed));
         }
     }
 
-    public IEnumerator TweenCoroutine(TweenProperty[] tweenProperties)
+    public IEnumerator TweenCoroutine(TweenProperty[] tweenProperties, float speed)
     {
         for (int i = 0; i < tweenProperties.Length; i++)
         {
             var tween = tweenProperties[i];
 
             if (i > 0 && tween.waitForPreviousTweenProperty)
-                yield return new WaitForSeconds(tweenProperties[i - 1].duration);
+                yield return new WaitForSeconds(tweenProperties[i - 1].duration / speed);
 
             Vector3 from = tween.from;
 
@@ -160,8 +162,8 @@ public class Tween : MonoBehaviour
                     break;
             }
 
-            StartCoroutine(TweenPropertyCoroutine(tween.propertie, from, tween.to, tween.duration, tween.curve));
-            StartCoroutine(InvokeDelay(tween.completed, tween.duration));
+            StartCoroutine(TweenPropertyCoroutine(tween.propertie, from, tween.to, tween.duration / speed, tween.curve));
+            StartCoroutine(InvokeDelay(tween.completed, tween.duration / speed));
         }
     }
 
@@ -231,11 +233,13 @@ public struct TweenProperty
 }
 
 [Serializable]
-public struct TweenMontage
+public class TweenMontage
 {
     public string name;
 
     public bool waitPreviousMontage;
+
+    public float speed = 1f;
 
     public TweenProperty[] tweenProperties;
 }

@@ -33,14 +33,6 @@ public class ObjectSnapper : MonoBehaviour
         sphereCollider.radius = detectionRadius;
 
         this.transform.localScale += new Vector3(0.1f,0.1f,0.1f);
-
-        if (TryGetComponent(out MeshRenderer mehs))
-            material = mehs.material;
-        else if (GetComponentInChildren<MeshRenderer>())
-            material = GetComponentInChildren<MeshRenderer>().material;
-
-        if (material)
-            material.color = new Color(material.color.r, material.color.g, material.color.b, 0.5f);
     }
 
     void FixedUpdate()

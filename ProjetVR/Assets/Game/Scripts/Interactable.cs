@@ -7,16 +7,6 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody))]
 public class Interactable : MonoBehaviour
 {
-    public enum SelectionCondition
-    {
-        LOOK_IN, LOOK_IN_TIME, NONE
-    }
-
-    public enum DeSelectionCondition
-    {
-        LOOK_OUT, LOOK_OUT_TIME, LOOK_DISTANCE, AUTO_TIME, NONE
-    }
-
     [HideInInspector]
     public Rigidbody rb;
 
@@ -27,15 +17,14 @@ public class Interactable : MonoBehaviour
     public float lookInTime = 1f;
     [HideInInspector]
     public float currentLookInTime;
+    [ShowIf("selectionCondition", SelectionCondition.LOOK_IN_TIME)]
+    public bool resetValueOnExit = true;
 
     [Header("Deselection Condition")]
     public DeSelectionCondition deSelectionCondition = DeSelectionCondition.LOOK_OUT_TIME;
     [ShowIf("deSelectionCondition", DeSelectionCondition.LOOK_OUT_TIME)]
     public float lookOutTime = 1;
     private Coroutine lookOutCoroutine;
-
-    [ShowIf("deSelectionCondition", DeSelectionCondition.LOOK_DISTANCE)]
-    public float lookOutDistance;
 
     [ShowIf("deSelectionCondition", DeSelectionCondition.AUTO_TIME)]
     public float autoTime;
@@ -119,7 +108,8 @@ public class Interactable : MonoBehaviour
     {
         lookOut?.Invoke();
 
-        ResetSelectionValues();
+        if (resetValueOnExit)
+            ResetSelectionValues();
 
         if (deSelectionCondition == DeSelectionCondition.LOOK_OUT)
             DeSelect();
@@ -188,4 +178,14 @@ public struct EventDelay
 {
     public float delay;
     public UnityEvent unityEvent;
+}
+
+public enum SelectionCondition
+{
+    LOOK_IN, LOOK_IN_TIME, NONE
+}
+
+public enum DeSelectionCondition
+{
+    LOOK_OUT, LOOK_OUT_TIME, AUTO_TIME, NONE
 }

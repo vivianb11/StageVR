@@ -1,18 +1,23 @@
 using SignalSystem;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] SignalEmitter signalEmitter;
+
+    public static GameManager Instance;
+
     public bool UseEyeTracking;
     public bool UseDynamicFoveatedRendering;
 
     public float startDelay = 1f;
 
-    public static GameManager Instance;
+    public UnityEvent gameStarted;
+
     public GameObject player { get; private set; }
 
-    [SerializeField] SignalEmitter signalEmitter;
 
     private void Awake()
     {
@@ -41,6 +46,8 @@ public class GameManager : MonoBehaviour
         }
 
         StartCoroutine(StartDelay(startDelay));
+
+        //OVRManager.InputFocusAcquired += OVRManager.display.RecenterPose;
     }
 
     private IEnumerator StartDelay(float delay)
@@ -48,5 +55,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         signalEmitter.RequestSignalCall();
+        gameStarted?.Invoke();
     }
 }

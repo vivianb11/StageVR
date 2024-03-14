@@ -4,26 +4,30 @@ using UnityEngine;
 
 public class Wobble : MonoBehaviour
 {
-    public Renderer rend;
+    public float MaxWobble = 0.03f;
+    public float WobbleSpeed = 1f;
+    public float Recovery = 1f;
+    public float wobbleAmountToAddX;
+    public float wobbleAmountToAddZ;
+
     Vector3 lastPos;
     Vector3 velocity;
     Vector3 lastRot;  
     Vector3 angularVelocity;
-    public float MaxWobble = 0.03f;
-    public float WobbleSpeed = 1f;
-    public float Recovery = 1f;
+
     float wobbleAmountX;
     float wobbleAmountZ;
-    float wobbleAmountToAddX;
-    float wobbleAmountToAddZ;
     float pulse;
     float time = 0.5f;
+    
+    private Renderer rend;
     
     // Use this for initialization
     void Start()
     {
         rend = GetComponent<Renderer>();
     }
+
     private void Update()
     {
         time += Time.deltaTime;

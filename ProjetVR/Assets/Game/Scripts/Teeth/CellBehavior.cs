@@ -106,6 +106,7 @@ public class CellBehavior : MonoBehaviour
                 interactable.onSelected.RemoveListener(DirtyBehavior);
                 interactable.onSelected.AddListener(TartarBehavior);
                 interactable.lookInTime = cellData.tartarInteractionTime;
+                interactable.resetValueOnExit = false;
                 break;
         }
     }

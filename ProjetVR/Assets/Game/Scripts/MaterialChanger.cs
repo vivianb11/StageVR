@@ -13,8 +13,6 @@ public class MaterialChanger : MonoBehaviour
     private void Start()
     {
         rend = GetComponent<Renderer>();
-        rend.enabled = true;
-        rend.sharedMaterial = materials[0];
     }
 
     public void Update()
@@ -26,7 +24,7 @@ public class MaterialChanger : MonoBehaviour
 
         if (Application.isEditor)
         {
-            materials[0] = rend.material;
+            rend.material = materials[0];
         }
     }
 

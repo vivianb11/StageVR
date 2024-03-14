@@ -21,11 +21,13 @@ public class MaterialChanger : MonoBehaviour
         {
             rend = GetComponent<Renderer>();
         }
+    
 
-        if (Application.isEditor)
+        if (Application.isEditor && !Application.isPlaying)
         {
             rend.material = materials[0];
         }
+
     }
 
     public void ChangeMaterial(int index)

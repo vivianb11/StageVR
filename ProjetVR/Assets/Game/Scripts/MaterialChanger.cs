@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class MaterialChanger : MonoBehaviour
 {
     private Renderer rend;
 
-    public Material[] materials;
+    public Material[] materials = new Material[1];
 
     private void Start()
     {
@@ -23,9 +24,9 @@ public class MaterialChanger : MonoBehaviour
             rend = GetComponent<Renderer>();
         }
 
-        if (Application.isEditor && materials[0] != rend.material)
+        if (Application.isEditor)
         {
-            rend.sharedMaterial = materials[0];
+            materials[0] = rend.material;
         }
     }
 
@@ -33,7 +34,7 @@ public class MaterialChanger : MonoBehaviour
     {
         if (index < materials.Length)
         {
-            rend.sharedMaterial = materials[index];
+            rend.material = materials[index];
         }
     }
 }

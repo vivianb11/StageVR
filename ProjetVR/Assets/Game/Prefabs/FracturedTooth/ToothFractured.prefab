@@ -1540,6 +1540,657 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &6056224882789707400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6865694600787375154}
+  - component: {fileID: 2625780598635103202}
+  - component: {fileID: 5898065625639481835}
+  - component: {fileID: 4074167816967472744}
+  - component: {fileID: 2177507039290541273}
+  - component: {fileID: 3723574441070924649}
+  - component: {fileID: 2435665176764197535}
+  m_Layer: 0
+  m_Name: ToothFractured
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6865694600787375154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056224882789707400}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1092496265444175250}
+  - {fileID: 9176192143969276712}
+  - {fileID: 6106873270634994135}
+  - {fileID: 1662812883768192402}
+  - {fileID: 9134624787246299611}
+  - {fileID: 864805606931072451}
+  - {fileID: 1295456391123842053}
+  - {fileID: 995141595956446605}
+  - {fileID: 8657601640278674733}
+  - {fileID: 4087549124001250717}
+  - {fileID: 6831300927821222052}
+  - {fileID: 8311962360659403888}
+  - {fileID: 8004361739918559537}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &2625780598635103202
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056224882789707400}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &5898065625639481835
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056224882789707400}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4074167816967472744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056224882789707400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9e09d3021298154dbc1b1a38a20e95e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generationMode: 1
+  Tooth: {fileID: 8105509145681298942}
+  teethCells:
+  - {fileID: 2297286957324191263}
+  - {fileID: 7208737463225285277}
+  - {fileID: 6560181477854605475}
+  - {fileID: 7205976928817725530}
+  - {fileID: 2300716754318108125}
+  - {fileID: 7006677314707986535}
+  - {fileID: 8055880577183395569}
+  - {fileID: 694940887758564484}
+  - {fileID: 6688536756420813675}
+  - {fileID: 7317516504580573697}
+  notNeighborsCells:
+  - cells:
+    - {fileID: 2297286957324191263}
+    - {fileID: 2300716754318108125}
+    - {fileID: 8055880577183395569}
+  - cells:
+    - {fileID: 2297286957324191263}
+    - {fileID: 2300716754318108125}
+    - {fileID: 694940887758564484}
+  - cells:
+    - {fileID: 6560181477854605475}
+    - {fileID: 7205976928817725530}
+    - {fileID: 2300716754318108125}
+  - cells:
+    - {fileID: 7205976928817725530}
+    - {fileID: 2300716754318108125}
+    - {fileID: 8055880577183395569}
+  - cells:
+    - {fileID: 694940887758564484}
+    - {fileID: 6688536756420813675}
+    - {fileID: 7317516504580573697}
+  datas:
+  - {fileID: 11400000, guid: a75a50e4ac0791147a41b3f85f76ef0f, type: 2}
+  - {fileID: 11400000, guid: be07bfae90b5d9042b17a20c1c003cb6, type: 2}
+  cleanMat: {fileID: 2100000, guid: 9c6103d2ad98b544b82572d8025d27d2, type: 2}
+  dirtyMat: {fileID: 2100000, guid: d753c80c86f4b3f41a62ece4b7c1c9e8, type: 2}
+  tartarMat: {fileID: 2100000, guid: d10d6b4f3512dbd4fa03be219e911ecb, type: 2}
+  decayMat: {fileID: 2100000, guid: af921ee7af8d1204b993352f51214eaa, type: 2}
+  brushSignal: {fileID: 11400000, guid: fd50f06be32fee7448d872b89abecf9f, type: 2}
+  brossetteSignal: {fileID: 11400000, guid: 00371841a0ed18048891fe0e7e5540fa, type: 2}
+  smellVFX: {fileID: 7717114566369999161}
+  maxSmellAmount: 50
+  OnTeethCleaned:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5346457782933561681}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TeethProgress, Assembly-CSharp
+        m_MethodName: SetFullTooth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnCleanAmountChange:
+    m_PersistentCalls:
+      m_Calls: []
+  OnToothPreCleaned:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &2177507039290541273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056224882789707400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f9fcf52fd23e949be2a4294fb4537c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  tweenMontages:
+  - name: spawn
+    waitPreviousMontage: 0
+    loopMontage: 0
+    speed: 1
+    tweenProperties:
+    - propertie: 3
+      waitForPreviousTweenProperty: 0
+      useDynamicFrom: 0
+      from: {x: 180, y: 180, z: 0}
+      to: {x: 0, y: 0, z: 0}
+      duration: 0.5
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 3.5822635
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.23852958
+        - serializedVersion: 3
+          time: 0.336583
+          value: 0.828268
+          inSlope: 1.7675189
+          outSlope: 1.7674915
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.43742254
+          outWeight: 0.22151233
+        - serializedVersion: 3
+          time: 0.550666
+          value: 1.079651
+          inSlope: 0.30952567
+          outSlope: 0.30952752
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.4695607
+          outWeight: 0.41548836
+        - serializedVersion: 3
+          time: 0.779498
+          value: 0.974607
+          inSlope: -0.23213644
+          outSlope: -0.23214284
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.35856426
+          outWeight: 0.36235142
+        - serializedVersion: 3
+          time: 0.897999
+          value: 1.003668
+          inSlope: 0.27978534
+          outSlope: 0.27974313
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33310264
+          outWeight: 0.33069265
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: -0.20239142
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.3296829
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      completed:
+        m_PersistentCalls:
+          m_Calls: []
+    - propertie: 2
+      waitForPreviousTweenProperty: 0
+      useDynamicFrom: 0
+      from: {x: 0, y: 0, z: 0}
+      to: {x: 0.5, y: 0.5, z: 0.5}
+      duration: 0.5
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 3.5822635
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.23852958
+        - serializedVersion: 3
+          time: 0.336583
+          value: 0.828268
+          inSlope: 1.7675189
+          outSlope: 1.7674915
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.43742254
+          outWeight: 0.22151233
+        - serializedVersion: 3
+          time: 0.550666
+          value: 1.079651
+          inSlope: 0.30952567
+          outSlope: 0.30952752
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.4695607
+          outWeight: 0.41548836
+        - serializedVersion: 3
+          time: 0.779498
+          value: 0.974607
+          inSlope: -0.23213644
+          outSlope: -0.23214284
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.35856426
+          outWeight: 0.36235142
+        - serializedVersion: 3
+          time: 0.897999
+          value: 1.003668
+          inSlope: 0.27978534
+          outSlope: 0.27974313
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33310264
+          outWeight: 0.33069265
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: -0.20239142
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.3296829
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      completed:
+        m_PersistentCalls:
+          m_Calls: []
+    - propertie: 2
+      waitForPreviousTweenProperty: 1
+      useDynamicFrom: 1
+      from: {x: 0, y: 0, z: 0}
+      to: {x: 1, y: 1, z: 1}
+      duration: 0.5
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 3.5822635
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.23852958
+        - serializedVersion: 3
+          time: 0.336583
+          value: 0.828268
+          inSlope: 1.7675189
+          outSlope: 1.7674915
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.43742254
+          outWeight: 0.22151233
+        - serializedVersion: 3
+          time: 0.550666
+          value: 1.079651
+          inSlope: 0.30952567
+          outSlope: 0.30952752
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.4695607
+          outWeight: 0.41548836
+        - serializedVersion: 3
+          time: 0.779498
+          value: 0.974607
+          inSlope: -0.23213644
+          outSlope: -0.23214284
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.35856426
+          outWeight: 0.36235142
+        - serializedVersion: 3
+          time: 0.897999
+          value: 1.003668
+          inSlope: 0.27978534
+          outSlope: 0.27974313
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33310264
+          outWeight: 0.33069265
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: -0.20239142
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.3296829
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      completed:
+        m_PersistentCalls:
+          m_Calls: []
+  - name: despawn
+    waitPreviousMontage: 1
+    loopMontage: 0
+    speed: 1
+    tweenProperties:
+    - propertie: 2
+      waitForPreviousTweenProperty: 0
+      useDynamicFrom: 1
+      from: {x: 0, y: 0, z: 0}
+      to: {x: 0, y: 0, z: 0}
+      duration: 1
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.333333
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 4.7015834
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333302
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      completed:
+        m_PersistentCalls:
+          m_Calls: []
+    - propertie: 3
+      waitForPreviousTweenProperty: 0
+      useDynamicFrom: 1
+      from: {x: 0, y: 0, z: 0}
+      to: {x: 1, y: 1, z: 180}
+      duration: 1
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.333333
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 4.7015834
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333302
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      completed:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 2177507039290541273}
+            m_TargetAssemblyTypeName: Tween, Assembly-CSharp
+            m_MethodName: PlayTween
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: respawn
+              m_BoolArgument: 0
+            m_CallState: 2
+  - name: respawn
+    waitPreviousMontage: 1
+    loopMontage: 0
+    speed: 1
+    tweenProperties:
+    - propertie: 2
+      waitForPreviousTweenProperty: 0
+      useDynamicFrom: 0
+      from: {x: 0, y: 0, z: 0}
+      to: {x: 0, y: 0, z: 0}
+      duration: 2
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.333333
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 4.7015834
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333302
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      completed:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 2177507039290541273}
+            m_TargetAssemblyTypeName: Tween, Assembly-CSharp
+            m_MethodName: PlayTween
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: spawn
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 4074167816967472744}
+            m_TargetAssemblyTypeName: ToothManager, Assembly-CSharp
+            m_MethodName: ResetTooth
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+  autoPlayMontage: 0
+  tweenIndex: 0
+--- !u!114 &3723574441070924649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056224882789707400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af0805536d4d3954db43464ca4cbd840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  selectionCondition: 1
+  lookInTime: 1
+  currentLookInTime: 0
+  resetValueOnExit: 1
+  deSelectionCondition: 4
+  lookOutTime: 1
+  autoTime: 0
+  selected: 0
+  selectedEventsDelay: []
+  deSelectedEventsDelay: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeselected:
+    m_PersistentCalls:
+      m_Calls: []
+  lookIn:
+    m_PersistentCalls:
+      m_Calls: []
+  lookOut:
+    m_PersistentCalls:
+      m_Calls: []
+  activeStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2435665176764197535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056224882789707400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd37726e5f9a49d4b9f92b1818b0ea3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  alignToNormal: 0
+  lookAtCamera: 0
+  alignDirection: 0
+  distanceToPoint: 0.5
 --- !u!1 &7433687606800887931
 GameObject:
   m_ObjectHideFlags: 0
@@ -2199,295 +2850,97 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
---- !u!1001 &6398877987374289881
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8159697591167941558, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6968992493510818322, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6968992493510818322, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_TagString
-      value: Cell
-      objectReference: {fileID: 0}
-    - target: {fileID: -6290987444862888409, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -5700786409838720004, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -5282930135783244823, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -5244010412256143776, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2504516506940294678, guid: aff2ae892ac69124eb8000bd96c5a64e, type: 3}
-    - target: {fileID: -4732513072650891273, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -3796548272275778310, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_Name
-      value: Tooth_cell.000
-      objectReference: {fileID: 0}
-    - target: {fileID: -3796548272275778310, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -3796548272275778310, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_TagString
-      value: Cell
-      objectReference: {fileID: 0}
-    - target: {fileID: -2955889124442827351, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -2955889124442827351, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_TagString
-      value: Cell
-      objectReference: {fileID: 0}
-    - target: {fileID: -2497257461654657207, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -2497257461654657207, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_TagString
-      value: Cell
-      objectReference: {fileID: 0}
-    - target: {fileID: -2463882246309147697, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -2129984308017895245, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -2129984308017895245, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_TagString
-      value: Cell
-      objectReference: {fileID: 0}
-    - target: {fileID: -2025358927818824211, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -2025358927818824211, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_TagString
-      value: Cell
-      objectReference: {fileID: 0}
-    - target: {fileID: -1545936189999047323, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -1082367313792265793, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -1082367313792265793, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_TagString
-      value: Cell
-      objectReference: {fileID: 0}
-    - target: {fileID: 627900014228647643, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_Name
-      value: ToothFractured
-      objectReference: {fileID: 0}
-    - target: {fileID: 3569101651563297835, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3569101651563297835, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_TagString
-      value: Cell
-      objectReference: {fileID: 0}
-    - target: {fileID: 4325248392546331352, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5679858528844421188, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099364615158574284, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682965930936060539, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682965930936060539, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_TagString
-      value: Cell
-      objectReference: {fileID: 0}
-    - target: {fileID: 9122591358500550004, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9122591358500550004, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      propertyPath: m_TagString
-      value: Cell
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 6682965930936060539, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-    - {fileID: -2497257461654657207, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-    - {fileID: -2955889124442827351, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-    - {fileID: -3796548272275778310, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-    - {fileID: 9122591358500550004, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-    - {fileID: -1082367313792265793, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-    - {fileID: -2129984308017895245, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-    - {fileID: -2025358927818824211, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-    - {fileID: -6968992493510818322, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-    - {fileID: 3569101651563297835, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 1662812883768192402}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 9134624787246299611}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 864805606931072451}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 1295456391123842053}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      insertIndex: 4
-      addedObject: {fileID: 995141595956446605}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 8657601640278674733}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      insertIndex: 6
-      addedObject: {fileID: 4087549124001250717}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      insertIndex: 7
-      addedObject: {fileID: 6831300927821222052}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      insertIndex: 8
-      addedObject: {fileID: 8311962360659403888}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      insertIndex: 9
-      addedObject: {fileID: 8004361739918559537}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 9176192143969276712}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2625780598635103202}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5898065625639481835}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4074167816967472744}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2177507039290541273}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3723574441070924649}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2435665176764197535}
-  m_SourcePrefab: {fileID: 100100000, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
---- !u!1 &6056224882789707400 stripped
+--- !u!1 &8105509145681298942
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-  m_PrefabInstance: {fileID: 6398877987374289881}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &2625780598635103202
-Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6056224882789707400}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &5898065625639481835
-BoxCollider:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6106873270634994135}
+  - component: {fileID: 7617285687969980493}
+  - component: {fileID: 8067330049889994169}
+  - component: {fileID: 1518274229672658071}
+  m_Layer: 0
+  m_Name: Tooth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6106873270634994135
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6056224882789707400}
+  m_GameObject: {fileID: 8105509145681298942}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.000000081460335, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.014059788, y: 0.016257007, z: -0.051870093}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6865694600787375154}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7617285687969980493
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8105509145681298942}
+  m_Mesh: {fileID: -3929213157567206641, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+--- !u!23 &8067330049889994169
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8105509145681298942}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2504516506940294678, guid: aff2ae892ac69124eb8000bd96c5a64e, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1518274229672658071
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8105509145681298942}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2498,550 +2951,77 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4074167816967472744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6056224882789707400}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9e09d3021298154dbc1b1a38a20e95e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  generationMode: 1
-  Tooth: {fileID: 8105509145681298942}
-  teethCells:
-  - {fileID: 2297286957324191263}
-  - {fileID: 7208737463225285277}
-  - {fileID: 6560181477854605475}
-  - {fileID: 7205976928817725530}
-  - {fileID: 2300716754318108125}
-  - {fileID: 7006677314707986535}
-  - {fileID: 8055880577183395569}
-  - {fileID: 694940887758564484}
-  - {fileID: 6688536756420813675}
-  - {fileID: 7317516504580573697}
-  notNeighborsCells:
-  - cells:
-    - {fileID: 2297286957324191263}
-    - {fileID: 2300716754318108125}
-    - {fileID: 8055880577183395569}
-  - cells:
-    - {fileID: 2297286957324191263}
-    - {fileID: 2300716754318108125}
-    - {fileID: 694940887758564484}
-  - cells:
-    - {fileID: 6560181477854605475}
-    - {fileID: 7205976928817725530}
-    - {fileID: 2300716754318108125}
-  - cells:
-    - {fileID: 7205976928817725530}
-    - {fileID: 2300716754318108125}
-    - {fileID: 8055880577183395569}
-  - cells:
-    - {fileID: 694940887758564484}
-    - {fileID: 6688536756420813675}
-    - {fileID: 7317516504580573697}
-  datas:
-  - {fileID: 11400000, guid: a75a50e4ac0791147a41b3f85f76ef0f, type: 2}
-  - {fileID: 11400000, guid: be07bfae90b5d9042b17a20c1c003cb6, type: 2}
-  cleanMat: {fileID: 2100000, guid: 9c6103d2ad98b544b82572d8025d27d2, type: 2}
-  dirtyMat: {fileID: 2100000, guid: d753c80c86f4b3f41a62ece4b7c1c9e8, type: 2}
-  tartarMat: {fileID: 2100000, guid: d10d6b4f3512dbd4fa03be219e911ecb, type: 2}
-  decayMat: {fileID: 2100000, guid: af921ee7af8d1204b993352f51214eaa, type: 2}
-  brushSignal: {fileID: 11400000, guid: fd50f06be32fee7448d872b89abecf9f, type: 2}
-  brossetteSignal: {fileID: 11400000, guid: 00371841a0ed18048891fe0e7e5540fa, type: 2}
-  smellVFX: {fileID: 7717114566369999161}
-  maxSmellAmount: 20
-  OnTeethCleaned:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TeethProgress, Assembly-CSharp
-        m_MethodName: SetFullTooth
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnCleanAmountChange:
-    m_PersistentCalls:
-      m_Calls: []
-  OnToothPreCleaned:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &2177507039290541273
-MonoBehaviour:
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3929213157567206641, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
+--- !u!1001 &5781850581833224789
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6056224882789707400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2f9fcf52fd23e949be2a4294fb4537c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6865694600787375154}
+    m_Modifications:
+    - target: {fileID: 1877769591593022212, guid: 4ea1a516e55f7f5498d556baaad65fd5, type: 3}
+      propertyPath: m_Name
+      value: ExplosionVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851120624869556167, guid: 4ea1a516e55f7f5498d556baaad65fd5, type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  tweenMontages:
-  - name: spawn
-    waitPreviousMontage: 0
-    speed: 1
-    tweenProperties:
-    - propertie: 3
-      waitForPreviousTweenProperty: 0
-      useDynamicFrom: 0
-      from: {x: 180, y: 180, z: 0}
-      to: {x: 0, y: 0, z: 0}
-      duration: 0.5
-      curve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 3.5822635
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0
-          outWeight: 0.23852958
-        - serializedVersion: 3
-          time: 0.336583
-          value: 0.828268
-          inSlope: 1.7675189
-          outSlope: 1.7674915
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.43742254
-          outWeight: 0.22151233
-        - serializedVersion: 3
-          time: 0.550666
-          value: 1.079651
-          inSlope: 0.30952567
-          outSlope: 0.30952752
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.4695607
-          outWeight: 0.41548836
-        - serializedVersion: 3
-          time: 0.779498
-          value: 0.974607
-          inSlope: -0.23213644
-          outSlope: -0.23214284
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.35856426
-          outWeight: 0.36235142
-        - serializedVersion: 3
-          time: 0.897999
-          value: 1.003668
-          inSlope: 0.27978534
-          outSlope: 0.27974313
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.33310264
-          outWeight: 0.33069265
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: -0.20239142
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.3296829
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 0
-      completed:
-        m_PersistentCalls:
-          m_Calls: []
-    - propertie: 2
-      waitForPreviousTweenProperty: 0
-      useDynamicFrom: 0
-      from: {x: 0, y: 0, z: 0}
-      to: {x: 0.5, y: 0.5, z: 0.5}
-      duration: 0.5
-      curve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 3.5822635
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0
-          outWeight: 0.23852958
-        - serializedVersion: 3
-          time: 0.336583
-          value: 0.828268
-          inSlope: 1.7675189
-          outSlope: 1.7674915
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.43742254
-          outWeight: 0.22151233
-        - serializedVersion: 3
-          time: 0.550666
-          value: 1.079651
-          inSlope: 0.30952567
-          outSlope: 0.30952752
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.4695607
-          outWeight: 0.41548836
-        - serializedVersion: 3
-          time: 0.779498
-          value: 0.974607
-          inSlope: -0.23213644
-          outSlope: -0.23214284
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.35856426
-          outWeight: 0.36235142
-        - serializedVersion: 3
-          time: 0.897999
-          value: 1.003668
-          inSlope: 0.27978534
-          outSlope: 0.27974313
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.33310264
-          outWeight: 0.33069265
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: -0.20239142
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.3296829
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 0
-      completed:
-        m_PersistentCalls:
-          m_Calls: []
-    - propertie: 2
-      waitForPreviousTweenProperty: 1
-      useDynamicFrom: 1
-      from: {x: 0, y: 0, z: 0}
-      to: {x: 1, y: 1, z: 1}
-      duration: 0.5
-      curve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 3.5822635
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0
-          outWeight: 0.23852958
-        - serializedVersion: 3
-          time: 0.336583
-          value: 0.828268
-          inSlope: 1.7675189
-          outSlope: 1.7674915
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.43742254
-          outWeight: 0.22151233
-        - serializedVersion: 3
-          time: 0.550666
-          value: 1.079651
-          inSlope: 0.30952567
-          outSlope: 0.30952752
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.4695607
-          outWeight: 0.41548836
-        - serializedVersion: 3
-          time: 0.779498
-          value: 0.974607
-          inSlope: -0.23213644
-          outSlope: -0.23214284
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.35856426
-          outWeight: 0.36235142
-        - serializedVersion: 3
-          time: 0.897999
-          value: 1.003668
-          inSlope: 0.27978534
-          outSlope: 0.27974313
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.33310264
-          outWeight: 0.33069265
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: -0.20239142
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.3296829
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 0
-      completed:
-        m_PersistentCalls:
-          m_Calls: []
-  - name: despawn
-    waitPreviousMontage: 1
-    speed: 1
-    tweenProperties:
-    - propertie: 2
-      waitForPreviousTweenProperty: 0
-      useDynamicFrom: 1
-      from: {x: 0, y: 0, z: 0}
-      to: {x: 0, y: 0, z: 0}
-      duration: 1
-      curve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0
-          outWeight: 0.333333
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 4.7015834
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.33333302
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 0
-      completed:
-        m_PersistentCalls:
-          m_Calls: []
-    - propertie: 3
-      waitForPreviousTweenProperty: 0
-      useDynamicFrom: 1
-      from: {x: 0, y: 0, z: 0}
-      to: {x: 1, y: 1, z: 180}
-      duration: 1
-      curve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0
-          outWeight: 0.333333
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 4.7015834
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.33333302
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 0
-      completed:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 2177507039290541273}
-            m_TargetAssemblyTypeName: Tween, Assembly-CSharp
-            m_MethodName: PlayTween
-            m_Mode: 5
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: respawn
-              m_BoolArgument: 0
-            m_CallState: 2
-  - name: respawn
-    waitPreviousMontage: 1
-    speed: 1
-    tweenProperties:
-    - propertie: 2
-      waitForPreviousTweenProperty: 0
-      useDynamicFrom: 0
-      from: {x: 0, y: 0, z: 0}
-      to: {x: 0, y: 0, z: 0}
-      duration: 2
-      curve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0
-          outWeight: 0.333333
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 4.7015834
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.33333302
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 0
-      completed:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 2177507039290541273}
-            m_TargetAssemblyTypeName: Tween, Assembly-CSharp
-            m_MethodName: PlayTween
-            m_Mode: 5
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: spawn
-              m_BoolArgument: 0
-            m_CallState: 2
-          - m_Target: {fileID: 4074167816967472744}
-            m_TargetAssemblyTypeName: ToothManager, Assembly-CSharp
-            m_MethodName: ResetTooth
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-  autoPlayMontage: 0
-  tweenIndex: 0
---- !u!114 &3723574441070924649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6056224882789707400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0805536d4d3954db43464ca4cbd840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  selectionCondition: 1
-  lookInTime: 1
-  currentLookInTime: 0
-  resetValueOnExit: 1
-  deSelectionCondition: 4
-  lookOutTime: 1
-  autoTime: 0
-  selected: 0
-  selectedEventsDelay: []
-  deSelectedEventsDelay: []
-  onSelected:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeselected:
-    m_PersistentCalls:
-      m_Calls: []
-  lookIn:
-    m_PersistentCalls:
-      m_Calls: []
-  lookOut:
-    m_PersistentCalls:
-      m_Calls: []
-  activeStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &2435665176764197535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6056224882789707400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd37726e5f9a49d4b9f92b1818b0ea3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
-  alignToNormal: 0
-  lookAtCamera: 0
-  alignDirection: 0
-  distanceToPoint: 0.5
---- !u!4 &6865694600787375154 stripped
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851120624869556167, guid: 4ea1a516e55f7f5498d556baaad65fd5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851120624869556167, guid: 4ea1a516e55f7f5498d556baaad65fd5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851120624869556167, guid: 4ea1a516e55f7f5498d556baaad65fd5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851120624869556167, guid: 4ea1a516e55f7f5498d556baaad65fd5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851120624869556167, guid: 4ea1a516e55f7f5498d556baaad65fd5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851120624869556167, guid: 4ea1a516e55f7f5498d556baaad65fd5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851120624869556167, guid: 4ea1a516e55f7f5498d556baaad65fd5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851120624869556167, guid: 4ea1a516e55f7f5498d556baaad65fd5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851120624869556167, guid: 4ea1a516e55f7f5498d556baaad65fd5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4ea1a516e55f7f5498d556baaad65fd5, type: 3}
+--- !u!4 &1092496265444175250 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-  m_PrefabInstance: {fileID: 6398877987374289881}
+  m_CorrespondingSourceObject: {fileID: 6851120624869556167, guid: 4ea1a516e55f7f5498d556baaad65fd5, type: 3}
+  m_PrefabInstance: {fileID: 5781850581833224789}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &8067330049889994169 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -5244010412256143776, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-  m_PrefabInstance: {fileID: 6398877987374289881}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8105509145681298942 stripped
+--- !u!1 &5346457782933561681 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: -6290987444862888409, guid: 7821e70924ab1e24bae38c63dbd93d97, type: 3}
-  m_PrefabInstance: {fileID: 6398877987374289881}
+  m_CorrespondingSourceObject: {fileID: 1877769591593022212, guid: 4ea1a516e55f7f5498d556baaad65fd5, type: 3}
+  m_PrefabInstance: {fileID: 5781850581833224789}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9123979011966556925
 PrefabInstance:
@@ -3098,10 +3078,6 @@ PrefabInstance:
     - target: {fileID: 1551015484875023300, guid: 9741bb470de02524b9e6328ffcd5fb58, type: 3}
       propertyPath: m_Name
       value: SmellVFX
-      objectReference: {fileID: 0}
-    - target: {fileID: 1551015484875023300, guid: 9741bb470de02524b9e6328ffcd5fb58, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

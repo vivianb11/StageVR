@@ -2657,7 +2657,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursor: {fileID: 410960196}
-  slider: {fileID: 410960197}
+  ignoreMask:
+    serializedVersion: 2
+    m_Bits: 3199
+  maxValue: 0
+  value: 0
   leftEyeOpeningPercent: 1
   rightEyeOpeningPercent: 1
   closedTime: 0
@@ -7523,7 +7527,7 @@ ParticleSystem:
       serializedVersion: 2
       m_Bits: 15423
     maxCollisionShapes: 256
-    quality: 2
+    quality: 0
     voxelSize: 0.5
     collisionMessages: 0
     collidesWithDynamic: 1

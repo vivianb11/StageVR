@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Reflection.Emit;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -15,7 +12,8 @@ public class EyeManager : MonoBehaviour
 
     [SerializeField] LayerMask ignoreMask;
 
-    public Slider slider;
+    public float maxValue;
+    public float value;
 
     #region Eyes
     public enum EyeState
@@ -58,10 +56,14 @@ public class EyeManager : MonoBehaviour
 
     public UnityEvent blink;
 
+    public UnityEvent lookInSelectable;
+    public UnityEvent lookOutSelectable;
+    public UnityEvent selectableSelected;
+
     private void Awake()
     {
         Instance = this;
-        slider.value = 0;
+        value = 0;
     }
 
     private void Update()
@@ -178,7 +180,8 @@ public class EyeManager : MonoBehaviour
 
     private void OnInteractableSelected()
     {
-        slider.value = 0;
+        selectableSelected?.Invoke();
+        value = 0;
     }
 
     public Vector3 GetCursorForward()
@@ -204,6 +207,8 @@ public class EyeManager : MonoBehaviour
         {
             if (!interactable && component.activated)
             {
+                lookInSelectable?.Invoke();
+
                 interactable = component;
                 interactable.LookIn();
                 interactable.onSelected.AddListener(OnInteractableSelected);
@@ -211,7 +216,9 @@ public class EyeManager : MonoBehaviour
 
             if (interactable != component && component.activated && component.canBeInteracted)
             {
-                slider.value = 0;
+                lookInSelectable?.Invoke();
+
+                value = 0;
                 interactable.LookOut();
                 interactable.onSelected.RemoveListener(OnInteractableSelected);
                 interactable = component;
@@ -222,13 +229,15 @@ public class EyeManager : MonoBehaviour
             if (interactable && !interactable.selected && interactable.canBeInteracted)
             {
                 interactable.LookStay();
-                slider.maxValue = interactable.lookInTime;
-                slider.value = interactable.currentLookInTime;
+                maxValue = interactable.lookInTime;
+                value = interactable.currentLookInTime;
             }
         }
         else if (interactable)
         {
-            slider.value = 0;
+            lookOutSelectable?.Invoke();
+
+            value = 0;
             interactable.LookOut();
             interactable.onSelected.RemoveListener(OnInteractableSelected);
             interactable = null;

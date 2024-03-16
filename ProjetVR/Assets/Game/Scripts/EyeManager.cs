@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Reflection.Emit;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class EyeManager : MonoBehaviour
 
     [SerializeField]
     private Transform cursor;
+
+    [SerializeField] LayerMask ignoreMask;
 
     public Slider slider;
 
@@ -185,7 +188,7 @@ public class EyeManager : MonoBehaviour
 
     public bool RaycastForward(out RaycastHit hit)
     {
-        hitSuccessful = Physics.Raycast(transform.position, cursor.forward, out hit, Mathf.Infinity, LayerMask.NameToLayer("Ignore"));
+        hitSuccessful = Physics.Raycast(transform.position, cursor.forward, out hit, Mathf.Infinity, ignoreMask);
 
         if (hitSuccessful)
             hitPosition = hit.point;

@@ -17,19 +17,18 @@ public class SelectionProgress : MonoBehaviour
 
     private void Start()
     {
-        progressImage.color = emptyColor;
-        SetValue(0);
+        Reset();
 
-        EyeManager.Instance.lookInSelectable.AddListener(() => _canProcess = true);
-        EyeManager.Instance.lookOutSelectable.AddListener(() => _canProcess = false);
-        EyeManager.Instance.selectableSelected.AddListener(() => StartCoroutine(ResetDelay()));
+        EyeManager.Instance.lookInSelectable.AddListener(OnLookIn);
+        EyeManager.Instance.lookOutSelectable.AddListener(Reset);
+        EyeManager.Instance.selectableSelected.AddListener(OnSelected);
     }
 
     private void OnDisable()
     {
-        EyeManager.Instance.lookInSelectable.RemoveListener(() => _canProcess = true);
-        EyeManager.Instance.lookOutSelectable.RemoveListener(() => _canProcess = false);
-        EyeManager.Instance.selectableSelected.RemoveListener(() => StartCoroutine(ResetDelay()));
+        EyeManager.Instance.lookInSelectable.RemoveListener(OnLookIn);
+        EyeManager.Instance.lookOutSelectable.RemoveListener(Reset);
+        EyeManager.Instance.selectableSelected.RemoveListener(OnSelected);
     }
 
     private void FixedUpdate()
@@ -58,6 +57,23 @@ public class SelectionProgress : MonoBehaviour
         SetValue(progressSlider.value + value);
     }
 
+    private void OnLookIn()
+    {
+        _canProcess = true;
+    }
+
+    private void Reset()
+    {
+        _canProcess = false;
+        progressImage.color = emptyColor;
+        progressSlider.value = 0f;
+    }
+
+    private void OnSelected()
+    {
+        StartCoroutine(ResetDelay());
+    }
+
     private IEnumerator ResetDelay()
     {
         _canProcess = false;
@@ -66,8 +82,7 @@ public class SelectionProgress : MonoBehaviour
 
         yield return new WaitForSeconds(resetDelay);
 
+        Reset();
         _canProcess = true;
-        progressImage.color = emptyColor;
-        progressSlider.value = 0f;
     }
 }

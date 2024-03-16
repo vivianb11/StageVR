@@ -191,6 +191,7 @@ public class EyeManager : MonoBehaviour
 
     public bool RaycastForward(out RaycastHit hit)
     {
+        Debug.DrawRay(transform.position, cursor.forward * 50f, Color.red);
         hitSuccessful = Physics.Raycast(transform.position, cursor.forward, out hit, Mathf.Infinity, ignoreMask);
 
         if (hitSuccessful)

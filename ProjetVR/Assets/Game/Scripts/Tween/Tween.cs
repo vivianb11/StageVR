@@ -7,16 +7,12 @@ using UnityEngine.Events;
 
 public class Tween : MonoBehaviour
 {
-    private AnimationCurve curve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
-
     [SerializeField]
     public TweenMontage[] tweenMontages = new TweenMontage[0];
 
     public bool autoPlayMontage;
 
-    private Coroutine tweenCoroutine, tweenPropCoroutine, delayedEventCoroutine;
     private int playedMontageIndex;
-    private Transform startTransform, endTransform;
 
     private void OnEnable()
     {
@@ -25,12 +21,18 @@ public class Tween : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    [SerializeField]
+    [SerializeReference]
     private int tweenIndex;
 
     [Button]
     private void PlayTween()
     {
+        if (tweenIndex < 0 || tweenIndex >= tweenMontages.Length)
+        {
+            Debug.LogError("Index Out Of Range");
+            return;
+        }
+
         string key = tweenMontages[tweenIndex].name;
 
         PlayTween(key);
@@ -40,69 +42,37 @@ public class Tween : MonoBehaviour
     [Button]
     public void PlayMontages()
     {
-        tweenCoroutine = StartCoroutine(TweenMontage(tweenMontages));
+        StartCoroutine(TweenMontages(tweenMontages));
     }
 
-    public TweenMontage PlayTween(string key)
+    public void PlayTween(string key)
     {
-        TweenMontage montage = tweenMontages.Where(item => item.name == key).ToArray()[0];
+        TweenMontage tweenMontage = tweenMontages.Where(item => item.name == key).ToArray()[0];
 
-        playedMontageIndex = Array.IndexOf(tweenMontages, montage);
-
-        tweenCoroutine = StartCoroutine(TweenCoroutine(montage.tweenProperties, montage.speed));
-
-        if (montage is null)
-            Debug.LogError("TweenMontage not found :" + key);
-
-        return montage;
-    }
-
-    public void TweenMove(Vector3 targetPosition, float tweenTime)
-    {
-        StartCoroutine(TweenPropertyCoroutine(TweenProperty.Properties.POSITION, transform.position, targetPosition, tweenTime, curve));
-    }
-
-    public void TweenLocalMove(Vector3 targetPosition, float tweenTime)
-    {
-        StartCoroutine(TweenPropertyCoroutine(TweenProperty.Properties.LOCAL_POSITION, transform.localPosition, targetPosition, tweenTime, curve));
-    }
-
-    public void TweenScale(Vector3 targetScale, float tweenTime)
-    {
-        StartCoroutine(TweenPropertyCoroutine(TweenProperty.Properties.SCALE, transform.localScale, targetScale, tweenTime, curve));
-    }
-
-    public void TweenRotation(Vector3 targetRotation, float tweenTime)
-    {
-        StartCoroutine(TweenPropertyCoroutine(TweenProperty.Properties.ROTATION, transform.eulerAngles, targetRotation, tweenTime, curve));
-    }
-
-    public void SetEase(Ease ease)
-    {
-        curve.ClearKeys();
-
-        switch (ease)
+        if (tweenMontage == null)
         {
-            case Ease.Linear:
-                curve.AddKey(0f, 0f);
-                curve.AddKey(1f, 1f);
-                break;
-            case Ease.InOut:
-                curve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
-                break;
-            case Ease.OutBack:
-                for (float t = 0; t <= 1; t += 0.01f)
-                {
-                    curve.AddKey(new Keyframe(t, EaseOutBack(t)));
-                }
-                break;
-            case Ease.InElastic:
-                for (float t = 0; t <= 1; t += 0.01f)
-                {
-                    curve.AddKey(new Keyframe(t, EaseInElastic(t)));
-                }
-                break;
+            Debug.LogError("TweenMontage not found :" + key);
+            return;
         }
+
+        playedMontageIndex = tweenMontages.ToList().IndexOf(tweenMontage);
+
+        StartCoroutine(PropertiesCoroutine(tweenMontage.tweenProperties, tweenMontage.speed));
+    }
+
+    public void PlayTween(string key, out TweenMontage tweenMontage)
+    {
+        tweenMontage = tweenMontages.Where(item => item.name == key).ToArray()[0];
+
+        if (tweenMontage == null)
+        {
+            Debug.LogError("TweenMontage not found :" + key);
+            return;
+        }
+
+        playedMontageIndex = tweenMontages.ToList().IndexOf(tweenMontage);
+
+        StartCoroutine(PropertiesCoroutine(tweenMontage.tweenProperties, tweenMontage.speed));
     }
 
     private float GetMontageDuration(TweenMontage montage)
@@ -115,32 +85,6 @@ public class Tween : MonoBehaviour
         }
 
         return duration / montage.speed;
-    }
-
-    private Transform GetMontageEndTransform(TweenMontage montage)
-    {
-        Transform endTransform = startTransform;
-
-        foreach (var item in montage.tweenProperties)
-        {
-            switch (item.propertie)
-            {
-                case TweenProperty.Properties.POSITION:
-                    endTransform.position = item.to;
-                    break;
-                case TweenProperty.Properties.LOCAL_POSITION:
-                    endTransform.localPosition = item.to;
-                    break;
-                case TweenProperty.Properties.SCALE:
-                    endTransform.localScale = item.to;
-                    break;
-                case TweenProperty.Properties.ROTATION:
-                    endTransform.rotation = Quaternion.Euler(item.to);
-                    break;
-            }
-        }
-
-        return endTransform;
     }
 
     private void SetProperty(TweenProperty.Properties property, Vector3 value)
@@ -162,7 +106,7 @@ public class Tween : MonoBehaviour
         }
     }
 
-    public IEnumerator TweenMontage(TweenMontage[] montages)
+    public IEnumerator TweenMontages(TweenMontage[] montages)
     {
         for (int i = 0; i < montages.Length; i++)
         {
@@ -173,50 +117,44 @@ public class Tween : MonoBehaviour
 
             playedMontageIndex = tweenMontages.ToList().IndexOf(montage);
 
-            StartCoroutine(TweenCoroutine(montage.tweenProperties, montage.speed));
+            StartCoroutine(InvokeDelay(montage.completed, GetMontageDuration(montages[i])));
+            StartCoroutine(PropertiesCoroutine(montage.tweenProperties, montage.speed));
         }
     }
 
-    public IEnumerator TweenCoroutine(TweenProperty[] tweenProperties, float speed)
+    public IEnumerator PropertiesCoroutine(TweenProperty[] tweenProperties, float speed)
     {
-        startTransform = transform;
-        endTransform = GetMontageEndTransform(tweenMontages[playedMontageIndex]);
-
         for (int i = 0; i < tweenProperties.Length; i++)
         {
-            var tween = tweenProperties[i];
+            var tweenPropertie = tweenProperties[i];
 
-            if (i > 0 && tween.waitForPreviousTweenProperty)
+            if (i > 0 && tweenPropertie.waitForPreviousTweenProperty)
                 yield return new WaitForSeconds(tweenProperties[i - 1].duration / speed);
 
-            Vector3 from = tween.from;
+            Vector3 from = tweenPropertie.from;
 
-            switch (tween.propertie)
+            switch (tweenPropertie.propertie)
             {
                 case TweenProperty.Properties.POSITION:
-                    from = tween.useDynamicFrom ? transform.position : tween.from;
+                    from = tweenPropertie.useDynamicFrom ? transform.position : tweenPropertie.from;
                     break;
                 case TweenProperty.Properties.LOCAL_POSITION:
-                    from = tween.useDynamicFrom ? transform.localPosition : tween.from;
+                    from = tweenPropertie.useDynamicFrom ? transform.localPosition : tweenPropertie.from;
                     break;
                 case TweenProperty.Properties.SCALE:
-                    from = tween.useDynamicFrom ? transform.localScale : tween.from;
+                    from = tweenPropertie.useDynamicFrom ? transform.localScale : tweenPropertie.from;
                     break;
                 case TweenProperty.Properties.ROTATION:
-                    from = tween.useDynamicFrom ? transform.eulerAngles : tween.from;
+                    from = tweenPropertie.useDynamicFrom ? transform.eulerAngles : tweenPropertie.from;
                     break;
             }
 
-            tweenPropCoroutine = StartCoroutine(TweenPropertyCoroutine(tween.propertie, from, tween.to, tween.duration / speed, tween.curve));
-            delayedEventCoroutine = StartCoroutine(InvokeDelay(tween.completed, tween.duration / speed));
+            StartCoroutine(PropertyCoroutine(tweenPropertie.propertie, from, tweenPropertie.to, tweenPropertie.duration / speed, tweenPropertie.curve));
+            StartCoroutine(InvokeDelay(tweenPropertie.completed, tweenPropertie.duration / speed));
         }
-
-        yield return new WaitForSeconds(tweenProperties[tweenProperties.Length - 1].duration / speed);
-
-        tweenMontages[playedMontageIndex].completed?.Invoke();
     }
 
-    private IEnumerator TweenPropertyCoroutine(TweenProperty.Properties property, Vector3 startPosition, Vector3 targetPosition, float tweenTime, AnimationCurve ease)
+    private IEnumerator PropertyCoroutine(TweenProperty.Properties property, Vector3 startPosition, Vector3 targetPosition, float tweenTime, AnimationCurve ease)
     {
         SetProperty(property, startPosition);
         float currentTime = 0.0f;
@@ -241,102 +179,35 @@ public class Tween : MonoBehaviour
         unityEvent?.Invoke();
     }
 
-    private static float EaseOutBack(float x)
+    [Button]
+    public void StopMontage()
     {
-        float c1 = 1.70158f;
-        float c3 = c1 + 1;
-
-        return 1 + c3 * (float)Mathf.Pow(x - 1, 3) + c1 * (float)Mathf.Pow(x - 1, 2);
-    }
-
-    public static float EaseInElastic(float x)
-    {
-        float c4 = (2 * Mathf.PI) / 3;
-
-        return x == 0 ? 0 : x == 1 ? 1 : -(float)Mathf.Pow(2, 10 * x - 10) * Mathf.Sin((x * 10 - 10.75f) * c4);
-    }
-
-    public bool IsRunning()
-    {
-        return tweenCoroutine != null;
+        StopAllCoroutines();
     }
 
     [Button]
-    public bool SkipMontage()
+    public void SkipMontage()
     {
-        if(tweenCoroutine is null)
-            return false;
-
-        StopCoroutine(tweenCoroutine);
-        StopCoroutine(tweenPropCoroutine);
-        StopCoroutine(delayedEventCoroutine);
-
-        tweenCoroutine = null;
-        tweenPropCoroutine = null;
-        delayedEventCoroutine = null;
-
-        tweenMontages[playedMontageIndex].completed?.Invoke();
-
-        this.transform.position = endTransform.position;
-        this.transform.localScale = endTransform.localScale;
-        this.transform.rotation = endTransform.rotation;
-
-        return true;
-    }
-
-    [Button]
-    public bool StopMontage()
-    {
-        if (tweenCoroutine is null)
-            return false;
+        if (playedMontageIndex == -1)
+            return;
 
         StopAllCoroutines();
 
-        tweenCoroutine = null;
-        tweenPropCoroutine = null;
-        delayedEventCoroutine = null;
+        TweenMontage montage = tweenMontages[playedMontageIndex];
+        playedMontageIndex = -1;
 
-        return true;
-    }
+        foreach (TweenProperty property in montage.tweenProperties)
+        {
+            SetProperty(property.propertie, property.to);
+        }
 
-    [Button]
-    public bool CancelMontage()
-    {
-        if(tweenCoroutine is null)
-            return false;
-
-        StopCoroutine(tweenCoroutine);
-        StopCoroutine(tweenPropCoroutine);
-        StopCoroutine(delayedEventCoroutine);
-
-        tweenCoroutine = null;
-        tweenPropCoroutine = null;
-        delayedEventCoroutine = null;
-
-        this.transform.position = startTransform.position;
-        this.transform.localPosition = startTransform.localPosition;
-        this.transform.localScale = startTransform.localScale;
-        this.transform.rotation = startTransform.rotation;
-
-        return true;
+        montage.completed?.Invoke();
     }
 }
 
 [Serializable]
 public struct TweenProperty
 {
-    public TweenProperty(TweenProperty.Properties propertie, bool waitForPreviousTweenProperty = false, bool useDynamicFrom = true, Vector3 from = new Vector3(), Vector3 to = new Vector3(), float duration = 1f, AnimationCurve animationCurve = default)
-    {
-        this.propertie = propertie;
-        this.waitForPreviousTweenProperty = waitForPreviousTweenProperty;
-        this.useDynamicFrom = useDynamicFrom;
-        this.from = from;
-        this.to = to;
-        this.duration = duration;
-        this.curve = new AnimationCurve();
-        this.completed = new UnityEvent();
-    }
-
     public enum Properties
     {
         POSITION, LOCAL_POSITION, SCALE, ROTATION
@@ -361,15 +232,6 @@ public struct TweenProperty
 [Serializable]
 public class TweenMontage
 {
-    public TweenMontage(string name, bool waitPreviousMontage = false, float speed = 1f, TweenProperty[] tweenProperties = default)
-    {
-        this.name = name;
-        this.waitPreviousMontage = waitPreviousMontage;
-        this.speed = speed;
-        this.tweenProperties = tweenProperties;
-        this.completed = new UnityEvent();
-    }
-
     [Space(10)]
     public string name;
 
@@ -380,7 +242,7 @@ public class TweenMontage
 
     [Space(10)]
     public TweenProperty[] tweenProperties;
-    
+
     [Space(10)]
     public UnityEvent completed;
 }

@@ -1636,8 +1636,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.8328147, y: 1.2497017, z: 0.7646489}
+  m_Center: {x: -0.014350697, y: -0.12485087, z: -0.04592216}
 --- !u!114 &4074167816967472744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1818,7 +1818,6 @@ MonoBehaviour:
   tweenMontages:
   - name: spawn
     waitPreviousMontage: 0
-    loopMontage: 0
     speed: 1
     tweenProperties:
     - propertie: 3
@@ -2030,7 +2029,6 @@ MonoBehaviour:
           m_Calls: []
   - name: despawn
     waitPreviousMontage: 1
-    loopMontage: 0
     speed: 1
     tweenProperties:
     - propertie: 2
@@ -2113,7 +2111,6 @@ MonoBehaviour:
             m_CallState: 2
   - name: respawn
     waitPreviousMontage: 1
-    loopMontage: 0
     speed: 1
     tweenProperties:
     - propertie: 2

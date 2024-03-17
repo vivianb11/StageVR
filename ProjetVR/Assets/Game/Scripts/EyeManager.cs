@@ -244,10 +244,10 @@ public class EyeManager : MonoBehaviour
             interactable = null;
         }
 
-        if (Physics.Raycast(transform.position, cursor.forward, out hit, Mathf.Infinity, LayerMask.NameToLayer("Ignore")) && hit.collider.TryGetComponent(out TestImageGenerator generator))
-        {
-            generator.SetPixel(hit.textureCoord, Color.red, 0);
-        }
+        //if (Physics.Raycast(transform.position, cursor.forward, out hit, Mathf.Infinity, LayerMask.NameToLayer("Ignore")) && hit.collider.TryGetComponent(out TestImageGenerator generator))
+        //{
+        //    generator.SetPixel(hit.textureCoord, Color.red, 0);
+        //}
     }
 
     public Vector3 GetGrabbedBodyDestination()

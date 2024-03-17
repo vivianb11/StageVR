@@ -2,6 +2,7 @@ using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Linq;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -73,6 +74,26 @@ public class Tween : MonoBehaviour
         playedMontageIndex = tweenMontages.ToList().IndexOf(tweenMontage);
 
         StartCoroutine(PropertiesCoroutine(tweenMontage.tweenProperties, tweenMontage.speed));
+    }
+
+    public void TweenMove(Vector3 targetPosition, float tweenTime)
+    {
+        StartCoroutine(PropertyCoroutine(TweenProperty.Properties.POSITION, transform.position, targetPosition, tweenTime, AnimationCurve.EaseInOut(0f, 0f, 1f, 1f)));
+    }
+
+    public void TweenLocalMove(Vector3 targetPosition, float tweenTime)
+    {
+        StartCoroutine(PropertyCoroutine(TweenProperty.Properties.LOCAL_POSITION, transform.position, targetPosition, tweenTime, AnimationCurve.EaseInOut(0f, 0f, 1f, 1f)));
+    }
+
+    public void TweenScale(Vector3 targetScale, float tweenTime)
+    {
+        StartCoroutine(PropertyCoroutine(TweenProperty.Properties.SCALE, transform.position, targetScale, tweenTime, AnimationCurve.EaseInOut(0f, 0f, 1f, 1f)));
+    }
+
+    public void TweenRotation(Vector3 targetRotation, float tweenTime)
+    {
+        StartCoroutine(PropertyCoroutine(TweenProperty.Properties.ROTATION, transform.position, targetRotation, tweenTime, AnimationCurve.EaseInOut(0f, 0f, 1f, 1f)));
     }
 
     private float GetMontageDuration(TweenMontage montage)
@@ -245,9 +266,4 @@ public class TweenMontage
 
     [Space(10)]
     public UnityEvent completed;
-}
-
-public enum Ease
-{
-    Linear, InOut, OutBack, InElastic
 }

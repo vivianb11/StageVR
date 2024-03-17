@@ -42,7 +42,7 @@ public class Tween : MonoBehaviour
     [Button]
     public void PlayMontages()
     {
-        StartCoroutine(TweenMontages(tweenMontages));
+        StartCoroutine(MontagesCoroutine(tweenMontages));
     }
 
     public void PlayTween(string key)
@@ -106,7 +106,7 @@ public class Tween : MonoBehaviour
         }
     }
 
-    public IEnumerator TweenMontages(TweenMontage[] montages)
+    public IEnumerator MontagesCoroutine(TweenMontage[] montages)
     {
         for (int i = 0; i < montages.Length; i++)
         {

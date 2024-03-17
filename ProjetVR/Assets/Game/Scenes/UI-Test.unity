@@ -2355,7 +2355,6 @@ GameObject:
   - component: {fileID: 787574911}
   - component: {fileID: 787574913}
   - component: {fileID: 787574916}
-  - component: {fileID: 787574917}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2375,7 +2374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41294f478d862140b9800916e3a2658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signalEmitter: {fileID: 787574917}
+  startSignal: {fileID: 11400000, guid: 117d694d618b2ab43b6beb0bf6c8330a, type: 2}
   UseEyeTracking: 0
   UseDynamicFoveatedRendering: 0
   startDelay: 3
@@ -2436,20 +2435,6 @@ MonoBehaviour:
   signalCalled:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &787574917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787574910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dae52e83b0b07c443897220b727e59c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  signal:
-  - {fileID: 11400000, guid: 117d694d618b2ab43b6beb0bf6c8330a, type: 2}
 --- !u!1 &814633530
 GameObject:
   m_ObjectHideFlags: 0

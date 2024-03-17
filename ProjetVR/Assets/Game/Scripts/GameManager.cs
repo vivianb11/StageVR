@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] SignalEmitter signalEmitter;
+    [SerializeField] SO_Signal startSignal;
 
     public static GameManager Instance;
 
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        signalEmitter.RequestSignalCall();
+        startSignal.Emit();
         gameStarted?.Invoke();
     }
 }

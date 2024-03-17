@@ -138,6 +138,7 @@ public class Tween : MonoBehaviour
 
             playedMontageIndex = tweenMontages.ToList().IndexOf(montage);
 
+            montage.started?.Invoke();
             StartCoroutine(InvokeDelay(montage.completed, GetMontageDuration(montages[i])));
             StartCoroutine(PropertiesCoroutine(montage.tweenProperties, montage.speed));
         }
@@ -265,5 +266,6 @@ public class TweenMontage
     public TweenProperty[] tweenProperties;
 
     [Space(10)]
+    public UnityEvent started;
     public UnityEvent completed;
 }

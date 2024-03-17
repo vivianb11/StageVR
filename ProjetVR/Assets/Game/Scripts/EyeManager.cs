@@ -1,3 +1,4 @@
+using SignalSystem;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -46,6 +47,9 @@ public class EyeManager : MonoBehaviour
 
     public bool hitSuccessful;
     public Vector3 hitPosition;
+
+    public SO_Signal grabActivation;
+    public SO_Signal grabDeactivation;
 
     [Header("Events")]
     public UnityEvent leftEyeClosed;
@@ -262,6 +266,11 @@ public class EyeManager : MonoBehaviour
 
     public void SetGrabbedBody(Grabable followTarget)
     {
+        if (followTarget == null)
+            grabActivation.Emit();
+        else
+            grabDeactivation.Emit();
+
         grabbedBody = followTarget;
 
         if (!grabbedBody)

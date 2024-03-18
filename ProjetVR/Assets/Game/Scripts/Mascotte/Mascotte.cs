@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Linq;
 using System.Collections;
 
 public class Mascotte : MonoBehaviour

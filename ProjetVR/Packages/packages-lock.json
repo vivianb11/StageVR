@@ -27,6 +27,12 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.animation.rigging": {
       "version": "1.2.1",
       "depth": 1,
@@ -345,7 +351,7 @@
     },
     "com.unity.xr.openxr": {
       "version": "1.9.1",
-      "depth": 0,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.xr.management": "4.4.0",

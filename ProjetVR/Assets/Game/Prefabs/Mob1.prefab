@@ -120,10 +120,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  LifePoints: 2
+  lifePoints: 1
   moveSpeed: 1
-  EnemyPush: 1
+  isKnockable: 1
+  damagedTakenOnHit: 1
   pushForce: 1.5
+  knockDuration: 2
 --- !u!54 &4164943758443417
 Rigidbody:
   m_ObjectHideFlags: 0

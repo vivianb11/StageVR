@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3130029, g: 0.5501603, b: 0.8220557, a: 1}
+  m_IndirectSpecularColor: {r: 0.31343237, g: 0.55243826, b: 0.8233737, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -698,9 +698,9 @@ MonoBehaviour:
   selectionCondition: 0
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 0
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []
@@ -1099,7 +1099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &437110776
 Transform:
   m_ObjectHideFlags: 0
@@ -1377,9 +1377,9 @@ MonoBehaviour:
   selectionCondition: 0
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 0
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []
@@ -2238,10 +2238,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41294f478d862140b9800916e3a2658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  signalEmitter: {fileID: 787574917}
   UseEyeTracking: 0
   UseDynamicFoveatedRendering: 0
   startDelay: 1
-  signalEmitter: {fileID: 787574917}
+  gameStarted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &787574912
 Transform:
   m_ObjectHideFlags: 0
@@ -2423,9 +2426,9 @@ MonoBehaviour:
   selectionCondition: 0
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 0
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []
@@ -2703,18 +2706,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fd0ebd344873549ae267abcbadc85f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner:
-  - {fileID: 1173603231}
-  - {fileID: 399480513}
-  - {fileID: 319060585}
-  - {fileID: 237229855}
-  - {fileID: 1680267534}
-  - {fileID: 50395641}
-  - {fileID: 1141581364}
-  - {fileID: 1803566568}
-  mob:
-  - {fileID: 6638022967405250282, guid: 06119c4753386dd49b67147af189d145, type: 3}
-  mascotte: {fileID: 1596418996}
+  spawnerArray: []
+  mobArray: []
+  target: {fileID: 0}
+  spawnInterval: 0
 --- !u!4 &894062968
 Transform:
   m_ObjectHideFlags: 0
@@ -3123,9 +3118,9 @@ MonoBehaviour:
   selectionCondition: 0
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 0
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []
@@ -3352,9 +3347,9 @@ MonoBehaviour:
   selectionCondition: 0
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 0
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []
@@ -3680,9 +3675,9 @@ MonoBehaviour:
   selectionCondition: 0
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 0
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []
@@ -4216,11 +4211,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 923288938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1596418996 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5916763766991782060, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
-  m_PrefabInstance: {fileID: 1426553059}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1605104830
 GameObject:
   m_ObjectHideFlags: 0
@@ -4346,9 +4336,9 @@ MonoBehaviour:
   selectionCondition: 0
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 0
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []
@@ -4896,7 +4886,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5862919521580615026, guid: a92b660491007c948ad951beb5a0d95a, type: 3}
   m_PrefabInstance: {fileID: 1426553059}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1596418996}
+  m_GameObject: {fileID: 0}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46c2eaadb3c6a2543ba7d16fd49216df, type: 3}
@@ -5335,9 +5325,9 @@ MonoBehaviour:
   selectionCondition: 0
   lookInTime: 1
   currentLookInTime: 0
+  resetValueOnExit: 1
   deSelectionCondition: 0
   lookOutTime: 1
-  lookOutDistance: 0
   autoTime: 0
   selected: 0
   selectedEventsDelay: []

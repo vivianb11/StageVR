@@ -4,26 +4,33 @@ using UnityEngine;
 
 public class RandomSpawn : MonoBehaviour
 {
-    public GameObject[] spawner;
-    public GameObject[] mob;
-    public GameObject mascotte;
-    void Start()
-    {
-        StartCoroutine(Spawn());
-    }
+    [Header("Random Mobs & Spawners")]
+    [SerializeField] GameObject[] spawnerArray;
+    [SerializeField] GameObject[] mobArray;
 
+    [Header("Spawner Characteristics")]
+    [SerializeField] GameObject target;
+    [SerializeField] float spawnInterval;
+
+    private void Start() => StartCoroutine(Spawn());
+    
     private IEnumerator Spawn()
     {
         while (true)
         {
-            GameObject spawnerLocation = spawner[Random.Range(0, spawner.Length)];
-            GameObject selectedMob = mob[Random.Range(0, mob.Length)];
-            GameObject newMob = Instantiate(selectedMob, spawnerLocation.transform.position, Quaternion.identity);
-            Mob ennemy = newMob.GetComponent<Mob>();
-            if (ennemy != null)
-                ennemy.target = mascotte.transform;
-            yield return new WaitForSeconds(1.5f);
+            var randomMobAndSpawn = SelectRandomMobAndSpawner();
+            SpawnMob(randomMobAndSpawn.Item1, randomMobAndSpawn.Item2);
+            yield return new WaitForSeconds(spawnInterval);
         }
+    }
 
+    private (GameObject, GameObject) SelectRandomMobAndSpawner() => (spawnerArray[Random.Range(0, spawnerArray.Length)], mobArray[Random.Range(0, mobArray.Length)]); //Return random spawner and mob
+
+    private void SpawnMob(GameObject _mob, GameObject _spawner)
+    /*Instanitate given mob at given spawner location, and set target position to given target*/
+    {
+        GameObject newMob = Instantiate(_mob, _spawner.transform.position, Quaternion.identity);
+        Mob mobBehaviors = newMob.GetComponent<Mob>();
+        if (mobBehaviors != null) mobBehaviors.target = target.transform;
     }
 }

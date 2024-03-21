@@ -447,25 +447,35 @@ MonoBehaviour:
   UseButtonInteractable: 0
   buttonInteractable: {fileID: 0}
   diologs:
-  - DialogName: HelloBB
+  - DialogName: Example
     interactionType: 0
     switchSound: {fileID: 8300000, guid: 53fbb752b4f817d4db785165de863f52, type: 3}
     dialogContents:
     - displayEffect: 1
       EffectTime: 0.75
-      text: 'How About being a naughty boy
-
-        Oh yes'
+      text: This is a example of a dialogue
       continueAudio: 0
       audio: {fileID: 8300000, guid: 5ad14af446070b0419b6de32ba6b39be, type: 3}
       duration: 5
-    - displayEffect: 0
-      EffectTime: 0.75
-      text: You Should Try it out
+    - displayEffect: 1
+      EffectTime: 0.204
+      text: You can write quickly
       continueAudio: 1
-      audio: {fileID: 8300000, guid: 5ad14af446070b0419b6de32ba6b39be, type: 3}
-      duration: 5
-  dialogName: HelloBB
+      audio: {fileID: 0}
+      duration: 3
+    - displayEffect: 1
+      EffectTime: 0.806
+      text: Or slowly
+      continueAudio: 1
+      audio: {fileID: 0}
+      duration: 3
+    - displayEffect: 0
+      EffectTime: 0.806
+      text: You can even make it pop out of nowhere
+      continueAudio: 1
+      audio: {fileID: 0}
+      duration: 3
+  dialogName: Example
 --- !u!1 &4873140509472410172
 GameObject:
   m_ObjectHideFlags: 0

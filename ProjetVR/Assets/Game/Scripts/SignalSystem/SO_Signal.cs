@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace SignalSystem
 {
@@ -7,5 +6,10 @@ namespace SignalSystem
     public class SO_Signal : ScriptableObject
     {
         public string signalName;
+
+        public void Emit()
+        {
+            SignalManager.Instance.EmitSignal(signalName);
+        }
     }
 }

@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static Container;
 
 [ExecuteInEditMode]
 public class Container : MonoBehaviour

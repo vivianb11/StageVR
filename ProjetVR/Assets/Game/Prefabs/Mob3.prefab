@@ -120,13 +120,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  degree: 2d0000005a00000087000000b4000000e00000000e0100003b010000
-  speed: 01000000020000000300000004000000050000000600000007000000
-  LifePoints: 1
+  lifepoints: 1
   moveSpeed: 2
-  pushForce: 0.9
-  EnemyPush: 0
-  _rotate: 1
+  isKnockable: 0
+  canRotate: 1
+  knockCooldown: 0
+  receivedDamagedOnHit: 0
+  degree: 2d0000005a00000087000000b4000000e00000000e0100003b010000
 --- !u!54 &4164943758443417
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -23,18 +23,10 @@ public class EyeCalibration : MonoBehaviour
     {
         currentPoint++;
 
-        // get the angle between the camera and the cursor and compare it to the angle between the camera and the calibration point
-        Vector3 cursorPos = cursor.transform.position;
-        Vector3 cameraPos = Camera.main.transform.position;
+        Vector3 directionToObject = place.position - Camera.main.transform.position;
+        Vector3 eyeDirection = cursor.transform.position - Camera.main.transform.position;
 
-        Vector3 cursorDir = cursorPos - cameraPos;
-        Vector3 placeDir = place.position - cameraPos;
-
-        // gets the vector3 angle to add to the cursor so it would be pointing to the calibration point
-        Vector3 angle = Vector3.Cross(cursorDir, placeDir);
-
-        // get the difference between the two angles
-        eyeOffset[currentPoint - 1] = angle;
+        eyeOffset[currentPoint - 1] = directionToObject - eyeDirection;
 
         if (currentPoint >= calibrationPoints)
         {

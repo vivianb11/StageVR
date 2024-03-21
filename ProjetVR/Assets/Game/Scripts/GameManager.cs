@@ -9,9 +9,6 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
-    public bool UseEyeTracking;
-    public bool UseDynamicFoveatedRendering;
-
     public float startDelay = 1f;
 
     public UnityEvent gameStarted;
@@ -37,13 +34,6 @@ public class GameManager : MonoBehaviour
 
         if (player == null)
             Debug.LogError("Player not found ! Please set the correct Tag on player");
-
-        if (OVRManager.eyeTrackedFoveatedRenderingSupported)
-        {
-            Debug.Log("Eye Tracking Available !");
-            OVRManager.eyeTrackedFoveatedRenderingEnabled = UseEyeTracking;
-            OVRManager.useDynamicFoveatedRendering = UseDynamicFoveatedRendering;
-        }
 
         StartCoroutine(StartDelay(startDelay));
 

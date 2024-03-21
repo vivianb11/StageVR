@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class ShieldDetection : MonoBehaviour
 {
-    private GameObject currentActiveShield;
+    [SerializeField] [ReadOnly] private GameObject currentActiveShield;
 
     void Start()
     {

@@ -2,7 +2,6 @@ using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Dialoger : MonoBehaviour
@@ -15,10 +14,8 @@ public class Dialoger : MonoBehaviour
     private PanelBehavior dialogPanel;
     public List<Dialogs> diologs;
 
-#if UNITY_EDITOR
     [Header("Play Dialog")]
     public string dialogName;
-#endif
 
     [Button]
     public void PlayDiolog()

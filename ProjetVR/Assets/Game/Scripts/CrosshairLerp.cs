@@ -13,7 +13,7 @@ public class CrosshairLerp : MonoBehaviour
         transform.parent = null;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         transform.position = parent.position;
 

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 763671626309559046}
   - component: {fileID: 8518959659174823127}
   - component: {fileID: 4490825410669565006}
+  - component: {fileID: 6424611799635415114}
   m_Layer: 12
   m_Name: ProgressBar
   m_TagString: Untagged
@@ -97,6 +98,24 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6424611799635415114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3018128592502653646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a372f91350d8c40a8acd6fcd5f517d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressSlider: {fileID: 4490825410669565006}
+  progressImage: {fileID: 1413250760896866450}
+  emptyColor: {r: 1, g: 1, b: 1, a: 1}
+  fullColor: {r: 0, g: 1, b: 0, a: 1}
+  resetDelay: 0.5
+  lerpSpeed: 0.5
 --- !u!1 &3266267175130310041
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1382319216497282254
 RectTransform:
   m_ObjectHideFlags: 0
@@ -259,7 +278,7 @@ GameObject:
   - component: {fileID: 8485528093182297875}
   m_Layer: 12
   m_Name: Crosshair
-  m_TagString: Untagged
+  m_TagString: Cursor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

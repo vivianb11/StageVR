@@ -4,7 +4,6 @@ using UnityEngine.Events;
 using SignalSystem;
 using System.Collections.Generic;
 using System.Collections;
-using Unity.VisualScripting;
 
 [RequireComponent(typeof(Interactable))]
 [RequireComponent(typeof(SignalListener))]

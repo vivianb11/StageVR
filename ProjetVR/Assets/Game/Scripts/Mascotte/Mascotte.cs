@@ -76,9 +76,7 @@ public class Mascotte : MonoBehaviour
                 break;
             case MascotteState.HAPPY:
                 happyState?.Invoke();
-
                 PlayCheck(checkDelayAfterFullClean);
-
                 Debug.Log("GG !".SetColor(Color.green));
                 break;
         }

@@ -47,22 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSignal: {fileID: 11400000, guid: 117d694d618b2ab43b6beb0bf6c8330a, type: 2}
+  playerInstance: {fileID: 4258354812615802030, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
   startDelay: 3
   gameStarted:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: TeethProgress, Assembly-CSharp
-        m_MethodName: SpawnTeeth
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &7450916105593244228
 MonoBehaviour:
   m_ObjectHideFlags: 0

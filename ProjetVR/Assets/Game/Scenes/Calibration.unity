@@ -846,7 +846,8 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3630176701183548417, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -991,7 +992,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 8.94e-43, y: 0, z: 0, w: 1e-45}
+  m_BoundingSphereOverride: {x: 5.2969e-41, y: 0, z: 0, w: 4.0929083e+32}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -1141,7 +1142,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2066398613}
   - component: {fileID: 2066398612}
-  - component: {fileID: 2066398614}
   m_Layer: 0
   m_Name: EyeCalib
   m_TagString: Untagged
@@ -1178,18 +1178,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2066398614}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LodScene
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &2066398613
 Transform:
   m_ObjectHideFlags: 0
@@ -1205,18 +1193,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2066398614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066398611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c53877c7946b0941920cc4c5f7a1e51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2102629066
 GameObject:
   m_ObjectHideFlags: 0

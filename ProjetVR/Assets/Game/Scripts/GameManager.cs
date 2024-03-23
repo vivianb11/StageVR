@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] SO_Signal startSignal;
+    [SerializeField] PlayerInstance playerInstance;
 
     public static GameManager Instance;
 
@@ -30,6 +31,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            player = Instantiate(playerInstance).gameObject;
+        }
 
         if (player == null)
             Debug.LogError("Player not found ! Please set the correct Tag on player");

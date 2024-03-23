@@ -41,6 +41,7 @@ public class EyeCalibration : MonoBehaviour
             Debug.Log("Calibration done. Eye offset: " + EyeTrackingData.eyeOffset);
 
             OnCalibrationDone?.Invoke();
+            SceneLoader.Instance.LodScene(1);
         }
     }
 

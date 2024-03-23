@@ -1,4 +1,5 @@
 using SignalSystem;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,6 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] SO_Signal startSignal;
     [SerializeField] PlayerInstance playerInstance;
 
+    [SerializeField] float timeBeforeResetGame = 10f;
+
     public static GameManager Instance;
 
     public float startDelay = 1f;
@@ -15,6 +18,8 @@ public class GameManager : MonoBehaviour
     public UnityEvent gameStarted;
 
     public GameObject player { get; private set; }
+
+    private DateTime timeOnUnfocus;
 
     private void Awake()
     {
@@ -41,7 +46,8 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(StartDelay(startDelay));
 
-        //OVRManager.InputFocusAcquired += OVRManager.display.RecenterPose;
+        OVRManager.InputFocusAcquired += CheckUnfocusedTime;
+        OVRManager.InputFocusLost += () => timeOnUnfocus = DateTime.Now;
     }
 
     private IEnumerator StartDelay(float delay)
@@ -50,5 +56,17 @@ public class GameManager : MonoBehaviour
 
         startSignal.Emit();
         gameStarted?.Invoke();
+    }
+
+    private void CheckUnfocusedTime()
+    {
+        Debug.Log((DateTime.Now - timeOnUnfocus).ToString().SetColor(Color.cyan));
+
+        if ((DateTime.Now - timeOnUnfocus).TotalSeconds > timeBeforeResetGame)
+        {
+            SceneLoader.Instance.LodScene(0);
+        }
+
+        OVRManager.display.RecenterPose();
     }
 }

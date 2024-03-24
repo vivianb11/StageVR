@@ -38,16 +38,22 @@ public class SoundManager : MonoBehaviour
             _musicSource = this.gameObject.AddComponent<AudioSource>();
 
         _audioSources = new Dictionary<AudioSource, Sound>();
+        
+        GameObject tempGo = new GameObject();
 
         for (int i = 0; i < maxAudioSources; i++)
         {
-            var go = Instantiate(new GameObject("AudioSource "+i));
-            go.transform.SetParent(transform);
+
+            var go = Instantiate(tempGo, transform);
+
+            go.name = "Audio Source " + i;
 
             var aS = go.AddComponent<AudioSource>();
             
             _audioSources.Add(aS, null);
         }
+
+        Destroy(tempGo);
 
         if (playMusicOnStart)
         {

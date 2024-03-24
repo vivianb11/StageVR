@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSignal: {fileID: 11400000, guid: 117d694d618b2ab43b6beb0bf6c8330a, type: 2}
   playerInstance: {fileID: 4258354812615802030, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+  timeBeforeResetGame: 10
   startDelay: 3
   gameStarted:
     m_PersistentCalls:
@@ -93,14 +94,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e6f20dc48507d439c4d34caf9a672c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioFilterMode: 0
+  audioFilterMode: 1
   fadeDuration: 1
   maxAudioSources: 10
   playMusicOnStart: 0
   musics:
   - soundType: 1
     clip: {fileID: 8300000, guid: 5ad14af446070b0419b6de32ba6b39be, type: 3}
-    timesPlayed: 0
+    timePaused: 0
+    pausedTime: 0
 --- !u!82 &5779212108944383287
 AudioSource:
   m_ObjectHideFlags: 0

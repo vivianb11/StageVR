@@ -1,9 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using NaughtyAttributes;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(BoxCollider))]
@@ -36,7 +33,6 @@ public class Mob : MonoBehaviour
     private void Update()
     {
         Move();
-        IsDeadCheck();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -65,11 +61,12 @@ public class Mob : MonoBehaviour
         {
             float t = elapsedTime / rotationDuration;
             transform.parent.localRotation = Quaternion.Lerp(startRotation, targetRotation, t);
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        transform.parent.localRotation = targetRotation;
+        //transform.parent.localRotation = targetRotation;
         _isKnocked = false;
     }
 
@@ -84,19 +81,21 @@ public class Mob : MonoBehaviour
 
     private void Move()
     {
-        transform.LookAt(target.position);
+        transform.LookAt(target.position, transform.parent.up);
 
         if (_isKnocked) 
         {
-           if (isKnockable) transform.Translate(Vector3.back * moveSpeed * Time.deltaTime);
+           if (isKnockable) transform.Translate(Vector3.back * moveSpeed * Time.deltaTime, Space.Self);
             return;
         }
-        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, Space.Self);
     }
 
     private void Damaged()
     {
         lifepoints -= receivedDamagedOnHit;
+        IsDeadCheck();
+
         if (isKnockable) StartCoroutine(Knocked());
     }
 
@@ -110,7 +109,6 @@ public class Mob : MonoBehaviour
         bool condition = lifepoints == 0;
         if (condition)
         {
-            if (transform.parent) Destroy(transform.parent.gameObject);
             Destroy(gameObject);
         }
         return condition;

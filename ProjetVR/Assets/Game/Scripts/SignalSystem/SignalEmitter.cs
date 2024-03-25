@@ -5,13 +5,13 @@ namespace SignalSystem
 {
     public class SignalEmitter : MonoBehaviour
     {
-        [SerializeField] List<SO_Signal> signal = new List<SO_Signal>();
+        [SerializeField] List<SO_Signal> signals = new List<SO_Signal>();
 
         public void RequestSignalCall()
         {
-            foreach (SO_Signal signal in signal)
+            foreach (SO_Signal signal in signals)
             {
-                SignalManager.Instance.EmitSignal(signal.signalName);
+                signal.Emit();
             }
         }
     }

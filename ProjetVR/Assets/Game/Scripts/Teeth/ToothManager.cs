@@ -41,7 +41,7 @@ public class ToothManager : MonoBehaviour
     private Tween tweener;
     public GameObject smellVFX;
 
-    private bool smells;
+    public bool smells { get; private set; }
 
     public int maxSmellAmount = 10;
     private int smellAmount = 10;
@@ -52,7 +52,9 @@ public class ToothManager : MonoBehaviour
     [InfoBox("Returns a float")]
     public UnityEvent<float> OnCleanAmountChange;
     [Foldout("Events")]
-    public UnityEvent OnToothPreCleaned;
+    public UnityEvent OnToothPreCleaned, OnToothPreCleanedWithDecay;
+    [Foldout("Events")]
+    public UnityEvent CellCleaned;
 
     private void Awake()
     {
@@ -77,6 +79,7 @@ public class ToothManager : MonoBehaviour
         OnCleanAmountChange?.Invoke(GetToothCleanPercent());
     }
 
+#if UNITY_EDITOR
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.R))
@@ -84,6 +87,7 @@ public class ToothManager : MonoBehaviour
             ResetTooth();
         }
     }
+#endif
 
     public void SetSmell(bool value)
     {
@@ -141,6 +145,8 @@ public class ToothManager : MonoBehaviour
             if (teethCell.teethState != TeethState.Decay && teethCell.teethState != TeethState.Clean)
                 return false;
         }
+
+        OnToothPreCleanedWithDecay?.Invoke();
 
         return true;
     }
@@ -232,10 +238,9 @@ public class ToothManager : MonoBehaviour
     private void OnCellCleaned()
     {
         OnCleanAmountChange?.Invoke(GetToothCleanPercent());
+        CellCleaned?.Invoke();
 
         CheckIfToothCleaned();
-
-        Debug.Log(GetToothCleanPercent());
     }
 
     private void RandomCellSetup()

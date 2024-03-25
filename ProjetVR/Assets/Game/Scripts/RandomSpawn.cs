@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RandomSpawn : MonoBehaviour
@@ -33,7 +32,7 @@ public class RandomSpawn : MonoBehaviour
     private void SpawnMob(GameObject _spawner, GameObject _mob)
     {
         Debug.Log(_mob);
-        GameObject newMob = Instantiate(_mob, _spawner.transform.position, Quaternion.identity);
+        GameObject newMob = Instantiate(_mob, _spawner.transform);
         Mob mobBehaviors = newMob.GetComponent<Mob>();
 
         if(mobBehaviors.canRotate) AddRotator(newMob);
@@ -43,7 +42,7 @@ public class RandomSpawn : MonoBehaviour
 
     private void AddRotator(GameObject newMob)
     {
-        GameObject newParent = Instantiate(mobRotator, Vector3.zero, Quaternion.identity);
+        GameObject newParent = Instantiate(mobRotator, target.transform);
         newMob.transform.parent = newParent.transform;
     }
 }

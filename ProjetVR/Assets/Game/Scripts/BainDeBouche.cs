@@ -33,7 +33,7 @@ public class BainDeBouche : MonoBehaviour
         followHitPosition = false;
 
         transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
+        transform.localRotation = Quaternion.Euler(0f, 90f, 90f);
 
         particles.SetActive(false);
     }

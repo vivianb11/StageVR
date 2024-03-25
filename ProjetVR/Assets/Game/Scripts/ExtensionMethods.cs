@@ -102,4 +102,24 @@ public static class ExtensionMethods
 
         return item;
     }
+
+    #region String
+    public static string SetColor(this string text, Color color)
+    {
+        string output;
+        output = string.Format("<color={0}>{1}</color>", color.ToHex(), text);
+        return output;
+    }
+
+    public static string ToHex(this Color c)
+    {
+        return string.Format("#{0:x2}{1:x2}{2:x2}", ToByte(c.r), ToByte(c.g), ToByte(c.b));
+    }
+
+    private static byte ToByte(float f)
+    {
+        f = Mathf.Clamp01(f);
+        return (byte)(f * 255f);
+    }
+    #endregion
 }

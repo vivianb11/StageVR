@@ -11,7 +11,7 @@ public class Rotator : MonoBehaviour
 
     private Transform cameraTarget;
 
-    public void Awake()
+    public void Start()
     {
         cameraTarget = Camera.main.transform;
 

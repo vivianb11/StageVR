@@ -13,6 +13,7 @@ public class Mob : MonoBehaviour
     [ReadOnly] public Transform target;
     [SerializeField] int lifepoints;
     [SerializeField] float moveSpeed;
+    [SerializeField] int scoreAddedOnKill;
     [SerializeField] bool isKnockable;
     public bool canRotate;
 
@@ -103,16 +104,20 @@ public class Mob : MonoBehaviour
     private void Attack(GameObject protectedTooth)
     {
         protectedTooth.GetComponent<ProtectedToothBehaviours>().Damaged();
+        Kill();
     }
 
     private bool IsDeadCheck()
     {
         bool condition = lifepoints == 0;
-        if (condition)
-        {
-            if (transform.parent) Destroy(transform.parent.gameObject);
-            Destroy(gameObject);
-        }
+        if (condition) Kill();
         return condition;
+    }
+
+    private void Kill()
+    {
+        ScoreManager.Instance.AddScore(scoreAddedOnKill);
+        if (transform.parent) Destroy(transform.parent.gameObject);
+        Destroy(gameObject);
     }
 }

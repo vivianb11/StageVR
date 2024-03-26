@@ -483,7 +483,7 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 976859790}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShieldDetection, Assembly-CSharp
         m_MethodName: Activate
         m_Mode: 2
@@ -534,6 +534,139 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &377214478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 377214479}
+  - component: {fileID: 377214483}
+  - component: {fileID: 377214482}
+  - component: {fileID: 377214481}
+  - component: {fileID: 377214480}
+  m_Layer: 0
+  m_Name: ShieldObject
+  m_TagString: Shield
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &377214479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377214478}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.00544831, y: -0.0020556743, z: 0.8314597, w: 0.5555546}
+  m_LocalPosition: {x: -0.38265878, y: 0.9238214, z: 0.011343956}
+  m_LocalScale: {x: 0.1641735, y: 0.75, z: 0.20864704}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1648277536}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
+--- !u!65 &377214480
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377214478}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &377214481
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377214478}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!23 &377214482
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377214478}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &377214483
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377214478}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &399480513
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,6 +864,7 @@ Transform:
   m_Children:
   - {fileID: 1821299262}
   - {fileID: 1431551359}
+  - {fileID: 1648277536}
   - {fileID: 976859789}
   - {fileID: 894062968}
   - {fileID: 1352465488}
@@ -1032,7 +1166,7 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 976859790}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShieldDetection, Assembly-CSharp
         m_MethodName: Activate
         m_Mode: 2
@@ -1667,7 +1801,7 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 976859790}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShieldDetection, Assembly-CSharp
         m_MethodName: Activate
         m_Mode: 2
@@ -1757,11 +1891,24 @@ MonoBehaviour:
   - {fileID: 1141581364}
   - {fileID: 1803566568}
   mobArray:
+  - {fileID: 6638022967405250282, guid: 56c21ffeece17a0459f8677976cdf3de, type: 3}
   - {fileID: 6638022967405250282, guid: c76edd37e3c7fe647ab6c32c59930228, type: 3}
   - {fileID: 6638022967405250282, guid: 23d87bf6f84997149b99791847cdaecd, type: 3}
-  spawnInterval: 15
   target: {fileID: 1596418996}
   mobRotator: {fileID: 717860868454398895, guid: 49a144da7a60bbf43bb3161e221dabe8, type: 3}
+  spawnInterval: 15
+  numberSpawnerActivated: 4
+  weightEnemy1: 3
+  weightEnemy2: 0
+  weightEnemy3: 0
+  CurrentPercentageEnemy1: 100%
+  CurrentPercentageEnemy2: 0%
+  CurrentPercentageEnemy3: 0%
+  milestoneCount: 0
+  interval: 10
+  progressionMilestone:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &894062968
 Transform:
   m_ObjectHideFlags: 0
@@ -1941,20 +2088,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 976859788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be8eec4a8b643384b964f4420579f166, type: 3}
+  m_Script: {fileID: 11500000, guid: 815342b778104ba4a979019b2e96b3ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentActiveShield: {fileID: 0}
-  minDetectionRange: 1
-  points:
-  - {fileID: 487368071}
-  - {fileID: 1342197177}
-  - {fileID: 411566011}
-  - {fileID: 595946405}
-  - {fileID: 541353503}
-  - {fileID: 119102222}
-  - {fileID: 1876133033}
-  - {fileID: 1868399610}
+  shield: {fileID: 1648277535}
+  rotationSpeed: 90
 --- !u!1 &1020042238
 GameObject:
   m_ObjectHideFlags: 0
@@ -2089,7 +2227,7 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 976859790}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShieldDetection, Assembly-CSharp
         m_MethodName: Activate
         m_Mode: 2
@@ -2305,7 +2443,7 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 976859790}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShieldDetection, Assembly-CSharp
         m_MethodName: Activate
         m_Mode: 2
@@ -2563,6 +2701,9 @@ MonoBehaviour:
   onDamaged:
     m_PersistentCalls:
       m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &1352465485
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2725,7 +2866,7 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 976859790}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShieldDetection, Assembly-CSharp
         m_MethodName: Activate
         m_Mode: 2
@@ -2942,7 +3083,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1431551359
 Transform:
   m_ObjectHideFlags: 0
@@ -3107,7 +3248,6 @@ GameObject:
   - component: {fileID: 1605104832}
   - component: {fileID: 1605104836}
   - component: {fileID: 1605104835}
-  - component: {fileID: 1605104837}
   m_Layer: 0
   m_Name: Down
   m_TagString: Untagged
@@ -3228,7 +3368,7 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 976859790}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShieldDetection, Assembly-CSharp
         m_MethodName: Activate
         m_Mode: 2
@@ -3279,21 +3419,38 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1605104837
-MonoBehaviour:
+--- !u!1 &1648277535
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1605104830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be8eec4a8b643384b964f4420579f166, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentActiveShield: {fileID: 0}
-  minDetectionRange: 1
-  points: []
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1648277536}
+  m_Layer: 0
+  m_Name: Shield 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1648277536
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648277535}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 377214479}
+  m_Father: {fileID: 437110776}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1680267534
 GameObject:
   m_ObjectHideFlags: 0
@@ -3955,7 +4112,7 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 976859790}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ShieldDetection, Assembly-CSharp
         m_MethodName: Activate
         m_Mode: 2

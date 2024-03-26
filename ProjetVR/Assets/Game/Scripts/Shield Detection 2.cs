@@ -3,79 +3,21 @@ using UnityEngine;
 
 public class ShieldDetection2 : MonoBehaviour
 {
-    [SerializeField] [ReadOnly] private GameObject currentActiveShield;
+    public GameObject shield; 
 
-    [SerializeField] float minDetectionRange = 1.0f;
+    [SerializeField]
+    private float rotationSpeed = 2.0f; 
 
-    [SerializeField] Transform[] points;
-
-    void Start()
-    {
-        currentActiveShield = null;
-    }
-
-    private void FixedUpdate()
+    void Update()
     {
         Vector3 hitPosition = EyeManager.Instance.hitPosition;
-        float distanceToHitpoint = Vector3.Distance(transform.position, hitPosition);
 
-        if (distanceToHitpoint < minDetectionRange)
-            return;
-
-        Transform closestPoint = points[0];
-        float closestDistance = Vector3.Distance(closestPoint.position, hitPosition);
-
-        foreach (Transform t in points)
+        if (shield != null)
         {
-            float distance = Vector3.Distance(t.position, hitPosition);
-
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                closestPoint = t;
-            }
-        }
-        // Here
-        Activate(closestPoint);
-    }
-
-    public void changeDirection(GameObject obj)
-    {
-        DeactivateCurrentShield();
-
-        obj.SetActive(true);
-
-        currentActiveShield = obj;
-    }
-
-
-    // Here
-    public void Activate(GameObject obj)
-    {
-        DeactivateCurrentShield();
-
-        obj.SetActive(true);
-
-        currentActiveShield = obj;
-    }
-    // replace old shield with 
-
-    // Here
-    public void Activate(Transform obj)
-    {
-        DeactivateCurrentShield();
-
-        obj.gameObject.SetActive(true);
-
-        currentActiveShield = obj.gameObject;
-    }
-
-    // Here
-    private void DeactivateCurrentShield()
-    {
-        if (currentActiveShield != null && currentActiveShield.activeSelf)
-        {
-            currentActiveShield.SetActive(false);
+            Vector3 targetDirection = hitPosition - shield.transform.position;
+            float singleStep = rotationSpeed * Time.deltaTime;
+            Vector3 newDirection = Vector3.RotateTowards(shield.transform.forward, targetDirection, singleStep, 0.0f);
+            shield.transform.rotation = Quaternion.LookRotation(newDirection);
         }
     }
 }

@@ -35,11 +35,12 @@ public class ShieldDetection : MonoBehaviour
                 closestPoint = t;
             }
         }
-
+        // Here
         Activate(closestPoint);
+        changeDirection(closestPoint);
     }
 
-    public void Activate(GameObject obj)
+    public void changeDirection(GameObject obj)
     {
         DeactivateCurrentShield();
 
@@ -48,6 +49,19 @@ public class ShieldDetection : MonoBehaviour
         currentActiveShield = obj;
     }
 
+
+    // Here
+    public void Activate(GameObject obj)
+    {
+        DeactivateCurrentShield();
+
+        obj.SetActive(true);
+
+        currentActiveShield = obj;
+    }
+    // replace old shield with 
+
+    // Here
     public void Activate(Transform obj)
     {
         DeactivateCurrentShield();
@@ -57,6 +71,7 @@ public class ShieldDetection : MonoBehaviour
         currentActiveShield = obj.gameObject;
     }
 
+    // Here
     private void DeactivateCurrentShield()
     {
         if (currentActiveShield != null && currentActiveShield.activeSelf)

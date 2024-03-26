@@ -16,6 +16,11 @@ public class ScoreManager : Singleton<ScoreManager>
     [SerializeField] TextMeshPro scoreDisplay;
 
     
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("HighScore")) bestScore = PlayerPrefs.GetInt("HighScore");
+    }
+
     public void AddScore(int scoreToAdd)
     {
         currentScore += scoreToAdd;
@@ -42,4 +47,15 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         scoreTextMesh.text = "Score:" + "\n" + currentScore.ToString();
     } 
+
+    private void OnDisable() 
+    {
+        if (PlayerPrefs.HasKey("HighScore") && PlayerPrefs.GetInt("HighScore") != bestScore) 
+        {
+            PlayerPrefs.SetInt("HighScore", bestScore);
+            PlayerPrefs.Save();
+        }
+    }
+
+
 }

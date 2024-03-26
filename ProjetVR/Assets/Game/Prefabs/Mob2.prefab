@@ -120,13 +120,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  lifepoints: 2
+  lifepoints: 3
   moveSpeed: 2
   isKnockable: 1
   scoreOnDeath: 10
   canRotate: 0
-  knockCooldown: 1.5
   receivedDamagedOnHit: 1
+  knockCooldown: 1.5
   degree: 
 --- !u!54 &4164943758443417
 Rigidbody:

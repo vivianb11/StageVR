@@ -20,29 +20,32 @@ public class RandomSpawn : MonoBehaviour
     [Header("Difficulty Parameters")]
     [SerializeField] float spawnInterval;
     [SerializeField] [Range(1, 8)] int numberSpawnerActivated;
-    [SerializeField] [Range(1, 2)] int enemyTypeAvailable;
 
     [Space(10)]
 
     [SerializeField] int weightEnemy1;
     [SerializeField] int weightEnemy2;
+    [SerializeField] int weightEnemy3;
 
     private int _percentageEnemy1;
     private int _percentageEnemy2;
+    private int _percentageEnemy3;
 
     [NaughtyAttributes.ReadOnly] [SerializeField] string CurrentPercentageEnemy1;
     [NaughtyAttributes.ReadOnly] [SerializeField] string CurrentPercentageEnemy2;
+    [NaughtyAttributes.ReadOnly] [SerializeField] string CurrentPercentageEnemy3;
 
 
     [Header("Progression Parameters")]
-    [SerializeField] int countSpent = 0;
+    [NaughtyAttributes.ReadOnly] [SerializeField] int milestoneCount = 0;
     [SerializeField] int interval = 10;
     [SerializeField] UnityEvent progressionMilestone = new();
 
     void Start()
     {
-        StartCoroutine(SpawnCycle());
-        CountMinutes();
+        if (Application.isPlaying) StartCoroutine(SpawnCycle());
+        if (Application.isPlaying) CountMinutes();
+        if (Application.isPlaying) milestoneCount = 0;
     } 
 
     private void Update()
@@ -52,7 +55,7 @@ public class RandomSpawn : MonoBehaviour
 
     private IEnumerator SpawnCycle()
     {
-        while (true)
+        while (target is not null)
         {
             (GameObject, GameObject) selectedMobAndSpawner = SelectRandomMobAndSpawner();
             SpawnMob(selectedMobAndSpawner.Item1, selectedMobAndSpawner.Item2);
@@ -60,11 +63,7 @@ public class RandomSpawn : MonoBehaviour
         }
     }
 
-    private (GameObject, GameObject) SelectRandomMobAndSpawner()
-    {
-        if (enemyTypeAvailable is 1) return (spawnerArray[Random.Range(0, numberSpawnerActivated)], mobArray[0]);
-        return (spawnerArray[Random.Range(0, numberSpawnerActivated)], SelectByPercentage());
-    } 
+    private (GameObject, GameObject) SelectRandomMobAndSpawner() => (spawnerArray[Random.Range(0, numberSpawnerActivated)], SelectByPercentage());
 
     private void SpawnMob(GameObject _spawner, GameObject _mob)
     {
@@ -88,13 +87,18 @@ public class RandomSpawn : MonoBehaviour
     {
         float frequencyEnemy1 = weightEnemy1;
         float frequencyEnemy2 = weightEnemy2 + frequencyEnemy1;
-
-        _percentageEnemy1 = (int)((frequencyEnemy1/frequencyEnemy2)*100);
-        _percentageEnemy2 = (int)((frequencyEnemy2/frequencyEnemy2)*100);
-
+        float frequencyEnemy3 = weightEnemy3 + frequencyEnemy2;
+        
+        _percentageEnemy1 = CalculatePercentage(frequencyEnemy1, frequencyEnemy2);
+        _percentageEnemy2 = CalculatePercentage(frequencyEnemy2, frequencyEnemy3);
+        _percentageEnemy3 = CalculatePercentage(frequencyEnemy3, frequencyEnemy3);
+        
         CurrentPercentageEnemy1 = _percentageEnemy1.ToString() +  "%";
         CurrentPercentageEnemy2 = (_percentageEnemy2 - _percentageEnemy1).ToString() +  "%";
+        CurrentPercentageEnemy3 = (_percentageEnemy3 - _percentageEnemy2).ToString() +  "%";
     }
+
+    private int CalculatePercentage(float mainFrequency, float otherFrequency) => (int)((mainFrequency/otherFrequency)*100);
 
     public GameObject SelectByPercentage()
     {
@@ -103,19 +107,32 @@ public class RandomSpawn : MonoBehaviour
         int drop = _rnd.Next(0, 100);
         if (drop <= _percentageEnemy1) return mobArray[0];
         else if (drop <= _percentageEnemy2 && drop > _percentageEnemy1) return mobArray[1];
+        else if (drop <= _percentageEnemy3 && drop > _percentageEnemy2) return mobArray[3];
         return null;
     }
 
     private void CountMinutes()
     {
-        countSpent += 1;
+        milestoneCount += 1;
         progressionMilestone.Invoke();
         Invoke("CountMinutes", interval);
     }
 
-    public void ChangeInterval(int newInterval) => spawnInterval = newInterval;
+    public void ChangeInterval(float newInterval) => spawnInterval = newInterval;
     public void ChangeNumberSpawner(int newNumber) => numberSpawnerActivated = newNumber;
-    public void ChangeEnemyAvailable(int newNumber) => enemyTypeAvailable = newNumber;
     public void ChangeWeightEnemy1(int newWeightsEnemy1) => weightEnemy1 = newWeightsEnemy1;
     public void ChangeWeightEnemy2(int newWeightsEnemy2) => weightEnemy2 = newWeightsEnemy2;
+
+    public void ChangeDifficulty(DifficultyPresets preset)
+    {
+        if (milestoneCount != preset.countCondition) return;
+
+        ChangeInterval(preset.spawnInterval);
+        ChangeNumberSpawner(preset.numberSpawner);
+        ChangeWeightEnemy1(preset.weightEnemy1);
+        ChangeWeightEnemy2(preset.weightEnemy2);
+        SpawnPercentage();
+    }
+
+    private void OnDisable() => milestoneCount = 0;
 }

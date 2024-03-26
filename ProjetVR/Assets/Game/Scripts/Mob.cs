@@ -15,8 +15,8 @@ public class Mob : MonoBehaviour
     public bool canRotate;
 
     [Header("On Hit Parameters")]
+    [SerializeField] int receivedDamagedOnHit;
     [ShowIf("isKnockable")] [SerializeField] float knockCooldown;
-    [ShowIf("isKnockable")] [SerializeField] int receivedDamagedOnHit;
 
     [Header("Rotation Parameters")]
     [ShowIf("canRotate")] public int[] degree;

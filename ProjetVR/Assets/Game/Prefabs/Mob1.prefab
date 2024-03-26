@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ffa81d269a421b745942ac1834c6cb75, type: 2}
+  - {fileID: 2100000, guid: b970aa69ad40d41438b4c925e19e1be0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,25 +119,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b234e8c786c01e4ebfc9f66d9adecce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  degree: 
-  speed: 
   target: {fileID: 0}
-<<<<<<< Updated upstream
-  lifePoints: 1
-  moveSpeed: 1
-  isKnockable: 1
-  damagedTakenOnHit: 1
-  pushForce: 1.5
-  knockDuration: 2
-=======
-  LifePoints: 1
+  lifepoints: 1
   moveSpeed: 2
-  EnemyPush: 0
-  pushForce: 0.9
-  _rotate: 0
-  targetRotationY: 90
-  rotationSpeed: 2
->>>>>>> Stashed changes
+  isKnockable: 0
+  scoreOnDeath: 10
+  canRotate: 0
+  receivedDamagedOnHit: 1
+  knockCooldown: 1.5
+  degree: 
 --- !u!54 &4164943758443417
 Rigidbody:
   m_ObjectHideFlags: 0

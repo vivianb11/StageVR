@@ -37,7 +37,6 @@ public class ShieldDetection : MonoBehaviour
         }
         // Here
         Activate(closestPoint);
-        changeDirection(closestPoint);
     }
 
     public void changeDirection(GameObject obj)

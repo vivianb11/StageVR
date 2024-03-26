@@ -1,6 +1,7 @@
 using System.Collections;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(BoxCollider))]
@@ -20,6 +21,8 @@ public class Mob : MonoBehaviour
 
     [Header("Rotation Parameters")]
     [ShowIf("canRotate")] public int[] degree;
+
+    FeedbackScale feedbackScale;
 
     private bool _isKnocked = false;
 
@@ -96,7 +99,8 @@ public class Mob : MonoBehaviour
     {
         lifepoints -= receivedDamagedOnHit;
         IsDeadCheck();
-
+        feedbackScale.ScaleIn();
+        feedbackScale.ScaleOut();
         if (isKnockable) StartCoroutine(Knocked());
     }
 

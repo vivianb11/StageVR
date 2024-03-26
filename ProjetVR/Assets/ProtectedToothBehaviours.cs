@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-[RequireComponent(typeof(MaterialChanger))]
 public class ProtectedToothBehaviours : MonoBehaviour
 {
     [Header("Tooth Characteristics")]
@@ -12,22 +11,31 @@ public class ProtectedToothBehaviours : MonoBehaviour
     [SerializeField] int receivedDamagedOnHit;
     [SerializeField] UnityEvent onDamaged = new UnityEvent();
     [SerializeField] UnityEvent onDeath = new UnityEvent();
-    private MaterialChanger _materialChanger;
-    private int materialCurrentIndex = 0;
+    [SerializeField] Material material2HP; //the material the tooth has at 2 hp
+    [SerializeField] Material material1HP; //the material the tooth has at 1 hp
 
-    private void Start()
-    {
-        _materialChanger = GetComponent<MaterialChanger>();
-    }
 
     public void Damaged()
     {
         if (health <= 0) return;
         onDamaged.Invoke();
         health -= receivedDamagedOnHit;
-        materialCurrentIndex += 1;
-        _materialChanger.ChangeMaterial(materialCurrentIndex);
+        materialChange();
         IsDeadCheck();
+    }
+
+
+    private void materialChange()
+    {
+        if (health == 2)
+        {
+            gameObject.GetComponent<Renderer>().material = material2HP;
+        }
+
+        if (health == 1)
+        {
+            gameObject.GetComponent<Renderer>().material = material1HP;
+        }
     }
 
     private bool IsDeadCheck()

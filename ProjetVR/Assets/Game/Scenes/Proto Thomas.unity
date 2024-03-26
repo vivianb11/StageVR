@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3130029, g: 0.5501603, b: 0.8220557, a: 1}
+  m_IndirectSpecularColor: {r: 0.31343237, g: 0.55243826, b: 0.8233737, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -743,7 +743,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437110775}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e571d69dcaa00e4a8423acbf9b4a1f9, type: 3}
   m_Name: 
@@ -1757,11 +1757,24 @@ MonoBehaviour:
   - {fileID: 1141581364}
   - {fileID: 1803566568}
   mobArray:
+  - {fileID: 6638022967405250282, guid: 56c21ffeece17a0459f8677976cdf3de, type: 3}
   - {fileID: 6638022967405250282, guid: c76edd37e3c7fe647ab6c32c59930228, type: 3}
   - {fileID: 6638022967405250282, guid: 23d87bf6f84997149b99791847cdaecd, type: 3}
-  spawnInterval: 15
   target: {fileID: 1596418996}
   mobRotator: {fileID: 717860868454398895, guid: 49a144da7a60bbf43bb3161e221dabe8, type: 3}
+  spawnInterval: 15
+  numberSpawnerActivated: 4
+  weightEnemy1: 1
+  weightEnemy2: 1
+  weightEnemy3: 1
+  CurrentPercentageEnemy1: 50%
+  CurrentPercentageEnemy2: 16%
+  CurrentPercentageEnemy3: 34%
+  milestoneCount: 0
+  interval: 10
+  progressionMilestone:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &894062968
 Transform:
   m_ObjectHideFlags: 0
@@ -2558,11 +2571,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37592f61e2fbf2649ad7c4916fa41631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  receivedDamagedOnHit: 0
+  health: 3
+  receivedDamagedOnHit: 1
   onDamaged:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1352465489}
+        m_TargetAssemblyTypeName: FeedbackScale, Assembly-CSharp
+        m_MethodName: ScaleIn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1352465489}
+        m_TargetAssemblyTypeName: FeedbackScale, Assembly-CSharp
+        m_MethodName: ScaleOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDeath:
+    m_PersistentCalls:
       m_Calls: []
+  material2HP: {fileID: 2100000, guid: 1c73b20278462174b828e4a47b88bbda, type: 2}
+  material1HP: {fileID: 2100000, guid: a403dc9f1faf67940aa2c916eaeae866, type: 2}
 --- !u!65 &1352465485
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2604,7 +2646,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: bf3c04780d1f3a64baed45f66f4aaafc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2658,11 +2700,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1352465483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48450aa347c810941b4148afcdf3ca91, type: 3}
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 0}
+  scaleOffset: 3
+  scaleLerpSpeed: 0.3
 --- !u!1 &1357322431
 GameObject:
   m_ObjectHideFlags: 0
@@ -3107,7 +3149,6 @@ GameObject:
   - component: {fileID: 1605104832}
   - component: {fileID: 1605104836}
   - component: {fileID: 1605104835}
-  - component: {fileID: 1605104837}
   m_Layer: 0
   m_Name: Down
   m_TagString: Untagged
@@ -3279,21 +3320,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1605104837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1605104830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be8eec4a8b643384b964f4420579f166, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentActiveShield: {fileID: 0}
-  minDetectionRange: 1
-  points: []
 --- !u!1 &1680267534
 GameObject:
   m_ObjectHideFlags: 0

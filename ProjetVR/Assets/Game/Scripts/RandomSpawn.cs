@@ -107,7 +107,7 @@ public class RandomSpawn : MonoBehaviour
         int drop = _rnd.Next(0, 100);
         if (drop <= _percentageEnemy1) return mobArray[0];
         else if (drop <= _percentageEnemy2 && drop > _percentageEnemy1) return mobArray[1];
-        else if (drop <= _percentageEnemy3 && drop > _percentageEnemy2) return mobArray[3];
+        else if (drop <= _percentageEnemy3 && drop > _percentageEnemy2) return mobArray[2];
         return null;
     }
 

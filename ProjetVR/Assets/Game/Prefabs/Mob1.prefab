@@ -124,6 +124,9 @@ MonoBehaviour:
   moveSpeed: 2
   isKnockable: 0
   scoreOnDeath: 10
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls: []
   canRotate: 0
   receivedDamagedOnHit: 1
   knockCooldown: 1.5

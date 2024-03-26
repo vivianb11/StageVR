@@ -11,6 +11,7 @@ public class ProtectedToothBehaviours : MonoBehaviour
     [SerializeField] int health;
     [SerializeField] int receivedDamagedOnHit;
     [SerializeField] UnityEvent onDamaged = new UnityEvent();
+    [SerializeField] UnityEvent onDeath = new UnityEvent();
     private MaterialChanger _materialChanger;
     private int materialCurrentIndex = 0;
 
@@ -25,8 +26,20 @@ public class ProtectedToothBehaviours : MonoBehaviour
         onDamaged.Invoke();
         health -= receivedDamagedOnHit;
         materialCurrentIndex += 1;
-        Debug.Log(materialCurrentIndex);
         _materialChanger.ChangeMaterial(materialCurrentIndex);
+        IsDeadCheck();
     }
+
+    private bool IsDeadCheck()
+    {
+        bool condition = health == 0;
+        if (condition)
+        {
+            onDeath.Invoke();
+            Destroy(gameObject);
+        }
+        return condition;
+    }
+
     
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Outline))]
 public class OutlineScale : MonoBehaviour
 {
-    [SerializeField] float widthOffset;
+    [SerializeField] float newWidth;
     [SerializeField] [Range(0f, 1f)] float scaleLerpSpeed;
     private float originalWidth;
 
@@ -14,6 +14,7 @@ public class OutlineScale : MonoBehaviour
     private void Start()
     {
         outlineEffect = GetComponent<Outline>();
+        originalWidth = outlineEffect.OutlineWidth;
     }
 
     private IEnumerator ScaleTimer(float targetWidth)
@@ -30,7 +31,7 @@ public class OutlineScale : MonoBehaviour
         StopAllCoroutines();
 
 
-        float targetWidth = originalWidth * widthOffset;
+        float targetWidth = newWidth;
         StartCoroutine(ScaleTimer(targetWidth));
     }
 

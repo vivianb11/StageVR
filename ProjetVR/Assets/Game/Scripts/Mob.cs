@@ -123,6 +123,7 @@ public class Mob : MonoBehaviour
 
     private void Attack(GameObject protectedTooth)
     {
+        transform.parent.parent.gameObject.GetComponent<RandomSpawn>()._mobInstanceList.Remove(gameObject);
         protectedTooth.GetComponent<ProtectedToothBehaviours>().Damaged();
         onDeath.Invoke();
         Destroy(gameObject);

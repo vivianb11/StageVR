@@ -1829,6 +1829,7 @@ MonoBehaviour:
   - {fileID: 6638022967405250282, guid: 56c21ffeece17a0459f8677976cdf3de, type: 3}
   - {fileID: 6638022967405250282, guid: c76edd37e3c7fe647ab6c32c59930228, type: 3}
   - {fileID: 6638022967405250282, guid: 23d87bf6f84997149b99791847cdaecd, type: 3}
+  _mobInstanceList: []
   target: {fileID: 1596418996}
   mobRotator: {fileID: 717860868454398895, guid: 49a144da7a60bbf43bb3161e221dabe8, type: 3}
   spawnInterval: 15
@@ -2623,6 +2624,7 @@ GameObject:
   - component: {fileID: 1352465489}
   - component: {fileID: 1352465491}
   - component: {fileID: 1352465490}
+  - component: {fileID: 1352465492}
   m_Layer: 0
   m_Name: Tooth
   m_TagString: Protected
@@ -2704,6 +2706,9 @@ MonoBehaviour:
   shakeSpeed: 25
   shakeDuration: 45
   toothExplosion: {fileID: 2625892611844449159, guid: fbe8e61d982bbcd4aaf9b0ab006383e5, type: 3}
+  minValueOutline: 6
+  maxValueOutline: 12
+  duration: 1
 --- !u!65 &1352465485
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2841,6 +2846,24 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5d205fdb4f137214b80cdae0bf888ae2, type: 3}
     timePaused: 0
     pausedTime: 0
+--- !u!114 &1352465492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352465483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.8018868, g: 0, b: 0, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1357322431
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using NaughtyAttributes;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,17 +19,20 @@ public class Mob : MonoBehaviour
     [Header("On Hit Parameters")]
     [SerializeField] int receivedDamagedOnHit;
     [ShowIf("isKnockable")] [SerializeField] float knockCooldown;
+    [ShowIf("isKnockable")] [SerializeField] Outline outlineEffect;
+
 
     [Header("Rotation Parameters")]
     [ShowIf("canRotate")] public int[] degree;
 
-    FeedbackScale feedbackScale;
+    private FeedbackScale _feedbackScale;
 
     private bool _isKnocked = false;
 
     private void Start()
     {
-        if (! canRotate) return;
+        _feedbackScale = GetComponent<FeedbackScale>();
+        if (!canRotate) return;
         
         GetComponent<BoxCollider>().isTrigger = true;
         StartCoroutine(DelayRotation());
@@ -99,9 +103,12 @@ public class Mob : MonoBehaviour
     {
         lifepoints -= receivedDamagedOnHit;
         IsDeadCheck();
-        feedbackScale.ScaleIn();
-        feedbackScale.ScaleOut();
-        if (isKnockable) StartCoroutine(Knocked());
+        _feedbackScale.ScaleIn();
+        _feedbackScale.ScaleOut();
+        if (!isKnockable) return;
+
+        StartCoroutine(Knocked());
+        ReduceOutile();
     }
 
     private void Attack(GameObject protectedTooth)
@@ -119,5 +126,11 @@ public class Mob : MonoBehaviour
             Destroy(gameObject);
         }
         return condition;
+    }
+
+    private void ReduceOutile()
+    {
+        if (lifepoints == 2) outlineEffect.OutlineWidth = 1;
+        else if (lifepoints == 1) outlineEffect.enabled = false;
     }
 }

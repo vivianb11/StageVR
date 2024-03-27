@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2902745736869667374}
   - component: {fileID: 9061522032183409264}
   - component: {fileID: 4164943758443417}
+  - component: {fileID: 8132046592984198127}
   m_Layer: 6
   m_Name: Mob1
   m_TagString: Untagged
@@ -125,12 +126,10 @@ MonoBehaviour:
   moveSpeed: 2
   isKnockable: 0
   scoreOnDeath: 10
-  onDamaged:
-    m_PersistentCalls:
-      m_Calls: []
   canRotate: 0
   receivedDamagedOnHit: 1
   knockCooldown: 1.5
+  outlineEffect: {fileID: 0}
   degree: 
 --- !u!54 &4164943758443417
 Rigidbody:
@@ -159,6 +158,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &8132046592984198127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638022967405250282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleOffset: 1.05
+  scaleLerpSpeed: 0.15
 --- !u!1001 &5402764750460147546
 PrefabInstance:
   m_ObjectHideFlags: 0

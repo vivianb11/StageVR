@@ -153,11 +153,13 @@ public class Tween : MonoBehaviour
                 yield return new WaitForSeconds(tweenProperties[i - 1].duration / speed);
 
             Vector3 from = tweenPropertie.from;
+            Vector3 to = tweenPropertie.to;
 
             switch (tweenPropertie.propertie)
             {
                 case TweenProperty.Properties.POSITION:
                     from = tweenPropertie.useDynamicFrom ? transform.position : tweenPropertie.from;
+                    to = tweenPropertie.useGameObjectTo ? tweenPropertie.toObject.position : tweenPropertie.to;
                     break;
                 case TweenProperty.Properties.LOCAL_POSITION:
                     from = tweenPropertie.useDynamicFrom ? transform.localPosition : tweenPropertie.from;
@@ -170,7 +172,7 @@ public class Tween : MonoBehaviour
                     break;
             }
 
-            StartCoroutine(PropertyCoroutine(tweenPropertie.propertie, from, tweenPropertie.to, tweenPropertie.duration / speed, tweenPropertie.curve));
+            StartCoroutine(PropertyCoroutine(tweenPropertie.propertie, from, to, tweenPropertie.duration / speed, tweenPropertie.curve));
             StartCoroutine(InvokeDelay(tweenPropertie.completed, tweenPropertie.duration / speed));
         }
     }
@@ -239,8 +241,10 @@ public struct TweenProperty
 
     [Space(20)]
     public bool useDynamicFrom;
+    public bool useGameObjectTo;
     public Vector3 from;
     public Vector3 to;
+    public Transform toObject;
 
     [Space(20)]
     public float duration;

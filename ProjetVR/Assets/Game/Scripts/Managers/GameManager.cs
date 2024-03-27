@@ -1,8 +1,10 @@
+using SerializableCallback;
 using SignalSystem;
 using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -68,5 +70,15 @@ public class GameManager : MonoBehaviour
         }
 
         OVRManager.display.RecenterPose();
+    }
+
+    public void RestartSceneTimer()
+    {
+        Invoke("RestartScene", 5f);
+    }
+
+    private void RestartScene()
+    {
+        SceneLoader.Instance.LodScene(3);
     }
 }

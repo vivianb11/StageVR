@@ -5,6 +5,7 @@ using NaughtyAttributes;
 using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 [ExecuteInEditMode]
 public class RandomSpawn : MonoBehaviour
@@ -12,6 +13,7 @@ public class RandomSpawn : MonoBehaviour
     [Header("Spawner Characteristics")]
     [SerializeField] public GameObject[] spawnerArray;
     [SerializeField] public GameObject[] mobArray;
+    private List<GameObject> _mobInstanceList = new();
 
     [Header("Spawned Mob Parameters")]
     [SerializeField] GameObject target;
@@ -73,12 +75,15 @@ public class RandomSpawn : MonoBehaviour
 
         if(mobBehaviors.canRotate) AddRotator(newMob);
 
+        else _mobInstanceList.Add(newMob);
+
         if (mobBehaviors != null) mobBehaviors.target = target.transform;
     }
 
     private void AddRotator(GameObject newMob)
     {
         GameObject newParent = Instantiate(mobRotator, target.transform);
+        _mobInstanceList.Add(newParent);
         newMob.transform.parent = newParent.transform;
     }
 
@@ -135,4 +140,11 @@ public class RandomSpawn : MonoBehaviour
     }
 
     private void OnDisable() => milestoneCount = 0;
+
+    public void Clear()
+    {
+        foreach (GameObject mob in _mobInstanceList) if (mob is not null) Destroy(mob);
+        _mobInstanceList.Clear();
+        StopAllCoroutines();
+    }
 }

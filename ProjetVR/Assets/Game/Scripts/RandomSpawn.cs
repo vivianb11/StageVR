@@ -141,10 +141,9 @@ public class RandomSpawn : MonoBehaviour
 
     private void OnDisable() => milestoneCount = 0;
 
-    public void Clear()
+
+    public void StopAll()
     {
-        foreach (GameObject mob in _mobInstanceList) if (mob is not null) Destroy(mob);
-        _mobInstanceList.Clear();
-        StopAllCoroutines();
+        //foreach (GameObject mob in _mobInstanceList) if (mob is not null) mob.GetComponent<Mob>().moveSpeed = 0;
     }
 }

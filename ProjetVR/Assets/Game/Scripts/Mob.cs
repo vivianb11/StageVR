@@ -11,14 +11,15 @@ public class Mob : MonoBehaviour
     [Header("Mob Characteristics")]
     [ReadOnly] public Transform target;
     [SerializeField] int lifepoints;
-    [SerializeField] float moveSpeed;
+    public float moveSpeed;
     [SerializeField] bool isKnockable;
     [SerializeField] int scoreOnDeath;
     public bool canRotate;
 
     [Header("On Hit Parameters")]
     [SerializeField] int receivedDamagedOnHit;
-    [ShowIf("isKnockable")][SerializeField] float knockCooldown;
+    [ShowIf("isKnockable")] [SerializeField] float knockCooldown;
+    [ShowIf("isKnockable")] [SerializeField] Outline outlineEffect;
 
     [Header("Rotation Parameters")]
     [ShowIf("canRotate")] public int[] degree;
@@ -41,6 +42,12 @@ public class Mob : MonoBehaviour
     private void Update()
     {
         Move();
+        RotateMesh();
+    }
+
+    private void RotateMesh()
+    {
+        transform.GetChild(0).transform.Rotate(0,0,50*Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -105,7 +112,9 @@ public class Mob : MonoBehaviour
         IsDeadCheck();
         gameObject.GetComponent<FeedbackScale>().ScaleIn();
         gameObject.GetComponent<FeedbackScale>().ScaleOut();
-        if (isKnockable) StartCoroutine(Knocked());
+        if (!isKnockable) return;
+        StartCoroutine(Knocked());
+        ChangeOutline();
     }
 
     private void Attack(GameObject protectedTooth)
@@ -123,5 +132,11 @@ public class Mob : MonoBehaviour
             Destroy(gameObject);
         }
         return condition;
+    }
+
+    private void ChangeOutline()
+    {
+        if (lifepoints == 2)  outlineEffect.OutlineWidth = 2;
+        else if (lifepoints == 1) outlineEffect.enabled = false;
     }
 }

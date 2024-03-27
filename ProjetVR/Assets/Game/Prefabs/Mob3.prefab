@@ -129,6 +129,7 @@ MonoBehaviour:
   canRotate: 1
   receivedDamagedOnHit: 1
   knockCooldown: 0
+  outlineEffect: {fileID: 0}
   degree: 2d0000005a00000087000000b4000000e00000000e0100003b010000
   sounds:
   - soundType: 0
@@ -164,7 +165,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!114 &-5552470720345247133
 MonoBehaviour:

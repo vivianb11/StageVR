@@ -16,6 +16,7 @@ public class SoundEmiter : MonoBehaviour
     [Button("Play Sound")]
     public void PlaySound()
     {
+        Debug.Log("sound played");
         soundManager.PlaySound(sound, type, transform);
     }
 }

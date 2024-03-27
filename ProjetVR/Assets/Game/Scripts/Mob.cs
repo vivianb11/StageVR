@@ -99,8 +99,8 @@ public class Mob : MonoBehaviour
     {
         lifepoints -= receivedDamagedOnHit;
         IsDeadCheck();
-        feedbackScale.ScaleIn();
-        feedbackScale.ScaleOut();
+        gameObject.GetComponent<FeedbackScale>().ScaleIn();
+        gameObject.GetComponent<FeedbackScale>().ScaleOut();
         if (isKnockable) StartCoroutine(Knocked());
     }
 

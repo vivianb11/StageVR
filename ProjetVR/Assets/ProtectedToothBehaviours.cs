@@ -14,7 +14,6 @@ public class ProtectedToothBehaviours : MonoBehaviour
     [SerializeField] Material material2HP; //the material the tooth has at 2 hp
     [SerializeField] Material material1HP; //the material the tooth has at 1 hp
 
-
     public void Damaged()
     {
         if (health <= 0) return;

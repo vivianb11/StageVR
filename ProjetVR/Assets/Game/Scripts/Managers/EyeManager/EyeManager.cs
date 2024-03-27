@@ -46,6 +46,7 @@ public class EyeManager : MonoBehaviour
 
     public bool hitSuccessful;
     public Vector3 hitPosition;
+    public Object hitCollider;
 
     public SO_Signal grabActivation;
     public SO_Signal grabDeactivation;
@@ -202,7 +203,10 @@ public class EyeManager : MonoBehaviour
         hitSuccessful = Physics.Raycast(transform.position, targetForward, out hit, Mathf.Infinity, ignoreMask);
 
         if (hitSuccessful)
+        {
             hitPosition = hit.point;
+            hitCollider = hit.collider;
+        }
         else
             hitPosition = transform.position + cursor.forward * 1000f;
 

@@ -27,6 +27,9 @@ public class Mob : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] Sound[] sounds;
 
+    [SerializeField] UnityEvent onKnocked = new UnityEvent();
+    [SerializeField] UnityEvent onDeath = new UnityEvent();
+
     FeedbackScale feedbackScale;
 
     private bool _isKnocked = false;
@@ -88,6 +91,7 @@ public class Mob : MonoBehaviour
     private IEnumerator Knocked()
     {
         _isKnocked = true;
+        onKnocked.Invoke();
         moveSpeed *= 2f;
         yield return new WaitForSeconds(knockCooldown);
         moveSpeed *= 0.5f;
@@ -120,6 +124,7 @@ public class Mob : MonoBehaviour
     private void Attack(GameObject protectedTooth)
     {
         protectedTooth.GetComponent<ProtectedToothBehaviours>().Damaged();
+        onDeath.Invoke();
         Destroy(gameObject);
     }
 

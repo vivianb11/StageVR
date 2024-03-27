@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9061522032183409264}
   - component: {fileID: 4164943758443417}
   - component: {fileID: 3950084660395824396}
+  - component: {fileID: -8205924248234370164}
   m_Layer: 6
   m_Name: Mob1
   m_TagString: Untagged
@@ -130,6 +131,7 @@ MonoBehaviour:
   receivedDamagedOnHit: 1
   knockCooldown: 1.5
   degree: 
+  sounds: []
 --- !u!54 &4164943758443417
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -171,6 +173,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scaleOffset: 3
   scaleLerpSpeed: 0.3
+--- !u!114 &-8205924248234370164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638022967405250282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5c2cb0433461840a9c6e40dff9d892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  sound:
+    soundType: 2
+    clip: {fileID: 8300000, guid: 1fa3188af15811e4aabfb23d9008e7c9, type: 3}
+    timePaused: 0
+    pausedTime: 0
 --- !u!1001 &5402764750460147546
 PrefabInstance:
   m_ObjectHideFlags: 0

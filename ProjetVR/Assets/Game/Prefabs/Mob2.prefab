@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 543323189818032162}
   - component: {fileID: 4164943758443417}
   - component: {fileID: 3105006146038916852}
+  - component: {fileID: 1276735896218262331}
   m_Layer: 6
   m_Name: Mob2
   m_TagString: Untagged
@@ -131,6 +132,15 @@ MonoBehaviour:
   receivedDamagedOnHit: 1
   knockCooldown: 1.5
   degree: 
+  sounds:
+  - soundType: 0
+    clip: {fileID: 8300000, guid: 1b2f7f070dd101e4590d120b1c604904, type: 3}
+    timePaused: 0
+    pausedTime: 0
+  - soundType: 0
+    clip: {fileID: 8300000, guid: b5131605e66f1744ea66f0000cd8e108, type: 3}
+    timePaused: 0
+    pausedTime: 0
 --- !u!114 &543323189818032162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,6 +200,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scaleOffset: 3
   scaleLerpSpeed: 0.3
+--- !u!114 &1276735896218262331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638022967405250282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5c2cb0433461840a9c6e40dff9d892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  sound:
+    soundType: 2
+    clip: {fileID: 0}
+    timePaused: 0
+    pausedTime: 0
 --- !u!1001 &720215120202845245
 PrefabInstance:
   m_ObjectHideFlags: 0

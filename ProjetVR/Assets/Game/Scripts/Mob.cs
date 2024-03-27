@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,10 +18,13 @@ public class Mob : MonoBehaviour
 
     [Header("On Hit Parameters")]
     [SerializeField] int receivedDamagedOnHit;
-    [ShowIf("isKnockable")] [SerializeField] float knockCooldown;
+    [ShowIf("isKnockable")][SerializeField] float knockCooldown;
 
     [Header("Rotation Parameters")]
     [ShowIf("canRotate")] public int[] degree;
+
+    [Header("Sounds")]
+    [SerializeField] Sound[] sounds;
 
     FeedbackScale feedbackScale;
 

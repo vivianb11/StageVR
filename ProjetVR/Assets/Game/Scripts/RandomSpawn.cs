@@ -13,7 +13,7 @@ public class RandomSpawn : MonoBehaviour
     [Header("Spawner Characteristics")]
     [SerializeField] public GameObject[] spawnerArray;
     [SerializeField] public GameObject[] mobArray;
-    private List<GameObject> _mobInstanceList = new();
+    [HideInInspector] public List<GameObject> _mobInstanceList = new();
 
     [Header("Spawned Mob Parameters")]
     [SerializeField] GameObject target;
@@ -69,7 +69,6 @@ public class RandomSpawn : MonoBehaviour
 
     private void SpawnMob(GameObject _spawner, GameObject _mob)
     {
-        Debug.Log(_mob);
         GameObject newMob = Instantiate(_mob, _spawner.transform);
         Mob mobBehaviors = newMob.GetComponent<Mob>();
 
@@ -142,8 +141,20 @@ public class RandomSpawn : MonoBehaviour
     private void OnDisable() => milestoneCount = 0;
 
 
-    public void StopAll()
+    public void Freeze()
     {
-        //foreach (GameObject mob in _mobInstanceList) if (mob is not null) mob.GetComponent<Mob>().moveSpeed = 0;
+        Invoke("StopMob",0.75f);
     }
+
+    private void StopMob()
+    {
+        foreach (GameObject mob in _mobInstanceList) if (mob is not null) 
+        {
+            if (mob.GetComponent<Mob>() is null) mob.transform.GetChild(0).gameObject.GetComponent<Mob>().moveSpeed = 0;
+            else mob.GetComponent<Mob>().moveSpeed = 0;
+        }
+        StopAllCoroutines();
+    }
+
+
 }

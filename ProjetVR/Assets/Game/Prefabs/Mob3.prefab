@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2902745736869667374}
   - component: {fileID: 9061522032183409264}
   - component: {fileID: 4164943758443417}
-  - component: {fileID: 3697586805856249038}
+  - component: {fileID: -5552470720345247133}
   m_Layer: 6
   m_Name: Mob3
   m_TagString: Untagged
@@ -128,7 +128,6 @@ MonoBehaviour:
   canRotate: 1
   receivedDamagedOnHit: 1
   knockCooldown: 0
-  outlineEffect: {fileID: 0}
   degree: 2d0000005a00000087000000b4000000e00000000e0100003b010000
 --- !u!54 &4164943758443417
 Rigidbody:
@@ -157,7 +156,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &3697586805856249038
+--- !u!114 &-5552470720345247133
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,5 +168,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleOffset: 1.05
-  scaleLerpSpeed: 0.15
+  scaleOffset: 3
+  scaleLerpSpeed: 0.3

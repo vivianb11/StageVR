@@ -1775,6 +1775,29 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &746417284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4300419384766824503, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
+  m_PrefabInstance: {fileID: 2029824862}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &746417292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746417284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5c2cb0433461840a9c6e40dff9d892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  sound:
+    soundType: 2
+    clip: {fileID: 8300000, guid: cb2033597f2ade54eb613760693ef641, type: 3}
+    timePaused: 0
+    pausedTime: 0
 --- !u!1 &806470365
 GameObject:
   m_ObjectHideFlags: 0
@@ -2004,6 +2027,7 @@ MonoBehaviour:
   - {fileID: 6638022967405250282, guid: 23d87bf6f84997149b99791847cdaecd, type: 3}
   _mobInstanceList: []
   target: {fileID: 1596418996}
+  rotationPoint: {fileID: 0}
   mobRotator: {fileID: 717860868454398895, guid: 49a144da7a60bbf43bb3161e221dabe8, type: 3}
   spawnInterval: 15
   numberSpawnerActivated: 4
@@ -2016,6 +2040,9 @@ MonoBehaviour:
   milestoneCount: 0
   interval: 10
   progressionMilestone:
+    m_PersistentCalls:
+      m_Calls: []
+  allShooted:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &894062968
@@ -4423,7 +4450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4099816605616584650, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
       propertyPath: playMusicOnStart
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4099816605616584650, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
       propertyPath: musics.Array.size
@@ -4469,6 +4496,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5779212108944383287, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
+      propertyPath: m_Volume
+      value: 0.205
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861810227152323939, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
+      propertyPath: gameStarted.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861810227152323939, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
+      propertyPath: gameStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861810227152323939, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
+      propertyPath: gameStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 746417292}
+    - target: {fileID: 6861810227152323939, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
+      propertyPath: gameStarted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861810227152323939, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
+      propertyPath: gameStarted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaySound
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861810227152323939, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
+      propertyPath: gameStarted.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SoundEmiter, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861810227152323939, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
+      propertyPath: gameStarted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8496919285617108172, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
       propertyPath: duration
       value: 0.1
@@ -4488,7 +4547,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4300419384766824503, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 746417292}
   m_SourcePrefab: {fileID: 100100000, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
 --- !u!1 &2102629066
 GameObject:

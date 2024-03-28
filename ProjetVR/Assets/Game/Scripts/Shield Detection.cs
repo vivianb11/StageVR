@@ -9,13 +9,32 @@ public class ShieldDetection : MonoBehaviour
 
     [SerializeField] Transform[] points;
 
+    /*
+    [SerializeField] private Material activeMat;
+    [SerializeField] private Material inactiveMat;
+    private GameObject Panel;
+    private GameObject lastPanel;
+    */
+
+
     void Start()
     {
         currentActiveShield = null;
+        /*
+        Panel = EyeManager.Instance.hitCollider as GameObject;
+        lastPanel = EyeManager.Instance.hitCollider as GameObject;
+        */
     }
 
     private void FixedUpdate()
     {
+        /*
+        if (EyeManager.Instance != null || EyeManager.Instance.hitCollider != null)
+        {
+            ChangePanel();
+        }
+        */
+
         Vector3 hitPosition = EyeManager.Instance.hitPosition;
         float distanceToHitpoint = Vector3.Distance(transform.position, hitPosition);
 
@@ -35,7 +54,6 @@ public class ShieldDetection : MonoBehaviour
                 closestPoint = t;
             }
         }
-        // Here
         Activate(closestPoint);
     }
 
@@ -49,7 +67,6 @@ public class ShieldDetection : MonoBehaviour
     }
 
 
-    // Here
     public void Activate(GameObject obj)
     {
         DeactivateCurrentShield();
@@ -58,9 +75,7 @@ public class ShieldDetection : MonoBehaviour
 
         currentActiveShield = obj;
     }
-    // replace old shield with 
 
-    // Here
     public void Activate(Transform obj)
     {
         DeactivateCurrentShield();
@@ -70,7 +85,6 @@ public class ShieldDetection : MonoBehaviour
         currentActiveShield = obj.gameObject;
     }
 
-    // Here
     private void DeactivateCurrentShield()
     {
         if (currentActiveShield != null && currentActiveShield.activeSelf)
@@ -78,4 +92,24 @@ public class ShieldDetection : MonoBehaviour
             currentActiveShield.SetActive(false);
         }
     }
+
+    /*
+    public void ChangePanel()
+    {
+        //Changement couleur panel
+        Panel = EyeManager.Instance.hitCollider as GameObject;
+        MeshRenderer panelRenderer = Panel.GetComponent<MeshRenderer>();
+        MeshRenderer lastPanelRenderer = lastPanel.GetComponent<MeshRenderer>();
+
+
+        //Hit new panel
+        if (Panel.CompareTag("Panel") && lastPanel != Panel)
+        {
+            lastPanelRenderer.material = inactiveMat;
+            panelRenderer.material = activeMat;
+        }
+
+        lastPanel = Panel;
+    }
+    */
 }

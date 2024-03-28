@@ -1782,10 +1782,11 @@ MonoBehaviour:
   - {fileID: 6638022967405250282, guid: 56c21ffeece17a0459f8677976cdf3de, type: 3}
   - {fileID: 6638022967405250282, guid: c76edd37e3c7fe647ab6c32c59930228, type: 3}
   - {fileID: 6638022967405250282, guid: 23d87bf6f84997149b99791847cdaecd, type: 3}
+  _mobInstanceList: []
   target: {fileID: 1596418996}
   mobRotator: {fileID: 717860868454398895, guid: 49a144da7a60bbf43bb3161e221dabe8, type: 3}
-  spawnInterval: 3
-  numberSpawnerActivated: 1
+  spawnInterval: 2
+  numberSpawnerActivated: 3
   weightEnemy1: 3
   weightEnemy2: 3
   weightEnemy3: 3
@@ -2652,7 +2653,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 894062967}
         m_TargetAssemblyTypeName: RandomSpawn, Assembly-CSharp
-        m_MethodName: StopAll
+        m_MethodName: Freeze
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2798,7 +2799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newWidth: 10
-  scaleLerpSpeed: 0.3
+  scaleLerpSpeed: 0.828
 --- !u!1 &1357322431
 GameObject:
   m_ObjectHideFlags: 0

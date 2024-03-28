@@ -17,6 +17,7 @@ public class RandomSpawn : MonoBehaviour
 
     [Header("Spawned Mob Parameters")]
     [SerializeField] GameObject target;
+    [SerializeField] GameObject rotationPoint;
     [SerializeField] GameObject mobRotator;
 
     [Header("Difficulty Parameters")]
@@ -42,6 +43,9 @@ public class RandomSpawn : MonoBehaviour
     [NaughtyAttributes.ReadOnly] [SerializeField] int milestoneCount = 0;
     [SerializeField] int interval = 10;
     [SerializeField] UnityEvent progressionMilestone = new();
+
+    [Header("Death Event")]
+    [SerializeField] UnityEvent allShooted = new();
 
     void Start()
     {
@@ -81,7 +85,7 @@ public class RandomSpawn : MonoBehaviour
 
     private void AddRotator(GameObject newMob)
     {
-        GameObject newParent = Instantiate(mobRotator, target.transform);
+        GameObject newParent = Instantiate(mobRotator, rotationPoint.transform);
         _mobInstanceList.Add(newParent);
         newMob.transform.parent = newParent.transform;
     }
@@ -154,6 +158,17 @@ public class RandomSpawn : MonoBehaviour
             else mob.GetComponent<Mob>().moveSpeed = 0;
         }
         StopAllCoroutines();
+        Invoke("MissileAll", 1f);
+    }
+
+    public void MissileAll()
+    {
+        foreach (GameObject mob in _mobInstanceList) if (mob is not null) 
+        {
+            if (mob.GetComponent<Mob>() is null) mob.transform.GetChild(0).gameObject.GetComponent<Mob>().MissileShoot();
+            else mob.GetComponent<Mob>().MissileShoot();
+        }
+        allShooted.Invoke();
     }
 
 

@@ -57,24 +57,25 @@ public class ShieldDetection2 : MonoBehaviour
 
 
         //Target set to the eye tracker using vector3
-        /*
-        Quaternion rotTarget2;
 
-        if (hitPosition.y > 0)
-        {
-            Quaternion rotTarget = Quaternion.LookRotation(hitPosition - this.transform.position, Vector3.back);
-            this.transform.rotation = Quaternion.RotateTowards(fromRotation, rotTarget, Speed * Time.deltaTime);
-        }
-        else
-        {
-            Quaternion rotTarget = Quaternion.LookRotation(hitPosition - this.transform.position, Vector3.down);
-            this.transform.rotation = Quaternion.RotateTowards(fromRotation, rotTarget, Speed * Time.deltaTime);
-            rotTarget2 = rotTarget.Euler;
-            rotTarget2 = Quaternion.Euler(rotTarget2.x, 0, rotTarget2.z);
-            this.transform.rotation = rotTarget2;
-        }
-        Debug.Log(hitPosition);
-        */
+        Transform newRotation; 
+        
+        Quaternion rotTarget = Quaternion.LookRotation(hitPosition - this.transform.position, Vector3.back);
+        this.transform.rotation = Quaternion.RotateTowards(fromRotation, rotTarget, Speed * Time.deltaTime);
+
+
+        float currentYRotation = this.transform.eulerAngles.y;
+        float currentXRotation = this.transform.eulerAngles.x;
+        float currentZRotation = this.transform.eulerAngles.z;
+
+        Vector3 targetEulerAngles = rotTarget.eulerAngles;
+        targetEulerAngles.y = currentYRotation + 90f;
+        targetEulerAngles.x = 0;
+        targetEulerAngles.z = 0;
+
+        this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.Euler(targetEulerAngles), Speed * Time.deltaTime);
+        //.Log(hitPosition);
+
     }
 
 

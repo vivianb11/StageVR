@@ -21,7 +21,7 @@ public class ScoreManager : Singleton<ScoreManager>
     public float maxValue = 9f;
     public float duration = 1f;
 
-    private float currentValue;
+    private float fontSizeValue;
     private bool increasing = true;
     private float timer = 0f;
     private bool interpolationComplete = false;
@@ -30,7 +30,7 @@ public class ScoreManager : Singleton<ScoreManager>
 
     private void Start()
     {
-        currentValue = minValue;
+        fontSizeValue = minValue;
         if (PlayerPrefs.HasKey("HighScore")) bestScore = PlayerPrefs.GetInt("HighScore");
     }
     
@@ -39,33 +39,37 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         if (scaleUp == true)
         {
-            if (interpolationComplete)
-                return;
+            interpolationComplete = false;
 
             timer += Time.deltaTime;
 
             if (timer >= duration)
             {
+                if (!increasing)
+                {
+                    interpolationComplete = true; // stop updating after reaching maximum value
+                    scaleUp = false;
+                    timer = 0f;
+                }
+
                 timer = 0f;
                 increasing = !increasing;
-                if (!increasing)
-                    interpolationComplete = true; // Stop updating after reaching maximum value
+                
             }
 
             if (!interpolationComplete)
             {
                 if (increasing)
                 {
-                    currentValue = Mathf.Lerp(minValue, maxValue, timer / duration);
+                    fontSizeValue = Mathf.Lerp(minValue, maxValue, timer / duration);
                 }
                 else
                 {
-                    currentValue = Mathf.Lerp(maxValue, minValue, timer / duration);
+                    fontSizeValue = Mathf.Lerp(maxValue, minValue, timer / duration);
                 }
             }
-            // Use the currentValue for whatever purpose you need
-            Debug.Log("Current value: " + currentValue);
-            scaleUp = false;
+
+            scoreDisplay.fontSize = fontSizeValue;
         }
     }
 

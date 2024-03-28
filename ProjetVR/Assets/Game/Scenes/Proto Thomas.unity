@@ -1655,6 +1655,7 @@ GameObject:
   - component: {fileID: 595946407}
   - component: {fileID: 595946409}
   - component: {fileID: 595946410}
+  - component: {fileID: 595946411}
   m_Layer: 0
   m_Name: Down
   m_TagString: Shield
@@ -1775,6 +1776,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &595946411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595946404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa6e10b8c8ea4541b0f2996c59b3ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 1352465483}
+  collidingObject: {fileID: 6638022967405250282, guid: 56c21ffeece17a0459f8677976cdf3de, type: 3}
+  moveSpeed: 5
+  returnSpeed: 2
+  isColliding: 0
 --- !u!1 &746417284 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4300419384766824503, guid: 180711a12d322b44583b4dff76f002f9, type: 3}

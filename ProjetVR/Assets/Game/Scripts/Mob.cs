@@ -116,8 +116,11 @@ public class Mob : MonoBehaviour
     private void Damaged()
     {
         lifepoints -= receivedDamagedOnHit;
-        IsDeadCheck();
-        DamageParticles();
+        if (IsDeadCheck())
+        {
+            DamageParticles();
+            return;
+        }
         gameObject.GetComponent<FeedbackScale>().ScaleIn();
         gameObject.GetComponent<FeedbackScale>().ScaleOut();
         if (!isKnockable) return;
@@ -140,6 +143,8 @@ public class Mob : MonoBehaviour
         if (condition)
         {
             ScoreManager.Instance.AddScore(scoreOnDeath);
+            if (!canRotate) transform.parent.parent.gameObject.GetComponent<RandomSpawn>()._mobInstanceList.Remove(gameObject);
+            else GameObject.Find("SpawnerGroup").GetComponent<RandomSpawn>()._mobInstanceList.Remove(gameObject);
             Destroy(gameObject);
         }
         return condition;

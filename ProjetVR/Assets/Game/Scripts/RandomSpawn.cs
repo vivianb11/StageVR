@@ -6,6 +6,7 @@ using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
 using UnityEngine.Events;
 using System.Collections.Generic;
+using System.Linq;
 
 [ExecuteInEditMode]
 public class RandomSpawn : MonoBehaviour
@@ -152,9 +153,17 @@ public class RandomSpawn : MonoBehaviour
 
     private void StopMob()
     {
-        foreach (GameObject mob in _mobInstanceList) if (mob is not null) 
+        foreach (GameObject mob in (from mob in _mobInstanceList where mob is not null select mob).ToList()) if (mob is not null)
         {
-            if (mob.GetComponent<Mob>() is null) mob.transform.GetChild(0).gameObject.GetComponent<Mob>().moveSpeed = 0;
+            if (mob.GetComponent<Mob>() is null) 
+            {
+
+                if (mob.transform.childCount > 0) mob.transform.GetChild(0).gameObject.GetComponent<Mob>().moveSpeed = 0;
+                else
+                {
+                    continue;
+                }
+            }
             else mob.GetComponent<Mob>().moveSpeed = 0;
         }
         StopAllCoroutines();
@@ -163,9 +172,19 @@ public class RandomSpawn : MonoBehaviour
 
     public void MissileAll()
     {
-        foreach (GameObject mob in _mobInstanceList) if (mob is not null) 
+        foreach (GameObject mob in (from mob in _mobInstanceList where mob is not null select mob).ToList()) if (mob is not null)
         {
-            if (mob.GetComponent<Mob>() is null) mob.transform.GetChild(0).gameObject.GetComponent<Mob>().MissileShoot();
+            if (mob is null) continue;
+            if (mob.GetComponent<Mob>() is null) 
+            {
+                if (mob.transform.childCount > 0) mob.transform.GetChild(0).gameObject.GetComponent<Mob>().MissileShoot();
+                else
+                {
+                    Destroy(mob);
+                    continue;
+                }
+
+            }
             else mob.GetComponent<Mob>().MissileShoot();
         }
         allShooted.Invoke();

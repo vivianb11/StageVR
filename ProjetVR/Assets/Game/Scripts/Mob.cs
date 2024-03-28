@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,7 +11,7 @@ public class Mob : MonoBehaviour
     [Header("Mob Characteristics")]
     [ReadOnly] public Transform target;
     [SerializeField] int lifepoints;
-    [SerializeField] float moveSpeed;
+    public float moveSpeed;
     [SerializeField] bool isKnockable;
     [SerializeField] int scoreOnDeath;
     public bool canRotate;
@@ -18,13 +19,21 @@ public class Mob : MonoBehaviour
     [Header("On Hit Parameters")]
     [SerializeField] int receivedDamagedOnHit;
     [ShowIf("isKnockable")] [SerializeField] float knockCooldown;
+    [ShowIf("isKnockable")] [SerializeField] Outline outlineEffect;
 
     [Header("Rotation Parameters")]
     [ShowIf("canRotate")] public int[] degree;
 
+    [Header("Sounds")]
+    [SerializeField] Sound[] sounds;
+
+    [SerializeField] UnityEvent onKnocked = new UnityEvent();
+    [SerializeField] UnityEvent onDeath = new UnityEvent();
+
     FeedbackScale feedbackScale;
 
     private bool _isKnocked = false;
+    public Tween _tween;
 
     private void Start()
     {
@@ -37,6 +46,12 @@ public class Mob : MonoBehaviour
     private void Update()
     {
         Move();
+        RotateMesh();
+    }
+
+    private void RotateMesh()
+    {
+        if (!canRotate) transform.GetChild(0).transform.Rotate(0,0,50*Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -77,6 +92,7 @@ public class Mob : MonoBehaviour
     private IEnumerator Knocked()
     {
         _isKnocked = true;
+        onKnocked.Invoke();
         moveSpeed *= 2f;
         yield return new WaitForSeconds(knockCooldown);
         moveSpeed *= 0.5f;
@@ -101,12 +117,17 @@ public class Mob : MonoBehaviour
         IsDeadCheck();
         gameObject.GetComponent<FeedbackScale>().ScaleIn();
         gameObject.GetComponent<FeedbackScale>().ScaleOut();
-        if (isKnockable) StartCoroutine(Knocked());
+        if (!isKnockable) return;
+        StartCoroutine(Knocked());
+        ChangeOutline();
     }
 
     private void Attack(GameObject protectedTooth)
     {
+        if (!canRotate) transform.parent.parent.gameObject.GetComponent<RandomSpawn>()._mobInstanceList.Remove(gameObject);
+        else GameObject.Find("SpawnerGroup").GetComponent<RandomSpawn>()._mobInstanceList.Remove(gameObject);
         protectedTooth.GetComponent<ProtectedToothBehaviours>().Damaged();
+        onDeath.Invoke();
         Destroy(gameObject);
     }
 
@@ -119,5 +140,17 @@ public class Mob : MonoBehaviour
             Destroy(gameObject);
         }
         return condition;
+    }
+
+    private void ChangeOutline()
+    {
+        if (lifepoints == 2)  outlineEffect.OutlineWidth = 2;
+        else if (lifepoints == 1) outlineEffect.enabled = false;
+    }
+
+    public void MissileShoot()
+    {
+        _tween.tweenMontages[0].tweenProperties[0].toObject = target.transform;
+        _tween.PlayTween("Missile");
     }
 }

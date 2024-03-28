@@ -13,10 +13,11 @@ public class RandomSpawn : MonoBehaviour
     [Header("Spawner Characteristics")]
     [SerializeField] public GameObject[] spawnerArray;
     [SerializeField] public GameObject[] mobArray;
-    private List<GameObject> _mobInstanceList = new();
+    [HideInInspector] public List<GameObject> _mobInstanceList = new();
 
     [Header("Spawned Mob Parameters")]
     [SerializeField] GameObject target;
+    [SerializeField] GameObject rotationPoint;
     [SerializeField] GameObject mobRotator;
 
     [Header("Difficulty Parameters")]
@@ -42,6 +43,9 @@ public class RandomSpawn : MonoBehaviour
     [NaughtyAttributes.ReadOnly] [SerializeField] int milestoneCount = 0;
     [SerializeField] int interval = 10;
     [SerializeField] UnityEvent progressionMilestone = new();
+
+    [Header("Death Event")]
+    [SerializeField] UnityEvent allShooted = new();
 
     void Start()
     {
@@ -69,7 +73,6 @@ public class RandomSpawn : MonoBehaviour
 
     private void SpawnMob(GameObject _spawner, GameObject _mob)
     {
-        Debug.Log(_mob);
         GameObject newMob = Instantiate(_mob, _spawner.transform);
         Mob mobBehaviors = newMob.GetComponent<Mob>();
 
@@ -82,7 +85,7 @@ public class RandomSpawn : MonoBehaviour
 
     private void AddRotator(GameObject newMob)
     {
-        GameObject newParent = Instantiate(mobRotator, target.transform);
+        GameObject newParent = Instantiate(mobRotator, rotationPoint.transform);
         _mobInstanceList.Add(newParent);
         newMob.transform.parent = newParent.transform;
     }
@@ -141,10 +144,32 @@ public class RandomSpawn : MonoBehaviour
 
     private void OnDisable() => milestoneCount = 0;
 
-    public void Clear()
+
+    public void Freeze()
     {
-        foreach (GameObject mob in _mobInstanceList) if (mob is not null) Destroy(mob);
-        _mobInstanceList.Clear();
-        StopAllCoroutines();
+        Invoke("StopMob",0.75f);
     }
+
+    private void StopMob()
+    {
+        foreach (GameObject mob in _mobInstanceList) if (mob is not null) 
+        {
+            if (mob.GetComponent<Mob>() is null) mob.transform.GetChild(0).gameObject.GetComponent<Mob>().moveSpeed = 0;
+            else mob.GetComponent<Mob>().moveSpeed = 0;
+        }
+        StopAllCoroutines();
+        Invoke("MissileAll", 1f);
+    }
+
+    public void MissileAll()
+    {
+        foreach (GameObject mob in _mobInstanceList) if (mob is not null) 
+        {
+            if (mob.GetComponent<Mob>() is null) mob.transform.GetChild(0).gameObject.GetComponent<Mob>().MissileShoot();
+            else mob.GetComponent<Mob>().MissileShoot();
+        }
+        allShooted.Invoke();
+    }
+
+
 }

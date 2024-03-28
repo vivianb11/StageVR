@@ -15,15 +15,74 @@ public class ScoreManager : Singleton<ScoreManager>
     [Header("Target")]
     [SerializeField] TextMeshPro scoreDisplay;
 
-    
+
+    //variables for scale up/down de Thomas
+    public float minValue = 6f;
+    public float maxValue = 9f;
+    public float duration = 1f;
+
+    private float fontSizeValue;
+    private bool increasing = true;
+    private float timer = 0f;
+    private bool interpolationComplete = false;
+    private bool scaleUp = false;
+
+
     private void Start()
     {
+        fontSizeValue = minValue;
         if (PlayerPrefs.HasKey("HighScore")) bestScore = PlayerPrefs.GetInt("HighScore");
+    }
+    
+    //scale up de thom, à essayer avec le casque
+    void ScaleUpScaleDown()
+    {
+        if (scaleUp == true)
+        {
+            interpolationComplete = false;
+
+            timer += Time.deltaTime;
+
+            if (timer >= duration)
+            {
+                if (!increasing)
+                {
+                    interpolationComplete = true; // stop updating after reaching maximum value
+                    scaleUp = false;
+                    timer = 0f;
+                }
+
+                timer = 0f;
+                increasing = !increasing;
+                
+            }
+
+            if (!interpolationComplete)
+            {
+                if (increasing)
+                {
+                    fontSizeValue = Mathf.Lerp(minValue, maxValue, timer / duration);
+                }
+                else
+                {
+                    fontSizeValue = Mathf.Lerp(maxValue, minValue, timer / duration);
+                }
+            }
+
+            scoreDisplay.fontSize = fontSizeValue;
+        }
+    }
+
+
+    void Update()
+    {
+        ScaleUpScaleDown();
     }
 
     public void AddScore(int scoreToAdd)
     {
         currentScore += scoreToAdd;
+        scaleUp = true;
         scoreDisplay.text = currentScore.ToString();
     }
 

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -5552470720345247133}
   - component: {fileID: 2813205082454382810}
   - component: {fileID: -7442607955397943899}
+  - component: {fileID: 6139884061661503014}
   m_Layer: 6
   m_Name: Mob3
   m_TagString: Untagged
@@ -171,6 +172,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _tween: {fileID: 6139884061661503014}
 --- !u!54 &4164943758443417
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -248,3 +250,63 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 7b7d68130e1683f48a7982fba72a725a, type: 3}
     timePaused: 0
     pausedTime: 0
+--- !u!114 &6139884061661503014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638022967405250282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f9fcf52fd23e949be2a4294fb4537c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenMontages:
+  - name: Missile
+    waitPreviousMontage: 0
+    speed: 1
+    tweenProperties:
+    - propertie: 0
+      waitForPreviousTweenProperty: 0
+      useDynamicFrom: 1
+      useGameObjectTo: 1
+      from: {x: 0, y: 0, z: 0}
+      to: {x: 0, y: 0, z: 0}
+      toObject: {fileID: 0}
+      duration: 0.3
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.333333
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 2.0000029
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333302
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      completed:
+        m_PersistentCalls:
+          m_Calls: []
+    started:
+      m_PersistentCalls:
+        m_Calls: []
+    completed:
+      m_PersistentCalls:
+        m_Calls: []
+  autoPlayMontage: 0
+  tweenIndex: 0

@@ -33,6 +33,7 @@ public class Mob : MonoBehaviour
     FeedbackScale feedbackScale;
 
     private bool _isKnocked = false;
+    public Tween _tween;
 
     private void Start()
     {
@@ -50,7 +51,7 @@ public class Mob : MonoBehaviour
 
     private void RotateMesh()
     {
-        transform.GetChild(0).transform.Rotate(0,0,50*Time.deltaTime);
+        if (!canRotate) transform.GetChild(0).transform.Rotate(0,0,50*Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -123,7 +124,8 @@ public class Mob : MonoBehaviour
 
     private void Attack(GameObject protectedTooth)
     {
-        transform.parent.parent.gameObject.GetComponent<RandomSpawn>()._mobInstanceList.Remove(gameObject);
+        if (!canRotate) transform.parent.parent.gameObject.GetComponent<RandomSpawn>()._mobInstanceList.Remove(gameObject);
+        else GameObject.Find("SpawnerGroup").GetComponent<RandomSpawn>()._mobInstanceList.Remove(gameObject);
         protectedTooth.GetComponent<ProtectedToothBehaviours>().Damaged();
         onDeath.Invoke();
         Destroy(gameObject);
@@ -144,5 +146,11 @@ public class Mob : MonoBehaviour
     {
         if (lifepoints == 2)  outlineEffect.OutlineWidth = 2;
         else if (lifepoints == 1) outlineEffect.enabled = false;
+    }
+
+    public void MissileShoot()
+    {
+        _tween.tweenMontages[0].tweenProperties[0].toObject = target.transform;
+        _tween.PlayTween("Missile");
     }
 }

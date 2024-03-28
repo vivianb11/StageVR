@@ -20,6 +20,8 @@ public class Mob : MonoBehaviour
     [SerializeField] int receivedDamagedOnHit;
     [ShowIf("isKnockable")] [SerializeField] float knockCooldown;
     [ShowIf("isKnockable")] [SerializeField] Outline outlineEffect;
+    [ShowIf("isKnockable")] [SerializeField] GameObject hpLossParticles;
+    [SerializeField] GameObject deathParticles;
 
     [Header("Rotation Parameters")]
     [ShowIf("canRotate")] public int[] degree;
@@ -115,6 +117,7 @@ public class Mob : MonoBehaviour
     {
         lifepoints -= receivedDamagedOnHit;
         IsDeadCheck();
+        DamageParticles();
         gameObject.GetComponent<FeedbackScale>().ScaleIn();
         gameObject.GetComponent<FeedbackScale>().ScaleOut();
         if (!isKnockable) return;
@@ -152,5 +155,20 @@ public class Mob : MonoBehaviour
     {
         _tween.tweenMontages[0].tweenProperties[0].toObject = target.transform;
         _tween.PlayTween("Missile");
+    }
+
+    public void DamageParticles()
+    {
+        if (lifepoints >= 1)
+        {
+            GameObject instantiatedObject = Instantiate(hpLossParticles, transform.position, transform.rotation);
+            Destroy(instantiatedObject, 3f);
+        }
+
+        else
+        {
+            GameObject instantiatedObject = Instantiate(deathParticles, transform.position, transform.rotation);
+            Destroy(instantiatedObject, 3f);
+        }
     }
 }

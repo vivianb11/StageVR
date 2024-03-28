@@ -29,6 +29,14 @@ public class ProtectedToothBehaviours : MonoBehaviour
     private float _currentWidth;
     private float _speed = 0.5f;
 
+    //variables for thomas trying to make outline work
+    public float minValueOutline = 6f;
+    public float maxValueOutline = 12f;
+    public float duration = 1f;
+
+    private float outlineValue; //the variable that constantly changes up and down
+    private bool increasing = true;
+    private float timer = 0f;
 
 
     void Start()
@@ -36,7 +44,7 @@ public class ProtectedToothBehaviours : MonoBehaviour
         originalPosition = transform.position;
         _outlineScaleEffect = GetComponent<OutlineScale>();
         _outlineEffect = GetComponent<Outline>();
-        _outlineEffect.enabled = false;
+        _outlineEffect.OutlineWidth = 0;
     }
 
     public void Damaged()
@@ -47,10 +55,39 @@ public class ProtectedToothBehaviours : MonoBehaviour
         materialChange();
         //ScaleInStep();
         IsDeadCheck();
-
     }
 
-    
+    public void OutlinePulsating()
+    {
+        timer += Time.deltaTime;
+
+        if (timer >= duration)
+        {
+            timer = 0f;
+            increasing = !increasing;
+        }
+
+        if (increasing)
+        {
+            outlineValue = Mathf.Lerp(minValueOutline, maxValueOutline, timer / duration);
+        }
+        else
+        {
+            outlineValue = Mathf.Lerp(maxValueOutline, minValueOutline, timer / duration);
+        }
+
+        _outlineEffect.OutlineWidth = outlineValue;
+    }
+
+    void Update()
+    {
+        if (health == 1)
+        {
+            OutlinePulsating();
+        }
+        
+    }
+
     // private void Update()
     // {
     //     _currentWidth += _speed * Time.deltaTime;

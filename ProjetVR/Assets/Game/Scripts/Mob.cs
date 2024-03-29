@@ -124,7 +124,7 @@ public class Mob : MonoBehaviour
         gameObject.GetComponent<FeedbackScale>().ScaleIn();
         gameObject.GetComponent<FeedbackScale>().ScaleOut();
         if (!isKnockable) return;
-        StartCoroutine(Knocked());
+        if (!IsDeadCheck()) StartCoroutine(Knocked());
         ChangeOutline();
     }
 
@@ -142,6 +142,7 @@ public class Mob : MonoBehaviour
         bool condition = lifepoints == 0;
         if (condition)
         {
+            onDeath.Invoke();
             ScoreManager.Instance.AddScore(scoreOnDeath);
             if (!canRotate) transform.parent.parent.gameObject.GetComponent<RandomSpawn>()._mobInstanceList.Remove(gameObject);
             else GameObject.Find("SpawnerGroup").GetComponent<RandomSpawn>()._mobInstanceList.Remove(gameObject);

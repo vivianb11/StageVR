@@ -70,7 +70,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 185d30be8b3dd1848a8653dcdbe671bb, type: 2}
+  - {fileID: 2100000, guid: ac0f8ee18b725294b8505ccdfe88d602, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   lifepoints: 3
-  moveSpeed: 2
+  moveSpeed: 1
   isKnockable: 1
   scoreOnDeath: 10
   canRotate: 0

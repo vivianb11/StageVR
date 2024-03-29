@@ -197,7 +197,7 @@ public class EyeManager : MonoBehaviour
     {
         Vector3 targetForward = EyeTrackingData.eyeOffset != Vector3.zero ? Quaternion.Euler(EyeTrackingData.eyeOffset) * cursor.forward : cursor.forward;
 
-        Debug.DrawRay(transform.position, transform.forward * 50f, Color.red);
+        Debug.DrawRay(transform.position, cursor.forward * 50f, Color.red);
         Debug.DrawRay(transform.position, targetForward * 50f, Color.green);
 
         hitSuccessful = Physics.Raycast(transform.position, targetForward, out hit, Mathf.Infinity, ignoreMask);

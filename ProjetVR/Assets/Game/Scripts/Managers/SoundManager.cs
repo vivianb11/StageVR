@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -22,7 +23,7 @@ public class SoundManager : MonoBehaviour
     private AudioSource _musicSource;
 
     // The key is the audio source and the value is the sound that is playing on it
-    private Dictionary<AudioSource,Sound> _audioSources;
+    public Dictionary<AudioSource,Sound> _audioSources;
 
     private void Awake()
     {
@@ -61,12 +62,25 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        return;
+
+        foreach (var audio in _audioSources)
+        {
+            var aS = audio.Key;
+            var sound = audio.Value;
+
+            Debug.Log(aS.name + " " + sound?.clip.name + " " + sound?.isPaused);
+        }
+    }
+
     public int PlaySound(Sound sound, SoundPlacing soundPlacing = SoundPlacing.Global, Transform location = null)
     {
         if (sound.soundType == SoundType.Music)
         {
             PlayMusic(sound.clip);
-            return 0;
+            return -1;
         }
 
         AudioSource audioSource = null;
@@ -78,7 +92,7 @@ public class SoundManager : MonoBehaviour
             var aS = audio.Key;
             var s = audio.Value;
 
-            if (!aS.isPlaying && s is null || s.isPaused && s.timePaused >= AudioData.expirationTime[s.soundType])
+            if (s is null || s.isPaused && s.timePaused >= AudioData.expirationTime[s.soundType] && AudioData.expirationTime[s.soundType] > 0)
             {
                 audioSource = aS;
                 break;
@@ -101,16 +115,19 @@ public class SoundManager : MonoBehaviour
         if (audioSource is null)
             Debug.LogWarning("No audio source available to play the sound");
 
+        _audioSources[audioSource] = null;
         _audioSources[audioSource] = sound;
 
         switch (soundPlacing)
         {
             case SoundPlacing.Global:
+                audioSource.transform.SetParent(transform);
                 audioSource.transform.position = Vector3.zero;
                 audioSource.spatialBlend = 0;
                 break;
             case SoundPlacing.Local:
-                audioSource.transform.position = location.position;
+                audioSource.transform.SetParent(location);
+                audioSource.transform.localPosition = Vector3.zero;
                 audioSource.spatialBlend = 1;
                 break;
         }
@@ -118,6 +135,8 @@ public class SoundManager : MonoBehaviour
         audioSource.volume = AudioData.volumes[sound.soundType];
         audioSource.clip = sound.clip;
         audioSource.Play();
+
+        StartCoroutine(SoundBehavior(audioSource));
 
         return Array.IndexOf(_audioSources.Keys.ToArray(), audioSource);
     }
@@ -183,6 +202,10 @@ public class SoundManager : MonoBehaviour
     public void ResumeSound(int index, bool withFade = false)
     {
         var aS = _audioSources.Keys.ToArray()[index];
+        var s = _audioSources[aS];
+
+        if (s is null)
+            return;
 
         if (withFade && !aS.isPlaying)
         {
@@ -200,12 +223,15 @@ public class SoundManager : MonoBehaviour
     {
         var aS = _audioSources.Keys.ToArray()[index];
 
-        if (withFade && aS.isPlaying)
+        if (aS is null || aS.isPlaying == false && !_audioSources[aS].isPaused)
+            return;
+
+        if (withFade && !_audioSources[aS].isPaused)
         {
             StartCoroutine(FadeOutSound(aS, fadeDuration));
-            _audioSources[aS] = null;
+            StartCoroutine(DelayedClean(fadeDuration, aS));
         }
-        else if (aS.isPlaying)
+        else
         {
             aS.Stop();
             _audioSources[aS] = null;
@@ -267,16 +293,9 @@ public class SoundManager : MonoBehaviour
 
             if (sound is not null && sound.soundType == soundType)
             {
-                if (withFade && aS.isPlaying)
-                {
-                    StartCoroutine(FadeOutSound(aS, fadeDuration));
-                    _audioSources[aS] = null;
-                }
-                else if (aS.isPlaying)
-                {
-                    aS.Stop();
-                    _audioSources[aS] = null;
-                }
+                int x = Array.IndexOf(_audioSources.Keys.ToArray(), aS);
+
+                StopSound(x, withFade);
             }
         }
     }
@@ -289,7 +308,7 @@ public class SoundManager : MonoBehaviour
             var aS = audio.Key;
             var sound = audio.Value;
 
-            if (sound != null)
+            if (sound is not null)
             {
                 aS.volume = AudioData.volumes[sound.soundType];
             }
@@ -335,8 +354,33 @@ public class SoundManager : MonoBehaviour
             yield return null;
         }
 
-        source.Stop();
+        source.Pause();
         source.volume = startVolume;
+    }
+    public IEnumerator SoundBehavior(AudioSource source)
+    {
+
+        while (source.time < source.clip.length)
+        {
+            if (_audioSources[source] is null)
+                break;
+
+            yield return null;
+        }
+
+        _audioSources[source] = null;
+
+        source.Stop();
+
+        source.transform.SetParent(transform);
+        source.transform.position = Vector3.zero;
+    }
+
+    public IEnumerator DelayedClean(float delay, AudioSource aS)
+    {
+        yield return new WaitForSeconds(delay);
+
+        _audioSources[aS] = null;
     }
 }
 

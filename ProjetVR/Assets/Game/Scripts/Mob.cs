@@ -124,7 +124,7 @@ public class Mob : MonoBehaviour
         gameObject.GetComponent<FeedbackScale>().ScaleIn();
         gameObject.GetComponent<FeedbackScale>().ScaleOut();
         if (!isKnockable) return;
-        StartCoroutine(Knocked());
+        if (!IsDeadCheck()) StartCoroutine(Knocked());
         ChangeOutline();
     }
 

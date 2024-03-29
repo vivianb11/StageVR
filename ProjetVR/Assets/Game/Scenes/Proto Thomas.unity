@@ -1789,10 +1789,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetObject: {fileID: 1352465483}
-  collidingObject: {fileID: 6638022967405250282, guid: 56c21ffeece17a0459f8677976cdf3de, type: 3}
+  mob1: {fileID: 0}
+  mob2: {fileID: 0}
+  mob3: {fileID: 0}
   moveSpeed: 5
   returnSpeed: 2
   isColliding: 0
+  moveDuration: 0.1
 --- !u!1 &746417284 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4300419384766824503, guid: 180711a12d322b44583b4dff76f002f9, type: 3}

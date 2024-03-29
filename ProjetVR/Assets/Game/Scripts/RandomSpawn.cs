@@ -50,14 +50,18 @@ public class RandomSpawn : MonoBehaviour
 
     void Start()
     {
-        if (Application.isPlaying) StartCoroutine(SpawnCycle());
-        if (Application.isPlaying) CountMinutes();
-        if (Application.isPlaying) milestoneCount = 0;
+        CountMinutes();
+        milestoneCount = 0;
     } 
 
     private void Update()
     {
         if (Application.isEditor && !Application.isPlaying) SpawnPercentage();
+    }
+
+    public void StartSpawn()
+    {
+        StartCoroutine(SpawnCycle());
     }
 
     private IEnumerator SpawnCycle()

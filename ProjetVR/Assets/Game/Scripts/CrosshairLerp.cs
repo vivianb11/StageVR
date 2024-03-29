@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CrosshairLerp : MonoBehaviour
 {
-    public float lerpSpeed;
+    public float lerpSpeed = 1f;
 
     private Transform parent;
 

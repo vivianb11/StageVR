@@ -1813,12 +1813,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5c2cb0433461840a9c6e40dff9d892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  place: 1
   sound:
     soundType: 2
     clip: {fileID: 8300000, guid: cb2033597f2ade54eb613760693ef641, type: 3}
     timePaused: 0
     pausedTime: 0
+  lastPlayedSound: 0
 --- !u!1 &806470365
 GameObject:
   m_ObjectHideFlags: 0
@@ -3043,12 +3044,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5c2cb0433461840a9c6e40dff9d892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  place: 1
   sound:
     soundType: 2
     clip: {fileID: 8300000, guid: 5d2fad9761eef384e89a704d0c7dd66f, type: 3}
     timePaused: 0
     pausedTime: 0
+  lastPlayedSound: 0
 --- !u!114 &1352465491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3061,12 +3063,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5c2cb0433461840a9c6e40dff9d892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  place: 1
   sound:
     soundType: 2
     clip: {fileID: 8300000, guid: 5d205fdb4f137214b80cdae0bf888ae2, type: 3}
     timePaused: 0
     pausedTime: 0
+  lastPlayedSound: 0
 --- !u!114 &1352465492
 MonoBehaviour:
   m_ObjectHideFlags: 0

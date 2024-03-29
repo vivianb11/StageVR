@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class SoundEmiter : MonoBehaviour
@@ -20,20 +19,24 @@ public class SoundEmiter : MonoBehaviour
         lastPlayedSound = soundManager.PlaySound(sound, place, transform);
     }
 
-    public void ResumeSound(bool fade)
+    public void ResumeSound(bool fade = false)
     {
         soundManager.ResumeSound(lastPlayedSound, fade);
     }
 
-    public void PauseSound(bool fade)
+    public void PauseSound(bool fade = false)
     {
         soundManager.PauseSound(lastPlayedSound, fade);
     }
 
-    public void StopSound(bool fade)
+    public void StopSound(bool fade = false)
     {
+        if (lastPlayedSound < 0)
+        {
+            soundManager.SkipMusic();
+            return;
+        }
+
         soundManager.StopSound(lastPlayedSound, fade);
     }
-
-
 }

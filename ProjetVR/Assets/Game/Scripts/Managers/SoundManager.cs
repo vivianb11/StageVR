@@ -20,7 +20,7 @@ public class SoundManager : MonoBehaviour
     [Header("Music")]
     [SerializeField] bool playMusicOnStart;
     [SerializeField] Sound[] musics;
-    private AudioSource _musicSource;
+    [HideInInspector] public AudioSource _musicSource;
 
     // The key is the audio source and the value is the sound that is playing on it
     public Dictionary<AudioSource,Sound> _audioSources;
@@ -59,19 +59,6 @@ public class SoundManager : MonoBehaviour
         if (playMusicOnStart)
         {
             PlayMusic();
-        }
-    }
-
-    private void Update()
-    {
-        return;
-
-        foreach (var audio in _audioSources)
-        {
-            var aS = audio.Key;
-            var sound = audio.Value;
-
-            Debug.Log(aS.name + " " + sound?.clip.name + " " + sound?.isPaused);
         }
     }
 
@@ -183,6 +170,12 @@ public class SoundManager : MonoBehaviour
 
     public void PauseSound(int index, bool withFade = false)
     {
+        if (index < 0)
+        {
+            PauseMusic();
+            return;
+        }
+
         var aS = _audioSources.Keys.ToArray()[index];
 
         if (withFade && aS.isPlaying)
@@ -199,6 +192,12 @@ public class SoundManager : MonoBehaviour
 
     public void ResumeSound(int index, bool withFade = false)
     {
+        if (index < 0)
+        {
+            ResumeMusic();
+            return;
+        }
+
         var aS = _audioSources.Keys.ToArray()[index];
         var s = _audioSources[aS];
 
@@ -219,6 +218,12 @@ public class SoundManager : MonoBehaviour
 
     public void StopSound(int index, bool withFade = false)
     {
+        if (index < 0)
+        {
+            Debug.LogWarning("Can't stop music with this method, use the PauseMusic method instead");
+            return;
+        }
+
         var aS = _audioSources.Keys.ToArray()[index];
 
         if (aS is null || aS.isPlaying == false && !_audioSources[aS].isPaused)

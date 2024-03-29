@@ -5,9 +5,6 @@ using System.Collections;
 public class BumperCar : MonoBehaviour
 {
     public GameObject targetObject;
-    public GameObject mob1;
-    public GameObject mob2;
-    public GameObject mob3;
     public float moveSpeed = 5f;
     public float returnSpeed = 2f;
 
@@ -44,27 +41,21 @@ public class BumperCar : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == mob1)
+        if(other.gameObject.name == "Mob1(Clone)")
         {
             isColliding = true;
         }
 
-        else if (other.gameObject == mob2)
+        if (other.gameObject.name == "Mob2(Clone)")
         {
             isColliding = true;
         }
 
-        else if (other.gameObject == mob3)
+        if (other.gameObject.name == "Mob3(Clone)")
         {
             isColliding = true;
         }
-
-        else
-        {
-            
-        }
-
     }
 }

@@ -138,8 +138,7 @@ public class ProtectedToothBehaviours : MonoBehaviour
     private void Explode()
     {
         Instantiate(toothExplosion); //the tooth explodes into many pieces
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
-
-    
 }

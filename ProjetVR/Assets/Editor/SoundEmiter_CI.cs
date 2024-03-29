@@ -25,15 +25,29 @@ public class SoundEmiter_CI : Editor
             SoundManager soundManager = SoundManager.instance;
 
             // adds a slider that changes depending on the completion of the sound
-            if (soundManager._audioSources.ToArray()[soundEmiter.lastPlayedSound].Key.time > 0)
+
+            if (soundEmiter.lastPlayedSound >= 0)
             {
-                EditorGUILayout.Slider("Sound Completion", soundManager._audioSources.ToArray()[soundEmiter.lastPlayedSound].Key.time / soundManager._audioSources.ToArray()[soundEmiter.lastPlayedSound].Key.clip.length, 0, 1);
+                if (soundManager._audioSources.ToArray()[soundEmiter.lastPlayedSound].Key.time > 0)
+                {
+                    EditorGUILayout.Slider("Sound Completion", soundManager._audioSources.ToArray()[soundEmiter.lastPlayedSound].Key.time / soundManager._audioSources.ToArray()[soundEmiter.lastPlayedSound].Key.clip.length, 0, 1);
                 
+                    Repaint();
+                }
+                else
+                {
+                       EditorGUILayout.Slider("Sound Completion", 0, 0, 1);
+                }
+            }
+            else if (soundManager._musicSource.time > 0)
+            {
+                EditorGUILayout.Slider("Music Completion", soundManager._musicSource.time / soundManager._musicSource.clip.length, 0, 1);
+
                 Repaint();
             }
             else
             {
-                   EditorGUILayout.Slider("Sound Completion", 0, 0, 1);
+                EditorGUILayout.Slider("Music Completion", 0, 0, 1);
             }
         }
 
@@ -111,25 +125,35 @@ public class SoundEmiter_CI : Editor
 
         EditorGUILayout.BeginVertical();
 
-        if (GUILayout.Button("Stop"))
+        if(soundEmiter.lastPlayedSound >= 0)
         {
-            soundEmiter.StopSound(fadeStop);
-        }
+            if (GUILayout.Button("Stop"))
+            {
+                soundEmiter.StopSound(fadeStop);
+            }
 
-        if (fadeStop)
-        {
-            GUI.backgroundColor = Color.green;
+            if (fadeStop)
+            {
+                GUI.backgroundColor = Color.green;
+            }
+            else
+            {
+                GUI.backgroundColor = Color.red;
+            }
+
+            GUI.enabled = true;
+
+            if (GUILayout.Button("With Fade"))
+            {
+                fadeStop = !fadeStop;
+            }
         }
         else
         {
-            GUI.backgroundColor = Color.red;
-        }
-
-        GUI.enabled = true;
-
-        if (GUILayout.Button("With Fade"))
-        {
-            fadeStop = !fadeStop;
+            if (GUILayout.Button("Skip"))
+            {
+                soundEmiter.StopSound(false);
+            }
         }
 
         GUI.enabled = EditorApplication.isPlaying;

@@ -41,8 +41,21 @@ public class BumperCar : MonoBehaviour
         }
     }
 
-    void ActivateBumper()
+    private void OnTriggerEnter(Collider other)
     {
-        isColliding = true;
+        if(other.gameObject.name == "Mob1(Clone)")
+        {
+            isColliding = true;
+        }
+
+        if (other.gameObject.name == "Mob2(Clone)")
+        {
+            isColliding = true;
+        }
+
+        if (other.gameObject.name == "Mob3(Clone)")
+        {
+            isColliding = true;
+        }
     }
 }

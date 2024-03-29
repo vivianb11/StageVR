@@ -121,13 +121,11 @@ public class SoundManager : MonoBehaviour
         switch (soundPlacing)
         {
             case SoundPlacing.Global:
-                audioSource.transform.SetParent(transform);
-                audioSource.transform.position = Vector3.zero;
+                audioSource.transform.position = transform.position;
                 audioSource.spatialBlend = 0;
                 break;
             case SoundPlacing.Local:
-                audioSource.transform.SetParent(location);
-                audioSource.transform.localPosition = Vector3.zero;
+                audioSource.transform.position = Vector3.zero;
                 audioSource.spatialBlend = 1;
                 break;
         }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.31343237, g: 0.55243826, b: 0.8233737, a: 1}
+  m_IndirectSpecularColor: {r: 0.31350318, g: 0.5525036, b: 0.82333165, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1591,19 +1591,79 @@ MonoBehaviour:
   target: {fileID: 1352465483}
   rotationPoint: {fileID: 1118274986}
   mobRotator: {fileID: 717860868454398895, guid: 49a144da7a60bbf43bb3161e221dabe8, type: 3}
-  spawnInterval: 2
-  numberSpawnerActivated: 3
-  weightEnemy1: 3
-  weightEnemy2: 3
-  weightEnemy3: 4
-  CurrentPercentageEnemy1: 30%
-  CurrentPercentageEnemy2: 30%
-  CurrentPercentageEnemy3: 40%
+  spawnInterval: 5
+  numberSpawnerActivated: 4
+  weightEnemy1: 1
+  weightEnemy2: 0
+  weightEnemy3: 0
+  CurrentPercentageEnemy1: 100%
+  CurrentPercentageEnemy2: 0%
+  CurrentPercentageEnemy3: 0%
   milestoneCount: 0
   interval: 10
   progressionMilestone:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 894062967}
+        m_TargetAssemblyTypeName: RandomSpawn, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: a24a6513c9c95334c8db90680f96fefd, type: 2}
+          m_ObjectArgumentAssemblyTypeName: DifficultyPresets, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 894062967}
+        m_TargetAssemblyTypeName: RandomSpawn, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 3d199ad3ced229c4ca608ede0cf75639, type: 2}
+          m_ObjectArgumentAssemblyTypeName: DifficultyPresets, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 894062967}
+        m_TargetAssemblyTypeName: RandomSpawn, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: daed4bf6972def6419fb1324fd6ef18d, type: 2}
+          m_ObjectArgumentAssemblyTypeName: DifficultyPresets, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 894062967}
+        m_TargetAssemblyTypeName: RandomSpawn, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: c5d7def55234b094a997da5df93017a6, type: 2}
+          m_ObjectArgumentAssemblyTypeName: DifficultyPresets, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 894062967}
+        m_TargetAssemblyTypeName: RandomSpawn, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: d710a5f8d8302484389db5eee558a6a9, type: 2}
+          m_ObjectArgumentAssemblyTypeName: DifficultyPresets, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   allShooted:
     m_PersistentCalls:
       m_Calls:
@@ -2498,7 +2558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37592f61e2fbf2649ad7c4916fa41631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 30
   receivedDamagedOnHit: 1
   onDamaged:
     m_PersistentCalls:
@@ -4016,19 +4076,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2156228748497856780, guid: 6070e5c113e19f34ea22a67be301a852, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 3876519587135965543, guid: 6070e5c113e19f34ea22a67be301a852, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6561955985793790643, guid: 6070e5c113e19f34ea22a67be301a852, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 8266820889971453581, guid: 6070e5c113e19f34ea22a67be301a852, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6070e5c113e19f34ea22a67be301a852, type: 3}
 --- !u!114 &1907866174 stripped
 MonoBehaviour:

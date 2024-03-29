@@ -132,7 +132,7 @@ public class ProtectedToothBehaviours : MonoBehaviour
 
     public void Die()
     {
-        Invoke("Explode",0.3f);
+        Invoke("Explode",2.05f);
     }
 
     private void Explode()

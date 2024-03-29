@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.31379133, g: 0.55039185, b: 0.82174075, a: 1}
+  m_IndirectSpecularColor: {r: 0.31343237, g: 0.55243826, b: 0.8233737, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437110775}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e153dbee3b3ebf94f8e43421446f4272, type: 3}
   m_Name: 
@@ -566,7 +566,6 @@ MonoBehaviour:
   - {fileID: 6638022967405250282, guid: 56c21ffeece17a0459f8677976cdf3de, type: 3}
   - {fileID: 6638022967405250282, guid: c76edd37e3c7fe647ab6c32c59930228, type: 3}
   - {fileID: 6638022967405250282, guid: 23d87bf6f84997149b99791847cdaecd, type: 3}
-  _mobInstanceList: []
   target: {fileID: 1352465483}
   rotationPoint: {fileID: 1118274986}
   mobRotator: {fileID: 717860868454398895, guid: 49a144da7a60bbf43bb3161e221dabe8, type: 3}
@@ -578,7 +577,7 @@ MonoBehaviour:
   CurrentPercentageEnemy1: 100%
   CurrentPercentageEnemy2: 0%
   CurrentPercentageEnemy3: 0%
-  milestoneCount: 2
+  milestoneCount: 0
   interval: 10
   progressionMilestone:
     m_PersistentCalls:
@@ -657,6 +656,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1038635274}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!4 &894062968
 Transform:
@@ -874,6 +885,11 @@ MonoBehaviour:
   - {fileID: 555884322}
   - {fileID: 555884321}
   - {fileID: 555884320}
+--- !u!1 &1038635274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2474120248349137934, guid: 6070e5c113e19f34ea22a67be301a852, type: 3}
+  m_PrefabInstance: {fileID: 1907866172}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1118274986
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,6 +1115,7 @@ GameObject:
   - component: {fileID: 1352465485}
   - component: {fileID: 1352465484}
   - component: {fileID: 1352465489}
+  - component: {fileID: 1352465490}
   m_Layer: 0
   m_Name: Tooth
   m_TagString: Protected
@@ -1162,9 +1179,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 894062967}
-        m_TargetAssemblyTypeName: RandomSpawn, Assembly-CSharp
-        m_MethodName: Freeze
+      - m_Target: {fileID: 1352465490}
+        m_TargetAssemblyTypeName: SignalSystem.SignalEmitter, Assembly-CSharp
+        m_MethodName: RequestSignalCall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1352465484}
+        m_TargetAssemblyTypeName: ProtectedToothBehaviours, Assembly-CSharp
+        m_MethodName: Die
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1191,6 +1220,7 @@ MonoBehaviour:
   shakeMagnitude: 0.1
   shakeSpeed: 50
   shakeDuration: 3
+  soundManager: {fileID: 0}
   toothExplosion: {fileID: 2625892611844449159, guid: fbe8e61d982bbcd4aaf9b0ab006383e5, type: 3}
   minValueOutline: 6
   maxValueOutline: 12
@@ -1300,6 +1330,20 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &1352465490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352465483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67ba8b1c371ab74c8b27772986edc40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signals:
+  - {fileID: 11400000, guid: 8764358f152399b4d942acab7e386b56, type: 2}
 --- !u!1 &1548251155
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,6 @@ public class RandomSpawn : MonoBehaviour
     [Header("Spawner Characteristics")]
     [SerializeField] public GameObject[] spawnerArray;
     [SerializeField] public GameObject[] mobArray;
-    [HideInInspector] public List<GameObject> _mobInstanceList = new();
 
     [Header("Spawned Mob Parameters")]
     [SerializeField] GameObject target;
@@ -83,15 +82,12 @@ public class RandomSpawn : MonoBehaviour
 
         if(mobBehaviors.canRotate) AddRotator(newMob);
 
-        else _mobInstanceList.Add(newMob);
-
         if (mobBehaviors != null) mobBehaviors.target = target.transform;
     }
 
     private void AddRotator(GameObject newMob)
     {
         GameObject newParent = Instantiate(mobRotator, rotationPoint.transform);
-        _mobInstanceList.Add(newParent);
         newMob.transform.parent = newParent.transform;
     }
 
@@ -148,51 +144,5 @@ public class RandomSpawn : MonoBehaviour
     }
 
     private void OnDisable() => milestoneCount = 0;
-
-
-    public void Freeze()
-    {
-        Invoke("StopMob",0.75f);
-    }
-
-    private void StopMob()
-    {
-        foreach (GameObject mob in (from mob in _mobInstanceList where mob is not null select mob).ToList()) if (mob is not null)
-        {
-            if (mob.GetComponent<Mob>() is null) 
-            {
-
-                if (mob.transform.childCount > 0) mob.transform.GetChild(0).gameObject.GetComponent<Mob>().moveSpeed = 0;
-                else
-                {
-                    continue;
-                }
-            }
-            else mob.GetComponent<Mob>().moveSpeed = 0;
-        }
-        StopAllCoroutines();
-        Invoke("MissileAll", 1f);
-    }
-
-    public void MissileAll()
-    {
-        foreach (GameObject mob in (from mob in _mobInstanceList where mob is not null select mob).ToList()) if (mob is not null)
-        {
-            if (mob is null) continue;
-            if (mob.GetComponent<Mob>() is null) 
-            {
-                if (mob.transform.childCount > 0) mob.transform.GetChild(0).gameObject.GetComponent<Mob>().MissileShoot();
-                else
-                {
-                    Destroy(mob);
-                    continue;
-                }
-
-            }
-            else mob.GetComponent<Mob>().MissileShoot();
-        }
-        allShooted.Invoke();
-    }
-
 
 }

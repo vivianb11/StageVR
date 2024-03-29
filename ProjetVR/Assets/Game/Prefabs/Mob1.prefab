@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2965289083273323766}
   - component: {fileID: -4735607365920841345}
   - component: {fileID: 514779265771394359}
+  - component: {fileID: 7604659161403824294}
   m_Layer: 6
   m_Name: Mob1
   m_TagString: Untagged
@@ -221,12 +222,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5c2cb0433461840a9c6e40dff9d892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  place: 1
   sound:
     soundType: 2
     clip: {fileID: 8300000, guid: 0f31b5493c652b54f9fc2cbe2c64c205, type: 3}
     timePaused: 0
     pausedTime: 0
+  lastPlayedSound: 0
 --- !u!114 &-4735607365920841345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,12 +241,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5c2cb0433461840a9c6e40dff9d892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  place: 1
   sound:
     soundType: 2
     clip: {fileID: 8300000, guid: 1fa3188af15811e4aabfb23d9008e7c9, type: 3}
     timePaused: 0
     pausedTime: 0
+  lastPlayedSound: 0
 --- !u!114 &514779265771394359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +317,38 @@ MonoBehaviour:
         m_Calls: []
   autoPlayMontage: 0
   tweenIndex: 0
+--- !u!114 &7604659161403824294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638022967405250282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79ed2aff5135e64888d5865c96135dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal:
+  - {fileID: 11400000, guid: 8764358f152399b4d942acab7e386b56, type: 2}
+  signalReceived:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9061522032183409264}
+        m_TargetAssemblyTypeName: Mob, Assembly-CSharp
+        m_MethodName: Freeze
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  signalLost:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &5402764750460147546
 PrefabInstance:
   m_ObjectHideFlags: 0

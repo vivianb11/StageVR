@@ -130,8 +130,6 @@ public class Mob : MonoBehaviour
 
     private void Attack(GameObject protectedTooth)
     {
-        if (!canRotate) transform.parent.parent.gameObject.GetComponent<RandomSpawn>()._mobInstanceList.Remove(gameObject);
-        else GameObject.Find("SpawnerGroup").GetComponent<RandomSpawn>()._mobInstanceList.Remove(gameObject);
         protectedTooth.GetComponent<ProtectedToothBehaviours>().Damaged();
         onDeath.Invoke();
         Destroy(gameObject);
@@ -144,8 +142,6 @@ public class Mob : MonoBehaviour
         {
             onDeath.Invoke();
             ScoreManager.Instance.AddScore(scoreOnDeath);
-            if (!canRotate) transform.parent.parent.gameObject.GetComponent<RandomSpawn>()._mobInstanceList.Remove(gameObject);
-            else GameObject.Find("SpawnerGroup").GetComponent<RandomSpawn>()._mobInstanceList.Remove(gameObject);
             Destroy(gameObject);
         }
         return condition;
@@ -155,6 +151,12 @@ public class Mob : MonoBehaviour
     {
         if (lifepoints == 2)  outlineEffect.OutlineWidth = 2;
         else if (lifepoints == 1) outlineEffect.enabled = false;
+    }
+
+    public void Freeze()
+    {
+        moveSpeed = 0f;
+        Invoke("MissileShoot", 1.75f);
     }
 
     public void MissileShoot()

@@ -1,22 +1,39 @@
-using NaughtyAttributes;
+
 using UnityEngine;
 
 public class SoundEmiter : MonoBehaviour
 {
     SoundManager soundManager;
 
-    public SoundPlacing type = SoundPlacing.Local;
+    public SoundPlacing place = SoundPlacing.Local;
     public Sound sound = new Sound(default,SoundType.SFX);
+
+    [HideInInspector] public int lastPlayedSound = 0;
 
     private void Start()
     {
         soundManager = SoundManager.instance;
     }
 
-    [Button("Play Sound")]
     public void PlaySound()
     {
-        Debug.Log("sound played");
-        soundManager.PlaySound(sound, type, transform);
+        lastPlayedSound = soundManager.PlaySound(sound, place, transform);
     }
+
+    public void ResumeSound(bool fade)
+    {
+        soundManager.ResumeSound(lastPlayedSound, fade);
+    }
+
+    public void PauseSound(bool fade)
+    {
+        soundManager.PauseSound(lastPlayedSound, fade);
+    }
+
+    public void StopSound(bool fade)
+    {
+        soundManager.StopSound(lastPlayedSound, fade);
+    }
+
+
 }

@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3721417739787125915, guid: 6651dde8a5d54b643a84223b0a2bf61a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.677
+      objectReference: {fileID: 0}
     - target: {fileID: 6032231364148513912, guid: 6651dde8a5d54b643a84223b0a2bf61a, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.5
@@ -152,13 +156,68 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7732861066593225937, guid: 6651dde8a5d54b643a84223b0a2bf61a, type: 3}
+      propertyPath: space
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8590228799455515017, guid: 6651dde8a5d54b643a84223b0a2bf61a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2434090418263113077}
   m_SourcePrefab: {fileID: 100100000, guid: 6651dde8a5d54b643a84223b0a2bf61a, type: 3}
 --- !u!4 &2925910362670227805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2940747885646327239, guid: 6651dde8a5d54b643a84223b0a2bf61a, type: 3}
   m_PrefabInstance: {fileID: 24006075631651994}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8168326781454537524 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8146713243194335150, guid: 6651dde8a5d54b643a84223b0a2bf61a, type: 3}
+  m_PrefabInstance: {fileID: 24006075631651994}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602956050369977619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3224bb36f4ca79b4ea9d1b1645894045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &8602956050369977619 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8590228799455515017, guid: 6651dde8a5d54b643a84223b0a2bf61a, type: 3}
+  m_PrefabInstance: {fileID: 24006075631651994}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2434090418263113077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602956050369977619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79ed2aff5135e64888d5865c96135dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal:
+  - {fileID: 11400000, guid: 117d694d618b2ab43b6beb0bf6c8330a, type: 2}
+  signalReceived:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8168326781454537524}
+        m_TargetAssemblyTypeName: TeethProgress, Assembly-CSharp
+        m_MethodName: SpawnTeeth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  signalLost:
+    m_PersistentCalls:
+      m_Calls: []

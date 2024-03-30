@@ -11,6 +11,8 @@ public class TeethProgress : MonoBehaviour
     public Transform toothPrefab;
 
     [SerializeField] Material cleanMaterial;
+    [SerializeField] Material fillMaterial;
+
     private int cleanedTeeth;
 
     public void SetFullTooth()

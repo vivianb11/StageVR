@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 public class SoundEmiter : MonoBehaviour
@@ -5,7 +6,12 @@ public class SoundEmiter : MonoBehaviour
     SoundManager soundManager;
 
     public SoundPlacing place = SoundPlacing.Local;
+
     public Sound sound = new Sound(default,SoundType.SFX);
+
+    public bool playRandomSfx = false;
+
+    [HideInInspector] public AudioClip[] sfxs;
 
     [HideInInspector] public int lastPlayedSound = 0;
 
@@ -16,6 +22,12 @@ public class SoundEmiter : MonoBehaviour
 
     public void PlaySound()
     {
+        if (playRandomSfx)
+        {
+            sound.soundType = SoundType.SFX;
+            sound.clip = sfxs[Random.Range(0, sfxs.Length)];
+        }
+
         lastPlayedSound = soundManager.PlaySound(sound, place, transform);
     }
 

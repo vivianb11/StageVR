@@ -29,16 +29,14 @@ public class CellBehavior : MonoBehaviour
     {
         mR = GetComponent<MeshRenderer>();
         toothManager = transform.parent.GetComponent<ToothManager>();
+        interactable = GetComponent<Interactable>();
+        signalListener = GetComponent<SignalListener>();
     }
 
     private void Start()
     {
-        interactable = GetComponent<Interactable>();
-        signalListener = GetComponent<SignalListener>();
-
         GetComponent<Rigidbody>().isKinematic = true;
 
-        ResetTooth();
         interactable.deSelectionCondition = DeSelectionCondition.LOOK_OUT;
 
         signalListener.signalReceived.AddListener(() => interactable.SetActivateState(true));

@@ -1,10 +1,8 @@
-using SerializableCallback;
 using SignalSystem;
 using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlayerInstance playerInstance;
 
     [SerializeField] float timeBeforeResetGame = 10f;
+
+    [SerializeField] GameObject[] gameModes;
 
     public static GameManager Instance;
 

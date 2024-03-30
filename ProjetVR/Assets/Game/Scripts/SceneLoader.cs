@@ -1,7 +1,5 @@
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -31,7 +29,6 @@ public class SceneLoader : MonoBehaviour
     private IEnumerator LoadDelay(float delay, int sceneId)
     {
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene(sceneId);
         loadRequested = false;
         StartCoroutine(Fade(0f, fadeTransitionDuration));
     }

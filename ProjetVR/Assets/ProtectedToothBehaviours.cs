@@ -19,8 +19,6 @@ public class ProtectedToothBehaviours : MonoBehaviour
     [SerializeField] float shakeSpeed = 50f;
     [SerializeField] float shakeDuration = 3f;
 
-    public SoundManager soundManager;
-
     private Vector3 originalPosition;
 
     public GameObject toothExplosion;

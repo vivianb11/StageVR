@@ -1,7 +1,6 @@
 using SignalSystem;
 using System;
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,19 +11,18 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] float timeBeforeResetGame = 10f;
 
-    [SerializeField] GameObject[] gameModes;
+    public GameObject[] gameModes;
 
     public static GameManager Instance;
 
     public float startDelay = 1f;
 
+    [HideInInspector]
+    public int currentSceneIndex;
+
     public UnityEvent gameStarted;
 
-    public GameObject player { get; private set; }
-
     private DateTime timeOnUnfocus;
-
-    [SerializeField] int currentSceneIndex;
 
     private GameObject nextGameMode;
 
@@ -33,15 +31,6 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-
-            player = GameObject.FindGameObjectWithTag("Player");
-            if (player == null)
-            {
-                player = Instantiate(playerInstance).gameObject;
-            }
-
-            if (player == null)
-                Debug.LogError("Player not found ! Please set the correct Tag on player");
         }
         else
         {

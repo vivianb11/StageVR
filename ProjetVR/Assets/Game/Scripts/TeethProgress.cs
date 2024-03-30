@@ -26,7 +26,6 @@ public class TeethProgress : MonoBehaviour
 
     public void SetFullTooth()
     {
-        Debug.Log("??");
         if (cleanedTeeth == teeth.Count)
             return;
 

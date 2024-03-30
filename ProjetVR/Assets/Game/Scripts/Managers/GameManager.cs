@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     private DateTime timeOnUnfocus;
 
+    [SerializeField] int currentSceneIndex;
+
     private GameObject nextGameMode;
 
     private void Awake()
@@ -55,6 +57,8 @@ public class GameManager : MonoBehaviour
         SceneLoader.Instance.fadeOutCompleted.AddListener(StartGameMode);
 
         StartGameMode();
+
+        ChangeGameMode(currentSceneIndex);
     }
 
     public void RestartSceneTimer()
@@ -62,16 +66,18 @@ public class GameManager : MonoBehaviour
         Invoke("RestartScene", 5f);
     }
 
-    public void ChangeGameMode(GameObject newGameMode)
+    public void ChangeGameMode(int index)
     {
-        DisableGameModes();
+        DestroyGameModes();
 
-        nextGameMode = newGameMode;
+        nextGameMode = gameModes[index];
+
+        LoadGameMode();
     }
 
     public void ReloadGameMode(float delay)
     {
-        nextGameMode = gameModes.Where(item => item.activeInHierarchy == true).ToArray()[0];
+        nextGameMode = gameModes[currentSceneIndex];
         StartCoroutine(UnloadGameMode(delay));
     }
 
@@ -100,11 +106,11 @@ public class GameManager : MonoBehaviour
         OVRManager.display.RecenterPose();
     }
 
-    private void DisableGameModes()
+    private void DestroyGameModes()
     {
-        foreach (GameObject gameMode in gameModes)
+        foreach (Transform t in transform.transform)
         {
-            gameMode.SetActive(false);
+            Destroy(t.gameObject);
         }
     }
 
@@ -112,13 +118,13 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        DisableGameModes();
+        DestroyGameModes();
         SceneLoader.Instance.FadeIn();
     }
 
     private void LoadGameMode()
     {
-        nextGameMode.SetActive(true);
+        Instantiate(nextGameMode, transform);
         nextGameMode = null;
 
         SceneLoader.Instance.FadeOut();

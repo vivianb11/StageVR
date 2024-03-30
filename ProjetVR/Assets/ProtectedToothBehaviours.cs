@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class ProtectedToothBehaviours : MonoBehaviour
 {
     [Header("Tooth Characteristics")]
-    [SerializeField] int health;
+    [SerializeField] int Maxhealth;
     [SerializeField] int receivedDamagedOnHit;
     [SerializeField] UnityEvent onDamaged = new UnityEvent();
     [SerializeField] Material material2HP; //the material the tooth has at 2 hp
@@ -29,6 +29,8 @@ public class ProtectedToothBehaviours : MonoBehaviour
     private float _currentWidth;
     private float _speed = 0.5f;
 
+    private int health;
+
     //variables for thomas trying to make outline work
     public float minValueOutline = 6f;
     public float maxValueOutline = 12f;
@@ -38,23 +40,30 @@ public class ProtectedToothBehaviours : MonoBehaviour
     private bool increasing = true;
     private float timer = 0f;
 
-
     void OnEnable()
     {
         originalPosition = transform.position;
         _outlineScaleEffect = GetComponent<OutlineScale>();
         _outlineEffect = GetComponent<Outline>();
         _outlineEffect.OutlineWidth = 0;
+
+        health = Maxhealth;
     }
 
     public void Damaged()
     {
-        if (health <= 0) return;
+        if (health == 0)
+            return;
+
+        health = Mathf.Clamp(health - receivedDamagedOnHit, 0, Maxhealth);
         onDamaged.Invoke();
-        health -= receivedDamagedOnHit;
-        materialChange();
-        //ScaleInStep();
-        IsDeadCheck();
+
+        if (health == 0)
+        {
+            onDeath.Invoke();
+            GameManager.Instance.ReloadGameMode(3);
+            StartCoroutine(ShakeAndDie());
+        }
     }
 
     public void OutlinePulsating()
@@ -85,21 +94,6 @@ public class ProtectedToothBehaviours : MonoBehaviour
         {
             OutlinePulsating();
         }
-        
-    }
-
-
-    private void materialChange()
-    {
-        if (health == 2)
-        {
-            gameObject.GetComponent<Renderer>().material = material2HP;
-        }
-
-        if (health == 1)
-        {
-            gameObject.GetComponent<Renderer>().material = material1HP;
-        }
     }
 
     IEnumerator ShakeAndDie()
@@ -117,25 +111,14 @@ public class ProtectedToothBehaviours : MonoBehaviour
         yield return null;
     }
 
-    private bool IsDeadCheck()
-    {
-        bool condition = health == 0;
-        if (condition)
-        {
-            onDeath.Invoke();
-            StartCoroutine(ShakeAndDie());
-        }
-        return condition;
-    }
-
     public void Die()
     {
-        Invoke("Explode",2.05f);
+        Invoke("Explode", 2.05f);
     }
 
     private void Explode()
     {
-        Instantiate(toothExplosion); //the tooth explodes into many pieces
+        Instantiate(toothExplosion, transform.parent); //the tooth explodes into many pieces
         //Destroy(gameObject);
         gameObject.SetActive(false);
     }

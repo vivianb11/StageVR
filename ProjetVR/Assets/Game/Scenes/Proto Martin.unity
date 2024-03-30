@@ -378,6 +378,63 @@ MonoBehaviour:
   lerpSpeed: 0.5
   eulerAngleOffset: {x: 90, y: 0, z: 0}
   targetTransform: {fileID: 0}
+--- !u!1001 &482899161
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482621538272067498, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_Name
+      value: SignalManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
 --- !u!1001 &555884319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -578,7 +635,7 @@ MonoBehaviour:
   CurrentPercentageEnemy1: 100%
   CurrentPercentageEnemy2: 0%
   CurrentPercentageEnemy3: 0%
-  milestoneCount: 2
+  milestoneCount: 1
   interval: 10
   progressionMilestone:
     m_PersistentCalls:
@@ -1191,6 +1248,7 @@ MonoBehaviour:
   shakeMagnitude: 0.1
   shakeSpeed: 50
   shakeDuration: 3
+  soundManager: {fileID: 0}
   toothExplosion: {fileID: 2625892611844449159, guid: fbe8e61d982bbcd4aaf9b0ab006383e5, type: 3}
   minValueOutline: 6
   maxValueOutline: 12
@@ -1828,7 +1886,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 9.8e-44, z: 1.1219e-41, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 3e-45, z: 4.3e-44, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2254,3 +2312,4 @@ SceneRoots:
   - {fileID: 1907866172}
   - {fileID: 99625337}
   - {fileID: 2000348216}
+  - {fileID: 482899161}

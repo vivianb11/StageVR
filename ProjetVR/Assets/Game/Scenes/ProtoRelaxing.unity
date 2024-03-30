@@ -405,16 +405,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursor: {fileID: 0}
-  slider: {fileID: 0}
+  ignoreMask:
+    serializedVersion: 2
+    m_Bits: 0
+  maxValue: 0
+  value: 0
   leftEyeOpeningPercent: 1
   rightEyeOpeningPercent: 1
   closedTime: 0
   blinkBuffer: 0.25
   leftEyeState: 0
   rightEyeState: 0
-  managerState: 0
-  normalOffset: 0.5
+  distance: 0
+  hitSuccessful: 0
   hitPosition: {x: 0, y: 0, z: 0}
+  hitCollider: {fileID: 0}
+  grabActivation: {fileID: 0}
+  grabDeactivation: {fileID: 0}
   leftEyeClosed:
     m_PersistentCalls:
       m_Calls: []
@@ -430,7 +437,13 @@ MonoBehaviour:
   blink:
     m_PersistentCalls:
       m_Calls: []
-  stateChanged:
+  lookInSelectable:
+    m_PersistentCalls:
+      m_Calls: []
+  lookOutSelectable:
+    m_PersistentCalls:
+      m_Calls: []
+  selectableSelected:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &537017999
@@ -773,20 +786,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af0805536d4d3954db43464ca4cbd840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectConditions:
-  - selectType: 0
-    conditionEye: 0
-    conditionHand: 0
-    conditionAction: 0
-    conditionValue: 1
-    DetectionInterval: 0
-  deselectConditions: []
-  canAlwaysInteract: 0
-  autoDeselection: 1
-  deselectionTime: 2
   rb: {fileID: 0}
+  selectionCondition: 1
+  lookInTime: 1
+  currentLookInTime: 0
+  resetValueOnExit: 1
+  deSelectionCondition: 1
+  lookOutTime: 1
+  autoTime: 0
   selected: 0
-  interactionTime: 0
+  selectedEventsDelay: []
+  deSelectedEventsDelay: []
   onSelected:
     m_PersistentCalls:
       m_Calls:
@@ -805,13 +815,13 @@ MonoBehaviour:
   onDeselected:
     m_PersistentCalls:
       m_Calls: []
-  onInteracted:
+  lookIn:
     m_PersistentCalls:
       m_Calls: []
-  onDeInteracted:
+  lookOut:
     m_PersistentCalls:
       m_Calls: []
-  onBlinked:
+  activeStateChanged:
     m_PersistentCalls:
       m_Calls: []
 --- !u!54 &993884178
@@ -1051,8 +1061,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41294f478d862140b9800916e3a2658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseEyeTracking: 1
-  UseDynamicFoveatedRendering: 0
+  startSignal: {fileID: 0}
+  playerInstance: {fileID: 0}
+  timeBeforeResetGame: 10
+  startDelay: 1
+  gameStarted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1149726708
 Transform:
   m_ObjectHideFlags: 0
@@ -1279,7 +1294,7 @@ Transform:
   - {fileID: 1290343587}
   - {fileID: 2334784}
   - {fileID: 1250529685}
-  m_Father: {fileID: 1228242801}
+  m_Father: {fileID: 1228242800}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1228242798
 PrefabInstance:
@@ -1616,10 +1631,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2871854915951832589, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 7179462289238023466, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1184672975}
-    - targetCorrespondingSourceObject: {fileID: 2871854915733156396, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 7179462289238023466, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2077111872}
     m_AddedComponents:
@@ -1634,12 +1649,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1228242800 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2871854915733156396, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
-  m_PrefabInstance: {fileID: 1228242798}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1228242801 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2871854915951832589, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7179462289238023466, guid: 65eb6b98091a5734ba9d9ca871cef69a, type: 3}
   m_PrefabInstance: {fileID: 1228242798}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1228242802
@@ -1699,20 +1709,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af0805536d4d3954db43464ca4cbd840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectConditions:
-  - selectType: 0
-    conditionEye: 0
-    conditionHand: 0
-    conditionAction: 0
-    conditionValue: 1
-    DetectionInterval: 0
-  deselectConditions: []
-  canAlwaysInteract: 0
-  autoDeselection: 1
-  deselectionTime: 2
   rb: {fileID: 0}
+  selectionCondition: 1
+  lookInTime: 1
+  currentLookInTime: 0
+  resetValueOnExit: 1
+  deSelectionCondition: 1
+  lookOutTime: 1
+  autoTime: 0
   selected: 0
-  interactionTime: 0
+  selectedEventsDelay: []
+  deSelectedEventsDelay: []
   onSelected:
     m_PersistentCalls:
       m_Calls:
@@ -1731,13 +1738,13 @@ MonoBehaviour:
   onDeselected:
     m_PersistentCalls:
       m_Calls: []
-  onInteracted:
+  lookIn:
     m_PersistentCalls:
       m_Calls: []
-  onDeInteracted:
+  lookOut:
     m_PersistentCalls:
       m_Calls: []
-  onBlinked:
+  activeStateChanged:
     m_PersistentCalls:
       m_Calls: []
 --- !u!54 &1229476720
@@ -2089,6 +2096,63 @@ Transform:
   - {fileID: 497074252}
   m_Father: {fileID: 1473473196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1533302498
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5508387987912779011, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482621538272067498, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
+      propertyPath: m_Name
+      value: SignalManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 005dbca9fa543824fbeb5f5a51961fac, type: 3}
 --- !u!1 &1538775194
 GameObject:
   m_ObjectHideFlags: 0
@@ -2698,3 +2762,4 @@ SceneRoots:
   - {fileID: 1874562803}
   - {fileID: 993884182}
   - {fileID: 1229476724}
+  - {fileID: 1533302498}

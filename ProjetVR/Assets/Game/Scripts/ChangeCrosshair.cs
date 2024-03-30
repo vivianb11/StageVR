@@ -11,6 +11,6 @@ public class ChangeCrosshair : MonoBehaviour
     {
         cross = GameObject.FindGameObjectWithTag("Cursor");
 
-        cross.GetComponent<CrosshairLerp>().lerpSpeed = 1;
+        cross.GetComponent<CrosshairLerp>().lerpSpeed = 0.5f;
     }
 }

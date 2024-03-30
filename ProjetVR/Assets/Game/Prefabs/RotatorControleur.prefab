@@ -120,8 +120,10 @@ MonoBehaviour:
     - propertie: 2
       waitForPreviousTweenProperty: 0
       useDynamicFrom: 0
+      useGameObjectTo: 0
       from: {x: 0.07, y: 0.07, z: 0.07}
       to: {x: 0.08, y: 0.08, z: 0.08}
+      toObject: {fileID: 0}
       duration: 0.3
       curve:
         serializedVersion: 2
@@ -172,8 +174,10 @@ MonoBehaviour:
     - propertie: 2
       waitForPreviousTweenProperty: 0
       useDynamicFrom: 0
+      useGameObjectTo: 0
       from: {x: 0.08, y: 0.08, z: 0.08}
       to: {x: 0.07, y: 0.07, z: 0.07}
+      toObject: {fileID: 0}
       duration: 0.3
       curve:
         serializedVersion: 2
@@ -371,7 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8335338428221802606}
   selectionCondition: 1
-  lookInTime: 1
+  lookInTime: 0.5
   currentLookInTime: 0
   resetValueOnExit: 1
   deSelectionCondition: 2

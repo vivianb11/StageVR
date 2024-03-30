@@ -17,8 +17,6 @@ public class PlayerInstance : MonoBehaviour
             }
 
             transform.GetChild(0).gameObject.SetActive(true);
-
-            DontDestroyOnLoad(gameObject);
         }
         else if (Instance != this)
         {

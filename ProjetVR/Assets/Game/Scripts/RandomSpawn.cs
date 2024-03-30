@@ -1,12 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEditor;
-using NaughtyAttributes;
-using System.Diagnostics.Tracing;
-using Unity.VisualScripting;
 using UnityEngine.Events;
-using System.Collections.Generic;
-using System.Linq;
 
 [ExecuteInEditMode]
 public class RandomSpawn : MonoBehaviour
@@ -16,7 +10,7 @@ public class RandomSpawn : MonoBehaviour
     [SerializeField] public GameObject[] mobArray;
 
     [Header("Spawned Mob Parameters")]
-    [SerializeField] GameObject target;
+    [SerializeField] ProtectedToothBehaviours target;
     [SerializeField] GameObject rotationPoint;
     [SerializeField] GameObject mobRotator;
 
@@ -47,11 +41,24 @@ public class RandomSpawn : MonoBehaviour
     [Header("Death Event")]
     [SerializeField] UnityEvent allShooted = new();
 
-    void Start()
+    void OnEnable()
     {
         CountMinutes();
         milestoneCount = 0;
-    } 
+
+        target.gameObject.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        CancelInvoke();
+        StopAllCoroutines();
+    }
+
+    private void Start()
+    {
+        target.onDeath.AddListener(StopAllCoroutines);
+    }
 
     private void Update()
     {
@@ -142,7 +149,4 @@ public class RandomSpawn : MonoBehaviour
         ChangeWeightEnemy2(preset.weightEnemy2);
         SpawnPercentage();
     }
-
-    private void OnDisable() => milestoneCount = 0;
-
 }

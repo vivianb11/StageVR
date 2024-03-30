@@ -1,6 +1,7 @@
 using SignalSystem;
 using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour
     public GameObject player { get; private set; }
 
     private DateTime timeOnUnfocus;
+
+    private GameObject nextGameMode;
 
     private void Awake()
     {
@@ -46,10 +49,35 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(StartDelay(startDelay));
-
         OVRManager.InputFocusAcquired += CheckUnfocusedTime;
         OVRManager.InputFocusLost += () => timeOnUnfocus = DateTime.Now;
+        SceneLoader.Instance.fadeInCompleted.AddListener(LoadGameMode);
+        SceneLoader.Instance.fadeOutCompleted.AddListener(StartGameMode);
+
+        StartGameMode();
+    }
+
+    public void RestartSceneTimer()
+    {
+        Invoke("RestartScene", 5f);
+    }
+
+    public void ChangeGameMode(GameObject newGameMode)
+    {
+        DisableGameModes();
+
+        nextGameMode = newGameMode;
+    }
+
+    public void ReloadGameMode(float delay)
+    {
+        nextGameMode = gameModes.Where(item => item.activeInHierarchy == true).ToArray()[0];
+        StartCoroutine(UnloadGameMode(delay));
+    }
+
+    private void StartGameMode()
+    {
+        StartCoroutine(StartDelay(startDelay));
     }
 
     private IEnumerator StartDelay(float delay)
@@ -72,13 +100,27 @@ public class GameManager : MonoBehaviour
         OVRManager.display.RecenterPose();
     }
 
-    public void RestartSceneTimer()
+    private void DisableGameModes()
     {
-        Invoke("RestartScene", 5f);
+        foreach (GameObject gameMode in gameModes)
+        {
+            gameMode.SetActive(false);
+        }
     }
 
-    private void RestartScene()
+    private IEnumerator UnloadGameMode(float delay)
     {
-        SceneLoader.Instance.LodScene(3);
+        yield return new WaitForSeconds(delay);
+
+        DisableGameModes();
+        SceneLoader.Instance.FadeIn();
+    }
+
+    private void LoadGameMode()
+    {
+        nextGameMode.SetActive(true);
+        nextGameMode = null;
+
+        SceneLoader.Instance.FadeOut();
     }
 }

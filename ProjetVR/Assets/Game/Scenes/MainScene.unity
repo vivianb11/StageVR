@@ -177,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6798597841116208069, guid: 522d735e31d0b6b4c8f4ef5735b6efe9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -426,12 +426,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 342334589}
     m_Modifications:
     - target: {fileID: 424505616319249623, guid: 78b725139ead97f4d87ba0814f66c741, type: 3}
-      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[5].m_Target
-      value: 
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 424505616319249623, guid: 78b725139ead97f4d87ba0814f66c741, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 342334590}
+    - target: {fileID: 424505616319249623, guid: 78b725139ead97f4d87ba0814f66c741, type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
-      value: RestartSceneTimer
+      value: ReloadGameMode
+      objectReference: {fileID: 0}
+    - target: {fileID: 424505616319249623, guid: 78b725139ead97f4d87ba0814f66c741, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_FloatArgument
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3980855735734106729, guid: 78b725139ead97f4d87ba0814f66c741, type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[4].m_Target
@@ -491,7 +499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6798597841116208069, guid: 78b725139ead97f4d87ba0814f66c741, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

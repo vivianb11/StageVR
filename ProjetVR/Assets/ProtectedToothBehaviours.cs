@@ -11,7 +11,6 @@ public class ProtectedToothBehaviours : MonoBehaviour
     [SerializeField] int health;
     [SerializeField] int receivedDamagedOnHit;
     [SerializeField] UnityEvent onDamaged = new UnityEvent();
-    [SerializeField] UnityEvent onDeath = new UnityEvent();
     [SerializeField] Material material2HP; //the material the tooth has at 2 hp
     [SerializeField] Material material1HP; //the material the tooth has at 1 hp
 
@@ -21,6 +20,7 @@ public class ProtectedToothBehaviours : MonoBehaviour
 
     private Vector3 originalPosition;
 
+    public UnityEvent onDeath = new UnityEvent();
     public GameObject toothExplosion;
     private OutlineScale _outlineScaleEffect;
     private Outline _outlineEffect;
@@ -39,7 +39,7 @@ public class ProtectedToothBehaviours : MonoBehaviour
     private float timer = 0f;
 
 
-    void Start()
+    void OnEnable()
     {
         originalPosition = transform.position;
         _outlineScaleEffect = GetComponent<OutlineScale>();

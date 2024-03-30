@@ -13,21 +13,33 @@ public class TeethProgress : MonoBehaviour
     [SerializeField] Material cleanMaterial;
     [SerializeField] Material fillMaterial;
 
+    [SerializeField] ToothManager toothManager;
+
     private int cleanedTeeth;
+
+    private List<CleanTeethHologram> teeth = new List<CleanTeethHologram>();
+
+    void Awake()
+    {
+        toothManager.OnTeethCleaned.AddListener(SetFullTooth);
+    }
 
     public void SetFullTooth()
     {
-        if (cleanedTeeth == transform.childCount)
+        Debug.Log("??");
+        if (cleanedTeeth == teeth.Count)
             return;
 
-        transform.GetChild(cleanedTeeth).GetComponent<MeshRenderer>().material = cleanMaterial;
-        transform.GetChild(cleanedTeeth).GetComponent<Tween>().PlayTween("bump");
+        teeth[cleanedTeeth].GetComponent<MeshRenderer>().material = cleanMaterial;
+        teeth[cleanedTeeth].GetComponent<Tween>().PlayTween("bump");
+        teeth[cleanedTeeth].isEnable = false;
 
         cleanedTeeth++;
 
         if (cleanedTeeth < transform.childCount)
         {
-            transform.GetChild(cleanedTeeth).GetComponent<MeshRenderer>().material = fillMaterial;
+            teeth[cleanedTeeth].GetComponent<MeshRenderer>().material = fillMaterial;
+            teeth[cleanedTeeth].isEnable = true;
         }
     }
 
@@ -48,12 +60,16 @@ public class TeethProgress : MonoBehaviour
         for (int i = 0; i < toothCount; i++)
         {
             Transform newTooth = Instantiate(toothPrefab, transform);
+            teeth.Add(newTooth.GetComponent<CleanTeethHologram>());
+            teeth[teeth.Count - 1].SetToothManager(toothManager);
+
             newTooth.localScale = Vector3.zero;
 
             tweens.Add(newTooth.GetComponent<Tween>());
         }
 
-        transform.GetChild(cleanedTeeth).GetComponent<MeshRenderer>().material = fillMaterial;
+        transform.GetChild(0).GetComponent<MeshRenderer>().material = fillMaterial;
+        teeth[0].isEnable = true;
 
         StartCoroutine(SpawnAnimation(tweens.ToArray(), animationDelay));
     }

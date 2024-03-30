@@ -17,7 +17,7 @@ public class SceneLoader : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        rend.sharedMaterial.SetFloat("_force", 0f);
+        rend.sharedMaterial.SetFloat("_force", 1f);
     }
 
     public void LodScene(int  sceneId)

@@ -56,8 +56,6 @@ public class GameManager : MonoBehaviour
         SceneLoader.Instance.fadeInCompleted.AddListener(LoadGameMode);
         SceneLoader.Instance.fadeOutCompleted.AddListener(StartGameMode);
 
-        StartGameMode();
-
         ChangeGameMode(currentSceneIndex);
     }
 

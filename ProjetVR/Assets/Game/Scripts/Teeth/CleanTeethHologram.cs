@@ -7,16 +7,16 @@ public class CleanTeethHologram : MonoBehaviour
 
     [SerializeField] Material liquideMaterial;
     [SerializeField] Material snapMaterial;
-
-    [SerializeField] ToothManager toothManager;
     [SerializeField] MeshRenderer mesh;
     [SerializeField] Wobble wobble;
 
+    public bool isEnable = false;
+
     private float currentValue;
 
-    private void Awake()
+    public void SetToothManager(ToothManager newToothManager)
     {
-        toothManager.OnCleanAmountChange.AddListener(OnCleanAmountChanged);
+        newToothManager.OnCleanAmountChange.AddListener(OnCleanAmountChanged);
     }
 
     private IEnumerator LerpCoroutine(float b, float lerp)
@@ -38,6 +38,9 @@ public class CleanTeethHologram : MonoBehaviour
 
     private void OnCleanAmountChanged(float amount)
     {
+        if (!isEnable)
+            return;
+
         if (amount == 1)
             mesh.material = snapMaterial;
         else

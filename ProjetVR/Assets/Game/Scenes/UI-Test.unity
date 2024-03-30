@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.31379133, g: 0.55039185, b: 0.82174075, a: 1}
+  m_IndirectSpecularColor: {r: 0.31343237, g: 0.55243826, b: 0.8233737, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1944,6 +1944,10 @@ PrefabInstance:
       propertyPath: lookOut.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 787574913}
+    - target: {fileID: 4926904967048101204, guid: 6651dde8a5d54b643a84223b0a2bf61a, type: 3}
+      propertyPath: m_Name
+      value: ToothBrush
+      objectReference: {fileID: 0}
     - target: {fileID: 6032231364148513912, guid: 6651dde8a5d54b643a84223b0a2bf61a, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.5
@@ -1980,9 +1984,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6312298940030942452, guid: 6651dde8a5d54b643a84223b0a2bf61a, type: 3}
+      propertyPath: m_Name
+      value: ToothPaste
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801645476517633578, guid: 6651dde8a5d54b643a84223b0a2bf61a, type: 3}
+      propertyPath: m_Name
+      value: MiniBrush
+      objectReference: {fileID: 0}
     - target: {fileID: 7442217668423303232, guid: 6651dde8a5d54b643a84223b0a2bf61a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982278219832782886, guid: 6651dde8a5d54b643a84223b0a2bf61a, type: 3}
+      propertyPath: m_Name
+      value: MouthWash
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

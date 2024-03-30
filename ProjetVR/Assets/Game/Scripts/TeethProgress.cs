@@ -24,6 +24,11 @@ public class TeethProgress : MonoBehaviour
         transform.GetChild(cleanedTeeth).GetComponent<Tween>().PlayTween("bump");
 
         cleanedTeeth++;
+
+        if (cleanedTeeth < transform.childCount)
+        {
+            transform.GetChild(cleanedTeeth).GetComponent<MeshRenderer>().material = fillMaterial;
+        }
     }
 
     [Button]
@@ -47,6 +52,8 @@ public class TeethProgress : MonoBehaviour
 
             tweens.Add(newTooth.GetComponent<Tween>());
         }
+
+        transform.GetChild(cleanedTeeth).GetComponent<MeshRenderer>().material = fillMaterial;
 
         StartCoroutine(SpawnAnimation(tweens.ToArray(), animationDelay));
     }

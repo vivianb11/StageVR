@@ -861,7 +861,7 @@ MonoBehaviour:
   animationDelay: 0.15
   toothPrefab: {fileID: 5552061895131566892, guid: aa683f1f35ca79946a872b96bc084483, type: 3}
   cleanMaterial: {fileID: 2100000, guid: 9c6103d2ad98b544b82572d8025d27d2, type: 2}
-  fillMaterial: {fileID: 0}
+  fillMaterial: {fileID: 2100000, guid: 5e31ac1c3b4852b4ebdeca0094f20724, type: 2}
 --- !u!114 &2434090418263113077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,15 +875,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   signal:
-  - {fileID: 11400000, guid: 5c7cd6017f5e4a04cbc59576eef326e0, type: 2}
-  - {fileID: 11400000, guid: 00371841a0ed18048891fe0e7e5540fa, type: 2}
-  - {fileID: 11400000, guid: 8d13342a7545c6849ac4960193887a3e, type: 2}
+  - {fileID: 11400000, guid: 117d694d618b2ab43b6beb0bf6c8330a, type: 2}
   signalReceived:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3595154358068171392}
-        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
-        m_MethodName: DeSelect
+      - m_Target: {fileID: 8168326781454537524}
+        m_TargetAssemblyTypeName: TeethProgress, Assembly-CSharp
+        m_MethodName: SpawnTeeth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1738,17 +1736,6 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 478335095503680789}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6787212574019556016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0805536d4d3954db43464ca4cbd840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3595154358068171392 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3983415088823445397, guid: 1f755a5f51b64ee4dbc45d0ac74ddbe6, type: 3}
-  m_PrefabInstance: {fileID: 478335095503680789}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af0805536d4d3954db43464ca4cbd840, type: 3}

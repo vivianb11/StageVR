@@ -1,11 +1,13 @@
+using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class VivDebuger : MonoBehaviour
 {
-   public void EventTextDebuger(string text)
-   {
-       Debug.Log(text);
-   }
+    public void EventTextDebuger(string text)
+    {
+        Debug.Log(text);
+    }
 
     public void EventChangeColor_red(GameObject obj)
     {
@@ -21,4 +23,13 @@ public class VivDebuger : MonoBehaviour
     {
         obj.GetComponent<Renderer>().material.color = Color.green;
     }
+
+    public UnityEvent customEvent;
+
+    [Button]
+    public void EventCustomEvent()
+    {
+        customEvent?.Invoke();
+    }
+
 }

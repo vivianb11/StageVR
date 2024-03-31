@@ -9,6 +9,7 @@ namespace SignalSystem
         public List<SO_Signal> signal = new List<SO_Signal>();
 
         public UnityEvent signalReceived = new UnityEvent();
+        public UnityEvent signalLost = new UnityEvent();
 
         private void Start()
         {
@@ -25,6 +26,8 @@ namespace SignalSystem
                     return;
                 }
             }
+
+            signalLost?.Invoke();
         }
     }
 }

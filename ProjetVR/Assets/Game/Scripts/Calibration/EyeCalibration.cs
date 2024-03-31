@@ -11,12 +11,16 @@ public class EyeCalibration : MonoBehaviour
     private int currentPoint = 0;
 
     public UnityEvent OnCalibrationDone;
+    public UnityEvent Enabled;
 
-    private void Start()
+    private void OnEnable()
     {
-        cursor = GameObject.FindGameObjectWithTag("Cursor");
+        if (!cursor)
+            cursor = GameObject.FindGameObjectWithTag("Cursor");
 
         eyeOffset = new Vector3[calibrationPoints];
+
+        Enabled?.Invoke();
     }
 
     public void Calibrate(Transform place)

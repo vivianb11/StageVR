@@ -30,14 +30,14 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(LoadDelay(fadeTransitionDuration, sceneId));
     }
 
-    public void FadeIn()
+    public void FadeIn(float fadeDuration)
     {
-        StartCoroutine(Fade(1f, fadeTransitionDuration, true));
+        StartCoroutine(Fade(1f, fadeDuration, true));
     }
 
-    public void FadeOut()
+    public void FadeOut(float fadeDuration)
     {
-        StartCoroutine(Fade(0f, fadeTransitionDuration, false));
+        StartCoroutine(Fade(0f, fadeDuration, false));
     }
 
     private IEnumerator LoadDelay(float delay, int sceneId)

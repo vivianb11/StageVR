@@ -61,6 +61,8 @@ public class ProtectedToothBehaviours : MonoBehaviour
         if (health == 0)
         {
             onDeath.Invoke();
+
+            Invoke(nameof(Explode), 2.05f);
             GameManager.Instance.ReloadGameMode(3);
             StartCoroutine(ShakeAndDie());
         }
@@ -111,15 +113,9 @@ public class ProtectedToothBehaviours : MonoBehaviour
         yield return null;
     }
 
-    public void Die()
-    {
-        Invoke("Explode", 2.05f);
-    }
-
     private void Explode()
     {
         Instantiate(toothExplosion, transform.parent); //the tooth explodes into many pieces
-        //Destroy(gameObject);
         gameObject.SetActive(false);
     }
 }

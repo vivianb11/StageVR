@@ -9,7 +9,7 @@ public class ToothPasteProjectile : Projectile
 
         if (other.gameObject.tag != "Cell")
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             return;
         }
 
@@ -29,6 +29,6 @@ public class ToothPasteProjectile : Projectile
             return;
         }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

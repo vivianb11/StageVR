@@ -30,6 +30,6 @@ public class Projectile : MonoBehaviour
     {
         yield return new WaitForSeconds(lifeTime);
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

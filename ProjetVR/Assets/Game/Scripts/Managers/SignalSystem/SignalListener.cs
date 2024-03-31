@@ -10,8 +10,6 @@ namespace SignalSystem
 
         public UnityEvent signalReceived = new UnityEvent();
 
-        public UnityEvent signalLost = new UnityEvent();
-
         private void Start()
         {
             SignalManager.Instance.signalCalled.AddListener(OnSignalReceived);
@@ -27,8 +25,6 @@ namespace SignalSystem
                     return;
                 }
             }
-
-            signalLost?.Invoke();
         }
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2018994015059704635}
   - component: {fileID: 6304446536996827163}
   - component: {fileID: 199010179334806657}
+  - component: {fileID: 7179045399174244758}
   m_Layer: 0
   m_Name: Shooter
   m_TagString: Untagged
@@ -80,6 +81,25 @@ MonoBehaviour:
         m_CallState: 2
   signalLost:
     m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7179045399174244758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8796759962804992029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79ed2aff5135e64888d5865c96135dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal:
+  - {fileID: 11400000, guid: 00371841a0ed18048891fe0e7e5540fa, type: 2}
+  - {fileID: 11400000, guid: fd50f06be32fee7448d872b89abecf9f, type: 2}
+  - {fileID: 11400000, guid: 5c7cd6017f5e4a04cbc59576eef326e0, type: 2}
+  signalReceived:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6304446536996827163}
         m_TargetAssemblyTypeName: Shooter, Assembly-CSharp
@@ -93,3 +113,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  signalLost:
+    m_PersistentCalls:
+      m_Calls: []

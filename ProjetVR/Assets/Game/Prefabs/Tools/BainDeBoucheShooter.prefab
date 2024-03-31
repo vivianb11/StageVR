@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 5864693695247511459}
   - component: {fileID: 6814719658331085250}
   - component: {fileID: 6637320440458980156}
+  - component: {fileID: 4455509034328498865}
   m_Layer: 0
   m_Name: BainDeBoucheShooter
   m_TagString: Untagged
@@ -132,6 +133,7 @@ MonoBehaviour:
   distance: 0.5
   shootDelay: 0.15
   projectile: {fileID: 306745053988628302, guid: 97257e282ee5b304f8b281f7eaf6268b, type: 3}
+  particles: {fileID: 0}
 --- !u!114 &6637320440458980156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +165,25 @@ MonoBehaviour:
         m_CallState: 2
   signalLost:
     m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4455509034328498865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5075467375336953185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79ed2aff5135e64888d5865c96135dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal:
+  - {fileID: 11400000, guid: 00371841a0ed18048891fe0e7e5540fa, type: 2}
+  - {fileID: 11400000, guid: fd50f06be32fee7448d872b89abecf9f, type: 2}
+  - {fileID: 11400000, guid: 348bc03d1835af84fa6575edb80b0566, type: 2}
+  signalReceived:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6814719658331085250}
         m_TargetAssemblyTypeName: BainDeBouche, Assembly-CSharp
@@ -176,3 +197,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  signalLost:
+    m_PersistentCalls:
+      m_Calls: []

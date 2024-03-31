@@ -43,7 +43,6 @@ public class Shooter : MonoBehaviour
         {
             currentProjectileShootSpeed = 0f;
 
-            Debug.Log("Shoot ???");
             ObjectPooling.Pooling.InstantiateGameObject(projectile, transform.position, Quaternion.identity).transform.LookAt(EyeManager.Instance.hitPosition);
         }
     }

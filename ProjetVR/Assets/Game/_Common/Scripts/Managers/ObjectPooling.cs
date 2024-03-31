@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class ObjectPooling : MonoBehaviour
 {
-    public static ObjectPooling Pooling;
+    public static ObjectPooling Instance;
 
     //private List<GameObject> objects = new List<GameObject>();
 
@@ -13,7 +13,7 @@ public class ObjectPooling : MonoBehaviour
 
     private void Awake()
     {
-        Pooling = this;
+        Instance = this;
     }
 
     public GameObject InstantiateGameObject(GameObject objectToInstantiate)
@@ -61,15 +61,26 @@ public class ObjectPooling : MonoBehaviour
 
     private GameObject GetActiveObject(GameObject objectToInstantiate)
     {
-        Debug.Log("Object to spawn type: " + objectToInstantiate.name);
-
         if (!objects.ContainsKey(objectToInstantiate.name))
             return null;
 
+        List<GameObject> objectsToRemove = new List<GameObject>();
+
         foreach (GameObject obj in objects[objectToInstantiate.name])
         {
+            if (obj == null)
+            {
+                objectsToRemove.Add(obj);
+                continue;
+            }
+
             if (!obj.activeInHierarchy) 
                 return obj;
+        }
+
+        foreach (GameObject obj in objectsToRemove)
+        {
+            objects[objectToInstantiate.name].Remove(obj);
         }
 
         return null;

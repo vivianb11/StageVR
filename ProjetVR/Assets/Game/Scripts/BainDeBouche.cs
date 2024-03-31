@@ -46,7 +46,7 @@ public class BainDeBouche : MonoBehaviour
         {
             currentShootDelay = 0f;
 
-            ObjectPooling.Pooling.InstantiateGameObject(projectile, transform.position, Quaternion.identity);
+            ObjectPooling.Instance.InstantiateGameObject(projectile, transform.position, Quaternion.identity);
         }
     }
 }

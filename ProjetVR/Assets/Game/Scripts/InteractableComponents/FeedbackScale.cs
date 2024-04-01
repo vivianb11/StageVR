@@ -36,4 +36,10 @@ public class FeedbackScale : MonoBehaviour
 
         StartCoroutine(ScaleTimer(originalScale));
     }
+
+    public void ForceStop()
+    {
+        StopAllCoroutines();
+        transform.localScale = originalScale;
+    }
 }

@@ -517,6 +517,22 @@ PrefabInstance:
       propertyPath: calibration
       value: 
       objectReference: {fileID: 120134493}
+    - target: {fileID: 6861810227152323939, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
+      propertyPath: SkipCalibration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861810227152323939, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
+      propertyPath: gameModes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861810227152323939, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
+      propertyPath: gameModes.Array.data[0]
+      value: 
+      objectReference: {fileID: 6798597841116208069, guid: 522d735e31d0b6b4c8f4ef5735b6efe9, type: 3}
+    - target: {fileID: 6861810227152323939, guid: 180711a12d322b44583b4dff76f002f9, type: 3}
+      propertyPath: gameModes.Array.data[1]
+      value: 
+      objectReference: {fileID: 6798597841116208069, guid: 78b725139ead97f4d87ba0814f66c741, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -883,7 +899,7 @@ SceneRoots:
   - {fileID: 1740055486}
   - {fileID: 1578878013}
   - {fileID: 1064240902}
+  - {fileID: 120134492}
   - {fileID: 1612635950}
   - {fileID: 1424386821}
   - {fileID: 602385101}
-  - {fileID: 120134492}

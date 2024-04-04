@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   signals:
-  - {fileID: 11400000, guid: 8764358f152399b4d942acab7e386b56, type: 2}
+  - {fileID: 11400000, guid: 4c017e3e4c7f4a1459630e4c47c2320b, type: 2}
 --- !u!1 &3436735275151527448
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,7 +643,7 @@ MonoBehaviour:
         m_MethodName: ChangeDifficulty
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: a24a6513c9c95334c8db90680f96fefd, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 060870809c141ed4ea3cf015f079ae04, type: 2}
           m_ObjectArgumentAssemblyTypeName: DifficultyPresets, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -655,7 +655,7 @@ MonoBehaviour:
         m_MethodName: ChangeDifficulty
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 3d199ad3ced229c4ca608ede0cf75639, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: f3bf6e2d54fef814186a50209db5e434, type: 2}
           m_ObjectArgumentAssemblyTypeName: DifficultyPresets, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -667,7 +667,7 @@ MonoBehaviour:
         m_MethodName: ChangeDifficulty
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: daed4bf6972def6419fb1324fd6ef18d, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 9cedd19f9b53a6543880c1ed84ef8469, type: 2}
           m_ObjectArgumentAssemblyTypeName: DifficultyPresets, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -679,7 +679,7 @@ MonoBehaviour:
         m_MethodName: ChangeDifficulty
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: c5d7def55234b094a997da5df93017a6, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 3dac399a6a1b19548a56037aec6f82a0, type: 2}
           m_ObjectArgumentAssemblyTypeName: DifficultyPresets, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -691,7 +691,7 @@ MonoBehaviour:
         m_MethodName: ChangeDifficulty
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: d710a5f8d8302484389db5eee558a6a9, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 65b720fb1cfe346408b8aab0a87e37ef, type: 2}
           m_ObjectArgumentAssemblyTypeName: DifficultyPresets, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -701,18 +701,6 @@ MonoBehaviour:
   allShooted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 424505616319249623}
-        m_TargetAssemblyTypeName: ProtectedToothBehaviours, Assembly-CSharp
-        m_MethodName: Die
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 7877296613874709338}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive

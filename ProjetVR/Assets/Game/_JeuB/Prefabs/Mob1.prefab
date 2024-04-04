@@ -228,6 +228,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0f31b5493c652b54f9fc2cbe2c64c205, type: 3}
     timePaused: 0
     pausedTime: 0
+  playRandomSfx: 0
+  sfxs: []
   lastPlayedSound: 0
 --- !u!114 &-4735607365920841345
 MonoBehaviour:
@@ -247,6 +249,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 1fa3188af15811e4aabfb23d9008e7c9, type: 3}
     timePaused: 0
     pausedTime: 0
+  playRandomSfx: 0
+  sfxs: []
   lastPlayedSound: 0
 --- !u!114 &514779265771394359
 MonoBehaviour:
@@ -330,7 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   signal:
-  - {fileID: 11400000, guid: 8764358f152399b4d942acab7e386b56, type: 2}
+  - {fileID: 11400000, guid: 4c017e3e4c7f4a1459630e4c47c2320b, type: 2}
   signalReceived:
     m_PersistentCalls:
       m_Calls:

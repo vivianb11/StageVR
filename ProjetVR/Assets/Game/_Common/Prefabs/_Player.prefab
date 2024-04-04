@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f92445a7-db19-452c-8d3d-96820f6c8972
-  instanceId: 48a85c04-21ce-455d-9f8b-326cb5ab807a
+  instanceId: 65d1ca79-7add-4f03-b07a-09b3a07004a9
   version: 1
 --- !u!114 &6596116648137664634
 MonoBehaviour:
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
-  instanceId: af7df2ac-ff69-4331-96d6-23b44b0b1a11
+  instanceId: 463b56ee-3203-4c4f-9216-91e312c4af3d
   version: 1
 --- !u!114 &255181061141480467
 MonoBehaviour:
@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f92445a7-db19-452c-8d3d-96820f6c8972
-  instanceId: 6d887250-7c5a-4299-87d4-835b388deb23
+  instanceId: 6a933014-d6b9-46ad-aae9-807bdc308b7f
   version: 1
 --- !u!114 &2349311012745266690
 MonoBehaviour:
@@ -854,8 +854,8 @@ MonoBehaviour:
   hitSuccessful: 0
   hitPosition: {x: 0, y: 0, z: 0}
   hitCollider: {fileID: 0}
-  grabActivation: {fileID: 11400000, guid: 299b90d46b71dd845a25c5b4a8bf61d3, type: 2}
-  grabDeactivation: {fileID: 11400000, guid: b16e40ca3f00f3c4b8c35fb939c6cf36, type: 2}
+  grabActivation: {fileID: 11400000, guid: a8f18d5c2ed08084a99c5d0aa861921b, type: 2}
+  grabDeactivation: {fileID: 11400000, guid: 8af93bf9d2dcd264585b81f42a5318eb, type: 2}
   leftEyeClosed:
     m_PersistentCalls:
       m_Calls: []
@@ -1411,6 +1411,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2806840479438434394}
     m_Modifications:
+    - target: {fileID: 199010179334806657, guid: ca11aa9f8f2562d40bc53c22b23a9536, type: 3}
+      propertyPath: signal.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3409ad14cd3cb2649a72f7aa6017a3a2, type: 2}
     - target: {fileID: 2018994015059704635, guid: ca11aa9f8f2562d40bc53c22b23a9536, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1455,6 +1459,18 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 4742587880660994548}
+    - target: {fileID: 7179045399174244758, guid: ca11aa9f8f2562d40bc53c22b23a9536, type: 3}
+      propertyPath: signal.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 99f9bf399df08e7499b7e8146b0185b7, type: 2}
+    - target: {fileID: 7179045399174244758, guid: ca11aa9f8f2562d40bc53c22b23a9536, type: 3}
+      propertyPath: signal.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6ea49cf117a7ada4691f5171d3c53631, type: 2}
+    - target: {fileID: 7179045399174244758, guid: ca11aa9f8f2562d40bc53c22b23a9536, type: 3}
+      propertyPath: signal.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 583341350026f6148929cd93727bf176, type: 2}
     - target: {fileID: 8796759962804992029, guid: ca11aa9f8f2562d40bc53c22b23a9536, type: 3}
       propertyPath: m_Name
       value: Shooter

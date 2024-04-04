@@ -796,104 +796,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &8602956050369977619
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3742606539930765313}
-  - component: {fileID: 7711830853550407755}
-  - component: {fileID: 8168326781454537524}
-  - component: {fileID: 2434090418263113077}
-  m_Layer: 0
-  m_Name: TeehtProgression
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3742606539930765313
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8602956050369977619}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.677, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2925910362670227805}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7711830853550407755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8602956050369977619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed16549cca3f6be42ba5fc2ced8b1cef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  space: 0.15
-  alignPosition: 1
---- !u!114 &8168326781454537524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8602956050369977619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3224bb36f4ca79b4ea9d1b1645894045, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toothCount: 5
-  animationDelay: 0.15
-  toothPrefab: {fileID: 5552061895131566892, guid: aa683f1f35ca79946a872b96bc084483, type: 3}
-  cleanMaterial: {fileID: 2100000, guid: 9c6103d2ad98b544b82572d8025d27d2, type: 2}
-  fillMaterial: {fileID: 2100000, guid: 5e31ac1c3b4852b4ebdeca0094f20724, type: 2}
-  toothManager: {fileID: 854620143172120987}
---- !u!114 &2434090418263113077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8602956050369977619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e79ed2aff5135e64888d5865c96135dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  signal:
-  - {fileID: 11400000, guid: 117d694d618b2ab43b6beb0bf6c8330a, type: 2}
-  signalReceived:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8168326781454537524}
-        m_TargetAssemblyTypeName: TeethProgress, Assembly-CSharp
-        m_MethodName: SpawnTeeth
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  signalLost:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &310804980361421888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1366,6 +1268,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48450aa347c810941b4148afcdf3ca91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &592727770915113658
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2925910362670227805}
+    m_Modifications:
+    - target: {fileID: 4308152733045031611, guid: 9a130a12434182b41bbb084a5e50ea1a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308152733045031611, guid: 9a130a12434182b41bbb084a5e50ea1a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.677
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308152733045031611, guid: 9a130a12434182b41bbb084a5e50ea1a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308152733045031611, guid: 9a130a12434182b41bbb084a5e50ea1a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308152733045031611, guid: 9a130a12434182b41bbb084a5e50ea1a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308152733045031611, guid: 9a130a12434182b41bbb084a5e50ea1a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308152733045031611, guid: 9a130a12434182b41bbb084a5e50ea1a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308152733045031611, guid: 9a130a12434182b41bbb084a5e50ea1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308152733045031611, guid: 9a130a12434182b41bbb084a5e50ea1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308152733045031611, guid: 9a130a12434182b41bbb084a5e50ea1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746680052412832142, guid: 9a130a12434182b41bbb084a5e50ea1a, type: 3}
+      propertyPath: toothManager
+      value: 
+      objectReference: {fileID: 854620143172120987}
+    - target: {fileID: 9176678212757755817, guid: 9a130a12434182b41bbb084a5e50ea1a, type: 3}
+      propertyPath: m_Name
+      value: TeehtProgression
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9a130a12434182b41bbb084a5e50ea1a, type: 3}
+--- !u!4 &3742606539930765313 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4308152733045031611, guid: 9a130a12434182b41bbb084a5e50ea1a, type: 3}
+  m_PrefabInstance: {fileID: 592727770915113658}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2117442004048040284
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1506,6 +1474,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4626532316447252491, guid: 71b0f59c88d8a104fa39a7b7cdbd3e55, type: 3}
+      propertyPath: OnToothPreCleaned.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626532316447252491, guid: 71b0f59c88d8a104fa39a7b7cdbd3e55, type: 3}
       propertyPath: CellCleaned.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 5
       objectReference: {fileID: 0}
@@ -1516,18 +1488,34 @@ PrefabInstance:
     - target: {fileID: 4626532316447252491, guid: 71b0f59c88d8a104fa39a7b7cdbd3e55, type: 3}
       propertyPath: OnTeethCleaned.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8168326781454537524}
+      objectReference: {fileID: 8747131167866001058}
+    - target: {fileID: 4626532316447252491, guid: 71b0f59c88d8a104fa39a7b7cdbd3e55, type: 3}
+      propertyPath: OnToothPreCleanedWithDecay.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4626532316447252491, guid: 71b0f59c88d8a104fa39a7b7cdbd3e55, type: 3}
       propertyPath: CellCleaned.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: EventTextDebuger
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626532316447252491, guid: 71b0f59c88d8a104fa39a7b7cdbd3e55, type: 3}
+      propertyPath: OnTeethCleaned.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 4626532316447252491, guid: 71b0f59c88d8a104fa39a7b7cdbd3e55, type: 3}
       propertyPath: CellCleaned.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VivDebuger, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4626532316447252491, guid: 71b0f59c88d8a104fa39a7b7cdbd3e55, type: 3}
+      propertyPath: OnToothPreCleanedWithDecay.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626532316447252491, guid: 71b0f59c88d8a104fa39a7b7cdbd3e55, type: 3}
       propertyPath: CellCleaned.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: rety34esdwfwsadwqeqwewqwq2qw2qwqw
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626532316447252491, guid: 71b0f59c88d8a104fa39a7b7cdbd3e55, type: 3}
+      propertyPath: OnToothPreCleanedWithDecay.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4626532316447252491, guid: 71b0f59c88d8a104fa39a7b7cdbd3e55, type: 3}
       propertyPath: CellCleaned.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1566,5 +1554,10 @@ GameObject:
 --- !u!4 &8342950095204638267 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4044402029603655595, guid: 71b0f59c88d8a104fa39a7b7cdbd3e55, type: 3}
+  m_PrefabInstance: {fileID: 5469770040249078160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8747131167866001058 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3642439773453829938, guid: 71b0f59c88d8a104fa39a7b7cdbd3e55, type: 3}
   m_PrefabInstance: {fileID: 5469770040249078160}
   m_PrefabAsset: {fileID: 0}

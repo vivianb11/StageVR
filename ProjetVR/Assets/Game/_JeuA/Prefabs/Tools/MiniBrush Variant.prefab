@@ -411,13 +411,21 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2561640014928352790, guid: 54aeb0f9a6b61db4198320c58082f261, type: 3}
+      propertyPath: signal.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 583341350026f6148929cd93727bf176, type: 2}
+    - target: {fileID: 2561640014928352790, guid: 54aeb0f9a6b61db4198320c58082f261, type: 3}
       propertyPath: signal.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 8d13342a7545c6849ac4960193887a3e, type: 2}
+      objectReference: {fileID: 11400000, guid: 6ea49cf117a7ada4691f5171d3c53631, type: 2}
     - target: {fileID: 2561640014928352790, guid: 54aeb0f9a6b61db4198320c58082f261, type: 3}
       propertyPath: signal.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: fd50f06be32fee7448d872b89abecf9f, type: 2}
+      objectReference: {fileID: 11400000, guid: 3409ad14cd3cb2649a72f7aa6017a3a2, type: 2}
+    - target: {fileID: 4159873178246011848, guid: 54aeb0f9a6b61db4198320c58082f261, type: 3}
+      propertyPath: signal.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: a8f18d5c2ed08084a99c5d0aa861921b, type: 2}
     - target: {fileID: 4480297675719151596, guid: 54aeb0f9a6b61db4198320c58082f261, type: 3}
       propertyPath: signal
       value: 
@@ -449,11 +457,15 @@ PrefabInstance:
     - target: {fileID: 6385272854291979431, guid: 54aeb0f9a6b61db4198320c58082f261, type: 3}
       propertyPath: signals.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 00371841a0ed18048891fe0e7e5540fa, type: 2}
+      objectReference: {fileID: 11400000, guid: 99f9bf399df08e7499b7e8146b0185b7, type: 2}
     - target: {fileID: 7800505201498700643, guid: 54aeb0f9a6b61db4198320c58082f261, type: 3}
       propertyPath: m_Name
       value: MiniBrush Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8613601181390753060, guid: 54aeb0f9a6b61db4198320c58082f261, type: 3}
+      propertyPath: signal.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8af93bf9d2dcd264585b81f42a5318eb, type: 2}
     - target: {fileID: 523380734999268644, guid: d0cc98cd8e116cb44a57fd2b1f0a2eb7, type: 3}
       propertyPath: shootType
       value: 2

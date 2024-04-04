@@ -1,0 +1,22 @@
+using UnityEngine;
+
+public class CrosshairLerp : MonoBehaviour
+{
+    public float lerpSpeed = 1f;
+
+    private Transform parent;
+
+    private void Start()
+    {
+        parent = transform.parent;
+
+        transform.parent = null;
+    }
+
+    private void FixedUpdate()
+    {
+        transform.position = parent.position;
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, parent.rotation, lerpSpeed);
+    }
+}

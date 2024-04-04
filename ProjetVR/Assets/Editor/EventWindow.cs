@@ -12,6 +12,11 @@ public class EventWindow : EditorWindow
 
     private Vector2 scrollPos;
 
+    private void OnEnable()
+    {
+        GetComponentsEvent();
+    }
+
     [MenuItem("Window/Events")]
     public static void ShowWindow()
     {
@@ -30,19 +35,10 @@ public class EventWindow : EditorWindow
             var gObj = component.gameObject;
             var serializedObject = pair.Value;
 
-            if (!GameObjectFoldout.ContainsKey(gObj))
-            {
-                GameObjectFoldout.Add(component.gameObject, true);
-            }
-
             GameObjectFoldout[gObj] = EditorGUILayout.Foldout(GameObjectFoldout[gObj], gObj.name);
 
             if (GameObjectFoldout[gObj])
             {
-                if (!foldout.ContainsKey(component))
-                {
-                    foldout.Add(component, true);
-                }
 
                 foldout[component] = EditorGUILayout.InspectorTitlebar(foldout[component], component);
 
@@ -50,7 +46,7 @@ public class EventWindow : EditorWindow
                 {
                     serializedObject.Update();
 
-                    foreach (FieldInfo field in component.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic))
+                    foreach (FieldInfo field in component.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public))
                     {
                         if (field.FieldType == typeof(UnityEvent))
                         {
@@ -65,14 +61,18 @@ public class EventWindow : EditorWindow
         }
 
         EditorGUILayout.EndScrollView();
-
-        Repaint();
     }
 
     private void OnSelectionChange()
     {
+        GetComponentsEvent();
+    }
+
+    private void GetComponentsEvent()
+    {
         events.Clear();
         foldout.Clear();
+        GameObjectFoldout.Clear();
 
         foreach (var obj in Selection.gameObjects)
         {
@@ -85,11 +85,18 @@ public class EventWindow : EditorWindow
                         if (!events.ContainsKey(component))
                         {
                             events.Add(component, new SerializedObject(component));
+
+                            if (!GameObjectFoldout.ContainsKey(component.gameObject))
+                                GameObjectFoldout.Add(component.gameObject, false);
+
+                            foldout.Add(component, true);
                             break;
                         }
                     }
                 }
             }
         }
+
+        Repaint();
     }
 }

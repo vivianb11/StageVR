@@ -7,8 +7,6 @@ public class ObjectPooling : MonoBehaviour
 {
     public static ObjectPooling Instance;
 
-    //private List<GameObject> objects = new List<GameObject>();
-
     private Dictionary<string, List<GameObject>> objects = new ();
 
     private void Awake()
@@ -88,7 +86,7 @@ public class ObjectPooling : MonoBehaviour
 
     private GameObject InstantiateNewObject(GameObject objectToInstantiate)
     {
-        GameObject obj = Instantiate(objectToInstantiate);
+        GameObject obj = Instantiate(objectToInstantiate, transform);
 
         if (!objects.ContainsKey(objectToInstantiate.name))
             objects.Add(objectToInstantiate.name, new List<GameObject>() { obj });
@@ -100,7 +98,7 @@ public class ObjectPooling : MonoBehaviour
 
     private GameObject InstantiateNewObject(GameObject objectToInstantiate, Vector3 position, Quaternion rotation)
     {
-        GameObject obj = Instantiate(objectToInstantiate, position, rotation);
+        GameObject obj = Instantiate(objectToInstantiate, position, rotation, transform);
 
         if (!objects.ContainsKey(objectToInstantiate.name))
             objects.Add(objectToInstantiate.name, new List<GameObject>() { obj });

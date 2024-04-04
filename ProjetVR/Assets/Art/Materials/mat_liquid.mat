@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: mat_liquid
+  m_Shader: {fileID: -6465566751694194690, guid: 1f915141e8328f148b4e40062b203309, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _SURFACE_TYPE_TRANSPARENT
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: _WobbleZ
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaClip: 1
+    - _AlphaToMask: 0
+    - _Blend: 0
+    - _CastShadows: 1
+    - _Cull: 0
+    - _DstBlend: 10
+    - _FresnelPower: 0.5
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _SrcBlend: 5
+    - _Surface: 1
+    - _WobbleX: 0
+    - _WobbleY: 1
+    - _WobbleZ: 0
+    - _WobleX: 1
+    - _WobleY: 1
+    - _WoobleX: 0
+    - _WoobleY: 0
+    - _ZTest: 5
+    - _ZWrite: 0
+    - _ZWriteControl: 0
+    - _alpha: 0.513
+    - _fill: 0.5
+    m_Colors:
+    - _Color: {r: 0.23584908, g: 0.127937, b: 0.127937, a: 0}
+    - _FresnelColor: {r: 0, g: 0.607527, b: 1, a: 0}
+    - _LiquidColor: {r: 0.03181738, g: 0.23100185, b: 0.6132076, a: 1}
+    - _SurfaceColor: {r: 0.0299039, g: 0.7018526, b: 0.9056604, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &6633240737439450859
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7

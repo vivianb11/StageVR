@@ -11,14 +11,14 @@
       "hash": "cf3756855cd19afc1dca21fda16f022fe21e4f7e"
     },
     "com.meta.xr.sdk.core": {
-      "version": "60.0.0",
+      "version": "63.0.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.meta.xr.sdk.interaction": {
-      "version": "60.0.0",
+      "version": "63.0.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -26,6 +26,12 @@
         "com.unity.ugui": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
     },
     "com.unity.animation.rigging": {
       "version": "1.2.1",
@@ -80,15 +86,6 @@
         "com.unity.performance.profile-analyzer": "1.2.2",
         "com.unity.test-framework": "1.1.33",
         "com.unity.testtools.codecoverage": "1.2.5"
-      }
-    },
-    "com.unity.feature.vr": {
-      "version": "1.0.0",
-      "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.xr.oculus": "4.1.2",
-        "com.unity.xr.openxr": "1.9.1"
       }
     },
     "com.unity.ide.rider": {
@@ -203,6 +200,17 @@
         "com.unity.searcher": "4.9.2"
       }
     },
+    "com.unity.splines": {
+      "version": "2.5.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.settings-manager": "1.0.3",
+        "com.unity.mathematics": "1.2.1",
+        "com.unity.ugui": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.test-framework": {
       "version": "1.1.33",
       "depth": 1,
@@ -225,7 +233,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.textmeshpro": {
-      "version": "3.0.7",
+      "version": "3.0.8",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -286,7 +294,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.interaction.toolkit": {
-      "version": "2.5.2",
+      "version": "2.5.3",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -312,8 +320,8 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.management": {
-      "version": "4.4.1",
-      "depth": 0,
+      "version": "4.4.0",
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.modules.subsystems": "1.0.0",
@@ -325,22 +333,10 @@
     },
     "com.unity.xr.oculus": {
       "version": "4.1.2",
-      "depth": 1,
+      "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.xr.management": "4.4.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.xr.openxr": {
-      "version": "1.9.1",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.xr.management": "4.4.0",
-        "com.unity.xr.legacyinputhelpers": "2.1.2",
-        "com.unity.inputsystem": "1.6.3",
-        "com.unity.xr.core-utils": "2.1.1"
       },
       "url": "https://packages.unity.com"
     },

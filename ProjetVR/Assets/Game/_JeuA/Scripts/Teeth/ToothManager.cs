@@ -225,9 +225,8 @@ public class ToothManager : MonoBehaviour
     {
         if (IsToothCleaned())
         {
-            EnableGrab();
-
             OnToothPreCleaned?.Invoke();
+            CleanTooth();
         }
         else if (OnlyDecayRemaining())
         {

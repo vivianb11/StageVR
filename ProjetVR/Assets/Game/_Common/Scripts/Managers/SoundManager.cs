@@ -3,10 +3,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour
 {
     [Header("General")]
@@ -23,7 +23,7 @@ public class SoundManager : MonoBehaviour
     [HideInInspector] public AudioSource _musicSource;
 
     // The key is the audio source and the value is the sound that is playing on it
-    public Dictionary<AudioSource,Sound> _audioSources;
+    public Dictionary<AudioSource, Sound> _audioSources;
 
     private void Awake()
     {
@@ -39,7 +39,7 @@ public class SoundManager : MonoBehaviour
             _musicSource = this.gameObject.AddComponent<AudioSource>();
 
         _audioSources = new Dictionary<AudioSource, Sound>();
-        
+
         GameObject tempGo = new GameObject();
 
         for (int i = 0; i < maxAudioSources; i++)
@@ -50,7 +50,7 @@ public class SoundManager : MonoBehaviour
             go.name = "Audio Source " + i;
 
             var aS = go.AddComponent<AudioSource>();
-            
+
             _audioSources.Add(aS, null);
         }
 
@@ -289,7 +289,7 @@ public class SoundManager : MonoBehaviour
 
     public void StopSound(SoundType soundType, bool withFade = false)
     {
-        foreach(var audio in _audioSources)
+        foreach (var audio in _audioSources)
         {
             var aS = audio.Key;
             var sound = audio.Value;
@@ -346,7 +346,7 @@ public class SoundManager : MonoBehaviour
 
         source.volume = targetVolume;
     }
-    public IEnumerator FadeOutSound(AudioSource source,float duration)
+    public IEnumerator FadeOutSound(AudioSource source, float duration)
     {
         float startVolume = source.volume;
 
@@ -375,8 +375,7 @@ public class SoundManager : MonoBehaviour
 
         source.Stop();
 
-        source.transform.SetParent(transform);
-        source.transform.position = Vector3.zero;
+        source.transform.localPosition = Vector3.zero;
     }
 
     public IEnumerator DelayedClean(float delay, AudioSource aS)

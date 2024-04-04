@@ -1,22 +1,32 @@
 ﻿using System;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(SoundEmiter))]
 public class SoundEmiter_CI : Editor
 {
+    SoundEmiter soundEmiter;
     public bool fadeResume = true;
     public bool fadePause = true;
     public bool fadeStop = true;
 
+    public void OnEnable()
+    {
+        soundEmiter = (SoundEmiter)target;
+    }
 
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
 
-        SoundEmiter soundEmiter = (SoundEmiter)target;
+        if (soundEmiter.playRandomSfx)
+        {
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("sfxs"), true);
+        }
 
+        serializedObject.ApplyModifiedProperties();
 
         GUILayout.Space(10);
 

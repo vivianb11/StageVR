@@ -6,7 +6,7 @@ public class BainDeBouche : MonoBehaviour
     [SerializeField] float shootDelay;
 
     [SerializeField] GameObject projectile;
-    [SerializeField] GameObject particles;
+    [SerializeField] ParticleSystem particles;
 
     private bool followHitPosition;
 
@@ -17,15 +17,25 @@ public class BainDeBouche : MonoBehaviour
         if (followHitPosition)
         {
             transform.position = EyeManager.Instance.hitPosition + Vector3.up * distance;
-            ShootProjectile();
+
+            if (EyeManager.Instance.RaycastForward(out RaycastHit hit))
+            {
+                if (hit.collider.gameObject.CompareTag("Cell"))
+                {
+                    ShootProjectile();
+                    particles.Play();
+                }
+                else
+                    particles.Stop();
+            }
+            else
+                particles.Stop();
         }
     }
 
     public void EnableShoot()
     {
         followHitPosition = true;
-
-        particles.SetActive(true);
     }
 
     public void DisableShoot()
@@ -34,8 +44,6 @@ public class BainDeBouche : MonoBehaviour
 
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(0f, 90f, 90f);
-
-        particles.SetActive(false);
     }
 
     private void ShootProjectile()

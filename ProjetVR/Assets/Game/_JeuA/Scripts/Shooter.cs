@@ -19,8 +19,12 @@ public class Shooter : MonoBehaviour
     {
         if (!canShoot)
             return;
-
-        ShootProjectile();
+        
+        if (EyeManager.Instance.RaycastForward(out RaycastHit hit))
+        {
+            if (hit.collider.gameObject.CompareTag("Cell"))
+                ShootProjectile();
+        }
     }
 
     [Button]

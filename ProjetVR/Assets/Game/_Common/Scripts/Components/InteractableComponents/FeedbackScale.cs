@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class FeedbackScale : MonoBehaviour
 {
-    [SerializeField] float scaleOffset = 1.05f;
     [SerializeField] [Range(0f, 1f)] float scaleLerpSpeed = 0.15f;
+
+    private const float scaleOffset = 1.25f;
 
     private Vector3 originalScale;
 

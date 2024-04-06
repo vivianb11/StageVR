@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f92445a7-db19-452c-8d3d-96820f6c8972
-  instanceId: 65d1ca79-7add-4f03-b07a-09b3a07004a9
+  instanceId: c5591d55-6372-4a1a-80a9-b5ad7f276992
   version: 1
 --- !u!114 &6596116648137664634
 MonoBehaviour:
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
-  instanceId: 463b56ee-3203-4c4f-9216-91e312c4af3d
+  instanceId: 82618f08-3b25-43b8-8bfd-4a4a6bf6aadd
   version: 1
 --- !u!114 &255181061141480467
 MonoBehaviour:
@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f92445a7-db19-452c-8d3d-96820f6c8972
-  instanceId: 6a933014-d6b9-46ad-aae9-807bdc308b7f
+  instanceId: b2329ce6-b419-47bf-bdfe-2d0ab4878dcc
   version: 1
 --- !u!114 &2349311012745266690
 MonoBehaviour:
@@ -699,6 +699,7 @@ GameObject:
   - component: {fileID: 3548780121623098111}
   - component: {fileID: 4321731649557977126}
   - component: {fileID: 7341539932913188322}
+  - component: {fileID: 8967725153655843097}
   m_Layer: 0
   m_Name: CenterEyeAnchor
   m_TagString: MainCamera
@@ -1010,6 +1011,30 @@ MonoBehaviour:
   m_OccludeARHitsWith3DObjects: 0
   m_OccludeARHitsWith2DObjects: 0
   m_ScaleMode: 0
+--- !u!114 &8967725153655843097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4692747275123098972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea25d0a3abc8a047af75e57dc815f35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RecordingSample: 2
+  ExcitedThreshold: 0.5
+  NormalThreshold: 0.1
+  Excited:
+    m_PersistentCalls:
+      m_Calls: []
+  Normal:
+    m_PersistentCalls:
+      m_Calls: []
+  Calme:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4996224962349704925
 GameObject:
   m_ObjectHideFlags: 0

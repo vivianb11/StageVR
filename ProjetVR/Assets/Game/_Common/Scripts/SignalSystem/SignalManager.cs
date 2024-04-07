@@ -28,7 +28,7 @@ namespace SignalSystem
         */
         public void EmitSignal(string signalName)
         {
-            signalCalled?.Invoke(value);
+            signalCalled?.Invoke(signalName);
         }
     }
 }

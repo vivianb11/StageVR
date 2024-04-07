@@ -1,3 +1,8 @@
+/**
+ * @file SignalManager.cs
+ * @author Raphael Daubelcour
+ * @date 2023
+ */
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -22,9 +27,12 @@ namespace SignalSystem
             }
         }
 
-        public void EmitSignal(string value)
+        /**
+        * @code{.cs} SignalListener.OnSignalReceived(string signalName) @endcode
+        */
+        public void EmitSignal(string signalName)
         {
-            signalCalled?.Invoke(value);
+            signalCalled?.Invoke(signalName);
         }
     }
 }

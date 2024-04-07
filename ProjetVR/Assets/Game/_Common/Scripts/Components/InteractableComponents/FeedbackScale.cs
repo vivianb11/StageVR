@@ -14,6 +14,11 @@ public class FeedbackScale : MonoBehaviour
         originalScale = transform.localScale;
     }
 
+    private void OnDisable()
+    {
+        transform.localScale = originalScale;
+    }
+
     private IEnumerator ScaleTimer(Vector3 targetScale)
     {
         while (transform.localScale != targetScale)

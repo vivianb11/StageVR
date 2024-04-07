@@ -1693,7 +1693,7 @@ MonoBehaviour:
   decayMat: {fileID: 2100000, guid: af921ee7af8d1204b993352f51214eaa, type: 2}
   brushSignal: {fileID: 11400000, guid: 6ea49cf117a7ada4691f5171d3c53631, type: 2}
   brossetteSignal: {fileID: 11400000, guid: 99f9bf399df08e7499b7e8146b0185b7, type: 2}
-  smellVFX: {fileID: 7717114566369999161}
+  smellVFX: {fileID: 9177020401833901566}
   maxSmellAmount: 50
   OnTeethCleaned:
     m_PersistentCalls:
@@ -3078,7 +3078,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 127931137768425941, guid: 9741bb470de02524b9e6328ffcd5fb58, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.258
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 127931137768425941, guid: 9741bb470de02524b9e6328ffcd5fb58, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3121,13 +3121,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9741bb470de02524b9e6328ffcd5fb58, type: 3}
---- !u!1 &7717114566369999161 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1551015484875023300, guid: 9741bb470de02524b9e6328ffcd5fb58, type: 3}
-  m_PrefabInstance: {fileID: 9123979011966556925}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9176192143969276712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 127931137768425941, guid: 9741bb470de02524b9e6328ffcd5fb58, type: 3}
+  m_PrefabInstance: {fileID: 9123979011966556925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &9177020401833901566 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 127703864394688259, guid: 9741bb470de02524b9e6328ffcd5fb58, type: 3}
   m_PrefabInstance: {fileID: 9123979011966556925}
   m_PrefabAsset: {fileID: 0}

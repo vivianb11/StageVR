@@ -110,10 +110,11 @@ public class CellBehavior : MonoBehaviour
 
     public void SwitchTeethState(TeethState newTeethState)
     {
-        teethState = newTeethState;
+        if (teethState == TeethState.Dirty && newTeethState != TeethState.Dirty)
+            foreach (Transform child in transform)
+                child.GetComponent<FoodBehavior>().EjectFood();
 
-        foreach (Transform child in transform)
-            Destroy(child.gameObject);
+        teethState = newTeethState;
 
         if (teethState == TeethState.Dirty)
         {
@@ -133,7 +134,6 @@ public class CellBehavior : MonoBehaviour
         toothPasteAmount = 0;
 
         OnClean?.Invoke();
-        Debug.Log("Clean Cell");
     }
 
     public void DecayBehavior()

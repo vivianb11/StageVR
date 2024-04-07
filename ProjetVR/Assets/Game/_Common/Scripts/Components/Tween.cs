@@ -95,7 +95,7 @@ public class Tween : MonoBehaviour
         StartCoroutine(PropertyCoroutine(TweenProperty.Properties.ROTATION, transform.position, targetRotation, tweenTime, AnimationCurve.EaseInOut(0f, 0f, 1f, 1f)));
     }
 
-    private float GetMontageDuration(TweenMontage montage)
+    public float GetMontageDuration(TweenMontage montage)
     {
         float duration = 0f;
 

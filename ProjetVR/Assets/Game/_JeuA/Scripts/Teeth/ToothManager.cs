@@ -39,7 +39,7 @@ public class ToothManager : MonoBehaviour
     public SO_Signal brossetteSignal;
 
     private Tween tweener;
-    public GameObject smellVFX;
+    public ParticleSystem smellVFX;
 
     public bool smells { get; private set; }
 
@@ -63,6 +63,8 @@ public class ToothManager : MonoBehaviour
         tweener = GetComponent<Tween>();
 
         smellAmount = maxSmellAmount;
+
+        smellVFX.gameObject.SetActive(true);
     }
 
     void Start()
@@ -96,9 +98,9 @@ public class ToothManager : MonoBehaviour
         smellAmount = maxSmellAmount;
 
         if (value)
-            smellVFX.SetActive(true);
+            smellVFX.Play();
         else
-            smellVFX.SetActive(false);
+            smellVFX.Stop();
     }
 
     [Button]

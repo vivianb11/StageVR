@@ -5,6 +5,7 @@ using NaughtyAttributes;
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(FeedbackScale))]
 public class Interactable : MonoBehaviour
 {
     [HideInInspector]
@@ -53,6 +54,11 @@ public class Interactable : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
+        FeedbackScale feedbackScale = GetComponent<FeedbackScale>();
+
+        lookIn.AddListener(feedbackScale.ScaleIn);
+        lookOut.AddListener(feedbackScale.ScaleOut);
     }
 
     private void Start()

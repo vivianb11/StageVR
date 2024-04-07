@@ -22,9 +22,13 @@ namespace SignalSystem
             }
         }
 
-        public void EmitSignal(string value)
+        /**
+        * Emit a signal to all the listeners
+        * @code{.cs} SignalListener.OnSignalReceived(string signalName) @endcode
+        */
+        public void EmitSignal(string signalName)
         {
-            signalCalled?.Invoke(value);
+            signalCalled?.Invoke(signalName);
         }
     }
 }

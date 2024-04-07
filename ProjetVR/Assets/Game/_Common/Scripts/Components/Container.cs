@@ -11,12 +11,10 @@ public class Container : MonoBehaviour
     public float space;
     public AlignPosition alignPosition;
 
-#if UNITY_EDITOR
-    private void Update()
+    private void OnTransformChildrenChanged()
     {
         UpdateChildsPosition();
     }
-#endif
 
     private void UpdateChildsPosition()
     {

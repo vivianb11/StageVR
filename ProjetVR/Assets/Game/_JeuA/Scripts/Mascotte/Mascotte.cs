@@ -7,7 +7,7 @@ public class Mascotte : MonoBehaviour
 {
     public enum MascotteState
     {
-        IDLE, HELP_TARTAR, HELP_DECAY, HELP_DIRTY, HELP_SMELL, HAPPY
+        IDLE, HELP_TARTAR, HELP_DECAY, HELP_DIRTY, HELP_SMELL, HAPPY, CONFUSE
     }
 
     public MascotteState state;
@@ -21,15 +21,16 @@ public class Mascotte : MonoBehaviour
     private float interactionDelay = 2f;
 
     [SerializeField]
-    private MeshRenderer meshRenderer;
-
-    [SerializeField]
     private AudioSource enterClean;
 
     [SerializeField]
     private AudioSource toothBrush;
 
     private bool canClean = true;
+
+    [Space(10)]
+
+    public UnityEvent<MascotteState> stateSwitched;
 
     public UnityEvent tartarHelpState;
     public UnityEvent dirtyHelpState;
@@ -39,14 +40,27 @@ public class Mascotte : MonoBehaviour
 
     private Coroutine checkCoroutine;
 
+    private HeadMotionTracker headMotionTracker;
+
     private void Start()
     {
-        meshRenderer.material.color = Color.green;
-
-        tooth.CellCleaned.AddListener(() => PlayCheck(checkDelay));
+        tooth.CellCleaned.AddListener(() => StartToothCheckingState(checkDelay));
         tooth.OnTeethCleaned.AddListener(() => SwitchState(MascotteState.HAPPY));
 
-        PlayCheck(checkDelay);
+        headMotionTracker = FindAnyObjectByType<HeadMotionTracker>();
+
+        headMotionTracker.Excited.AddListener(() => SwitchState(MascotteState.CONFUSE));
+        headMotionTracker.Normal.AddListener(() => SwitchState(MascotteState.IDLE));
+        headMotionTracker.Calme.AddListener(() => SwitchState(MascotteState.IDLE));
+
+        StartToothCheckingState(checkDelay);
+    }
+
+    private void OnDisable()
+    {
+        headMotionTracker.Excited.RemoveListener(() => SwitchState(MascotteState.CONFUSE));
+        headMotionTracker.Normal.RemoveListener(() => SwitchState(MascotteState.IDLE));
+        headMotionTracker.Calme.RemoveListener(() => SwitchState(MascotteState.IDLE));
     }
 
     public void SwitchState(MascotteState newState)
@@ -55,6 +69,7 @@ public class Mascotte : MonoBehaviour
             return;
 
         state = newState;
+        stateSwitched?.Invoke(state);
 
         switch (newState)
         {
@@ -76,8 +91,13 @@ public class Mascotte : MonoBehaviour
                 break;
             case MascotteState.HAPPY:
                 happyState?.Invoke();
-                PlayCheck(checkDelayAfterFullClean);
+                StartToothCheckingState(checkDelayAfterFullClean);
                 Debug.Log("GG !".SetColor(Color.green));
+                break;
+            case MascotteState.IDLE:
+                StartToothCheckingState(checkDelayAfterFullClean);
+                break;
+            case MascotteState.CONFUSE:
                 break;
         }
     }
@@ -90,7 +110,7 @@ public class Mascotte : MonoBehaviour
         StartCoroutine(CleanTeeth(interactionDelay, toothManager));
     }
 
-    private void PlayCheck(float delay)
+    private void StartToothCheckingState(float delay)
     {
         if (checkCoroutine != null)
             StopCoroutine(checkCoroutine);

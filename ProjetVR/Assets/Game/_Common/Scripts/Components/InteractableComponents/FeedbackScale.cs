@@ -5,7 +5,7 @@ public class FeedbackScale : MonoBehaviour
 {
     [SerializeField] [Range(0f, 1f)] float scaleLerpSpeed = 0.15f;
 
-    private const float scaleOffset = 1.25f;
+    private const float scaleOffset = 3f;
 
     private Vector3 originalScale;
 

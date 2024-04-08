@@ -39,6 +39,7 @@ public class Mob : MonoBehaviour
 
     private void Start()
     {
+        _tween = GetComponent<Tween>();
         if (! canRotate) return;
         
         GetComponent<BoxCollider>().isTrigger = true;

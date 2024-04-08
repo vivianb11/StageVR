@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.31379133, g: 0.55039185, b: 0.82174075, a: 1}
+  m_IndirectSpecularColor: {r: 0.31343237, g: 0.55243826, b: 0.8233737, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -136,13 +136,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 255181061141480467, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1267983012281585786, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
       propertyPath: m_Name
       value: VR Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4456600560409760620, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5169585259901060704, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488580863791086106, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6498461842875273312, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
       propertyPath: m_LocalPosition.x
@@ -182,6 +194,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6498461842875273312, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391056799769431687, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8726441842836591577, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
@@ -266,7 +282,7 @@ MonoBehaviour:
   - {fileID: 6798597841116208069, guid: 78b725139ead97f4d87ba0814f66c741, type: 3}
   startDelay: 3
   SkipCalibration: 1
-  currentSceneIndex: 0
+  currentSceneIndex: 1
   gameStarted:
     m_PersistentCalls:
       m_Calls: []

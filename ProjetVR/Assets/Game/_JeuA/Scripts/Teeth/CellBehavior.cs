@@ -113,6 +113,9 @@ public class CellBehavior : MonoBehaviour
         if (teethState == TeethState.Dirty && newTeethState != TeethState.Dirty)
             foreach (Transform child in transform)
                 child.GetComponent<FoodBehavior>().EjectFood();
+        else if (teethState == TeethState.Tartar && newTeethState != TeethState.Tartar)
+            foreach (Transform child in transform)
+                Destroy(child.gameObject);
 
         teethState = newTeethState;
 

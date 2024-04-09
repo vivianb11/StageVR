@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 319178329477282322}
   - component: {fileID: 1918241731262922254}
   - component: {fileID: 7755698848008748568}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 2388298866872592643}
   - component: {fileID: -2873159065170675972}
   - component: {fileID: -6419236568073364512}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Food_template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -302,6 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d94871b781340a41850a2f841764b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayBeforeDestroayable: 1
   force: 500
   Explosion: {fileID: 954929696208061895}
 --- !u!1001 &1679765701287130819
@@ -315,6 +316,10 @@ PrefabInstance:
     - target: {fileID: 1877769591593022212, guid: 4ea1a516e55f7f5498d556baaad65fd5, type: 3}
       propertyPath: m_Name
       value: ExplosionVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877769591593022212, guid: 4ea1a516e55f7f5498d556baaad65fd5, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1877769591593022212, guid: 4ea1a516e55f7f5498d556baaad65fd5, type: 3}
       propertyPath: m_IsActive

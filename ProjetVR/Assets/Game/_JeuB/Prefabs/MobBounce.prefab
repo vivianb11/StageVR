@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 3120594525929679554}
   - component: {fileID: -4936888757795940695}
   m_Layer: 6
-  m_Name: Mob2
+  m_Name: MobBounce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,7 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleOffset: 3
   scaleLerpSpeed: 0.3
 --- !u!114 &-4534251263530661186
 MonoBehaviour:
@@ -298,11 +297,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  lifepoints: 1
+  lifepoints: 2
   moveSpeed: 1
-  isKnockable: 0
-  scoreOnDeath: 25
-  canRotate: 1
+  isKnockable: 1
+  scoreOnDeath: 10
+  canRotate: 0
   receivedDamagedOnHit: 1
   knockCooldown: 0
   outlineEffect: {fileID: 0}

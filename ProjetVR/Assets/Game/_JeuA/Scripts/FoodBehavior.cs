@@ -6,9 +6,8 @@ using Random = UnityEngine.Random;
 public class FoodBehavior : MonoBehaviour
 {
     private Rigidbody rb;
-    public Tween tween;
 
-    public float force = 10f;
+    public float force = 500f;
 
     private bool ejected = false;
 
@@ -25,6 +24,8 @@ public class FoodBehavior : MonoBehaviour
             return;
 
         transform.rotation = Quaternion.LookRotation(rb.velocity);
+
+        transform.GetChild(0).transform.Rotate(0, 0, 500 * Time.deltaTime);
     }
 
 
@@ -35,19 +36,20 @@ public class FoodBehavior : MonoBehaviour
 
         rb.useGravity = true;
 
-        rb.AddForce(new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 1f), Random.Range(-1f, 1f)) * force);
+        rb.AddForce(new Vector3(Random.Range(-1f, 1f), Random.Range(0.2f, 1f), Random.Range(-1f, 1f)) * force);
+    }
 
-        StartCoroutine(DestroyFood());
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (rb.velocity != Vector3.zero && ejected)
+        {
+            StartCoroutine(DestroyFood());
+        }
     }
 
     private IEnumerator DestroyFood()
     {
-        TweenMontage tm; 
-        
-        tween.PlayTween("Spin", out tm);
-
-        yield return new WaitForSeconds(tween.GetMontageDuration(tm));
-
         Explosion.SetActive(true);
 
         gameObject.transform.localScale = Vector3.zero;

@@ -35,7 +35,8 @@ public class Mob : MonoBehaviour
     FeedbackScale feedbackScale;
 
     private bool _isKnocked = false;
-    public Tween _tween;
+    private Tween _tween;
+    private bool isHit = false;
 
     private void Start()
     {
@@ -100,6 +101,7 @@ public class Mob : MonoBehaviour
         yield return new WaitForSeconds(knockCooldown);
         moveSpeed *= 0.5f;
         _isKnocked = false;
+        isHit = false;
     }
 
     private void Move()
@@ -116,6 +118,8 @@ public class Mob : MonoBehaviour
 
     private void Damaged()
     {
+        if (isHit) return;
+        isHit = true;
         lifepoints -= receivedDamagedOnHit;
         if (IsDeadCheck())
         {
@@ -126,7 +130,7 @@ public class Mob : MonoBehaviour
         gameObject.GetComponent<FeedbackScale>().ScaleOut();
         if (!isKnockable) return;
         if (!IsDeadCheck()) StartCoroutine(Knocked());
-        ChangeOutline();
+        //ChangeOutline();
     }
 
     private void Attack(GameObject protectedTooth)

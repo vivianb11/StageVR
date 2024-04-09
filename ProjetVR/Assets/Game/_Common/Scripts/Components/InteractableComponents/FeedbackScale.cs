@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FeedbackScale : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class FeedbackScale : MonoBehaviour
     private const float scaleOffset = 1.2f;
 
     private Vector3 originalScale;
+
+    public UnityEvent FBFinish;
 
     private void Start()
     {
@@ -26,6 +29,8 @@ public class FeedbackScale : MonoBehaviour
             transform.localScale = Vector3.Lerp(transform.localScale, targetScale, scaleLerpSpeed);
             yield return null;
         }
+
+        FBFinish?.Invoke();
     }
 
     public void ScaleIn()

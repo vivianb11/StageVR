@@ -62,7 +62,21 @@ public class CellBehavior : MonoBehaviour
         toothPasteAmount = Mathf.Clamp(toothPasteAmount + 1, 0, cellData.maxToothPasteCount);
 
         if (toothPasteAmount == cellData.maxToothPasteCount)
+        {
+            StartCoroutine(StartTPFeedback());
+
             interactable.SetCanBeInteracted(true);
+        }
+    }
+
+    public IEnumerator StartTPFeedback()
+    {
+        foreach (Transform child in transform)
+        {
+            child.GetComponent<ToothPasteProjectile>().StartFeedback();
+            
+            yield return new WaitForSeconds(0.05f);
+        }
     }
 
     private void SetMaterials(TeethState state)

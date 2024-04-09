@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4111518539333811529}
   - component: {fileID: 8813096673736934363}
   - component: {fileID: 7402322266392007971}
+  - component: {fileID: 8285920428776025435}
+  - component: {fileID: 5607476667226182279}
   m_Layer: 12
   m_Name: ToothPaste
   m_TagString: Untagged
@@ -95,10 +97,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee19136d61d1b14f9ef10b3d0e27877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
   projectilSpeed: 50
   randomness: 0.05
   lifeTime: 10
+  StartFB:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8285920428776025435}
+        m_TargetAssemblyTypeName: FeedbackScale, Assembly-CSharp
+        m_MethodName: ScaleIn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8285920428776025435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3322682745765520677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleLerpSpeed: 0.15
+  FBFinish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5607476667226182279}
+        m_TargetAssemblyTypeName: FeedbackScale, Assembly-CSharp
+        m_MethodName: ScaleOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5607476667226182279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3322682745765520677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleLerpSpeed: 0.15
+  FBFinish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8285920428776025435}
+        m_TargetAssemblyTypeName: FeedbackScale, Assembly-CSharp
+        m_MethodName: ScaleIn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7964768625232023548
 GameObject:
   m_ObjectHideFlags: 0

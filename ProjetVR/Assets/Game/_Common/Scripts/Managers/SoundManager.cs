@@ -19,8 +19,8 @@ public class SoundManager : MonoBehaviour
 
     [Header("Music")]
     [SerializeField] bool playMusicOnStart;
-    [SerializeField] Sound[] musics;
     [HideInInspector] public AudioSource _musicSource;
+    [SerializeField] public Sound[] musics;
 
     // The key is the audio source and the value is the sound that is playing on it
     public Dictionary<AudioSource, Sound> _audioSources;

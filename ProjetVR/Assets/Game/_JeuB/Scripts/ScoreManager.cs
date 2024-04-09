@@ -17,8 +17,8 @@ public class ScoreManager : Singleton<ScoreManager>
 
 
     //variables for scale up/down de Thomas
-    public float minValue = 6f;
-    public float maxValue = 9f;
+    public float minValue;
+    public float maxValue;
     public float duration = 1f;
 
     private float fontSizeValue;
@@ -34,7 +34,7 @@ public class ScoreManager : Singleton<ScoreManager>
         if (PlayerPrefs.HasKey("HighScore")) bestScore = PlayerPrefs.GetInt("HighScore");
     }
     
-    //scale up de thom, à essayer avec le casque
+    //scale up de thom, ï¿½ essayer avec le casque
     void ScaleUpScaleDown()
     {
         if (scaleUp == true)

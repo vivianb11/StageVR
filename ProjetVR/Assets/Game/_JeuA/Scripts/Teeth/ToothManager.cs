@@ -55,6 +55,8 @@ public class ToothManager : MonoBehaviour
     public UnityEvent OnToothPreCleaned, OnToothPreCleanedWithDecay;
     [Foldout("Events")]
     public UnityEvent CellCleaned;
+    [Foldout("Events")]
+    public UnityEvent MouthwashUsed;
 
     private void Awake()
     {
@@ -107,6 +109,8 @@ public class ToothManager : MonoBehaviour
     public void CleanSmell()
     {
         SetSmell(false);
+
+        MouthwashUsed.Invoke();
 
         OnCleanAmountChange?.Invoke(GetToothCleanPercent());
 

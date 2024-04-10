@@ -140,6 +140,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 915502719597243128, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1267983012281585786, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
       propertyPath: m_Name
       value: VR Player
@@ -619,13 +623,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 867987670}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17646448, y: 0.7790459, z: -0.5465076, w: 0.25154987}
+  m_LocalRotation: {x: -0.0019240294, y: 0.5019623, z: -0.7357453, w: 0.45465267}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1424386821}
-  m_LocalEulerAnglesHint: {x: 70.1, y: 144.21, z: 0}
+  m_LocalEulerAnglesHint: {x: 47.467, y: 42.794, z: -97.023}
 --- !u!114 &867987672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,7 +710,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 3.6e-44, z: 1.9706e-41, w: -1.2202733e-35}
+  m_BoundingSphereOverride: {x: 0, y: 5.992e-42, z: 0, w: -5.783233e-19}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

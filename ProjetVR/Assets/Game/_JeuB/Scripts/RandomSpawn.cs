@@ -16,6 +16,7 @@ public class RandomSpawn : MonoBehaviour
 
     [Header("Difficulty Parameters")]
     [SerializeField] float spawnInterval;
+    [SerializeField] float mobSpeed;
     [SerializeField] [Range(1, 8)] int numberSpawnerActivated;
 
     [Space(10)]
@@ -86,6 +87,7 @@ public class RandomSpawn : MonoBehaviour
     {
         GameObject newMob = Instantiate(_mob, _spawner.transform);
         Mob mobBehaviors = newMob.GetComponent<Mob>();
+        mobBehaviors.moveSpeed = mobSpeed;
 
         if(mobBehaviors.canRotate) AddRotator(newMob);
 
@@ -138,12 +140,14 @@ public class RandomSpawn : MonoBehaviour
     public void ChangeNumberSpawner(int newNumber) => numberSpawnerActivated = newNumber;
     public void ChangeWeightEnemy1(int newWeightsEnemy1) => weightEnemy1 = newWeightsEnemy1;
     public void ChangeWeightEnemy2(int newWeightsEnemy2) => weightEnemy2 = newWeightsEnemy2;
+    public void ChangeMobSpeed(float speed) => mobSpeed = speed;
 
     public void ChangeDifficulty(DifficultyPresets preset)
     {
         if (milestoneCount != preset.countCondition) return;
 
         ChangeInterval(preset.spawnInterval);
+        ChangeMobSpeed(preset.mobSpeed);
         ChangeNumberSpawner(preset.numberSpawner);
         ChangeWeightEnemy1(preset.weightEnemy1);
         ChangeWeightEnemy2(preset.weightEnemy2);

@@ -11,7 +11,7 @@ public class Mob : MonoBehaviour
     [Header("Mob Characteristics")]
     [ReadOnly] public Transform target;
     [SerializeField] int lifepoints;
-    public float moveSpeed;
+    [ReadOnly] public float moveSpeed = 0;
     [SerializeField] bool isKnockable;
     [SerializeField] int scoreOnDeath;
     public bool canRotate;

@@ -21,6 +21,7 @@ public class ProtectedToothBehaviours : MonoBehaviour
     private Vector3 originalPosition;
 
     public UnityEvent onDeath = new UnityEvent();
+    public UnityEvent onExplosion = new UnityEvent();
     public GameObject toothExplosion;
     private OutlineScale _outlineScaleEffect;
     private Outline _outlineEffect;
@@ -115,6 +116,7 @@ public class ProtectedToothBehaviours : MonoBehaviour
 
     private void Explode()
     {
+        onExplosion.Invoke();
         Instantiate(toothExplosion, transform.parent); //the tooth explodes into many pieces
         gameObject.SetActive(false);
     }

@@ -176,6 +176,9 @@ GameObject:
   - component: {fileID: 6210217690531083248}
   - component: {fileID: 4152183791385505160}
   - component: {fileID: 3399630119200564790}
+  - component: {fileID: 8311252492671691856}
+  - component: {fileID: 4622476769891022016}
+  - component: {fileID: 2035699516700022170}
   m_Layer: 0
   m_Name: Tooth
   m_TagString: Protected
@@ -282,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37592f61e2fbf2649ad7c4916fa41631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Maxhealth: 3
+  Maxhealth: 1
   receivedDamagedOnHit: 1
   onDamaged:
     m_PersistentCalls:
@@ -302,6 +305,18 @@ MonoBehaviour:
       - m_Target: {fileID: 3399630119200564790}
         m_TargetAssemblyTypeName: FeedbackScale, Assembly-CSharp
         m_MethodName: ScaleOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8311252492671691856}
+        m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -391,6 +406,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 4622476769891022016}
+        m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onExplosion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2035699516700022170}
+        m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   toothExplosion: {fileID: 2625892611844449159, guid: fbe8e61d982bbcd4aaf9b0ab006383e5, type: 3}
   minValueOutline: 6
   maxValueOutline: 12
@@ -440,6 +482,69 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleLerpSpeed: 0.15
+--- !u!114 &8311252492671691856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2533199044161739896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5c2cb0433461840a9c6e40dff9d892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  place: 1
+  sound:
+    soundType: 2
+    clip: {fileID: 8300000, guid: 5d2fad9761eef384e89a704d0c7dd66f, type: 3}
+    timePaused: 0
+    pausedTime: 0
+  playRandomSfx: 0
+  sfxs: []
+  lastPlayedSound: 0
+--- !u!114 &4622476769891022016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2533199044161739896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5c2cb0433461840a9c6e40dff9d892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  place: 1
+  sound:
+    soundType: 2
+    clip: {fileID: 8300000, guid: 5d205fdb4f137214b80cdae0bf888ae2, type: 3}
+    timePaused: 0
+    pausedTime: 0
+  playRandomSfx: 0
+  sfxs: []
+  lastPlayedSound: 0
+--- !u!114 &2035699516700022170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2533199044161739896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5c2cb0433461840a9c6e40dff9d892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  place: 1
+  sound:
+    soundType: 2
+    clip: {fileID: 8300000, guid: 5d205fdb4f137214b80cdae0bf888ae2, type: 3}
+    timePaused: 0
+    pausedTime: 0
+  playRandomSfx: 0
+  sfxs: []
+  lastPlayedSound: 0
 --- !u!1 &3436735275151527448
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,7 +764,7 @@ MonoBehaviour:
   CurrentPercentageEnemy1: 0%
   CurrentPercentageEnemy2: 100%
   CurrentPercentageEnemy3: 0%
-  milestoneCount: 0
+  milestoneCount: 1
   interval: 10
   progressionMilestone:
     m_PersistentCalls:
@@ -1077,7 +1182,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1
   Loop: 0

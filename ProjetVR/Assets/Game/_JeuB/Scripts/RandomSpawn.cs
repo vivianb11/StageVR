@@ -140,6 +140,7 @@ public class RandomSpawn : MonoBehaviour
     public void ChangeNumberSpawner(int newNumber) => numberSpawnerActivated = newNumber;
     public void ChangeWeightEnemy1(int newWeightsEnemy1) => weightEnemy1 = newWeightsEnemy1;
     public void ChangeWeightEnemy2(int newWeightsEnemy2) => weightEnemy2 = newWeightsEnemy2;
+    public void ChangeWeightEnemy3(int newWeightsEnemy3) =>  weightEnemy3 = newWeightsEnemy3;
     public void ChangeMobSpeed(float speed) => mobSpeed = speed;
 
     public void ChangeDifficulty(DifficultyPresets preset)
@@ -151,6 +152,7 @@ public class RandomSpawn : MonoBehaviour
         ChangeNumberSpawner(preset.numberSpawner);
         ChangeWeightEnemy1(preset.weightEnemy1);
         ChangeWeightEnemy2(preset.weightEnemy2);
+        ChangeWeightEnemy3(preset.weightEnemy3);
         SpawnPercentage();
     }
 }

@@ -137,6 +137,7 @@ public class RandomSpawn : MonoBehaviour
     }
 
     public void ChangeInterval(float newInterval) => spawnInterval = newInterval;
+    public void ChangeMilestoneInterval(int newInterval) => interval = newInterval;
     public void ChangeNumberSpawner(int newNumber) => numberSpawnerActivated = newNumber;
     public void ChangeWeightEnemy1(int newWeightsEnemy1) => weightEnemy1 = newWeightsEnemy1;
     public void ChangeWeightEnemy2(int newWeightsEnemy2) => weightEnemy2 = newWeightsEnemy2;
@@ -147,6 +148,7 @@ public class RandomSpawn : MonoBehaviour
     {
         if (milestoneCount != preset.countCondition) return;
 
+        ChangeMilestoneInterval(preset.milestoneInterval);
         ChangeInterval(preset.spawnInterval);
         ChangeMobSpeed(preset.mobSpeed);
         ChangeNumberSpawner(preset.numberSpawner);

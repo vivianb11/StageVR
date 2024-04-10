@@ -6,6 +6,7 @@ using UnityEngine;
 public class DifficultyPresets : ScriptableObject 
 {
     [Header("Difficulty Parameters")]
+    public int milestoneInterval;
     public int countCondition;
     public float spawnInterval;
     public float mobSpeed;

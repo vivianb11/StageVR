@@ -41,9 +41,11 @@ public class FoodBehavior : MonoBehaviour
         rb.useGravity = true;
 
         rb.AddForce(new Vector3(Random.Range(-1f, 1f), Random.Range(0.2f, 1f), Random.Range(-1f, 1f)) * force);
+
+        StartCoroutine(DestroyableDelay());
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
 
         if (rb.velocity != Vector3.zero && ejected && isDestroyable)

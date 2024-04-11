@@ -74,6 +74,8 @@ public class Interactable : MonoBehaviour
     private void OnDisable()
     {
         activated = false;
+
+        DeSelect();
     }
 
     public void SetActivateState(bool value)

@@ -16,6 +16,11 @@ public class Container : MonoBehaviour
     private void Start()
     {
         UpdateChildsPosition();
+
+        foreach (Transform child in transform)
+        {
+            child.GetComponent<ActiveEvent>().OnActivated.AddListener(UpdateChildsPosition);
+        }
     }
 
     private void OnEnable()

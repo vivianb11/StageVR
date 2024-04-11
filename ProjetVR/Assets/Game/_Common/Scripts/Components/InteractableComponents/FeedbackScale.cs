@@ -19,6 +19,7 @@ public class FeedbackScale : MonoBehaviour
 
     private void OnDisable()
     {
+        StopAllCoroutines();
         transform.localScale = originalScale;
     }
 

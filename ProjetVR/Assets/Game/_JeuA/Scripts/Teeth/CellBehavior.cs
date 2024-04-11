@@ -9,6 +9,8 @@ using System.Collections;
 [RequireComponent(typeof(SignalListener))]
 public class CellBehavior : MonoBehaviour
 {
+    [SerializeField] GameObject BrushParticle;
+
     public TeethState teethState;
     public ToothManager toothManager { get; private set; }
 
@@ -72,7 +74,8 @@ public class CellBehavior : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            child.GetComponent<ToothPasteProjectile>().StartFeedback();
+            if (child.TryGetComponent(out ToothPasteProjectile toothPaste))
+                toothPaste.StartFeedback();
             
             yield return new WaitForSeconds(0.05f);
         }

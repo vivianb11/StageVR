@@ -14,12 +14,6 @@ public class MaterialChanger : MonoBehaviour
 
     public void Update()
     {
-        if (rend is null)
-        {
-            rend = GetComponent<Renderer>();
-        }
-    
-
         if (Application.isEditor && !Application.isPlaying)
         {
             rend.material = materials[0];
@@ -29,6 +23,9 @@ public class MaterialChanger : MonoBehaviour
 
     public void ChangeMaterial(int index)
     {
+        if (rend == null)
+            rend = GetComponent<Renderer>();
+
         if (index < materials.Length)
         {
             rend.material = materials[index];

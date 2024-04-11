@@ -16,6 +16,9 @@ public class Tutorial : MonoBehaviour
     {
         if (enableTutorial)
         {
+            foreach (Transform child in transform)
+                child.gameObject.SetActive(false);
+
             UpdateChildVisibility(0);
             toothManager.GenerationListIndex.AddListener(UpdateChildVisibility);
         }
@@ -25,9 +28,6 @@ public class Tutorial : MonoBehaviour
     {
         if (index > maxIndex)
             return;
-
-        foreach (Transform child in transform)
-            child.gameObject.SetActive(false);
 
         transform.GetChild(index).gameObject.SetActive(true);
         if (index == indexDoublon)

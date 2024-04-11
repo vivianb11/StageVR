@@ -55,6 +55,8 @@ public class ToothManager : MonoBehaviour
     public UnityEvent OnToothPreCleaned, OnToothPreCleanedWithDecay;
     [Foldout("Events")]
     public UnityEvent CellCleaned;
+    [Foldout("Events")]
+    public UnityEvent<int> GenerationListIndex;
 
     private void Awake()
     {
@@ -178,6 +180,8 @@ public class ToothManager : MonoBehaviour
 
         Tooth.SetActive(false);
         tweener.PlayTween("spawn");
+
+        GenerationListIndex?.Invoke(dataIndex);
 
         foreach (var cell in teethCells)
         {

@@ -61,7 +61,7 @@ public class RandomSpawn : MonoBehaviour
     private void Start()
     {
         target.onDeath.AddListener(StopAllCoroutines);
-        spawnerList = spawnerList.OrderBy( x => Random.value ).ToList();
+        spawnerList.Shuffle();
     }
 
     private void Update()

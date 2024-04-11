@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2651477bc90ce32459c036cce9133642, type: 2}
+  - {fileID: 2100000, guid: 1386edc911ac7a84f8f887591f11ba51, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materials:
-  - {fileID: 2100000, guid: 2651477bc90ce32459c036cce9133642, type: 2}
-  - {fileID: 2100000, guid: 2da04c9088557f74dad201cbdc65e410, type: 2}
+  - {fileID: 2100000, guid: 1386edc911ac7a84f8f887591f11ba51, type: 2}
+  - {fileID: 2100000, guid: f94a07c162ec41549b83fe880d17b7f9, type: 2}
 --- !u!114 &5757645768558350228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 859143051633907474}
   - component: {fileID: 5179845307666638804}
   - component: {fileID: 929110005260516061}
+  - component: {fileID: 1678193201771429084}
   m_Layer: 5
   m_Name: RotatorControleur
   m_TagString: Untagged
@@ -257,7 +258,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10.65}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1425187306149395270}
@@ -522,5 +523,21 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   signalLost:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1678193201771429084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2260892525599216025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleLerpSpeed: 0.15
+  FBFinish:
     m_PersistentCalls:
       m_Calls: []

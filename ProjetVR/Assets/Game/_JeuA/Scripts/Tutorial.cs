@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 
 public class Tutorial : MonoBehaviour
 {
@@ -10,7 +11,11 @@ public class Tutorial : MonoBehaviour
 
     [SerializeField] int indexDoublon;
 
+    [SerializeField] int indexArrowTutorial;
+
     [SerializeField] ToothManager toothManager;
+
+    [SerializeField] Transform arrowContainer;
 
     private void Start()
     {
@@ -28,6 +33,9 @@ public class Tutorial : MonoBehaviour
     {
         if (index > maxIndex)
             return;
+
+        if (index == indexArrowTutorial)
+            arrowContainer.gameObject.SetActive(true);
 
         transform.GetChild(index).gameObject.SetActive(true);
         if (index == indexDoublon)

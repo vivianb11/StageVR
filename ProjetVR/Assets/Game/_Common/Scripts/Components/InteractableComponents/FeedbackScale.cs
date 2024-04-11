@@ -12,7 +12,7 @@ public class FeedbackScale : MonoBehaviour
 
     public UnityEvent FBFinish;
 
-    private void Start()
+    private void OnEnable()
     {
         originalScale = transform.localScale;
     }

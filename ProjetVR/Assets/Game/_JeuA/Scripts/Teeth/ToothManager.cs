@@ -32,6 +32,8 @@ public class ToothManager : MonoBehaviour
     public Material tartarMat;
     [Foldout("Materials")]
     public Material decayMat;
+    [Foldout("Materials")]
+    public Material toothPasteMat;
 
     private Collider grabCollider;
     private Interactable grabIntractable;
@@ -57,6 +59,9 @@ public class ToothManager : MonoBehaviour
     public UnityEvent CellCleaned;
     [Foldout("Events")]
     public UnityEvent<int> GenerationListIndex;
+
+    [Foldout("Playtest Only")]
+    public bool toothPasteColorChange;
 
     private void Awake()
     {

@@ -63,6 +63,7 @@ public class CellBehavior : MonoBehaviour
         {
             StartCoroutine(StartTPFeedback());
 
+            if (toothManager.toothPasteColorChange) mR.material = toothManager.toothPasteMat;
             interactable.SetCanBeInteracted(true);
         }
     }

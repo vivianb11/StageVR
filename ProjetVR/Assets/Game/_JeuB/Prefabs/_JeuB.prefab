@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37592f61e2fbf2649ad7c4916fa41631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Maxhealth: 1
+  Maxhealth: 100000
   receivedDamagedOnHit: 1
   onDamaged:
     m_PersistentCalls:
@@ -765,7 +765,7 @@ MonoBehaviour:
   CurrentPercentageEnemy2: 0%
   CurrentPercentageEnemy3: 0%
   milestoneCount: 0
-  interval: 60
+  interval: 1
   progressionMilestone:
     m_PersistentCalls:
       m_Calls:
@@ -823,6 +823,30 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 65b720fb1cfe346408b8aab0a87e37ef, type: 2}
+          m_ObjectArgumentAssemblyTypeName: DifficultyPresets, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7936567312626527626}
+        m_TargetAssemblyTypeName: RandomSpawn, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 7d1c6fe1849a6224db672492085bf12c, type: 2}
+          m_ObjectArgumentAssemblyTypeName: DifficultyPresets, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7936567312626527626}
+        m_TargetAssemblyTypeName: RandomSpawn, Assembly-CSharp
+        m_MethodName: ChangeDifficulty
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: b34ee6975eb7c2d49885e59af4ae751e, type: 2}
           m_ObjectArgumentAssemblyTypeName: DifficultyPresets, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0

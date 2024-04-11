@@ -1,12 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections.Generic;
+using System.Linq;
 
 [ExecuteInEditMode]
 public class RandomSpawn : MonoBehaviour
 {
     [Header("Spawner Characteristics")]
-    [SerializeField] public GameObject[] spawnerArray;
+    [SerializeField] public List<GameObject> spawnerList = new();
     [SerializeField] public GameObject[] mobArray;
 
     [Header("Spawned Mob Parameters")]
@@ -59,6 +61,7 @@ public class RandomSpawn : MonoBehaviour
     private void Start()
     {
         target.onDeath.AddListener(StopAllCoroutines);
+        spawnerList = spawnerList.OrderBy( x => Random.value ).ToList();
     }
 
     private void Update()
@@ -81,7 +84,7 @@ public class RandomSpawn : MonoBehaviour
         }
     }
 
-    private (GameObject, GameObject) SelectRandomMobAndSpawner() => (spawnerArray[Random.Range(0, numberSpawnerActivated)], SelectByPercentage());
+    private (GameObject, GameObject) SelectRandomMobAndSpawner() => (spawnerList[Random.Range(0, numberSpawnerActivated)], SelectByPercentage());
 
     private void SpawnMob(GameObject _spawner, GameObject _mob)
     {

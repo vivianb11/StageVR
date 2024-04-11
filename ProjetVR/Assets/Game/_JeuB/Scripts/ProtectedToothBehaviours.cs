@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,6 +18,12 @@ public class ProtectedToothBehaviours : MonoBehaviour
     [SerializeField] float shakeMagnitude = 0.1f;
     [SerializeField] float shakeSpeed = 50f;
     [SerializeField] float shakeDuration = 3f;
+    [SerializeField] int enemiesToKillForMultiplier;
+    [SerializeField] int MaxMultiplier;
+    [SerializeField] TextMeshPro multiplierDisplay;
+    private int killStreak = 0;
+    public int multiplier = 1;
+    public int enemyPoints;
 
     private Vector3 originalPosition;
 
@@ -41,6 +48,8 @@ public class ProtectedToothBehaviours : MonoBehaviour
     private bool increasing = true;
     private float timer = 0f;
 
+    
+
     void OnEnable()
     {
         originalPosition = transform.position;
@@ -58,6 +67,9 @@ public class ProtectedToothBehaviours : MonoBehaviour
 
         health = Mathf.Clamp(health - receivedDamagedOnHit, 0, Maxhealth);
         onDamaged.Invoke();
+        killStreak = 0;
+        multiplier = 1;
+        multiplierDisplay.text = "";
 
         if (health == 0)
         {
@@ -119,5 +131,27 @@ public class ProtectedToothBehaviours : MonoBehaviour
         onExplosion.Invoke();
         Instantiate(toothExplosion, transform.parent); //the tooth explodes into many pieces
         gameObject.SetActive(false);
+    }
+
+    public void ScoreMultiplier()
+    {
+        killStreak++;
+        if (killStreak % enemiesToKillForMultiplier == 0)
+        {
+            if (multiplier < MaxMultiplier)
+            {
+                multiplier++;
+            }
+        }
+
+        if (multiplier > 1)
+        {
+            multiplierDisplay.text = multiplier.ToString()+"X";
+        }
+
+        ScoreManager.Instance.AddScore(enemyPoints * multiplier);
+
+        
+
     }
 }

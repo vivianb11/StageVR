@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class BumperCar : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class BumperCar : MonoBehaviour
     public bool isColliding = false;
     public float moveDuration = 0.5f;
     private float timer = 0.0f;
+
+    public UnityEvent OnShieldHit;
+
 
     void Start()
     {
@@ -43,19 +47,25 @@ public class BumperCar : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Mob1(Clone)")
+        if(other.gameObject.name == "MobBounce(Clone)")
         {
             isColliding = true;
+            targetObject.GetComponent<ProtectedToothBehaviours>().enemyPoints = 15;
+            OnShieldHit.Invoke();
         }
 
-        if (other.gameObject.name == "Mob2(Clone)")
+        if (other.gameObject.name == "MobDroit(Clone)")
         {
             isColliding = true;
+            targetObject.GetComponent<ProtectedToothBehaviours>().enemyPoints = 10;
+            OnShieldHit.Invoke();
         }
 
-        if (other.gameObject.name == "Mob3(Clone)")
+        if (other.gameObject.name == "MobRotate(Clone)")
         {
             isColliding = true;
+            targetObject.GetComponent<ProtectedToothBehaviours>().enemyPoints = 20;
+            OnShieldHit.Invoke();
         }
     }
 }

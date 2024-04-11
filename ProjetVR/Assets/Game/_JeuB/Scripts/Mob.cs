@@ -14,6 +14,7 @@ public class Mob : MonoBehaviour
     [ReadOnly] public float moveSpeed = 0;
     [SerializeField] bool isKnockable;
     [SerializeField] int scoreOnDeath;
+    
     public bool canRotate;
 
     [Header("On Hit Parameters")]
@@ -37,6 +38,10 @@ public class Mob : MonoBehaviour
     private bool _isKnocked = false;
     private Tween _tween;
     private bool isHit = false;
+
+    private int currentMultiplier;
+
+    public ProtectedToothBehaviours protectedToothBehaviours;
 
     private void Start()
     {
@@ -146,7 +151,9 @@ public class Mob : MonoBehaviour
         if (condition)
         {
             onDeath.Invoke();
-            ScoreManager.Instance.AddScore(scoreOnDeath);
+            //currentMultiplier = protectedToothBehaviours.multiplier;
+            //Debug.Log(currentMultiplier);
+            //ScoreManager.Instance.AddScore(scoreOnDeath * currentMultiplier);
             Destroy(gameObject);
         }
         return condition;

@@ -16,8 +16,6 @@ public class CellBehavior : MonoBehaviour
 
     public Transform[] foodPrefab;
 
-    public List<Transform> neighbors;
-
     public UnityEvent OnClean = new UnityEvent();
 
     private int toothPasteAmount;
@@ -179,8 +177,6 @@ public class CellBehavior : MonoBehaviour
 
     private IEnumerator SetNeighbours()
     {
-        neighbors.Clear();
-
         MeshCollider mCol = GetComponent<MeshCollider>();
         mCol.isTrigger = true;
 
@@ -191,17 +187,5 @@ public class CellBehavior : MonoBehaviour
         gameObject.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
 
         mCol.isTrigger = false;
-
-        //trie les cells par nom
-        neighbors.Sort((x, y) => x.name.CompareTo(y.name));
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Cell"))
-        {
-            if (!neighbors.Contains(other.transform))
-                neighbors.Add(other.transform);
-        }
     }
 }

@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 5967524473676182283}
   - component: {fileID: 4856192591644311782}
   - component: {fileID: 319178329477282322}
-  - component: {fileID: 1918241731262922254}
-  - component: {fileID: 7755698848008748568}
+  - component: {fileID: 8520490496964168877}
   m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
@@ -85,130 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1918241731262922254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6752277037163241636}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2f9fcf52fd23e949be2a4294fb4537c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tweenMontages:
-  - name: Spin
-    waitPreviousMontage: 0
-    speed: 1
-    tweenProperties:
-    - propertie: 3
-      waitForPreviousTweenProperty: 0
-      useDynamicFrom: 1
-      useGameObjectTo: 0
-      from: {x: 0, y: 0, z: 0}
-      to: {x: 0, y: 5000, z: 0}
-      toObject: {fileID: 0}
-      duration: 5
-      curve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 4.0761905
-          outSlope: 4.0761905
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0
-          outWeight: 0.21792555
-        - serializedVersion: 3
-          time: 0.35480627
-          value: 0.6598756
-          inSlope: 0.63179606
-          outSlope: 0.91588026
-          tangentMode: 1
-          weightedMode: 3
-          inWeight: 0.422921
-          outWeight: 0.16086808
-        - serializedVersion: 3
-          time: 0.9992676
-          value: 1
-          inSlope: 0.4329903
-          outSlope: 0.4329903
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.23164986
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 0
-      completed:
-        m_PersistentCalls:
-          m_Calls: []
-    - propertie: 2
-      waitForPreviousTweenProperty: 0
-      useDynamicFrom: 1
-      useGameObjectTo: 0
-      from: {x: 0, y: 0, z: 0}
-      to: {x: 0.8, y: 1.2, z: 0.8}
-      toObject: {fileID: 0}
-      duration: 5
-      curve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.15
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.33333302
-          outWeight: 0.33333415
-        - serializedVersion: 3
-          time: 0.3
-          value: 0
-          inSlope: -6.6666665
-          outSlope: 0
-          tangentMode: 65
-          weightedMode: 3
-          inWeight: 0.42585608
-          outWeight: 0.37830797
-        - serializedVersion: 3
-          time: 1
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 3
-          inWeight: 0.33333257
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 0
-      completed:
-        m_PersistentCalls:
-          m_Calls: []
-    started:
-      m_PersistentCalls:
-        m_Calls: []
-    completed:
-      m_PersistentCalls:
-        m_Calls: []
-  autoPlayMontage: 0
-  tweenIndex: 0
---- !u!65 &7755698848008748568
-BoxCollider:
+--- !u!64 &8520490496964168877
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -225,9 +102,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7242479516016765242
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +118,7 @@ GameObject:
   - component: {fileID: -2873159065170675972}
   - component: {fileID: -6419236568073364512}
   m_Layer: 7
-  m_Name: Food_template
+  m_Name: _Food_template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -303,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeDestroayable: 1
-  force: 250
+  force: 500
   Explosion: {fileID: 954929696208061895}
 --- !u!1001 &1679765701287130819
 PrefabInstance:

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,7 +21,7 @@ public class ProtectedToothBehaviours : MonoBehaviour
     [SerializeField] float shakeDuration = 3f;
     [SerializeField] int enemiesToKillForMultiplier;
     [SerializeField] int MaxMultiplier;
-    [SerializeField] TextMeshPro multiplierDisplay;
+    [SerializeField] GameObject multiplierTexts;
     private int killStreak = 0;
     public int multiplier = 1;
     public int enemyPoints;
@@ -69,7 +70,11 @@ public class ProtectedToothBehaviours : MonoBehaviour
         onDamaged.Invoke();
         killStreak = 0;
         multiplier = 1;
-        multiplierDisplay.text = "";
+        
+        foreach(Transform child in multiplierTexts.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
 
         if (health == 0)
         {
@@ -135,18 +140,34 @@ public class ProtectedToothBehaviours : MonoBehaviour
 
     public void ScoreMultiplier()
     {
+        int textIndex;
         killStreak++;
         if (killStreak % enemiesToKillForMultiplier == 0)
         {
             if (multiplier < MaxMultiplier)
             {
                 multiplier++;
-            }
-        }
 
-        if (multiplier > 1)
-        {
-            multiplierDisplay.text = multiplier.ToString()+"X";
+                if (multiplier > 1)
+                {
+                    textIndex = multiplier - 2;
+                    Transform selectedText = multiplierTexts.transform.GetChild(textIndex);
+                    selectedText.gameObject.SetActive(true);
+
+                    if (multiplier == 2)
+                    {
+                        
+                    }
+
+                    else
+                    {
+                        Transform deletedText = multiplierTexts.transform.GetChild(textIndex - 1);
+                        deletedText.gameObject.SetActive(false);
+                    }
+
+                }
+
+            }
         }
 
         ScoreManager.Instance.AddScore(enemyPoints * multiplier);

@@ -114,8 +114,6 @@ public class ProtectedToothBehaviours : MonoBehaviour
         {
             OutlinePulsating();
         }
-
-        ScoreManager.Instance.AddScore(1);
     }
 
     IEnumerator ShakeAndDie()

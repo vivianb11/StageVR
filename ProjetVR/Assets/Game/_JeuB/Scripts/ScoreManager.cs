@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 
-public class ScoreManager : Singleton<ScoreManager>
+public class ScoreManager : MonoBehaviour
 {
+    public static ScoreManager Instance;
+
     [Header("Values")]
     [NaughtyAttributes.ReadOnly] [SerializeField] int currentScore;
     [NaughtyAttributes.ReadOnly] [SerializeField] int playerBestScore;
@@ -27,6 +25,10 @@ public class ScoreManager : Singleton<ScoreManager>
     private bool interpolationComplete = false;
     private bool scaleUp = false;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {

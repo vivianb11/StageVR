@@ -39,14 +39,16 @@ public class RandomSpawn : MonoBehaviour
     [Header("Progression Parameters")]
     [NaughtyAttributes.ReadOnly] [SerializeField] int milestoneCount = 0;
     [SerializeField] int interval = 10;
-    [SerializeField] UnityEvent progressionMilestone = new();
+
+    [SerializeField] DifficultyPresets[] difficultyPresets;
 
     [Header("Death Event")]
     [SerializeField] UnityEvent allShooted = new();
 
     void OnEnable()
     {
-        CountMinutes();
+        InvokeRepeating(nameof(CountMinutes), 0, interval);
+
         milestoneCount = 0;
 
         target.gameObject.SetActive(true);
@@ -134,9 +136,13 @@ public class RandomSpawn : MonoBehaviour
 
     private void CountMinutes()
     {
+        ChangeDifficulty(difficultyPresets[milestoneCount]);
         milestoneCount += 1;
-        progressionMilestone.Invoke();
-        Invoke("CountMinutes", interval);
+
+        if (milestoneCount == difficultyPresets.Length)
+            CancelInvoke();
+
+        Debug.Log(milestoneCount);
     }
 
     public void ChangeInterval(float newInterval) => spawnInterval = newInterval;
@@ -149,8 +155,6 @@ public class RandomSpawn : MonoBehaviour
 
     public void ChangeDifficulty(DifficultyPresets preset)
     {
-        if (milestoneCount != preset.countCondition) return;
-
         ChangeMilestoneInterval(preset.milestoneInterval);
         ChangeInterval(preset.spawnInterval);
         ChangeMobSpeed(preset.mobSpeed);

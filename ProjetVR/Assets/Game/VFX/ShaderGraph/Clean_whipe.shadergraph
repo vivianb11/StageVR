@@ -17,6 +17,9 @@
         },
         {
             "m_Id": "3e642ea6ae61465295e23b6566957562"
+        },
+        {
+            "m_Id": "57d3c845ef5b40e8a4844c5d07ccbcd5"
         }
     ],
     "m_Keywords": [],
@@ -152,6 +155,9 @@
         },
         {
             "m_Id": "c374b02801094ad080755eab6dfc7bbc"
+        },
+        {
+            "m_Id": "e884e422c2ec4716b13687371ffb9c75"
         }
     ],
     "m_GroupDatas": [],
@@ -617,6 +623,20 @@
                     "m_Id": "0bc6791be1d549d492d5f387b6537d24"
                 },
                 "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "e884e422c2ec4716b13687371ffb9c75"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "4335d8dadc774c90b0c0c9029439f708"
+                },
+                "m_SlotId": 1
             }
         },
         {
@@ -2544,6 +2564,34 @@
 }
 
 {
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "57d3c845ef5b40e8a4844c5d07ccbcd5",
+    "m_Guid": {
+        "m_GuidSerialized": "74ed2163-1b71-4eb0-b8c6-96aeea40763c"
+    },
+    "m_Name": "Shine Speed",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Shine Speed",
+    "m_DefaultReferenceName": "_Shine_Speed",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 5.0,
+    "m_FloatType": 1,
+    "m_RangeValues": {
+        "x": 0.5,
+        "y": 10.0
+    }
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "58b2039f982645c9bcf9d1b60daffb04",
@@ -3421,10 +3469,13 @@
             "m_Id": "baf65daa86014b13b1e9188b9c22aa81"
         },
         {
-            "m_Id": "7d18722dc5c34295979a70c63c8ccbe1"
+            "m_Id": "57d3c845ef5b40e8a4844c5d07ccbcd5"
         },
         {
             "m_Id": "3e642ea6ae61465295e23b6566957562"
+        },
+        {
+            "m_Id": "7d18722dc5c34295979a70c63c8ccbe1"
         }
     ]
 }
@@ -3485,6 +3536,21 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "SurfaceDescription.Occlusion"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "9a9b705506a44418ba68b631612ef052",
+    "m_Id": 0,
+    "m_DisplayName": "Shine Speed",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
 }
 
 {
@@ -4437,6 +4503,42 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "VertexDescription.Normal"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "e884e422c2ec4716b13687371ffb9c75",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 532.0,
+            "y": 968.7999877929688,
+            "width": 141.60003662109376,
+            "height": 33.60003662109375
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "9a9b705506a44418ba68b631612ef052"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "57d3c845ef5b40e8a4844c5d07ccbcd5"
+    }
 }
 
 {

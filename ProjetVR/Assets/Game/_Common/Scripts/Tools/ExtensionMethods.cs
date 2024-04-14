@@ -122,5 +122,80 @@ public static class ExtensionMethods
         f = Mathf.Clamp01(f);
         return (byte)(f * 255f);
     }
+
+    public static int SearchPatternBegin(this string text, int startIndex, string pattern)
+    {
+        int beginPattern = -1;
+
+        for (int i = startIndex; i < text.Length; i++)
+        {
+            if (text[i] == pattern[0])
+            {
+                string tmp = "";
+
+                for (int j = i; j < i + pattern.Length; j++)
+                {
+                    tmp += text[j];
+                }
+
+                if (tmp == pattern)
+                {
+                    beginPattern = i;
+                    break;
+                }
+
+            }
+        }
+
+        return beginPattern;
+    }
+
+    public static int SearchPatternEnd(this string text, int startIndex, string pattern)
+    {
+        int beginPattern = -1;
+
+        for (int i = startIndex; i < text.Length; i++)
+        {
+            if (text[i] == pattern[0])
+            {
+                string tmp = "";
+
+                for (int j = i; j < i + pattern.Length; j++)
+                {
+                    tmp += text[j];
+                }
+
+                if (tmp == pattern)
+                {
+                    beginPattern = i + pattern.Length;
+                    break;
+                }
+
+            }
+        }
+
+        return beginPattern;
+    }
+
+    public static string[] SplitPattern(this string text, string startSlice, string endSlice)
+    {
+        List<string> result = new List<string>();
+
+        while (text.Contains(startSlice) && text.Contains(endSlice))
+        {
+            string newSlice = "";
+
+            for (int j = text.SearchPatternEnd(0, startSlice); j < text.SearchPatternBegin(0, endSlice); j++)
+            {
+                newSlice += text[j];
+            }
+
+            result.Add(newSlice);
+
+            text = text.Remove(text.SearchPatternEnd(0, startSlice), text.SearchPatternBegin(0, endSlice));
+        }
+
+        return result.ToArray();
+    }
     #endregion
 }

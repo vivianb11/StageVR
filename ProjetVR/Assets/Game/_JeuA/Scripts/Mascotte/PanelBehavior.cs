@@ -1,29 +1,60 @@
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(Interactable))]
 public class PanelBehavior : MonoBehaviour
 {
-    public AudioSource dialogueAudioSource;
-    public AudioSource sfxAudioSource;
-
-    public AudioClip textAudio;
-
     public Coroutine textCoroutine;
 
-    public TextMesh text;
+    public TextMeshPro textMesh;
 
-    private void Awake()
+    private List<Vector2Int> wobbleSections = new List<Vector2Int>();
+
+    private void Update()
     {
-        dialogueAudioSource.Stop();
-        sfxAudioSource.Stop();
+        Wobble();
     }
 
-    public void SetText(string newText)
+    private void Wobble()
+    {
+        textMesh.ForceMeshUpdate();
+        var textInfo = textMesh.textInfo;
+
+        foreach (var item in wobbleSections)
+        {
+            for (int i = item.x; i < item.y; i++)
+            {
+                var charInfo = textInfo.characterInfo[i];
+
+                if (!charInfo.isVisible) continue;
+
+                var verts = textInfo.meshInfo[charInfo.materialReferenceIndex].vertices;
+
+                for (int j = 0; j < 4; j++)
+                {
+                    var orig = verts[charInfo.vertexIndex + j];
+                    verts[charInfo.vertexIndex + j] = orig + new Vector3(0, Mathf.Sin(Time.time * 2f + orig.x * 2f) * 0.05f, 0);
+                }
+            }
+        }
+
+        for (int i = 0; i < textInfo.meshInfo.Length; i++)
+        {
+            var meshInfo = textInfo.meshInfo[i];
+            meshInfo.mesh.vertices = meshInfo.vertices;
+            textMesh.UpdateGeometry(meshInfo.mesh, i);
+        }
+    }
+
+    public void SetDialog(SO_Dialogs newDialog)
     {
         ResetText();
 
-        text.text = newText;
+        textMesh.text = newDialog.content;
+
+        SetWoobleSections();
     }
 
     public void SetText(string newText, float time)
@@ -37,10 +68,7 @@ public class PanelBehavior : MonoBehaviour
     {
         foreach (var letter in newText)
         {
-            text.text += letter;
-            
-            if (textAudio != null)
-                PlaySFX(textAudio);
+            textMesh.text += letter;
 
             yield return new WaitForSeconds((time / newText.Length));
         }
@@ -55,15 +83,15 @@ public class PanelBehavior : MonoBehaviour
 
     IEnumerator ShakeTextCoroutine(float fortime)
     {
-        Vector3 originalPos = text.transform.position;
+        Vector3 originalPos = textMesh.transform.position;
         float time = 0;
         while (time < fortime)
         {
-            text.transform.position = originalPos + Random.insideUnitSphere * 0.1f;
+            textMesh.transform.position = originalPos + Random.insideUnitSphere * 0.1f;
             time += Time.deltaTime;
             yield return null;
         }
-        text.transform.position = originalPos;
+        textMesh.transform.position = originalPos;
     }
 
     public void ResetText()
@@ -71,54 +99,7 @@ public class PanelBehavior : MonoBehaviour
         if (textCoroutine != null)
             StopCoroutine(textCoroutine);
         else
-            text.text = "";
-    }
-
-    public void PlaySFX(AudioClip audio)
-    {
-        sfxAudioSource.clip = audio;
-        sfxAudioSource.Play();
-    }
-
-    public void PlayAudio(AudioClip audio)
-    {
-        if (dialogueAudioSource.isPlaying)
-            ForceStopAudio();
-
-        dialogueAudioSource.clip = audio;
-        dialogueAudioSource.Play();
-    }
-
-    public void StopAudio()
-    {
-        StartCoroutine(AudioFade(dialogueAudioSource));
-    }
-
-    public void StopSFX()
-    {
-        StartCoroutine(AudioFade(sfxAudioSource));
-    }
-
-    public void StopAllAudio()
-    {
-        StartCoroutine(AudioFade(dialogueAudioSource));
-        StartCoroutine(AudioFade(sfxAudioSource));
-    }
-
-    public void ForceStopAudio()
-    {
-        dialogueAudioSource.volume = 0;
-    }
-
-    public void ForceStopSFX()
-    {
-        sfxAudioSource.volume = 0;
-    }
-
-    public void ForceStopAllAudio()
-    {
-        dialogueAudioSource.volume = 0;
-        sfxAudioSource.volume = 0;
+            textMesh.text = "";
     }
 
     IEnumerator AudioFade(AudioSource source)
@@ -133,5 +114,35 @@ public class PanelBehavior : MonoBehaviour
 
         source.Stop();
         source.volume = startVolume;
+    }
+
+    private void SetWoobleSections()
+    {
+        wobbleSections.Clear();
+
+        for (int i = 0; i < textMesh.text.SplitPattern("[w]", "[/w]").Length; i++)
+        {
+            if (textMesh.text.Contains("[w]") && textMesh.text.Contains("[/w]"))
+            {
+                int startIndex = wobbleSections.Count > 0 ? wobbleSections[wobbleSections.Count - 1].y + 3 : 0;
+
+                wobbleSections.Add(new Vector2Int(textMesh.text.SearchPatternEnd(startIndex, "[w]"), textMesh.text.SearchPatternBegin(startIndex, "[/w]")));
+            }
+        }
+
+        for (int i = 0; i < wobbleSections.Count; i++)
+        {
+            Vector2Int value = wobbleSections[i];
+
+            Debug.Log(value);
+
+            value.x -= 3;
+            value.y -= 3;
+
+            wobbleSections[i] = value;
+        }
+
+        textMesh.text = textMesh.text.Replace("[w]", "");
+        textMesh.text = textMesh.text.Replace("[/w]", "");
     }
 }

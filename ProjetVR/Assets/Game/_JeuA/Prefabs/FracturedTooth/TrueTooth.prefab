@@ -4541,6 +4541,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 278bc65a2df69284ebe45e22cfa2e234, type: 3}
   m_PrefabInstance: {fileID: 380395536550835701}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &237165467702590019 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 436280741595664310, guid: 278bc65a2df69284ebe45e22cfa2e234, type: 3}
+  m_PrefabInstance: {fileID: 380395536550835701}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &686243039018780836 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 278bc65a2df69284ebe45e22cfa2e234, type: 3}
@@ -4621,6 +4626,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6865694600787375154}
     m_Modifications:
+    - target: {fileID: 127703864394688259, guid: 9741bb470de02524b9e6328ffcd5fb58, type: 3}
+      propertyPath: ShapeModule.m_MeshRenderer
+      value: 
+      objectReference: {fileID: 237165467702590019}
+    - target: {fileID: 127703864394688259, guid: 9741bb470de02524b9e6328ffcd5fb58, type: 3}
+      propertyPath: ShapeModule.m_UseMeshColors
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 127931137768425941, guid: 9741bb470de02524b9e6328ffcd5fb58, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -49,7 +49,11 @@ public class Interactable : MonoBehaviour
     public UnityEvent lookIn = new UnityEvent();
     public UnityEvent lookOut = new UnityEvent();
 
-    public UnityEvent<bool> activeStateChanged = new UnityEvent<bool>();
+    [HideInInspector] public UnityEvent<bool> activeStateChanged = new UnityEvent<bool>();
+    [Foldout("Activation Events")]
+    public UnityEvent OnActivation = new UnityEvent();
+    [Foldout("Activation Events")]
+    public UnityEvent OnDeactivation = new UnityEvent();
 
     private void Awake()
     {
@@ -59,6 +63,8 @@ public class Interactable : MonoBehaviour
 
         lookIn.AddListener(feedbackScale.ScaleIn);
         lookOut.AddListener(feedbackScale.ScaleOut);
+
+        activeStateChanged.AddListener(t => feedbackScale.enabled = t);
     }
 
     private void Start()
@@ -82,6 +88,11 @@ public class Interactable : MonoBehaviour
     {
         if (activated != value)
             activeStateChanged?.Invoke(value);
+
+        if (value)
+            OnActivation?.Invoke();
+        else
+            OnDeactivation?.Invoke();
 
         activated = value;
         preActivated = value;

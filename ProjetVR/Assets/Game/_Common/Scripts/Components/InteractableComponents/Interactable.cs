@@ -64,7 +64,7 @@ public class Interactable : MonoBehaviour
         lookIn.AddListener(feedbackScale.ScaleIn);
         lookOut.AddListener(feedbackScale.ScaleOut);
 
-        activeStateChanged.AddListener(t => feedbackScale.enabled = t);
+        activeStateChanged.AddListener(t => feedbackScale.SetActive(t));
     }
 
     private void Start()

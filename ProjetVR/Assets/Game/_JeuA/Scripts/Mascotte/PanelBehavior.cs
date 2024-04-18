@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,11 +11,21 @@ public class PanelBehavior : MonoBehaviour
 
     public TextMeshPro textMesh;
 
+    [Header("Color Gradient")]
+    public Gradient colorGrad;
+
+    [SerializeField] Transform background;
+
     private List<Vector2Int> wobbleSections = new List<Vector2Int>();
+
+    private List<Vector2Int> rainbowSections = new List<Vector2Int>();
+
+    [SerializeField] Vector2 padding;
 
     private void Update()
     {
-        Wobble();
+        Rainbow();
+        //Wobble();
     }
 
     private void Wobble()
@@ -48,20 +59,49 @@ public class PanelBehavior : MonoBehaviour
         }
     }
 
+    private void Rainbow()
+    {
+        textMesh.ForceMeshUpdate();
+        var mesh = textMesh.mesh;
+        var vertices = mesh.vertices;
+        var textInfo = textMesh.textInfo;
+
+        Color[] colors = mesh.colors;
+
+        foreach (var item in wobbleSections)
+        {
+            for (int w = item.x; w < item.y; w++)
+            {
+                colors[w] = colorGrad.Evaluate(Mathf.Repeat(Time.time + vertices[w].x * 0.001f, 1f));
+                colors[w + 1] = colorGrad.Evaluate(Mathf.Repeat(Time.time + vertices[w + 1].x * 0.001f, 1f));
+                colors[w + 2] = colorGrad.Evaluate(Mathf.Repeat(Time.time + vertices[w + 2].x * 0.001f, 1f));
+                colors[w + 3] = colorGrad.Evaluate(Mathf.Repeat(Time.time + vertices[w + 3].x * 0.001f, 1f));
+            }
+        }
+    }
+
     public void SetDialog(SO_Dialogs newDialog)
     {
         ResetText();
 
         textMesh.text = newDialog.content;
 
-        SetWoobleSections();
+        StartCoroutine(ScaleBackground());
+
+        //SetWoobleSections();
+        //SetColorSections();
     }
 
-    public void SetText(string newText, float time)
+    private IEnumerator ScaleBackground()
     {
-        ResetText();
+        yield return new WaitForSeconds(0.01f);
 
-        textCoroutine = StartCoroutine(SetTextWithTime(newText, time));
+        Vector3 scale = Vector2.zero;
+        scale.x = textMesh.GetRenderedValues().x + padding.x;
+        scale.y = textMesh.GetRenderedValues().y + padding.y;
+        scale.z = 0.1f;
+
+        background.localScale = scale;
     }
 
     IEnumerator SetTextWithTime(string newText, float time)
@@ -87,7 +127,7 @@ public class PanelBehavior : MonoBehaviour
         float time = 0;
         while (time < fortime)
         {
-            textMesh.transform.position = originalPos + Random.insideUnitSphere * 0.1f;
+            textMesh.transform.position = originalPos + UnityEngine.Random.insideUnitSphere * 0.1f;
             time += Time.deltaTime;
             yield return null;
         }
@@ -100,20 +140,6 @@ public class PanelBehavior : MonoBehaviour
             StopCoroutine(textCoroutine);
         else
             textMesh.text = "";
-    }
-
-    IEnumerator AudioFade(AudioSource source)
-    {
-        float startVolume = source.volume;
-
-        while (source.volume > 0)
-        {
-            source.volume -= Time.deltaTime;
-            yield return null;
-        }
-
-        source.Stop();
-        source.volume = startVolume;
     }
 
     private void SetWoobleSections()
@@ -134,15 +160,43 @@ public class PanelBehavior : MonoBehaviour
         {
             Vector2Int value = wobbleSections[i];
 
-            Debug.Log(value);
+            int subValue = (i + 1) * 3 + i * 4;
 
-            value.x -= 3;
-            value.y -= 3;
+            value -= new Vector2Int(subValue, subValue);
 
             wobbleSections[i] = value;
         }
 
         textMesh.text = textMesh.text.Replace("[w]", "");
         textMesh.text = textMesh.text.Replace("[/w]", "");
+    }
+
+    private void SetColorSections()
+    {
+        rainbowSections.Clear();
+
+        for (int i = 0; i < textMesh.text.SplitPattern("[r]", "[/r]").Length; i++)
+        {
+            if (textMesh.text.Contains("[r]") && textMesh.text.Contains("[/r]"))
+            {
+                int startIndex = rainbowSections.Count > 0 ? rainbowSections[rainbowSections.Count - 1].y + 3 : 0;
+
+                rainbowSections.Add(new Vector2Int(textMesh.text.SearchPatternEnd(startIndex, "[r]"), textMesh.text.SearchPatternBegin(startIndex, "[/r]")));
+            }
+        }
+
+        for (int i = 0; i < rainbowSections.Count; i++)
+        {
+            Vector2Int value = rainbowSections[i];
+
+            int subValue = (i + 1) * 3 + i * 4;
+
+            value -= new Vector2Int(subValue, subValue);
+
+            rainbowSections[i] = value;
+        }
+
+        textMesh.text = textMesh.text.Replace("[r]", "");
+        textMesh.text = textMesh.text.Replace("[/r]", "");
     }
 }

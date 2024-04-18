@@ -23,6 +23,14 @@ public class Dialoger : MonoBehaviour
         dialogPanel.SetDialog(dialog);
     }
 
+    [Button]
+    public void PlayDiolog(SO_Dialogs dialogue)
+    {
+        SO_Dialogs dialog = dialogue;
+
+        dialogPanel.SetDialog(dialog);
+    }
+
     private void Awake()
     {
         if (dialogPanel == null)

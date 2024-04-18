@@ -1,22 +1,49 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FeedbackScale : MonoBehaviour
 {
     [SerializeField] [Range(0f, 1f)] float scaleLerpSpeed = 0.15f;
 
-    private const float scaleOffset = 3f;
+    private const float scaleOffset = 1.2f;
 
     private Vector3 originalScale;
 
-    private void Start()
+    public UnityEvent FBFinish;
+
+    public bool IsScaling => transform.localScale != originalScale;
+
+    private bool active = true;
+    public bool Active
+    {
+        get { return active; }
+        set
+        {
+            if (!value)
+            {
+                ForceStop();
+            }
+
+            active = value;
+        }
+    }
+
+    public void SetActive(bool value)
+    {
+        Active = value;
+    }
+
+    private void OnEnable()
     {
         originalScale = transform.localScale;
     }
 
     private void OnDisable()
     {
-        transform.localScale = originalScale;
+        Debug.LogWarning("do not desable please use the Active property instead");
+
+        ForceStop();
     }
 
     private IEnumerator ScaleTimer(Vector3 targetScale)
@@ -26,6 +53,8 @@ public class FeedbackScale : MonoBehaviour
             transform.localScale = Vector3.Lerp(transform.localScale, targetScale, scaleLerpSpeed);
             yield return null;
         }
+
+        FBFinish?.Invoke();
     }
 
     public void ScaleIn()

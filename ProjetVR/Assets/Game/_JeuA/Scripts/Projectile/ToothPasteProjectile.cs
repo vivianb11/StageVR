@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ToothPasteProjectile : Projectile
 {
+    public UnityEvent StartFB;
+
     private void OnTriggerEnter(Collider other)
     {
         if (!canCollid)
@@ -30,5 +33,10 @@ public class ToothPasteProjectile : Projectile
         }
 
         gameObject.SetActive(false);
+    }
+
+    public void StartFeedback()
+    {
+        StartFB?.Invoke();
     }
 }

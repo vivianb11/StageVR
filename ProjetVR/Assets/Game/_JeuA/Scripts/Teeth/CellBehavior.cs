@@ -9,14 +9,14 @@ using System.Collections;
 [RequireComponent(typeof(SignalListener))]
 public class CellBehavior : MonoBehaviour
 {
+    [SerializeField] GameObject BrushParticle;
+
     public TeethState teethState;
     public ToothManager toothManager { get; private set; }
 
     public SO_CellData cellData;
 
     public Transform[] foodPrefab;
-
-    public List<Transform> neighbors;
 
     public UnityEvent OnClean = new UnityEvent();
 
@@ -62,7 +62,23 @@ public class CellBehavior : MonoBehaviour
         toothPasteAmount = Mathf.Clamp(toothPasteAmount + 1, 0, cellData.maxToothPasteCount);
 
         if (toothPasteAmount == cellData.maxToothPasteCount)
+        {
+            StartCoroutine(StartTPFeedback());
+
+            if (toothManager.toothPasteColorChange) mR.material = toothManager.toothPasteMat;
             interactable.SetCanBeInteracted(true);
+        }
+    }
+
+    public IEnumerator StartTPFeedback()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.TryGetComponent(out ToothPasteProjectile toothPaste))
+                toothPaste.StartFeedback();
+            
+            yield return new WaitForSeconds(0.05f);
+        }
     }
 
     private void SetMaterials(TeethState state)
@@ -113,6 +129,9 @@ public class CellBehavior : MonoBehaviour
         if (teethState == TeethState.Dirty && newTeethState != TeethState.Dirty)
             foreach (Transform child in transform)
                 child.GetComponent<FoodBehavior>().EjectFood();
+        else if (teethState == TeethState.Tartar && newTeethState != TeethState.Tartar)
+            foreach (Transform child in transform)
+                Destroy(child.gameObject);
 
         teethState = newTeethState;
 
@@ -162,8 +181,6 @@ public class CellBehavior : MonoBehaviour
 
     private IEnumerator SetNeighbours()
     {
-        neighbors.Clear();
-
         MeshCollider mCol = GetComponent<MeshCollider>();
         mCol.isTrigger = true;
 
@@ -174,17 +191,5 @@ public class CellBehavior : MonoBehaviour
         gameObject.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
 
         mCol.isTrigger = false;
-
-        //trie les cells par nom
-        neighbors.Sort((x, y) => x.name.CompareTo(y.name));
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Cell"))
-        {
-            if (!neighbors.Contains(other.transform))
-                neighbors.Add(other.transform);
-        }
     }
 }

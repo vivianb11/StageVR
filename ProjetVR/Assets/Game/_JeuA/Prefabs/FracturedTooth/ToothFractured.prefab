@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8055880577183395569}
   - component: {fileID: 5204638224914573657}
   - component: {fileID: 7661881636132571357}
+  - component: {fileID: 5863689616412770754}
   m_Layer: 0
   m_Name: Tooth_cell.006 (1)
   m_TagString: Cell
@@ -153,7 +154,6 @@ MonoBehaviour:
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
   - {fileID: 2388298866872592643, guid: 66d3b4e5e4c84b7418a3603d432effaa, type: 3}
-  - {fileID: -8679921383154817045, guid: 45a960c9c723da94aa51f5a307f1b3e3, type: 3}
   neighbors:
   - {fileID: 9134624787246299611}
   - {fileID: 864805606931072451}
@@ -218,6 +218,19 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5863689616412770754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336718927591651969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleLerpSpeed: 0.15
 --- !u!1 &451811082185117388
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +247,7 @@ GameObject:
   - component: {fileID: 7006677314707986535}
   - component: {fileID: 2551584537924444722}
   - component: {fileID: 5321768099291768991}
+  - component: {fileID: 4523851044108356654}
   m_Layer: 0
   m_Name: Tooth_cell.005 (1)
   m_TagString: Cell
@@ -371,7 +385,6 @@ MonoBehaviour:
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
   - {fileID: 2388298866872592643, guid: 66d3b4e5e4c84b7418a3603d432effaa, type: 3}
-  - {fileID: -8679921383154817045, guid: 45a960c9c723da94aa51f5a307f1b3e3, type: 3}
   neighbors:
   - {fileID: 1662812883768192402}
   - {fileID: 864805606931072451}
@@ -440,6 +453,19 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4523851044108356654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451811082185117388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleLerpSpeed: 0.15
 --- !u!1 &959558267400824071
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,6 +482,7 @@ GameObject:
   - component: {fileID: 2300716754318108125}
   - component: {fileID: 5477619713149416206}
   - component: {fileID: 8152459786323938383}
+  - component: {fileID: 3246950814196402459}
   m_Layer: 0
   m_Name: Tooth_cell.004 (1)
   m_TagString: Cell
@@ -593,7 +620,6 @@ MonoBehaviour:
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
   - {fileID: 2388298866872592643, guid: 66d3b4e5e4c84b7418a3603d432effaa, type: 3}
-  - {fileID: -8679921383154817045, guid: 45a960c9c723da94aa51f5a307f1b3e3, type: 3}
   neighbors:
   - {fileID: 8657601640278674733}
   - {fileID: 8311962360659403888}
@@ -658,6 +684,19 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3246950814196402459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959558267400824071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleLerpSpeed: 0.15
 --- !u!1 &2071986180292996944
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,6 +713,7 @@ GameObject:
   - component: {fileID: 7205976928817725530}
   - component: {fileID: 4283923174400256983}
   - component: {fileID: 7925404685608872423}
+  - component: {fileID: 1833841870416977862}
   m_Layer: 0
   m_Name: Tooth_cell.003 (1)
   m_TagString: Cell
@@ -811,7 +851,6 @@ MonoBehaviour:
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
   - {fileID: 2388298866872592643, guid: 66d3b4e5e4c84b7418a3603d432effaa, type: 3}
-  - {fileID: -8679921383154817045, guid: 45a960c9c723da94aa51f5a307f1b3e3, type: 3}
   neighbors:
   - {fileID: 1662812883768192402}
   - {fileID: 9134624787246299611}
@@ -880,6 +919,19 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1833841870416977862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071986180292996944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleLerpSpeed: 0.15
 --- !u!1 &3376827337840895526
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,6 +948,7 @@ GameObject:
   - component: {fileID: 2297286957324191263}
   - component: {fileID: 1532942378408617063}
   - component: {fileID: 3859613379000722424}
+  - component: {fileID: 4409680222120990945}
   m_Layer: 0
   m_Name: Tooth_cell.000 (1)
   m_TagString: Cell
@@ -1033,7 +1086,6 @@ MonoBehaviour:
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
   - {fileID: 2388298866872592643, guid: 66d3b4e5e4c84b7418a3603d432effaa, type: 3}
-  - {fileID: -8679921383154817045, guid: 45a960c9c723da94aa51f5a307f1b3e3, type: 3}
   neighbors:
   - {fileID: 9134624787246299611}
   - {fileID: 864805606931072451}
@@ -1100,6 +1152,19 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4409680222120990945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3376827337840895526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleLerpSpeed: 0.15
 --- !u!1 &5492859276273395688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,6 +1181,7 @@ GameObject:
   - component: {fileID: 6560181477854605475}
   - component: {fileID: 2553989661233697576}
   - component: {fileID: 4452503063745233664}
+  - component: {fileID: 8088776306697195742}
   m_Layer: 0
   m_Name: Tooth_cell.002 (1)
   m_TagString: Cell
@@ -1253,7 +1319,6 @@ MonoBehaviour:
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
   - {fileID: 2388298866872592643, guid: 66d3b4e5e4c84b7418a3603d432effaa, type: 3}
-  - {fileID: -8679921383154817045, guid: 45a960c9c723da94aa51f5a307f1b3e3, type: 3}
   neighbors:
   - {fileID: 1662812883768192402}
   - {fileID: 9134624787246299611}
@@ -1320,6 +1385,19 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8088776306697195742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5492859276273395688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleLerpSpeed: 0.15
 --- !u!1 &5704305891897651781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,6 +1414,7 @@ GameObject:
   - component: {fileID: 6688536756420813675}
   - component: {fileID: 4100709447434277104}
   - component: {fileID: 6507808559144669501}
+  - component: {fileID: 2268985721796955351}
   m_Layer: 0
   m_Name: Tooth_cell.008 (1)
   m_TagString: Cell
@@ -1473,7 +1552,6 @@ MonoBehaviour:
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
   - {fileID: 2388298866872592643, guid: 66d3b4e5e4c84b7418a3603d432effaa, type: 3}
-  - {fileID: -8679921383154817045, guid: 45a960c9c723da94aa51f5a307f1b3e3, type: 3}
   neighbors:
   - {fileID: 1662812883768192402}
   - {fileID: 1295456391123842053}
@@ -1540,6 +1618,19 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2268985721796955351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5704305891897651781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleLerpSpeed: 0.15
 --- !u!1 &6056224882789707400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,6 +1646,7 @@ GameObject:
   - component: {fileID: 2177507039290541273}
   - component: {fileID: 3723574441070924649}
   - component: {fileID: 2435665176764197535}
+  - component: {fileID: 3498836630157884024}
   m_Layer: 0
   m_Name: ToothFractured
   m_TagString: Untagged
@@ -2224,6 +2316,19 @@ MonoBehaviour:
   lookAtCamera: 0
   alignDirection: 0
   distanceToPoint: 0.5
+--- !u!114 &3498836630157884024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056224882789707400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleLerpSpeed: 0.15
 --- !u!1 &7433687606800887931
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,6 +2345,7 @@ GameObject:
   - component: {fileID: 7317516504580573697}
   - component: {fileID: 4017229827886441291}
   - component: {fileID: 366285651950160189}
+  - component: {fileID: 6521925174862422970}
   m_Layer: 0
   m_Name: Tooth_cell.009 (1)
   m_TagString: Cell
@@ -2377,7 +2483,6 @@ MonoBehaviour:
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
   - {fileID: 2388298866872592643, guid: 66d3b4e5e4c84b7418a3603d432effaa, type: 3}
-  - {fileID: -8679921383154817045, guid: 45a960c9c723da94aa51f5a307f1b3e3, type: 3}
   neighbors:
   - {fileID: 1295456391123842053}
   - {fileID: 995141595956446605}
@@ -2443,6 +2548,19 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6521925174862422970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7433687606800887931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleLerpSpeed: 0.15
 --- !u!1 &7789716554621297431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2459,6 +2577,7 @@ GameObject:
   - component: {fileID: 7208737463225285277}
   - component: {fileID: 5706309258129064438}
   - component: {fileID: 5030605946604360769}
+  - component: {fileID: 6590063128832662728}
   m_Layer: 0
   m_Name: Tooth_cell.001 (1)
   m_TagString: Cell
@@ -2596,7 +2715,6 @@ MonoBehaviour:
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
   - {fileID: 2388298866872592643, guid: 66d3b4e5e4c84b7418a3603d432effaa, type: 3}
-  - {fileID: -8679921383154817045, guid: 45a960c9c723da94aa51f5a307f1b3e3, type: 3}
   neighbors:
   - {fileID: 1662812883768192402}
   - {fileID: 864805606931072451}
@@ -2663,6 +2781,19 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6590063128832662728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7789716554621297431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleLerpSpeed: 0.15
 --- !u!1 &7805958236717600858
 GameObject:
   m_ObjectHideFlags: 0
@@ -2679,6 +2810,7 @@ GameObject:
   - component: {fileID: 694940887758564484}
   - component: {fileID: 8209532135184325760}
   - component: {fileID: 1131117266929782295}
+  - component: {fileID: 8359767942973106368}
   m_Layer: 0
   m_Name: Tooth_cell.007 (1)
   m_TagString: Cell
@@ -2816,7 +2948,6 @@ MonoBehaviour:
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
   - {fileID: 2388298866872592643, guid: 66d3b4e5e4c84b7418a3603d432effaa, type: 3}
-  - {fileID: -8679921383154817045, guid: 45a960c9c723da94aa51f5a307f1b3e3, type: 3}
   neighbors:
   - {fileID: 9134624787246299611}
   - {fileID: 864805606931072451}
@@ -2883,6 +3014,19 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8359767942973106368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7805958236717600858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleLerpSpeed: 0.15
 --- !u!1 &8105509145681298942
 GameObject:
   m_ObjectHideFlags: 0

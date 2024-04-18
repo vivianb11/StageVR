@@ -1,46 +1,113 @@
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(Interactable))]
 public class PanelBehavior : MonoBehaviour
 {
-    public AudioSource dialogueAudioSource;
-    public AudioSource sfxAudioSource;
-
-    public AudioClip textAudio;
-
     public Coroutine textCoroutine;
 
-    public TextMesh text;
+    public TextMeshPro textMesh;
 
-    private void Awake()
+    [Header("Color Gradient")]
+    public Gradient colorGrad;
+
+    [SerializeField] Transform background;
+
+    private List<Vector2Int> wobbleSections = new List<Vector2Int>();
+
+    private List<Vector2Int> rainbowSections = new List<Vector2Int>();
+
+    [SerializeField] Vector2 padding;
+
+    private void Update()
     {
-        dialogueAudioSource.Stop();
-        sfxAudioSource.Stop();
+        Rainbow();
+        //Wobble();
     }
 
-    public void SetText(string newText)
+    private void Wobble()
+    {
+        textMesh.ForceMeshUpdate();
+        var textInfo = textMesh.textInfo;
+
+        foreach (var item in wobbleSections)
+        {
+            for (int i = item.x; i < item.y; i++)
+            {
+                var charInfo = textInfo.characterInfo[i];
+
+                if (!charInfo.isVisible) continue;
+
+                var verts = textInfo.meshInfo[charInfo.materialReferenceIndex].vertices;
+
+                for (int j = 0; j < 4; j++)
+                {
+                    var orig = verts[charInfo.vertexIndex + j];
+                    verts[charInfo.vertexIndex + j] = orig + new Vector3(0, Mathf.Sin(Time.time * 2f + orig.x * 2f) * 0.05f, 0);
+                }
+            }
+        }
+
+        for (int i = 0; i < textInfo.meshInfo.Length; i++)
+        {
+            var meshInfo = textInfo.meshInfo[i];
+            meshInfo.mesh.vertices = meshInfo.vertices;
+            textMesh.UpdateGeometry(meshInfo.mesh, i);
+        }
+    }
+
+    private void Rainbow()
+    {
+        textMesh.ForceMeshUpdate();
+        var mesh = textMesh.mesh;
+        var vertices = mesh.vertices;
+        var textInfo = textMesh.textInfo;
+
+        Color[] colors = mesh.colors;
+
+        foreach (var item in wobbleSections)
+        {
+            for (int w = item.x; w < item.y; w++)
+            {
+                colors[w] = colorGrad.Evaluate(Mathf.Repeat(Time.time + vertices[w].x * 0.001f, 1f));
+                colors[w + 1] = colorGrad.Evaluate(Mathf.Repeat(Time.time + vertices[w + 1].x * 0.001f, 1f));
+                colors[w + 2] = colorGrad.Evaluate(Mathf.Repeat(Time.time + vertices[w + 2].x * 0.001f, 1f));
+                colors[w + 3] = colorGrad.Evaluate(Mathf.Repeat(Time.time + vertices[w + 3].x * 0.001f, 1f));
+            }
+        }
+    }
+
+    public void SetDialog(SO_Dialogs newDialog)
     {
         ResetText();
 
-        text.text = newText;
+        textMesh.text = newDialog.content;
+
+        StartCoroutine(ScaleBackground());
+
+        //SetWoobleSections();
+        //SetColorSections();
     }
 
-    public void SetText(string newText, float time)
+    private IEnumerator ScaleBackground()
     {
-        ResetText();
+        yield return new WaitForSeconds(0.01f);
 
-        textCoroutine = StartCoroutine(SetTextWithTime(newText, time));
+        Vector3 scale = Vector2.zero;
+        scale.x = textMesh.GetRenderedValues().x + padding.x;
+        scale.y = textMesh.GetRenderedValues().y + padding.y;
+        scale.z = 0.1f;
+
+        background.localScale = scale;
     }
 
     IEnumerator SetTextWithTime(string newText, float time)
     {
         foreach (var letter in newText)
         {
-            text.text += letter;
-            
-            if (textAudio != null)
-                PlaySFX(textAudio);
+            textMesh.text += letter;
 
             yield return new WaitForSeconds((time / newText.Length));
         }
@@ -55,15 +122,15 @@ public class PanelBehavior : MonoBehaviour
 
     IEnumerator ShakeTextCoroutine(float fortime)
     {
-        Vector3 originalPos = text.transform.position;
+        Vector3 originalPos = textMesh.transform.position;
         float time = 0;
         while (time < fortime)
         {
-            text.transform.position = originalPos + Random.insideUnitSphere * 0.1f;
+            textMesh.transform.position = originalPos + UnityEngine.Random.insideUnitSphere * 0.1f;
             time += Time.deltaTime;
             yield return null;
         }
-        text.transform.position = originalPos;
+        textMesh.transform.position = originalPos;
     }
 
     public void ResetText()
@@ -71,67 +138,64 @@ public class PanelBehavior : MonoBehaviour
         if (textCoroutine != null)
             StopCoroutine(textCoroutine);
         else
-            text.text = "";
+            textMesh.text = "";
     }
 
-    public void PlaySFX(AudioClip audio)
+    private void SetWoobleSections()
     {
-        sfxAudioSource.clip = audio;
-        sfxAudioSource.Play();
-    }
+        wobbleSections.Clear();
 
-    public void PlayAudio(AudioClip audio)
-    {
-        if (dialogueAudioSource.isPlaying)
-            ForceStopAudio();
-
-        dialogueAudioSource.clip = audio;
-        dialogueAudioSource.Play();
-    }
-
-    public void StopAudio()
-    {
-        StartCoroutine(AudioFade(dialogueAudioSource));
-    }
-
-    public void StopSFX()
-    {
-        StartCoroutine(AudioFade(sfxAudioSource));
-    }
-
-    public void StopAllAudio()
-    {
-        StartCoroutine(AudioFade(dialogueAudioSource));
-        StartCoroutine(AudioFade(sfxAudioSource));
-    }
-
-    public void ForceStopAudio()
-    {
-        dialogueAudioSource.volume = 0;
-    }
-
-    public void ForceStopSFX()
-    {
-        sfxAudioSource.volume = 0;
-    }
-
-    public void ForceStopAllAudio()
-    {
-        dialogueAudioSource.volume = 0;
-        sfxAudioSource.volume = 0;
-    }
-
-    IEnumerator AudioFade(AudioSource source)
-    {
-        float startVolume = source.volume;
-
-        while (source.volume > 0)
+        for (int i = 0; i < textMesh.text.SplitPattern("[w]", "[/w]").Length; i++)
         {
-            source.volume -= Time.deltaTime;
-            yield return null;
+            if (textMesh.text.Contains("[w]") && textMesh.text.Contains("[/w]"))
+            {
+                int startIndex = wobbleSections.Count > 0 ? wobbleSections[wobbleSections.Count - 1].y + 3 : 0;
+
+                wobbleSections.Add(new Vector2Int(textMesh.text.SearchPatternEnd(startIndex, "[w]"), textMesh.text.SearchPatternBegin(startIndex, "[/w]")));
+            }
         }
 
-        source.Stop();
-        source.volume = startVolume;
+        for (int i = 0; i < wobbleSections.Count; i++)
+        {
+            Vector2Int value = wobbleSections[i];
+
+            int subValue = (i + 1) * 3 + i * 4;
+
+            value -= new Vector2Int(subValue, subValue);
+
+            wobbleSections[i] = value;
+        }
+
+        textMesh.text = textMesh.text.Replace("[w]", "");
+        textMesh.text = textMesh.text.Replace("[/w]", "");
+    }
+
+    private void SetColorSections()
+    {
+        rainbowSections.Clear();
+
+        for (int i = 0; i < textMesh.text.SplitPattern("[r]", "[/r]").Length; i++)
+        {
+            if (textMesh.text.Contains("[r]") && textMesh.text.Contains("[/r]"))
+            {
+                int startIndex = rainbowSections.Count > 0 ? rainbowSections[rainbowSections.Count - 1].y + 3 : 0;
+
+                rainbowSections.Add(new Vector2Int(textMesh.text.SearchPatternEnd(startIndex, "[r]"), textMesh.text.SearchPatternBegin(startIndex, "[/r]")));
+            }
+        }
+
+        for (int i = 0; i < rainbowSections.Count; i++)
+        {
+            Vector2Int value = rainbowSections[i];
+
+            int subValue = (i + 1) * 3 + i * 4;
+
+            value -= new Vector2Int(subValue, subValue);
+
+            rainbowSections[i] = value;
+        }
+
+        textMesh.text = textMesh.text.Replace("[r]", "");
+        textMesh.text = textMesh.text.Replace("[/r]", "");
     }
 }

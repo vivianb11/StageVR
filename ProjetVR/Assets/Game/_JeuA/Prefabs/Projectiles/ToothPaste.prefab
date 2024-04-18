@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4111518539333811529}
   - component: {fileID: 8813096673736934363}
   - component: {fileID: 7402322266392007971}
+  - component: {fileID: 5774605098447973560}
   m_Layer: 12
   m_Name: ToothPaste
   m_TagString: Untagged
@@ -95,10 +96,141 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee19136d61d1b14f9ef10b3d0e27877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
   projectilSpeed: 50
   randomness: 0.05
   lifeTime: 10
+  StartFB:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5774605098447973560}
+        m_TargetAssemblyTypeName: Tween, Assembly-CSharp
+        m_MethodName: PlayMontages
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5774605098447973560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3322682745765520677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f9fcf52fd23e949be2a4294fb4537c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenMontages:
+  - name: scaleIn
+    waitPreviousMontage: 0
+    speed: 1
+    tweenProperties:
+    - propertie: 2
+      waitForPreviousTweenProperty: 0
+      useDynamicFrom: 0
+      useGameObjectTo: 0
+      from: {x: 0.5, y: 0.5, z: 0.5}
+      to: {x: 1, y: 1, z: 1}
+      toObject: {fileID: 0}
+      duration: 1
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 2.000003
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.333333
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333302
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      completed:
+        m_PersistentCalls:
+          m_Calls: []
+    started:
+      m_PersistentCalls:
+        m_Calls: []
+    completed:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: scaleOut
+    waitPreviousMontage: 1
+    speed: 1
+    tweenProperties:
+    - propertie: 2
+      waitForPreviousTweenProperty: 0
+      useDynamicFrom: 0
+      useGameObjectTo: 0
+      from: {x: 1, y: 1, z: 1}
+      to: {x: 0.5, y: 0.5, z: 0.5}
+      toObject: {fileID: 0}
+      duration: 1
+      curve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0
+          outWeight: 0.333333
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 3.0000029
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 3
+          inWeight: 0.33333302
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 0
+      completed:
+        m_PersistentCalls:
+          m_Calls: []
+    started:
+      m_PersistentCalls:
+        m_Calls: []
+    completed:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5774605098447973560}
+          m_TargetAssemblyTypeName: Tween, Assembly-CSharp
+          m_MethodName: PlayMontages
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  autoPlayMontage: 0
+  tweenIndex: 0
 --- !u!1 &7964768625232023548
 GameObject:
   m_ObjectHideFlags: 0

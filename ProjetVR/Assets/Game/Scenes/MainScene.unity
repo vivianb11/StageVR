@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41294f478d862140b9800916e3a2658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeResetGame: 10
+  timeBeforeResetGame: 15
   calibration: {fileID: 1102556377}
   startSignal: {fileID: 11400000, guid: 117d694d618b2ab43b6beb0bf6c8330a, type: 2}
   playerInstance: {fileID: 63744276}
@@ -714,7 +714,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.1570061e+27, y: 1.5792676e-19, z: 1.5792691e-19, w: 7.563938e+23}
+  m_BoundingSphereOverride: {x: 5.51e-43, y: 2.002022e+29, z: 5.51e-43, w: 1.4915634e-30}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -958,7 +958,6 @@ MonoBehaviour:
   audioFilterMode: 0
   fadeDuration: 1
   maxAudioSources: 10
-  playMusicOnStart: 1
   _musicSource: {fileID: 0}
   musics: []
 --- !u!82 &1561876605

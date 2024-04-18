@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
-using System.Linq;
 
 [ExecuteInEditMode]
 public class RandomSpawn : MonoBehaviour
@@ -40,10 +39,13 @@ public class RandomSpawn : MonoBehaviour
     [NaughtyAttributes.ReadOnly] [SerializeField] int milestoneCount = 0;
     [SerializeField] int interval = 10;
 
+    [SerializeField] DifficultyPresets[] tutorialDifficulties;
     [SerializeField] DifficultyPresets[] difficultyPresets;
 
     [Header("Death Event")]
     [SerializeField] UnityEvent allShooted = new();
+
+    private static bool skipTutorial = false;
 
     void OnEnable()
     {
@@ -52,12 +54,18 @@ public class RandomSpawn : MonoBehaviour
         milestoneCount = 0;
 
         target.gameObject.SetActive(true);
+
+        skipTutorial = true;
+
+        GameManager.Instance.gameStopped.AddListener(() => skipTutorial = false);
     }
 
     private void OnDisable()
     {
         CancelInvoke();
         StopAllCoroutines();
+
+        GameManager.Instance.gameStopped.RemoveListener(() => skipTutorial = false);
     }
 
     private void Start()
@@ -136,10 +144,13 @@ public class RandomSpawn : MonoBehaviour
 
     private void CountMinutes()
     {
-        ChangeDifficulty(difficultyPresets[milestoneCount]);
+        if (milestoneCount < tutorialDifficulties.Length && !skipTutorial)
+            ChangeDifficulty(tutorialDifficulties[milestoneCount]);
+        else
+            ChangeDifficulty(difficultyPresets[milestoneCount - tutorialDifficulties.Length]);
         milestoneCount += 1;
 
-        if (milestoneCount == difficultyPresets.Length)
+        if (milestoneCount == difficultyPresets.Length + tutorialDifficulties.Length)
             CancelInvoke();
 
         Debug.Log(milestoneCount);

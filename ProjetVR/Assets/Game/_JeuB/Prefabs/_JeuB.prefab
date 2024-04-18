@@ -1022,11 +1022,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerList:
-  - {fileID: 3549296507944966319}
   - {fileID: 6037506256365230333}
+  - {fileID: 3549296507944966319}
+  - {fileID: 532365905570478361}
   - {fileID: 3436735275151527448}
   - {fileID: 7904358571901721930}
-  - {fileID: 532365905570478361}
   - {fileID: 1587920473999145723}
   mobArray:
   - {fileID: 6224022260222283880, guid: 23d87bf6f84997149b99791847cdaecd, type: 3}
@@ -1044,9 +1044,9 @@ MonoBehaviour:
   CurrentPercentageEnemy1: 100%
   CurrentPercentageEnemy2: 0%
   CurrentPercentageEnemy3: 0%
-  milestoneCount: 3
+  milestoneCount: 0
   interval: 60
-  difficultyPresets:
+  tutorialDifficulties:
   - {fileID: 11400000, guid: 060870809c141ed4ea3cf015f079ae04, type: 2}
   - {fileID: 11400000, guid: f3bf6e2d54fef814186a50209db5e434, type: 2}
   - {fileID: 11400000, guid: 9cedd19f9b53a6543880c1ed84ef8469, type: 2}
@@ -1059,6 +1059,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 23d287f387112334880ee90b96be1c48, type: 2}
   - {fileID: 11400000, guid: 254abf2014dc43c4bbdb7cbdac087d39, type: 2}
   - {fileID: 11400000, guid: 1e09129c7dd49a548a8709884e54785b, type: 2}
+  difficultyPresets:
   - {fileID: 11400000, guid: 3ae77637c481d1a41aa7029df26d5cff, type: 2}
   - {fileID: 11400000, guid: a4ed2a469c8cc7b4b915234f49be857b, type: 2}
   - {fileID: 11400000, guid: e42ae826b7c8ab443bfcb46ad7aad59e, type: 2}

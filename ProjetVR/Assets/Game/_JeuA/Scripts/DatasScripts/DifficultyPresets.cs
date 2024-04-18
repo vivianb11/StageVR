@@ -10,7 +10,7 @@ public class DifficultyPresets : ScriptableObject
     public int countCondition;
     public float spawnInterval;
     public float mobSpeed;
-    [Range(1, 8)] public int numberSpawner;
+    [Range(1, 6)] public int numberSpawner;
     public int weightEnemy1;
     public int weightEnemy2;
     public int weightEnemy3;

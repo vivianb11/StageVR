@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent gameStarted;
 
+    public UnityEvent gameStopped;
+
     private DateTime timeOnUnfocus;
 
     private GameObject nextGameMode;
@@ -47,6 +49,8 @@ public class GameManager : MonoBehaviour
     {
         OVRManager.InputFocusAcquired += CheckUnfocusedTime;
         OVRManager.InputFocusLost += () => timeOnUnfocus = DateTime.Now;
+        OVRManager.InputFocusLost += () => Time.timeScale = 0;
+
         SceneLoader.Instance.fadeOutCompleted.AddListener(StartGameMode);
 
         if (SkipCalibration)
@@ -103,9 +107,11 @@ public class GameManager : MonoBehaviour
 
         if ((DateTime.Now - timeOnUnfocus).TotalSeconds > timeBeforeResetGame)
         {
+            gameStopped?.Invoke();
             ChangeGameMode(currentSceneIndex);
         }
 
+        Time.timeScale = 1;
         OVRManager.display.RecenterPose();
     }
 

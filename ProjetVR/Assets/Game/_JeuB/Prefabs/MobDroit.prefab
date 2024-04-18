@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 593089163638709294}
   m_Layer: 6
   m_Name: MobDroit
-  m_TagString: Untagged
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,6 +153,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleLerpSpeed: 0.3
+  FBFinish:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6894641936331623067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +275,6 @@ MonoBehaviour:
   moveSpeed: 1
   isKnockable: 0
   scoreOnDeath: 10
-  Tooth: {fileID: 0}
   canRotate: 0
   receivedDamagedOnHit: 1
   knockCooldown: 1.5
@@ -319,6 +321,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  protectedToothBehaviours: {fileID: 0}
 --- !u!114 &593089163638709294
 MonoBehaviour:
   m_ObjectHideFlags: 0

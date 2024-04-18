@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 7604659161403824294}
   m_Layer: 6
   m_Name: MobRotate
-  m_TagString: Untagged
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,6 +169,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  protectedToothBehaviours: {fileID: 0}
 --- !u!54 &4164943758443417
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -209,6 +210,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleLerpSpeed: 0.3
+  FBFinish:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2965289083273323766
 MonoBehaviour:
   m_ObjectHideFlags: 0

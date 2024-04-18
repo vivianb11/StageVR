@@ -13,7 +13,7 @@ public class Mob : MonoBehaviour
     [SerializeField] int lifepoints;
     [ReadOnly] public float moveSpeed = 0;
     [SerializeField] bool isKnockable;
-    [SerializeField] int scoreOnDeath;
+    public int scoreOnDeath;
     
     public bool canRotate;
 

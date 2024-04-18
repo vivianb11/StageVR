@@ -3,7 +3,8 @@ using UnityEngine;
 public class CameraAlignView : MonoBehaviour
 {
     [SerializeField] [Range(0f, 1f)] float lerpSpeed;
-    [SerializeField] float offset = 10f;
+    [SerializeField] Vector3 offset;
+    [SerializeField] float distance;
 
     private Transform cameraTransform;
 
@@ -14,6 +15,6 @@ public class CameraAlignView : MonoBehaviour
 
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, cameraTransform.position + cameraTransform.forward * offset, lerpSpeed);
+        transform.position = Vector3.Lerp(transform.position, (cameraTransform.position + cameraTransform.forward * distance) + offset, lerpSpeed);
     }
 }

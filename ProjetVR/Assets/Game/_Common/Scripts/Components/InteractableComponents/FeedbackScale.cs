@@ -12,6 +12,28 @@ public class FeedbackScale : MonoBehaviour
 
     public UnityEvent FBFinish;
 
+    public bool IsScaling => transform.localScale != originalScale;
+
+    private bool active = true;
+    public bool Active
+    {
+        get { return active; }
+        set
+        {
+            if (!value)
+            {
+                ForceStop();
+            }
+
+            active = value;
+        }
+    }
+
+    public void SetActive(bool value)
+    {
+        Active = value;
+    }
+
     private void OnEnable()
     {
         originalScale = transform.localScale;
@@ -19,8 +41,9 @@ public class FeedbackScale : MonoBehaviour
 
     private void OnDisable()
     {
-        StopAllCoroutines();
-        transform.localScale = originalScale;
+        Debug.LogWarning("do not desable please use the Active property instead");
+
+        ForceStop();
     }
 
     private IEnumerator ScaleTimer(Vector3 targetScale)

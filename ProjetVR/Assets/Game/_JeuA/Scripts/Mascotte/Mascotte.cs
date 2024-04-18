@@ -20,12 +20,6 @@ public class Mascotte : MonoBehaviour
     [SerializeField]
     private float interactionDelay = 2f;
 
-    [SerializeField]
-    private AudioSource enterClean;
-
-    [SerializeField]
-    private AudioSource toothBrush;
-
     private bool canClean = true;
 
     [Space(10)]
@@ -42,10 +36,17 @@ public class Mascotte : MonoBehaviour
 
     private HeadMotionTracker headMotionTracker;
 
+    private Collider bodyCollider;
+
     private void Start()
     {
+        bodyCollider = GetComponent<Collider>();
+        bodyCollider.enabled = false;
+
         tooth.CellCleaned.AddListener(() => StartToothCheckingState(checkDelay));
         tooth.OnTeethCleaned.AddListener(() => SwitchState(MascotteState.HAPPY));
+
+        tooth.decayOnly.AddListener(() => bodyCollider.enabled = true);
 
         headMotionTracker = FindAnyObjectByType<HeadMotionTracker>();
 
@@ -61,6 +62,12 @@ public class Mascotte : MonoBehaviour
         headMotionTracker.Excited.RemoveListener(() => SwitchState(MascotteState.CONFUSE));
         headMotionTracker.Normal.RemoveListener(() => SwitchState(MascotteState.IDLE));
         headMotionTracker.Calme.RemoveListener(() => SwitchState(MascotteState.IDLE));
+    }
+
+    public void CleanTooth()
+    {
+        tooth.CleanTooth();
+        bodyCollider.enabled = false;
     }
 
     public void SwitchState(MascotteState newState)
@@ -151,11 +158,9 @@ public class Mascotte : MonoBehaviour
 
     private IEnumerator CleanTeeth(float delay, ToothManager toothManager)
     {
-        enterClean.Play();
         yield return new WaitForSeconds(delay);
 
         toothManager.CleanTooth();
-        toothBrush.Play();
     }
 
     private IEnumerator CheckDelay(float delay)

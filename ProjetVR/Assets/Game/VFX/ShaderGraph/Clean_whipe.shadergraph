@@ -61,9 +61,6 @@
             "m_Id": "74d94a4086334b98b7e498665ece2256"
         },
         {
-            "m_Id": "4511f7e3ebea45dc9114f770335fd182"
-        },
-        {
             "m_Id": "f6bb41c546954b119c795a4f8e9367e3"
         },
         {
@@ -736,9 +733,6 @@
             },
             {
                 "m_Id": "97da8af855534853bf954e8a2f1db75c"
-            },
-            {
-                "m_Id": "4511f7e3ebea45dc9114f770335fd182"
             }
         ]
     },
@@ -1386,7 +1380,7 @@
         "m_Id": "4f887222c2144f65bf73efe97763547a"
     },
     "m_AllowMaterialOverride": false,
-    "m_SurfaceType": 1,
+    "m_SurfaceType": 0,
     "m_ZTestMode": 4,
     "m_ZWriteControl": 0,
     "m_AlphaMode": 0,
@@ -2134,40 +2128,6 @@
         "e32": 0.0,
         "e33": 1.0
     }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
-    "m_ObjectId": "4511f7e3ebea45dc9114f770335fd182",
-    "m_Group": {
-        "m_Id": ""
-    },
-    "m_Name": "SurfaceDescription.Alpha",
-    "m_DrawState": {
-        "m_Expanded": true,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": 7.1999664306640629,
-            "y": 528.0000610351563,
-            "width": 200.00006103515626,
-            "height": 40.800048828125
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "f0c8ca09bfa24ff3b8824aed7d249b90"
-        }
-    ],
-    "synonyms": [],
-    "m_Precision": 0,
-    "m_PreviewExpanded": true,
-    "m_DismissedVersion": 0,
-    "m_PreviewMode": 0,
-    "m_CustomColors": {
-        "m_SerializableColors": []
-    },
-    "m_SerializedDescriptor": "SurfaceDescription.Alpha"
 }
 
 {
@@ -4645,21 +4605,6 @@
         "z": 0.0,
         "w": 0.0
     }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "f0c8ca09bfa24ff3b8824aed7d249b90",
-    "m_Id": 0,
-    "m_DisplayName": "Alpha",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Alpha",
-    "m_StageCapability": 2,
-    "m_Value": 1.0,
-    "m_DefaultValue": 1.0,
-    "m_Labels": []
 }
 
 {

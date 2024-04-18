@@ -35,8 +35,6 @@ public class ToothManager : MonoBehaviour
     [Foldout("Materials")]
     public Material toothPasteMat;
 
-    private Collider grabCollider;
-    private Interactable grabIntractable;
     public SO_Signal brushSignal;
     public SO_Signal brossetteSignal;
 
@@ -59,14 +57,14 @@ public class ToothManager : MonoBehaviour
     public UnityEvent CellCleaned;
     [Foldout("Events")]
     public UnityEvent<int> GenerationListIndex;
+    [Foldout("Events")]
+    public UnityEvent decayOnly;
 
     [Foldout("Playtest Only")]
     public bool toothPasteColorChange;
 
     private void Awake()
     {
-        grabCollider = GetComponent<Collider>();
-        grabIntractable = GetComponent<Interactable>();
         tweener = GetComponent<Tween>();
 
         smellAmount = maxSmellAmount;
@@ -168,10 +166,11 @@ public class ToothManager : MonoBehaviour
             cell.gameObject.SetActive(false);
         }
 
+        SetSmell(false);
+
         Tooth.SetActive(true);
         tweener.PlayTween("despawn");
 
-        DisableGrab();
         dataIndex = Mathf.Clamp(dataIndex + 1, 0, datas.Length - 1);
 
         OnCleanAmountChange?.Invoke(1);
@@ -193,8 +192,6 @@ public class ToothManager : MonoBehaviour
             cell.gameObject.SetActive(true);
             cell.ResetTooth();
         }
-        
-        DisableGrab();
 
         switch (generationMode)
         {
@@ -209,29 +206,6 @@ public class ToothManager : MonoBehaviour
         OnCleanAmountChange?.Invoke(GetToothCleanPercent());
     }
 
-    private void EnableGrab()
-    {
-        grabCollider.enabled = true;
-
-        foreach (CellBehavior cell in teethCells)
-        {
-            cell.gameObject.GetComponent<Collider>().enabled = false;
-        }
-    }
-
-    private void DisableGrab()
-    {
-        grabCollider.enabled = false;
-
-        if (grabIntractable.selected)
-            grabIntractable.DeSelect();
-
-        foreach (CellBehavior cell in teethCells)
-        {
-            cell.gameObject.GetComponent<Collider>().enabled = true;
-        }
-    }
-
     private void CheckIfToothCleaned()
     {
         if (IsToothCleaned())
@@ -241,7 +215,7 @@ public class ToothManager : MonoBehaviour
         }
         else if (OnlyDecayRemaining())
         {
-            EnableGrab();
+            decayOnly?.Invoke();
         }
     }
 
@@ -310,7 +284,9 @@ public class ToothManager : MonoBehaviour
         }
 
         if (OnlyDecayRemaining())
-            EnableGrab();
+        {
+            decayOnly?.Invoke();
+        }
     }
 }
 

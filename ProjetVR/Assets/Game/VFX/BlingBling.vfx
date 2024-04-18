@@ -23,8 +23,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 469
     y: -190
-    width: 898
-    height: 1702
+    width: 897
+    height: 1721
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2282,7 +2282,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614676}
   m_ExposedName: Amount/Burst
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 1
   m_Category: Spawn
   m_Min:
     m_Type:
@@ -2430,7 +2430,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614680}
   m_ExposedName: Delay
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 3
   m_Category: Spawn
   m_Min:
     m_Type:
@@ -2578,7 +2578,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614684}
   m_ExposedName: Animation Speed
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 4
   m_Category: Star Params
   m_Min:
     m_Type:
@@ -2659,14 +2659,14 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661614686}
   m_ExposedName: Spawn Postion
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 2
   m_Category: 
   m_Min:
     m_Type:

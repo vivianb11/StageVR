@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6914194090042142807}
   - component: {fileID: 7674919225253073592}
   - component: {fileID: 2139985994392543714}
-  - component: {fileID: 6246875433112596288}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -85,22 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6246875433112596288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886563695545066082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scaleLerpSpeed: 0.15
-  FBFinish:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &3996379807395494424
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,14 +239,6 @@ PrefabInstance:
       propertyPath: lookOut.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1850648912135247917, guid: 54aeb0f9a6b61db4198320c58082f261, type: 3}
-      propertyPath: lookIn.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 6246875433112596288}
-    - target: {fileID: 1850648912135247917, guid: 54aeb0f9a6b61db4198320c58082f261, type: 3}
-      propertyPath: lookOut.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 6246875433112596288}
     - target: {fileID: 1850648912135247917, guid: 54aeb0f9a6b61db4198320c58082f261, type: 3}
       propertyPath: onSelected.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
       value: 6

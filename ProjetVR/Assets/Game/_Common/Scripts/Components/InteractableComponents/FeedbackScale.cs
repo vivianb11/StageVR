@@ -62,14 +62,16 @@ public class FeedbackScale : MonoBehaviour
         StopAllCoroutines();
 
         Vector3 targetScale = originalScale * scaleOffset;
-        StartCoroutine(ScaleTimer(targetScale));
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(ScaleTimer(targetScale));
     }
 
     public void ScaleOut()
     {
         StopAllCoroutines();
 
-        StartCoroutine(ScaleTimer(originalScale));
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(ScaleTimer(originalScale));
     }
 
     public void ForceStop()

@@ -59,6 +59,8 @@ public class ToothManager : MonoBehaviour
     public UnityEvent<int> GenerationListIndex;
     [Foldout("Events")]
     public UnityEvent decayOnly;
+    [Foldout("Events")]
+    public UnityEvent respawned;
 
     [Foldout("Playtest Only")]
     public bool toothPasteColorChange;
@@ -179,6 +181,8 @@ public class ToothManager : MonoBehaviour
 
     public void ResetTooth()
     {
+        respawned?.Invoke();
+
         transform.localPosition = Vector3.zero;
         SetSmell(false);
 

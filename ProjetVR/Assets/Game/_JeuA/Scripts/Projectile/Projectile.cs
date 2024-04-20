@@ -17,8 +17,10 @@ public class Projectile : MonoBehaviour
         body = GetComponent<Rigidbody>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
+        body.velocity = Vector3.zero;
+
         Vector3 launchDirection = transform.forward + Vector3.right * Random.Range(-randomness, randomness) + Vector3.up * Random.Range(-randomness, randomness);
 
         body.AddForce(launchDirection * projectilSpeed);

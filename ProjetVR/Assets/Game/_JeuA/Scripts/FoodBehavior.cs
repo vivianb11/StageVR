@@ -35,6 +35,7 @@ public class FoodBehavior : MonoBehaviour
     [Button]
     public void EjectFood()
     {
+        transform.parent = null;
         ejected = true;
 
         rb.isKinematic = false;

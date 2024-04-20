@@ -15,7 +15,6 @@ public class Mascotte : MonoBehaviour
     [SerializeField] ToothManager tooth;
 
     [SerializeField] float checkDelay;
-    [SerializeField] float checkDelayAfterFullClean;
 
     [SerializeField]
     private float interactionDelay = 2f;
@@ -43,6 +42,7 @@ public class Mascotte : MonoBehaviour
         bodyCollider = GetComponent<Collider>();
         bodyCollider.enabled = false;
 
+        tooth.respawned.AddListener(() => StartToothCheckingState(checkDelay));
         tooth.CellCleaned.AddListener(() => StartToothCheckingState(checkDelay));
         tooth.OnTeethCleaned.AddListener(() => SwitchState(MascotteState.HAPPY));
 
@@ -98,11 +98,10 @@ public class Mascotte : MonoBehaviour
                 break;
             case MascotteState.HAPPY:
                 happyState?.Invoke();
-                StartToothCheckingState(checkDelayAfterFullClean);
                 Debug.Log("GG !".SetColor(Color.green));
                 break;
             case MascotteState.IDLE:
-                StartToothCheckingState(checkDelayAfterFullClean);
+                StartToothCheckingState(checkDelay);
                 break;
             case MascotteState.CONFUSE:
                 break;
@@ -154,6 +153,8 @@ public class Mascotte : MonoBehaviour
             SwitchState(MascotteState.HELP_SMELL);
             return;
         }
+
+        StartToothCheckingState(1f);
     }
 
     private IEnumerator CleanTeeth(float delay, ToothManager toothManager)

@@ -11,6 +11,8 @@ public class HeadMotionTracker : MonoBehaviour
         Calme
     }
 
+    public static HeadMotionTracker Instance;
+
     private List<float> distances = new();
 
     private Vector3 lastPosition, secndLastPosition;
@@ -27,8 +29,25 @@ public class HeadMotionTracker : MonoBehaviour
 
     private PlayerExcitement playerExcitement;
 
+    public float GetTilt
+    {
+        get
+        {
+            Vector3 flatVector = transform.forward;
+            flatVector.y = 0;
+
+            return Vector3.Angle(flatVector, transform.forward);
+        }
+        private set { }
+    }
+
     private void Awake()
     {
+        if (Instance is null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+
         //add a empty gameobject as a child and reset its position to 0,0,1
         head = new GameObject("Tracker");
         head.transform.SetParent(transform);
@@ -70,6 +89,8 @@ public class HeadMotionTracker : MonoBehaviour
                 Calme.Invoke();
             }
         }
+
+        Debug.Log(GetTilt);
     }
 
     private void FixedUpdate()

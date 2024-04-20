@@ -17,8 +17,6 @@ public class HeadMotionTracker : MonoBehaviour
 
     private Vector3 lastPosition, secndLastPosition;
 
-    private GameObject head;
-
     [Header("Tracker Parameters")]
     public float RecordingSample = 2f;
 
@@ -47,11 +45,6 @@ public class HeadMotionTracker : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
-
-        //add a empty gameobject as a child and reset its position to 0,0,1
-        head = new GameObject("Tracker");
-        head.transform.SetParent(transform);
-        head.transform.localPosition = new Vector3(0, 0, 1);
 
         for (int i = 0; i < RecordingSample / Time.fixedDeltaTime; i++)
         {
@@ -96,7 +89,7 @@ public class HeadMotionTracker : MonoBehaviour
     private void FixedUpdate()
     {
         secndLastPosition = lastPosition;
-        lastPosition = head.transform.position;
+        lastPosition = transform.forward;
 
         distances.Add(Vector3.Distance(lastPosition, secndLastPosition));
 

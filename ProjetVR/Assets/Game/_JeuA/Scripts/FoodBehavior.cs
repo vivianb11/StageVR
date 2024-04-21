@@ -6,11 +6,12 @@ using Random = UnityEngine.Random;
 public class FoodBehavior : MonoBehaviour
 {
     private Rigidbody rb;
+    private PlayerInstance player;
 
     public float delayBeforeDestroayable = 1f;
     private bool isDestroyable = false;
 
-    public float force = 500f;
+    public float force = 300f;
 
     private bool ejected = false;
 
@@ -19,6 +20,7 @@ public class FoodBehavior : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        player = PlayerInstance.Instance;
     }
 
     private void Update()
@@ -41,7 +43,10 @@ public class FoodBehavior : MonoBehaviour
         rb.isKinematic = false;
         rb.useGravity = true;
 
-        rb.AddForce(new Vector3(Random.Range(-1f, 1f), Random.Range(0.2f, 1f), Random.Range(-1f, 1f)) * force);
+        Transform playerpos = player.transform.GetChild(0).transform;
+        Vector3 direction = playerpos.up * Random.Range(0.5f, 1f) + Random.Range(-0.5f, 0.5f) * playerpos.right;
+
+        rb.AddForce(direction * force);
 
         StartCoroutine(DestroyableDelay());
     }

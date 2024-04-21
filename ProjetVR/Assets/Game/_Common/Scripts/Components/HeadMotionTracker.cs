@@ -82,8 +82,6 @@ public class HeadMotionTracker : MonoBehaviour
                 Calme.Invoke();
             }
         }
-
-        Debug.Log(GetTilt);
     }
 
     private void FixedUpdate()

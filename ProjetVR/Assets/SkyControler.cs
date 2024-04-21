@@ -14,6 +14,11 @@ public class SkyControler : MonoBehaviour
         skyMaterial = RenderSettings.skybox;
     }
 
+    private void OnDisable()
+    {
+        skyMaterial.SetFloat("_Blend", 0);
+    }
+
     private void Start()
     {
         headMotionTracker = HeadMotionTracker.Instance;

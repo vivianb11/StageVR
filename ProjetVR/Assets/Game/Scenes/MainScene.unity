@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.027473385, g: 0.016187033, b: 0.015891775, a: 1}
+  m_IndirectSpecularColor: {r: 0.1363446, g: 0.24030288, b: 0.35794333, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -244,9 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cfd45ac122bc54aabb0667caba73fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sitTexture: {fileID: 8900000, guid: 08ea713d0e79d8e4aa41c53a0bad3fa5, type: 3}
-  sleepTexture: {fileID: 8900000, guid: 78274186519ed1240a2aaf59c22ab2ef, type: 3}
   tiltAmount: 35
+  blendSpeed: 1
 --- !u!1 &199004102 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2923596771114906867, guid: 53da3c0e596b0814a9483012869a20fa, type: 3}

@@ -4,7 +4,6 @@ Shader "Custom/SkyboxBlend"
     {
         _Tint ("Tint Color", Color) = (0.5, 0.5, 0.5, 0.5)
         [Gamma] _Exposure ("Exposure", Range(0.0, 8.0)) = 1.0
-        _Rotation ("Rotation", Range(0.0, 360.0)) = 0.0
         [NoScaleOffset] _Tex ("Cubemap (HDR)", CUBE) = "grey" { }
         [NoScaleOffset] _Tex2 ("Cubemap 2 (HDR)", CUBE) = "grey" { }
         _Blend ("Blend", Range(0.0, 1.0)) = 0.0

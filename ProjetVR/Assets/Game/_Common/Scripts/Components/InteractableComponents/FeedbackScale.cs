@@ -59,6 +59,9 @@ public class FeedbackScale : MonoBehaviour
 
     public void ScaleIn()
     {
+        if (!Active)
+            return;
+
         StopAllCoroutines();
 
         Vector3 targetScale = originalScale * scaleOffset;
@@ -68,6 +71,9 @@ public class FeedbackScale : MonoBehaviour
 
     public void ScaleOut()
     {
+        if (!Active)
+            return;
+        
         StopAllCoroutines();
 
         if (gameObject.activeInHierarchy)

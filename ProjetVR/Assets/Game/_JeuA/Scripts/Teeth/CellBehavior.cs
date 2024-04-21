@@ -11,6 +11,8 @@ public class CellBehavior : MonoBehaviour
 {
     [SerializeField] GameObject BrushParticle;
 
+    [SerializeField] FeedbackScale _feedbackScale;
+
     public TeethState teethState;
     public ToothManager toothManager { get; private set; }
 
@@ -31,6 +33,8 @@ public class CellBehavior : MonoBehaviour
         toothManager = transform.parent.GetComponent<ToothManager>();
         interactable = GetComponent<Interactable>();
         signalListener = GetComponent<SignalListener>();
+
+        _feedbackScale = GetComponent<FeedbackScale>();
     }
 
     private void Start()
@@ -63,6 +67,8 @@ public class CellBehavior : MonoBehaviour
 
         if (toothPasteAmount == cellData.maxToothPasteCount)
         {
+            _feedbackScale.SetActive(true);
+
             StartCoroutine(StartTPFeedback());
 
             if (toothManager.toothPasteColorChange) mR.material = toothManager.toothPasteMat;
@@ -120,6 +126,8 @@ public class CellBehavior : MonoBehaviour
                 interactable.onSelected.AddListener(TartarBehavior);
                 interactable.lookInTime = cellData.tartarInteractionTime;
                 interactable.resetValueOnExit = false;
+
+                _feedbackScale.SetActive(false);
                 break;
         }
     }

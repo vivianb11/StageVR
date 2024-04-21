@@ -237,6 +237,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 599597195772556926, guid: 3d5fdcdad13c46b4f89362e145f2e444, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7167615188265141795, guid: 3d5fdcdad13c46b4f89362e145f2e444, type: 3}
       propertyPath: m_Name
       value: SoundManager
@@ -339,8 +343,11 @@ MonoBehaviour:
   - {fileID: 6798597841116208069, guid: 78b725139ead97f4d87ba0814f66c741, type: 3}
   startDelay: 3
   SkipCalibration: 1
-  currentSceneIndex: 0
+  currentSceneIndex: 1
   gameStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  gameStopped:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &589685526
@@ -715,7 +722,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 7.0926785e+22, z: 4.7827013e-11, w: 7.1430717e+31}
+  m_BoundingSphereOverride: {x: 9.32e-43, y: 19289.83, z: 2.6744033e+12, w: 0.004993958}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

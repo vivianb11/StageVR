@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 9061522032183409264}
   - component: {fileID: 4164943758443417}
   - component: {fileID: 3950084660395824396}
-  - component: {fileID: 2965289083273323766}
   - component: {fileID: -4735607365920841345}
   - component: {fileID: 514779265771394359}
   - component: {fileID: 7604659161403824294}
@@ -142,7 +141,7 @@ MonoBehaviour:
   onKnocked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2965289083273323766}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 1
@@ -213,27 +212,6 @@ MonoBehaviour:
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2965289083273323766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638022967405250282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db5c2cb0433461840a9c6e40dff9d892, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  place: 1
-  sound:
-    soundType: 2
-    clip: {fileID: 8300000, guid: 0f31b5493c652b54f9fc2cbe2c64c205, type: 3}
-    timePaused: 0
-    pausedTime: 0
-  playRandomSfx: 0
-  sfxs: []
-  lastPlayedSound: 0
 --- !u!114 &-4735607365920841345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +227,7 @@ MonoBehaviour:
   place: 1
   sound:
     soundType: 2
-    clip: {fileID: 8300000, guid: 1fa3188af15811e4aabfb23d9008e7c9, type: 3}
+    clip: {fileID: 8300000, guid: 7b7d68130e1683f48a7982fba72a725a, type: 3}
     timePaused: 0
     pausedTime: 0
   playRandomSfx: 0

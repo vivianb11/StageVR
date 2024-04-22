@@ -82,7 +82,7 @@ public class ProtectedToothBehaviours : MonoBehaviour
 
             Invoke(nameof(Explode), 2.05f);
             GameManager.Instance.ReloadGameMode(3);
-            StartCoroutine(ShakeAndDie());
+            //StartCoroutine(ShakeAndDie());
         }
     }
 

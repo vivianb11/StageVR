@@ -12,6 +12,9 @@ public class ScoreManager : MonoBehaviour
 
     [Header("Target")]
     [SerializeField] TextMeshPro scoreDisplay;
+    [SerializeField] TextMesh gameOverScoreDisplay;
+    [SerializeField] TextMesh gameOverPersonalHighScoreDisplay;
+    [SerializeField] TextMesh gameOverGlobalHighScoreDisplay;
 
 
     //variables for scale up/down de Thomas
@@ -88,12 +91,12 @@ public class ScoreManager : MonoBehaviour
         scoreDisplay.text = currentScore.ToString();
     }
 
-    public void SetPlayerBestScore(TextMeshPro playerBestScoreTextMesh)
+    public void SetPlayerBestScore()
     {
         if (currentScore < playerBestScore) return;
 
         playerBestScore = currentScore;
-        playerBestScoreTextMesh.text = "Personnal Best Score:" + "\n" + playerBestScore.ToString();
+        gameOverPersonalHighScoreDisplay.text = "Personnal Best Score:" + "\n" + playerBestScore.ToString();
     } 
 
     public void SetBestScore(TextMeshPro bestScoreTextMesh)
@@ -101,12 +104,12 @@ public class ScoreManager : MonoBehaviour
         if (playerBestScore < bestScore) return;
 
         bestScore = playerBestScore;
-        bestScoreTextMesh.text = "Best Score:" + "\n" + playerBestScore.ToString();
+        gameOverGlobalHighScoreDisplay.text = "Best Score:" + "\n" + playerBestScore.ToString();
     } 
 
     public void SetScore(TextMeshPro scoreTextMesh)
     {
-        scoreTextMesh.text = "Score:" + "\n" + currentScore.ToString();
+        gameOverScoreDisplay.text = "Score:" + "\n" + currentScore.ToString();
     } 
 
     private void OnDisable() 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.31379133, g: 0.55039185, b: 0.82174075, a: 1}
+  m_IndirectSpecularColor: {r: 0.31343237, g: 0.55243826, b: 0.8233737, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -238,8 +238,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 599597195772556926, guid: 3d5fdcdad13c46b4f89362e145f2e444, type: 3}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 599597195772556926, guid: 3d5fdcdad13c46b4f89362e145f2e444, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1429525590267387218, guid: 3d5fdcdad13c46b4f89362e145f2e444, type: 3}
+      propertyPath: audioFilterMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7167615188265141795, guid: 3d5fdcdad13c46b4f89362e145f2e444, type: 3}
       propertyPath: m_Name
@@ -722,7 +730,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 9.32e-43, y: 19289.83, z: 2.6744033e+12, w: 0.004993958}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 1e-44, z: 1.1003e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

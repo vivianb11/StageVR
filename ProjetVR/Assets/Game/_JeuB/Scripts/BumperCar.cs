@@ -17,6 +17,7 @@ public class BumperCar : MonoBehaviour
     private Tween tweener;
     private ProtectedToothBehaviours tooth;
 
+
     private void Awake()
     {
         tweener = GetComponent<Tween>();
@@ -30,7 +31,13 @@ public class BumperCar : MonoBehaviour
             isColliding = true;
             tooth.enemyPoints = other.GetComponent<Mob>().scoreOnDeath;
             OnShieldHit.Invoke();
-            //tweener.PlayMontages();
+
+
+            tweener.tweenMontages[0].tweenProperties[1].to = gameObject.transform.localPosition;
+            tweener.tweenMontages[0].tweenProperties[0].to = new Vector3 (gameObject.transform.localPosition.x / 1.5f, gameObject.transform.localPosition.y / 1.5f, gameObject.transform.localPosition.z / 1.5f) ;
+            tweener.PlayMontages();
         }
     }
+
+    
 }

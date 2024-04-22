@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 543323189818032162}
   - component: {fileID: 4164943758443417}
   - component: {fileID: 3105006146038916852}
-  - component: {fileID: -4534251263530661186}
   - component: {fileID: 7676536657634413543}
   - component: {fileID: 327356959002380300}
   - component: {fileID: 3120594525929679554}
@@ -175,27 +174,6 @@ MonoBehaviour:
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &-4534251263530661186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638022967405250282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db5c2cb0433461840a9c6e40dff9d892, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  place: 1
-  sound:
-    soundType: 2
-    clip: {fileID: 8300000, guid: 1b2f7f070dd101e4590d120b1c604904, type: 3}
-    timePaused: 0
-    pausedTime: 0
-  playRandomSfx: 0
-  sfxs: []
-  lastPlayedSound: 0
 --- !u!114 &7676536657634413543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,15 +288,7 @@ MonoBehaviour:
   hpLossParticles: {fileID: 0}
   deathParticles: {fileID: 6237553109302029157, guid: 3aa32e22076f75e43a4548461208757e, type: 3}
   degree: 2d0000005a00000087000000b4000000e00000000e0100003b010000
-  sounds:
-  - soundType: 0
-    clip: {fileID: 8300000, guid: d84efd82035d09345be22ad97389a779, type: 3}
-    timePaused: 0
-    pausedTime: 0
-  - soundType: 0
-    clip: {fileID: 8300000, guid: 7b7d68130e1683f48a7982fba72a725a, type: 3}
-    timePaused: 0
-    pausedTime: 0
+  sounds: []
   onKnocked:
     m_PersistentCalls:
       m_Calls:
@@ -337,7 +307,7 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7676536657634413543}
         m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 1

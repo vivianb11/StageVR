@@ -19,9 +19,12 @@ public class DifficultyPresets : ScriptableObject
     [HideIf("isNumberSpawnerBased")] public bool spawnerBottom;
     [HideIf("isNumberSpawnerBased")] public bool spawnerBottomLeft;
     [HideIf("isNumberSpawnerBased")] public bool spawnerTopLeft;
-    public int weightEnemy1;
-    public int weightEnemy2;
-    public int weightEnemy3;
+
+    public bool weightBased = true; 
+    [HideIf("weightBased")] public MobEnum.MobType[] mobTypePerSpawner = new MobEnum.MobType[6];
+    [ShowIf("weightBased")] public int weightEnemy1;
+    [ShowIf("weightBased")] public int weightEnemy2;
+    [ShowIf("weightBased")] public int weightEnemy3;
     
 }
 

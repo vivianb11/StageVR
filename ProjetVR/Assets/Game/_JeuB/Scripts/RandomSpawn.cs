@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
@@ -6,9 +7,20 @@ using NaughtyAttributes;
 using System.Linq;
 using Unity.VisualScripting;
 
+namespace MobEnum
+{
+    public enum MobType
+    {
+        MobDroit,
+        MobBounce,
+        MobRotate
+    }
+}
+
 [ExecuteInEditMode]
 public class RandomSpawn : MonoBehaviour
 {
+
     [Header("Spawner Characteristics")]
     [SerializeField] public List<GameObject> spawnerList = new();
     private List<GameObject> _availableSpawnerList = new();
@@ -33,18 +45,22 @@ public class RandomSpawn : MonoBehaviour
     [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerTopLeft;
 
     [Space(10)]
+    [SerializeField] bool weightBased = true;
+    [SerializeField] [HideIf("weightBased")] MobEnum.MobType[] mobTypePerSpawner = new MobEnum.MobType[6];
 
-    [SerializeField] int weightEnemy1;
-    [SerializeField] int weightEnemy2;
-    [SerializeField] int weightEnemy3;
+    [Space(10)]
+
+    [SerializeField] [ShowIf("weightBased")] int weightEnemy1;
+    [SerializeField] [ShowIf("weightBased")] int weightEnemy2;
+    [SerializeField] [ShowIf("weightBased")] int weightEnemy3;
 
     private int _percentageEnemy1;
     private int _percentageEnemy2;
     private int _percentageEnemy3;
 
-    [NaughtyAttributes.ReadOnly] [SerializeField] string CurrentPercentageEnemy1;
-    [NaughtyAttributes.ReadOnly] [SerializeField] string CurrentPercentageEnemy2;
-    [NaughtyAttributes.ReadOnly] [SerializeField] string CurrentPercentageEnemy3;
+    [NaughtyAttributes.ReadOnly] [SerializeField] [ShowIf("weightBased")] string CurrentPercentageEnemy1;
+    [NaughtyAttributes.ReadOnly] [SerializeField] [ShowIf("weightBased")] string CurrentPercentageEnemy2;
+    [NaughtyAttributes.ReadOnly] [SerializeField] [ShowIf("weightBased")] string CurrentPercentageEnemy3;
 
 
     [Header("Progression Parameters")]
@@ -109,8 +125,13 @@ public class RandomSpawn : MonoBehaviour
 
     private (GameObject, GameObject) SelectRandomMobAndSpawner()
     {
-        if (isNumberSpawnerBased) return (_availableSpawnerList[Random.Range(0, numberSpawnerActivated)], SelectByPercentage());
-        return (_availableSpawnerList[Random.Range(0, _availableSpawnerList.Count)], SelectByPercentage());
+        if (isNumberSpawnerBased && weightBased) return (_availableSpawnerList[UnityEngine.Random.Range(0, numberSpawnerActivated)], SelectByPercentage());
+        else if (!isNumberSpawnerBased && !weightBased)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, _availableSpawnerList.Count);
+            return (_availableSpawnerList[randomIndex], SelectBySpawner(randomIndex));
+        }
+        return (_availableSpawnerList[UnityEngine.Random.Range(0, _availableSpawnerList.Count)], SelectByPercentage());
     }
 
     private void SpawnMob(GameObject _spawner, GameObject _mob)
@@ -157,6 +178,13 @@ public class RandomSpawn : MonoBehaviour
         else if (drop <= _percentageEnemy2 && drop > _percentageEnemy1) return mobArray[1];
         else if (drop <= _percentageEnemy3 && drop > _percentageEnemy2) return mobArray[2];
         return null;
+    }
+
+    public GameObject SelectBySpawner(int index)
+    {
+        if (mobTypePerSpawner[index] is MobEnum.MobType.MobDroit) return mobArray[0];
+        else if (mobTypePerSpawner[index] is MobEnum.MobType.MobBounce) return mobArray[1];
+        return mobArray[2];
     }
 
     private void CreateAvailableSpawnerList()
@@ -210,6 +238,8 @@ public class RandomSpawn : MonoBehaviour
     public void ChangeWeightEnemy2(int newWeightsEnemy2) => weightEnemy2 = newWeightsEnemy2;
     public void ChangeWeightEnemy3(int newWeightsEnemy3) =>  weightEnemy3 = newWeightsEnemy3;
     public void ChangeMobSpeed(float speed) => mobSpeed = speed;
+    public void ChangeMobTypePerSpawner(MobEnum.MobType[] newMobTypePerSpawner) => mobTypePerSpawner = newMobTypePerSpawner;
+    public void ChangeWeightBased(bool newWeightBased) => weightBased = newWeightBased;
 
     public void ChangeDifficulty(DifficultyPresets preset)
     {
@@ -220,6 +250,8 @@ public class RandomSpawn : MonoBehaviour
         ChangeWeightEnemy1(preset.weightEnemy1);
         ChangeWeightEnemy2(preset.weightEnemy2);
         ChangeWeightEnemy3(preset.weightEnemy3);
+        ChangeMobTypePerSpawner(preset.mobTypePerSpawner);
+        ChangeWeightBased(preset.weightBased);
         CreateAvailableSpawnerList();
         SpawnPercentage();
     }

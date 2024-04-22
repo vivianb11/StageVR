@@ -2,12 +2,16 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
+using NaughtyAttributes;
+using System.Linq;
+using Unity.VisualScripting;
 
 [ExecuteInEditMode]
 public class RandomSpawn : MonoBehaviour
 {
     [Header("Spawner Characteristics")]
     [SerializeField] public List<GameObject> spawnerList = new();
+    private List<GameObject> _availableSpawnerList = new();
     [SerializeField] public GameObject[] mobArray;
 
     [Header("Spawned Mob Parameters")]
@@ -18,7 +22,15 @@ public class RandomSpawn : MonoBehaviour
     [Header("Difficulty Parameters")]
     [SerializeField] float spawnInterval;
     [SerializeField] float mobSpeed;
-    [SerializeField] [Range(1, 8)] int numberSpawnerActivated;
+
+    [SerializeField] bool isNumberSpawnerBased;
+    [SerializeField] [ShowIf("isNumberSpawnerBased")] [Range(1, 6)] int numberSpawnerActivated;
+    [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerTop;
+    [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerTopRight;
+    [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerBottomRight;
+    [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerBottom;
+    [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerBottomLeft;
+    [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerTopLeft;
 
     [Space(10)]
 
@@ -36,6 +48,7 @@ public class RandomSpawn : MonoBehaviour
 
 
     [Header("Progression Parameters")]
+    [SerializeField] bool enableProgression = true; 
     [NaughtyAttributes.ReadOnly] [SerializeField] int milestoneCount = 0;
     [SerializeField] int interval = 10;
 
@@ -49,7 +62,7 @@ public class RandomSpawn : MonoBehaviour
 
     void OnEnable()
     {
-        InvokeRepeating(nameof(CountMinutes), 0, interval);
+        if (enableProgression) InvokeRepeating(nameof(CountMinutes), 0, interval);
 
         milestoneCount = 0;
 
@@ -71,7 +84,6 @@ public class RandomSpawn : MonoBehaviour
     private void Start()
     {
         target.onDeath.AddListener(StopAllCoroutines);
-        spawnerList.Shuffle();
     }
 
     private void Update()
@@ -81,6 +93,7 @@ public class RandomSpawn : MonoBehaviour
 
     public void StartSpawn()
     {
+        CreateAvailableSpawnerList();
         StartCoroutine(SpawnCycle());
     }
 
@@ -94,7 +107,11 @@ public class RandomSpawn : MonoBehaviour
         }
     }
 
-    private (GameObject, GameObject) SelectRandomMobAndSpawner() => (spawnerList[Random.Range(0, numberSpawnerActivated)], SelectByPercentage());
+    private (GameObject, GameObject) SelectRandomMobAndSpawner()
+    {
+        if (isNumberSpawnerBased) return (_availableSpawnerList[Random.Range(0, numberSpawnerActivated)], SelectByPercentage());
+        return (_availableSpawnerList[Random.Range(0, _availableSpawnerList.Count)], SelectByPercentage());
+    }
 
     private void SpawnMob(GameObject _spawner, GameObject _mob)
     {
@@ -142,6 +159,25 @@ public class RandomSpawn : MonoBehaviour
         return null;
     }
 
+    private void CreateAvailableSpawnerList()
+    {
+        _availableSpawnerList.Clear();
+
+        if (isNumberSpawnerBased)
+        {
+            _availableSpawnerList = spawnerList;
+            _availableSpawnerList.Shuffle();
+            return;
+        }
+
+        if (spawnerTop) _availableSpawnerList.Add(spawnerList[0]);
+        if (spawnerTopRight) _availableSpawnerList.Add(spawnerList[1]);
+        if (spawnerBottomRight) _availableSpawnerList.Add(spawnerList[2]);
+        if (spawnerBottom) _availableSpawnerList.Add(spawnerList[3]);
+        if (spawnerBottomLeft) _availableSpawnerList.Add(spawnerList[4]);
+        if (spawnerTopLeft) _availableSpawnerList.Add(spawnerList[5]);
+    }
+
     private void CountMinutes()
     {
         if (milestoneCount < tutorialDifficulties.Length && !skipTutorial)
@@ -158,7 +194,18 @@ public class RandomSpawn : MonoBehaviour
 
     public void ChangeInterval(float newInterval) => spawnInterval = newInterval;
     public void ChangeMilestoneInterval(int newInterval) => interval = newInterval;
-    public void ChangeNumberSpawner(int newNumber) => numberSpawnerActivated = newNumber;
+    public void ChangeNumberSpawner(int newNumber, bool newIsNumberSpawnerBased ,params bool[] newSpawners)
+    {
+        numberSpawnerActivated = newNumber;
+        isNumberSpawnerBased = newIsNumberSpawnerBased;
+        spawnerTop = newSpawners[0];
+        spawnerTopRight = newSpawners[1];
+        spawnerBottomRight = newSpawners[2];
+        spawnerBottom = newSpawners[3];
+        spawnerBottomLeft = newSpawners[4];
+        spawnerTopLeft = newSpawners[5];
+    } 
+
     public void ChangeWeightEnemy1(int newWeightsEnemy1) => weightEnemy1 = newWeightsEnemy1;
     public void ChangeWeightEnemy2(int newWeightsEnemy2) => weightEnemy2 = newWeightsEnemy2;
     public void ChangeWeightEnemy3(int newWeightsEnemy3) =>  weightEnemy3 = newWeightsEnemy3;
@@ -169,10 +216,11 @@ public class RandomSpawn : MonoBehaviour
         ChangeMilestoneInterval(preset.milestoneInterval);
         ChangeInterval(preset.spawnInterval);
         ChangeMobSpeed(preset.mobSpeed);
-        ChangeNumberSpawner(preset.numberSpawner);
+        ChangeNumberSpawner(preset.numberSpawner, preset.isNumberSpawnerBased, preset.spawnerTop, preset.spawnerTopRight, preset.spawnerBottomRight, preset.spawnerBottom, preset.spawnerBottomLeft, preset.spawnerTopLeft);
         ChangeWeightEnemy1(preset.weightEnemy1);
         ChangeWeightEnemy2(preset.weightEnemy2);
         ChangeWeightEnemy3(preset.weightEnemy3);
+        CreateAvailableSpawnerList();
         SpawnPercentage();
     }
 }

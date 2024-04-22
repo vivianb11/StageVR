@@ -1145,13 +1145,21 @@ MonoBehaviour:
   mobRotator: {fileID: 717860868454398895, guid: 49a144da7a60bbf43bb3161e221dabe8, type: 3}
   spawnInterval: 3
   mobSpeed: 1.3
+  isNumberSpawnerBased: 1
   numberSpawnerActivated: 6
+  spawnerTop: 0
+  spawnerTopRight: 0
+  spawnerBottomRight: 0
+  spawnerBottom: 0
+  spawnerBottomLeft: 0
+  spawnerTopLeft: 0
   weightEnemy1: 1
   weightEnemy2: 0
   weightEnemy3: 0
   CurrentPercentageEnemy1: 100%
   CurrentPercentageEnemy2: 0%
   CurrentPercentageEnemy3: 0%
+  enableProgression: 0
   milestoneCount: 0
   interval: 60
   tutorialDifficulties:

@@ -144,6 +144,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: VR Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2973032431497280871, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3116399236151452851, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: m_CameraType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4312640883165594712, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4456600560409760620, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -820,7 +832,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1247324870
 Transform:
   m_ObjectHideFlags: 0

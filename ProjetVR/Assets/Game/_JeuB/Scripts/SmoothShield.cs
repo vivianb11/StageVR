@@ -1,7 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SmoothShield : MonoBehaviour
 {
+
+    //[SerializeField] UnityEvent onHit = new UnityEvent();
+    //private int scoreDeathEnemy;
+
     void Update()
     {
         transform.LookAt(EyeManager.Instance.hitPosition);
@@ -12,4 +17,14 @@ public class SmoothShield : MonoBehaviour
 
         transform.localEulerAngles = rot;
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if(other.tag == "Ennemy")
+    //    {
+    //        onHit.Invoke();
+    //        other.GetComponent<Mob>().scoreOnDeath = scoreDeathEnemy;
+            
+    //    }
+    //}
 }

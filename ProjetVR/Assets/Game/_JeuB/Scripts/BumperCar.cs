@@ -30,7 +30,7 @@ public class BumperCar : MonoBehaviour
             isColliding = true;
             tooth.enemyPoints = other.GetComponent<Mob>().scoreOnDeath;
             OnShieldHit.Invoke();
-            tweener.PlayMontages();
+            //tweener.PlayMontages();
         }
     }
 }

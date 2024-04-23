@@ -25,6 +25,12 @@ public class BumperCar : MonoBehaviour
         tooth = targetObject.GetComponent<ProtectedToothBehaviours>();
     }
 
+    
+    //l'idée a joss et thomas a renomé la fonction (le gros du travail)
+    public void TweenerChecker(bool tweening) => isTweening = tweening;
+    
+
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Ennemy"))
@@ -33,13 +39,11 @@ public class BumperCar : MonoBehaviour
             tooth.enemyPoints = other.GetComponent<Mob>().scoreOnDeath;
             OnShieldHit.Invoke();
 
-            if (isTweening == false)
+            if (!isTweening)
             {
-                isTweening = true;
                 tweener.tweenMontages[0].tweenProperties[1].to = gameObject.transform.localPosition;
                 tweener.tweenMontages[0].tweenProperties[0].to = new Vector3(gameObject.transform.localPosition.x / 0.75f, gameObject.transform.localPosition.y / 0.75f, gameObject.transform.localPosition.z / 0.75f);
                 tweener.PlayMontages();
-                isTweening = false;
             }
             
         }

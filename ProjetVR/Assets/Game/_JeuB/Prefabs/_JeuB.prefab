@@ -1149,7 +1149,7 @@ MonoBehaviour:
   numberSpawnerActivated: 6
   spawnerTop: 1
   spawnerTopRight: 0
-  spawnerBottomRight: 1
+  spawnerBottomRight: 0
   spawnerBottom: 0
   spawnerBottomLeft: 0
   spawnerTopLeft: 0
@@ -2888,6 +2888,70 @@ PrefabInstance:
       propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[1].duration
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].started.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].started.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].started.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 437635410818005013}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].started.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].started.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Michel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].started.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BumperCar, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].started.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[1].completed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[1].completed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[1].completed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 437635410818005013}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[1].completed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].started.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[1].completed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Michel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[1].completed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BumperCar, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[1].completed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[1].completed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4427915834001589200, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: m_Name
       value: SmoothShield
@@ -2977,6 +3041,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8143824554320094202, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: OnShieldHit.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143824554320094202, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: OnShieldHit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 424505616319249623}
@@ -2985,11 +3053,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6990692369425175009}
     - target: {fileID: 8143824554320094202, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: OnShieldHit.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 437635410818005013}
+    - target: {fileID: 8143824554320094202, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: OnShieldHit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8143824554320094202, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: OnShieldHit.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143824554320094202, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: OnShieldHit.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8143824554320094202, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
@@ -3001,6 +3077,10 @@ PrefabInstance:
       value: PlaySound
       objectReference: {fileID: 0}
     - target: {fileID: 8143824554320094202, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: OnShieldHit.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: Michel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143824554320094202, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: OnShieldHit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: ProtectedToothBehaviours, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -3009,11 +3089,23 @@ PrefabInstance:
       value: SoundEmiter, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8143824554320094202, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: OnShieldHit.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: BumperCar, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143824554320094202, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: OnShieldHit.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143824554320094202, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: OnShieldHit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8143824554320094202, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: OnShieldHit.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143824554320094202, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: OnShieldHit.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3024,6 +3116,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6990692369425175009}
   m_SourcePrefab: {fileID: 100100000, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+--- !u!114 &437635410818005013 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8143824554320094202, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+  m_PrefabInstance: {fileID: 8581158696794069999}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7605701288618184946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa6e10b8c8ea4541b0f2996c59b3ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2727799176292540156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5966549031175783699, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}

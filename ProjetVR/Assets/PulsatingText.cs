@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.UIElements.Experimental;
 
@@ -9,12 +10,19 @@ public class PulsatingText : MonoBehaviour
 {
     public float minValueFontSize = 6f;
     public float maxValueFontSize = 12f;
+
+    public float minValueOpacity = 0f;
+    public float maxValueOpacity = 1f;
+
     public float duration = 1f;
     public float durationColor = 0.1f;
+    public float durationAppear = 3f;
 
     private float FontSizeValue; //the variable that constantly changes up and down
+    private float OpacitySizeValue;
     private bool increasing = true;
     private bool increasingColor = true;
+    private bool increasingAppear = true;
     private float timer = 0f;
     private float timerColor = 0f;
     private float timerAppear = 0f;
@@ -22,7 +30,9 @@ public class PulsatingText : MonoBehaviour
 
     public TextMesh textMesh;
 
-    public bool appearAndDisappear;
+    public bool disappear;
+
+    public UnityEvent onAppear = new UnityEvent();
 
     private void Start()
     {
@@ -34,15 +44,16 @@ public class PulsatingText : MonoBehaviour
     {
         FontSizePulsating();
 
-        if (colorActivated)
+
+        if (disappear)
         {
-            ColorPulsating();
+
+            Disappear();
         }
 
-        if (appearAndDisappear)
-        {
-            AppearAndDisappear();
-        }
+        
+
+        
     }
 
     public void FontSizePulsating()
@@ -64,7 +75,7 @@ public class PulsatingText : MonoBehaviour
             FontSizeValue = Mathf.Lerp(maxValueFontSize, minValueFontSize, timer / duration);
         }
 
-        gameObject.GetComponent<TextMesh>().characterSize = FontSizeValue;
+        textMesh.characterSize = FontSizeValue;
     }
 
     public void ColorPulsating()
@@ -77,44 +88,64 @@ public class PulsatingText : MonoBehaviour
             increasingColor = !increasingColor;
         }
 
-        Color newColor = textMesh.color; // Get the current color
-        newColor.r = 1; // Modify the red component
-        textMesh.color = newColor; // Assign the modified color back
 
         if (increasingColor)
         {
-            gameObject.GetComponent<TextMesh>().color = Color.yellow;
+            Color newColor = textMesh.color;
+            newColor.r = 1;
+            newColor.g = 0.92f;
+            newColor.b = 0.016f;
+            textMesh.color = newColor;
         }
         else
         {
-            gameObject.GetComponent<TextMesh>().color = Color.white;
+            Color newColor = textMesh.color;
+            newColor.r = 1;
+            newColor.g = 1;
+            newColor.b = 1;
+            textMesh.color = newColor;
         }
     }
 
-    public void AppearAndDisappear()
+    public void Disappear()
     {
-        timerColor += Time.deltaTime;
+        Color newColor = textMesh.color;
+        newColor.a = 1;
+        textMesh.color = newColor;
 
-        if (timerColor >= durationColor)
-        {
-            timerColor = 0f;
-            increasingColor = !increasingColor;
-        }
+        onAppear.Invoke();
 
-        //1, 0.92, 0.016
-        //1, 1, 1
+        StartCoroutine(FadeOut());
+        disappear = false;
 
-        
-
-        if (increasingColor)
-        {
-            gameObject.GetComponent<TextMesh>().color.r = 1;
-        }
-        else
-        {
-            gameObject.GetComponent<TextMesh>().color = Color.white;
-        }
     }
+
+    IEnumerator FadeOut()
+    {
+        Color originalColor = textMesh.color;
+        float timer = 0f;
+
+        while (timer < 3f)
+        {
+            float alpha = Mathf.Lerp(originalColor.a, 0f, timer / 3f); // Interpolate alpha from current alpha to 0
+            Color newColor = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            textMesh.color = newColor;
+            timer += Time.deltaTime;
+            ColorPulsating();
+            yield return null;
+        }
+
+        // Ensure alpha is exactly 0 when the loop finishes
+        textMesh.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0);
+    }
+
+    //public void Disappear()
+    //{
+
+    //    Color newColor = textMesh.color;
+    //    newColor.a = OpacitySizeValue;
+    //    textMesh.color = newColor;
+    //}
 
 
 }

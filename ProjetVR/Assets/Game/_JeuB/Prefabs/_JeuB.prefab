@@ -147,9 +147,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minValueFontSize: 1.53
   maxValueFontSize: 2.31
+  minValueOpacity: 0
+  maxValueOpacity: 255
   duration: 1
   durationColor: 0.1
+  durationAppear: 3
   colorActivated: 0
+  textMesh: {fileID: 0}
+  disappear: 0
+  onAppear:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1587920473999145723
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +836,7 @@ GameObject:
   - component: {fileID: 8092616680766077554}
   - component: {fileID: 7759857661188582320}
   - component: {fileID: 5015962020766374808}
+  - component: {fileID: 7794539936398735633}
   m_Layer: 0
   m_Name: NiveauDisplay
   m_TagString: Untagged
@@ -917,7 +926,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 13750771
 --- !u!114 &5015962020766374808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -932,9 +941,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minValueFontSize: 1
   maxValueFontSize: 1.24
+  minValueOpacity: 0
+  maxValueOpacity: 1
   duration: 1
   durationColor: 0.1
+  durationAppear: 3
   colorActivated: 1
+  textMesh: {fileID: 0}
+  disappear: 0
+  onAppear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7794539936398735633}
+        m_TargetAssemblyTypeName: FeedbackScale, Assembly-CSharp
+        m_MethodName: ScaleIn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7794539936398735633}
+        m_TargetAssemblyTypeName: FeedbackScale, Assembly-CSharp
+        m_MethodName: ScaleOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7794539936398735633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2817425482427264563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleLerpSpeed: 0.15
+  FBFinish:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3436735275151527448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,9 +1255,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minValueFontSize: 0.04
   maxValueFontSize: 0.06
+  minValueOpacity: 0
+  maxValueOpacity: 255
   duration: 1
   durationColor: 0.1
+  durationAppear: 3
   colorActivated: 0
+  textMesh: {fileID: 0}
+  disappear: 0
+  onAppear:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4065805693301887695
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,9 +1715,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minValueFontSize: 0.04
   maxValueFontSize: 0.06
+  minValueOpacity: 0
+  maxValueOpacity: 255
   duration: 1
   durationColor: 0.1
+  durationAppear: 3
   colorActivated: 0
+  textMesh: {fileID: 0}
+  disappear: 0
+  onAppear:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6037506256365230333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,9 +1873,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minValueFontSize: 1.53
   maxValueFontSize: 2.31
+  minValueOpacity: 0
+  maxValueOpacity: 255
   duration: 1
   durationColor: 0.1
+  durationAppear: 3
   colorActivated: 0
+  textMesh: {fileID: 0}
+  disappear: 0
+  onAppear:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6798597841116208069
 GameObject:
   m_ObjectHideFlags: 0
@@ -2017,9 +2098,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minValueFontSize: 0.04
   maxValueFontSize: 0.06
+  minValueOpacity: 0
+  maxValueOpacity: 255
   duration: 1
   durationColor: 0.1
+  durationAppear: 3
   colorActivated: 0
+  textMesh: {fileID: 0}
+  disappear: 0
+  onAppear:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7325376600201563634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2136,9 +2225,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minValueFontSize: 1.53
   maxValueFontSize: 2.31
+  minValueOpacity: 0
+  maxValueOpacity: 255
   duration: 1
   durationColor: 0.1
+  durationAppear: 3
   colorActivated: 0
+  textMesh: {fileID: 0}
+  disappear: 0
+  onAppear:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7748813325574816253
 GameObject:
   m_ObjectHideFlags: 0
@@ -2257,9 +2354,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minValueFontSize: 0.04
   maxValueFontSize: 0.06
+  minValueOpacity: 0
+  maxValueOpacity: 255
   duration: 1
   durationColor: 0.1
+  durationAppear: 3
   colorActivated: 0
+  textMesh: {fileID: 0}
+  disappear: 0
+  onAppear:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7904358571901721930
 GameObject:
   m_ObjectHideFlags: 0
@@ -2407,9 +2512,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minValueFontSize: 1.53
   maxValueFontSize: 2.31
+  minValueOpacity: 0
+  maxValueOpacity: 255
   duration: 1
   durationColor: 0.1
+  durationAppear: 3
   colorActivated: 0
+  textMesh: {fileID: 0}
+  disappear: 0
+  onAppear:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8955154594119836258
 GameObject:
   m_ObjectHideFlags: 0

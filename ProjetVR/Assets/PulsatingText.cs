@@ -17,7 +17,17 @@ public class PulsatingText : MonoBehaviour
     private bool increasingColor = true;
     private float timer = 0f;
     private float timerColor = 0f;
+    private float timerAppear = 0f;
     public bool colorActivated;
+
+    public TextMesh textMesh;
+
+    public bool appearAndDisappear;
+
+    private void Start()
+    {
+        textMesh = gameObject.GetComponent<TextMesh>();
+    }
 
 
     private void Update()
@@ -27,6 +37,11 @@ public class PulsatingText : MonoBehaviour
         if (colorActivated)
         {
             ColorPulsating();
+        }
+
+        if (appearAndDisappear)
+        {
+            AppearAndDisappear();
         }
     }
 
@@ -62,6 +77,10 @@ public class PulsatingText : MonoBehaviour
             increasingColor = !increasingColor;
         }
 
+        Color newColor = textMesh.color; // Get the current color
+        newColor.r = 1; // Modify the red component
+        textMesh.color = newColor; // Assign the modified color back
+
         if (increasingColor)
         {
             gameObject.GetComponent<TextMesh>().color = Color.yellow;
@@ -71,4 +90,31 @@ public class PulsatingText : MonoBehaviour
             gameObject.GetComponent<TextMesh>().color = Color.white;
         }
     }
+
+    public void AppearAndDisappear()
+    {
+        timerColor += Time.deltaTime;
+
+        if (timerColor >= durationColor)
+        {
+            timerColor = 0f;
+            increasingColor = !increasingColor;
+        }
+
+        //1, 0.92, 0.016
+        //1, 1, 1
+
+        
+
+        if (increasingColor)
+        {
+            gameObject.GetComponent<TextMesh>().color.r = 1;
+        }
+        else
+        {
+            gameObject.GetComponent<TextMesh>().color = Color.white;
+        }
+    }
+
+
 }

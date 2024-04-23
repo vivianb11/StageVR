@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148d3697e03a39e429b49ec2ea11bdd1, type: 3}
   m_Name: 2_Difficulty_Incrementation
   m_EditorClassIdentifier: 
+  levelPassed: 1
   milestoneInterval: 15
   countCondition: 2
   spawnInterval: 3.5
@@ -24,6 +25,8 @@ MonoBehaviour:
   spawnerBottom: 0
   spawnerBottomLeft: 0
   spawnerTopLeft: 0
+  weightBased: 1
+  mobTypePerSpawner: 000000000000000000000000000000000000000000000000
   weightEnemy1: 1
   weightEnemy2: 0
   weightEnemy3: 0

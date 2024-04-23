@@ -184,7 +184,8 @@ public class RandomSpawn : MonoBehaviour
     {
         if (mobTypePerSpawner[index] is MobEnum.MobType.MobDroit) return mobArray[0];
         else if (mobTypePerSpawner[index] is MobEnum.MobType.MobBounce) return mobArray[1];
-        return mobArray[2];
+        else if (mobTypePerSpawner[index] is MobEnum.MobType.MobRotate) return mobArray[2];
+        return null;
     }
 
     private void CreateAvailableSpawnerList()

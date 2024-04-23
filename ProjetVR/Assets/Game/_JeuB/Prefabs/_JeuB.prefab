@@ -653,6 +653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleLerpSpeed: 0.15
+  scaleOffset: 1.2
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
@@ -913,7 +914,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2817425482427264563}
-  m_Text: 'Niveau: 1'
+  m_Text: 'Niveau: 00'
   m_OffsetZ: 0
   m_CharacterSize: 1.24
   m_LineSpacing: 1
@@ -988,7 +989,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleLerpSpeed: 0.15
+  scaleLerpSpeed: 0.082
+  scaleOffset: 5
   FBFinish:
     m_PersistentCalls:
       m_Calls: []

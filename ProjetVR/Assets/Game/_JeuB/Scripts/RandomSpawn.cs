@@ -65,6 +65,9 @@ public class RandomSpawn : MonoBehaviour
 
     [Header("Progression Parameters")]
     [SerializeField] bool enableProgression = true; 
+    [NaughtyAttributes.ReadOnly] [SerializeField] int currentLevel = 0;
+    [SerializeField] int maxLevel;
+    [SerializeField] PulsatingText pulsatingTextBehavior;
     [NaughtyAttributes.ReadOnly] [SerializeField] int milestoneCount = 0;
     [SerializeField] int interval = 10;
 
@@ -78,15 +81,15 @@ public class RandomSpawn : MonoBehaviour
 
     void OnEnable()
     {
-        if (enableProgression) InvokeRepeating(nameof(CountMinutes), 0, interval);
+        if (enableProgression) Invoke(nameof(CountMinutes), interval);
 
-        milestoneCount = 0;
+        milestoneCount = currentLevel = 0;
 
         target.gameObject.SetActive(true);
 
-        skipTutorial = true;
+        //skipTutorial = true;
 
-        GameManager.Instance.gameStopped.AddListener(() => skipTutorial = false);
+        //GameManager.Instance.gameStopped.AddListener(() => skipTutorial = false);
     }
 
     private void OnDisable()
@@ -190,7 +193,6 @@ public class RandomSpawn : MonoBehaviour
 
     private void CreateAvailableSpawnerList()
     {
-        _availableSpawnerList.Clear();
 
         if (isNumberSpawnerBased)
         {
@@ -198,13 +200,17 @@ public class RandomSpawn : MonoBehaviour
             _availableSpawnerList.Shuffle();
             return;
         }
+        
+        var tempList = new List<GameObject>();
 
-        if (spawnerTop) _availableSpawnerList.Add(spawnerList[0]);
-        if (spawnerTopRight) _availableSpawnerList.Add(spawnerList[1]);
-        if (spawnerBottomRight) _availableSpawnerList.Add(spawnerList[2]);
-        if (spawnerBottom) _availableSpawnerList.Add(spawnerList[3]);
-        if (spawnerBottomLeft) _availableSpawnerList.Add(spawnerList[4]);
-        if (spawnerTopLeft) _availableSpawnerList.Add(spawnerList[5]);
+        if (spawnerTop) tempList.Add(spawnerList[0]);
+        if (spawnerTopRight) tempList.Add(spawnerList[1]);
+        if (spawnerBottomRight) tempList.Add(spawnerList[2]);
+        if (spawnerBottom) tempList.Add(spawnerList[3]);
+        if (spawnerBottomLeft) tempList.Add(spawnerList[4]);
+        if (spawnerTopLeft) tempList.Add(spawnerList[5]);
+
+        _availableSpawnerList = tempList;
     }
 
     private void CountMinutes()
@@ -218,7 +224,19 @@ public class RandomSpawn : MonoBehaviour
         if (milestoneCount == difficultyPresets.Length + tutorialDifficulties.Length)
             CancelInvoke();
 
-        Debug.Log(milestoneCount);
+        Invoke(nameof(CountMinutes), interval);
+    }
+
+    private void LevelPassed()
+    {
+        pulsatingTextBehavior.disappear = true;
+
+        if (currentLevel < maxLevel)
+        {
+            currentLevel += 1;   
+            pulsatingTextBehavior.textMesh.text = "Niveau: " + currentLevel.ToString();
+        }
+        else pulsatingTextBehavior.textMesh.text = "Niveau: Bonus";
     }
 
     public void ChangeInterval(float newInterval) => spawnInterval = newInterval;
@@ -244,6 +262,7 @@ public class RandomSpawn : MonoBehaviour
 
     public void ChangeDifficulty(DifficultyPresets preset)
     {
+        if (preset.levelPassed) LevelPassed();
         ChangeMilestoneInterval(preset.milestoneInterval);
         ChangeInterval(preset.spawnInterval);
         ChangeMobSpeed(preset.mobSpeed);

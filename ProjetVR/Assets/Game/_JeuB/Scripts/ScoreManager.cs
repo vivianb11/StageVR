@@ -37,7 +37,7 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         fontSizeValue = minValue;
-        //if (ScoreData.Instance.playerBestScore != 0) playerBestScore = ScoreData.Instance.playerBestScore;
+        if (ScoreData.playerBestScore != 0) playerBestScore = ScoreData.playerBestScore;
         if (PlayerPrefs.HasKey("HighScore")) bestScore = PlayerPrefs.GetInt("HighScore");
     }
     
@@ -96,12 +96,12 @@ public class ScoreManager : MonoBehaviour
     public void SetPlayerBestScore()
     {
         
-        gameOverPersonalHighScoreDisplay.text = "Personnal Best Score:" + "\n" + playerBestScore.ToString();
+        gameOverPersonalHighScoreDisplay.text = "Personnal Best Score:" + "\n" + ScoreData.playerBestScore.ToString();
 
         if (currentScore < playerBestScore) return;
 
         playerBestScore = currentScore;
-        //ScoreData.Instance.playerBestScore = playerBestScore; 
+        ScoreData.playerBestScore = playerBestScore; 
         gameOverPersonalHighScoreDisplay.text = "Personnal Best Score:" + "\n" + playerBestScore.ToString();
     } 
 

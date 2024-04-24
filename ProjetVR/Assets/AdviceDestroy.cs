@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AdviceDestroy : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class AdviceDestroy : MonoBehaviour
 
     private bool isMoving = false;
     private float elapsedTime = 0f;
+    public UnityEvent OnSlide = new();
 
     void Start()
     {
@@ -27,6 +29,7 @@ public class AdviceDestroy : MonoBehaviour
             elapsedTime += Time.deltaTime;
             if (elapsedTime >= destroyDelay)
             {
+                OnSlide.Invoke();
                 Destroy(gameObject);
             }
         }

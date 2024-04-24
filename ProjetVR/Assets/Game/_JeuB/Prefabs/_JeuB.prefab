@@ -1651,7 +1651,7 @@ MonoBehaviour:
   CurrentPercentageEnemy2: 0%
   CurrentPercentageEnemy3: 0%
   enableProgression: 1
-  currentLevel: 0
+  currentLevel: 1
   maxLevel: 2
   pulsatingTextBehavior: {fileID: 5015962020766374808}
   milestoneCount: 0
@@ -1709,7 +1709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   signal:
-  - {fileID: 11400000, guid: 117d694d618b2ab43b6beb0bf6c8330a, type: 2}
+  - {fileID: 11400000, guid: 741e3c85383775249b2cdc3421d121fa, type: 2}
   signalReceived:
     m_PersistentCalls:
       m_Calls:
@@ -2994,6 +2994,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ready-Go_Object
       objectReference: {fileID: 0}
+    - target: {fileID: 5814718079585859707, guid: f52d5a0486b4f834c9bcc41949971db1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7049574284573154466, guid: f52d5a0486b4f834c9bcc41949971db1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9070412095314801808, guid: f52d5a0486b4f834c9bcc41949971db1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3034,14 +3042,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -6466866818250562572, guid: f52d5a0486b4f834c9bcc41949971db1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f52d5a0486b4f834c9bcc41949971db1, type: 3}
+--- !u!95 &4653986708780283120 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5814718079585859707, guid: f52d5a0486b4f834c9bcc41949971db1, type: 3}
+  m_PrefabInstance: {fileID: 1163141507415100555}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7909689526511499291 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9070412095314801808, guid: f52d5a0486b4f834c9bcc41949971db1, type: 3}
+  m_PrefabInstance: {fileID: 1163141507415100555}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8210433205825392681 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7049574284573154466, guid: f52d5a0486b4f834c9bcc41949971db1, type: 3}
   m_PrefabInstance: {fileID: 1163141507415100555}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2723268184979991460
@@ -3311,6 +3330,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   destroyDelay: 4
+  OnSlide:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8210433205825392681}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4653986708780283120}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!4 &4227421300872625727 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 52050094135482053, guid: 6070e5c113e19f34ea22a67be301a852, type: 3}

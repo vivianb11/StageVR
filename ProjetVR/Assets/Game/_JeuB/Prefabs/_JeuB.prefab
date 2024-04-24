@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37592f61e2fbf2649ad7c4916fa41631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Maxhealth: 1
+  Maxhealth: 3
   receivedDamagedOnHit: 1
   onDamaged:
     m_PersistentCalls:
@@ -2263,7 +2263,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScore: 0
-  playerBestScore: 0
   bestScore: 0
   scoreDisplay: {fileID: 5762588978618371996}
   gameOverScoreDisplay: {fileID: 8466178808230880702}

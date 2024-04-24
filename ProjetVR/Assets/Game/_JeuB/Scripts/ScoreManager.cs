@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         fontSizeValue = minValue;
+        if (ScoreData.Instance.playerBestScore != 0) playerBestScore = ScoreData.Instance.playerBestScore;
         if (PlayerPrefs.HasKey("HighScore")) bestScore = PlayerPrefs.GetInt("HighScore");
     }
     
@@ -98,6 +100,7 @@ public class ScoreManager : MonoBehaviour
         if (currentScore < playerBestScore) return;
 
         playerBestScore = currentScore;
+        ScoreData.Instance.playerBestScore = playerBestScore; 
         gameOverPersonalHighScoreDisplay.text = "Personnal Best Score:" + "\n" + playerBestScore.ToString();
     } 
 
@@ -109,6 +112,12 @@ public class ScoreManager : MonoBehaviour
 
         bestScore = playerBestScore;
         gameOverGlobalHighScoreDisplay.text = "Best Score:" + "\n" + playerBestScore.ToString();
+        
+        if (PlayerPrefs.HasKey("HighScore") && PlayerPrefs.GetInt("HighScore") != bestScore) 
+        {
+            PlayerPrefs.SetInt("HighScore", bestScore);
+            PlayerPrefs.Save();
+        }
     } 
 
     public void SetScore(TextMeshPro scoreTextMesh)

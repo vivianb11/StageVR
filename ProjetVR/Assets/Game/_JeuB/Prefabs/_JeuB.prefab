@@ -1631,8 +1631,8 @@ MonoBehaviour:
   target: {fileID: 424505616319249623}
   rotationPoint: {fileID: 3579039938324773682}
   mobRotator: {fileID: 717860868454398895, guid: 49a144da7a60bbf43bb3161e221dabe8, type: 3}
-  spawnInterval: 3
-  mobSpeed: 1.3
+  spawnInterval: 4
+  mobSpeed: 1.15
   isNumberSpawnerBased: 1
   numberSpawnerActivated: 6
   spawnerTop: 1
@@ -1651,10 +1651,10 @@ MonoBehaviour:
   CurrentPercentageEnemy3: 0%
   enableProgression: 1
   currentLevel: 1
-  maxLevel: 2
+  maxLevel: 1
   pulsatingTextBehavior: {fileID: 5015962020766374808}
   milestoneCount: 0
-  interval: 10
+  interval: 2
   tutorialDifficulties:
   - {fileID: 11400000, guid: 060870809c141ed4ea3cf015f079ae04, type: 2}
   - {fileID: 11400000, guid: f3bf6e2d54fef814186a50209db5e434, type: 2}
@@ -1669,17 +1669,38 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 254abf2014dc43c4bbdb7cbdac087d39, type: 2}
   - {fileID: 11400000, guid: 1e09129c7dd49a548a8709884e54785b, type: 2}
   difficultyPresets:
-  - {fileID: 11400000, guid: 3ae77637c481d1a41aa7029df26d5cff, type: 2}
-  - {fileID: 11400000, guid: a4ed2a469c8cc7b4b915234f49be857b, type: 2}
-  - {fileID: 11400000, guid: e42ae826b7c8ab443bfcb46ad7aad59e, type: 2}
-  - {fileID: 11400000, guid: db623ca44ff44e144bc259b91b7c72a5, type: 2}
-  - {fileID: 11400000, guid: a611be670c661bb469847c2c14ec6cb4, type: 2}
-  - {fileID: 11400000, guid: 961143837e1926b4faf441318a718072, type: 2}
-  - {fileID: 11400000, guid: 650ddaa5c49a4ac4997bb45ff3a6e89a, type: 2}
-  - {fileID: 11400000, guid: 676efb3425a971b429f439826a37f3ad, type: 2}
-  - {fileID: 11400000, guid: 91a16bcaa56a84141b26c91c16102576, type: 2}
-  - {fileID: 11400000, guid: eb5f42dbcf787e84983e3c2e816985f2, type: 2}
-  - {fileID: 11400000, guid: f639e428e81f51b468aad14de3c6dd6a, type: 2}
+  - {fileID: 11400000, guid: 1a38f276a5a887e4ca050fe9958e8131, type: 2}
+  - {fileID: 11400000, guid: 01c5923e2f6c2394d8838856597c4144, type: 2}
+  - {fileID: 11400000, guid: 4c9f5355e5c2e7d4083b26b6155d4880, type: 2}
+  - {fileID: 11400000, guid: 5147dc73093d6b94eb590f204faa96e1, type: 2}
+  - {fileID: 11400000, guid: bf899a0f746eb2f4abcfa894c8095c6b, type: 2}
+  - {fileID: 11400000, guid: 6f5b8e8734796ed40abe4ab7981af4bf, type: 2}
+  - {fileID: 11400000, guid: bc939bdaba5120441a432b0673c68c61, type: 2}
+  - {fileID: 11400000, guid: fad70721b305c614a8961b8a0a73ff08, type: 2}
+  - {fileID: 11400000, guid: 2069f2128239812478e801cebe086a6f, type: 2}
+  - {fileID: 11400000, guid: 127e6dc2b6acbf24b9d23ea333c26ce0, type: 2}
+  - {fileID: 11400000, guid: f09c46141bb8a11478bd84cab6f92f19, type: 2}
+  - {fileID: 11400000, guid: 38610258414d0b24dbb176d3c5ef7f62, type: 2}
+  - {fileID: 11400000, guid: ab6a27182c0a5ae42abdd8a6a5d1d75f, type: 2}
+  - {fileID: 11400000, guid: dcfc2a8a5e8a3744280e9b029d023d0a, type: 2}
+  - {fileID: 11400000, guid: 976f984b0b49e6c49a50801a0896ccb4, type: 2}
+  - {fileID: 11400000, guid: 3b026da98e81c4b4fabe0178ee1d0a4a, type: 2}
+  - {fileID: 11400000, guid: 897fcc8a422bfca4d844750ccdedec82, type: 2}
+  - {fileID: 11400000, guid: 8d513875668232e4d8d02f167f6c5d69, type: 2}
+  - {fileID: 11400000, guid: f0d29125033613e40b20b1e5932ac985, type: 2}
+  - {fileID: 11400000, guid: 4309db74059b07842b0853e811d144d2, type: 2}
+  - {fileID: 11400000, guid: 9b0da4c95def1284e9c0b81dd7e25830, type: 2}
+  - {fileID: 11400000, guid: d856e28fc3c2fe04c89bac788a861378, type: 2}
+  - {fileID: 11400000, guid: 5e4f9f09f42d77141893bd650631c999, type: 2}
+  - {fileID: 11400000, guid: 885c47a28f2a1684b9d22de419562fd9, type: 2}
+  - {fileID: 11400000, guid: 97d8cb91a5e662740a89f1a70390e5c6, type: 2}
+  - {fileID: 11400000, guid: 6e3d1d1805888b24f846cd7645a6ba27, type: 2}
+  - {fileID: 11400000, guid: cff6b75353af71f4099744407ca45f7a, type: 2}
+  - {fileID: 11400000, guid: 013651207a9b7624897f971199640a7d, type: 2}
+  - {fileID: 11400000, guid: d5deca400bc8be348a842cccc48026b7, type: 2}
+  - {fileID: 11400000, guid: bdfd07b65661fcc448684064dc16a32d, type: 2}
+  - {fileID: 11400000, guid: 4d1ecb32ce5f4334885f872af2addda0, type: 2}
+  - {fileID: 11400000, guid: efaf26e6b111126449926797763a7575, type: 2}
   allShooted:
     m_PersistentCalls:
       m_Calls:

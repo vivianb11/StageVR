@@ -37,7 +37,7 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         fontSizeValue = minValue;
-        if (ScoreData.Instance.playerBestScore != 0) playerBestScore = ScoreData.Instance.playerBestScore;
+        //if (ScoreData.Instance.playerBestScore != 0) playerBestScore = ScoreData.Instance.playerBestScore;
         if (PlayerPrefs.HasKey("HighScore")) bestScore = PlayerPrefs.GetInt("HighScore");
     }
     

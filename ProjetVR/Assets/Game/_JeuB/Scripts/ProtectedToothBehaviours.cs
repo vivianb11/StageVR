@@ -170,5 +170,7 @@ public class ProtectedToothBehaviours : MonoBehaviour
             }
         }
         ScoreManager.Instance.AddScore(enemyPoints * multiplier);
+        ScoreManager.Instance.SetPlayerBestScore();
+        ScoreManager.Instance.SetBestScore();
     }
 }

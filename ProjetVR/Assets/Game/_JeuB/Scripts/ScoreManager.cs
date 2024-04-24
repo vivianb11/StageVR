@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
 
     [Header("Values")]
     [NaughtyAttributes.ReadOnly] [SerializeField] int currentScore;
-    [NaughtyAttributes.ReadOnly] [SerializeField] int playerBestScore;
+    [NaughtyAttributes.ReadOnly] [SerializeField] static int playerBestScore;
     [NaughtyAttributes.ReadOnly] [SerializeField] int bestScore;
 
     [Header("Target")]
@@ -96,17 +96,19 @@ public class ScoreManager : MonoBehaviour
     public void SetPlayerBestScore()
     {
         
+        gameOverPersonalHighScoreDisplay.text = "Personnal Best Score:" + "\n" + playerBestScore.ToString();
 
         if (currentScore < playerBestScore) return;
 
         playerBestScore = currentScore;
-        ScoreData.Instance.playerBestScore = playerBestScore; 
+        //ScoreData.Instance.playerBestScore = playerBestScore; 
         gameOverPersonalHighScoreDisplay.text = "Personnal Best Score:" + "\n" + playerBestScore.ToString();
     } 
 
     public void SetBestScore()
     {
-        
+        gameOverGlobalHighScoreDisplay.text = "Best Score:" + "\n" + playerBestScore.ToString();
+
 
         if (playerBestScore < bestScore) return;
 

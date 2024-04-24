@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class ScoreManager : MonoBehaviour
 
     [Header("Values")]
     [NaughtyAttributes.ReadOnly] [SerializeField] int currentScore;
-    [NaughtyAttributes.ReadOnly] [SerializeField] int playerBestScore;
+    [NaughtyAttributes.ReadOnly] [SerializeField] static int playerBestScore;
     [NaughtyAttributes.ReadOnly] [SerializeField] int bestScore;
 
     [Header("Target")]
@@ -36,6 +37,7 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         fontSizeValue = minValue;
+        if (ScoreData.playerBestScore != 0) playerBestScore = ScoreData.playerBestScore;
         if (PlayerPrefs.HasKey("HighScore")) bestScore = PlayerPrefs.GetInt("HighScore");
     }
     
@@ -94,21 +96,30 @@ public class ScoreManager : MonoBehaviour
     public void SetPlayerBestScore()
     {
         
+        gameOverPersonalHighScoreDisplay.text = "Personnal Best Score:" + "\n" + ScoreData.playerBestScore.ToString();
 
         if (currentScore < playerBestScore) return;
 
         playerBestScore = currentScore;
+        ScoreData.playerBestScore = playerBestScore; 
         gameOverPersonalHighScoreDisplay.text = "Personnal Best Score:" + "\n" + playerBestScore.ToString();
     } 
 
     public void SetBestScore()
     {
-        
+        gameOverGlobalHighScoreDisplay.text = "Best Score:" + "\n" + playerBestScore.ToString();
+
 
         if (playerBestScore < bestScore) return;
 
         bestScore = playerBestScore;
         gameOverGlobalHighScoreDisplay.text = "Best Score:" + "\n" + playerBestScore.ToString();
+        
+        if (PlayerPrefs.HasKey("HighScore") && PlayerPrefs.GetInt("HighScore") != bestScore) 
+        {
+            PlayerPrefs.SetInt("HighScore", bestScore);
+            PlayerPrefs.Save();
+        }
     } 
 
     public void SetScore(TextMeshPro scoreTextMesh)

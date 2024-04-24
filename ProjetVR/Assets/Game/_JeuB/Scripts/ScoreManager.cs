@@ -93,14 +93,18 @@ public class ScoreManager : MonoBehaviour
 
     public void SetPlayerBestScore()
     {
+        
+
         if (currentScore < playerBestScore) return;
 
         playerBestScore = currentScore;
         gameOverPersonalHighScoreDisplay.text = "Personnal Best Score:" + "\n" + playerBestScore.ToString();
     } 
 
-    public void SetBestScore(TextMeshPro bestScoreTextMesh)
+    public void SetBestScore()
     {
+        
+
         if (playerBestScore < bestScore) return;
 
         bestScore = playerBestScore;

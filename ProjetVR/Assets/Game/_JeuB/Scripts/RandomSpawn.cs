@@ -72,12 +72,15 @@ public class RandomSpawn : MonoBehaviour
     [SerializeField] int interval = 10;
 
     [SerializeField] DifficultyPresets[] tutorialDifficulties;
+    [SerializeField] int tutorialDifficultiesCount = 0;
     [SerializeField] DifficultyPresets[] difficultyPresets;
+    [SerializeField] int difficultyPresetsCount = 0;
 
     [Header("Death Event")]
     [SerializeField] UnityEvent allShooted = new();
 
-    private static bool skipTutorial = false;
+    private static bool _skipTutorial = false;
+    [SerializeField] bool skipTutorial;
 
     void OnEnable()
     {
@@ -87,9 +90,9 @@ public class RandomSpawn : MonoBehaviour
 
         target.gameObject.SetActive(true);
 
-        //skipTutorial = true;
+        _skipTutorial = skipTutorial;
 
-        //GameManager.Instance.gameStopped.AddListener(() => skipTutorial = false);
+        GameManager.Instance.gameStopped.AddListener(() => _skipTutorial = false);
     }
 
     private void OnDisable()
@@ -97,7 +100,7 @@ public class RandomSpawn : MonoBehaviour
         CancelInvoke();
         StopAllCoroutines();
 
-        GameManager.Instance.gameStopped.RemoveListener(() => skipTutorial = false);
+        GameManager.Instance.gameStopped.RemoveListener(() => _skipTutorial = false);
     }
 
     private void Start()
@@ -215,14 +218,22 @@ public class RandomSpawn : MonoBehaviour
 
     private void CountMinutes()
     {
-        if (milestoneCount < tutorialDifficulties.Length && !skipTutorial)
-            ChangeDifficulty(tutorialDifficulties[milestoneCount]);
+        if (tutorialDifficultiesCount < tutorialDifficulties.Length && !skipTutorial)
+        {
+            ChangeDifficulty(tutorialDifficulties[tutorialDifficultiesCount]);
+            tutorialDifficultiesCount++;
+        }
         else
-            ChangeDifficulty(difficultyPresets[milestoneCount - tutorialDifficulties.Length]);
-        milestoneCount += 1;
+        {
+            ChangeDifficulty(difficultyPresets[difficultyPresetsCount]);
+            difficultyPresetsCount++;
+        }
 
-        if (milestoneCount == difficultyPresets.Length + tutorialDifficulties.Length)
+        if (difficultyPresetsCount == difficultyPresets.Length)
+        {
             CancelInvoke();
+            return;
+        }
 
         Invoke(nameof(CountMinutes), interval);
     }
@@ -253,9 +264,7 @@ public class RandomSpawn : MonoBehaviour
         spawnerTopLeft = newSpawners[5];
     } 
 
-    public void ChangeWeightEnemy1(int newWeightsEnemy1) => weightEnemy1 = newWeightsEnemy1;
-    public void ChangeWeightEnemy2(int newWeightsEnemy2) => weightEnemy2 = newWeightsEnemy2;
-    public void ChangeWeightEnemy3(int newWeightsEnemy3) =>  weightEnemy3 = newWeightsEnemy3;
+    public void ChangeWeightEnemy(ref int weightsEnemy, int newWeightsEnemy) => weightsEnemy = newWeightsEnemy;
     public void ChangeMobSpeed(float speed) => mobSpeed = speed;
     public void ChangeMobTypePerSpawner(MobEnum.MobType[] newMobTypePerSpawner) => mobTypePerSpawner = newMobTypePerSpawner;
     public void ChangeWeightBased(bool newWeightBased) => weightBased = newWeightBased;
@@ -263,13 +272,14 @@ public class RandomSpawn : MonoBehaviour
     public void ChangeDifficulty(DifficultyPresets preset)
     {
         if (preset.levelPassed) LevelPassed();
+        milestoneCount += 1;
         ChangeMilestoneInterval(preset.milestoneInterval);
         ChangeInterval(preset.spawnInterval);
         ChangeMobSpeed(preset.mobSpeed);
         ChangeNumberSpawner(preset.numberSpawner, preset.isNumberSpawnerBased, preset.spawnerTop, preset.spawnerTopRight, preset.spawnerBottomRight, preset.spawnerBottom, preset.spawnerBottomLeft, preset.spawnerTopLeft);
-        ChangeWeightEnemy1(preset.weightEnemy1);
-        ChangeWeightEnemy2(preset.weightEnemy2);
-        ChangeWeightEnemy3(preset.weightEnemy3);
+        ChangeWeightEnemy(ref weightEnemy1, preset.weightEnemy1);
+        ChangeWeightEnemy(ref weightEnemy2, preset.weightEnemy2);
+        ChangeWeightEnemy(ref weightEnemy3, preset.weightEnemy3);
         ChangeMobTypePerSpawner(preset.mobTypePerSpawner);
         ChangeWeightBased(preset.weightBased);
         CreateAvailableSpawnerList();

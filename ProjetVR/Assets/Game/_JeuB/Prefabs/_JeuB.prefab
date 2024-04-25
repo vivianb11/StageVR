@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37592f61e2fbf2649ad7c4916fa41631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Maxhealth: 3
+  Maxhealth: -2147483648
   receivedDamagedOnHit: 1
   onDamaged:
     m_PersistentCalls:
@@ -1618,12 +1618,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnerList:
-  - {fileID: 7904358571901721930}
-  - {fileID: 1587920473999145723}
-  - {fileID: 3436735275151527448}
   - {fileID: 532365905570478361}
+  - {fileID: 3436735275151527448}
   - {fileID: 6037506256365230333}
+  - {fileID: 7904358571901721930}
   - {fileID: 3549296507944966319}
+  - {fileID: 1587920473999145723}
   mobArray:
   - {fileID: 6224022260222283880, guid: 23d87bf6f84997149b99791847cdaecd, type: 3}
   - {fileID: 6638022967405250282, guid: c76edd37e3c7fe647ab6c32c59930228, type: 3}
@@ -1631,18 +1631,18 @@ MonoBehaviour:
   target: {fileID: 424505616319249623}
   rotationPoint: {fileID: 3579039938324773682}
   mobRotator: {fileID: 717860868454398895, guid: 49a144da7a60bbf43bb3161e221dabe8, type: 3}
-  spawnInterval: 4
-  mobSpeed: 1.15
+  spawnInterval: 3.5
+  mobSpeed: 1.25
   isNumberSpawnerBased: 1
-  numberSpawnerActivated: 6
-  spawnerTop: 1
+  numberSpawnerActivated: 4
+  spawnerTop: 0
   spawnerTopRight: 0
   spawnerBottomRight: 0
   spawnerBottom: 0
   spawnerBottomLeft: 0
   spawnerTopLeft: 0
   weightBased: 1
-  mobTypePerSpawner: 010000000000000002000000000000000000000000000000
+  mobTypePerSpawner: 000000000000000000000000000000000000000000000000
   weightEnemy1: 1
   weightEnemy2: 0
   weightEnemy3: 0
@@ -1650,11 +1650,11 @@ MonoBehaviour:
   CurrentPercentageEnemy2: 0%
   CurrentPercentageEnemy3: 0%
   enableProgression: 1
-  currentLevel: 1
-  maxLevel: 1
+  currentLevel: 0
+  maxLevel: 6
   pulsatingTextBehavior: {fileID: 5015962020766374808}
   milestoneCount: 0
-  interval: 2
+  interval: 1
   tutorialDifficulties:
   - {fileID: 11400000, guid: 1a38f276a5a887e4ca050fe9958e8131, type: 2}
   - {fileID: 11400000, guid: 01c5923e2f6c2394d8838856597c4144, type: 2}

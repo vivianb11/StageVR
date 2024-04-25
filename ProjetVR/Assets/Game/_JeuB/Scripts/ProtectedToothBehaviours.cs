@@ -22,6 +22,12 @@ public class ProtectedToothBehaviours : MonoBehaviour
     [SerializeField] int enemiesToKillForMultiplier;
     [SerializeField] int MaxMultiplier;
     [SerializeField] GameObject multiplierTexts;
+    private bool scoreEnabled = true;
+    public bool ScoreEnabled {
+        get { return scoreEnabled; }
+        set { scoreEnabled = value; }
+    }
+
     private int killStreak = 0;
     public int multiplier = 1;
     public int enemyPoints;
@@ -59,6 +65,8 @@ public class ProtectedToothBehaviours : MonoBehaviour
         _outlineEffect.OutlineWidth = 0;
 
         health = Maxhealth;
+        HeadMotionTracker.Instance.Excited.AddListener(() => ScoreEnabled = false);
+        HeadMotionTracker.Instance.Normal.AddListener(() => ScoreEnabled = true);
     }
 
     public void Damaged()
@@ -140,6 +148,8 @@ public class ProtectedToothBehaviours : MonoBehaviour
 
     public void ScoreMultiplier()
     {
+        if (!scoreEnabled) return;
+
         int textIndex;
         killStreak++;
         if (killStreak % enemiesToKillForMultiplier == 0)

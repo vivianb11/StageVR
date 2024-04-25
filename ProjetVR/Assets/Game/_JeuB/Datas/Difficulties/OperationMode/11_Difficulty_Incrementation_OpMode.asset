@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 148d3697e03a39e429b49ec2ea11bdd1, type: 3}
-  m_Name: 17_Difficulty_Incrementation 13
+  m_Name: 11_Difficulty_Incrementation_OpMode
   m_EditorClassIdentifier: 
   levelPassed: 0
-  milestoneInterval: 30
-  countCondition: 17
-  spawnInterval: 1.6
-  mobSpeed: 1.75
+  milestoneInterval: 20
+  countCondition: 11
+  spawnInterval: 1.8
+  mobSpeed: 1.6
   isNumberSpawnerBased: 1
-  numberSpawner: 6
+  numberSpawner: 4
   spawnerTop: 0
   spawnerTopRight: 0
   spawnerBottomRight: 0
@@ -27,6 +27,6 @@ MonoBehaviour:
   spawnerTopLeft: 0
   weightBased: 1
   mobTypePerSpawner: 000000000000000000000000000000000000000000000000
-  weightEnemy1: 5
+  weightEnemy1: 4
   weightEnemy2: 3
-  weightEnemy3: 2
+  weightEnemy3: 0

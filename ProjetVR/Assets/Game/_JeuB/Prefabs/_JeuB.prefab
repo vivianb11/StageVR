@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37592f61e2fbf2649ad7c4916fa41631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Maxhealth: -2147483648
+  Maxhealth: 3
   receivedDamagedOnHit: 1
   onDamaged:
     m_PersistentCalls:
@@ -1619,11 +1619,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnerList:
   - {fileID: 532365905570478361}
-  - {fileID: 3436735275151527448}
-  - {fileID: 6037506256365230333}
-  - {fileID: 7904358571901721930}
-  - {fileID: 3549296507944966319}
   - {fileID: 1587920473999145723}
+  - {fileID: 3549296507944966319}
+  - {fileID: 7904358571901721930}
+  - {fileID: 6037506256365230333}
+  - {fileID: 3436735275151527448}
   mobArray:
   - {fileID: 6224022260222283880, guid: 23d87bf6f84997149b99791847cdaecd, type: 3}
   - {fileID: 6638022967405250282, guid: c76edd37e3c7fe647ab6c32c59930228, type: 3}
@@ -1651,10 +1651,10 @@ MonoBehaviour:
   CurrentPercentageEnemy3: 0%
   enableProgression: 1
   currentLevel: 0
-  maxLevel: 6
+  maxLevel: 5
   pulsatingTextBehavior: {fileID: 5015962020766374808}
   milestoneCount: 0
-  interval: 1
+  interval: 15
   tutorialDifficulties:
   - {fileID: 11400000, guid: 1a38f276a5a887e4ca050fe9958e8131, type: 2}
   - {fileID: 11400000, guid: 01c5923e2f6c2394d8838856597c4144, type: 2}
@@ -1668,19 +1668,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 127e6dc2b6acbf24b9d23ea333c26ce0, type: 2}
   - {fileID: 11400000, guid: f09c46141bb8a11478bd84cab6f92f19, type: 2}
   - {fileID: 11400000, guid: 38610258414d0b24dbb176d3c5ef7f62, type: 2}
+  tutorialDifficultiesCount: 0
   difficultyPresets:
-  - {fileID: 11400000, guid: 1a38f276a5a887e4ca050fe9958e8131, type: 2}
-  - {fileID: 11400000, guid: 01c5923e2f6c2394d8838856597c4144, type: 2}
-  - {fileID: 11400000, guid: 4c9f5355e5c2e7d4083b26b6155d4880, type: 2}
-  - {fileID: 11400000, guid: 5147dc73093d6b94eb590f204faa96e1, type: 2}
-  - {fileID: 11400000, guid: bf899a0f746eb2f4abcfa894c8095c6b, type: 2}
-  - {fileID: 11400000, guid: 6f5b8e8734796ed40abe4ab7981af4bf, type: 2}
-  - {fileID: 11400000, guid: bc939bdaba5120441a432b0673c68c61, type: 2}
-  - {fileID: 11400000, guid: fad70721b305c614a8961b8a0a73ff08, type: 2}
-  - {fileID: 11400000, guid: 2069f2128239812478e801cebe086a6f, type: 2}
-  - {fileID: 11400000, guid: 127e6dc2b6acbf24b9d23ea333c26ce0, type: 2}
-  - {fileID: 11400000, guid: f09c46141bb8a11478bd84cab6f92f19, type: 2}
-  - {fileID: 11400000, guid: 38610258414d0b24dbb176d3c5ef7f62, type: 2}
   - {fileID: 11400000, guid: ab6a27182c0a5ae42abdd8a6a5d1d75f, type: 2}
   - {fileID: 11400000, guid: dcfc2a8a5e8a3744280e9b029d023d0a, type: 2}
   - {fileID: 11400000, guid: 976f984b0b49e6c49a50801a0896ccb4, type: 2}
@@ -1701,6 +1690,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bdfd07b65661fcc448684064dc16a32d, type: 2}
   - {fileID: 11400000, guid: 4d1ecb32ce5f4334885f872af2addda0, type: 2}
   - {fileID: 11400000, guid: efaf26e6b111126449926797763a7575, type: 2}
+  difficultyPresetsCount: 1
   allShooted:
     m_PersistentCalls:
       m_Calls:
@@ -1716,6 +1706,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  skipTutorial: 0
 --- !u!114 &3349590382021082868
 MonoBehaviour:
   m_ObjectHideFlags: 0

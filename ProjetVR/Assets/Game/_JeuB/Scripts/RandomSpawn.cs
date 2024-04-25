@@ -69,7 +69,15 @@ public class RandomSpawn : MonoBehaviour
     [SerializeField] int maxLevel;
     [SerializeField] PulsatingText pulsatingTextBehavior;
     [NaughtyAttributes.ReadOnly] [SerializeField] int milestoneCount = 0;
+    [Button("Skip")] private void Skip() 
+    {
+        CountMinutes();
+        CancelInvoke();
+    }
+    
     [SerializeField] int interval = 10;
+
+    [NaughtyAttributes.ReadOnly] [SerializeField] DifficultyPresets currentPreset;
 
     [SerializeField] DifficultyPresets[] tutorialDifficulties;
     [SerializeField] int tutorialDifficultiesCount = 0;
@@ -216,8 +224,13 @@ public class RandomSpawn : MonoBehaviour
         _availableSpawnerList = tempList;
     }
 
+
     private void CountMinutes()
     {
+        #if UNITY_EDITOR
+        if (!Application.isPlaying) return;
+        #endif
+
         if (tutorialDifficultiesCount < tutorialDifficulties.Length && !skipTutorial)
         {
             ChangeDifficulty(tutorialDifficulties[tutorialDifficultiesCount]);
@@ -269,9 +282,12 @@ public class RandomSpawn : MonoBehaviour
     public void ChangeMobTypePerSpawner(MobEnum.MobType[] newMobTypePerSpawner) => mobTypePerSpawner = newMobTypePerSpawner;
     public void ChangeWeightBased(bool newWeightBased) => weightBased = newWeightBased;
 
+
+
     public void ChangeDifficulty(DifficultyPresets preset)
     {
         if (preset.levelPassed) LevelPassed();
+        currentPreset = preset;
         milestoneCount += 1;
         ChangeMilestoneInterval(preset.milestoneInterval);
         ChangeInterval(preset.spawnInterval);

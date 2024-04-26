@@ -100,7 +100,16 @@ public class SoundManager : MonoBehaviour
         }
 
         if (audioSource is null)
-            Debug.LogWarning("No audio source available to play the sound");
+        {
+            Debug.LogWarning("No audio source available to play the sound" + "new one created");
+
+            var go = new GameObject("Audio Source " + _audioSources.Count);
+            go.transform.SetParent(transform);
+            go.AddComponent<AudioSource>();
+
+            audioSource = go.GetComponent<AudioSource>();
+            _audioSources.Add(audioSource, null);
+        }
 
         _audioSources[audioSource] = null;
         _audioSources[audioSource] = sound;

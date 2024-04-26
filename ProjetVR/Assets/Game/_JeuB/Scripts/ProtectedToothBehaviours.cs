@@ -55,7 +55,7 @@ public class ProtectedToothBehaviours : MonoBehaviour
     private bool increasing = true;
     private float timer = 0f;
 
-    
+    [SerializeField] GameObject _lock;
 
     void OnEnable()
     {
@@ -65,8 +65,10 @@ public class ProtectedToothBehaviours : MonoBehaviour
         _outlineEffect.OutlineWidth = 0;
 
         health = Maxhealth;
-        HeadMotionTracker.Instance.Excited.AddListener(() => ScoreEnabled = false);
-        HeadMotionTracker.Instance.Normal.AddListener(() => ScoreEnabled = true);
+        // HeadMotionTracker.Instance.Excited.AddListener(() => ScoreEnabled = false);
+        // HeadMotionTracker.Instance.Excited.AddListener(() => _lock.SetActive(true));
+        // HeadMotionTracker.Instance.Normal.AddListener(() => ScoreEnabled = true);
+        // HeadMotionTracker.Instance.Normal.AddListener(() => _lock.SetActive(false));
     }
 
     public void Damaged()

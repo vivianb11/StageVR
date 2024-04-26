@@ -220,6 +220,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8967725153655843097, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: NormalThreshold
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967725153655843097, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: ExcitedThreshold
+      value: 0.9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

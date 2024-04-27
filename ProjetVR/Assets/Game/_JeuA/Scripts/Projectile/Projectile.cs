@@ -1,37 +1,41 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class Projectile : MonoBehaviour
+namespace JeuA
 {
-    public float projectilSpeed;
-    public float randomness = 0.5f;
-    public float lifeTime;
-
-    protected Rigidbody body;
-
-    protected bool canCollid = true;
-
-    private void Awake()
+    [RequireComponent(typeof(Rigidbody))]
+    public class Projectile : MonoBehaviour
     {
-        body = GetComponent<Rigidbody>();
+        public float projectilSpeed;
+        public float randomness = 0.5f;
+        public float lifeTime;
+
+        protected Rigidbody body;
+
+        protected bool canCollid = true;
+
+        private void Awake()
+        {
+            body = GetComponent<Rigidbody>();
+        }
+
+        private void OnEnable()
+        {
+            body.velocity = Vector3.zero;
+
+            Vector3 launchDirection = transform.forward + Vector3.right * Random.Range(-randomness, randomness) + Vector3.up * Random.Range(-randomness, randomness);
+
+            body.AddForce(launchDirection * projectilSpeed);
+
+            StartCoroutine(KillTimer());
+        }
+
+        private IEnumerator KillTimer()
+        {
+            yield return new WaitForSeconds(lifeTime);
+
+            gameObject.SetActive(false);
+        }
     }
 
-    private void OnEnable()
-    {
-        body.velocity = Vector3.zero;
-
-        Vector3 launchDirection = transform.forward + Vector3.right * Random.Range(-randomness, randomness) + Vector3.up * Random.Range(-randomness, randomness);
-
-        body.AddForce(launchDirection * projectilSpeed);
-
-        StartCoroutine(KillTimer());
-    }
-
-    private IEnumerator KillTimer()
-    {
-        yield return new WaitForSeconds(lifeTime);
-
-        gameObject.SetActive(false);
-    }
 }

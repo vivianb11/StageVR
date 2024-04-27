@@ -133,7 +133,7 @@ MonoBehaviour:
   canRotate: 1
   receivedDamagedOnHit: 1
   knockCooldown: 1.5
-  outlineEffect: {fileID: 0}
+  outlineEffect: {fileID: 1731465486316618718}
   hpLossParticles: {fileID: 6237553109302029157, guid: 51df40cb466f2c94c99385dcf6b2c0ff, type: 3}
   deathParticles: {fileID: 6237553109302029157, guid: 51df40cb466f2c94c99385dcf6b2c0ff, type: 3}
   degree: 2d0000005a00000087000000b4000000e00000000e0100003b010000
@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleLerpSpeed: 0.3
+  scaleOffset: 1.2
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
@@ -300,6 +301,7 @@ MonoBehaviour:
     completed:
       m_PersistentCalls:
         m_Calls: []
+    isPlaying: 0
   autoPlayMontage: 0
   tweenIndex: 0
 --- !u!114 &7604659161403824294

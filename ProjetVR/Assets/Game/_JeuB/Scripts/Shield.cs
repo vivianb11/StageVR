@@ -7,7 +7,6 @@ public class Shield : MonoBehaviour
     public float moveSpeed = 5f;
     public float returnSpeed = 2f;
 
-    public bool isColliding = false;
     private bool isTweening = false;
     public float moveDuration = 0.5f;
 
@@ -16,6 +15,8 @@ public class Shield : MonoBehaviour
     private Tween tweener;
     private ProtectedToothBehaviours tooth;
 
+    //l'idée a joss et thomas a renomé la fonction (le gros du travail)
+    public void TweenerChecker(bool tweening) => isTweening = tweening;
 
     private void Awake()
     {
@@ -23,17 +24,10 @@ public class Shield : MonoBehaviour
         tooth = targetObject.GetComponent<ProtectedToothBehaviours>();
     }
 
-    
-    //l'idée a joss et thomas a renomé la fonction (le gros du travail)
-    public void TweenerChecker(bool tweening) => isTweening = tweening;
-    
-
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Ennemy"))
         {
-            isColliding = true;
             tooth.enemyPoints = other.GetComponent<Mob>().scoreOnDeath;
             OnShieldHit.Invoke();
 
@@ -43,9 +37,6 @@ public class Shield : MonoBehaviour
                 tweener.tweenMontages[0].tweenProperties[0].to = new Vector3(gameObject.transform.localPosition.x / 0.75f, gameObject.transform.localPosition.y / 0.75f, gameObject.transform.localPosition.z / 0.75f);
                 tweener.PlayMontages();
             }
-            
         }
     }
-
-    
 }

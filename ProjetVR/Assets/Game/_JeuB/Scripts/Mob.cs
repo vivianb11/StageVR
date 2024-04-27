@@ -43,8 +43,12 @@ public class Mob : MonoBehaviour
 
     public ProtectedToothBehaviours protectedToothBehaviours;
 
+    private Transform _shield;
+
     private void Start()
     {
+        _shield = FindObjectOfType<SmoothShield>().transform;
+
         _tween = GetComponent<Tween>();
         if (! canRotate) return;
         
@@ -56,17 +60,22 @@ public class Mob : MonoBehaviour
     {
         Move();
         RotateMesh();
-    }
 
-    private void RotateMesh()
-    {
-        if (!canRotate) transform.GetChild(0).transform.Rotate(0,0,50*Time.deltaTime);
+        Vector3 toothDirection = (transform.position - _shield.position).normalized;
+        float angleToTooth = Vector3.Angle(_shield.forward, toothDirection);
+
+        outlineEffect.enabled = angleToTooth < 30f;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Shield")) Damaged();
         if (other.gameObject.CompareTag("Protected")) Attack(other.gameObject);
+    }
+
+    private void RotateMesh()
+    {
+        if (!canRotate) transform.GetChild(0).transform.Rotate(0, 0, 50 * Time.deltaTime);
     }
 
     private IEnumerator DelayRotation()

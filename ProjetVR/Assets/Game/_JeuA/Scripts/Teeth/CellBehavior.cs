@@ -2,7 +2,6 @@ using UnityEngine;
 using NaughtyAttributes;
 using UnityEngine.Events;
 using SignalSystem;
-using System.Collections.Generic;
 using System.Collections;
 
 [RequireComponent(typeof(Interactable))]
@@ -46,7 +45,7 @@ public class CellBehavior : MonoBehaviour
         signalListener.signalReceived.AddListener(() => interactable.SetActivateState(true));
         signalListener.signalLost.AddListener(() => interactable.SetActivateState(false));
 
-        OnClean.AddListener(() => interactable.enabled = false);
+        OnClean.AddListener(() => interactable.SetActivateState(false));
     }
 
     public void ResetTooth()
@@ -94,9 +93,6 @@ public class CellBehavior : MonoBehaviour
             case TeethState.Clean:
                 mR.material = toothManager.cleanMat;
                 break;
-            case TeethState.Dirty:
-                mR.material = toothManager.dirtyMat;
-                break;
             case TeethState.Tartar:
                 mR.material = toothManager.tartarMat;
                 break;
@@ -111,22 +107,24 @@ public class CellBehavior : MonoBehaviour
         switch (state)
         {
             case TeethState.Clean:
-                break;
-            case TeethState.Dirty:
                 signalListener.signal.Clear();
-                signalListener.signal.Add(toothManager.brossetteSignal);
-                interactable.onSelected.RemoveListener(TartarBehavior);
-                interactable.onSelected.AddListener(DirtyBehavior);
-                interactable.lookInTime = cellData.dirtryInteractionTime;
+                interactable.onSelected.RemoveAllListeners();
+                
+                _feedbackScale.SetActive(false);
                 break;
             case TeethState.Tartar:
                 signalListener.signal.Clear();
                 signalListener.signal.Add(toothManager.brushSignal);
-                interactable.onSelected.RemoveListener(DirtyBehavior);
                 interactable.onSelected.AddListener(TartarBehavior);
                 interactable.lookInTime = cellData.tartarInteractionTime;
                 interactable.resetValueOnExit = false;
 
+                _feedbackScale.SetActive(false);
+                break;
+            default:
+                signalListener.signal.Clear();
+                interactable.onSelected.RemoveAllListeners();
+                
                 _feedbackScale.SetActive(false);
                 break;
         }
@@ -134,21 +132,13 @@ public class CellBehavior : MonoBehaviour
 
     public void SwitchTeethState(TeethState newTeethState)
     {
-        if (teethState == TeethState.Dirty && newTeethState != TeethState.Dirty)
-            foreach (Transform child in transform)
-                child.GetComponent<FoodBehavior>().EjectFood();
-        else if (teethState == TeethState.Tartar && newTeethState != TeethState.Tartar)
+        if (newTeethState == TeethState.Dirty) newTeethState = TeethState.Clean;
+
+        if (teethState == TeethState.Tartar && newTeethState != TeethState.Tartar)
             foreach (Transform child in transform)
                 Destroy(child.gameObject);
 
         teethState = newTeethState;
-
-        if (teethState == TeethState.Dirty)
-        {
-            Transform food = Instantiate(foodPrefab.PickRandom(), transform);
-            food.rotation = Quaternion.Euler(new Vector3(Random.Range(0f, 180f), Random.Range(0f, 180f), Random.Range(0f, 180f)));
-            interactable.SetCanBeInteracted(true);
-        }
 
         SetMaterials(newTeethState);
         SetSignalListener(newTeethState);
@@ -163,41 +153,11 @@ public class CellBehavior : MonoBehaviour
         OnClean?.Invoke();
     }
 
-    public void DecayBehavior()
-    {
-        Debug.LogWarning("DecayBehavior Not Implemented!");
-    }
-
     public void TartarBehavior()
     {
         if (!ToothPasteFull())
             return;
 
         CleanCell();
-    }
-
-    public void DirtyBehavior()
-    {
-        CleanCell();
-    }
-
-    [Button("Set Neighbours")]
-    public void SetNeighboursButton()
-    {
-        StartCoroutine(SetNeighbours());
-    }
-
-    private IEnumerator SetNeighbours()
-    {
-        MeshCollider mCol = GetComponent<MeshCollider>();
-        mCol.isTrigger = true;
-
-        gameObject.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
-
-        yield return new WaitForSeconds(0.1f);
-
-        gameObject.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
-
-        mCol.isTrigger = false;
     }
 }

@@ -5,6 +5,8 @@ using NaughtyAttributes;
 using SignalSystem;
 using UnityEngine.Events;
 using System;
+using UnityEngine.UIElements;
+using System.Linq;
 
 public class ToothManager : MonoBehaviour
 {
@@ -24,10 +26,16 @@ public class ToothManager : MonoBehaviour
     public SO_TeethGeneration[] datas;
     private int dataIndex;
 
+    [Foldout("Food")]
+    public Transform[] foodPrefab;
+    [Foldout("Food")]
+    public List<Transform> foodSpawnPos;
+    private int foodAmount = 0;
+
+    public bool dirtyTooth { get; private set; }
+
     [Foldout("Materials")]
     public Material cleanMat;
-    [Foldout("Materials")]
-    public Material dirtyMat;
     [Foldout("Materials")]
     public Material tartarMat;
     [Foldout("Materials")]
@@ -89,14 +97,165 @@ public class ToothManager : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    private void Update()
+
+    [Foldout("Food")]
+    public int SpawnPositionAmount = 10;
+
+    private GameObject spawnPointFolder;
+
+    [Foldout("Food")]
+    public bool showDebug = true;
+    [Foldout("Food")]
+    public float radius = 1f;
+    [Foldout("Food")]
+    public float minimumSpacing = 0.1f;
+
+    [Button]
+    public void SetUpSpawnPos()
     {
-        if(Input.GetKeyDown(KeyCode.R))
+        if (foodSpawnPos is not null)
         {
-            ResetTooth();
+            foreach (Transform child in foodSpawnPos)
+            {
+                DestroyImmediate(child.gameObject);
+            }
+
+            foodSpawnPos.Clear();
+        }
+
+        if(SpawnPositionAmount <= 0) return;
+        
+        if (!spawnPointFolder)
+        {
+            if (transform.Find("SpawnPoints"))
+            {
+                spawnPointFolder = transform.Find("SpawnPoints").gameObject;
+            }
+            else
+            {
+                spawnPointFolder = new GameObject("SpawnPoints");
+                spawnPointFolder.transform.SetParent(transform);
+            }
+        }
+
+        for (int i = 0; i < SpawnPositionAmount; i++)
+        {
+            Vector3 spawnPos = transform.position + Random.onUnitSphere * radius;
+
+            Ray ray = new Ray(spawnPos, (transform.position - spawnPos).normalized);
+
+            bool canSpawn = true;
+
+            if (Physics.Raycast(ray, out RaycastHit hit, radius ,layerMask:1))
+            {
+                //if (hit.collider.tag == "Cell") { i--; canSpawn = false; }
+                spawnPos = hit.point;
+            }
+
+            //if (!canSpawn) continue;
+
+            if (i == 0)
+            {
+                SetPositionPoint(ref spawnPos);
+            }
+            else
+            {
+
+                foreach (var spawnPoint in foodSpawnPos)
+                {
+                    if (Vector3.Distance(spawnPoint.position, spawnPos) < minimumSpacing)
+                    {
+                        canSpawn = false;
+                        break;
+                    }
+                }
+
+                if (!canSpawn) { i--; continue; }
+
+                SetPositionPoint(ref spawnPos);
+            }
         }
     }
+
+    private void SetPositionPoint(ref Vector3 spawnPos)
+    {
+        Transform spawnPoint = new GameObject("SpawnPoint").transform;
+        spawnPoint.SetParent(spawnPointFolder.transform);
+        spawnPoint.position = spawnPos;
+
+        foodSpawnPos.Add(spawnPoint);
+    }
 #endif
+
+    public void CleanFood()
+    {
+        SetFood(0);
+    }
+
+    public void MinusFood()
+    {
+        if (foodAmount <= 0) return;
+
+        foodAmount--;
+
+        if (foodAmount == 0) SetFood(foodAmount);
+        else { OnCleanAmountChange?.Invoke(GetToothCleanPercent()); CheckIfToothCleaned(); }
+    }
+
+    public void SetFood(int amount)
+    {
+        if (foodAmount == 0 && amount != 0)
+        {
+            SpawnFood(amount);
+        }
+
+        if (amount <= 0)
+        {
+            dirtyTooth = false;
+            foodAmount = 0;
+        }
+        else
+        {
+            dirtyTooth = true;
+            foodAmount = amount;
+        }
+
+        OnCleanAmountChange?.Invoke(GetToothCleanPercent());
+
+        CheckIfToothCleaned();
+    }
+
+    void SpawnFood(int amount)
+    {
+        List<int> foodPosIndex = new List<int>();
+
+        for (int i = 0; i < amount; i++)
+        {
+            int index = Random.Range(0, foodSpawnPos.Count);
+
+            if (foodPosIndex.Contains(index))
+            {
+                i--;
+                continue;
+            }
+
+            foodPosIndex.Add(index);
+
+            Transform food = Instantiate(foodPrefab.PickRandom(), foodSpawnPos[index]);
+            food.GetComponent<FoodBehavior>().toothManager = this;
+            food.SetParent(foodSpawnPos[index]);
+        }
+    }
+
+    [Button]
+    public void CleanSmell()
+    {
+        SetSmell(false);
+
+        OnCleanAmountChange?.Invoke(GetToothCleanPercent());
+
+        CheckIfToothCleaned();
+    }
 
     public void SetSmell(bool value)
     {
@@ -110,17 +269,7 @@ public class ToothManager : MonoBehaviour
             smellVFX.Stop();
     }
 
-    [Button]
-    public void CleanSmell()
-    {
-        SetSmell(false);
-
-        OnCleanAmountChange?.Invoke(GetToothCleanPercent());
-
-        CheckIfToothCleaned();
-    }
-
-    public void RemoveSmellAmount()
+    public void MinusSmell()
     {
         if (!smells)
             return;
@@ -133,10 +282,10 @@ public class ToothManager : MonoBehaviour
 
     public float GetToothCleanPercent()
     {
-        float cleandCells = teethCells.FindAll(x => x.teethState == TeethState.Clean).Count;
+        int cleandCells = teethCells.FindAll(x => x.teethState == TeethState.Clean).Count;
         float totalCells = teethCells.Count;
 
-        return (cleandCells / totalCells) - (smells ? 0.1f : 0f);
+        return (cleandCells / totalCells) - (smells ? 0.1f : 0f) - (dirtyTooth ? foodAmount/totalCells : 0f);
     }
 
     public bool IsToothCleaned()
@@ -146,7 +295,7 @@ public class ToothManager : MonoBehaviour
 
     public bool OnlyDecayRemaining()
     {
-        if (smells)
+        if (smells || dirtyTooth)
             return false;
 
         foreach (var teethCell in teethCells)
@@ -287,10 +436,29 @@ public class ToothManager : MonoBehaviour
             }
         }
 
+        SetFood(teethStates.Where(x => x == TeethState.Dirty).Count());
+
         if (OnlyDecayRemaining())
         {
             decayOnly?.Invoke();
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        if (foodSpawnPos is null || !showDebug)
+            return;
+
+        foreach (var position in foodSpawnPos)
+        {
+            Gizmos.DrawSphere(position.position, 0.1f);
+        }
+
+        Gizmos.color = Color.green;
+
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }
 

@@ -7,7 +7,7 @@ public class BainDeBoucheProjectile : Projectile
         if (other.TryGetComponent(out CellBehavior cell))
         {
             Debug.Log("Collid with cell");
-            cell.toothManager.RemoveSmellAmount();
+            cell.toothManager.MinusSmell();
         }
     }
 }

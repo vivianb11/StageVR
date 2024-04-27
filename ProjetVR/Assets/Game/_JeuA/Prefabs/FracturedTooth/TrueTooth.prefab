@@ -155,6 +155,7 @@ MonoBehaviour:
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
+  resetScaleOnDisable: 1
 --- !u!114 &9042129882869801354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BrushParticle: {fileID: 3167106356958120686, guid: a369b3a947d3d1c43ba66864fbd1c607, type: 3}
+  _feedbackScale: {fileID: 0}
   teethState: 0
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
@@ -416,6 +418,7 @@ MonoBehaviour:
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
+  resetScaleOnDisable: 1
 --- !u!114 &2623429702948309146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,6 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BrushParticle: {fileID: 3167106356958120686, guid: a369b3a947d3d1c43ba66864fbd1c607, type: 3}
+  _feedbackScale: {fileID: 0}
   teethState: 0
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
@@ -522,6 +526,37 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &741568761317586730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8433722571045476256}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8433722571045476256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741568761317586730}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.19286203, y: 0.28476143, z: -0.36309433}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6836038929812299379}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &959558267400824071
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,6 +712,7 @@ MonoBehaviour:
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
+  resetScaleOnDisable: 1
 --- !u!114 &1764734461228954643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -753,6 +789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BrushParticle: {fileID: 3167106356958120686, guid: a369b3a947d3d1c43ba66864fbd1c607, type: 3}
+  _feedbackScale: {fileID: 0}
   teethState: 0
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
@@ -783,6 +820,78 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1241063492232953016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6836038929812299379}
+  m_Layer: 0
+  m_Name: SpawnPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6836038929812299379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241063492232953016}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8433722571045476256}
+  - {fileID: 220234420992510175}
+  - {fileID: 5550770780741497235}
+  - {fileID: 1735036072540133093}
+  - {fileID: 2726401385186061500}
+  - {fileID: 2526971117682409989}
+  - {fileID: 3405059211735723336}
+  - {fileID: 2134495800053807561}
+  - {fileID: 4383599459112042841}
+  - {fileID: 2949336503718298785}
+  m_Father: {fileID: 6865694600787375154}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1937887625154649306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1735036072540133093}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1735036072540133093
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937887625154649306}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.37614346, y: 0.2021985, z: -0.0047512054}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6836038929812299379}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2071986180292996944
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,6 +1047,7 @@ MonoBehaviour:
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
+  resetScaleOnDisable: 1
 --- !u!114 &9002865280019027842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1014,6 +1124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BrushParticle: {fileID: 3167106356958120686, guid: a369b3a947d3d1c43ba66864fbd1c607, type: 3}
+  _feedbackScale: {fileID: 0}
   teethState: 0
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
@@ -1322,6 +1433,7 @@ MonoBehaviour:
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
+  resetScaleOnDisable: 1
 --- !u!114 &7739089765235877068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1398,6 +1510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BrushParticle: {fileID: 3167106356958120686, guid: a369b3a947d3d1c43ba66864fbd1c607, type: 3}
+  _feedbackScale: {fileID: 0}
   teethState: 0
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
@@ -1428,6 +1541,37 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &3338892894525845706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2949336503718298785}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2949336503718298785
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3338892894525845706}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.30527258, y: -0.2321291, z: 0.19813347}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6836038929812299379}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3376827337840895526
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,6 +1727,7 @@ MonoBehaviour:
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
+  resetScaleOnDisable: 1
 --- !u!114 &6606445536800217390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1659,6 +1804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BrushParticle: {fileID: 3167106356958120686, guid: a369b3a947d3d1c43ba66864fbd1c607, type: 3}
+  _feedbackScale: {fileID: 0}
   teethState: 0
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
@@ -1935,6 +2081,37 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &3815197180122777303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2726401385186061500}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2726401385186061500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815197180122777303}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.28551102, y: -0.13213873, z: 0.28332138}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6836038929812299379}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3977315247956261072
 GameObject:
   m_ObjectHideFlags: 0
@@ -2304,6 +2481,99 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &4858993274606245571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 220234420992510175}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &220234420992510175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4858993274606245571}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.03082323, y: -0.07151508, z: 0.31219482}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6836038929812299379}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4920317072634402479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3405059211735723336}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3405059211735723336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920317072634402479}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.1909666, y: -0.38854742, z: -0.25831604}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6836038929812299379}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5273319520885674754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5550770780741497235}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5550770780741497235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5273319520885674754}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.044310093, y: -0.008061886, z: -0.33390427}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6836038929812299379}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5492859276273395688
 GameObject:
   m_ObjectHideFlags: 0
@@ -2459,6 +2729,7 @@ MonoBehaviour:
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
+  resetScaleOnDisable: 1
 --- !u!114 &8479390258311423057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2535,6 +2806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BrushParticle: {fileID: 3167106356958120686, guid: a369b3a947d3d1c43ba66864fbd1c607, type: 3}
+  _feedbackScale: {fileID: 0}
   teethState: 0
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
@@ -2720,6 +2992,7 @@ MonoBehaviour:
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
+  resetScaleOnDisable: 1
 --- !u!114 &8186902329721147435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2796,6 +3069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BrushParticle: {fileID: 3167106356958120686, guid: a369b3a947d3d1c43ba66864fbd1c607, type: 3}
+  _feedbackScale: {fileID: 0}
   teethState: 0
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
@@ -2872,6 +3146,7 @@ Transform:
   - {fileID: 8004361739918559537}
   - {fileID: 7534541964244719009}
   - {fileID: 3576567627321817207}
+  - {fileID: 6836038929812299379}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4074167816967472744
@@ -2932,8 +3207,24 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 23d7a213d0002f245b05d35cda6f2402, type: 2}
   - {fileID: 11400000, guid: 1ee958c9f0b6e5f4fac028a89d832c43, type: 2}
   - {fileID: 11400000, guid: 645b62bd690fe664aa467af8ecedfc11, type: 2}
+  foodPrefab:
+  - {fileID: 6028065629633131399, guid: 07610ecfa78d50147a62fe5af4923e1f, type: 3}
+  - {fileID: 2510529916210730290, guid: 7994b9741d626ba499e7fe0db29edbf2, type: 3}
+  - {fileID: 3046275378136225123, guid: 92e72790e199f7e48bb8110c7115a6d4, type: 3}
+  - {fileID: 7318262588863087622, guid: 1c739bfdbb208c442af61c7f23a7a592, type: 3}
+  - {fileID: 5233900577675362617, guid: 91db0c0dd502b9d48813c7829da8f29e, type: 3}
+  foodSpawnPos:
+  - {fileID: 8433722571045476256}
+  - {fileID: 220234420992510175}
+  - {fileID: 5550770780741497235}
+  - {fileID: 1735036072540133093}
+  - {fileID: 2726401385186061500}
+  - {fileID: 2526971117682409989}
+  - {fileID: 3405059211735723336}
+  - {fileID: 2134495800053807561}
+  - {fileID: 4383599459112042841}
+  - {fileID: 2949336503718298785}
   cleanMat: {fileID: 2100000, guid: c028e819872198d4e9f1e56fed6a5031, type: 2}
-  dirtyMat: {fileID: 2100000, guid: d753c80c86f4b3f41a62ece4b7c1c9e8, type: 2}
   tartarMat: {fileID: 2100000, guid: d10d6b4f3512dbd4fa03be219e911ecb, type: 2}
   decayMat: {fileID: 2100000, guid: af921ee7af8d1204b993352f51214eaa, type: 2}
   toothPasteMat: {fileID: 2100000, guid: 2d8ea9213e41c8a41b4b78f905e8925f, type: 2}
@@ -2974,7 +3265,14 @@ MonoBehaviour:
   decayOnly:
     m_PersistentCalls:
       m_Calls: []
+  respawned:
+    m_PersistentCalls:
+      m_Calls: []
   toothPasteColorChange: 1
+  SpawnPositionAmount: 10
+  showDebug: 0
+  radius: 1.12
+  minimumSpacing: 0.3
 --- !u!114 &2177507039290541273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3564,6 +3862,7 @@ MonoBehaviour:
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
+  resetScaleOnDisable: 1
 --- !u!114 &5671147135714795528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3640,6 +3939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BrushParticle: {fileID: 3167106356958120686, guid: a369b3a947d3d1c43ba66864fbd1c607, type: 3}
+  _feedbackScale: {fileID: 0}
   teethState: 0
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
@@ -3825,6 +4125,7 @@ MonoBehaviour:
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
+  resetScaleOnDisable: 1
 --- !u!114 &6263935666812198523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3901,6 +4202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BrushParticle: {fileID: 3167106356958120686, guid: a369b3a947d3d1c43ba66864fbd1c607, type: 3}
+  _feedbackScale: {fileID: 0}
   teethState: 0
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
@@ -4086,6 +4388,7 @@ MonoBehaviour:
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
+  resetScaleOnDisable: 1
 --- !u!114 &1950971599103502887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4162,6 +4465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BrushParticle: {fileID: 3167106356958120686, guid: a369b3a947d3d1c43ba66864fbd1c607, type: 3}
+  _feedbackScale: {fileID: 0}
   teethState: 0
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:
@@ -4192,6 +4496,99 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &8444367295805048823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2134495800053807561}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2134495800053807561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8444367295805048823}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.02848959, y: 0.3361225, z: 0.33600235}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6836038929812299379}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8564078935504688185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4383599459112042841}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4383599459112042841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8564078935504688185}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.3090849, y: -0.15335608, z: -0.11203575}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6836038929812299379}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8763385240848580968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2526971117682409989}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2526971117682409989
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8763385240848580968}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.029758453, y: 0.37642002, z: -0.12508392}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6836038929812299379}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8831377462267815390
 GameObject:
   m_ObjectHideFlags: 0
@@ -4347,6 +4744,7 @@ MonoBehaviour:
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
+  resetScaleOnDisable: 1
 --- !u!114 &3837328829081679770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4423,6 +4821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BrushParticle: {fileID: 3167106356958120686, guid: a369b3a947d3d1c43ba66864fbd1c607, type: 3}
+  _feedbackScale: {fileID: 0}
   teethState: 0
   cellData: {fileID: 11400000, guid: 0d50e2654da17934b95196e92d833f9c, type: 2}
   foodPrefab:

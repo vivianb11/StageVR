@@ -8,10 +8,16 @@ public class FoodBehavior : MonoBehaviour
     private Rigidbody rb;
     private PlayerInstance player;
 
+    private Interactable interactable;
+    private ToothManager ToothMan;
+    public ToothManager toothManager { get { return ToothMan; } set { ToothMan = value; } }
+
+    public float interactionTime = 1f;
+
     public float delayBeforeDestroayable = 1f;
     private bool isDestroyable = false;
 
-    public float force = 300f;
+    public float force = 200f;
 
     private bool ejected = false;
 
@@ -21,6 +27,14 @@ public class FoodBehavior : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         player = PlayerInstance.Instance;
+
+        interactable = GetComponent<Interactable>();
+        interactable.SetActivateState(false);
+
+        interactable.selectionCondition = SelectionCondition.LOOK_IN_TIME;
+        interactable.lookInTime = interactionTime;
+
+        interactable.onSelected.AddListener(() => EjectFood());
     }
 
     private void Update()
@@ -33,11 +47,10 @@ public class FoodBehavior : MonoBehaviour
         transform.GetChild(0).transform.Rotate(0, 0, 500 * Time.deltaTime);
     }
 
-
     [Button]
     public void EjectFood()
     {
-        transform.parent = null;
+        transform.SetParent(null);
         ejected = true;
 
         rb.isKinematic = false;
@@ -47,6 +60,8 @@ public class FoodBehavior : MonoBehaviour
         Vector3 direction = playerpos.up * Random.Range(0.5f, 1f) + Random.Range(-0.5f, 0.5f) * playerpos.right;
 
         rb.AddForce(direction * force);
+
+        toothManager.MinusFood();
 
         StartCoroutine(DestroyableDelay());
     }

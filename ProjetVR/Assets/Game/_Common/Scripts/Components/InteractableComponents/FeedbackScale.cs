@@ -12,6 +12,8 @@ public class FeedbackScale : MonoBehaviour
 
     public UnityEvent FBFinish;
 
+    public bool resetScaleOnDisable = true;
+
     public bool IsScaling => transform.localScale != originalScale;
 
     private bool active = true;
@@ -41,8 +43,6 @@ public class FeedbackScale : MonoBehaviour
 
     private void OnDisable()
     {
-        Debug.LogWarning("do not desable please use the Active property instead");
-
         ForceStop();
     }
 
@@ -83,6 +83,8 @@ public class FeedbackScale : MonoBehaviour
     public void ForceStop()
     {
         StopAllCoroutines();
-        transform.localScale = originalScale;
+
+        if (resetScaleOnDisable)
+            transform.localScale = originalScale;
     }
 }

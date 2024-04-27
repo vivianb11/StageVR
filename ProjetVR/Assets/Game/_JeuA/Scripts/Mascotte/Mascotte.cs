@@ -127,7 +127,6 @@ public class Mascotte : MonoBehaviour
     private void CheckTooth()
     {
         int tartarCount = tooth.teethCells.Where(item => item.teethState == TeethState.Tartar).Count();
-        int dirtyCount = tooth.teethCells.Where(item => item.teethState == TeethState.Dirty).Count();
         int decayCount = tooth.teethCells.Where(item => item.teethState == TeethState.Decay).Count();
 
         if (tartarCount > 0)
@@ -136,7 +135,7 @@ public class Mascotte : MonoBehaviour
             return;
         }
 
-        if (dirtyCount > 0)
+        if (tooth.dirtyTooth)
         {
             SwitchState(MascotteState.HELP_DIRTY);
             return;

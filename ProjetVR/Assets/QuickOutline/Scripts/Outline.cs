@@ -110,7 +110,10 @@ public class Outline : MonoBehaviour {
 
       renderer.materials = materials.ToArray();
     }
-  }
+
+        outlineFillMaterial.renderQueue = 3000;
+        outlineMaskMaterial.renderQueue = 3000;
+    }
 
   void OnValidate() {
 

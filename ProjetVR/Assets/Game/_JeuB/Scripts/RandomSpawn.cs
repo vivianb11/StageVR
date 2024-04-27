@@ -99,8 +99,6 @@ public class RandomSpawn : MonoBehaviour
         target.gameObject.SetActive(true);
 
         _skipTutorial = skipTutorial;
-
-        GameManager.Instance.gameStopped.AddListener(() => _skipTutorial = false);
     }
 
     private void OnDisable()
@@ -114,6 +112,7 @@ public class RandomSpawn : MonoBehaviour
     private void Start()
     {
         target.onDeath.AddListener(StopAllCoroutines);
+        GameManager.Instance.gameStopped.AddListener(() => _skipTutorial = false);
     }
 
     private void Update()

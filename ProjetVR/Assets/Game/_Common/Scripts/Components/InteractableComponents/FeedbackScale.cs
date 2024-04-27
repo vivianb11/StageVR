@@ -41,8 +41,6 @@ public class FeedbackScale : MonoBehaviour
 
     private void OnDisable()
     {
-        Debug.LogWarning("do not desable please use the Active property instead");
-
         ForceStop();
     }
 

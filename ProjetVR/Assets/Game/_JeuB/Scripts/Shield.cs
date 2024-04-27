@@ -1,9 +1,7 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using System.Collections;
 using UnityEngine.Events;
 
-public class BumperCar : MonoBehaviour
+public class Shield : MonoBehaviour
 {
     public GameObject targetObject;
     public float moveSpeed = 5f;

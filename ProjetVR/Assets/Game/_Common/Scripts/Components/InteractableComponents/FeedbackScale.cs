@@ -12,6 +12,8 @@ public class FeedbackScale : MonoBehaviour
 
     public UnityEvent FBFinish;
 
+    public bool resetScaleOnDisable = true;
+
     public bool IsScaling => transform.localScale != originalScale;
 
     private bool active = true;
@@ -57,22 +59,32 @@ public class FeedbackScale : MonoBehaviour
 
     public void ScaleIn()
     {
+        if (!Active)
+            return;
+
         StopAllCoroutines();
 
         Vector3 targetScale = originalScale * scaleOffset;
-        StartCoroutine(ScaleTimer(targetScale));
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(ScaleTimer(targetScale));
     }
 
     public void ScaleOut()
     {
+        if (!Active)
+            return;
+        
         StopAllCoroutines();
 
-        StartCoroutine(ScaleTimer(originalScale));
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(ScaleTimer(originalScale));
     }
 
     public void ForceStop()
     {
         StopAllCoroutines();
-        transform.localScale = originalScale;
+
+        if (resetScaleOnDisable)
+            transform.localScale = originalScale;
     }
 }

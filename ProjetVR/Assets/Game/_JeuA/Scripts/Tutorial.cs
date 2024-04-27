@@ -1,44 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.UI;
 
-public class Tutorial : MonoBehaviour
+namespace JeuA
 {
-    [SerializeField] bool enableTutorial;
-
-    [SerializeField] int maxIndex;
-
-    [SerializeField] int indexDoublon;
-
-    [SerializeField] int indexArrowTutorial;
-
-    [SerializeField] ToothManager toothManager;
-
-    [SerializeField] Transform arrowContainer;
-
-    private void Start()
+    public class Tutorial : MonoBehaviour
     {
-        if (enableTutorial)
-        {
-            foreach (Transform child in transform)
-                child.gameObject.SetActive(false);
+        [SerializeField] bool enableTutorial;
 
-            UpdateChildVisibility(0);
-            toothManager.GenerationListIndex.AddListener(UpdateChildVisibility);
+        [SerializeField] int maxIndex;
+
+        [SerializeField] int indexDoublon;
+
+        [SerializeField] int indexArrowTutorial;
+
+        [SerializeField] ToothManager toothManager;
+
+        [SerializeField] Transform arrowContainer;
+
+        private void Start()
+        {
+            if (enableTutorial)
+            {
+                foreach (Transform child in transform)
+                    child.gameObject.SetActive(false);
+
+                UpdateChildVisibility(0);
+                toothManager.GenerationListIndex.AddListener(UpdateChildVisibility);
+            }
+        }
+
+        private void UpdateChildVisibility(int index)
+        {
+            if (index > maxIndex)
+                return;
+
+            if (index == indexArrowTutorial)
+                arrowContainer.gameObject.SetActive(true);
+
+            transform.GetChild(index).gameObject.SetActive(true);
+            if (index == indexDoublon)
+                transform.GetChild(index + 1).gameObject.SetActive(true);
         }
     }
 
-    private void UpdateChildVisibility(int index)
-    {
-        if (index > maxIndex)
-            return;
-
-        if (index == indexArrowTutorial)
-            arrowContainer.gameObject.SetActive(true);
-
-        transform.GetChild(index).gameObject.SetActive(true);
-        if (index == indexDoublon)
-            transform.GetChild(index + 1).gameObject.SetActive(true);
-    }
 }

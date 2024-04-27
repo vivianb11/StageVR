@@ -94,6 +94,57 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  Enabled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5145801211073862924}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 8268317228274654823}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2923596771114906867}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7484446584782248144}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2923596771114906867
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,6 +332,12 @@ MonoBehaviour:
   activeStateChanged:
     m_PersistentCalls:
       m_Calls: []
+  OnActivation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeactivation:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4503662108298087581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,8 +350,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleOffset: 0.1
   scaleLerpSpeed: 0.809
+  FBFinish:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5145801211073862924
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,6 +541,12 @@ MonoBehaviour:
   activeStateChanged:
     m_PersistentCalls:
       m_Calls: []
+  OnActivation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeactivation:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3501852520134276878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,8 +559,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleOffset: 0.1
   scaleLerpSpeed: 0.809
+  FBFinish:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7484446584782248144
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,6 +750,12 @@ MonoBehaviour:
   activeStateChanged:
     m_PersistentCalls:
       m_Calls: []
+  OnActivation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeactivation:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &870343354515514422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,8 +768,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleOffset: 0.1
   scaleLerpSpeed: 0.809
+  FBFinish:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8268317228274654823
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,6 +959,12 @@ MonoBehaviour:
   activeStateChanged:
     m_PersistentCalls:
       m_Calls: []
+  OnActivation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeactivation:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5604566781937605751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -896,8 +977,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleOffset: 0.1
   scaleLerpSpeed: 0.809
+  FBFinish:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9058800240722321794
 GameObject:
   m_ObjectHideFlags: 0

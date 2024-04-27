@@ -4925,7 +4925,6 @@ GameObject:
   - component: {fileID: 6814719658331085250}
   - component: {fileID: 6637320440458980156}
   - component: {fileID: 4455509034328498865}
-  - component: {fileID: 6175838461894162794}
   m_Layer: 0
   m_Name: BainDeBoucheShooter
   m_TagString: Untagged
@@ -5030,21 +5029,5 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   signalLost:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &6175838461894162794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5075467375336953185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ada882ef50b5ba2439356545c995829e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scaleLerpSpeed: 0.15
-  FBFinish:
     m_PersistentCalls:
       m_Calls: []

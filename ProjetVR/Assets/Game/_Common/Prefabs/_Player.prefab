@@ -235,7 +235,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267983012281585786}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e933e81d3c20c74ea6fdc708a67e3a5, type: 3}
   m_Name: 
@@ -700,6 +700,7 @@ GameObject:
   - component: {fileID: 4321731649557977126}
   - component: {fileID: 7341539932913188322}
   - component: {fileID: 8967725153655843097}
+  - component: {fileID: 2211205192236020064}
   m_Layer: 0
   m_Name: CenterEyeAnchor
   m_TagString: MainCamera
@@ -842,7 +843,7 @@ MonoBehaviour:
   cursor: {fileID: 8246674448176818029}
   ignoreMask:
     serializedVersion: 2
-    m_Bits: 3711
+    m_Bits: 3839
   maxValue: 0
   value: 0
   leftEyeOpeningPercent: 1
@@ -1035,6 +1036,20 @@ MonoBehaviour:
   Calme:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2211205192236020064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4692747275123098972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8cfd45ac122bc54aabb0667caba73fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiltAmount: 35
+  blendSpeed: 1
 --- !u!1 &4996224962349704925
 GameObject:
   m_ObjectHideFlags: 0

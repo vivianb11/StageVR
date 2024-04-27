@@ -1,13 +1,17 @@
 using UnityEngine;
 
-public class BainDeBoucheProjectile : Projectile
+namespace JeuA
 {
-    private void OnTriggerEnter(Collider other)
+    public class BainDeBoucheProjectile : Projectile
     {
-        if (other.TryGetComponent(out CellBehavior cell))
+        private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Collid with cell");
-            cell.toothManager.RemoveSmellAmount();
+            if (other.TryGetComponent(out CellBehavior cell))
+            {
+                Debug.Log("Collid with cell");
+                cell.toothManager.MinusSmell();
+            }
         }
     }
+
 }

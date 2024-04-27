@@ -1,66 +1,68 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(LookAt))]
-[RequireComponent(typeof(SoundEmiter))]
-public class MascotteSpriteHandler : MonoBehaviour
+namespace JeuA
 {
-    [SerializeField] SO_MascotteEmotion cleaning;
-    [SerializeField] SO_MascotteEmotion confuse;
-    [SerializeField] SO_MascotteEmotion happy;
-    [SerializeField] SO_MascotteEmotion neutral;
-    [SerializeField] SO_MascotteEmotion neutral2;
-    [SerializeField] SO_MascotteEmotion thinking;
-
-    private SpriteRenderer spriteRenderer;
-    private SoundEmiter soundEmiter;
-
-    private void Awake()
+    [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(LookAt))]
+    [RequireComponent(typeof(SoundEmiter))]
+    public class MascotteSpriteHandler : MonoBehaviour
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        soundEmiter = GetComponent<SoundEmiter>();
-        GetComponent<LookAt>().SetTarget(Camera.main.transform);
-    }
+        [SerializeField] SO_MascotteEmotion cleaning;
+        [SerializeField] SO_MascotteEmotion confuse;
+        [SerializeField] SO_MascotteEmotion happy;
+        [SerializeField] SO_MascotteEmotion neutral;
+        [SerializeField] SO_MascotteEmotion neutral2;
+        [SerializeField] SO_MascotteEmotion thinking;
 
-    public void SwitchSprite(Mascotte.MascotteState state)
-    {
-        switch (state)
+        private SpriteRenderer spriteRenderer;
+        private SoundEmiter soundEmiter;
+
+        private void Awake()
         {
-            case Mascotte.MascotteState.IDLE:
-                spriteRenderer.sprite = neutral.sprites.PickRandom();
-                PlaySound(neutral.sounds.PickRandom());
-                break;
-            case Mascotte.MascotteState.HELP_TARTAR:
-                spriteRenderer.sprite = thinking.sprites.PickRandom();
-                PlaySound(thinking.sounds.PickRandom());
-                break;
-            case Mascotte.MascotteState.HELP_DECAY:
-                spriteRenderer.sprite = thinking.sprites.PickRandom();
-                PlaySound(thinking.sounds.PickRandom());
-                break;
-            case Mascotte.MascotteState.HELP_DIRTY:
-                spriteRenderer.sprite = thinking.sprites.PickRandom();
-                PlaySound(thinking.sounds.PickRandom());
-                break;
-            case Mascotte.MascotteState.HELP_SMELL:
-                spriteRenderer.sprite = thinking.sprites.PickRandom();
-                PlaySound(thinking.sounds.PickRandom());
-                break;
-            case Mascotte.MascotteState.HAPPY:
-                spriteRenderer.sprite = happy.sprites.PickRandom();
-                PlaySound(happy.sounds.PickRandom());
-                break;
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            soundEmiter = GetComponent<SoundEmiter>();
+            GetComponent<LookAt>().SetTarget(Camera.main.transform);
+        }
+
+        public void SwitchSprite(Mascotte.MascotteState state)
+        {
+            switch (state)
+            {
+                case Mascotte.MascotteState.IDLE:
+                    spriteRenderer.sprite = neutral.sprites.PickRandom();
+                    PlaySound(neutral.sounds.PickRandom());
+                    break;
+                case Mascotte.MascotteState.HELP_TARTAR:
+                    spriteRenderer.sprite = thinking.sprites.PickRandom();
+                    PlaySound(thinking.sounds.PickRandom());
+                    break;
+                case Mascotte.MascotteState.HELP_DECAY:
+                    spriteRenderer.sprite = thinking.sprites.PickRandom();
+                    PlaySound(thinking.sounds.PickRandom());
+                    break;
+                case Mascotte.MascotteState.HELP_DIRTY:
+                    spriteRenderer.sprite = thinking.sprites.PickRandom();
+                    PlaySound(thinking.sounds.PickRandom());
+                    break;
+                case Mascotte.MascotteState.HELP_SMELL:
+                    spriteRenderer.sprite = thinking.sprites.PickRandom();
+                    PlaySound(thinking.sounds.PickRandom());
+                    break;
+                case Mascotte.MascotteState.HAPPY:
+                    spriteRenderer.sprite = happy.sprites.PickRandom();
+                    PlaySound(happy.sounds.PickRandom());
+                    break;
+            }
+        }
+
+        private void PlaySound(Sound sound)
+        {
+            if (sound == null)
+                return;
+
+            soundEmiter.sound = sound;
+            soundEmiter.PlaySound();
         }
     }
 
-    private void PlaySound(Sound sound)
-    {
-        if (sound == null)
-            return;
-
-        soundEmiter.sound = sound;
-        soundEmiter.PlaySound();
-    }
 }

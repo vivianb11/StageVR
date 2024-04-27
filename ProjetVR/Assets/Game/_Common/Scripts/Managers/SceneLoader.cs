@@ -17,7 +17,7 @@ public class SceneLoader : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        rend.sharedMaterial.SetFloat("_force", 1f);
+        rend.material.SetFloat("_force", 1f);
     }
 
     public void LodScene(int  sceneId)
@@ -50,12 +50,12 @@ public class SceneLoader : MonoBehaviour
     public IEnumerator Fade(float fadeTarget, float fadeDuration, bool invokeFadeInEvent)
     {
         float time = 0;
-        float startAlpha = rend.sharedMaterial.GetFloat("_force");
+        float startAlpha = rend.material.GetFloat("_force");
 
         while (time < fadeDuration)
         {
             time += Time.deltaTime;
-            rend.sharedMaterial.SetFloat("_force", Mathf.Lerp(startAlpha, fadeTarget, time / fadeDuration));
+            rend.material.SetFloat("_force", Mathf.Lerp(startAlpha, fadeTarget, time / fadeDuration));
             yield return null;
         }
 

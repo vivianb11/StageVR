@@ -215,7 +215,7 @@ public class EyeManager : MonoBehaviour
 
     private void RaycastInteractable()
     {
-        if (RaycastForward(out RaycastHit hit) && hit.collider.TryGetComponent(out Interactable component) && component.activated)
+        if (RaycastForward(out RaycastHit hit) && hit.collider.TryGetComponent(out Interactable component) && component.activated && component.enabled)
         {
             if (!interactable && component.activated)
             {

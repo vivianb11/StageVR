@@ -1,30 +1,33 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SmoothShield : MonoBehaviour
+
+namespace JeuB
 {
-
-    //[SerializeField] UnityEvent onHit = new UnityEvent();
-    //private int scoreDeathEnemy;
-
-    void Update()
+    public class SmoothShield : MonoBehaviour
     {
-        transform.LookAt(EyeManager.Instance.hitPosition);
+        //[SerializeField] UnityEvent onHit = new UnityEvent();
+        //private int scoreDeathEnemy;
 
-        Vector3 rot = transform.localEulerAngles;
-        rot.x = 0;
-        rot.z = 0;
+        void Update()
+        {
+            transform.LookAt(EyeManager.Instance.hitPosition);
 
-        transform.localEulerAngles = rot;
-    }
+            Vector3 rot = transform.localEulerAngles;
+            rot.x = 0;
+            rot.z = 0;
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if(other.tag == "Ennemy")
-    //    {
-    //        onHit.Invoke();
-    //        other.GetComponent<Mob>().scoreOnDeath = scoreDeathEnemy;
+            transform.localEulerAngles = rot;
+        }
+
+        //private void OnTriggerEnter(Collider other)
+        //{
+        //    if(other.tag == "Ennemy")
+        //    {
+        //        onHit.Invoke();
+        //        other.GetComponent<Mob>().scoreOnDeath = scoreDeathEnemy;
             
-    //    }
-    //}
+        //    }
+        //}
+    }
 }

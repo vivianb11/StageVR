@@ -64,7 +64,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 892c00bea4750f94c92b7011a95ec6b3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 892c00bea4750f94c92b7011a95ec6b3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -142,6 +142,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 892c00bea4750f94c92b7011a95ec6b3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2009989608996401495}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 892c00bea4750f94c92b7011a95ec6b3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2497531558204013450}
   m_SourcePrefab: {fileID: 100100000, guid: 892c00bea4750f94c92b7011a95ec6b3, type: 3}
 --- !u!4 &1572134451600363943 stripped
 Transform:
@@ -216,11 +219,34 @@ MonoBehaviour:
   targetObject: {fileID: 0}
   moveSpeed: 5
   returnSpeed: 2
-  isColliding: 0
   moveDuration: 0.02
   OnShieldHit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ProtectedToothBehaviours, Assembly-CSharp
+        m_MethodName: ScoreMultiplier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2497531558204013450}
+        m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2009989608996401495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,9 +269,9 @@ MonoBehaviour:
       useDynamicFrom: 1
       useGameObjectTo: 0
       from: {x: 0, y: 0, z: 0}
-      to: {x: 0, y: 0, z: -0.75}
+      to: {x: 0, y: 0, z: 0.75}
       toObject: {fileID: 0}
-      duration: 0.5
+      duration: 0.2
       curve:
         serializedVersion: 2
         m_Curve:
@@ -305,9 +331,9 @@ MonoBehaviour:
       useDynamicFrom: 1
       useGameObjectTo: 0
       from: {x: 0, y: 0, z: 0}
-      to: {x: 0, y: 0, z: -1}
+      to: {x: 0, y: 0, z: 1}
       toObject: {fileID: 0}
-      duration: 0.5
+      duration: 0.2
       curve:
         serializedVersion: 2
         m_Curve:
@@ -361,16 +387,61 @@ MonoBehaviour:
         m_RotationOrder: 0
       completed:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 8143824554320094202}
+            m_TargetAssemblyTypeName: BumperCar, Assembly-CSharp
+            m_MethodName: TweenerChecker
+            m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
     started:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 8143824554320094202}
+          m_TargetAssemblyTypeName: BumperCar, Assembly-CSharp
+          m_MethodName: TweenerChecker
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
     completed:
       m_PersistentCalls:
         m_Calls: []
     isPlaying: 0
   autoPlayMontage: 0
   tweenIndex: 0
+--- !u!114 &2497531558204013450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2205223783277218589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5c2cb0433461840a9c6e40dff9d892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  place: 1
+  sound:
+    soundType: 2
+    clip: {fileID: 8300000, guid: 1b2f7f070dd101e4590d120b1c604904, type: 3}
+    timePaused: 0
+    pausedTime: 0
+  playRandomSfx: 0
+  sfxs: []
+  lastPlayedSound: 0
 --- !u!1001 &8941549109938543236
 PrefabInstance:
   m_ObjectHideFlags: 0

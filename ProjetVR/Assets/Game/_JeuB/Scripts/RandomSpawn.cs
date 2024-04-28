@@ -236,6 +236,7 @@ namespace JeuB
             }
             else
             {
+                _skipTutorial = true;
                 ChangeDifficulty(difficultyPresets[difficultyPresetsCount]);
                 difficultyPresetsCount++;
             }

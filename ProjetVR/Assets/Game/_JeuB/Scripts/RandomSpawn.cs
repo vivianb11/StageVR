@@ -95,7 +95,9 @@ namespace JeuB
 
             target.gameObject.SetActive(true);
 
+#if UNITY_EDITOR
             _skipTutorial = skipTutorial;
+#endif
         }
 
         private void OnDisable()
@@ -227,7 +229,7 @@ namespace JeuB
             if (!Application.isPlaying) return;
             #endif
 
-            if (tutorialDifficultiesCount < tutorialDifficulties.Length && !skipTutorial)
+            if (tutorialDifficultiesCount < tutorialDifficulties.Length && !_skipTutorial)
             {
                 ChangeDifficulty(tutorialDifficulties[tutorialDifficultiesCount]);
                 tutorialDifficultiesCount++;

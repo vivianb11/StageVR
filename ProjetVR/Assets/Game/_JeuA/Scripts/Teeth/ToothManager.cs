@@ -215,6 +215,14 @@ namespace JeuA
             {
                 dirtyTooth = false;
                 foodAmount = 0;
+                
+                foreach (var foodpos in foodSpawnPos)
+                {
+                    foreach (Transform child in foodpos)
+                    {
+                        Destroy(child.gameObject);
+                    }
+                }
             }
             else
             {

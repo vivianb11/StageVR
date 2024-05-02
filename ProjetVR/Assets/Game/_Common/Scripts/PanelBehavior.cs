@@ -79,11 +79,11 @@ public class PanelBehavior : MonoBehaviour
         }
     }
 
-    public void SetDialog(SO_Dialogs newDialog)
+    public void SetDialogue(string dialogue)
     {
         ResetText();
 
-        textMesh.text = newDialog.content;
+        textMesh.text = dialogue;
 
         StartCoroutine(ScaleBackground());
 

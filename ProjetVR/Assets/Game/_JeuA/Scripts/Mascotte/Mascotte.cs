@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Linq;
 using UnityEngine.Events;
+using NaughtyAttributes;
+using System.Collections.Generic;
 
 namespace JeuA
 {
@@ -15,23 +17,38 @@ namespace JeuA
 
         public MascotteState state;
 
-        [SerializeField] ToothManager tooth;
-
         [SerializeField] float checkDelay;
 
-        [SerializeField]
-        private float interactionDelay = 2f;
+        [SerializeField] float interactionDelay = 2f;
+
+        [SerializeField] ToothManager tooth;
+
+        [SerializeField] DialogueSystem dialogueSystem;
+
+        public SO_Dialogs tartarDialogue;
+
+        public SO_Dialogs dirtyDialogue;
+
+        public SO_Dialogs decayDialogue;
+
+        public SO_Dialogs smellDialogue;
+
+        public SO_Dialogs happyDialogue;
 
         private bool canClean = true;
 
         [Space(10)]
-
+        [Foldout("Events")]
         public UnityEvent<MascotteState> stateSwitched;
-
+        [Foldout("Events")]
         public UnityEvent tartarHelpState;
+        [Foldout("Events")]
         public UnityEvent dirtyHelpState;
+        [Foldout("Events")]
         public UnityEvent decayHelpState;
+        [Foldout("Events")]
         public UnityEvent smellHelpState;
+        [Foldout("Events")]
         public UnityEvent happyState;
 
         private Coroutine checkCoroutine;
@@ -81,27 +98,29 @@ namespace JeuA
             state = newState;
             stateSwitched?.Invoke(state);
 
+            bool inTutorial = Tutorial.inTutorial;
+
             switch (newState)
             {
                 case MascotteState.HELP_TARTAR:
                     tartarHelpState?.Invoke();
-                    Debug.Log("Say tartar stuff".SetColor(Color.green));
+                    dialogueSystem.PlayDialogue(tartarDialogue, inTutorial);
                     break;
                 case MascotteState.HELP_DECAY:
                     decayHelpState?.Invoke();
-                    Debug.Log("Say decay stuff".SetColor(Color.green));
+                    dialogueSystem.PlayDialogue(decayDialogue, inTutorial);
                     break;
                 case MascotteState.HELP_DIRTY:
                     dirtyHelpState?.Invoke();
-                    Debug.Log("Say dirty stuff".SetColor(Color.green));
+                    dialogueSystem.PlayDialogue(dirtyDialogue, inTutorial);
                     break;
                 case MascotteState.HELP_SMELL:
                     smellHelpState?.Invoke();
-                    Debug.Log("Say smell stuff".SetColor(Color.green));
+                    dialogueSystem.PlayDialogue(smellDialogue, inTutorial);
                     break;
                 case MascotteState.HAPPY:
                     happyState?.Invoke();
-                    Debug.Log("GG !".SetColor(Color.green));
+                    dialogueSystem.PlayDialogue(happyDialogue, inTutorial);
                     break;
                 case MascotteState.IDLE:
                     StartToothCheckingState(checkDelay);

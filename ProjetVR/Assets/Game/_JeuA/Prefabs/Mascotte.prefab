@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 72330416483903203}
   - component: {fileID: 4821794245060294641}
   m_Layer: 0
-  m_Name: Dialoger
+  m_Name: DialogueSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,10 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UseButtonInteractable: 0
-  dialogs:
-  - {fileID: 11400000, guid: 7f07fcdc1b23f67468ebb8e56fe5a708, type: 2}
-  - {fileID: 11400000, guid: 8dde8df5afc6e634a8e74c7f131000c4, type: 2}
-  - {fileID: 11400000, guid: b833bf54db4ff2d44a84b7b92d89a90c, type: 2}
+  dialogs: []
   index: 0
 --- !u!54 &2558439003621601745
 Rigidbody:
@@ -240,9 +237,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  tooth: {fileID: 0}
   checkDelay: 2
   interactionDelay: 2.5
+  tooth: {fileID: 0}
+  dialogueSystem: {fileID: 5394696156331351968}
+  tartarDialogue: {fileID: 11400000, guid: e753f06b32815474c8aa1645cbebb68c, type: 2}
+  dirtyDialogue: {fileID: 11400000, guid: 737c7037980eb724e9ffef8ebfec8225, type: 2}
+  decayDialogue: {fileID: 11400000, guid: b833bf54db4ff2d44a84b7b92d89a90c, type: 2}
+  smellDialogue: {fileID: 11400000, guid: 436e6b1916983de48a61a3848937ddeb, type: 2}
+  happyDialogue: {fileID: 11400000, guid: 8dde8df5afc6e634a8e74c7f131000c4, type: 2}
   stateSwitched:
     m_PersistentCalls:
       m_Calls:
@@ -260,79 +263,19 @@ MonoBehaviour:
         m_CallState: 2
   tartarHelpState:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5394696156331351968}
-        m_TargetAssemblyTypeName: Dialoger, Assembly-CSharp
-        m_MethodName: PlayDiolog
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: e753f06b32815474c8aa1645cbebb68c, type: 2}
-          m_ObjectArgumentAssemblyTypeName: SO_Dialogs, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   dirtyHelpState:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5394696156331351968}
-        m_TargetAssemblyTypeName: Dialoger, Assembly-CSharp
-        m_MethodName: PlayDiolog
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 737c7037980eb724e9ffef8ebfec8225, type: 2}
-          m_ObjectArgumentAssemblyTypeName: SO_Dialogs, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   decayHelpState:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5394696156331351968}
-        m_TargetAssemblyTypeName: Dialoger, Assembly-CSharp
-        m_MethodName: PlayDiolog
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: b833bf54db4ff2d44a84b7b92d89a90c, type: 2}
-          m_ObjectArgumentAssemblyTypeName: SO_Dialogs, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   smellHelpState:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5394696156331351968}
-        m_TargetAssemblyTypeName: Dialoger, Assembly-CSharp
-        m_MethodName: PlayDiolog
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 436e6b1916983de48a61a3848937ddeb, type: 2}
-          m_ObjectArgumentAssemblyTypeName: SO_Dialogs, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   happyState:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5394696156331351968}
-        m_TargetAssemblyTypeName: Dialoger, Assembly-CSharp
-        m_MethodName: PlayDiolog
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 8dde8df5afc6e634a8e74c7f131000c4, type: 2}
-          m_ObjectArgumentAssemblyTypeName: SO_Dialogs, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!65 &5608997657475271373
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -636,7 +579,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9045695934720661824}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -5495902117074765545, guid: afe37f67a7650434980e2a6988e678f2, type: 3}
 --- !u!23 &7293880192173762167
 MeshRenderer:
   m_ObjectHideFlags: 0

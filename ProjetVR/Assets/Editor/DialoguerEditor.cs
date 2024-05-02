@@ -1,14 +1,14 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(Dialoger))]
-public class DialogerEditor : Editor
+[CustomEditor(typeof(DialogueSystem))]
+public class DialoguerEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
 
-        Dialoger dialoguer = (Dialoger)target;
+        DialogueSystem dialoguer = (DialogueSystem)target;
 
         GUILayout.Label("Choose a Game Mode");
         dialoguer.index = Mathf.Clamp(EditorGUILayout.Popup(dialoguer.index, GetDialogs(dialoguer)), 0, dialoguer.dialogs.Count);
@@ -18,12 +18,12 @@ public class DialogerEditor : Editor
 
             if (GUILayout.Button("Play Dialog"))
             {
-                dialoguer.PlayDiolog(dialoguer.index);
+                dialoguer.PlayDialogue(dialoguer.index, false);
             }
         }
     }
 
-    private string[] GetDialogs(Dialoger dialoguer)
+    private string[] GetDialogs(DialogueSystem dialoguer)
     {
         string[] gameModes = new string[dialoguer.dialogs.Count];
 

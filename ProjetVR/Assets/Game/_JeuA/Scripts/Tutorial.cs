@@ -16,10 +16,14 @@ namespace JeuA
 
         [SerializeField] Transform arrowContainer;
 
+        public static bool inTutorial;
+
         private void Start()
         {
             if (enableTutorial)
             {
+                inTutorial = true;
+
                 foreach (Transform child in transform)
                     child.gameObject.SetActive(false);
 
@@ -31,7 +35,10 @@ namespace JeuA
         private void UpdateChildVisibility(int index)
         {
             if (index > maxIndex)
+            {
+                inTutorial = false;
                 return;
+            }
 
             if (index == indexArrowTutorial)
                 arrowContainer.gameObject.SetActive(true);

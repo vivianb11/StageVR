@@ -26,13 +26,6 @@ public class EyeManager : MonoBehaviour
     public SO_Signal grabDeactivation;
 
     [Header("Events")]
-    public UnityEvent leftEyeClosed;
-    public UnityEvent rightEyeClosed;
-
-    public UnityEvent leftEyeOpened;
-    public UnityEvent rightEyeOpened;
-
-    public UnityEvent blink;
 
     public UnityEvent lookInSelectable;
     public UnityEvent lookOutSelectable;

@@ -83,9 +83,10 @@ public class PanelBehavior : MonoBehaviour
     {
         ResetText();
 
-        textMesh.text = dialogue;
+        //textMesh.text = dialogue;
 
-        StartCoroutine(ScaleBackground());
+        //StartCoroutine(ScaleBackground());
+        StartCoroutine(SetTextWithTime(dialogue, 0.5f));
 
         //SetWoobleSections();
         //SetColorSections();
@@ -108,6 +109,13 @@ public class PanelBehavior : MonoBehaviour
         foreach (var letter in newText)
         {
             textMesh.text += letter;
+
+            Vector3 scale = Vector2.zero;
+            scale.x = textMesh.GetRenderedValues().x + padding.x;
+            scale.y = textMesh.GetRenderedValues().y + padding.y;
+            scale.z = 0.1f;
+
+            background.localScale = scale;
 
             yield return new WaitForSeconds((time / newText.Length));
         }

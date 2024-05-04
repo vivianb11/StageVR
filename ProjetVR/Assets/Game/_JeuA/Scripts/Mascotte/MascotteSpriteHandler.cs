@@ -3,7 +3,6 @@ using UnityEngine;
 namespace JeuA
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    [RequireComponent(typeof(LookAt))]
     [RequireComponent(typeof(SoundEmiter))]
     public class MascotteSpriteHandler : MonoBehaviour
     {
@@ -21,7 +20,6 @@ namespace JeuA
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
             soundEmiter = GetComponent<SoundEmiter>();
-            GetComponent<LookAt>().SetTarget(Camera.main.transform);
         }
 
         public void SwitchSprite(Mascotte.MascotteState state)

@@ -92,6 +92,9 @@ namespace JeuB
             currentScore += scoreToAdd;
             scaleUp = true;
             scoreDisplay.text = currentScore.ToString();
+
+            SetPlayerBestScore();
+            SetBestScore();
         }
 
         public void SetPlayerBestScore()
@@ -136,7 +139,5 @@ namespace JeuB
                 PlayerPrefs.Save();
             }
         }
-
-
     }
 }

@@ -62,10 +62,10 @@ namespace JeuB
             _outlineEffect.OutlineWidth = 0;
 
             health = Maxhealth;
-            // HeadMotionTracker.Instance.Excited.AddListener(() => ScoreEnabled = false);
-            // HeadMotionTracker.Instance.Excited.AddListener(() => _lock.SetActive(true));
-            // HeadMotionTracker.Instance.Normal.AddListener(() => ScoreEnabled = true);
-            // HeadMotionTracker.Instance.Normal.AddListener(() => _lock.SetActive(false));
+            HeadMotionTracker.Instance.Excited.AddListener(() => ScoreEnabled = false);
+            HeadMotionTracker.Instance.Excited.AddListener(() => _lock.SetActive(true));
+            HeadMotionTracker.Instance.Normal.AddListener(() => ScoreEnabled = true);
+            HeadMotionTracker.Instance.Normal.AddListener(() => _lock.SetActive(false));
         }
 
         public void Damaged()
@@ -167,7 +167,6 @@ namespace JeuB
                         {
                         
                         }
-
                         else
                         {
                             Transform deletedText = multiplierTexts.transform.GetChild(textIndex - 1);
@@ -179,8 +178,6 @@ namespace JeuB
                 }
             }
             ScoreManager.Instance.AddScore(enemyPoints * multiplier);
-            ScoreManager.Instance.SetPlayerBestScore();
-            ScoreManager.Instance.SetBestScore();
         }
     }
 }

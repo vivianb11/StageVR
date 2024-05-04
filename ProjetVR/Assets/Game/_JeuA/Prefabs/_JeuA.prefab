@@ -445,7 +445,7 @@ Transform:
   m_GameObject: {fileID: 6069785814796392396}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: -0.8, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -470,7 +470,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6400650230984611770}
-  - component: {fileID: 3500090032356967565}
   - component: {fileID: 1475391127399974044}
   m_Layer: 0
   m_Name: _JeuA
@@ -495,21 +494,6 @@ Transform:
   - {fileID: 2925910362670227805}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3500090032356967565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6798597841116208069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e571d69dcaa00e4a8423acbf9b4a1f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lerpSpeed: 0.05
-  offset: {x: 0, y: -1, z: 0}
-  distance: 0
 --- !u!114 &1475391127399974044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -892,6 +876,10 @@ PrefabInstance:
     - target: {fileID: 4308152733045031611, guid: 9a130a12434182b41bbb084a5e50ea1a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150633777857989361, guid: 9a130a12434182b41bbb084a5e50ea1a, type: 3}
+      propertyPath: alignDirection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8746680052412832142, guid: 9a130a12434182b41bbb084a5e50ea1a, type: 3}
       propertyPath: toothManager

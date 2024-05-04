@@ -9,6 +9,9 @@ public class CenterEyeRotator : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.Lerp(leftEye.position, rightEye.position, 0.5f) + new Vector3(eyeOffset.x, eyeOffset.y, 0);
+        transform.rotation = Quaternion.Lerp(leftEye.rotation, rightEye.rotation, 0.5f);
+
+        // Apply eye offset to the rotation
+        transform.rotation = Quaternion.Euler(eyeOffset) * transform.rotation;
     }
 }

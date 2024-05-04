@@ -187,7 +187,10 @@ namespace JeuA
 
         private IEnumerator CheckDelay(float delay)
         {
-            yield return new WaitForSeconds(delay);
+            if (Tutorial.inTutorial)
+                yield return new WaitForSeconds(0);
+            else
+                yield return new WaitForSeconds(delay);
             CheckTooth();
         }
     }

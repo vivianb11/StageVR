@@ -1,5 +1,4 @@
 using SignalSystem;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,12 +16,7 @@ public class EyeManager : MonoBehaviour
 
     public Interactable interactable { get; private set; }
 
-    [Header("Grab")]
-    [SerializeField]
-    private float distance;
-    private Grabable grabbedBody;
-
-    private bool preBlink = false;
+    public Vector2 eyeOffset = new Vector2(0,0);
 
     public bool hitSuccessful;
     public Vector3 hitPosition;
@@ -53,24 +47,6 @@ public class EyeManager : MonoBehaviour
     private void Update()
     {
         RaycastInteractable();
-    }
-
-    private void FixedUpdate()
-    {
-        if (grabbedBody)
-        {
-            if (RaycastForward(out RaycastHit hit))
-            {
-                grabbedBody.MoveTo(hit.point, hit.normal);
-            }
-            else
-            {
-                Vector3 targetPos = transform.position + cursor.forward * distance;
-
-                grabbedBody.MoveTo(targetPos, hit.normal);
-            }
-
-        }
     }
 
     private void OnInteractableSelected()
@@ -145,34 +121,5 @@ public class EyeManager : MonoBehaviour
             interactable.onSelected.RemoveListener(OnInteractableSelected);
             interactable = null;
         }
-
-        if (Physics.Raycast(transform.position, cursor.forward, out hit, Mathf.Infinity, LayerMask.NameToLayer("Ignore")) && hit.collider.TryGetComponent(out TestImageGenerator generator))
-        {
-            generator.SetPixel(hit.textureCoord, Color.red, 0);
-        }
-    }
-
-    public Vector3 GetGrabbedBodyDestination()
-    {
-        return (transform.position + cursor.forward * distance) - grabbedBody.transform.position;
-    }
-
-    public Grabable GetGrabbedBody()
-    {
-        return grabbedBody;
-    }
-
-    public void SetGrabbedBody(Grabable followTarget)
-    {
-        if (followTarget == null)
-            grabActivation.Emit();
-        else
-            grabDeactivation.Emit();
-
-        grabbedBody = followTarget;
-
-        if (!grabbedBody)
-            return;
-        distance = Vector3.Distance(transform.position, grabbedBody.transform.position);
     }
 }

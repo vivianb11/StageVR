@@ -471,6 +471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6400650230984611770}
   - component: {fileID: 3500090032356967565}
+  - component: {fileID: 1475391127399974044}
   m_Layer: 0
   m_Name: _JeuA
   m_TagString: Untagged
@@ -509,6 +510,23 @@ MonoBehaviour:
   lerpSpeed: 0.05
   offset: {x: 0, y: -1, z: 0}
   distance: 0
+--- !u!114 &1475391127399974044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798597841116208069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7560dea7eaa6c40933c7bf2f2b7c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musics:
+  - {fileID: 8300000, guid: dd0407402dc73be4fb30d3f1d625ab65, type: 3}
+  - {fileID: 8300000, guid: cd08eb4b8f197fd45a484b9cfda04bee, type: 3}
+  - {fileID: 8300000, guid: 51d3a6b98b30e424a94bb0debe96c320, type: 3}
+  - {fileID: 8300000, guid: e3bc4708024568f48aadb09e997fbf43, type: 3}
 --- !u!1 &7430192747945397466
 GameObject:
   m_ObjectHideFlags: 0

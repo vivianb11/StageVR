@@ -1,17 +1,25 @@
 using NaughtyAttributes;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [ExecuteInEditMode]
 public class Container : MonoBehaviour
 {
+    public enum AlignDirection
+    {
+        VERTICAL, HORIZONTAL
+    }
+
     public enum AlignPosition
     {
         LEFT, CENTER, RIGHT
     }
 
-    public float space;
-    public AlignPosition alignPosition;
+    public float space = 1f;
+
+    public AlignPosition alignPosition = AlignPosition.CENTER;
+    public AlignDirection alignDirection = AlignDirection.HORIZONTAL;
 
     private void Start()
     {
@@ -48,22 +56,34 @@ public class Container : MonoBehaviour
     [Button]
     private void UpdateChildsPosition()
     {
-        Transform[] activeChilds = GetActiveChilds();
+        List<Transform> activeChilds = GetActiveChilds().ToList();
 
-        for (int i = 0; i < activeChilds.Length; i++)
+        Vector3 direction = Vector3.zero;
+
+        switch (alignDirection)
+        {
+            case AlignDirection.VERTICAL:
+                direction = Vector3.up;
+                break;
+            case AlignDirection.HORIZONTAL:
+                direction = Vector3.right;
+                break;
+        }
+
+        for (int i = 0; i < activeChilds.Count; i++)
         {
             Transform child = activeChilds[i];
 
             switch (alignPosition)
             {
                 case AlignPosition.LEFT:
-                    child.localPosition = new Vector3(space, 0, 0) * i;
+                    child.localPosition = direction * space * i;
                     break;
                 case AlignPosition.CENTER:
-                    child.localPosition = (new Vector3(space, 0, 0) * i) - new Vector3(space * (activeChilds.Length - 1), 0, 0) / 2f;
+                    child.localPosition = (direction * space * i) - direction * (space * (activeChilds.Count - 1)) / 2f;
                     break;
                 case AlignPosition.RIGHT:
-                    child.localPosition = new Vector3(-space, 0, 0) * i;
+                    child.localPosition = direction * -space * i;
                     break;
             }
         }

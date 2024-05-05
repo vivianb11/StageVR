@@ -414,34 +414,8 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 848595093736710681, guid: 54aeb0f9a6b61db4198320c58082f261, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7261081226487027087}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7800505201498700643, guid: 54aeb0f9a6b61db4198320c58082f261, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 267882820130028461}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54aeb0f9a6b61db4198320c58082f261, type: 3}
---- !u!1 &3958132473859001630 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7800505201498700643, guid: 54aeb0f9a6b61db4198320c58082f261, type: 3}
-  m_PrefabInstance: {fileID: 6534418105591363197}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &267882820130028461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3958132473859001630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96347756357120c42b6c6ddd61e1bf9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnActivated:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDeactivated:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &5866002391785509988 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 848595093736710681, guid: 54aeb0f9a6b61db4198320c58082f261, type: 3}

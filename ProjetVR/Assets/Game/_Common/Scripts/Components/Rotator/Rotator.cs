@@ -73,16 +73,16 @@ public class Rotator : MonoBehaviour
         float elapsedTime = 0;
         float duration = 0.5f; // Adjust the duration as needed for the desired rotation speed
 
-        Quaternion startRotation = target.rotation;
+        Quaternion startRotation = target.localRotation;
         Quaternion endRotation = Quaternion.AngleAxis(angle, axis) * startRotation;
 
         while (elapsedTime < duration)
         {
-            target.rotation = Quaternion.Slerp(startRotation, endRotation, curve.Evaluate(elapsedTime / duration));
+            target.localRotation = Quaternion.Slerp(startRotation, endRotation, curve.Evaluate(elapsedTime / duration));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        target.rotation = endRotation; // Ensure the final rotation is exactly as desired
+        target.localRotation = endRotation; // Ensure the final rotation is exactly as desired
     }
 }

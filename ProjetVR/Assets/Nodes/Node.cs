@@ -5,42 +5,38 @@ namespace Nodes
 {
     public class Node : MonoBehaviour
     {
-        public UnityEvent<Transform> childAdded;
+        public UnityEvent<Node> childAdded;
 
-        public UnityEvent<Transform> childRemoved;
+        public UnityEvent<Node> childRemoved;
 
         public Node parent;
 
         public void AddChild(Node newChild)
         {
-            Transform newChildTransform = newChild.transform;
-
-            if (newChildTransform.IsChildOf(transform) || newChild == transform)
+            if (newChild.transform.IsChildOf(transform) || newChild == transform)
             {
                 Debug.LogError($"Object {newChild.name} is already child of {name}");
                 return;
             }
 
-            newChildTransform.SetParent(transform);
+            newChild.transform.SetParent(transform);
             newChild.parent = this;
 
-            childAdded?.Invoke(newChildTransform);
+            childAdded?.Invoke(newChild);
         }
 
         public void RemoveChild(Node oldChild)
         {
-            Transform oldChildTransform = oldChild.transform;
-
-            if (!oldChildTransform.IsChildOf(transform))
+            if (!oldChild.transform.IsChildOf(transform))
             {
                 Debug.LogError($"Object {oldChild.name} not child of {name}");
                 return;
             }
 
-            oldChildTransform.SetParent(null);
+            oldChild.transform.SetParent(null);
             oldChild.parent = null;
 
-            childRemoved?.Invoke(oldChildTransform);
+            childRemoved?.Invoke(oldChild);
         }
 
         public void ReparentTo(Node newParent)

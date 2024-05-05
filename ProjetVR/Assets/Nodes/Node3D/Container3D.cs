@@ -24,7 +24,7 @@ namespace Nodes.Node3D
 
         private void Start()
         {
-            childAdded.AddListener(OnChildAdded);
+            childOrderChanged.AddListener(UpdateChildsPosition);
 
             UpdateChildsPosition();
         }
@@ -32,11 +32,6 @@ namespace Nodes.Node3D
         private void OnEnable()
         {
             UpdateChildsPosition();
-        }
-
-        private void OnChildAdded(UnityNode child)
-        {
-            child.transform.SetParent(transform);
         }
 
         private Transform[] GetActiveChilds()
@@ -53,9 +48,7 @@ namespace Nodes.Node3D
 
         private void UpdateChildsPosition()
         {
-            List<Transform> activeChilds = GetActiveChilds().ToList();
-
-            Debug.Log(activeChilds.Count);
+            Transform[] activeChilds = GetActiveChilds();
 
             Vector3 direction = Vector3.zero;
 
@@ -69,7 +62,7 @@ namespace Nodes.Node3D
                     break;
             }
 
-            for (int i = 0; i < activeChilds.Count; i++)
+            for (int i = 0; i < activeChilds.Length; i++)
             {
                 Transform child = activeChilds[i];
 
@@ -79,7 +72,7 @@ namespace Nodes.Node3D
                         child.localPosition = direction * space * i;
                         break;
                     case AlignPosition.CENTER:
-                        child.localPosition = (direction * space * i) - direction * (space * (activeChilds.Count - 1)) / 2f;
+                        child.localPosition = (direction * space * i) - direction * (space * (activeChilds.Length - 1)) / 2f;
                         break;
                     case AlignPosition.RIGHT:
                         child.localPosition = direction * -space * i;

@@ -5,11 +5,21 @@ namespace Nodes
 {
     public class UnityNode : MonoBehaviour
     {
-        public UnityEvent<UnityNode> childAdded;
+        public UnityEvent<UnityNode> childAdded = new();
 
-        public UnityEvent<UnityNode> childRemoved;
+        public UnityEvent<UnityNode> childRemoved = new();
 
-        public UnityNode parent;
+        public UnityEvent childOrderChanged = new();
+
+        public UnityEvent destroyed = new();
+
+        public UnityNode parent { get; private set; }
+
+        private void OnDestroy()
+        {
+            destroyed?.Invoke();
+            parent?.childOrderChanged?.Invoke();
+        }
 
         public void AddChild(UnityNode newChild)
         {
@@ -23,6 +33,7 @@ namespace Nodes
             newChild.parent = this;
 
             childAdded?.Invoke(newChild);
+            childOrderChanged?.Invoke();
         }
 
         public void RemoveChild(UnityNode oldChild)
@@ -37,6 +48,7 @@ namespace Nodes
             oldChild.parent = null;
 
             childRemoved?.Invoke(oldChild);
+            childOrderChanged?.Invoke();
         }
 
         public void ReparentTo(UnityNode newParent)

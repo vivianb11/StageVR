@@ -3,15 +3,15 @@ using UnityEngine.Events;
 
 namespace Nodes
 {
-    public class Node : MonoBehaviour
+    public class UnityNode : MonoBehaviour
     {
-        public UnityEvent<Node> childAdded;
+        public UnityEvent<UnityNode> childAdded;
 
-        public UnityEvent<Node> childRemoved;
+        public UnityEvent<UnityNode> childRemoved;
 
-        public Node parent;
+        public UnityNode parent;
 
-        public void AddChild(Node newChild)
+        public void AddChild(UnityNode newChild)
         {
             if (newChild.transform.IsChildOf(transform) || newChild == transform)
             {
@@ -25,7 +25,7 @@ namespace Nodes
             childAdded?.Invoke(newChild);
         }
 
-        public void RemoveChild(Node oldChild)
+        public void RemoveChild(UnityNode oldChild)
         {
             if (!oldChild.transform.IsChildOf(transform))
             {
@@ -39,7 +39,7 @@ namespace Nodes
             childRemoved?.Invoke(oldChild);
         }
 
-        public void ReparentTo(Node newParent)
+        public void ReparentTo(UnityNode newParent)
         {
             parent.RemoveChild(this);
             newParent.AddChild(this);

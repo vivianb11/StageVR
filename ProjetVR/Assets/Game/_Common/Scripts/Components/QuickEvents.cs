@@ -1,11 +1,13 @@
 using NaughtyAttributes;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class QuickEvents : MonoBehaviour
 {
+    bool AutoDisableAfterEvent = false;
+    [ShowIf("AutoDisableAfterEvent")]
+    bool DestroyComponentAfterEvent = false;
+
     [Header("On object :")]
     public bool enable;
     public bool disable, destroy, applicationQuit, applicationPause, applicationFocus;
@@ -26,37 +28,81 @@ public class QuickEvents : MonoBehaviour
 
     private void OnEnable()
     {
-        if (enable)
-            OnEnableEvent.Invoke();
+        if (!enable) return;
+
+        OnEnableEvent?.Invoke();
+
+        if (AutoDisableAfterEvent)
+            enabled = false;
+
+        if (CheckIfAllEventsCalled())
+            Destroy(this);
     }
 
     private void OnDisable()
     {
-        if (disable)
-            OnDisableEvent.Invoke();
+        if (!disable) return;
+
+        OnDisableEvent?.Invoke();
+
+        if (AutoDisableAfterEvent)
+            enabled = false;
+
+        if (CheckIfAllEventsCalled())
+            Destroy(this);
     }
 
     private void OnDestroy()
     {
-        if (destroy)
-            OnDestroyEvent.Invoke();
+        if (!destroy) return;
+
+        OnDestroyEvent?.Invoke();
+
+        if (AutoDisableAfterEvent)
+            enabled = false;
+
+        if (CheckIfAllEventsCalled())
+            Destroy(this);
     }
 
     private void OnApplicationQuit()
     {
         if (applicationQuit)
             OnApplicationQuitEvent.Invoke();
+
+        if (AutoDisableAfterEvent) applicationQuit = false;
+
+        if (CheckIfAllEventsCalled())
+            Destroy(this);
     }
 
     private void OnApplicationPause(bool pause)
     {
         if (applicationPause)
             OnApplicationPauseEvent.Invoke();
+
+        if (AutoDisableAfterEvent) applicationPause = false;
+
+        if (CheckIfAllEventsCalled())
+            Destroy(this);
     }
 
     private void OnApplicationFocus(bool focus)
     {
         if (applicationFocus)
             OnApplicationFocusEvent.Invoke();
+
+        if (AutoDisableAfterEvent) applicationFocus = false;
+
+        if (CheckIfAllEventsCalled())
+            Destroy(this);
+    }
+
+    public bool CheckIfAllEventsCalled()
+    {
+        if (enable && disable && destroy && applicationQuit && applicationPause && applicationFocus)
+            return DestroyComponentAfterEvent;
+        else
+            return false;
     }
 }

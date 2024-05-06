@@ -12,6 +12,8 @@ namespace JeuB
         [SerializeField] UnityEvent onDamaged = new UnityEvent();
         [SerializeField] Material material2HP; //the material the tooth has at 2 hp
         [SerializeField] Material material1HP; //the material the tooth has at 1 hp
+        [SerializeField] Color color2HP;
+        [SerializeField] Color color1HP;
 
         [SerializeField] float shakeMagnitude = 0.1f;
         [SerializeField] float shakeSpeed = 50f;
@@ -83,6 +85,8 @@ namespace JeuB
                 child.gameObject.SetActive(false);
             }
 
+            _outlineEffect.OutlineColor = (health == 2) ? color2HP: color1HP;
+
             if (health == 0)
             {
                 onDeath.Invoke();
@@ -117,7 +121,7 @@ namespace JeuB
 
         void Update()
         {
-            if (health == 1)
+            if (health == 1 || health == 2)
             {
                 OutlinePulsating();
             }

@@ -96,7 +96,7 @@ namespace JeuB
             target.gameObject.SetActive(true);
 
 #if UNITY_EDITOR
-            _skipTutorial = skipTutorial;
+            // _skipTutorial = skipTutorial;
 #endif
         }
 
@@ -105,13 +105,13 @@ namespace JeuB
             CancelInvoke();
             StopAllCoroutines();
 
-            GameManager.Instance.gameStopped.RemoveListener(() => _skipTutorial = false);
+            //GameManager.Instance.gameStopped.RemoveListener(() => _skipTutorial = false);
         }
 
         private void Start()
         {
             target.onDeath.AddListener(StopAllCoroutines);
-            GameManager.Instance.gameStopped.AddListener(() => _skipTutorial = false);
+            //GameManager.Instance.gameStopped.AddListener(() => _skipTutorial = false);
         }
 
         private void Update()
@@ -243,6 +243,7 @@ namespace JeuB
 
             if (difficultyPresetsCount == difficultyPresets.Length)
             {
+                _skipTutorial = true;
                 CancelInvoke();
                 return;
             }

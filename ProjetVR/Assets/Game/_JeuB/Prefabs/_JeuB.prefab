@@ -662,6 +662,8 @@ MonoBehaviour:
         m_CallState: 2
   material2HP: {fileID: 2100000, guid: b970aa69ad40d41438b4c925e19e1be0, type: 2}
   material1HP: {fileID: 2100000, guid: 185d30be8b3dd1848a8653dcdbe671bb, type: 2}
+  color2HP: {r: 1, g: 0.5776704, b: 0, a: 1}
+  color1HP: {r: 1, g: 0, b: 0, a: 1}
   shakeMagnitude: 0.1
   shakeSpeed: 50
   shakeDuration: 3
@@ -1863,7 +1865,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bdfd07b65661fcc448684064dc16a32d, type: 2}
   - {fileID: 11400000, guid: 4d1ecb32ce5f4334885f872af2addda0, type: 2}
   - {fileID: 11400000, guid: efaf26e6b111126449926797763a7575, type: 2}
-  difficultyPresetsCount: 1
+  difficultyPresetsCount: 0
   allShooted:
     m_PersistentCalls:
       m_Calls:

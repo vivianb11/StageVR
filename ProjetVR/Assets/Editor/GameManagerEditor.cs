@@ -1,6 +1,8 @@
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
+
 [CustomEditor(typeof(GameManager))]
 public class GameManagerEditor : Editor
 {
@@ -40,3 +42,5 @@ public class GameManagerEditor : Editor
         return gameModes;
     }
 }
+
+#endif

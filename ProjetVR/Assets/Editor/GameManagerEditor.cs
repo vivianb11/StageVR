@@ -28,6 +28,11 @@ public class GameManagerEditor : Editor
                 gameManager.ReloadGameMode(3);
             }
         }
+
+        if (GUI.changed)
+        {
+            EditorUtility.SetDirty(gameManager);
+        }
     }
 
     private string[] GetGameModes(GameManager gameManager)

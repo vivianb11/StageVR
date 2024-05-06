@@ -4,6 +4,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
+[System.Serializable]
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;

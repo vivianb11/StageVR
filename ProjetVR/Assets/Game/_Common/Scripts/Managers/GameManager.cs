@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool SkipCalibration;
 
-    [HideInInspector]
+    //[HideInInspector]
     public int currentSceneIndex;
 
     public UnityEvent gameStarted;

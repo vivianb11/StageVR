@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4725160864703094812}
-  m_Mesh: {fileID: -2124705421725058983, guid: f334eac5b479a774a9ef623c3854e4af, type: 3}
+  m_Mesh: {fileID: -5597002278806442958, guid: c852f87cd69aef7489e3fd4aa9496d0d, type: 3}
 --- !u!23 &689735330317912813
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -288,7 +288,6 @@ MonoBehaviour:
   targetObject: {fileID: 0}
   moveSpeed: 5
   returnSpeed: 2
-  isColliding: 0
   moveDuration: 0.02
   OnShieldHit:
     m_PersistentCalls:
@@ -452,6 +451,7 @@ MonoBehaviour:
     completed:
       m_PersistentCalls:
         m_Calls: []
+    isPlaying: 0
   autoPlayMontage: 0
   tweenIndex: 0
 --- !u!4 &6898113732044754368 stripped

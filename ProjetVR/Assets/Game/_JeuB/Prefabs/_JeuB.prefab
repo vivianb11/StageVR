@@ -3889,6 +3889,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6695764311422233166}
     m_Modifications:
+    - target: {fileID: 1572134451600363943, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[0].to.z
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009989608996401495, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: tweenMontages.Array.data[0].tweenProperties.Array.data[1].to.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4427915834001589200, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: m_Name
       value: SmoothShield

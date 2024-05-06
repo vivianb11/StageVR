@@ -149,6 +149,8 @@ namespace JeuB
             gameObject.SetActive(false);
         }
 
+        public void ResetGame() => GameManager.Instance.ReloadGameMode(3);
+
         public void ScoreMultiplier()
         {
             if (!scoreEnabled) return;

@@ -75,7 +75,6 @@ namespace JeuB
         [SerializeField] int interval = 10;
 
         [NaughtyAttributes.ReadOnly] [SerializeField] DifficultyPresets currentPreset;
-        [SerializeField] DifficultyPresets deathPreset;
 
         [SerializeField] DifficultyPresets[] tutorialDifficulties;
         [SerializeField] int tutorialDifficultiesCount = 0;
@@ -96,10 +95,9 @@ namespace JeuB
 
             target.gameObject.SetActive(true);
 
-        #if UNITY_EDITOR
-            _skipTutorial = skipTutorial;
-        #endif
-
+#if UNITY_EDITOR
+            // _skipTutorial = skipTutorial;
+#endif
         }
 
         private void OnDisable()
@@ -245,7 +243,9 @@ namespace JeuB
 
             if (difficultyPresetsCount == difficultyPresets.Length)
             {
-                difficultyPresetsCount = 0;
+                _skipTutorial = true;
+                CancelInvoke();
+                return;
             }
 
             Invoke(nameof(CountMinutes), interval);
@@ -300,12 +300,6 @@ namespace JeuB
             ChangeWeightBased(preset.weightBased);
             CreateAvailableSpawnerList();
             SpawnPercentage();
-        }
-
-        public void OverKillDifficulty()
-        {
-            ChangeDifficulty(deathPreset);
-            CancelInvoke();
         }
     }
 }

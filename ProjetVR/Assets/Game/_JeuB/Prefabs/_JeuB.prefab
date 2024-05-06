@@ -1830,6 +1830,7 @@ MonoBehaviour:
   milestoneCount: 0
   interval: 15
   currentPreset: {fileID: 0}
+  deathPreset: {fileID: 0}
   tutorialDifficulties:
   - {fileID: 11400000, guid: 1a38f276a5a887e4ca050fe9958e8131, type: 2}
   - {fileID: 11400000, guid: 01c5923e2f6c2394d8838856597c4144, type: 2}
@@ -1941,14 +1942,14 @@ RectTransform:
   m_GameObject: {fileID: 5092411821572526369}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 12.392}
-  m_LocalScale: {x: 0.13662878, y: 0.13662878, z: 0.13662878}
+  m_LocalScale: {x: 0.09411947, y: 0.09411947, z: 0.09411947}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6400650230984611770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.37, y: 2.55}
+  m_AnchoredPosition: {x: -2.99, y: 0.68}
   m_SizeDelta: {x: 39.0284, y: 37.2677}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &3297089502867246191
@@ -3181,7 +3182,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 49e18f5f900a4be44bfb0e00f34e6542, type: 2}
+  - {fileID: 2100000, guid: f88a2af2f1e5e064dafa280b5a00d904, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

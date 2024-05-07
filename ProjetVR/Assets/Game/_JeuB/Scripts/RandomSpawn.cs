@@ -75,6 +75,7 @@ namespace JeuB
         [SerializeField] int interval = 10;
 
         [NaughtyAttributes.ReadOnly] [SerializeField] DifficultyPresets currentPreset;
+        [SerializeField] DifficultyPresets deathPreset;
 
         [SerializeField] DifficultyPresets[] tutorialDifficulties;
         [SerializeField] int tutorialDifficultiesCount = 0;
@@ -300,6 +301,11 @@ namespace JeuB
             ChangeWeightBased(preset.weightBased);
             CreateAvailableSpawnerList();
             SpawnPercentage();
+        }
+
+        public void Order66()
+        {
+            ChangeDifficulty(deathPreset);
         }
     }
 }

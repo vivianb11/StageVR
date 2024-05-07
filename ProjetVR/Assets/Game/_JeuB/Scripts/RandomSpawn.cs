@@ -97,7 +97,7 @@ namespace JeuB
             target.gameObject.SetActive(true);
 
 #if UNITY_EDITOR
-            // _skipTutorial = skipTutorial;
+            _skipTutorial = skipTutorial;
 #endif
         }
 

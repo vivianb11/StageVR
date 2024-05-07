@@ -186,8 +186,8 @@ Transform:
   m_GameObject: {fileID: 903379254622426194}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -9.512, y: 2.07, z: 12.476}
-  m_LocalScale: {x: 0.16642213, y: 0.16642213, z: 0.16642213}
+  m_LocalPosition: {x: -3.07, y: 0.369, z: 12.476}
+  m_LocalScale: {x: 0.09777633, y: 0.09777633, z: 0.09777633}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6400650230984611770}
@@ -1830,6 +1830,7 @@ MonoBehaviour:
   milestoneCount: 0
   interval: 15
   currentPreset: {fileID: 0}
+  deathPreset: {fileID: 0}
   tutorialDifficulties:
   - {fileID: 11400000, guid: 1a38f276a5a887e4ca050fe9958e8131, type: 2}
   - {fileID: 11400000, guid: 01c5923e2f6c2394d8838856597c4144, type: 2}

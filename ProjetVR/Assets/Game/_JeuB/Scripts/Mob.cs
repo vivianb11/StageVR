@@ -81,7 +81,7 @@ namespace JeuB
 
         private IEnumerator DelayRotation()
         {
-            float timeBeforeRotation = Random.Range(2.5f, 4f);
+            float timeBeforeRotation = Random.Range(2.5f, 3f);
             yield return new WaitForSeconds(timeBeforeRotation);
             yield return Rotation();
         }

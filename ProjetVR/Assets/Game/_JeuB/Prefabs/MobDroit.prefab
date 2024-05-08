@@ -156,6 +156,7 @@ MonoBehaviour:
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
+  resetScaleOnDisable: 1
 --- !u!114 &8285496669955875806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +172,7 @@ MonoBehaviour:
   place: 1
   sound:
     soundType: 2
-    clip: {fileID: 8300000, guid: 1fa3188af15811e4aabfb23d9008e7c9, type: 3}
+    clip: {fileID: 8300000, guid: 9c86cd692765d75488a04b7e181d3489, type: 3}
     timePaused: 0
     pausedTime: 0
   playRandomSfx: 0

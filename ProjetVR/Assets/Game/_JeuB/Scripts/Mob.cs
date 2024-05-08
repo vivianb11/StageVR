@@ -14,6 +14,7 @@ namespace JeuB
         [SerializeField] int lifepoints;
         [ReadOnly] public float moveSpeed = 0;
         [SerializeField] bool isKnockable;
+        public bool isBonus;
         public int scoreOnDeath;
     
         public bool canRotate;
@@ -150,8 +151,15 @@ namespace JeuB
 
         private void Attack(GameObject protectedTooth)
         {
-            protectedTooth.GetComponent<ProtectedToothBehaviours>().Damaged();
+            var tempToothBehaviours = protectedTooth.GetComponent<ProtectedToothBehaviours>();
+            if (isBonus) 
+            {
+                tempToothBehaviours.enemyPoints = scoreOnDeath;
+                onDeath.AddListener(tempToothBehaviours.ScoreMultiplier);
+            }
+            else tempToothBehaviours.Damaged();
             onDeath.Invoke();
+            onDeath.RemoveListener(tempToothBehaviours.ScoreMultiplier);
             Destroy(gameObject);
         }
 

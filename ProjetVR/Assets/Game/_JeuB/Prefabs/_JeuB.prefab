@@ -1593,6 +1593,7 @@ GameObject:
   - component: {fileID: 7759857661188582320}
   - component: {fileID: 5015962020766374808}
   - component: {fileID: 7794539936398735633}
+  - component: {fileID: 2411545323034274549}
   m_Layer: 0
   m_Name: NiveauDisplay
   m_TagString: Untagged
@@ -1750,6 +1751,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   resetScaleOnDisable: 1
+--- !u!210 &2411545323034274549
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2817425482427264563}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
+  m_SortAtRoot: 0
 --- !u!1 &3436735275151527448
 GameObject:
   m_ObjectHideFlags: 0
@@ -2364,6 +2377,7 @@ GameObject:
   - component: {fileID: 5825276593408269571}
   - component: {fileID: 3297089502867246191}
   - component: {fileID: 5762588978618371996}
+  - component: {fileID: 2954094396704847794}
   m_Layer: 0
   m_Name: ScoreDisplay
   m_TagString: Untagged
@@ -2526,6 +2540,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 3297089502867246191}
   m_maskType: 0
+--- !u!210 &2954094396704847794
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5092411821572526369}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1 &5379221541317903513
 GameObject:
   m_ObjectHideFlags: 0
@@ -4392,6 +4418,7 @@ GameObject:
   - component: {fileID: 6695764311422233166}
   - component: {fileID: 4933722433649183968}
   - component: {fileID: 7730878982241768260}
+  - component: {fileID: 6336537365193394633}
   m_Layer: 0
   m_Name: Root
   m_TagString: Untagged
@@ -4452,6 +4479,18 @@ MonoBehaviour:
   lerpSpeed: 0.5
   eulerAngleOffset: {x: 90, y: 0, z: 0}
   targetTransform: {fileID: 0}
+--- !u!210 &6336537365193394633
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9077978442968606203}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
+  m_SortAtRoot: 0
 --- !u!1001 &1163141507415100555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4471,6 +4510,10 @@ PrefabInstance:
     - target: {fileID: 7049574284573154466, guid: f52d5a0486b4f834c9bcc41949971db1, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7049574284573154466, guid: f52d5a0486b4f834c9bcc41949971db1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9070412095314801808, guid: f52d5a0486b4f834c9bcc41949971db1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4745,6 +4788,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2651993893075282959, guid: 6070e5c113e19f34ea22a67be301a852, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3876519587135965543, guid: 6070e5c113e19f34ea22a67be301a852, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4898,6 +4945,10 @@ PrefabInstance:
     - target: {fileID: 2474120248349137934, guid: 6070e5c113e19f34ea22a67be301a852, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651993893075282959, guid: 6070e5c113e19f34ea22a67be301a852, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3876519587135965543, guid: 6070e5c113e19f34ea22a67be301a852, type: 3}
       propertyPath: m_IsActive

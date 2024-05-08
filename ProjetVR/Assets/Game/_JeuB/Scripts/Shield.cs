@@ -26,7 +26,8 @@ namespace JeuB
         {
             if(other.gameObject.CompareTag("Ennemy"))
             {
-                tooth.enemyPoints = other.GetComponent<Mob>().scoreOnDeath;
+                var tempMob = other.GetComponent<Mob>();
+                if (!tempMob.isBonus) tooth.enemyPoints = tempMob.scoreOnDeath;
                 OnShieldHit.Invoke();
 
                 tweener.PlayMontages();

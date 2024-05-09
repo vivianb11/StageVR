@@ -10,9 +10,7 @@ namespace JeuB
     public class Mob : Entity
     {
         [Header("Mob Characteristics")]
-        [ReadOnly] public Transform target;
         [SerializeField] int lifepoints;
-        [ReadOnly] public float moveSpeed = 0;
         [SerializeField] bool isKnockable;
         public bool isBonus;
         public int scoreOnDeath;

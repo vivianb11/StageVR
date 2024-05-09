@@ -170,10 +170,9 @@ namespace JeuB
             GameObject newMob = Instantiate(_mob, _spawner.transform);
             Entity mobBehaviors = newMob.GetComponent<Entity>();
             mobBehaviors.moveSpeed = mobSpeed;
+            mobBehaviors.target = target.transform;
 
             //if(mobBehaviors.canRotate) AddRotator(newMob);
-
-            if (mobBehaviors != null) mobBehaviors.target = target.transform;
         }
 
         private void AddRotator(GameObject newMob)

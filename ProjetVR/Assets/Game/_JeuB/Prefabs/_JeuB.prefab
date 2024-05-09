@@ -2227,9 +2227,6 @@ MonoBehaviour:
   - {fileID: 6638022967405250282, guid: c76edd37e3c7fe647ab6c32c59930228, type: 3}
   - {fileID: 6638022967405250282, guid: 56c21ffeece17a0459f8677976cdf3de, type: 3}
   bonusArray: []
-  bonusArray:
-  - {fileID: 6224022260222283880, guid: 5cf3ef51547e6cf4f95dc8a87095f413, type: 3}
-  - {fileID: 6224022260222283880, guid: 801271edc3a642648a0909d1b0a3aab9, type: 3}
   target: {fileID: 424505616319249623}
   rotationPoint: {fileID: 3579039938324773682}
   mobRotator: {fileID: 717860868454398895, guid: 49a144da7a60bbf43bb3161e221dabe8, type: 3}
@@ -4767,6 +4764,10 @@ PrefabInstance:
     - target: {fileID: 2800900882298552296, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522304382323844235, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3750655918361293124, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
       propertyPath: onSelected.m_PersistentCalls.m_Calls.Array.size

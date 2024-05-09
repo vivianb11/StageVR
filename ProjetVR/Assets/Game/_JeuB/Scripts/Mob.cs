@@ -14,18 +14,13 @@ namespace JeuB
         [SerializeField] bool isKnockable;
         public bool isBonus;
         public int scoreOnDeath;
-    
-        public bool canRotate;
 
         [Header("On Hit Parameters")]
         [SerializeField] int receivedDamagedOnHit;
         [ShowIf("isKnockable")] [SerializeField] float knockCooldown;
-        [ShowIf("isKnockable")] [SerializeField] Outline outlineEffect;
         [ShowIf("isKnockable")] [SerializeField] GameObject hpLossParticles;
         [SerializeField] GameObject deathParticles;
-
-        [Header("Rotation Parameters")]
-        [ShowIf("canRotate")] public int[] degree;
+        [SerializeField] Outline outlineEffect;
 
         [Header("Sounds")]
         [SerializeField] Sound[] sounds;
@@ -35,7 +30,7 @@ namespace JeuB
 
         FeedbackScale feedbackScale;
 
-        private bool _isKnocked = false;
+        protected bool _isKnocked = false;
         private Tween _tween;
         private bool isHit = false;
 
@@ -45,21 +40,16 @@ namespace JeuB
 
         private Transform _shield;
 
-        private void Start()
+        protected override void EntityStart()
         {
             _shield = FindObjectOfType<ShieldManager>().transform;
 
             _tween = GetComponent<Tween>();
-            if (! canRotate) return;
-        
-            GetComponent<BoxCollider>().isTrigger = true;
-            StartCoroutine(DelayRotation());
         }
 
-        private void Update()
+        protected override void EntityUpdate()
         {
             Move();
-            RotateMesh();
 
             Vector3 toothDirection = (transform.position - _shield.position).normalized;
             float angleToTooth = Vector3.Angle(_shield.forward, toothDirection);
@@ -73,40 +63,6 @@ namespace JeuB
             if (other.gameObject.CompareTag("Protected")) Attack(other.gameObject);
         }
 
-        private void RotateMesh()
-        {
-            if (!canRotate) transform.GetChild(0).transform.Rotate(0, 0, 50 * Time.deltaTime);
-        }
-
-        private IEnumerator DelayRotation()
-        {
-            float timeBeforeRotation = Random.Range(2.5f, 3f);
-            yield return new WaitForSeconds(timeBeforeRotation);
-            yield return Rotation();
-        }
-
-        private IEnumerator Rotation()
-        {
-            _isKnocked = true;
-            float elapsedTime = 0f;
-            float rotationDuration = 2f;
-            int RandomRotationIndex = Random.Range(0, degree.Length);
-            Quaternion startRotation = transform.parent.localRotation;
-            Quaternion targetRotation = Quaternion.Euler(0f, degree[RandomRotationIndex], 0f);
-
-            while (elapsedTime < rotationDuration)
-            {
-                float t = elapsedTime / rotationDuration;
-                transform.parent.localRotation = Quaternion.Lerp(startRotation, targetRotation, t);
-
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-
-            //transform.parent.localRotation = targetRotation;
-            _isKnocked = false;
-        }
-
         private IEnumerator Knocked()
         {
             _isKnocked = true;
@@ -118,7 +74,7 @@ namespace JeuB
             isHit = false;
         }
 
-        private void Move()
+        public override void Move()
         {
             transform.LookAt(target.position, transform.parent.up);
 

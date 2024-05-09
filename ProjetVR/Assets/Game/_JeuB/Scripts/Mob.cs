@@ -49,7 +49,7 @@ namespace JeuB
 
         private void Start()
         {
-            _shield = FindObjectOfType<SmoothShield>().transform;
+            _shield = FindObjectOfType<ShieldManager>().transform;
 
             _tween = GetComponent<Tween>();
             if (! canRotate) return;

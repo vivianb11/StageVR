@@ -6,6 +6,12 @@ namespace JeuA
     public class ToothPasteProjectile : Projectile
     {
         public UnityEvent StartFB;
+        public UnityEvent OnSpawn;
+
+        private void OnEnable()
+        {
+            OnSpawn?.Invoke();
+        }
 
         private void OnTriggerEnter(Collider other)
         {

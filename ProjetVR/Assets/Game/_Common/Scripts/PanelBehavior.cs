@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(Interactable))]
 public class PanelBehavior : MonoBehaviour
 {
     public Coroutine textCoroutine;
@@ -79,13 +78,14 @@ public class PanelBehavior : MonoBehaviour
         }
     }
 
-    public void SetDialog(SO_Dialogs newDialog)
+    public void SetDialogue(string dialogue)
     {
         ResetText();
 
-        textMesh.text = newDialog.content;
+        //textMesh.text = dialogue;
 
-        StartCoroutine(ScaleBackground());
+        //StartCoroutine(ScaleBackground());
+        StartCoroutine(SetTextWithTime(dialogue, 0.5f));
 
         //SetWoobleSections();
         //SetColorSections();
@@ -108,6 +108,13 @@ public class PanelBehavior : MonoBehaviour
         foreach (var letter in newText)
         {
             textMesh.text += letter;
+
+            Vector3 scale = Vector2.zero;
+            scale.x = textMesh.GetRenderedValues().x + padding.x;
+            scale.y = textMesh.GetRenderedValues().y + padding.y;
+            scale.z = 0.1f;
+
+            background.localScale = scale;
 
             yield return new WaitForSeconds((time / newText.Length));
         }

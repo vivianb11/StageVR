@@ -49,9 +49,10 @@ namespace JeuA
             {
                 currentProjectileShootSpeed = 0f;
 
-                ObjectPooling.Instance.InstantiateGameObject(projectile, transform.position, Quaternion.identity).transform.LookAt(EyeManager.Instance.hitPosition);
+                Projectile proj = ObjectPooling.Instance.InstantiateGameObject(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
+                proj.transform.LookAt(EyeManager.Instance.hitPosition);
+                proj.ApplyImpulse();
             }
         }
     }
-
 }

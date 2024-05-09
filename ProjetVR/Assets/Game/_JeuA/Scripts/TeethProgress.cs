@@ -1,7 +1,9 @@
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace JeuA
 {
@@ -12,6 +14,8 @@ namespace JeuA
 
         public Transform toothPrefab;
 
+        public GameObject InfinitModeText;
+
         [SerializeField] Material cleanMaterial;
         [SerializeField] Material fillMaterial;
 
@@ -21,6 +25,8 @@ namespace JeuA
 
         private List<CleanTeethHologram> teeth = new List<CleanTeethHologram>();
 
+        public UnityEvent OnInfinitModeStart;
+
         void Awake()
         {
             toothManager.OnTeethCleaned.AddListener(SetFullTooth);
@@ -28,8 +34,32 @@ namespace JeuA
 
         public void SetFullTooth()
         {
-            if (cleanedTeeth == teeth.Count)
+            if (cleanedTeeth >= teeth.Count-1)
+            {
+                if (cleanedTeeth == teeth.Count-1)
+                {
+                    OnInfinitModeStart?.Invoke();
+
+                    for (int i = 0; i < teeth.Count; i++)
+                    {
+                        if (i == 0)
+                        {
+                            teeth[i].GetComponent<CleanTeethHologram>().isEnable = true;
+                            continue;
+                        }
+
+                        Destroy(teeth[i].gameObject);
+                    }
+
+                    InfinitModeText = Instantiate(InfinitModeText, transform);
+                    InfinitModeText.transform.SetParent(transform);
+                }
+
+                InfinitModeText.GetComponent<TextMeshPro>().text = " x " + (cleanedTeeth + 1).ToString();
+
+                cleanedTeeth ++;
                 return;
+            }
 
             teeth[cleanedTeeth].GetComponent<MeshRenderer>().material = cleanMaterial;
             teeth[cleanedTeeth].GetComponent<Tween>().PlayTween("bump");

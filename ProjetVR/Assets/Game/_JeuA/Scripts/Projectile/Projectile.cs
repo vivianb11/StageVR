@@ -21,13 +21,16 @@ namespace JeuA
 
         private void OnEnable()
         {
+            StartCoroutine(KillTimer());
+        }
+
+        public void ApplyImpulse()
+        {
             body.velocity = Vector3.zero;
 
             Vector3 launchDirection = transform.forward + Vector3.right * Random.Range(-randomness, randomness) + Vector3.up * Random.Range(-randomness, randomness);
 
             body.AddForce(launchDirection * projectilSpeed);
-
-            StartCoroutine(KillTimer());
         }
 
         private IEnumerator KillTimer()

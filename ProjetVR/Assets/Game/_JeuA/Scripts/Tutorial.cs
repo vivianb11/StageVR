@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace JeuA
@@ -8,20 +9,24 @@ namespace JeuA
 
         [SerializeField] int maxIndex;
 
-        [SerializeField] int indexDoublon;
-
         [SerializeField] int indexArrowTutorial;
 
         [SerializeField] ToothManager toothManager;
 
         [SerializeField] Transform arrowContainer;
 
+        [SerializeField] GameObject[] tools;
+
+        public static bool inTutorial;
+
         private void Start()
         {
             if (enableTutorial)
             {
-                foreach (Transform child in transform)
-                    child.gameObject.SetActive(false);
+                inTutorial = true;
+
+                foreach (GameObject tool in tools)
+                    tool.SetActive(false);
 
                 UpdateChildVisibility(0);
                 toothManager.GenerationListIndex.AddListener(UpdateChildVisibility);
@@ -31,14 +36,15 @@ namespace JeuA
         private void UpdateChildVisibility(int index)
         {
             if (index > maxIndex)
+            {
+                inTutorial = false;
                 return;
+            }
 
             if (index == indexArrowTutorial)
                 arrowContainer.gameObject.SetActive(true);
 
-            transform.GetChild(index).gameObject.SetActive(true);
-            if (index == indexDoublon)
-                transform.GetChild(index + 1).gameObject.SetActive(true);
+            tools[index].gameObject.SetActive(true);
         }
     }
 

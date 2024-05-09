@@ -95,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftEye: {fileID: 2806840479438434394}
   rightEye: {fileID: 5712964685608733508}
+  eyeOffset: {x: -3.08, y: -2.42}
 --- !u!1 &1253707765273959841
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,33 +847,12 @@ MonoBehaviour:
     m_Bits: 3839
   maxValue: 0
   value: 0
-  leftEyeOpeningPercent: 1
-  rightEyeOpeningPercent: 1
-  closedTime: 0
-  blinkBuffer: 1
-  leftEyeState: 0
-  rightEyeState: 0
-  distance: 0
+  eyeOffset: {x: 0, y: 0}
   hitSuccessful: 0
   hitPosition: {x: 0, y: 0, z: 0}
   hitCollider: {fileID: 0}
   grabActivation: {fileID: 11400000, guid: a8f18d5c2ed08084a99c5d0aa861921b, type: 2}
   grabDeactivation: {fileID: 11400000, guid: 8af93bf9d2dcd264585b81f42a5318eb, type: 2}
-  leftEyeClosed:
-    m_PersistentCalls:
-      m_Calls: []
-  rightEyeClosed:
-    m_PersistentCalls:
-      m_Calls: []
-  leftEyeOpened:
-    m_PersistentCalls:
-      m_Calls: []
-  rightEyeOpened:
-    m_PersistentCalls:
-      m_Calls: []
-  blink:
-    m_PersistentCalls:
-      m_Calls: []
   lookInSelectable:
     m_PersistentCalls:
       m_Calls: []
@@ -1043,7 +1023,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4692747275123098972}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8cfd45ac122bc54aabb0667caba73fd, type: 3}
   m_Name: 

@@ -71,6 +71,8 @@ namespace JeuA
         public UnityEvent decayOnly;
         [Foldout("Events")]
         public UnityEvent respawned;
+        [Foldout("Events")]
+        public DataEvent[] dataEvents;
 
         [Foldout("Playtest Only")]
         public bool toothPasteColorChange;
@@ -96,6 +98,8 @@ namespace JeuA
             }
 
             OnCleanAmountChange?.Invoke(GetToothCleanPercent());
+
+            Array.Sort(dataEvents, (x, y) => x.dataIndex.CompareTo(y.dataIndex));
         }
 
 #if UNITY_EDITOR
@@ -215,6 +219,14 @@ namespace JeuA
             {
                 dirtyTooth = false;
                 foodAmount = 0;
+                
+                foreach (var foodpos in foodSpawnPos)
+                {
+                    foreach (Transform child in foodpos)
+                    {
+                        Destroy(child.gameObject);
+                    }
+                }
             }
             else
             {
@@ -323,6 +335,13 @@ namespace JeuA
 
             Tooth.SetActive(true);
             tweener.PlayTween("despawn");
+
+            if (dataEvents.Length > 0 && dataIndex == dataEvents[0].dataIndex)
+            {
+                dataEvents[0].Event?.Invoke();
+
+                dataEvents = dataEvents.Skip(1).ToArray();
+            }
 
             dataIndex = Mathf.Clamp(dataIndex + 1, 0, datas.Length - 1);
 
@@ -470,6 +489,13 @@ namespace JeuA
     public struct CellList
     {
         public List<CellBehavior> cells;
+    }
+
+    [Serializable]
+    public struct DataEvent
+    {
+        public int dataIndex;
+        public UnityEvent Event;
     }
 
 }

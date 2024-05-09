@@ -88,14 +88,6 @@ public class Limiteur : MonoBehaviour
                 ClampTransform(go);
             }
         }
-
-        if (eyeRaycaster.GetGrabbedBody())
-        {
-            if (Vector3.Distance(eyeRaycaster.GetGrabbedBodyDestination(),center) > maxDistance + errorBuffer)
-            {
-                Desinteractor(eyeRaycaster.GetGrabbedBody().gameObject);
-            }
-        }
     }
 
     private void ClampTransform(GameObject gameObject)

@@ -123,6 +123,9 @@ public class Tween : MonoBehaviour
             case TweenProperty.Properties.ROTATION:
                 transform.rotation = Quaternion.Euler(value);
                 break;
+            case TweenProperty.Properties.LOCAL_ROTATION:
+                transform.localRotation = Quaternion.Euler(value);
+                break;
         }
     }
 
@@ -171,6 +174,9 @@ public class Tween : MonoBehaviour
                     break;
                 case TweenProperty.Properties.ROTATION:
                     from = tweenPropertie.useDynamicFrom ? transform.eulerAngles : tweenPropertie.from;
+                    break;
+                case TweenProperty.Properties.LOCAL_ROTATION:
+                    from = tweenPropertie.useDynamicFrom ? transform.localEulerAngles : tweenPropertie.from;
                     break;
             }
 
@@ -235,7 +241,7 @@ public struct TweenProperty
 {
     public enum Properties
     {
-        POSITION, LOCAL_POSITION, SCALE, ROTATION
+        POSITION, LOCAL_POSITION, SCALE, ROTATION, LOCAL_ROTATION
     }
 
     public Properties propertie;

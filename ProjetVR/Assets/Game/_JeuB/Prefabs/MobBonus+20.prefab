@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 1561803134388132565}
   - component: {fileID: 593089163638709294}
   m_Layer: 6
-  m_Name: MobBonus
+  m_Name: MobBonus+20
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   place: 1
   sound:
     soundType: 2
-    clip: {fileID: 8300000, guid: 9c86cd692765d75488a04b7e181d3489, type: 3}
+    clip: {fileID: 8300000, guid: 1b9fa80b06bb7614eac6fb55a9028757, type: 3}
     timePaused: 0
     pausedTime: 0
   playRandomSfx: 0
@@ -264,15 +264,7 @@ MonoBehaviour:
   hpLossParticles: {fileID: 7194952087870367276, guid: 94d330fe499a5fe4d82bfd7918f2164c, type: 3}
   deathParticles: {fileID: 6237553109302029157, guid: 444ee8f7b95e1f54fb957fbf2206a39e, type: 3}
   degree: 
-  sounds:
-  - soundType: 0
-    clip: {fileID: 8300000, guid: 1b2f7f070dd101e4590d120b1c604904, type: 3}
-    timePaused: 0
-    pausedTime: 0
-  - soundType: 0
-    clip: {fileID: 8300000, guid: b5131605e66f1744ea66f0000cd8e108, type: 3}
-    timePaused: 0
-    pausedTime: 0
+  sounds: []
   onKnocked:
     m_PersistentCalls:
       m_Calls:

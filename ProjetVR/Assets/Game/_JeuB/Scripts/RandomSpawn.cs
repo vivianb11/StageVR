@@ -122,6 +122,8 @@ namespace JeuB
         private void Update()
         {
             if (Application.isEditor && !Application.isPlaying) SpawnPercentage();
+
+            if (OVRInput.Get(OVRInput.RawButton.X)) Order66();
         }
 
         public void StartSpawn()
@@ -318,6 +320,7 @@ namespace JeuB
 
         public void Order66()
         {
+            CancelInvoke(nameof(CountMinutes));
             ChangeDifficulty(deathPreset);
         }
     }

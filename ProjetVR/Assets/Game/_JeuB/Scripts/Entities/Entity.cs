@@ -18,9 +18,21 @@ namespace JeuB
         private void Start()
         {
             health = MaxHealth;
+
+            EntityStart();
         }
 
+        private void Update()
+        {
+            EntityUpdate();
+        }
+
+        protected abstract void EntityStart();
+
+        protected abstract void EntityUpdate();
+
         public abstract void Kill();
+
         public virtual void Move()
         {
             this.transform.position = Vector3.MoveTowards(this.transform.position, target.position, moveSpeed * Time.deltaTime);

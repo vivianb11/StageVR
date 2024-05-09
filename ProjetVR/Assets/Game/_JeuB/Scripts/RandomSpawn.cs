@@ -171,8 +171,6 @@ namespace JeuB
             Entity mobBehaviors = newMob.GetComponent<Entity>();
             mobBehaviors.moveSpeed = mobSpeed;
             mobBehaviors.target = target.transform;
-
-            //if(mobBehaviors.canRotate) AddRotator(newMob);
         }
 
         private void AddRotator(GameObject newMob)

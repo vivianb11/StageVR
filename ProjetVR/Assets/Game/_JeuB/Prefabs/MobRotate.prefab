@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 7348709388352266819}
   - component: {fileID: 416577530584778815}
   - component: {fileID: 2902745736869667374}
-  - component: {fileID: 9061522032183409264}
   - component: {fileID: 4164943758443417}
   - component: {fileID: 3950084660395824396}
   - component: {fileID: -4735607365920841345}
   - component: {fileID: 514779265771394359}
   - component: {fileID: 7604659161403824294}
+  - component: {fileID: 7492147893797775561}
   m_Layer: 6
   m_Name: MobRotate
   m_TagString: Ennemy
@@ -38,8 +38,8 @@ Transform:
   m_LocalScale: {x: 0.35477, y: 0.35477, z: 0.35477}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2660653575095506439}
   - {fileID: 5580171693664546993}
+  - {fileID: 2660653575095506439}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7348709388352266819
@@ -113,62 +113,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9061522032183409264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638022967405250282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b234e8c786c01e4ebfc9f66d9adecce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  lifepoints: 1
-  moveSpeed: 1
-  isKnockable: 0
-  scoreOnDeath: 20
-  canRotate: 1
-  receivedDamagedOnHit: 1
-  knockCooldown: 1.5
-  outlineEffect: {fileID: 1731465486316618718}
-  hpLossParticles: {fileID: 6237553109302029157, guid: 51df40cb466f2c94c99385dcf6b2c0ff, type: 3}
-  deathParticles: {fileID: 6237553109302029157, guid: 51df40cb466f2c94c99385dcf6b2c0ff, type: 3}
-  degree: 2d0000005a00000087000000b4000000e00000000e0100003b010000
-  sounds: []
-  onKnocked:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onDeath:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -4735607365920841345}
-        m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  protectedToothBehaviours: {fileID: 0}
 --- !u!54 &4164943758443417
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -213,6 +157,7 @@ MonoBehaviour:
   FBFinish:
     m_PersistentCalls:
       m_Calls: []
+  resetScaleOnDisable: 1
 --- !u!114 &-4735607365920841345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,8 +266,8 @@ MonoBehaviour:
   signalReceived:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9061522032183409264}
-        m_TargetAssemblyTypeName: Mob, Assembly-CSharp
+      - m_Target: {fileID: 7492147893797775561}
+        m_TargetAssemblyTypeName: JeuB.Mob, Assembly-CSharp
         m_MethodName: Freeze
         m_Mode: 1
         m_Arguments:
@@ -336,6 +281,61 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7492147893797775561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638022967405250282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68be560eb15a87b46a3d3ca61cf568d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 0
+  health: 0
+  target: {fileID: 0}
+  moveSpeed: 1
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  lifepoints: 1
+  isKnockable: 0
+  isBonus: 0
+  scoreOnDeath: 20
+  receivedDamagedOnHit: 1
+  knockCooldown: 0
+  hpLossParticles: {fileID: 0}
+  deathParticles: {fileID: 6237553109302029157, guid: 51df40cb466f2c94c99385dcf6b2c0ff, type: 3}
+  outlineEffect: {fileID: 1731465486316618718}
+  sounds: []
+  onKnocked:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -4735607365920841345}
+        m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  protectedToothBehaviours: {fileID: 0}
+  degree: 2d0000005a00000087000000b4000000e00000000e0100003b010000
 --- !u!1001 &5402764750460147546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -358,7 +358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 72c034157608e604ca4ec8136f6483f3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 72c034157608e604ca4ec8136f6483f3, type: 3}
       propertyPath: m_LocalPosition.y

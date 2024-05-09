@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
 using NaughtyAttributes;
+using System.Linq;
 
 namespace JeuB
 {
@@ -22,6 +23,7 @@ namespace JeuB
         [SerializeField] public List<GameObject> spawnerList = new();
         private List<GameObject> _availableSpawnerList = new();
         [SerializeField] public GameObject[] mobArray;
+        [SerializeField] public GameObject[] bonusArray;
 
         [Header("Spawned Mob Parameters")]
         [SerializeField] ProtectedToothBehaviours target;
@@ -30,6 +32,7 @@ namespace JeuB
 
         [Header("Difficulty Parameters")]
         [SerializeField] float spawnInterval;
+        [SerializeField] float bonusSpawnInterval;
         [SerializeField] float mobSpeed;
 
         [SerializeField] bool isNumberSpawnerBased;
@@ -112,6 +115,7 @@ namespace JeuB
         private void Start()
         {
             target.onDeath.AddListener(StopAllCoroutines);
+            InvokeRepeating(nameof(SpawnBonus), 50f, bonusSpawnInterval);
             //GameManager.Instance.gameStopped.AddListener(() => _skipTutorial = false);
         }
 
@@ -134,6 +138,15 @@ namespace JeuB
                 SpawnMob(selectedMobAndSpawner.Item1, selectedMobAndSpawner.Item2);
                 yield return new WaitForSeconds(spawnInterval);
             }
+        }
+
+        private void SpawnBonus()
+        {
+            int randomBonusIndex = UnityEngine.Random.Range(0, bonusArray.Length-1);
+            int randomSpawnerIndex = UnityEngine.Random.Range(0, spawnerList.Count-1);
+            var mob = Instantiate(bonusArray[randomBonusIndex], spawnerList[randomSpawnerIndex].transform);
+            var mobBehaviors = mob.GetComponent<Mob>();
+            if (mobBehaviors != null) mobBehaviors.target = target.transform;
         }
 
         private (GameObject, GameObject) SelectRandomMobAndSpawner()

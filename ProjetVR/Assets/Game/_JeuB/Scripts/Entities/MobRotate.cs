@@ -1,10 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JeuB
 {
-    public class GreenMob : Mob
+    public class MobRotate : Mob
     {
         public int[] degree;
 

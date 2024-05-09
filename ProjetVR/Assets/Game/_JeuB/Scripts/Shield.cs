@@ -13,6 +13,8 @@ namespace JeuB
 
         public UnityEvent OnShieldHit;
 
+        public int damage = 1;
+
         private Tween tweener;
         private ProtectedToothBehaviours tooth;
 
@@ -24,13 +26,18 @@ namespace JeuB
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.CompareTag("Ennemy"))
+            if (other.gameObject.TryGetComponent(out Entity tempEntity))
             {
-                var tempMob = other.GetComponent<Mob>();
-                if (!tempMob.isBonus) tooth.enemyPoints = tempMob.scoreOnDeath;
-                OnShieldHit.Invoke();
+                tempEntity.ReceiveDamage(damage);
 
-                tweener.PlayMontages();
+                if (other.gameObject.TryGetComponent(out Mob tempMob))
+                {
+                    tooth.enemyPoints = tempMob.scoreOnDeath;
+
+                    OnShieldHit.Invoke();
+
+                    tweener.PlayMontages();
+                }
             }
         }
     }

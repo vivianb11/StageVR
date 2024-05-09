@@ -10,13 +10,10 @@ namespace JeuB
     public class Mob : Entity
     {
         [Header("Mob Characteristics")]
-        [SerializeField] int lifepoints;
         [SerializeField] bool isKnockable;
-        public bool isBonus;
         public int scoreOnDeath;
 
         [Header("On Hit Parameters")]
-        [SerializeField] int receivedDamagedOnHit;
         [ShowIf("isKnockable")] [SerializeField] float knockCooldown;
         [ShowIf("isKnockable")] [SerializeField] GameObject hpLossParticles;
         [SerializeField] GameObject deathParticles;
@@ -26,7 +23,6 @@ namespace JeuB
         [SerializeField] Sound[] sounds;
 
         [SerializeField] UnityEvent onKnocked = new UnityEvent();
-        [SerializeField] UnityEvent onDeath = new UnityEvent();
 
         FeedbackScale feedbackScale;
 
@@ -42,6 +38,8 @@ namespace JeuB
 
         protected override void EntityStart()
         {
+            OnDamaged.AddListener(Damaged);
+
             _shield = FindObjectOfType<ShieldManager>().transform;
 
             _tween = GetComponent<Tween>();
@@ -49,8 +47,6 @@ namespace JeuB
 
         protected override void EntityUpdate()
         {
-            Move();
-
             Vector3 toothDirection = (transform.position - _shield.position).normalized;
             float angleToTooth = Vector3.Angle(_shield.forward, toothDirection);
 
@@ -59,8 +55,7 @@ namespace JeuB
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Shield")) Damaged();
-            if (other.gameObject.CompareTag("Protected")) Attack(other.gameObject);
+            if (other.transform == target) Attack(other.gameObject);
         }
 
         private IEnumerator Knocked()
@@ -90,51 +85,19 @@ namespace JeuB
         {
             if (isHit) return;
             isHit = true;
-            lifepoints -= receivedDamagedOnHit;
-            if (IsDeadCheck())
-            {
-                DamageParticles();
-                return;
-            }
-            gameObject.GetComponent<FeedbackScale>().ScaleIn();
-            gameObject.GetComponent<FeedbackScale>().ScaleOut();
-            if (!isKnockable) return;
-            if (!IsDeadCheck()) StartCoroutine(Knocked());
-            //ChangeOutline();
+
+            if (Health > 0) StartCoroutine(Knocked());
         }
 
         private void Attack(GameObject protectedTooth)
         {
             var tempToothBehaviours = protectedTooth.GetComponent<ProtectedToothBehaviours>();
-            if (isBonus) 
-            {
-                tempToothBehaviours.enemyPoints = scoreOnDeath;
-                onDeath.AddListener(tempToothBehaviours.ScoreMultiplier);
-            }
-            else tempToothBehaviours.Damaged();
-            onDeath.Invoke();
-            onDeath.RemoveListener(tempToothBehaviours.ScoreMultiplier);
+
+            tempToothBehaviours.Damaged();
+            OnDeath.Invoke();
+            OnDeath.RemoveListener(tempToothBehaviours.ScoreMultiplier);
+
             Destroy(gameObject);
-        }
-
-        private bool IsDeadCheck()
-        {
-            bool condition = lifepoints == 0;
-            if (condition)
-            {
-                onDeath.Invoke();
-                //currentMultiplier = protectedToothBehaviours.multiplier;
-                //Debug.Log(currentMultiplier);
-                //ScoreManager.Instance.AddScore(scoreOnDeath * currentMultiplier);
-                Destroy(gameObject);
-            }
-            return condition;
-        }
-
-        private void ChangeOutline()
-        {
-            if (lifepoints == 2)  outlineEffect.OutlineWidth = 2;
-            else if (lifepoints == 1) outlineEffect.enabled = false;
         }
 
         public void Freeze()
@@ -149,9 +112,9 @@ namespace JeuB
             _tween.PlayTween("Missile");
         }
 
-        public void DamageParticles()
+        public override void Kill()
         {
-            if (lifepoints >= 1)
+            if (Health >= 1)
             {
                 GameObject instantiatedObject = Instantiate(hpLossParticles, transform.position, transform.rotation);
                 Destroy(instantiatedObject, 3f);
@@ -162,11 +125,6 @@ namespace JeuB
                 GameObject instantiatedObject = Instantiate(deathParticles, transform.position, transform.rotation);
                 Destroy(instantiatedObject, 3f);
             }
-        }
-
-        public override void Kill()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

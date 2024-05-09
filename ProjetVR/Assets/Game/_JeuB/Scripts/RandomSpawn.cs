@@ -173,13 +173,6 @@ namespace JeuB
             mobBehaviors.target = target.transform;
         }
 
-        private void AddRotator(GameObject newMob)
-        {
-            GameObject newParent = Instantiate(mobRotator, rotationPoint.transform);
-            newMob.transform.parent = newParent.transform;
-        }
-
-
         private void SpawnPercentage()
         {
             float frequencyEnemy1 = weightEnemy1;

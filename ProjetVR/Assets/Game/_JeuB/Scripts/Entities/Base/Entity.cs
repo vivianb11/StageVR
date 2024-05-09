@@ -6,8 +6,8 @@ namespace JeuB
 {
     public abstract class Entity : MonoBehaviour, IDamageable
     {
-        public int MaxHealth;
-        public int health;
+        public int MaxHealth = 1;
+        public int Health { get; private set; }
 
         public Transform target;
         public float moveSpeed;
@@ -17,13 +17,15 @@ namespace JeuB
 
         private void Start()
         {
-            health = MaxHealth;
+            Health = MaxHealth;
 
             EntityStart();
         }
 
         private void Update()
         {
+            Move();
+
             EntityUpdate();
         }
 
@@ -35,23 +37,26 @@ namespace JeuB
 
         public virtual void Move()
         {
-            this.transform.position = Vector3.MoveTowards(this.transform.position, target.position, moveSpeed * Time.deltaTime);
+
+            transform.LookAt(target.position, transform.parent.up);
+
+            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, Space.Self);
         }
 
         public void Heal(int healAmount)
         {
-            health = Mathf.Clamp(health + healAmount, 0, MaxHealth);
+            Health = Mathf.Clamp(Health + healAmount, 0, MaxHealth);
 
             OnHeal?.Invoke();
         }
 
         public void ReceiveDamage(int damage)
         {
-            health = Mathf.Clamp(health - damage, 0, MaxHealth);
+            Health = Mathf.Clamp(Health - damage, 0, MaxHealth);
 
             OnDamaged?.Invoke();
 
-            if (health <= 0)
+            if (Health <= 0)
             {
                 Kill();
                 OnDeath?.Invoke();

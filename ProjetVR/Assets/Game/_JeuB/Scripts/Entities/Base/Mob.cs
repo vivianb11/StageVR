@@ -119,11 +119,11 @@ namespace JeuB
                 GameObject instantiatedObject = Instantiate(hpLossParticles, transform.position, transform.rotation);
                 Destroy(instantiatedObject, 3f);
             }
-
             else
             {
                 GameObject instantiatedObject = Instantiate(deathParticles, transform.position, transform.rotation);
                 Destroy(instantiatedObject, 3f);
+                Destroy(gameObject);
             }
         }
     }

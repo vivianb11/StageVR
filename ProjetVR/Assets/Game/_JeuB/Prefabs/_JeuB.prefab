@@ -2227,13 +2227,16 @@ MonoBehaviour:
   - {fileID: 6638022967405250282, guid: c76edd37e3c7fe647ab6c32c59930228, type: 3}
   - {fileID: 6638022967405250282, guid: 56c21ffeece17a0459f8677976cdf3de, type: 3}
   bonusArray: []
+  bonusArray:
+  - {fileID: 6224022260222283880, guid: 5cf3ef51547e6cf4f95dc8a87095f413, type: 3}
+  - {fileID: 6224022260222283880, guid: 801271edc3a642648a0909d1b0a3aab9, type: 3}
   target: {fileID: 424505616319249623}
   rotationPoint: {fileID: 3579039938324773682}
   mobRotator: {fileID: 717860868454398895, guid: 49a144da7a60bbf43bb3161e221dabe8, type: 3}
   spawnInterval: 3.5
-  bonusSpawnMinInterval: 0
-  bonusSpawnMaxInterval: 0
-  bonusSpawnDelay: 0
+  bonusSpawnMinInterval: 10
+  bonusSpawnMaxInterval: 15
+  bonusSpawnDelay: 5
   mobSpeed: 1.25
   isNumberSpawnerBased: 1
   numberSpawnerActivated: 4

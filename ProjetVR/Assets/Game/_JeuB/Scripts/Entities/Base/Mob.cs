@@ -86,6 +86,9 @@ namespace JeuB
             if (isHit) return;
             isHit = true;
 
+            GameObject instantiatedObject = Instantiate(hpLossParticles, transform.position, transform.rotation);
+            Destroy(instantiatedObject, 3f);
+
             if (Health > 0) StartCoroutine(Knocked());
         }
 
@@ -114,17 +117,14 @@ namespace JeuB
 
         public override void Kill()
         {
-            if (Health >= 1)
-            {
-                GameObject instantiatedObject = Instantiate(hpLossParticles, transform.position, transform.rotation);
-                Destroy(instantiatedObject, 3f);
-            }
-            else
-            {
-                GameObject instantiatedObject = Instantiate(deathParticles, transform.position, transform.rotation);
-                Destroy(instantiatedObject, 3f);
-                Destroy(gameObject);
-            }
+            GameObject instantiatedObject = Instantiate(deathParticles, transform.position, transform.rotation);
+
+            var tempToothBehaviours = target.GetComponent<ProtectedToothBehaviours>();
+            tempToothBehaviours.enemyPoints = scoreOnDeath;
+            OnDeath.AddListener(tempToothBehaviours.ScoreMultiplier);
+
+            Destroy(instantiatedObject, 3f);
+            Destroy(gameObject);
         }
     }
 }

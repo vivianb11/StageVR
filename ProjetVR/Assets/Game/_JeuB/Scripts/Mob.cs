@@ -7,12 +7,10 @@ namespace JeuB
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(BoxCollider))]
-    public class Mob : MonoBehaviour
+    public class Mob : Entity
     {
         [Header("Mob Characteristics")]
-        [ReadOnly] public Transform target;
         [SerializeField] int lifepoints;
-        [ReadOnly] public float moveSpeed = 0;
         [SerializeField] bool isKnockable;
         public bool isBonus;
         public int scoreOnDeath;
@@ -186,7 +184,7 @@ namespace JeuB
         public void Freeze()
         {
             moveSpeed = 0f;
-            Invoke("MissileShoot", 1.75f);
+            Invoke(nameof(MissileShoot), 1.75f);
         }
 
         public void MissileShoot()
@@ -208,6 +206,11 @@ namespace JeuB
                 GameObject instantiatedObject = Instantiate(deathParticles, transform.position, transform.rotation);
                 Destroy(instantiatedObject, 3f);
             }
+        }
+
+        public override void Kill()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

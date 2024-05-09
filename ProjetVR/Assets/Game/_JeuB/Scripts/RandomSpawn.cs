@@ -149,7 +149,7 @@ namespace JeuB
             int randomBonusIndex = UnityEngine.Random.Range(0, bonusArray.Length-1);
             int randomSpawnerIndex = UnityEngine.Random.Range(0, spawnerList.Count-1);
             var mob = Instantiate(bonusArray[randomBonusIndex], spawnerList[randomSpawnerIndex].transform);
-            var mobBehaviors = mob.GetComponent<Mob>();
+            var mobBehaviors = mob.GetComponent<Entity>();
             if (mobBehaviors != null) mobBehaviors.target = target.transform;
             Invoke(nameof(SpawnBonus), UnityEngine.Random.Range(bonusSpawnMinInterval, bonusSpawnMaxInterval));
         }
@@ -168,12 +168,11 @@ namespace JeuB
         private void SpawnMob(GameObject _spawner, GameObject _mob)
         {
             GameObject newMob = Instantiate(_mob, _spawner.transform);
-            Mob mobBehaviors = newMob.GetComponent<Mob>();
+            Entity mobBehaviors = newMob.GetComponent<Entity>();
             mobBehaviors.moveSpeed = mobSpeed;
+            mobBehaviors.target = target.transform;
 
-            if(mobBehaviors.canRotate) AddRotator(newMob);
-
-            if (mobBehaviors != null) mobBehaviors.target = target.transform;
+            //if(mobBehaviors.canRotate) AddRotator(newMob);
         }
 
         private void AddRotator(GameObject newMob)

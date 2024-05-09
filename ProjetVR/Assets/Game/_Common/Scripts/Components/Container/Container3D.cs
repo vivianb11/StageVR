@@ -57,7 +57,7 @@ namespace Components.Container
         }
 
         [Button]
-        private void UpdateChildsPosition()
+        public void UpdateChildsPosition()
         {
             List<Transform> activeChilds = GetActiveChilds().ToList();
 

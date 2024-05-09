@@ -1,4 +1,5 @@
 using System;
+using Components.Container;
 using UnityEngine;
 
 namespace JeuA
@@ -16,6 +17,7 @@ namespace JeuA
         [SerializeField] Transform arrowContainer;
 
         [SerializeField] GameObject[] tools;
+        [SerializeField] Container3D toolsContainer;
 
         public static bool inTutorial;
 
@@ -45,6 +47,7 @@ namespace JeuA
                 arrowContainer.gameObject.SetActive(true);
 
             tools[index].gameObject.SetActive(true);
+            toolsContainer.UpdateChildsPosition();
         }
     }
 

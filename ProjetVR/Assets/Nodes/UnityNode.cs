@@ -1,3 +1,4 @@
+using Unity.Plastic.Newtonsoft.Json.Serialization;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,6 +15,21 @@ namespace Nodes
         public UnityEvent destroyed = new();
 
         public UnityNode parent { get; private set; }
+
+        private void OnEnable()
+        {
+            parent?.childOrderChanged?.Invoke();
+        }
+
+        private void OnDisable()
+        {
+            parent?.childOrderChanged?.Invoke();
+        }
+
+        private void Start()
+        {
+            parent = transform.parent?.GetComponent<UnityNode>();
+        }
 
         private void OnDestroy()
         {

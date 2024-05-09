@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 148d3697e03a39e429b49ec2ea11bdd1, type: 3}
+  m_Name: 3_Difficulty_Incrementation
+  m_EditorClassIdentifier: 
+  milestoneInterval: 15
+  countCondition: 3
+  spawnInterval: 3
+  mobSpeed: 1.3
+  isNumberSpawnerBased: 1
+  numberSpawner: 6
+  spawnerTop: 0
+  spawnerTopRight: 0
+  spawnerBottomRight: 0
+  spawnerBottom: 0
+  spawnerBottomLeft: 0
+  spawnerTopLeft: 0
+  weightEnemy1: 1
+  weightEnemy2: 0
+  weightEnemy3: 0

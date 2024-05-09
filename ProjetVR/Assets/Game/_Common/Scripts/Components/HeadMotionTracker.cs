@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class HeadMotionTracker : MonoBehaviour
 {
-    public enum PlayerExcitement
+    public enum HeadStates
     {
         Excited,
         Normal,
@@ -25,7 +25,9 @@ public class HeadMotionTracker : MonoBehaviour
     [Space(10)]
     public UnityEvent Excited, Normal, Calme;
 
-    private PlayerExcitement playerExcitement;
+    private HeadStates headState;
+
+    private Transform forward;
 
     public float GetTilt
     {
@@ -45,49 +47,22 @@ public class HeadMotionTracker : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+        
+        forward = new GameObject("ForwardTracker").transform;
+        forward.SetParent(this.transform);
 
         for (int i = 0; i < RecordingSample / Time.fixedDeltaTime; i++)
         {
             distances.Add(0);
         }
 
-        playerExcitement = PlayerExcitement.Calme;
-    }
-
-    private void Update()
-    {
-        float TotalDistance = GetDistance();
-
-        if (TotalDistance > ExcitedThreshold)
-        {
-            if (playerExcitement != PlayerExcitement.Excited)
-            {
-                playerExcitement = PlayerExcitement.Excited;
-                Excited.Invoke();
-            }
-        }
-        else if (TotalDistance > NormalThreshold)
-        {
-            if (playerExcitement != PlayerExcitement.Normal)
-            {
-                playerExcitement = PlayerExcitement.Normal;
-                Normal.Invoke();
-            }
-        }
-        else
-        {
-            if (playerExcitement != PlayerExcitement.Calme)
-            {
-                playerExcitement = PlayerExcitement.Calme;
-                Calme.Invoke();
-            }
-        }
+        headState = HeadStates.Calme;
     }
 
     private void FixedUpdate()
     {
         secndLastPosition = lastPosition;
-        lastPosition = transform.forward;
+        lastPosition = forward.transform.position;
 
         distances.Add(Vector3.Distance(lastPosition, secndLastPosition));
 
@@ -95,9 +70,24 @@ public class HeadMotionTracker : MonoBehaviour
         {
             distances.RemoveAt(0);
         }
+
+        float TotalDistance = GetDistance();
+
+        if (TotalDistance > ExcitedThreshold)
+        {
+            SwitchState(HeadStates.Excited);
+        }
+        else if (TotalDistance > NormalThreshold)
+        {
+            SwitchState(HeadStates.Normal);
+        }
+        else
+        {
+            SwitchState(HeadStates.Calme);
+        }
     }
 
-    public float GetDistance()
+    private float GetDistance()
     {
         float distance = 0;
 
@@ -107,5 +97,28 @@ public class HeadMotionTracker : MonoBehaviour
         }
 
         return distance;
+    }
+
+    private void SwitchState(HeadStates newState)
+    {
+        if (newState == headState)
+            return;
+
+        headState = newState;
+
+        switch (newState)
+        {
+            case HeadStates.Excited:
+                Excited?.Invoke();
+                break;
+            case HeadStates.Normal:
+                Normal?.Invoke();
+                break;
+            case HeadStates.Calme:
+                Calme?.Invoke();
+                break;
+        }
+
+        Debug.Log(headState.ToString());
     }
 }

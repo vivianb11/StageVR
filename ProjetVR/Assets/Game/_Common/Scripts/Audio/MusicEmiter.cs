@@ -3,12 +3,15 @@ using UnityEngine;
 
 public class MusicEmiter : MonoBehaviour
 {
+    [SerializeField] bool playMusicOnStart;
+
     public AudioClip[] musics;
+
     private SoundManager soundManager;
 
     void Start()
     {
-        soundManager = SoundManager.instance;
+        soundManager = SoundManager.Instance;
 
         if (musics.Length > 0)
         {
@@ -21,8 +24,12 @@ public class MusicEmiter : MonoBehaviour
                 soundManager.musics[i] = new Sound(musics[i], SoundType.Music);
             }
         }
-    }
 
+        if (playMusicOnStart)
+        {
+            PlayMusic();
+        }
+    }
 
     public void PlayMusic()
     {

@@ -10,7 +10,8 @@ using Random = UnityEngine.Random;
 public class SoundManager : MonoBehaviour
 {
     [Header("General")]
-    public static SoundManager instance;
+    public static SoundManager Instance;
+
     [SerializeField] AudioFilterMode audioFilterMode;
 
     [SerializeField] float fadeDuration = 1f;
@@ -18,25 +19,24 @@ public class SoundManager : MonoBehaviour
     [SerializeField] int maxAudioSources = 10;
 
     [Header("Music")]
-    [SerializeField] bool playMusicOnStart;
     [HideInInspector] public AudioSource _musicSource;
-    [SerializeField] public Sound[] musics;
+    [HideInInspector] public Sound[] musics;
 
     // The key is the audio source and the value is the sound that is playing on it
     public Dictionary<AudioSource, Sound> _audioSources;
 
     private void Awake()
     {
-        if (instance == null)
-            instance = this;
+        if (Instance == null)
+            Instance = this;
         else
             Destroy(gameObject);
     }
 
     public void Start()
     {
-        if (this.TryGetComponent<AudioSource>(out _musicSource) == false)
-            _musicSource = this.gameObject.AddComponent<AudioSource>();
+        if (TryGetComponent<AudioSource>(out _musicSource) == false)
+            _musicSource = gameObject.AddComponent<AudioSource>();
 
         _audioSources = new Dictionary<AudioSource, Sound>();
 
@@ -55,11 +55,6 @@ public class SoundManager : MonoBehaviour
         }
 
         Destroy(tempGo);
-
-        if (playMusicOnStart)
-        {
-            PlayMusic();
-        }
     }
 
     public int PlaySound(Sound sound, SoundPlacing soundPlacing = SoundPlacing.Global, Transform location = null)

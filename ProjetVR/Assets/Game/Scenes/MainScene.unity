@@ -244,7 +244,7 @@ MonoBehaviour:
   rotationLerpSpeed: 1
   syncRotationX: 1
   syncRotationY: 1
-  syncRotationZ: 0
+  syncRotationZ: 1
   syncScale: 0
   lerpScale: 0
   scaleLerpSpeed: 1
@@ -358,8 +358,11 @@ MonoBehaviour:
   - {fileID: 6798597841116208069, guid: 78b725139ead97f4d87ba0814f66c741, type: 3}
   startDelay: 3
   SkipCalibration: 1
-  currentSceneIndex: 0
+  currentSceneIndex: 1
   gameStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  gameStopped:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &589685526
@@ -625,7 +628,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: -0.76272976, y: -0.27610445, z: 0, w: -0.00000008940697}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 4e-45, z: 1.7256e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

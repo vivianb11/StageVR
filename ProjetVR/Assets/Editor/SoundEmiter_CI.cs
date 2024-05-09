@@ -32,7 +32,7 @@ public class SoundEmiter_CI : Editor
 
         if (EditorApplication.isPlaying)
         {
-            SoundManager soundManager = SoundManager.instance;
+            SoundManager soundManager = SoundManager.Instance;
 
             // adds a slider that changes depending on the completion of the sound
 

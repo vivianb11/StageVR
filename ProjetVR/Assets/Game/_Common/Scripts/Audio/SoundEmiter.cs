@@ -17,7 +17,7 @@ public class SoundEmiter : MonoBehaviour
 
     private void Start()
     {
-        soundManager = SoundManager.instance;
+        soundManager = SoundManager.Instance;
     }
 
     public void PlaySound()

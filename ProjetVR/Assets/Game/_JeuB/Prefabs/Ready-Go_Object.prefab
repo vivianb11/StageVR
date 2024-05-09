@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9070412095314801808}
   - component: {fileID: 7049574284573154466}
   - component: {fileID: 5814718079585859707}
+  - component: {fileID: -474677848197465127}
   m_Layer: 0
   m_Name: Ready-Go_Object
   m_TagString: Untagged
@@ -40,7 +41,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3733804571949100379}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -93,7 +94,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3733804571949100379}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 276fc1ba150d3cd40b8b3f17cf2cdc2e, type: 2}
   m_CullingMode: 0
@@ -106,3 +107,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-474677848197465127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3733804571949100379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67ba8b1c371ab74c8b27772986edc40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signals:
+  - {fileID: 11400000, guid: 741e3c85383775249b2cdc3421d121fa, type: 2}

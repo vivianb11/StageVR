@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-
 [RequireComponent(typeof(Outline))]
 public class OutlineScale : MonoBehaviour
 {

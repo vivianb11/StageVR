@@ -134,6 +134,7 @@ public class Tween : MonoBehaviour
         for (int i = 0; i < montages.Length; i++)
         {
             var montage = montages[i];
+            montage.isPlaying = true;
 
             if (i > 0 && montage.waitPreviousMontage)
                 yield return new WaitForSeconds(GetMontageDuration(montages[i - 1]));
@@ -143,6 +144,7 @@ public class Tween : MonoBehaviour
             montage.started?.Invoke();
             StartCoroutine(InvokeDelay(montage.completed, GetMontageDuration(montages[i])));
             StartCoroutine(PropertiesCoroutine(montage.tweenProperties, montage.speed));
+            montage.isPlaying = false;
         }
     }
 
@@ -277,4 +279,6 @@ public class TweenMontage
     [Space(10)]
     public UnityEvent started;
     public UnityEvent completed;
+
+    [HideInInspector] public bool isPlaying = false;
 }

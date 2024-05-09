@@ -32,7 +32,9 @@ namespace JeuB
 
         [Header("Difficulty Parameters")]
         [SerializeField] float spawnInterval;
-        [SerializeField] float bonusSpawnInterval;
+        [SerializeField] float bonusSpawnMinInterval;
+        [SerializeField] float bonusSpawnMaxInterval;
+        [SerializeField] float bonusSpawnDelay;
         [SerializeField] float mobSpeed;
 
         [SerializeField] bool isNumberSpawnerBased;
@@ -115,7 +117,6 @@ namespace JeuB
         private void Start()
         {
             target.onDeath.AddListener(StopAllCoroutines);
-            InvokeRepeating(nameof(SpawnBonus), 50f, bonusSpawnInterval);
             //GameManager.Instance.gameStopped.AddListener(() => _skipTutorial = false);
         }
 
@@ -128,6 +129,7 @@ namespace JeuB
         {
             CreateAvailableSpawnerList();
             StartCoroutine(SpawnCycle());
+            Invoke(nameof(SpawnBonus), bonusSpawnDelay);
         }
 
         private IEnumerator SpawnCycle()
@@ -147,6 +149,7 @@ namespace JeuB
             var mob = Instantiate(bonusArray[randomBonusIndex], spawnerList[randomSpawnerIndex].transform);
             var mobBehaviors = mob.GetComponent<Mob>();
             if (mobBehaviors != null) mobBehaviors.target = target.transform;
+            Invoke(nameof(SpawnBonus), UnityEngine.Random.Range(bonusSpawnMinInterval, bonusSpawnMaxInterval));
         }
 
         private (GameObject, GameObject) SelectRandomMobAndSpawner()

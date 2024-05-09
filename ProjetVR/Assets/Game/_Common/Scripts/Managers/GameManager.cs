@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (Transform t in transform.transform)
         {
-            Destroy(t.gameObject);
+            DestroyImmediate(t.gameObject);
         }
     }
 

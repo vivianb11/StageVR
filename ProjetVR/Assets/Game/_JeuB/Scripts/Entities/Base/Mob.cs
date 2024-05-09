@@ -123,6 +123,11 @@ namespace JeuB
             else
             {
                 GameObject instantiatedObject = Instantiate(deathParticles, transform.position, transform.rotation);
+
+                var tempToothBehaviours = target.GetComponent<ProtectedToothBehaviours>();
+                tempToothBehaviours.enemyPoints = scoreOnDeath;
+                OnDeath.AddListener(tempToothBehaviours.ScoreMultiplier);
+
                 Destroy(instantiatedObject, 3f);
             }
         }

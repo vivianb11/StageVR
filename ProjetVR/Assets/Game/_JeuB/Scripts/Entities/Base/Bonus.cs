@@ -8,8 +8,6 @@ namespace JeuB {
     {
         // bonus abstract class
 
-        public int scoreOnDeath;
-
         public void OnTriggerEnter(Collider other)
         {
             if (other.transform == target)

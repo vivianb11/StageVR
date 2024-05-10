@@ -561,7 +561,6 @@ Transform:
   - {fileID: 1420636780130462353}
   - {fileID: 3832232699181612711}
   - {fileID: 8121173786825819995}
-  - {fileID: 8851627905301074029}
   - {fileID: 1748318394862019835}
   - {fileID: 1759536440432347409}
   - {fileID: 7567182381431380363}
@@ -797,7 +796,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841816361652682291}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.15899998}
+  m_LocalPosition: {x: 0, y: 0, z: -0.15900002}
   m_LocalScale: {x: 0.13662878, y: 0.13662875, z: 0.13662875}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -805,7 +804,7 @@ RectTransform:
   - {fileID: 6143656025325199012}
   - {fileID: 5586862453970602101}
   - {fileID: 6988217828258154109}
-  m_Father: {fileID: 6695764311422233166}
+  m_Father: {fileID: 6568242226196927093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2404,6 +2403,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6568242226196927093}
   - component: {fileID: 7936567312626527626}
+  - component: {fileID: 5481848873776602792}
   - component: {fileID: 3349590382021082868}
   m_Layer: 0
   m_Name: SpawnerGroup
@@ -2431,6 +2431,7 @@ Transform:
   - {fileID: 1585138490079683070}
   - {fileID: 2294103014848854236}
   - {fileID: 4345753801455924992}
+  - {fileID: 3055141361694658887}
   m_Father: {fileID: 6695764311422233166}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7936567312626527626
@@ -2456,16 +2457,19 @@ MonoBehaviour:
   - {fileID: 6224022260222283880, guid: 23d87bf6f84997149b99791847cdaecd, type: 3}
   - {fileID: 6638022967405250282, guid: c76edd37e3c7fe647ab6c32c59930228, type: 3}
   - {fileID: 6638022967405250282, guid: 56c21ffeece17a0459f8677976cdf3de, type: 3}
-  bonusArray: []
+  bonusArray:
+  - {fileID: 6224022260222283880, guid: 801271edc3a642648a0909d1b0a3aab9, type: 3}
+  - {fileID: 6224022260222283880, guid: 5cf3ef51547e6cf4f95dc8a87095f413, type: 3}
   target: {fileID: 424505616319249623}
   rotationPoint: {fileID: 3579039938324773682}
   mobRotator: {fileID: 717860868454398895, guid: 49a144da7a60bbf43bb3161e221dabe8, type: 3}
+  mobSpeed: 1.25
   spawnInterval: 3.5
   bonusSpawnMinInterval: 10
   bonusSpawnMaxInterval: 15
   bonusSpawnDelay: 5
-  mobSpeed: 1.25
   isNumberSpawnerBased: 1
+  weightBased: 1
   numberSpawnerActivated: 4
   spawnerTop: 0
   spawnerTopRight: 0
@@ -2473,7 +2477,6 @@ MonoBehaviour:
   spawnerBottom: 0
   spawnerBottomLeft: 0
   spawnerTopLeft: 0
-  weightBased: 1
   mobTypePerSpawner: 000000000000000000000000000000000000000000000000
   weightEnemy1: 1
   weightEnemy2: 0
@@ -2481,13 +2484,39 @@ MonoBehaviour:
   CurrentPercentageEnemy1: 100%
   CurrentPercentageEnemy2: 0%
   CurrentPercentageEnemy3: 0%
-  enableProgression: 1
-  currentLevel: 0
-  maxLevel: 5
-  pulsatingTextBehavior: {fileID: 5015962020766374808}
+  allShooted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7877296613874709338}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &5481848873776602792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4065805693301887695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8798d15b3fc46741909c1d2de53524c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 10
   milestoneCount: 0
-  interval: 15
   currentPreset: {fileID: 0}
+  pulsatingTextBehavior: {fileID: 5015962020766374808}
+  currentLevel: 0
+  maxLevel: 6
   deathPreset: {fileID: 11400000, guid: bd3346e975f6f5b4d939fa2b31a54bf1, type: 2}
   tutorialDifficulties:
   - {fileID: 11400000, guid: 1a38f276a5a887e4ca050fe9958e8131, type: 2}
@@ -2498,9 +2527,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6f5b8e8734796ed40abe4ab7981af4bf, type: 2}
   - {fileID: 11400000, guid: bc939bdaba5120441a432b0673c68c61, type: 2}
   - {fileID: 11400000, guid: fad70721b305c614a8961b8a0a73ff08, type: 2}
-  tutorialDifficultiesCount: 0
-  difficultyPresets:
   - {fileID: 11400000, guid: 2069f2128239812478e801cebe086a6f, type: 2}
+  difficultyPresets:
   - {fileID: 11400000, guid: 127e6dc2b6acbf24b9d23ea333c26ce0, type: 2}
   - {fileID: 11400000, guid: e14a208fc4259be46b40e885e2bf6ed3, type: 2}
   - {fileID: 11400000, guid: 84fb12bd2379c8e408740a69529bc011, type: 2}
@@ -2520,23 +2548,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bdfd07b65661fcc448684064dc16a32d, type: 2}
   - {fileID: 11400000, guid: 4d1ecb32ce5f4334885f872af2addda0, type: 2}
   - {fileID: 11400000, guid: efaf26e6b111126449926797763a7575, type: 2}
-  difficultyPresetsCount: 0
-  allShooted:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7877296613874709338}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  skipTutorial: 1
+  enableProgression: 1
+  skipTutorial: 0
 --- !u!114 &3349590382021082868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3345,8 +3358,6 @@ Transform:
   - {fileID: 6026451593749732279}
   - {fileID: 8518356622289990934}
   - {fileID: 2252859086633744153}
-  - {fileID: 688095056544984488}
-  - {fileID: 3871752073572314957}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1232292026500529538
@@ -4574,7 +4585,6 @@ Transform:
   - {fileID: 6568242226196927093}
   - {fileID: 3554542618917702128}
   - {fileID: 458697650056809472}
-  - {fileID: 3055141361694658887}
   m_Father: {fileID: 6400650230984611770}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!210 &6336537365193394633

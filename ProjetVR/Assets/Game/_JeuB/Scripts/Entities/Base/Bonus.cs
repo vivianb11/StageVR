@@ -6,23 +6,17 @@ using UnityEngine;
 namespace JeuB {
     public abstract class Bonus : Entity
     {
-        // bonus abstract class
-
         public void OnTriggerEnter(Collider other)
         {
-            if (other.transform == target)
-            {
-                ApplyBonus(target.GetComponent<ProtectedToothBehaviours>());
-                Kill();
-            }
+            if (other.transform != target) return;
+            
+            ApplyBonus(target.GetComponent<ProtectedToothBehaviours>());
+            Kill();
+            
         }
 
         public abstract void ApplyBonus(ProtectedToothBehaviours tooth);
 
-        public override void Kill()
-        {
-            Destroy(gameObject);
-        }
-
+        public override void Kill() => Destroy(gameObject);
     }
 }

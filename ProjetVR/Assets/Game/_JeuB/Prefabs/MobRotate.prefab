@@ -294,7 +294,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 0
-  health: 0
   target: {fileID: 0}
   moveSpeed: 1
   OnDamaged:
@@ -306,34 +305,16 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  lifepoints: 1
   isKnockable: 0
-  isBonus: 0
   scoreOnDeath: 20
-  receivedDamagedOnHit: 1
   knockCooldown: 0
-  hpLossParticles: {fileID: 0}
+  hpLossParticles: {fileID: 7194952087870367276, guid: 608c4f579bfcb1e49ba9b26e73b848bb, type: 3}
   deathParticles: {fileID: 6237553109302029157, guid: 51df40cb466f2c94c99385dcf6b2c0ff, type: 3}
   outlineEffect: {fileID: 1731465486316618718}
   sounds: []
   onKnocked:
     m_PersistentCalls:
       m_Calls: []
-  onDeath:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -4735607365920841345}
-        m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   protectedToothBehaviours: {fileID: 0}
   degree: 2d0000005a00000087000000b4000000e00000000e0100003b010000
 --- !u!1001 &5402764750460147546

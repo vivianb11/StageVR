@@ -18,26 +18,33 @@ namespace JeuB
     [ExecuteInEditMode]
     public class RandomSpawn : MonoBehaviour
     {
-
-        [Header("Spawner Characteristics")]
+        [Header("Objects")]
         [SerializeField] public List<GameObject> spawnerList = new();
         private List<GameObject> _availableSpawnerList = new();
         [SerializeField] public GameObject[] mobArray;
         [SerializeField] public GameObject[] bonusArray;
 
+
+        [Space(10)]
         [Header("Spawned Mob Parameters")]
         [SerializeField] ProtectedToothBehaviours target;
         [SerializeField] GameObject rotationPoint;
         [SerializeField] GameObject mobRotator;
+        [SerializeField] float mobSpeed;
 
-        [Header("Difficulty Parameters")]
+
+        [Space(10)]
+        [Header("Spawner Parameters")]
         [SerializeField] float spawnInterval;
         [SerializeField] float bonusSpawnMinInterval;
         [SerializeField] float bonusSpawnMaxInterval;
         [SerializeField] float bonusSpawnDelay;
-        [SerializeField] float mobSpeed;
-
         [SerializeField] bool isNumberSpawnerBased;
+        [SerializeField] bool weightBased = true;
+
+
+        [Space(10)]
+        [Header("Locations & Mob Types")]
         [SerializeField] [ShowIf("isNumberSpawnerBased")] [Range(1, 6)] int numberSpawnerActivated;
         [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerTop;
         [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerTopRight;
@@ -45,86 +52,41 @@ namespace JeuB
         [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerBottom;
         [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerBottomLeft;
         [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerTopLeft;
-
-        [Space(10)]
-        [SerializeField] bool weightBased = true;
         [SerializeField] [HideIf("weightBased")] MobType[] mobTypePerSpawner = new MobType[6];
-
-        [Space(10)]
-
-        [SerializeField] [ShowIf("weightBased")] int weightEnemy1;
-        [SerializeField] [ShowIf("weightBased")] int weightEnemy2;
-        [SerializeField] [ShowIf("weightBased")] int weightEnemy3;
-
+        [ShowIf("weightBased")] public int weightEnemy1;
+        [ShowIf("weightBased")] public int weightEnemy2;
+        [ShowIf("weightBased")] public int weightEnemy3;
         private int _percentageEnemy1;
         private int _percentageEnemy2;
         private int _percentageEnemy3;
-
         [NaughtyAttributes.ReadOnly] [SerializeField] [ShowIf("weightBased")] string CurrentPercentageEnemy1;
         [NaughtyAttributes.ReadOnly] [SerializeField] [ShowIf("weightBased")] string CurrentPercentageEnemy2;
         [NaughtyAttributes.ReadOnly] [SerializeField] [ShowIf("weightBased")] string CurrentPercentageEnemy3;
 
 
-        [Header("Progression Parameters")]
-        [SerializeField] bool enableProgression = true; 
-        [NaughtyAttributes.ReadOnly] [SerializeField] int currentLevel = 0;
-        [SerializeField] int maxLevel;
-        [SerializeField] PulsatingText pulsatingTextBehavior;
-        [NaughtyAttributes.ReadOnly] [SerializeField] int milestoneCount = 0;
-        [Button("Skip")] private void Skip() 
-        {
-            CountMinutes();
-            CancelInvoke();
-        }
-    
-        [SerializeField] int interval = 10;
-
-        [NaughtyAttributes.ReadOnly] [SerializeField] DifficultyPresets currentPreset;
-        [SerializeField] DifficultyPresets deathPreset;
-
-        [SerializeField] DifficultyPresets[] tutorialDifficulties;
-        [SerializeField] int tutorialDifficultiesCount = 0;
-        [SerializeField] DifficultyPresets[] difficultyPresets;
-        [SerializeField] int difficultyPresetsCount = 0;
-
+        [Space(10)]
         [Header("Death Event")]
         [SerializeField] UnityEvent allShooted = new();
 
-        private static bool _skipTutorial = false;
-        [SerializeField] bool skipTutorial;
-
         void OnEnable()
         {
-            if (enableProgression) Invoke(nameof(CountMinutes), interval);
-
-            milestoneCount = currentLevel = 0;
-
             target.gameObject.SetActive(true);
-
-#if UNITY_EDITOR
-            _skipTutorial = skipTutorial;
-#endif
         }
 
         private void OnDisable()
         {
             CancelInvoke();
             StopAllCoroutines();
-
-            //GameManager.Instance.gameStopped.RemoveListener(() => _skipTutorial = false);
         }
 
         private void Start()
         {
             target.onDeath.AddListener(StopAllCoroutines);
-            //GameManager.Instance.gameStopped.AddListener(() => _skipTutorial = false);
         }
 
         private void Update()
         {
             if (Application.isEditor && !Application.isPlaying) SpawnPercentage();
-
-            if (OVRInput.Get(OVRInput.RawButton.X)) Order66();
         }
 
         public void StartSpawn()
@@ -173,7 +135,7 @@ namespace JeuB
             mobBehaviors.target = target.transform;
         }
 
-        private void SpawnPercentage()
+        public void SpawnPercentage()
         {
             float frequencyEnemy1 = weightEnemy1;
             float frequencyEnemy2 = weightEnemy2 + frequencyEnemy1;
@@ -209,7 +171,7 @@ namespace JeuB
             return null;
         }
 
-        private void CreateAvailableSpawnerList()
+        public void CreateAvailableSpawnerList()
         {
 
             if (isNumberSpawnerBased)
@@ -231,49 +193,7 @@ namespace JeuB
             _availableSpawnerList = tempList;
         }
 
-
-        private void CountMinutes()
-        {
-            #if UNITY_EDITOR
-            if (!Application.isPlaying) return;
-            #endif
-
-            if (tutorialDifficultiesCount < tutorialDifficulties.Length && !_skipTutorial)
-            {
-                ChangeDifficulty(tutorialDifficulties[tutorialDifficultiesCount]);
-                tutorialDifficultiesCount++;
-            }
-            else
-            {
-                _skipTutorial = true;
-                ChangeDifficulty(difficultyPresets[difficultyPresetsCount]);
-                difficultyPresetsCount++;
-            }
-
-            if (difficultyPresetsCount == difficultyPresets.Length)
-            {
-                _skipTutorial = true;
-                CancelInvoke();
-                return;
-            }
-
-            Invoke(nameof(CountMinutes), interval);
-        }
-
-        private void LevelPassed()
-        {
-            pulsatingTextBehavior.disappear = true;
-
-            if (currentLevel < maxLevel)
-            {
-                currentLevel += 1;   
-                pulsatingTextBehavior.textMesh.text = "Niveau: " + currentLevel.ToString();
-            }
-            else pulsatingTextBehavior.textMesh.text = "Niveau: Bonus";
-        }
-
         public void ChangeInterval(float newInterval) => spawnInterval = newInterval;
-        public void ChangeMilestoneInterval(int newInterval) => interval = newInterval;
         public void ChangeNumberSpawner(int newNumber, bool newIsNumberSpawnerBased ,params bool[] newSpawners)
         {
             numberSpawnerActivated = newNumber;
@@ -290,31 +210,5 @@ namespace JeuB
         public void ChangeMobSpeed(float speed) => mobSpeed = speed;
         public void ChangeMobTypePerSpawner(MobType[] newMobTypePerSpawner) => mobTypePerSpawner = newMobTypePerSpawner;
         public void ChangeWeightBased(bool newWeightBased) => weightBased = newWeightBased;
-
-
-
-        public void ChangeDifficulty(DifficultyPresets preset)
-        {
-            if (preset.levelPassed) LevelPassed();
-            currentPreset = preset;
-            milestoneCount += 1;
-            ChangeMilestoneInterval(preset.milestoneInterval);
-            ChangeInterval(preset.spawnInterval);
-            ChangeMobSpeed(preset.mobSpeed);
-            ChangeNumberSpawner(preset.numberSpawner, preset.isNumberSpawnerBased, preset.spawnerTop, preset.spawnerTopRight, preset.spawnerBottomRight, preset.spawnerBottom, preset.spawnerBottomLeft, preset.spawnerTopLeft);
-            ChangeWeightEnemy(ref weightEnemy1, preset.weightEnemy1);
-            ChangeWeightEnemy(ref weightEnemy2, preset.weightEnemy2);
-            ChangeWeightEnemy(ref weightEnemy3, preset.weightEnemy3);
-            ChangeMobTypePerSpawner(preset.mobTypePerSpawner);
-            ChangeWeightBased(preset.weightBased);
-            CreateAvailableSpawnerList();
-            SpawnPercentage();
-        }
-
-        public void Order66()
-        {
-            CancelInvoke(nameof(CountMinutes));
-            ChangeDifficulty(deathPreset);
-        }
     }
 }

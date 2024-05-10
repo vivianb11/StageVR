@@ -8,7 +8,6 @@ namespace JeuB {
         [SerializeField] int scoreToAdd;
 
         protected override void EntityStart() {}
-        
 
         protected override void EntityUpdate() {}
 
@@ -17,6 +16,8 @@ namespace JeuB {
             tooth.enemyPoints = scoreToAdd;
             tooth.ScoreMultiplier();
         }
+
+        public void Freeze() => moveSpeed = 0;
 
     }
 }

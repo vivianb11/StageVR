@@ -56,11 +56,10 @@ namespace JeuB
 
             OnDamaged?.Invoke();
 
-            if (Health <= 0)
-            {
-                Kill();
-                OnDeath?.Invoke();
-            }
+            if (Health > 0) return;
+            
+            Kill();
+            OnDeath?.Invoke();
         }
     }
 }

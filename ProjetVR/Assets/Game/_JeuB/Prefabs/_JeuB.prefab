@@ -1388,8 +1388,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37592f61e2fbf2649ad7c4916fa41631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Maxhealth: 3
+  maxHealth: 3
   receivedDamagedOnHit: 1
+  shakeMagnitude: 0.1
+  shakeSpeed: 50
+  shakeDuration: 3
+  enemiesToKillForMultiplier: 5
+  MaxMultiplier: 5
+  multiplierTexts: {fileID: 1841816361652682291}
+  multiplier: 1
+  enemyPoints: 0
+  toothExplosion: {fileID: 2625892611844449159, guid: fbe8e61d982bbcd4aaf9b0ab006383e5, type: 3}
+  color2HP: {r: 1, g: 0.5776704, b: 0, a: 1}
+  color1HP: {r: 1, g: 0, b: 0, a: 1}
+  minValueOutline: 6
+  maxValueOutline: 12
+  duration: 1
+  _lock: {fileID: 903379254622426194}
   onDamaged:
     m_PersistentCalls:
       m_Calls:
@@ -1429,18 +1444,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  material2HP: {fileID: 2100000, guid: b970aa69ad40d41438b4c925e19e1be0, type: 2}
-  material1HP: {fileID: 2100000, guid: 185d30be8b3dd1848a8653dcdbe671bb, type: 2}
-  color2HP: {r: 1, g: 0.5776704, b: 0, a: 1}
-  color1HP: {r: 1, g: 0, b: 0, a: 1}
-  shakeMagnitude: 0.1
-  shakeSpeed: 50
-  shakeDuration: 3
-  enemiesToKillForMultiplier: 5
-  MaxMultiplier: 5
-  multiplierTexts: {fileID: 1841816361652682291}
-  multiplier: 1
-  enemyPoints: 0
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -1504,18 +1507,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: PauseMusic
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 4622476769891022016}
         m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
         m_MethodName: PlaySound
@@ -1543,11 +1534,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  toothExplosion: {fileID: 2625892611844449159, guid: fbe8e61d982bbcd4aaf9b0ab006383e5, type: 3}
-  minValueOutline: 6
-  maxValueOutline: 12
-  duration: 1
-  _lock: {fileID: 903379254622426194}
 --- !u!114 &6210217690531083248
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1090,36 +1090,24 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1232292026500529538}
-        m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
-        m_MethodName: SetPlayerBestScore
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshPro, Unity.TextMeshPro
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1232292026500529538}
-        m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: JeuB.ScoreManager, Assembly-CSharp
         m_MethodName: SetBestScore
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshPro, Unity.TextMeshPro
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1232292026500529538}
-        m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: JeuB.ScoreManager, Assembly-CSharp
         m_MethodName: SetScore
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshPro, Unity.TextMeshPro
+          m_ObjectArgument: {fileID: 8126226405067460842}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.TextMesh, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4274,7 +4262,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 183991099677935272, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4427915834001589200, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: m_Name
@@ -4282,7 +4270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5207574694463080172, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5966549031175783699, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: m_LocalPosition.x

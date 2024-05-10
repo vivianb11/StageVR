@@ -107,7 +107,7 @@ namespace JeuB
             }
         } 
 
-        public void SetScore(TextMeshPro scoreTextMesh)
+        public void SetScore(TextMesh scoreTextMesh)
         {
             gameOverScoreDisplay.text = "Score:" + "\n" + currentScore.ToString();
         } 

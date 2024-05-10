@@ -32,8 +32,8 @@ Transform:
   m_GameObject: {fileID: 1787971923272075642}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5340056654771416255}
@@ -179,6 +179,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  damage: 1
 --- !u!114 &2138729624200196912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +202,7 @@ MonoBehaviour:
       useDynamicFrom: 1
       useGameObjectTo: 0
       from: {x: 0, y: 0, z: 0}
-      to: {x: 0, y: 0, z: 0.75}
+      to: {x: 0, y: 0, z: 1.75}
       toObject: {fileID: 0}
       duration: 0.2
       curve:
@@ -263,7 +264,7 @@ MonoBehaviour:
       useDynamicFrom: 1
       useGameObjectTo: 0
       from: {x: 0, y: 0, z: 0}
-      to: {x: 0, y: 0, z: 1}
+      to: {x: 0, y: 0, z: 1.25}
       toObject: {fileID: 0}
       duration: 0.2
       curve:
@@ -403,7 +404,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5340056654771416255}

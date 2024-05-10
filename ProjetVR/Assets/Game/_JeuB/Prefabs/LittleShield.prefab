@@ -31,13 +31,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787971923272075642}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.76604444, y: 0, z: 0, w: 0.64278764}
   m_LocalPosition: {x: 0, y: 0, z: 1.5}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5340056654771416255}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 100, y: 0, z: 0}
 --- !u!33 &2608760405731728485
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
       useDynamicFrom: 1
       useGameObjectTo: 0
       from: {x: 0, y: 0, z: 0}
-      to: {x: 0, y: 0, z: 1.75}
+      to: {x: 0, y: 0, z: 2}
       toObject: {fileID: 0}
       duration: 0.2
       curve:
@@ -264,7 +264,7 @@ MonoBehaviour:
       useDynamicFrom: 1
       useGameObjectTo: 0
       from: {x: 0, y: 0, z: 0}
-      to: {x: 0, y: 0, z: 1.25}
+      to: {x: 0, y: 0, z: 1.5}
       toObject: {fileID: 0}
       duration: 0.2
       curve:
@@ -404,8 +404,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1.5, y: 1, z: 1.5}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5340056654771416255}
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 180}
@@ -473,7 +473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 5
+  outlineWidth: 2
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []

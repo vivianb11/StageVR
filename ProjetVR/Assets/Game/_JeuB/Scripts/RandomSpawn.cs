@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
 using NaughtyAttributes;
-using System.Linq;
 
 namespace JeuB
 {
@@ -108,9 +107,8 @@ namespace JeuB
 
         private void SpawnBonus()
         {
-            int randomBonusIndex = UnityEngine.Random.Range(0, bonusArray.Length-1);
-            int randomSpawnerIndex = UnityEngine.Random.Range(0, spawnerList.Count-1);
-            var mob = Instantiate(bonusArray[randomBonusIndex], spawnerList[randomSpawnerIndex].transform);
+            var mob = Instantiate(bonusArray.PickRandom(), spawnerList.PickRandom().transform);
+
             var mobBehaviors = mob.GetComponent<Entity>();
             if (mobBehaviors != null) mobBehaviors.target = target.transform;
             Invoke(nameof(SpawnBonus), UnityEngine.Random.Range(bonusSpawnMinInterval, bonusSpawnMaxInterval));

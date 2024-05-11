@@ -5,8 +5,9 @@ namespace JeuB {
     {
         public void OnTriggerEnter(Collider other)
         {
-            if (other.transform != target) Kill();
-            
+            if (other.transform != target)
+                return;
+
             ApplyBonus(target.GetComponent<ProtectedToothBehaviours>());
             Kill();
         }

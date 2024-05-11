@@ -17,9 +17,9 @@ GameObject:
   - component: {fileID: 8285496669955875806}
   - component: {fileID: 207185742236015232}
   - component: {fileID: 593089163638709294}
-  - component: {fileID: 1053353406419632723}
+  - component: {fileID: 8463387003683341097}
   m_Layer: 6
-  m_Name: MobBonus+100
+  m_Name: HealthBonus+1
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -256,7 +256,7 @@ MonoBehaviour:
   signalReceived:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1053353406419632723}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: JeuB.BonusMob, Assembly-CSharp
         m_MethodName: Freeze
         m_Mode: 1
@@ -271,7 +271,7 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1053353406419632723
+--- !u!114 &8463387003683341097
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6224022260222283880}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2426ead16eea1194eb4cc015cf380e13, type: 3}
+  m_Script: {fileID: 11500000, guid: 9877519c8c21b6c4996edbfc617fcbfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 1
@@ -295,7 +295,7 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  scoreToAdd: 100
+  HpToAdd: 1
 --- !u!1 &7445267932798162999
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,7 +358,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 185d30be8b3dd1848a8653dcdbe671bb, type: 2}
+  - {fileID: 2100000, guid: 757f4c29d7f7878449b8669ff0558c23, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -68,10 +68,10 @@ namespace Components.Container
             switch (alignDirection)
             {
                 case AlignDirection.VERTICAL:
-                    direction = Vector3.up;
+                    direction = transform.up;
                     break;
                 case AlignDirection.HORIZONTAL:
-                    direction = Vector3.right;
+                    direction = transform.right;
                     break;
             }
 

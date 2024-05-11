@@ -10,6 +10,8 @@ namespace JeuB
 
         public enum ShieldType { LITLLE, BIG }
 
+        public float minDistance;
+
         [SerializeField] GameObject _littleShield;
         [SerializeField] GameObject _bigShield;
 
@@ -20,6 +22,11 @@ namespace JeuB
 
         void Update()
         {
+            float distanceToPoint = (EyeManager.Instance.hitPosition - transform.position).magnitude;
+
+            if (distanceToPoint < minDistance)
+                return;
+
             transform.LookAt(EyeManager.Instance.hitPosition);
 
             Vector3 rot = transform.localEulerAngles;

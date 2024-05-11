@@ -37,7 +37,6 @@ namespace JeuB
         [Header("Debug Parameters")]
         [SerializeField] bool enableProgression = true; 
         private static bool _skipTutorial = false;
-        [SerializeField] bool skipTutorial;
         [Button("Skip a milestone")] private void Skip() 
         {
             CountMinutes();
@@ -51,11 +50,6 @@ namespace JeuB
             if (enableProgression) Invoke(nameof(CountMinutes), interval);
 
             milestoneCount = currentLevel = 0;
-
-            #if UNITY_EDITOR
-            _skipTutorial = skipTutorial;
-            #endif
-
         }
 
         private void OnDisable()

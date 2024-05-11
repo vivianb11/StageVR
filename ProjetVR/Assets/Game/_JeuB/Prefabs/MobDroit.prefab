@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 3076696588940178710}
   - component: {fileID: 8285496669955875806}
   - component: {fileID: 207185742236015232}
-  - component: {fileID: 1561803134388132565}
   - component: {fileID: 593089163638709294}
+  - component: {fileID: 9111355016841858779}
   m_Layer: 6
   m_Name: MobDroit
   m_TagString: Ennemy
@@ -239,70 +239,6 @@ MonoBehaviour:
     isPlaying: 0
   autoPlayMontage: 0
   tweenIndex: 0
---- !u!114 &1561803134388132565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6224022260222283880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b234e8c786c01e4ebfc9f66d9adecce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  lifepoints: 1
-  moveSpeed: 1
-  isKnockable: 0
-  scoreOnDeath: 10
-  canRotate: 0
-  receivedDamagedOnHit: 1
-  knockCooldown: 1.5
-  outlineEffect: {fileID: 178538353245796596}
-  hpLossParticles: {fileID: 7194952087870367276, guid: 94d330fe499a5fe4d82bfd7918f2164c, type: 3}
-  deathParticles: {fileID: 6237553109302029157, guid: 444ee8f7b95e1f54fb957fbf2206a39e, type: 3}
-  degree: 
-  sounds:
-  - soundType: 0
-    clip: {fileID: 8300000, guid: 1b2f7f070dd101e4590d120b1c604904, type: 3}
-    timePaused: 0
-    pausedTime: 0
-  - soundType: 0
-    clip: {fileID: 8300000, guid: b5131605e66f1744ea66f0000cd8e108, type: 3}
-    timePaused: 0
-    pausedTime: 0
-  onKnocked:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onDeath:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8285496669955875806}
-        m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  protectedToothBehaviours: {fileID: 0}
 --- !u!114 &593089163638709294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,7 +256,7 @@ MonoBehaviour:
   signalReceived:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1561803134388132565}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Mob, Assembly-CSharp
         m_MethodName: Freeze
         m_Mode: 1
@@ -335,6 +271,51 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9111355016841858779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6224022260222283880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8028856de74a8334aac1be5d37fbb0b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 1
+  target: {fileID: 0}
+  moveSpeed: 1
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  scoreOnDeath: 10
+  knockCooldown: 1.5
+  hpLossParticles: {fileID: 7194952087870367276, guid: 94d330fe499a5fe4d82bfd7918f2164c, type: 3}
+  deathParticles: {fileID: 6237553109302029157, guid: 444ee8f7b95e1f54fb957fbf2206a39e, type: 3}
+  outlineEffect: {fileID: 178538353245796596}
+  sounds: []
+  onKnocked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &65469839574252718
 PrefabInstance:
   m_ObjectHideFlags: 0

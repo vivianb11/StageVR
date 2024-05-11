@@ -48,9 +48,8 @@ MonoBehaviour:
   audioFilterMode: 1
   fadeDuration: 1
   maxAudioSources: 10
-  playMusicOnStart: 0
-  musics: []
   _musicSource: {fileID: 0}
+  musics: []
 --- !u!82 &599597195772556926
 AudioSource:
   m_ObjectHideFlags: 0
@@ -63,7 +62,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

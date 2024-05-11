@@ -58,6 +58,7 @@ namespace JeuB
         [Foldout("Events")] [SerializeField] UnityEvent onDamaged = new UnityEvent();
         [Foldout("Events")] public UnityEvent onDeath = new UnityEvent();
         [Foldout("Events")] public UnityEvent onExplosion = new UnityEvent();
+        [Foldout("Events")] public UnityEvent onHeal = new UnityEvent();
 
         private Vector3 originalPosition;
 
@@ -92,6 +93,16 @@ namespace JeuB
             onDeath.Invoke();
             Invoke(nameof(Explode), 2.05f);
             GameManager.Instance.ReloadGameMode(3);
+        }
+
+        public void Heal(int amount)
+        {
+            if (health == 0) return;
+
+            health = Mathf.Clamp(health + amount, 0, maxHealth);
+            onHeal.Invoke();
+
+            _outlineEffect.OutlineColor = (health == 2) ? color2HP : (health == 1) ? color1HP : Color.clear;
         }
 
         public void OutlinePulsating()

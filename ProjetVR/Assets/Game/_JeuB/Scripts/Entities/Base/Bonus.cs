@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace JeuB {
@@ -8,11 +5,10 @@ namespace JeuB {
     {
         public void OnTriggerEnter(Collider other)
         {
-            if (other.transform != target) return;
+            if (other.transform != target) Kill();
             
             ApplyBonus(target.GetComponent<ProtectedToothBehaviours>());
             Kill();
-            
         }
 
         public abstract void ApplyBonus(ProtectedToothBehaviours tooth);

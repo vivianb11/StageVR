@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 3105006146038916852}
   - component: {fileID: 7676536657634413543}
   - component: {fileID: 327356959002380300}
-  - component: {fileID: 3120594525929679554}
   - component: {fileID: -4936888757795940695}
+  - component: {fileID: 5485560971465345224}
   m_Layer: 6
   m_Name: MobBounce
   m_TagString: Ennemy
@@ -248,53 +248,6 @@ MonoBehaviour:
     isPlaying: 0
   autoPlayMontage: 0
   tweenIndex: 0
---- !u!114 &3120594525929679554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638022967405250282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b234e8c786c01e4ebfc9f66d9adecce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHealth: 2
-  target: {fileID: 0}
-  moveSpeed: 1
-  OnDamaged:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHeal:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  isKnockable: 1
-  scoreOnDeath: 15
-  knockCooldown: 1
-  hpLossParticles: {fileID: 7194952087870367276, guid: 608c4f579bfcb1e49ba9b26e73b848bb, type: 3}
-  deathParticles: {fileID: 6237553109302029157, guid: 3aa32e22076f75e43a4548461208757e, type: 3}
-  outlineEffect: {fileID: 3799295983485137969}
-  sounds: []
-  onKnocked:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  protectedToothBehaviours: {fileID: 0}
 --- !u!114 &-4936888757795940695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +265,7 @@ MonoBehaviour:
   signalReceived:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3120594525929679554}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Mob, Assembly-CSharp
         m_MethodName: Freeze
         m_Mode: 1
@@ -327,6 +280,52 @@ MonoBehaviour:
   signalLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5485560971465345224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638022967405250282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8028856de74a8334aac1be5d37fbb0b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 2
+  target: {fileID: 0}
+  moveSpeed: 1
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  scoreOnDeath: 15
+  knockCooldown: 1
+  hpLossParticles: {fileID: 7194952087870367276, guid: 608c4f579bfcb1e49ba9b26e73b848bb, type: 3}
+  deathParticles: {fileID: 6237553109302029157, guid: 3aa32e22076f75e43a4548461208757e, type: 3}
+  outlineEffect: {fileID: 3799295983485137969}
+  sounds: []
+  onKnocked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  protectedToothBehaviours: {fileID: 0}
 --- !u!1001 &720215120202845245
 PrefabInstance:
   m_ObjectHideFlags: 0

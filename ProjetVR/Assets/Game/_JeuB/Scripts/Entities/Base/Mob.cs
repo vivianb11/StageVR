@@ -1,5 +1,4 @@
 using System.Collections;
-using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,15 +6,14 @@ namespace JeuB
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(BoxCollider))]
-    public class Mob : Entity
+    public abstract class Mob : Entity
     {
         [Header("Mob Characteristics")]
-        [SerializeField] bool isKnockable;
         public int scoreOnDeath;
 
         [Header("On Hit Parameters")]
-        [ShowIf("isKnockable")] [SerializeField] float knockCooldown;
-        [ShowIf("isKnockable")] [SerializeField] GameObject hpLossParticles;
+        [SerializeField] float knockCooldown;
+        [SerializeField] GameObject hpLossParticles;
         [SerializeField] GameObject deathParticles;
         [SerializeField] Outline outlineEffect;
 
@@ -32,7 +30,7 @@ namespace JeuB
 
         private int currentMultiplier;
 
-        public ProtectedToothBehaviours protectedToothBehaviours;
+        private ProtectedToothBehaviours protectedToothBehaviours;
 
         private Transform _shield;
 
@@ -75,9 +73,10 @@ namespace JeuB
 
             if (_isKnocked) 
             {
-               if (isKnockable) transform.Translate(Vector3.back * moveSpeed * Time.deltaTime, Space.Self);
+                transform.Translate(Vector3.back * moveSpeed * Time.deltaTime, Space.Self);
                 return;
             }
+
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, Space.Self);
         }
 
@@ -97,10 +96,10 @@ namespace JeuB
             var tempToothBehaviours = protectedTooth.GetComponent<ProtectedToothBehaviours>();
 
             tempToothBehaviours.Damaged();
-            OnDeath.Invoke();
+            OnDeath?.Invoke();
             OnDeath.RemoveListener(tempToothBehaviours.ScoreMultiplier);
 
-            Destroy(gameObject);
+            Kill();
         }
 
         public void Freeze()

@@ -10,7 +10,7 @@ namespace JeuB
         public int Health { get; private set; }
 
         public Transform target;
-        public float moveSpeed;
+        public float moveSpeed = 1;
 
         [Foldout("Events")]
         public UnityEvent OnDamaged, OnHeal, OnDeath;

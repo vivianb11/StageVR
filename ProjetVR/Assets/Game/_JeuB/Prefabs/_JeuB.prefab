@@ -1164,6 +1164,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onHeal:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6210217690531083248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1900,9 +1903,9 @@ MonoBehaviour:
   mobRotator: {fileID: 717860868454398895, guid: 49a144da7a60bbf43bb3161e221dabe8, type: 3}
   mobSpeed: 1.25
   spawnInterval: 3.5
-  bonusSpawnMinInterval: 10
-  bonusSpawnMaxInterval: 15
-  bonusSpawnDelay: 5
+  bonusSpawnMinInterval: 1
+  bonusSpawnMaxInterval: 1
+  bonusSpawnDelay: 1
   isNumberSpawnerBased: 1
   weightBased: 1
   numberSpawnerActivated: 4
@@ -4386,6 +4389,10 @@ PrefabInstance:
     - target: {fileID: 4427915834001589200, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: m_Name
       value: SmoothShield
+      objectReference: {fileID: 0}
+    - target: {fileID: 4427915834001589200, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5207574694463080172, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: m_IsActive

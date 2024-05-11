@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace JeuB {
-    public class BonusMob : Bonus
+namespace JeuB
+{
+    public class BonusPoints : Bonus
     {
         [SerializeField] int scoreToAdd;
 
-        protected override void EntityStart() {}
+        protected override void EntityStart() { }
 
-        protected override void EntityUpdate() {}
+        protected override void EntityUpdate() { }
 
         public override void ApplyBonus(ProtectedToothBehaviours tooth)
         {

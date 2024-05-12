@@ -466,6 +466,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 5507889837493725008}
     m_Modifications:
     - target: {fileID: 1771932033615259210, guid: 4d15d3570d5405d4aa35a5a8984a4925, type: 3}
+      propertyPath: autoTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771932033615259210, guid: 4d15d3570d5405d4aa35a5a8984a4925, type: 3}
+      propertyPath: deSelectionCondition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771932033615259210, guid: 4d15d3570d5405d4aa35a5a8984a4925, type: 3}
       propertyPath: lookIn.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -1084,6 +1092,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5507889837493725008}
     m_Modifications:
+    - target: {fileID: 1771932033615259210, guid: 4d15d3570d5405d4aa35a5a8984a4925, type: 3}
+      propertyPath: autoTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771932033615259210, guid: 4d15d3570d5405d4aa35a5a8984a4925, type: 3}
+      propertyPath: deSelectionCondition
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1771932033615259210, guid: 4d15d3570d5405d4aa35a5a8984a4925, type: 3}
       propertyPath: lookIn.m_PersistentCalls.m_Calls.Array.size
       value: 0

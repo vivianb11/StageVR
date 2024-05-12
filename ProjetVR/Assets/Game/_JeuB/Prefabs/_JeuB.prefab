@@ -4143,6 +4143,10 @@ PrefabInstance:
       propertyPath: onSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2447117610089989676, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2721112830209296252, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
       propertyPath: Event1.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -4329,7 +4333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7965185718814724088, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

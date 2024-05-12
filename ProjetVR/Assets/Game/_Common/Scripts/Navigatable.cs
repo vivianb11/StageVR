@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -5,6 +6,10 @@ using UnityEngine.Events;
 public class Navigatable : MonoBehaviour
 {
     public static Navigatable SelectedItem;
+
+    [SerializeField] enum NavigationMode { MANUAL, VERTICAL, HORIZONTAL}
+
+    [SerializeField] NavigationMode navigationMode;
 
     public enum Direction { LEFT, RIGHT, UP, DOWN }
 
@@ -19,9 +24,13 @@ public class Navigatable : MonoBehaviour
 
     [Space(10)]
 
+    [ShowIf("navigationMode", NavigationMode.MANUAL)]
     public Navigatable up;
+    [ShowIf("navigationMode", NavigationMode.MANUAL)]
     public Navigatable down;
+    [ShowIf("navigationMode", NavigationMode.MANUAL)]
     public Navigatable left;
+    [ShowIf("navigationMode", NavigationMode.MANUAL)]
     public Navigatable right;
 
     [Header("Events")]
@@ -35,12 +44,12 @@ public class Navigatable : MonoBehaviour
         if (autoSelect)
         {
             if (SelectedItem != null)
-            {
                 Debug.LogWarning("An item is already selected");
-                return;
-            }
-            Select();
+            else
+                Select();
         }
+
+        SetupDirection();
     }
 
     private void Update()
@@ -83,6 +92,35 @@ public class Navigatable : MonoBehaviour
         canMove = false;
 
         StartCoroutine(MoveDelay());
+    }
+
+    private void SetupDirection()
+    {
+        switch (navigationMode)
+        {
+            case NavigationMode.MANUAL:
+                break;
+            case NavigationMode.VERTICAL:
+                for (int i = 0; i < transform.parent.childCount; i++)
+                {
+                    if (transform.parent.GetChild(i) == transform)
+                    {
+                        if (i - 1 >= 0) up = transform.parent.GetChild(i - 1).GetComponent<Navigatable>();
+                        if (i + 1 < transform.parent.childCount) down = transform.parent.GetChild(i + 1).GetComponent<Navigatable>();
+                    }
+                }
+                break;
+            case NavigationMode.HORIZONTAL:
+                for (int i = 0; i < transform.parent.childCount; i++)
+                {
+                    if (transform.parent.GetChild(i) == transform)
+                    {
+                        if (i - 1 >= 0) left = transform.parent.GetChild(i - 1).GetComponent<Navigatable>();
+                        if (i + 1 < transform.parent.childCount) right = transform.parent.GetChild(i + 1).GetComponent<Navigatable>();
+                    }
+                }
+                break;
+        }
     }
 
     private void SwitchItem(Navigatable switchTarget)

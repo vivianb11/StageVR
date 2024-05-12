@@ -60,8 +60,7 @@ namespace Components.Container
         private void UpdateChildsPosition()
         {
             List<Transform> activeChilds = GetActiveChilds().ToList();
-
-            Debug.Log(activeChilds.Count);
+            activeChilds.Reverse();
 
             Vector3 direction = Vector3.zero;
 

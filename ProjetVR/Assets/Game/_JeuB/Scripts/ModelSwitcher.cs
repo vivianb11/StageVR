@@ -24,8 +24,6 @@ public class ModelSwitcher : SignalListener
     {
         for (int i = 0; i < _skins.Length; i++)
         {
-            Debug.Log("Signal: " + value);
-            Debug.Log("Key: " + signal[i].name);
             if (value == signal[i].name)
             {
                 _currentSkin.SetActive(false);

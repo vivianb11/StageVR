@@ -5,7 +5,6 @@ namespace JeuB
 {
     public class Shield : MonoBehaviour
     {
-        public GameObject targetObject;
         public float moveSpeed = 5f;
         public float returnSpeed = 2f;
 
@@ -16,12 +15,10 @@ namespace JeuB
         public int damage = 1;
 
         private Tween tweener;
-        private ProtectedToothBehaviours tooth;
 
         private void Awake()
         {
             tweener = GetComponent<Tween>();
-            tooth = targetObject.GetComponent<ProtectedToothBehaviours>();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -32,7 +29,7 @@ namespace JeuB
 
                 if (other.gameObject.TryGetComponent(out Mob tempMob))
                 {
-                    tooth.enemyPoints = tempMob.scoreOnDeath;
+                    ScoreManager.Instance.AddScore(tempMob.scoreOnDeath);
 
                     OnShieldHit.Invoke();
 

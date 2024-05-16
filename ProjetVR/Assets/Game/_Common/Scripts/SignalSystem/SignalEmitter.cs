@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace SignalSystem
     {
         [SerializeField] List<SO_Signal> signals = new List<SO_Signal>();
 
+        [Button]
         public void RequestSignalCall()
         {
             foreach (SO_Signal signal in signals)

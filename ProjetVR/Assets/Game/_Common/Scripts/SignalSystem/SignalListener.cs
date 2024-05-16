@@ -16,7 +16,7 @@ namespace SignalSystem
             SignalManager.Instance.signalCalled.AddListener(OnSignalReceived);
         }
 
-        private void OnSignalReceived(string value)
+        protected virtual void OnSignalReceived(string value)
         {
             foreach (SO_Signal soSignal in signal)
             {

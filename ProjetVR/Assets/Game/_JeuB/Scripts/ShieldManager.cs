@@ -72,7 +72,7 @@ namespace JeuB
         //    {
         //        onHit.Invoke();
         //        other.GetComponent<Mob>().scoreOnDeath = scoreDeathEnemy;
-            
+
         //    }
         //}
     }

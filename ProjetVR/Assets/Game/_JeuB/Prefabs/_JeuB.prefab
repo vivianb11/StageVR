@@ -1913,6 +1913,7 @@ MonoBehaviour:
   - {fileID: 6224022260222283880, guid: 801271edc3a642648a0909d1b0a3aab9, type: 3}
   - {fileID: 6224022260222283880, guid: 5cf3ef51547e6cf4f95dc8a87095f413, type: 3}
   - {fileID: 6224022260222283880, guid: d477fcdd3fb6fbf4fa7c20afe5df2633, type: 3}
+  - {fileID: 6224022260222283880, guid: 81d228fb86a636e4c98b70b90a845a41, type: 3}
   target: {fileID: 424505616319249623}
   rotationPoint: {fileID: 3579039938324773682}
   mobRotator: {fileID: 717860868454398895, guid: 49a144da7a60bbf43bb3161e221dabe8, type: 3}
@@ -4400,6 +4401,10 @@ PrefabInstance:
     - target: {fileID: 197460300575150828, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2880031739825692772, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.300002
       objectReference: {fileID: 0}
     - target: {fileID: 4427915834001589200, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: m_Name

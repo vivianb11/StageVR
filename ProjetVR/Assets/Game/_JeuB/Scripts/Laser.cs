@@ -9,9 +9,10 @@ namespace JeuB
 
         [SerializeField] float lifeTime = 10f;
 
-        private void Awake()
+        private void Start()
         {
             Instance = this;
+            gameObject.SetActive(false);
         }
 
         public void EnbleLaser()

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8285496669955875806}
   - component: {fileID: 207185742236015232}
   - component: {fileID: 593089163638709294}
+  - component: {fileID: 1654513216973009406}
   m_Layer: 6
   m_Name: Laser
   m_TagString: Ennemy
@@ -268,6 +269,30 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   signalLost:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1654513216973009406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6224022260222283880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc422b36b9625b74383ea014f7abcb3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 1
+  target: {fileID: 0}
+  moveSpeed: 1
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &7445267932798162999

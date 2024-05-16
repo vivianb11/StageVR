@@ -206,6 +206,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4692747275123098972, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 167226540}
+    - targetCorrespondingSourceObject: {fileID: 662015915005131932, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 995718993}
   m_SourcePrefab: {fileID: 100100000, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
 --- !u!114 &63744276 stripped
 MonoBehaviour:
@@ -628,11 +631,29 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 8.7e-44, z: 2.4388e-41, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 4e-45, z: 3.453e-42, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &995718989 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 662015915005131932, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+  m_PrefabInstance: {fileID: 63744275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &995718993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995718989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcbfd11cd6b37264682780d7180e6579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: GameRemote
 --- !u!1 &1102556377 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1505314965580272911, guid: 53da3c0e596b0814a9483012869a20fa, type: 3}

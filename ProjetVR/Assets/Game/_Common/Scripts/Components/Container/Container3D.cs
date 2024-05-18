@@ -44,7 +44,7 @@ namespace Components.Container
             }
         }
 
-        private Transform[] GetActiveChilds()
+        protected Transform[] GetActiveChilds()
         {
             List<Transform> activeChilds = new();
 
@@ -57,7 +57,7 @@ namespace Components.Container
         }
 
         [Button]
-        private void UpdateChildsPosition()
+        protected virtual void UpdateChildsPosition()
         {
             List<Transform> activeChilds = GetActiveChilds().ToList();
             activeChilds.Reverse();

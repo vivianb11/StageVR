@@ -38,6 +38,10 @@ public class Navigatable : MonoBehaviour
 
     [Header("Events")]
     public UnityEvent Pressed;
+    [Header("Events")]
+    public UnityEvent<Navigatable> focusEntered;
+    [Header("Events")]
+    public UnityEvent<Navigatable> focusExited;
 
     private static bool canMove = true;
 
@@ -69,6 +73,7 @@ public class Navigatable : MonoBehaviour
             FocusedItem.Deselect();
         FocusedItem = this;
         graphicTarget.sprite = selectedSprite;
+        focusEntered?.Invoke(this);
     }
 
     public void Deselect()
@@ -76,6 +81,7 @@ public class Navigatable : MonoBehaviour
         if (FocusedItem == this)
             FocusedItem = null;
         graphicTarget.sprite = deselectedSprite;
+        focusExited?.Invoke(this);
     }
 
     public void MoveTo(Direction moveDirection)

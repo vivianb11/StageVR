@@ -194,11 +194,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4267927996717330507}
   - component: {fileID: 2753439310282945724}
-  - component: {fileID: 3295003625019572809}
-  - component: {fileID: 1771932033615259210}
   - component: {fileID: 6119671857351220407}
   - component: {fileID: 8487912613681001463}
-  - component: {fileID: 6144361742246840772}
   - component: {fileID: 5412645490142971567}
   m_Layer: 5
   m_Name: Button-Background
@@ -275,77 +272,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!54 &3295003625019572809
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2073383463608855584}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &1771932033615259210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2073383463608855584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0805536d4d3954db43464ca4cbd840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  selectionCondition: 1
-  lookInTime: 1
-  currentLookInTime: 0
-  resetValueOnExit: 1
-  deSelectionCondition: 1
-  lookOutTime: 1
-  autoTime: 0
-  selected: 0
-  selectedEventsDelay: []
-  deSelectedEventsDelay: []
-  onSelected:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeselected:
-    m_PersistentCalls:
-      m_Calls: []
-  lookIn:
-    m_PersistentCalls:
-      m_Calls: []
-  lookOut:
-    m_PersistentCalls:
-      m_Calls: []
-  activeStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  OnActivation:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDeactivation:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &6119671857351220407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,27 +302,6 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_SortAtRoot: 0
---- !u!65 &6144361742246840772
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2073383463608855584}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 13.560003, y: 4.6000004, z: 0.20001356}
-  m_Center: {x: 0.0000019073486, y: 0, z: -0.00000023841858}
 --- !u!114 &5412645490142971567
 MonoBehaviour:
   m_ObjectHideFlags: 0

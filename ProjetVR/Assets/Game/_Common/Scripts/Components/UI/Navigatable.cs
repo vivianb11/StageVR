@@ -141,13 +141,13 @@ public class Navigatable : MonoBehaviour
         if (!canMove)
             return;
 
-        if (Input.GetKey(KeyCode.LeftArrow) || OVRInput.Get(OVRInput.RawAxis2D.RThumbstick).x == -.9f)
+        if (Input.GetKey(KeyCode.LeftArrow) || OVRInput.Get(OVRInput.RawAxis2D.RThumbstick).x < -.9f)
             MoveTo(Direction.LEFT);
-        else if (Input.GetKey(KeyCode.RightArrow) || OVRInput.Get(OVRInput.RawAxis2D.RThumbstick).x == .9f)
+        else if (Input.GetKey(KeyCode.RightArrow) || OVRInput.Get(OVRInput.RawAxis2D.RThumbstick).x > .9f)
             MoveTo(Direction.RIGHT);
-        else if (Input.GetKey(KeyCode.UpArrow) || OVRInput.Get(OVRInput.RawAxis2D.RThumbstick).y == .9f)
+        else if (Input.GetKey(KeyCode.UpArrow) || OVRInput.Get(OVRInput.RawAxis2D.RThumbstick).y > .9f)
             MoveTo(Direction.UP);
-        else if (Input.GetKey(KeyCode.DownArrow) || OVRInput.Get(OVRInput.RawAxis2D.RThumbstick).y == -.9f)
+        else if (Input.GetKey(KeyCode.DownArrow) || OVRInput.Get(OVRInput.RawAxis2D.RThumbstick).y < -.9f)
             MoveTo(Direction.DOWN);
     }
 

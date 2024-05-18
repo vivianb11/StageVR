@@ -30,8 +30,6 @@ namespace JeuB
 
         private int currentMultiplier;
 
-        private ProtectedToothBehaviours protectedToothBehaviours;
-
         private Transform _shield;
 
         protected override void EntityStart()
@@ -41,6 +39,8 @@ namespace JeuB
             _shield = FindObjectOfType<ShieldManager>().transform;
 
             _tween = GetComponent<Tween>();
+
+            target.GetComponent<ProtectedToothBehaviours>().onDeath.AddListener(Freeze);
         }
 
         protected override void EntityUpdate()
@@ -71,7 +71,7 @@ namespace JeuB
         {
             transform.LookAt(target.position, transform.parent.up);
 
-            if (_isKnocked) 
+            if (_isKnocked)
             {
                 transform.Translate(Vector3.back * moveSpeed * Time.deltaTime, Space.Self);
                 return;

@@ -9,12 +9,10 @@ namespace JeuB
 
         protected override void EntityStart()
         {
-            throw new System.NotImplementedException();
         }
 
         protected override void EntityUpdate()
         {
-            throw new System.NotImplementedException();
         }
     }
 }

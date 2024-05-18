@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Navigatable : MonoBehaviour
 {
-    public static Navigatable SelectedItem;
+    public static Navigatable FocusedItem;
 
     [SerializeField] enum NavigationMode { MANUAL, VERTICAL, HORIZONTAL }
 
@@ -22,6 +22,8 @@ public class Navigatable : MonoBehaviour
 
     public Sprite selectedSprite;
     public Sprite deselectedSprite;
+
+    public bool isFocused => FocusedItem == this;
 
     [Space(10)]
 
@@ -44,7 +46,7 @@ public class Navigatable : MonoBehaviour
         Deselect();
         if (autoSelect)
         {
-            if (SelectedItem != null)
+            if (FocusedItem != null)
                 Debug.LogWarning("An item is already selected");
             else
                 Select();
@@ -55,20 +57,24 @@ public class Navigatable : MonoBehaviour
 
     private void Update()
     {
-        if (SelectedItem == this)
+        if (FocusedItem == this)
             HandleInputs();
     }
 
+    [HideIf("isFocused")]
+    [Button]
     public void Select()
     {
-        SelectedItem = this;
+        if (FocusedItem != null)
+            FocusedItem.Deselect();
+        FocusedItem = this;
         graphicTarget.sprite = selectedSprite;
     }
 
     public void Deselect()
     {
-        if (SelectedItem == this)
-            SelectedItem = null;
+        if (FocusedItem == this)
+            FocusedItem = null;
         graphicTarget.sprite = deselectedSprite;
     }
 
@@ -93,6 +99,13 @@ public class Navigatable : MonoBehaviour
         canMove = false;
 
         StartCoroutine(MoveDelay());
+    }
+
+    [ShowIf("isFocused")]
+    [Button]
+    public void Press()
+    {
+        Pressed?.Invoke();
     }
 
     private void SetupDirection()
@@ -136,7 +149,7 @@ public class Navigatable : MonoBehaviour
     private void HandleInputs()
     {
         if (Input.GetKeyDown(KeyCode.KeypadEnter) || OVRInput.GetDown(OVRInput.Button.One))
-            Pressed?.Invoke();
+            Press();
 
         if (!canMove)
             return;

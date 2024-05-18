@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
 
     private GameObject nextGameMode;
 
+    private bool isReloading = false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -77,6 +79,10 @@ public class GameManager : MonoBehaviour
 
     public void ReloadGameMode(float delay)
     {
+        if (isReloading)
+            return;
+
+        isReloading = true;
         nextGameMode = gameModes[currentSceneIndex];
         StartCoroutine(UnloadGameMode(delay, 3));
     }
@@ -140,6 +146,7 @@ public class GameManager : MonoBehaviour
         nextGameMode = null;
 
         SceneLoader.Instance.FadeOut(3);
+        isReloading = false;
     }
 
     private void LoadCalibrationMode()

@@ -1,6 +1,7 @@
 using UnityEngine;
 
-namespace JeuB {
+namespace JeuB
+{
     public abstract class Bonus : Entity
     {
         public void OnTriggerEnter(Collider other)

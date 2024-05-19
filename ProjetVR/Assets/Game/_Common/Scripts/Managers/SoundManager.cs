@@ -22,7 +22,7 @@ public class SoundManager : MonoBehaviour
     [HideInInspector] public AudioSource _musicSource;
     [HideInInspector] public Sound[] musics;
 
-    [HideInInspector] public Coroutine musicCoroutine;
+    private Coroutine musicCoroutine;
 
     // The key is the audio source and the value is the sound that is playing on it
     public Dictionary<AudioSource, Sound> _audioSources;

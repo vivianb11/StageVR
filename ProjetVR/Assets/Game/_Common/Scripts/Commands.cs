@@ -3,6 +3,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Command", menuName = "ScriptableObject/Command")]
 public class Commands : ScriptableObject
 {
+    public void ResetGameTransform()
+    {
+        GameRemoteTransform.Instance.target.position = Vector3.zero;
+        GameRemoteTransform.Instance.target.eulerAngles = Vector3.zero;
+    }
+
     public void ReloadGameMode(float time)
     {
         GameManager.Instance.ReloadGameMode(time);

@@ -504,7 +504,7 @@ GameObject:
   m_Component:
   - component: {fileID: 776199923}
   - component: {fileID: 776199925}
-  - component: {fileID: 776199924}
+  - component: {fileID: 776199926}
   m_Layer: 0
   m_Name: GameRemoteTranform
   m_TagString: Untagged
@@ -527,31 +527,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 167226541}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &776199924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 776199922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1c3207ab988d474c9cca209b0c8a66e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 342334589}
-  syncPosition: 1
-  lerpPosition: 1
-  positionLerpSpeed: 1
-  syncRotation: 1
-  lerpRotation: 1
-  rotationLerpSpeed: 1
-  syncRotationX: 1
-  syncRotationY: 1
-  syncRotationZ: 1
-  syncScale: 0
-  lerpScale: 0
-  scaleLerpSpeed: 1
 --- !u!114 &776199925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,6 +540,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GameRemote
+--- !u!114 &776199926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776199922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda8dce7493dc045af2e2f3474ed50a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 342334589}
+  syncPosition: 1
+  lerpPosition: 1
+  positionLerpSpeed: 1
+  syncRotation: 1
+  lerpRotation: 1
+  rotationLerpSpeed: 1
+  syncRotationX: 1
+  syncRotationY: 1
+  syncRotationZ: 1
+  syncScale: 1
+  lerpScale: 0
+  scaleLerpSpeed: 1
 --- !u!1 &867987670
 GameObject:
   m_ObjectHideFlags: 0

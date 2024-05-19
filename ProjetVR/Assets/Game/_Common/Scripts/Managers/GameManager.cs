@@ -36,7 +36,16 @@ public class GameManager : MonoBehaviour
 
     private bool isReloading = false;
 
-    public bool gamePaused = false;
+    private bool _gamePaused = false;
+    public bool gamePaused
+    {
+        get => _gamePaused;
+        set
+        {
+            _gamePaused = value;
+            Time.timeScale = value ? 0f : 1f;
+        }
+    }
 
     private void Awake()
     {
@@ -97,17 +106,18 @@ public class GameManager : MonoBehaviour
     private IEnumerator ChangeGameModeCoroutine()
     {
         SceneLoader.Instance.FadeIn(3);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSecondsRealtime(3);
 
         LoadCalibrationMode();
     }
 
     private IEnumerator StartDelay(float delay)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSecondsRealtime(delay);
 
         startSignal.Emit();
         gameStarted?.Invoke();
+        gamePaused = false;
     }
 
     private void CheckUnfocusedTime()
@@ -134,10 +144,10 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator UnloadGameMode(float delay, float fadeDuration)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSecondsRealtime(delay);
 
         SceneLoader.Instance.FadeIn(fadeDuration);
-        yield return new WaitForSeconds(fadeDuration);
+        yield return new WaitForSecondsRealtime(fadeDuration);
         DestroyGameModes();
         LoadNextGameMode();
     }

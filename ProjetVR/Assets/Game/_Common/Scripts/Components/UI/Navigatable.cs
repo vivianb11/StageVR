@@ -172,7 +172,7 @@ public class Navigatable : MonoBehaviour
 
     private IEnumerator MoveDelay()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSecondsRealtime(0.5f);
 
         canMove = true;
     }

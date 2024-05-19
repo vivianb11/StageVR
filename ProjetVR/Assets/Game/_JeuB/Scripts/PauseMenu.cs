@@ -6,7 +6,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (OVRInput.GetDown(OVRInput.RawButton.B))
+        if (Input.GetKeyDown(KeyCode.B) || OVRInput.GetDown(OVRInput.RawButton.B))
         {
             _panel.SetActive(!_panel.activeInHierarchy);
             GameManager.Instance.gamePaused = _panel.activeInHierarchy;

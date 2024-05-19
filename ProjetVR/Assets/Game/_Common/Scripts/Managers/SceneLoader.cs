@@ -20,11 +20,11 @@ public class SceneLoader : MonoBehaviour
         rend.material.SetFloat("_force", 1f);
     }
 
-    public void LodScene(int  sceneId)
+    public void LodScene(int sceneId)
     {
         if (loadRequested)
             return;
-        
+
         loadRequested = true;
         //StartCoroutine(Fade(1f, fadeTransitionDuration, true));
         StartCoroutine(LoadDelay(fadeTransitionDuration, sceneId));
@@ -42,7 +42,7 @@ public class SceneLoader : MonoBehaviour
 
     private IEnumerator LoadDelay(float delay, int sceneId)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSecondsRealtime(delay);
         loadRequested = false;
         StartCoroutine(Fade(0f, fadeTransitionDuration, true));
     }
@@ -54,7 +54,7 @@ public class SceneLoader : MonoBehaviour
 
         while (time < fadeDuration)
         {
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             rend.material.SetFloat("_force", Mathf.Lerp(startAlpha, fadeTarget, time / fadeDuration));
             yield return null;
         }

@@ -107,9 +107,6 @@ namespace JeuB
 
         private void SpawnBonus()
         {
-            if (GameManager.Instance.gamePaused)
-                return;
-
             var mob = Instantiate(bonusArray.PickRandom(), spawnerList.PickRandom().transform);
 
             var mobBehaviors = mob.GetComponent<Entity>();
@@ -130,9 +127,6 @@ namespace JeuB
 
         private void SpawnMob(GameObject _spawner, GameObject _mob)
         {
-            if (GameManager.Instance.gamePaused)
-                return;
-
             GameObject newMob = Instantiate(_mob, _spawner.transform);
             Entity mobBehaviors = newMob.GetComponent<Entity>();
             mobBehaviors.moveSpeed = mobSpeed;

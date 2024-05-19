@@ -22,6 +22,8 @@ public class SoundManager : MonoBehaviour
     [HideInInspector] public AudioSource _musicSource;
     [HideInInspector] public Sound[] musics;
 
+    [HideInInspector] public Coroutine musicCoroutine;
+
     // The key is the audio source and the value is the sound that is playing on it
     public Dictionary<AudioSource, Sound> _audioSources;
 
@@ -74,7 +76,7 @@ public class SoundManager : MonoBehaviour
             var aS = audio.Key;
             var s = audio.Value;
 
-            if (s is null || s.isPaused && s.timePaused >= AudioData.expirationTime[s.soundType] && AudioData.expirationTime[s.soundType] > 0)
+            if (s is null || s.isPaused && s.timePlayed >= AudioData.expirationTime[s.soundType] && AudioData.expirationTime[s.soundType] > 0)
             {
                 audioSource = aS;
                 break;
@@ -100,9 +102,9 @@ public class SoundManager : MonoBehaviour
 
             var go = new GameObject("Audio Source " + _audioSources.Count);
             go.transform.SetParent(transform);
-            go.AddComponent<AudioSource>();
 
-            audioSource = go.GetComponent<AudioSource>();
+            audioSource = go.AddComponent<AudioSource>();
+
             _audioSources.Add(audioSource, null);
         }
 
@@ -112,7 +114,7 @@ public class SoundManager : MonoBehaviour
         switch (soundPlacing)
         {
             case SoundPlacing.Global:
-                audioSource.transform.position = transform.position;
+                audioSource.transform.position = location.transform.position;
                 audioSource.spatialBlend = 0;
                 break;
             case SoundPlacing.Local:
@@ -134,27 +136,33 @@ public class SoundManager : MonoBehaviour
     public void PlayMusic()
     {
         // sorts the musics by the times played
-        Array.Sort(musics, (x, y) => x.timePaused.CompareTo(y.timePaused));
+        Array.Sort(musics, (x, y) => x.timePlayed.CompareTo(y.timePlayed));
 
-        int smallestTimesPlayed = musics[0].timePaused;
+        int smallestTimesPlayed = musics[0].timePlayed;
 
         // selects a random music from the musics with the smallest times played
         List<Sound> smallestTimesPlayedMusics = new List<Sound>();
         foreach (var music in musics)
         {
-            if (music.timePaused == smallestTimesPlayed)
+            if (music.timePlayed == smallestTimesPlayed)
                 smallestTimesPlayedMusics.Add(music);
         }
 
         int randomIndex = Random.Range(0, smallestTimesPlayedMusics.Count);
         Sound selectedMusic = smallestTimesPlayedMusics[randomIndex];
-        musics[randomIndex].timePaused++;
+        musics[randomIndex].timePlayed++;
 
-        StartCoroutine(PlayMusicCo(selectedMusic.clip));
+        if (musicCoroutine != null)
+            StopCoroutine(musicCoroutine);
+
+        musicCoroutine = StartCoroutine(PlayMusicCo(selectedMusic.clip));
     }
     public void PlayMusic(AudioClip music)
     {
-        StartCoroutine(PlayMusicCo(music));
+        if (musicCoroutine != null)
+            StopCoroutine(musicCoroutine);
+
+        musicCoroutine = StartCoroutine(PlayMusicCo(music));
     }
     [Button("Resume Music")]
     public void ResumeMusic()
@@ -397,7 +405,7 @@ public class Sound
 
     public AudioClip clip;
 
-    [HideInInspector] public int timePaused;
+    [HideInInspector] public int timePlayed;
 
     private bool _isPaused;
     public bool isPaused
@@ -417,11 +425,11 @@ public class Sound
     {
         clip = sound;
         soundType = type;
-        timePaused = 0;
+        timePlayed = 0;
     }
     public void ResetTimesPlayed()
     {
-        timePaused = 0;
+        timePlayed = 0;
     }
     public IEnumerator TimePaused()
     {

@@ -13,17 +13,7 @@ public class MusicEmiter : MonoBehaviour
     {
         soundManager = SoundManager.Instance;
 
-        if (musics.Length > 0)
-        {
-            Array.Clear(soundManager.musics, 0, soundManager.musics.Length);
-
-            soundManager.musics = new Sound[musics.Length];
-
-            for (int i = 0; i < musics.Length; i++)
-            {
-                soundManager.musics[i] = new Sound(musics[i], SoundType.Music);
-            }
-        }
+        ResetMusics();
 
         if (playMusicOnStart)
         {
@@ -44,5 +34,20 @@ public class MusicEmiter : MonoBehaviour
     public void PauseMusic()
     {
         soundManager.PauseMusic();
+    }
+
+    public void ResetMusics()
+    {
+        if (musics.Length > 0)
+        {
+            Array.Clear(soundManager.musics, 0, soundManager.musics.Length);
+
+            soundManager.musics = new Sound[musics.Length];
+
+            for (int i = 0; i < musics.Length; i++)
+            {
+                soundManager.musics[i] = new Sound(musics[i], SoundType.Music);
+            }
+        }
     }
 }

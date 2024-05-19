@@ -6,7 +6,7 @@ using UnityEngine;
 public class SoundEmiterSwitcher : MonoBehaviour
 {
     [Space(10)]
-    [SerializeField] SoundEmiter SoundEmiter;
+    [SerializeField] SoundEmiter soundEmiter;
 
     [Space(10)]
     public SoundOnSignal[] soundOnSignals;
@@ -15,7 +15,7 @@ public class SoundEmiterSwitcher : MonoBehaviour
     {
         SignalManager.Instance.signalCalled.AddListener(OnSignalReceived);
 
-        if (SoundEmiter == null) if (TryGetComponent(out SoundEmiter)) Debug.Log("No Sound Emiter Assigned or On Gameobject");
+        if (soundEmiter == null) if (TryGetComponent(out soundEmiter)) Debug.Log("No Sound Emiter Assigned or On Gameobject");
     }
 
     protected virtual void OnSignalReceived(string value)
@@ -24,14 +24,14 @@ public class SoundEmiterSwitcher : MonoBehaviour
         {
             if (soundOnSignal.signal.name == value)
             {
-                SoundEmiter.playRandomSfx = soundOnSignal.randomize;
+                soundEmiter.playRandomSfx = soundOnSignal.randomize;
 
-                SoundEmiter.sound.soundType = soundOnSignal.sounds[0].soundType;
+                soundEmiter.sound.soundType = soundOnSignal.sounds[0].soundType;
 
-                if (soundOnSignal.randomize) SoundEmiter.sfxs = soundOnSignal.sounds.Select(sound => sound.clip).ToArray();
+                if (soundOnSignal.randomize) soundEmiter.sfxs = soundOnSignal.sounds.Select(sound => sound.clip).ToArray();
                 else
                 {
-                    SoundEmiter.sound = soundOnSignal.sounds[0];
+                    soundEmiter.sound = soundOnSignal.sounds[0];
                     return;
                 }
             }

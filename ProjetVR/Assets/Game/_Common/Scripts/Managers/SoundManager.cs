@@ -100,9 +100,9 @@ public class SoundManager : MonoBehaviour
 
             var go = new GameObject("Audio Source " + _audioSources.Count);
             go.transform.SetParent(transform);
-            go.AddComponent<AudioSource>();
 
-            audioSource = go.GetComponent<AudioSource>();
+            audioSource = go.AddComponent<AudioSource>();
+
             _audioSources.Add(audioSource, null);
         }
 
@@ -112,7 +112,7 @@ public class SoundManager : MonoBehaviour
         switch (soundPlacing)
         {
             case SoundPlacing.Global:
-                audioSource.transform.position = transform.position;
+                audioSource.transform.position = location.transform.position;
                 audioSource.spatialBlend = 0;
                 break;
             case SoundPlacing.Local:

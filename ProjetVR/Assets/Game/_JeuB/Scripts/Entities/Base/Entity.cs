@@ -1,6 +1,6 @@
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using NaughtyAttributes;
 
 namespace JeuB
 {
@@ -24,6 +24,9 @@ namespace JeuB
 
         private void Update()
         {
+            if (GameManager.Instance.gamePaused)
+                return;
+
             Move();
 
             EntityUpdate();
@@ -57,7 +60,7 @@ namespace JeuB
             OnDamaged?.Invoke();
 
             if (Health > 0) return;
-            
+
             Kill();
             OnDeath?.Invoke();
         }

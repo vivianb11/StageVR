@@ -1,9 +1,9 @@
-using System.Collections;
+using NaughtyAttributes;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using System.Collections.Generic;
-using NaughtyAttributes;
 
 namespace JeuB
 {
@@ -44,23 +44,23 @@ namespace JeuB
 
         [Space(10)]
         [Header("Locations & Mob Types")]
-        [SerializeField] [ShowIf("isNumberSpawnerBased")] [Range(1, 6)] int numberSpawnerActivated;
-        [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerTop;
-        [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerTopRight;
-        [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerBottomRight;
-        [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerBottom;
-        [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerBottomLeft;
-        [SerializeField] [HideIf("isNumberSpawnerBased")] bool spawnerTopLeft;
-        [SerializeField] [HideIf("weightBased")] MobType[] mobTypePerSpawner = new MobType[6];
+        [SerializeField][ShowIf("isNumberSpawnerBased")][Range(1, 6)] int numberSpawnerActivated;
+        [SerializeField][HideIf("isNumberSpawnerBased")] bool spawnerTop;
+        [SerializeField][HideIf("isNumberSpawnerBased")] bool spawnerTopRight;
+        [SerializeField][HideIf("isNumberSpawnerBased")] bool spawnerBottomRight;
+        [SerializeField][HideIf("isNumberSpawnerBased")] bool spawnerBottom;
+        [SerializeField][HideIf("isNumberSpawnerBased")] bool spawnerBottomLeft;
+        [SerializeField][HideIf("isNumberSpawnerBased")] bool spawnerTopLeft;
+        [SerializeField][HideIf("weightBased")] MobType[] mobTypePerSpawner = new MobType[6];
         [ShowIf("weightBased")] public int weightEnemy1;
         [ShowIf("weightBased")] public int weightEnemy2;
         [ShowIf("weightBased")] public int weightEnemy3;
         private int _percentageEnemy1;
         private int _percentageEnemy2;
         private int _percentageEnemy3;
-        [NaughtyAttributes.ReadOnly] [SerializeField] [ShowIf("weightBased")] string CurrentPercentageEnemy1;
-        [NaughtyAttributes.ReadOnly] [SerializeField] [ShowIf("weightBased")] string CurrentPercentageEnemy2;
-        [NaughtyAttributes.ReadOnly] [SerializeField] [ShowIf("weightBased")] string CurrentPercentageEnemy3;
+        [NaughtyAttributes.ReadOnly][SerializeField][ShowIf("weightBased")] string CurrentPercentageEnemy1;
+        [NaughtyAttributes.ReadOnly][SerializeField][ShowIf("weightBased")] string CurrentPercentageEnemy2;
+        [NaughtyAttributes.ReadOnly][SerializeField][ShowIf("weightBased")] string CurrentPercentageEnemy3;
 
 
         [Space(10)]
@@ -107,6 +107,9 @@ namespace JeuB
 
         private void SpawnBonus()
         {
+            if (GameManager.Instance.gamePaused)
+                return;
+
             var mob = Instantiate(bonusArray.PickRandom(), spawnerList.PickRandom().transform);
 
             var mobBehaviors = mob.GetComponent<Entity>();
@@ -127,6 +130,9 @@ namespace JeuB
 
         private void SpawnMob(GameObject _spawner, GameObject _mob)
         {
+            if (GameManager.Instance.gamePaused)
+                return;
+
             GameObject newMob = Instantiate(_mob, _spawner.transform);
             Entity mobBehaviors = newMob.GetComponent<Entity>();
             mobBehaviors.moveSpeed = mobSpeed;
@@ -138,17 +144,17 @@ namespace JeuB
             float frequencyEnemy1 = weightEnemy1;
             float frequencyEnemy2 = weightEnemy2 + frequencyEnemy1;
             float frequencyEnemy3 = weightEnemy3 + frequencyEnemy2;
-        
+
             _percentageEnemy1 = CalculatePercentage(frequencyEnemy1, frequencyEnemy3);
             _percentageEnemy2 = CalculatePercentage(frequencyEnemy2, frequencyEnemy3);
             _percentageEnemy3 = CalculatePercentage(frequencyEnemy3, frequencyEnemy3);
-        
-            CurrentPercentageEnemy1 = _percentageEnemy1.ToString() +  "%";
-            CurrentPercentageEnemy2 = (_percentageEnemy2 - _percentageEnemy1).ToString() +  "%";
-            CurrentPercentageEnemy3 = (_percentageEnemy3 - _percentageEnemy2).ToString() +  "%";
+
+            CurrentPercentageEnemy1 = _percentageEnemy1.ToString() + "%";
+            CurrentPercentageEnemy2 = (_percentageEnemy2 - _percentageEnemy1).ToString() + "%";
+            CurrentPercentageEnemy3 = (_percentageEnemy3 - _percentageEnemy2).ToString() + "%";
         }
 
-        private int CalculatePercentage(float mainFrequency, float otherFrequency) => (int)((mainFrequency/otherFrequency)*100);
+        private int CalculatePercentage(float mainFrequency, float otherFrequency) => (int)((mainFrequency / otherFrequency) * 100);
 
         public GameObject SelectByPercentage()
         {
@@ -178,7 +184,7 @@ namespace JeuB
                 _availableSpawnerList.Shuffle();
                 return;
             }
-        
+
             var tempList = new List<GameObject>();
 
             if (spawnerTop) tempList.Add(spawnerList[0]);
@@ -192,7 +198,7 @@ namespace JeuB
         }
 
         public void ChangeInterval(float newInterval) => spawnInterval = newInterval;
-        public void ChangeNumberSpawner(int newNumber, bool newIsNumberSpawnerBased ,params bool[] newSpawners)
+        public void ChangeNumberSpawner(int newNumber, bool newIsNumberSpawnerBased, params bool[] newSpawners)
         {
             numberSpawnerActivated = newNumber;
             isNumberSpawnerBased = newIsNumberSpawnerBased;
@@ -202,7 +208,7 @@ namespace JeuB
             spawnerBottom = newSpawners[3];
             spawnerBottomLeft = newSpawners[4];
             spawnerTopLeft = newSpawners[5];
-        } 
+        }
 
         public void ChangeWeightEnemy(ref int weightsEnemy, int newWeightsEnemy) => weightsEnemy = newWeightsEnemy;
         public void ChangeMobSpeed(float speed) => mobSpeed = speed;

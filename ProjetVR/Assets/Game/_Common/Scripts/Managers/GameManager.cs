@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
 
     private bool isReloading = false;
 
+    public bool gamePaused = false;
+
     private void Awake()
     {
         if (Instance == null)

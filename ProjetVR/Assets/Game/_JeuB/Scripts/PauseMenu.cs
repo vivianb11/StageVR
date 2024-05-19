@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,6 +7,9 @@ public class PauseMenu : MonoBehaviour
     private void Update()
     {
         if (OVRInput.GetDown(OVRInput.RawButton.B))
+        {
             _panel.SetActive(!_panel.activeInHierarchy);
+            GameManager.Instance.gamePaused = _panel.activeInHierarchy;
+        }
     }
 }

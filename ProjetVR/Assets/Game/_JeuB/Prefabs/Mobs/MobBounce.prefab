@@ -173,7 +173,7 @@ MonoBehaviour:
   sound:
     soundType: 2
     clip: {fileID: 8300000, guid: b5131605e66f1744ea66f0000cd8e108, type: 3}
-    timePaused: 0
+    timePlayed: 0
     pausedTime: 0
   playRandomSfx: 0
   sfxs: []
@@ -303,7 +303,19 @@ MonoBehaviour:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7676536657634413543}
+        m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   scoreOnDeath: 15
   knockCooldown: 1
   hpLossParticles: {fileID: 7194952087870367276, guid: 608c4f579bfcb1e49ba9b26e73b848bb, type: 3}
@@ -325,7 +337,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  protectedToothBehaviours: {fileID: 0}
 --- !u!1001 &720215120202845245
 PrefabInstance:
   m_ObjectHideFlags: 0

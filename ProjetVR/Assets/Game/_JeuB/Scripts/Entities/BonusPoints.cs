@@ -6,13 +6,13 @@ namespace JeuB
     {
         [SerializeField] int scoreToAdd;
 
-        protected override void EntityStart() { }
-
-        protected override void EntityUpdate() 
-        { 
+        protected override void EntityStart() 
+        {
             var rotation = Quaternion.LookRotation(Vector3.up , Vector3.forward);
             transform.GetChild(0).rotation = rotation;
-        }
+         }
+
+        protected override void EntityUpdate() { }
 
         public override void ApplyBonus(ProtectedToothBehaviours tooth)
         {

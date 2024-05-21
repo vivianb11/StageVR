@@ -270,7 +270,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.0310153, y: 0.45, z: 0.8019065}
-  m_Center: {x: 0.0024453998, y: 0.00000035762784, z: 3.1273388e-16}
+  m_Center: {x: 0.0024453998, y: -0.1, z: 3.1273388e-16}
 --- !u!114 &7347763300661450867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,7 +504,7 @@ MonoBehaviour:
   sound:
     soundType: 2
     clip: {fileID: 8300000, guid: 1b2f7f070dd101e4590d120b1c604904, type: 3}
-    timePaused: 0
+    timePlayed: 0
     pausedTime: 0
   playRandomSfx: 0
   sfxs: []

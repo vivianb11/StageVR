@@ -173,7 +173,7 @@ MonoBehaviour:
   sound:
     soundType: 2
     clip: {fileID: 8300000, guid: 1b9fa80b06bb7614eac6fb55a9028757, type: 3}
-    timePaused: 0
+    timePlayed: 0
     pausedTime: 0
   playRandomSfx: 0
   sfxs: []
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 1
   target: {fileID: 0}
-  moveSpeed: 1
+  moveSpeed: 1.5
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []

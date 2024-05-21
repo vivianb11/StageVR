@@ -8,7 +8,11 @@ namespace JeuB
 
         protected override void EntityStart() { }
 
-        protected override void EntityUpdate() { }
+        protected override void EntityUpdate() 
+        { 
+            var rotation = Quaternion.LookRotation(Vector3.up , Vector3.forward);
+            transform.GetChild(0).rotation = rotation;
+        }
 
         public override void ApplyBonus(ProtectedToothBehaviours tooth)
         {

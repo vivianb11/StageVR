@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using UnityEngine.Events;
+using Unity.VisualScripting;
 
 namespace JeuB 
 {
@@ -10,17 +12,20 @@ namespace JeuB
     {
         private RandomSpawn spawner;
 
+        public GameObject Background;
+        public List<string> levelColors;
+
 
         [Header("Progression Parameters")]
         [SerializeField] int interval = 10;
-        [NaughtyAttributes.ReadOnly] [SerializeField] int milestoneCount = 0;
-        [NaughtyAttributes.ReadOnly] [SerializeField] DifficultyPresets currentPreset;
+        [NaughtyAttributes.ReadOnly][SerializeField] int milestoneCount = 0;
+        [NaughtyAttributes.ReadOnly][SerializeField] DifficultyPresets currentPreset;
 
 
         [Space(10)]
         [Header("Level Parameters")]
         [SerializeField] PulsatingText pulsatingTextBehavior;
-        [NaughtyAttributes.ReadOnly] [SerializeField] int currentLevel = 0;
+        [NaughtyAttributes.ReadOnly][SerializeField] int currentLevel = 0;
         [SerializeField] int maxLevel;
 
 
@@ -35,9 +40,9 @@ namespace JeuB
 
         [Space(10)]
         [Header("Debug Parameters")]
-        [SerializeField] bool enableProgression = true; 
+        [SerializeField] bool enableProgression = true;
         private static bool _skipTutorial = false;
-        [Button("Skip a milestone")] private void Skip() 
+        [Button("Skip a milestone")] private void Skip()
         {
             CountMinutes();
             CancelInvoke();
@@ -65,9 +70,9 @@ namespace JeuB
 
         private void CountMinutes()
         {
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             if (!Application.isPlaying) return;
-            #endif
+#endif
 
             if (tutorialDifficultiesCount < tutorialDifficulties.Length && !_skipTutorial)
             {
@@ -91,6 +96,21 @@ namespace JeuB
             Invoke(nameof(CountMinutes), interval);
         }
 
+        
+        private void ColorChanger()
+        {
+            int colorIndex;
+            colorIndex = Random.Range(0, 3);
+            string hexColor = levelColors[colorIndex];
+            Color newColor;
+
+            if (UnityEngine.ColorUtility.TryParseHtmlString(hexColor, out newColor)) 
+            {
+                Background.GetComponent<SpriteRenderer>().color = newColor;
+            }
+                
+        }
+
         private void LevelPassed()
         {
             pulsatingTextBehavior.disappear = true;
@@ -99,6 +119,7 @@ namespace JeuB
             {
                 currentLevel += 1;   
                 pulsatingTextBehavior.textMesh.text = "Niveau: " + currentLevel.ToString();
+                ColorChanger();
             }
             else pulsatingTextBehavior.textMesh.text = "Niveau: Bonus";
         }

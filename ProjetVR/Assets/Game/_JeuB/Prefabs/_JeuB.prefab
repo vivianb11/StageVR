@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 5897289170461346436}
   - component: {fileID: 3703215866154756670}
   m_Layer: 0
-  m_Name: Square
+  m_Name: DentistBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -662,7 +662,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841816361652682291}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.15900002}
+  m_LocalPosition: {x: 0, y: 0, z: -1.29}
   m_LocalScale: {x: 0.13662878, y: 0.13662875, z: 0.13662875}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -674,7 +674,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.36000013}
+  m_AnchoredPosition: {x: -2.956, y: 2.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1882367868363240382
@@ -2049,6 +2049,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8798d15b3fc46741909c1d2de53524c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Background: {fileID: 899626974193819249}
+  levelColors:
+  - '#AFFF83'
+  - '#82DFFF'
+  - '#FFAB82'
   interval: 10
   milestoneCount: 0
   currentPreset: {fileID: 0}
@@ -4231,6 +4236,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7359144668205427886, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359144668205427886, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
       propertyPath: InitialModule.size3D
       value: 0
       objectReference: {fileID: 0}
@@ -4240,6 +4249,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7359144668205427886, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359144668205427886, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359144668205427886, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359144668205427886, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359144668205427886, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359144668205427886, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
+      propertyPath: InitialModule.startColor.minMaxState
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7359144668205427886, guid: c89875c6f002a924db10952fc51ed67d, type: 3}

@@ -134,8 +134,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0094293, y: 0.45, z: 0.98154545}
-  m_Center: {x: 0.009456675, y: 0.00000035769415, z: -0.02212131}
+  m_Size: {x: 1.09, y: 0.53, z: 0.98154545}
+  m_Center: {x: 0.009456675, y: -0.12, z: -0.02212131}
 --- !u!114 &8596822953664979357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,7 +369,7 @@ MonoBehaviour:
   sound:
     soundType: 2
     clip: {fileID: 8300000, guid: 1b2f7f070dd101e4590d120b1c604904, type: 3}
-    timePaused: 0
+    timePlayed: 0
     pausedTime: 0
   playRandomSfx: 0
   sfxs: []

@@ -100,7 +100,7 @@ namespace JeuB
         private void ColorChanger()
         {
             int colorIndex;
-            colorIndex = Random.Range(0, 3);
+            colorIndex = currentLevel - 1;
             string hexColor = levelColors[colorIndex];
             Color newColor;
 

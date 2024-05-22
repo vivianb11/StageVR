@@ -46,7 +46,7 @@ namespace JeuB
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, Space.Self);
         }
 
-        public void Heal(int healAmount)
+        public void Heal(int healAmount) 
         {
             Health = Mathf.Clamp(Health + healAmount, 0, MaxHealth);
 

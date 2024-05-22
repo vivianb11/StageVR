@@ -2015,8 +2015,8 @@ MonoBehaviour:
   mobRotator: {fileID: 717860868454398895, guid: 49a144da7a60bbf43bb3161e221dabe8, type: 3}
   mobSpeed: 1.25
   spawnInterval: 3.5
-  bonusSpawnMinInterval: 10
-  bonusSpawnMaxInterval: 15
+  bonusSpawnMinInterval: 80
+  bonusSpawnMaxInterval: 95
   bonusSpawnDelay: 5
   isNumberSpawnerBased: 1
   weightBased: 1
@@ -4176,7 +4176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1915156014101466681, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3142528635308579155, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
       propertyPath: m_LocalScale.x

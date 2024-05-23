@@ -207,17 +207,6 @@ PrefabInstance:
       addedObject: {fileID: 776199923}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
---- !u!114 &63744276 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4258354812615802030, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
-  m_PrefabInstance: {fileID: 63744275}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87fc2fb89f08b5248a8e79dc2627268a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &167226541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8521838121109946084, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
@@ -330,7 +319,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBeforeResetGame: 10
   startSignal: {fileID: 11400000, guid: 117d694d618b2ab43b6beb0bf6c8330a, type: 2}
-  playerInstance: {fileID: 63744276}
   gameModes:
   - {fileID: 6798597841116208069, guid: 522d735e31d0b6b4c8f4ef5735b6efe9, type: 3}
   - {fileID: 6798597841116208069, guid: 78b725139ead97f4d87ba0814f66c741, type: 3}
@@ -456,7 +444,7 @@ MonoBehaviour:
   positionLerpSpeed: 1
   syncRotation: 1
   lerpRotation: 1
-  rotationLerpSpeed: 1
+  rotationLerpSpeed: 0.1
   syncRotationX: 1
   syncRotationY: 1
   syncRotationZ: 1
@@ -576,7 +564,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 5.5092285e-38}
+  m_BoundingSphereOverride: {x: 7.33e-43, y: 7.1e-44, z: 0, w: 1.02294e-34}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -927,7 +915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1612635950
 Transform:
   m_ObjectHideFlags: 0

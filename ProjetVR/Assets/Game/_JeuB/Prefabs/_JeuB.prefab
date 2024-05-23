@@ -438,6 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Background
+  activeByDefault: 1
 --- !u!1 &1431059274875356992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,7 +1129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37592f61e2fbf2649ad7c4916fa41631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 900000
   receivedDamagedOnHit: 1
   shakeMagnitude: 0.1
   shakeSpeed: 50
@@ -4060,7 +4061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3142528635308579155, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.7972673
+      value: 1.65
       objectReference: {fileID: 0}
     - target: {fileID: 3142528635308579155, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
       propertyPath: m_LocalScale.y
@@ -4068,7 +4069,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3142528635308579155, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 6.6174426
+      value: 0.33786675
       objectReference: {fileID: 0}
     - target: {fileID: 3142528635308579155, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4196,6 +4197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Fog
+  activeByDefault: 0
 --- !u!4 &8215213197716258390 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3142528635308579155, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
@@ -4209,6 +4211,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6400650230984611770}
     m_Modifications:
+    - target: {fileID: 115141217583133441, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+      propertyPath: m_margin.x
+      value: 6.3308454
+      objectReference: {fileID: 0}
+    - target: {fileID: 115141217583133441, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+      propertyPath: m_margin.z
+      value: -15.663567
+      objectReference: {fileID: 0}
     - target: {fileID: 302850076289578275, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
       propertyPath: m_Name
       value: OverlayPause
@@ -4219,7 +4229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 708624889433161580, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00000059604645
+      value: 0.010001063
       objectReference: {fileID: 0}
     - target: {fileID: 1594814641347321903, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
       propertyPath: m_IsActive

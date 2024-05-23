@@ -6,7 +6,9 @@ public class Commands : ScriptableObject
     public static void ResetGameTransform()
     {
         GameRemoteTransform.Instance.target.position = Vector3.zero;
-        GameRemoteTransform.Instance.target.eulerAngles = Vector3.zero;
+        Vector3 playerRot = EyeManager.Instance.transform.eulerAngles;
+        playerRot.z = 0;
+        GameRemoteTransform.Instance.target.eulerAngles = playerRot;
     }
 
     public void ReloadGameMode(float time)

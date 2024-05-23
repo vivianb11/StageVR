@@ -8,8 +8,7 @@ namespace JeuB
 
         protected override void EntityStart()
         {
-            var rotation = Quaternion.LookRotation(Vector3.up, Vector3.forward);
-            transform.GetChild(0).rotation = rotation;
+            transform.GetChild(0).localRotation = Quaternion.EulerAngles(Vector3.zero);
         }
 
         protected override void EntityUpdate() { }

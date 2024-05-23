@@ -8,7 +8,7 @@ namespace JeuB
 
         protected override void EntityStart()
         {
-            transform.GetChild(0).localRotation = Quaternion.EulerAngles(Vector3.zero);
+            transform.localRotation = Quaternion.Euler(Vector3.zero);
         }
 
         protected override void EntityUpdate() { }
@@ -16,6 +16,13 @@ namespace JeuB
         public override void ApplyBonus(ProtectedToothBehaviours tooth)
         {
             tooth.ScoreMultiplier(scoreToAdd);
+        }
+
+        public override void Move()
+        {
+            Vector3 direction = (target.position - transform.position).normalized;
+
+            transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
         }
 
         public void Freeze() => moveSpeed = 0;

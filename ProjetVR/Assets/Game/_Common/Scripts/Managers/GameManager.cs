@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] float timeBeforeResetGame = 10f;
 
     [SerializeField] SO_Signal startSignal;
-    [SerializeField] PlayerInstance playerInstance;
 
     public GameObject[] gameModes;
 

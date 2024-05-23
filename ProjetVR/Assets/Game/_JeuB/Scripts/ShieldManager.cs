@@ -10,7 +10,7 @@ namespace JeuB
 
         public enum ShieldType { LITLLE, BIG }
 
-        public float minDistance;
+        private float minDistance = 0f;
 
         [SerializeField] GameObject _littleShield;
         [SerializeField] GameObject _bigShield;

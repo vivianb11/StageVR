@@ -1,11 +1,8 @@
-using System.Collections;
+using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
-using NaughtyAttributes;
-using UnityEngine.Events;
-using Unity.VisualScripting;
 
-namespace JeuB 
+namespace JeuB
 {
     [RequireComponent(typeof(RandomSpawn))]
     public class ProgressionSystem : MonoBehaviour
@@ -42,11 +39,16 @@ namespace JeuB
         [Header("Debug Parameters")]
         [SerializeField] bool enableProgression = true;
         private static bool _skipTutorial = false;
-        [Button("Skip a milestone")] private void Skip()
+        [Button("Skip a milestone")]
+        private void Skip()
         {
             CountMinutes();
             CancelInvoke();
         }
+
+        private float _holdTimeKill;
+        private float _maxHoldTimeKill = 1f;
+        private bool _order66Executed;
 
         private void OnEnable()
         {
@@ -65,7 +67,19 @@ namespace JeuB
 
         private void Update()
         {
-            if (OVRInput.Get(OVRInput.RawButton.X)) Order66();
+            if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger) || Input.GetKey(KeyCode.K))
+            {
+                if (!_order66Executed)
+                {
+                    _holdTimeKill += Time.deltaTime;
+
+                    if (_holdTimeKill >= _maxHoldTimeKill)
+                    {
+                        _holdTimeKill = 0;
+                        Order66();
+                    }
+                }
+            }
         }
 
         private void CountMinutes()
@@ -96,7 +110,7 @@ namespace JeuB
             Invoke(nameof(CountMinutes), interval);
         }
 
-        
+
         private void ColorChanger()
         {
             int colorIndex;
@@ -104,11 +118,11 @@ namespace JeuB
             string hexColor = levelColors[colorIndex];
             Color newColor;
 
-            if (UnityEngine.ColorUtility.TryParseHtmlString(hexColor, out newColor)) 
+            if (UnityEngine.ColorUtility.TryParseHtmlString(hexColor, out newColor))
             {
                 Background.GetComponent<SpriteRenderer>().color = newColor;
             }
-                
+
         }
 
         private void LevelPassed()
@@ -117,7 +131,7 @@ namespace JeuB
 
             if (currentLevel < maxLevel)
             {
-                currentLevel += 1;   
+                currentLevel += 1;
                 pulsatingTextBehavior.textMesh.text = "Niveau: " + currentLevel.ToString();
                 ColorChanger();
             }
@@ -147,6 +161,9 @@ namespace JeuB
 
         public void Order66()
         {
+            _order66Executed = true;
+            Debug.Log("Order 66 executed");
+
             CancelInvoke(nameof(CountMinutes));
             ChangeDifficulty(deathPreset);
         }

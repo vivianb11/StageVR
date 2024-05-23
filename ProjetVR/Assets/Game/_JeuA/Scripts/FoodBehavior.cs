@@ -9,8 +9,6 @@ namespace JeuA
     public class FoodBehavior : MonoBehaviour
     {
         private Rigidbody rb;
-        private PlayerInstance player;
-
         private Interactable interactable;
         private ToothManager ToothMan;
         public ToothManager toothManager { get { return ToothMan; } set { ToothMan = value; } }
@@ -29,7 +27,6 @@ namespace JeuA
         private void Start()
         {
             rb = GetComponent<Rigidbody>();
-            player = PlayerInstance.Instance;
 
             interactable = GetComponent<Interactable>();
             interactable.SetActivateState(false);
@@ -59,8 +56,7 @@ namespace JeuA
             rb.isKinematic = false;
             rb.useGravity = true;
 
-            Transform playerpos = player.transform.GetChild(0).transform;
-            Vector3 direction = playerpos.up * Random.Range(0.5f, 1f) + Random.Range(-0.5f, 0.5f) * playerpos.right;
+            Vector3 direction = Vector3.up * Random.Range(0.5f, 1f) + Random.Range(-0.5f, 0.5f) * Vector3.right;
 
             rb.AddForce(direction * force);
 

@@ -60,17 +60,15 @@ namespace Components.Container
         protected virtual void UpdateChildsPosition()
         {
             List<Transform> activeChilds = GetActiveChilds().ToList();
-            activeChilds.Reverse();
-
             Vector3 direction = Vector3.zero;
 
             switch (alignDirection)
             {
                 case AlignDirection.VERTICAL:
-                    direction = transform.up;
+                    direction = Vector3.forward;
                     break;
                 case AlignDirection.HORIZONTAL:
-                    direction = transform.right;
+                    direction = Vector3.right;
                     break;
             }
 

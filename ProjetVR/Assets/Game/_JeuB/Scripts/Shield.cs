@@ -29,8 +29,6 @@ namespace JeuB
 
                 if (other.gameObject.TryGetComponent(out Mob tempMob))
                 {
-                    ScoreManager.Instance.AddScore(tempMob.scoreOnDeath);
-
                     OnShieldHit.Invoke();
 
                     tweener.PlayMontages();

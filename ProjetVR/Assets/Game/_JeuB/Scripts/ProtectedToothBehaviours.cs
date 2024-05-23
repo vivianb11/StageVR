@@ -1,5 +1,5 @@
-using System.Collections;
 using NaughtyAttributes;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,7 +11,7 @@ namespace JeuB
         [SerializeField] int maxHealth;
         private int health;
         [SerializeField] int receivedDamagedOnHit;
-        
+
 
         [Space(10)]
         [Header("Shake Effect")]
@@ -27,13 +27,9 @@ namespace JeuB
         [SerializeField] GameObject multiplierTexts;
 
         private bool scoreEnabled = true;
-        public bool ScoreEnabled {
-            get { return scoreEnabled; }
-            set { scoreEnabled = value; }
-        }
+
         private int killStreak = 0;
         public int multiplier = 1;
-        public int enemyPoints;
 
         [Space(10)]
         [Header("Tooth Explosion S&F")]
@@ -48,14 +44,14 @@ namespace JeuB
         public float minValueOutline = 6f;
         public float maxValueOutline = 12f;
         public float duration = 1f;
-        private float outlineValue; 
+        private float outlineValue;
         private bool increasing = true;
         private float timer = 0f;
         [SerializeField] GameObject _lock;
 
 
         [Space(10)]
-        [Foldout("Events")] [SerializeField] UnityEvent onDamaged = new UnityEvent();
+        [Foldout("Events")][SerializeField] UnityEvent onDamaged = new UnityEvent();
         [Foldout("Events")] public UnityEvent onDeath = new UnityEvent();
         [Foldout("Events")] public UnityEvent onExplosion = new UnityEvent();
         [Foldout("Events")] public UnityEvent onHeal = new UnityEvent();
@@ -70,10 +66,17 @@ namespace JeuB
             _outlineEffect.OutlineWidth = 0;
 
             health = maxHealth;
-            HeadMotionTracker.Instance.Excited.AddListener(() => ScoreEnabled = false);
+
+            HeadMotionTracker.Instance.Excited.AddListener(() => scoreEnabled = false);
             HeadMotionTracker.Instance.Excited.AddListener(() => _lock.SetActive(true));
-            HeadMotionTracker.Instance.Normal.AddListener(() => ScoreEnabled = true);
+            HeadMotionTracker.Instance.Normal.AddListener(() => scoreEnabled = true);
             HeadMotionTracker.Instance.Normal.AddListener(() => _lock.SetActive(false));
+        }
+
+        private void OnDestroy()
+        {
+            HeadMotionTracker.Instance.Excited.RemoveAllListeners();
+            HeadMotionTracker.Instance.Normal.RemoveAllListeners();
         }
 
         public void Damaged()
@@ -84,10 +87,10 @@ namespace JeuB
             onDamaged.Invoke();
             killStreak = 0;
             multiplier = 1;
-        
-            foreach(Transform child in multiplierTexts.transform) child.gameObject.SetActive(false);
 
-            _outlineEffect.OutlineColor = (health == 2) ? color2HP: color1HP;
+            foreach (Transform child in multiplierTexts.transform) child.gameObject.SetActive(false);
+
+            _outlineEffect.OutlineColor = (health == 2) ? color2HP : color1HP;
 
             if (health != 0) return;
             onDeath.Invoke();
@@ -116,7 +119,7 @@ namespace JeuB
             }
 
             if (increasing) outlineValue = Mathf.Lerp(minValueOutline, maxValueOutline, timer / duration);
-    
+
             else outlineValue = Mathf.Lerp(maxValueOutline, minValueOutline, timer / duration);
 
             _outlineEffect.OutlineWidth = outlineValue;
@@ -149,8 +152,10 @@ namespace JeuB
             gameObject.SetActive(false);
         }
 
-        public void ScoreMultiplier()
+        public void ScoreMultiplier(int points)
         {
+            Debug.Log("ScoreMultiplier" + scoreEnabled);
+
             if (!scoreEnabled) return;
 
             int textIndex;
@@ -158,7 +163,7 @@ namespace JeuB
 
             if (killStreak % enemiesToKillForMultiplier != 0)
             {
-                ScoreManager.Instance.AddScore(enemyPoints * multiplier);
+                ScoreManager.Instance.AddScore(points * multiplier);
                 return;
             }
 
@@ -168,7 +173,7 @@ namespace JeuB
 
                 if (multiplier < 1)
                 {
-                    ScoreManager.Instance.AddScore(enemyPoints * multiplier);
+                    ScoreManager.Instance.AddScore(points * multiplier);
                     return;
                 }
 
@@ -182,7 +187,7 @@ namespace JeuB
                     deletedText.gameObject.SetActive(false);
                 }
             }
-            ScoreManager.Instance.AddScore(enemyPoints * multiplier);
+            ScoreManager.Instance.AddScore(points * multiplier);
         }
     }
 }

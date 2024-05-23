@@ -6,18 +6,23 @@ namespace JeuB
     {
         [SerializeField] int scoreToAdd;
 
-        protected override void EntityStart() 
+        protected override void EntityStart()
         {
-            var rotation = Quaternion.LookRotation(Vector3.up , Vector3.forward);
-            transform.GetChild(0).rotation = rotation;
-         }
+            transform.localRotation = Quaternion.Euler(Vector3.zero);
+        }
 
         protected override void EntityUpdate() { }
 
         public override void ApplyBonus(ProtectedToothBehaviours tooth)
         {
-            tooth.enemyPoints = scoreToAdd;
-            tooth.ScoreMultiplier();
+            tooth.ScoreMultiplier(scoreToAdd);
+        }
+
+        public override void Move()
+        {
+            Vector3 direction = (target.position - transform.position).normalized;
+
+            transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
         }
 
         public void Freeze() => moveSpeed = 0;

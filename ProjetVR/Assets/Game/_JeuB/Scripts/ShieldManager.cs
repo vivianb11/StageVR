@@ -65,15 +65,5 @@ namespace JeuB
                     break;
             }
         }
-
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    if(other.tag == "Ennemy")
-        //    {
-        //        onHit.Invoke();
-        //        other.GetComponent<Mob>().scoreOnDeath = scoreDeathEnemy;
-
-        //    }
-        //}
     }
 }

@@ -142,7 +142,7 @@ namespace JeuB
 
         public void ChangeDifficulty(DifficultyPresets preset)
         {
-            if (preset.levelPassed) LevelPassed();
+            if (preset.levelPassed && !_order66Executed) LevelPassed();
             currentPreset = preset;
             milestoneCount += 1;
 

@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] float timeBeforeResetGame = 10f;
 
-    [SerializeField] GameObject calibration;
-
     [SerializeField] SO_Signal startSignal;
     [SerializeField] PlayerInstance playerInstance;
 
@@ -76,15 +74,11 @@ public class GameManager : MonoBehaviour
             ChangeGameMode(currentSceneIndex);
     }
 
-    public void OnCalibrationFinished()
-    {
-        StartCoroutine(UnloadGameMode(0, 3));
-    }
-
     public void ChangeGameMode(int index)
     {
         nextGameMode = gameModes[index];
 
+        StartCoroutine(UnloadGameMode(3f, 3f));
         StartCoroutine(ChangeGameModeCoroutine());
     }
 
@@ -108,7 +102,7 @@ public class GameManager : MonoBehaviour
         SceneLoader.Instance.FadeIn(3);
         yield return new WaitForSecondsRealtime(3);
 
-        LoadCalibrationMode();
+        LoadNextGameMode();
     }
 
     private IEnumerator StartDelay(float delay)
@@ -159,12 +153,5 @@ public class GameManager : MonoBehaviour
 
         SceneLoader.Instance.FadeOut(3);
         isReloading = false;
-    }
-
-    private void LoadCalibrationMode()
-    {
-        DestroyGameModes();
-        calibration.SetActive(true);
-        SceneLoader.Instance.FadeOut(3);
     }
 }

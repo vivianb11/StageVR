@@ -45,6 +45,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private float _holdTimeReset;
+    private float _holdTimeMaxReset = 1f;
+    private bool _resetHolded;
+
     private void Awake()
     {
         if (Instance == null)
@@ -72,6 +76,27 @@ public class GameManager : MonoBehaviour
         }
         else
             ChangeGameMode(currentSceneIndex);
+    }
+
+    private void Update()
+    {
+        if (OVRInput.GetUp(OVRInput.RawButton.RHandTrigger))
+            _resetHolded = false;
+
+        if (OVRInput.Get(OVRInput.RawButton.RHandTrigger) || Input.GetKey(KeyCode.R))
+        {
+            if (!_resetHolded)
+            {
+                _holdTimeReset += Time.deltaTime;
+
+                if (_holdTimeReset >= _holdTimeMaxReset)
+                {
+                    _holdTimeReset = 0;
+                    _resetHolded = true;
+                    Commands.ResetGameTransform();
+                }
+            }
+        }
     }
 
     public void ChangeGameMode(int index)

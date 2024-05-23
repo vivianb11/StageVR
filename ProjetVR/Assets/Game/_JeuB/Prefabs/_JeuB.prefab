@@ -438,6 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Background
+  activeByDefault: 1
 --- !u!1 &1431059274875356992
 GameObject:
   m_ObjectHideFlags: 0
@@ -4196,6 +4197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: Fog
+  activeByDefault: 0
 --- !u!4 &8215213197716258390 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3142528635308579155, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
@@ -4227,7 +4229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 708624889433161580, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00000059604645
+      value: 0.010001063
       objectReference: {fileID: 0}
     - target: {fileID: 1594814641347321903, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
       propertyPath: m_IsActive
@@ -4395,7 +4397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7965185718814724088, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

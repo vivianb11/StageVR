@@ -9,8 +9,10 @@ public class Navigatable : MonoBehaviour
     public static Navigatable FocusedItem;
 
     [SerializeField] enum NavigationMode { MANUAL, VERTICAL, HORIZONTAL }
+    [SerializeField] enum UpdateMode { FRAME, FIXED }
 
     [SerializeField] NavigationMode navigationMode;
+    [SerializeField] UpdateMode updateMode;
 
     public enum Direction { LEFT, RIGHT, UP, DOWN }
 
@@ -61,8 +63,21 @@ public class Navigatable : MonoBehaviour
 
     private void Update()
     {
-        if (FocusedItem == this)
-            HandleInputs();
+        if (updateMode == UpdateMode.FRAME)
+            if (FocusedItem == this)
+                HandleInputs();
+    }
+
+    private void FixedUpdate()
+    {
+        if (updateMode == UpdateMode.FIXED)
+            if (FocusedItem == this)
+                HandleInputs();
+    }
+
+    private void OnDestroy()
+    {
+        canMove = true;
     }
 
     [HideIf("isFocused")]

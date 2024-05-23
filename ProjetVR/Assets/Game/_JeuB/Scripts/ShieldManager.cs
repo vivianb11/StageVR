@@ -10,7 +10,7 @@ namespace JeuB
 
         public enum ShieldType { LITLLE, BIG }
 
-        public float minDistance;
+        private float minDistance = 0f;
 
         [SerializeField] GameObject _littleShield;
         [SerializeField] GameObject _bigShield;
@@ -65,15 +65,5 @@ namespace JeuB
                     break;
             }
         }
-
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    if(other.tag == "Ennemy")
-        //    {
-        //        onHit.Invoke();
-        //        other.GetComponent<Mob>().scoreOnDeath = scoreDeathEnemy;
-
-        //    }
-        //}
     }
 }

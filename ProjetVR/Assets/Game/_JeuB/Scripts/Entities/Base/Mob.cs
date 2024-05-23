@@ -40,7 +40,10 @@ namespace JeuB
 
             _tween = GetComponent<Tween>();
 
-            target.GetComponent<ProtectedToothBehaviours>().onDeath.AddListener(Freeze);
+            ProtectedToothBehaviours tempPTB = target.GetComponent<ProtectedToothBehaviours>();
+
+            tempPTB.onDeath.AddListener(Freeze);
+            OnDeath.AddListener(() => tempPTB.ScoreMultiplier(scoreOnDeath));
         }
 
         protected override void EntityUpdate()
@@ -97,7 +100,7 @@ namespace JeuB
 
             tempToothBehaviours.Damaged();
             OnDeath?.Invoke();
-            OnDeath.RemoveListener(tempToothBehaviours.ScoreMultiplier);
+            OnDeath.RemoveListener(() => tempToothBehaviours.ScoreMultiplier(scoreOnDeath));
 
             Kill();
         }
@@ -117,10 +120,6 @@ namespace JeuB
         public override void Kill()
         {
             GameObject instantiatedObject = Instantiate(deathParticles, transform.position, transform.rotation);
-
-            var tempToothBehaviours = target.GetComponent<ProtectedToothBehaviours>();
-            tempToothBehaviours.enemyPoints = scoreOnDeath;
-            OnDeath.AddListener(tempToothBehaviours.ScoreMultiplier);
 
             Destroy(instantiatedObject, 3f);
             Destroy(gameObject);

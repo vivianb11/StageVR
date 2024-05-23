@@ -268,7 +268,6 @@ GameObject:
   - component: {fileID: 6041882797628066134}
   - component: {fileID: 8070877225971939044}
   - component: {fileID: 4952186420160520759}
-  - component: {fileID: 3487737701670031548}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -292,7 +291,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.82, y: -0}
+  m_AnchoredPosition: {x: 1.82, y: 0.003}
   m_SizeDelta: {x: 0.397, y: 0.2713}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8070877225971939044
@@ -430,18 +429,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 8070877225971939044}
   m_maskType: 0
---- !u!210 &3487737701670031548
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6996004770169320173}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 5
-  m_SortAtRoot: 0
 --- !u!1 &7999693388487593132
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,7 +441,6 @@ GameObject:
   - component: {fileID: 3424788342931627754}
   - component: {fileID: 91417496619260707}
   - component: {fileID: 142781362203344383}
-  - component: {fileID: 4937423867137060638}
   m_Layer: 5
   m_Name: Conseil
   m_TagString: Untagged
@@ -570,18 +556,6 @@ MonoBehaviour:
   onAppear:
     m_PersistentCalls:
       m_Calls: []
---- !u!210 &4937423867137060638
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7999693388487593132}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 6
-  m_SortAtRoot: 0
 --- !u!1029 &7797865961866544179
 DefaultAsset:
   m_ObjectHideFlags: 0

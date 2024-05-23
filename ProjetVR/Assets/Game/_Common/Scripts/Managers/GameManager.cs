@@ -11,10 +11,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] float timeBeforeResetGame = 10f;
 
-    [SerializeField] GameObject calibration;
-
     [SerializeField] SO_Signal startSignal;
-    [SerializeField] PlayerInstance playerInstance;
 
     public GameObject[] gameModes;
 
@@ -47,6 +44,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private float _holdTimeReset;
+    private float _holdTimeMaxReset = 1f;
+    private bool _resetHolded;
+
     private void Awake()
     {
         if (Instance == null)
@@ -76,15 +77,32 @@ public class GameManager : MonoBehaviour
             ChangeGameMode(currentSceneIndex);
     }
 
-    public void OnCalibrationFinished()
+    private void Update()
     {
-        StartCoroutine(UnloadGameMode(0, 3));
+        if (OVRInput.GetUp(OVRInput.RawButton.RHandTrigger))
+            _resetHolded = false;
+
+        if (OVRInput.Get(OVRInput.RawButton.RHandTrigger) || Input.GetKey(KeyCode.R))
+        {
+            if (!_resetHolded)
+            {
+                _holdTimeReset += Time.deltaTime;
+
+                if (_holdTimeReset >= _holdTimeMaxReset)
+                {
+                    _holdTimeReset = 0;
+                    _resetHolded = true;
+                    Commands.ResetGameTransform();
+                }
+            }
+        }
     }
 
     public void ChangeGameMode(int index)
     {
         nextGameMode = gameModes[index];
 
+        StartCoroutine(UnloadGameMode(3f, 3f));
         StartCoroutine(ChangeGameModeCoroutine());
     }
 
@@ -108,7 +126,7 @@ public class GameManager : MonoBehaviour
         SceneLoader.Instance.FadeIn(3);
         yield return new WaitForSecondsRealtime(3);
 
-        LoadCalibrationMode();
+        LoadNextGameMode();
     }
 
     private IEnumerator StartDelay(float delay)
@@ -127,7 +145,7 @@ public class GameManager : MonoBehaviour
         if ((DateTime.Now - timeOnUnfocus).TotalSeconds > timeBeforeResetGame)
         {
             gameStopped?.Invoke();
-            ChangeGameMode(currentSceneIndex);
+            ReloadGameMode(0);
         }
 
         Time.timeScale = 1;
@@ -159,12 +177,5 @@ public class GameManager : MonoBehaviour
 
         SceneLoader.Instance.FadeOut(3);
         isReloading = false;
-    }
-
-    private void LoadCalibrationMode()
-    {
-        DestroyGameModes();
-        calibration.SetActive(true);
-        SceneLoader.Instance.FadeOut(3);
     }
 }

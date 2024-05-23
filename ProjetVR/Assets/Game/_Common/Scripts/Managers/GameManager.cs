@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
         if ((DateTime.Now - timeOnUnfocus).TotalSeconds > timeBeforeResetGame)
         {
             gameStopped?.Invoke();
-            ChangeGameMode(currentSceneIndex);
+            ReloadGameMode(0);
         }
 
         Time.timeScale = 1;

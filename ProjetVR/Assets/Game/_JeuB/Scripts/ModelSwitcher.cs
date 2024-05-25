@@ -7,6 +7,8 @@ public class ModelSwitcher : SignalListener
 
     private GameObject _currentSkin;
 
+    private static int _skinIndex = 0;
+
     private void Start()
     {
         SignalManager.Instance.signalCalled.AddListener(OnSignalReceived);
@@ -16,7 +18,7 @@ public class ModelSwitcher : SignalListener
             skin.SetActive(false);
         }
 
-        _currentSkin = _skins[0];
+        _currentSkin = _skins[_skinIndex];
         _currentSkin.SetActive(true);
     }
 
@@ -26,6 +28,7 @@ public class ModelSwitcher : SignalListener
         {
             if (value == signal[i].name)
             {
+                _skinIndex = i;
                 _currentSkin.SetActive(false);
                 _currentSkin = _skins[i];
                 _currentSkin.SetActive(true);

@@ -2846,8 +2846,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicEmiter: {fileID: 6788173990355922488}
   musicOnSignals:
-  - signal: {fileID: 11400000, guid: 19402100b406e2d4683a1a2f7861cae7, type: 2}
-    musics: []
   - signal: {fileID: 11400000, guid: bc8dc626127b43c49a56e7b6afe57972, type: 2}
     musics:
     - {fileID: 8300000, guid: ae323749d841df74b8c6dc33d1684403, type: 3}
@@ -2856,6 +2854,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: a80d0d22812dabf4e9a888b4e732b530, type: 3}
     - {fileID: 8300000, guid: 3370abe2e3a2ab94c8c6a1d231dc043d, type: 3}
     - {fileID: 8300000, guid: 2418229721f08534fb6d65a969c23783, type: 3}
+  - signal: {fileID: 11400000, guid: 19402100b406e2d4683a1a2f7861cae7, type: 2}
+    musics: []
 --- !u!1 &7195408348886517892
 GameObject:
   m_ObjectHideFlags: 0

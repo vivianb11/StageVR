@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent gameStopped;
 
+    public UnityEvent OnGameReload;
+
     private DateTime timeOnUnfocus;
 
     private GameObject nextGameMode;
@@ -177,5 +179,7 @@ public class GameManager : MonoBehaviour
 
         SceneLoader.Instance.FadeOut(3);
         isReloading = false;
+
+        OnGameReload?.Invoke();
     }
 }

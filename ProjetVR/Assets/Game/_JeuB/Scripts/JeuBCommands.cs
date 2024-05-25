@@ -1,3 +1,4 @@
+using SignalSystem;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,6 +15,9 @@ namespace JeuB
         public bool backgroundEnabled;
 
         public bool fogEnabled;
+
+        public SO_Signal lastModeSignal;
+        public SO_Signal lastSkinSignal;
 
         public static Dictionary<string, GameObject> listeners { get; private set; } = new();
         public static Dictionary<string, bool> listenersActiveStats { get; private set; } = new();

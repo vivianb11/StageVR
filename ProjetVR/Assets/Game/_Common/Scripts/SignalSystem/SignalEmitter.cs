@@ -16,5 +16,10 @@ namespace SignalSystem
                 signal.Emit();
             }
         }
+
+        public void RequestSignalCall(SO_Signal signal)
+        {
+            signal.Emit();
+        }
     }
 }

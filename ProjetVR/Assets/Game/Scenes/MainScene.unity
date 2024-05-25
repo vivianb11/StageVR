@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1363582, g: 0.23927838, b: 0.35718402, a: 1}
+  m_IndirectSpecularColor: {r: 0.13621068, g: 0.2393003, b: 0.3574163, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -283,6 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 342334589}
   - component: {fileID: 342334590}
+  - component: {fileID: 342334591}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -331,6 +332,22 @@ MonoBehaviour:
   gameStopped:
     m_PersistentCalls:
       m_Calls: []
+  OnGameReload:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &342334591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342334588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def9cf309ac09c643a68a76185198fe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jeuBCommands: {fileID: 11400000, guid: d196cbe43c5d3444db0c19332cca3993, type: 2}
 --- !u!1 &589685526
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: GameRemote
+  activeByDefault: 1
 --- !u!114 &776199926
 MonoBehaviour:
   m_ObjectHideFlags: 0

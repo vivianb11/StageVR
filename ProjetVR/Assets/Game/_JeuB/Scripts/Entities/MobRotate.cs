@@ -7,6 +7,8 @@ namespace JeuB
     {
         public int[] degree;
 
+        public Transform rotationMesh;
+
         protected override void EntityUpdate()
         {
             base.EntityUpdate();
@@ -26,7 +28,7 @@ namespace JeuB
 
         private void RotateMesh()
         {
-            transform.GetChild(0).transform.Rotate(0, 0, 50 * Time.deltaTime);
+            rotationMesh.Rotate(0, 0, 50 * Time.deltaTime);
         }
 
         private void AddRotator()

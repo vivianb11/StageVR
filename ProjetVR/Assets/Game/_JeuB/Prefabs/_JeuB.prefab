@@ -2750,6 +2750,7 @@ GameObject:
   - component: {fileID: 6400650230984611770}
   - component: {fileID: 1232292026500529538}
   - component: {fileID: 6788173990355922488}
+  - component: {fileID: 6888057342093423510}
   m_Layer: 0
   m_Name: _JeuB
   m_TagString: Untagged
@@ -2831,6 +2832,30 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a80d0d22812dabf4e9a888b4e732b530, type: 3}
   - {fileID: 8300000, guid: 3370abe2e3a2ab94c8c6a1d231dc043d, type: 3}
   - {fileID: 8300000, guid: 2418229721f08534fb6d65a969c23783, type: 3}
+--- !u!114 &6888057342093423510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798597841116208069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587fbe9bc07b0bb4b94103616ace06ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicEmiter: {fileID: 6788173990355922488}
+  musicOnSignals:
+  - signal: {fileID: 11400000, guid: 19402100b406e2d4683a1a2f7861cae7, type: 2}
+    musics: []
+  - signal: {fileID: 11400000, guid: bc8dc626127b43c49a56e7b6afe57972, type: 2}
+    musics:
+    - {fileID: 8300000, guid: ae323749d841df74b8c6dc33d1684403, type: 3}
+    - {fileID: 8300000, guid: 6a410f2d1c6705e47b1cbda6d2911df9, type: 3}
+    - {fileID: 8300000, guid: 46c5cac813fead844a3a92bd2034a765, type: 3}
+    - {fileID: 8300000, guid: a80d0d22812dabf4e9a888b4e732b530, type: 3}
+    - {fileID: 8300000, guid: 3370abe2e3a2ab94c8c6a1d231dc043d, type: 3}
+    - {fileID: 8300000, guid: 2418229721f08534fb6d65a969c23783, type: 3}
 --- !u!1 &7195408348886517892
 GameObject:
   m_ObjectHideFlags: 0
@@ -4135,7 +4160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1915156014101466681, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3142528635308579155, guid: c89875c6f002a924db10952fc51ed67d, type: 3}
       propertyPath: m_LocalScale.x

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SaveSetter : MonoBehaviour
 {
-    JeuBCommands jeuBCommands;
+    public JeuBCommands jeuBCommands;
     public void SetlastMode(SO_Signal signal)
     {
         jeuBCommands.lastModeSignal = signal;

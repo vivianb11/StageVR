@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     //[HideInInspector]
     public int currentSceneIndex;
 
+    public UnityEvent gameStart;
     public UnityEvent gameStarted;
 
     public UnityEvent gameStopped;
@@ -174,6 +175,8 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(nextGameMode, transform);
         nextGameMode = null;
+
+        gameStart?.Invoke();
 
         SceneLoader.Instance.FadeOut(3);
         isReloading = false;

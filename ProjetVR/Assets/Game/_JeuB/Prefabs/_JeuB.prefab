@@ -4858,11 +4858,81 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8323478575568037980, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+      propertyPath: Event1.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2280492489560763746}
+    - target: {fileID: 8323478575568037980, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+      propertyPath: Event1.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 2080619023513839408}
+    - target: {fileID: 8323478575568037980, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+      propertyPath: Event2.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2280492489560763746}
+    - target: {fileID: 8323478575568037980, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+      propertyPath: Event2.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 2080619023513839408}
+    - target: {fileID: 8323478575568037980, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+      propertyPath: Event1.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetlastMode
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323478575568037980, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+      propertyPath: Event1.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: RequestSignalCall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323478575568037980, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+      propertyPath: Event2.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetlastMode
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323478575568037980, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+      propertyPath: Event2.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: RequestSignalCall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323478575568037980, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+      propertyPath: Event1.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SaveSetter, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323478575568037980, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+      propertyPath: Event1.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: SignalSystem.SignalEmitter, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323478575568037980, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+      propertyPath: Event2.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SaveSetter, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323478575568037980, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+      propertyPath: Event2.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: SignalSystem.SignalEmitter, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+--- !u!114 &2080619023513839408 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8501742610669728778, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+  m_PrefabInstance: {fileID: 7576064089356702522}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67ba8b1c371ab74c8b27772986edc40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2280492489560763746 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8540647817075768920, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+  m_PrefabInstance: {fileID: 7576064089356702522}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff1e86f947c6e74581db0ed6ed5e8a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4060841427149544541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5870609124278095719, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}

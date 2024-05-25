@@ -8,7 +8,7 @@ public class SaveReloader : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.gameStarted.AddListener(() =>
+        GameManager.Instance.gameStart.AddListener(() =>
         {
             jeuBCommands.lastModeSignal.Emit();
         });

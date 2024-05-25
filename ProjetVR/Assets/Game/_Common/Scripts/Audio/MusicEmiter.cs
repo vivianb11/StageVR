@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class MusicEmiter : MonoBehaviour
@@ -40,7 +39,8 @@ public class MusicEmiter : MonoBehaviour
     {
         if (musics.Length > 0)
         {
-            Array.Clear(soundManager.musics, 0, soundManager.musics.Length);
+            if (soundManager == null)
+                soundManager = SoundManager.Instance;
 
             soundManager.musics = new Sound[musics.Length];
 

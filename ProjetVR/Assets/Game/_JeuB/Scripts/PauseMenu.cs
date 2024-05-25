@@ -12,4 +12,10 @@ public class PauseMenu : MonoBehaviour
             GameManager.Instance.gamePaused = _panel.activeInHierarchy;
         }
     }
+
+    public void Resume()
+    {
+        _panel.SetActive(false);
+        GameManager.Instance.gamePaused = false;
+    }
 }

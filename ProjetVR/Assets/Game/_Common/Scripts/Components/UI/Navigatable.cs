@@ -47,7 +47,7 @@ public class Navigatable : MonoBehaviour
 
     private static bool canMove = true;
 
-    private void Start()
+    private void OnEnable()
     {
         Deselect();
         if (autoSelect)
@@ -58,6 +58,10 @@ public class Navigatable : MonoBehaviour
                 Select();
         }
 
+    }
+
+    private void Start()
+    {
         SetupDirection();
     }
 

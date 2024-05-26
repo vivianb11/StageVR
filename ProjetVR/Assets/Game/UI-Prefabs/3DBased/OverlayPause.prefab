@@ -2914,7 +2914,10 @@ PrefabInstance:
       addedObject: {fileID: 8577595478888651752}
     - targetCorrespondingSourceObject: {fileID: 2073383463608855584, guid: 4d15d3570d5405d4aa35a5a8984a4925, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6269525919581836485}
+      addedObject: {fileID: 8091253751994427245}
+    - targetCorrespondingSourceObject: {fileID: 2073383463608855584, guid: 4d15d3570d5405d4aa35a5a8984a4925, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7970150691376528461}
   m_SourcePrefab: {fileID: 100100000, guid: 4d15d3570d5405d4aa35a5a8984a4925, type: 3}
 --- !u!114 &1684680001953039557 stripped
 MonoBehaviour:
@@ -2959,13 +2962,25 @@ MonoBehaviour:
           m_StringArgument: Dental
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8091253751994427245}
+        m_TargetAssemblyTypeName: SaveSetter, Assembly-CSharp
+        m_MethodName: SetlastSkin
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 0afb3c2f75d3ce142a91a24327006749, type: 2}
+          m_ObjectArgumentAssemblyTypeName: SignalSystem.SO_Signal, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 8577595478888651752}
         m_TargetAssemblyTypeName: SignalSystem.SignalEmitter, Assembly-CSharp
         m_MethodName: RequestSignalCall
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 0afb3c2f75d3ce142a91a24327006749, type: 2}
+          m_ObjectArgumentAssemblyTypeName: SignalSystem.SO_Signal, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2986,13 +3001,25 @@ MonoBehaviour:
           m_StringArgument: Medieval
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6269525919581836485}
+      - m_Target: {fileID: 8091253751994427245}
+        m_TargetAssemblyTypeName: SaveSetter, Assembly-CSharp
+        m_MethodName: SetlastSkin
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: fb101b7d8ff4f7a4a9b4d551152c2da2, type: 2}
+          m_ObjectArgumentAssemblyTypeName: SignalSystem.SO_Signal, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8577595478888651752}
         m_TargetAssemblyTypeName: SignalSystem.SignalEmitter, Assembly-CSharp
         m_MethodName: RequestSignalCall
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: fb101b7d8ff4f7a4a9b4d551152c2da2, type: 2}
+          m_ObjectArgumentAssemblyTypeName: SignalSystem.SO_Signal, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3010,9 +3037,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67ba8b1c371ab74c8b27772986edc40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signals:
-  - {fileID: 11400000, guid: 0afb3c2f75d3ce142a91a24327006749, type: 2}
---- !u!114 &6269525919581836485
+  signals: []
+--- !u!114 &8091253751994427245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3021,11 +3047,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 4711189847352830825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e67ba8b1c371ab74c8b27772986edc40, type: 3}
+  m_Script: {fileID: 11500000, guid: cff1e86f947c6e74581db0ed6ed5e8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signals:
-  - {fileID: 11400000, guid: fb101b7d8ff4f7a4a9b4d551152c2da2, type: 2}
+--- !u!114 &7970150691376528461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4711189847352830825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada1ab10fab0b7d4d8eaae09a0dc5d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal1: {fileID: 11400000, guid: 0afb3c2f75d3ce142a91a24327006749, type: 2}
+  signal2: {fileID: 11400000, guid: fb101b7d8ff4f7a4a9b4d551152c2da2, type: 2}
 --- !u!4 &7394093188693145346 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4267927996717330507, guid: 4d15d3570d5405d4aa35a5a8984a4925, type: 3}

@@ -3,22 +3,22 @@ using SignalSystem;
 using TMPro;
 using UnityEngine;
 
-public class ModeUpdater : MonoBehaviour
+public class SkinUpdater : MonoBehaviour
 {
     public SO_Signal signal1;
     public SO_Signal signal2;
 
     private void OnEnable()
     {
-        if (JeuBCommands.lastModeSignal == signal1)
+        if (JeuBCommands.lastSkinSignal == signal1)
         {
             GetComponent<Switch_2Events>().StartAsSwitched = false;
-            transform.GetChild(0).GetComponent<TextMeshPro>().text = "Basic";
+            transform.GetChild(0).GetComponent<TextMeshPro>().text = "Dentaire";
         }
-        else if (JeuBCommands.lastModeSignal == signal2)
+        else if (JeuBCommands.lastSkinSignal == signal2)
         {
             GetComponent<Switch_2Events>().StartAsSwitched = true;
-            transform.GetChild(0).GetComponent<TextMeshPro>().text = "Sophorique";
+            transform.GetChild(0).GetComponent<TextMeshPro>().text = "Medieval";
         }
     }
 }

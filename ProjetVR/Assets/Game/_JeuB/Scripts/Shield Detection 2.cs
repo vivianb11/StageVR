@@ -5,7 +5,6 @@ namespace JeuB
     public class ShieldDetection2 : MonoBehaviour
     {
         [SerializeField] private float Speed = 20f;
-        [SerializeField] private Transform followPos = null; //Delete
         [SerializeField] private Material activeMat;
         [SerializeField] private Material inactiveMat;
         [SerializeField] private GameObject shieldColliderUp;
@@ -60,15 +59,11 @@ namespace JeuB
 
             //Target set to the eye tracker using vector3
 
-            Transform newRotation; 
-        
             Quaternion rotTarget = Quaternion.LookRotation(hitPosition - this.transform.position, Vector3.back);
             this.transform.rotation = Quaternion.RotateTowards(fromRotation, rotTarget, Speed * Time.deltaTime);
 
 
             float currentYRotation = this.transform.eulerAngles.y;
-            float currentXRotation = this.transform.eulerAngles.x;
-            float currentZRotation = this.transform.eulerAngles.z;
 
             Vector3 targetEulerAngles = rotTarget.eulerAngles;
             targetEulerAngles.y = currentYRotation + 90f;

@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class LookAt : MonoBehaviour
 {
-    [SerializeField] float lerpSpeed = 0.5f;
-
     [SerializeField] Vector3 eulerAngleOffset;
 
     [SerializeField] Transform targetTransform;

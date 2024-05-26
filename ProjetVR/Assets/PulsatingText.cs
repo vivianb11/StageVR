@@ -1,10 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
-using UnityEngine.UIElements.Experimental;
 
 public class PulsatingText : MonoBehaviour
 {
@@ -19,13 +15,10 @@ public class PulsatingText : MonoBehaviour
     public float durationAppear = 3f;
 
     private float FontSizeValue; //the variable that constantly changes up and down
-    private float OpacitySizeValue;
     private bool increasing = true;
     private bool increasingColor = true;
-    private bool increasingAppear = true;
     private float timer = 0f;
     private float timerColor = 0f;
-    private float timerAppear = 0f;
     public bool colorActivated;
 
     public TextMesh textMesh;
@@ -51,9 +44,9 @@ public class PulsatingText : MonoBehaviour
             Disappear();
         }
 
-        
 
-        
+
+
     }
 
     public void FontSizePulsating()

@@ -587,6 +587,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5388151216707126156, guid: 4d15d3570d5405d4aa35a5a8984a4925, type: 3}
+      propertyPath: m_text
+      value: Big Bouclier
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388151216707126156, guid: 4d15d3570d5405d4aa35a5a8984a4925, type: 3}
       propertyPath: m_fontSize
       value: 15
       objectReference: {fileID: 0}
@@ -1402,6 +1406,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2073383463608855584, guid: 4d15d3570d5405d4aa35a5a8984a4925, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8540647817075768920}
+    - targetCorrespondingSourceObject: {fileID: 2073383463608855584, guid: 4d15d3570d5405d4aa35a5a8984a4925, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6503090081783157883}
   m_SourcePrefab: {fileID: 100100000, guid: 4d15d3570d5405d4aa35a5a8984a4925, type: 3}
 --- !u!114 &601345613708427204 stripped
 MonoBehaviour:
@@ -1521,8 +1528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67ba8b1c371ab74c8b27772986edc40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signals:
-  - {fileID: 11400000, guid: bc8dc626127b43c49a56e7b6afe57972, type: 2}
+  signals: []
 --- !u!114 &8540647817075768920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1535,7 +1541,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff1e86f947c6e74581db0ed6ed5e8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jeuBCommands: {fileID: 11400000, guid: d196cbe43c5d3444db0c19332cca3993, type: 2}
+--- !u!114 &6503090081783157883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798400361300070504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8310581d40467c34dac258bacf498fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal1: {fileID: 11400000, guid: bc8dc626127b43c49a56e7b6afe57972, type: 2}
+  signal2: {fileID: 11400000, guid: 19402100b406e2d4683a1a2f7861cae7, type: 2}
 --- !u!4 &8765236032153668611 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4267927996717330507, guid: 4d15d3570d5405d4aa35a5a8984a4925, type: 3}

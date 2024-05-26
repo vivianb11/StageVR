@@ -10,7 +10,7 @@ public class Switch_2Events : MonoBehaviour
     {
         get => state;
 
-        set => state = !state;
+        set => state = value;
     }
 
 

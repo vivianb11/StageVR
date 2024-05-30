@@ -4724,6 +4724,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.010001063
       objectReference: {fileID: 0}
+    - target: {fileID: 915616197434878060, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
+      propertyPath: Pressed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ToggleActiveState
+      objectReference: {fileID: 0}
     - target: {fileID: 1594814641347321903, guid: 140f649b5107e51429487b3f350b6d8b, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -5197,7 +5201,7 @@ PrefabInstance:
       objectReference: {fileID: 2533199044161739896}
     - target: {fileID: 7489121951230871549, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.7200007
+      value: 2.270001
       objectReference: {fileID: 0}
     - target: {fileID: 7780247554456051491, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: targetObject

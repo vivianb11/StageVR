@@ -27,5 +27,23 @@ namespace JeuB
                 listeners[key].SetActive(listenersActiveStats[key]);
             }
         }
+
+        public void EnableObject(string key)
+        {
+            if (listeners.ContainsKey(key))
+            {
+                listenersActiveStats[key] = true;
+                listeners[key].SetActive(true);
+            }
+        }
+
+        public void DisableObject(string key)
+        {
+            if (listeners.ContainsKey(key))
+            {
+                listenersActiveStats[key] = false;
+                listeners[key].SetActive(false);
+            }
+        }
     }
 }

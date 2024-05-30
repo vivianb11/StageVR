@@ -60,6 +60,16 @@ public class Navigatable : MonoBehaviour
 
     }
 
+    private void OnDisable()
+    {
+        if (FocusedItem == this)
+        {
+            StopCoroutine(MoveDelay());
+            canMove = true;
+            Deselect();
+        }
+    }
+
     private void Start()
     {
         SetupDirection();
@@ -189,9 +199,9 @@ public class Navigatable : MonoBehaviour
             MoveTo(Direction.DOWN);
     }
 
-    private IEnumerator MoveDelay()
+    private static IEnumerator MoveDelay()
     {
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.25f);
 
         canMove = true;
     }

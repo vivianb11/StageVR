@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +5,7 @@ public class AdviceDestroy : MonoBehaviour
 {
     public float moveSpeed = 5f; // Adjust this to control the speed of movement
     public float destroyDelay = 4f; // Time before destroying the object
+    public float moveDelay = 7f;
 
     private bool isMoving = false;
     private float elapsedTime = 0f;
@@ -15,7 +14,7 @@ public class AdviceDestroy : MonoBehaviour
     void Start()
     {
         // Start moving after 4 seconds
-        Invoke("StartMoving", 7f);
+        Invoke("StartMoving", moveDelay);
     }
 
     void Update()

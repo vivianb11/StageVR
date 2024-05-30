@@ -27,4 +27,18 @@ public class Switch_2Events : MonoBehaviour
 
         state = !state;
     }
+
+    public void SwitchEvent(int index)
+    {
+        if (index == 1)
+        {
+            state = true;
+            SwitchEvent();
+        }
+        else if (index == 2)
+        {
+            state = false;
+            SwitchEvent();
+        }
+    }
 }

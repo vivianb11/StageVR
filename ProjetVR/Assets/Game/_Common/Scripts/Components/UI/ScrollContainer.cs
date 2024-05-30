@@ -16,6 +16,8 @@ public class ScrollContainer : Container3D
                 navigatable.focusEntered.AddListener(OnNavigatableFocusEntered);
             }
         }
+
+        OnNavigatableFocusEntered(Navigatable.FocusedItem);
     }
 
     public void OnNavigatableFocusEntered(Navigatable navigatable)

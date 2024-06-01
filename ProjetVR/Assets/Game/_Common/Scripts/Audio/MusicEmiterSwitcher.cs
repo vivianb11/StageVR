@@ -14,7 +14,7 @@ public class MusicEmiterSwitcher : MonoBehaviour
     {
         SignalManager.Instance.signalCalled.AddListener(OnSignalReceived);
 
-        if (musicEmiter == null) if (TryGetComponent(out musicEmiter)) Debug.Log("No Sound Emiter Assigned or On Gameobject");
+        if (musicEmiter == null) if (TryGetComponent(out musicEmiter)) Debug.Log("No Music Emiter Assigned or On Gameobject");
     }
 
     protected virtual void OnSignalReceived(string value)

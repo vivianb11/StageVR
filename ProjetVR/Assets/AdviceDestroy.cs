@@ -17,6 +17,7 @@ public class AdviceDestroy : MonoBehaviour
         {
             OnSlide.Invoke();
             gameObject.SetActive(false);
+            print(GameManager.Instance.currentReloadCause);
         }
         else
         {

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     public enum ReloadCause { DEATH, USER, OTHER }
 
-    public ReloadCause currentReloadCause;
+    public ReloadCause currentReloadCause { get; private set; } = ReloadCause.OTHER;
 
     [SerializeField] float timeBeforeResetGame = 10f;
 

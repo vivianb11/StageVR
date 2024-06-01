@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public enum ReloadCause { DEATH, USER, OTHER }
+
+    public ReloadCause currentReloadCause;
+
     [SerializeField] float timeBeforeResetGame = 10f;
 
     [SerializeField] SO_Signal startSignal;
@@ -103,18 +107,20 @@ public class GameManager : MonoBehaviour
     {
         nextGameMode = gameModes[index];
 
-        StartCoroutine(UnloadGameMode(3f, 3f));
+        StartCoroutine(UnloadGameMode(0));
         StartCoroutine(ChangeGameModeCoroutine());
     }
 
-    public void ReloadGameMode(float delay)
+    public void ReloadGameMode(ReloadCause reloadCause, float delay = 0)
     {
         if (isReloading)
             return;
 
+        currentReloadCause = reloadCause;
+
         isReloading = true;
         nextGameMode = gameModes[currentSceneIndex];
-        StartCoroutine(UnloadGameMode(delay, 3));
+        StartCoroutine(UnloadGameMode(delay));
     }
 
     private void StartGameMode()
@@ -146,7 +152,7 @@ public class GameManager : MonoBehaviour
         if ((DateTime.Now - timeOnUnfocus).TotalSeconds > timeBeforeResetGame)
         {
             gameStopped?.Invoke();
-            ReloadGameMode(0);
+            ReloadGameMode(ReloadCause.OTHER);
         }
 
         Time.timeScale = 1;
@@ -161,12 +167,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator UnloadGameMode(float delay, float fadeDuration)
+    private IEnumerator UnloadGameMode(float delay)
     {
         yield return new WaitForSecondsRealtime(delay);
-
-        SceneLoader.Instance.FadeIn(fadeDuration);
-        yield return new WaitForSecondsRealtime(fadeDuration);
+        SceneLoader.Instance.FadeIn(3);
+        yield return new WaitForSecondsRealtime(3);
         DestroyGameModes();
         LoadNextGameMode();
     }

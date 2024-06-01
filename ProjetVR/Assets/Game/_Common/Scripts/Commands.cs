@@ -11,9 +11,9 @@ public class Commands : ScriptableObject
         GameRemoteTransform.Instance.target.eulerAngles = playerRot;
     }
 
-    public void ReloadGameMode(float time)
+    public void ReloadGameMode()
     {
-        GameManager.Instance.ReloadGameMode(time);
+        GameManager.Instance.ReloadGameMode(GameManager.ReloadCause.USER);
     }
 
     public void Quit()

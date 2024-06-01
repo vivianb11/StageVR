@@ -95,7 +95,7 @@ namespace JeuB
             if (health != 0) return;
             onDeath.Invoke();
             Invoke(nameof(Explode), 2.05f);
-            GameManager.Instance.ReloadGameMode(3);
+            GameManager.Instance.ReloadGameMode(GameManager.ReloadCause.DEATH, 3);
         }
 
         public void Heal(int amount)

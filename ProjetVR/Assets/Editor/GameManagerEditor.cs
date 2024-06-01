@@ -25,7 +25,7 @@ public class GameManagerEditor : Editor
 
             if (GUILayout.Button("Reload Current Game Mode"))
             {
-                gameManager.ReloadGameMode(3);
+                gameManager.ReloadGameMode(GameManager.ReloadCause.OTHER);
             }
         }
 

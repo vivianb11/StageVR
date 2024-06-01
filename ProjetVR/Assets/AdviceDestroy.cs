@@ -13,8 +13,16 @@ public class AdviceDestroy : MonoBehaviour
 
     void Start()
     {
-        // Start moving after 4 seconds
-        Invoke("StartMoving", moveDelay);
+        if (GameManager.Instance.currentReloadCause == GameManager.ReloadCause.DEATH)
+        {
+            OnSlide.Invoke();
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            // Start moving after 4 seconds
+            Invoke("StartMoving", moveDelay);
+        }
     }
 
     void Update()

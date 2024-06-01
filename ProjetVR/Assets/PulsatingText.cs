@@ -32,21 +32,15 @@ public class PulsatingText : MonoBehaviour
         textMesh = gameObject.GetComponent<TextMesh>();
     }
 
-
     private void Update()
     {
         FontSizePulsating();
-
 
         if (disappear)
         {
 
             Disappear();
         }
-
-
-
-
     }
 
     public void FontSizePulsating()
@@ -110,7 +104,6 @@ public class PulsatingText : MonoBehaviour
 
         StartCoroutine(FadeOut());
         disappear = false;
-
     }
 
     IEnumerator FadeOut()

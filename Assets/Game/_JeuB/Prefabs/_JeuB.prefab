@@ -2756,6 +2756,7 @@ Transform:
   - {fileID: 7909689526511499291}
   - {fileID: 2749243939550863683}
   - {fileID: 6567555755265092702}
+  - {fileID: 4060841427149544541}
   - {fileID: 6695764311422233166}
   - {fileID: 8215213197716258390}
   - {fileID: 3055141361694658887}
@@ -2763,7 +2764,6 @@ Transform:
   - {fileID: 4974924601981869819}
   - {fileID: 1781796562770237420}
   - {fileID: 4398114909678570475}
-  - {fileID: 4060841427149544541}
   - {fileID: 5317769355898819872}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3782,6 +3782,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6400650230984611770}
     m_Modifications:
+    - target: {fileID: 142781362203344383, guid: f87fa4cc9329dfa429b77c5d1c25d855, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1594814641347321903, guid: f87fa4cc9329dfa429b77c5d1c25d855, type: 3}
       propertyPath: m_Name
       value: OverlayTips
@@ -4873,7 +4877,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7489121951230871549, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.7200007
+      value: 2.270001
       objectReference: {fileID: 0}
     - target: {fileID: 7489121951230871549, guid: 0d03305fd52234445b8ec08868f7cd00, type: 3}
       propertyPath: m_LocalRotation.w

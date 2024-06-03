@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 5_Difficulty_Incrementation_OpMode
   m_EditorClassIdentifier: 
   levelPassed: 0
-  milestoneInterval: 30
+  milestoneInterval: 20
   countCondition: 5
   spawnInterval: 2.1
   mobSpeed: 1.4
@@ -27,6 +27,6 @@ MonoBehaviour:
   spawnerTopLeft: 0
   weightBased: 1
   mobTypePerSpawner: 000000000000000000000000000000000000000000000000
-  weightEnemy1: 1
-  weightEnemy2: 0
+  weightEnemy1: 5
+  weightEnemy2: 2
   weightEnemy3: 0

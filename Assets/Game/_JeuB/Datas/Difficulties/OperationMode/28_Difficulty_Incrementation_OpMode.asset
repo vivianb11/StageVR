@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: 28_Difficulty_Incrementation_OpMode
   m_EditorClassIdentifier: 
   levelPassed: 0
-  milestoneInterval: 25
-  countCondition: 32
+  milestoneInterval: 15
+  countCondition: 30
   spawnInterval: 1.5
-  mobSpeed: 1.9
+  mobSpeed: 1.8
   isNumberSpawnerBased: 0
   numberSpawner: 6
   spawnerTop: 1
   spawnerTopRight: 1
-  spawnerBottomRight: 1
+  spawnerBottomRight: 0
   spawnerBottom: 1
   spawnerBottomLeft: 1
-  spawnerTopLeft: 1
+  spawnerTopLeft: 0
   weightBased: 0
-  mobTypePerSpawner: 000000000000000001000000010000000200000002000000
+  mobTypePerSpawner: 02000000020000000200000002000000
   weightEnemy1: 3
   weightEnemy2: 3
   weightEnemy3: 2

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkyBox
+  m_Name: GameSkyBox
   m_Shader: {fileID: 4800000, guid: dd106923b477e424380b7144fdc08d7c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,5 +37,5 @@ Material:
     - _Exposure: 1
     - _Rotation: 0
     m_Colors:
-    - _Tint: {r: 1, g: 1, b: 1, a: 0.5}
+    - _Tint: {r: 0.23137255, g: 0.1764706, b: 0.14117648, a: 0.5}
   m_BuildTextureStacks: []

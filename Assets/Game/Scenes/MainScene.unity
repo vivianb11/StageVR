@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1363582, g: 0.23927838, b: 0.35718402, a: 1}
+  m_IndirectSpecularColor: {r: 0.13609648, g: 0.23918185, b: 0.35727704, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -139,6 +139,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: VR Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2973032431497280871, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2973032431497280871, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.2981131
+      objectReference: {fileID: 0}
+    - target: {fileID: 2973032431497280871, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.18021154
+      objectReference: {fileID: 0}
+    - target: {fileID: 2973032431497280871, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.105183296
+      objectReference: {fileID: 0}
     - target: {fileID: 4456600560409760620, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -146,6 +162,22 @@ PrefabInstance:
     - target: {fileID: 5169585259901060704, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488580863791086106, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: expandMixedRealityCapturePropertySheet
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488580863791086106, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: externalCompositionBackdropColorQuest.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488580863791086106, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: externalCompositionBackdropColorQuest.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488580863791086106, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
+      propertyPath: externalCompositionBackdropColorQuest.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6498461842875273312, guid: ef5f8b8fd072eff43a119bac450c32de, type: 3}
       propertyPath: m_LocalPosition.x
@@ -318,7 +350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41294f478d862140b9800916e3a2658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadCause: 0
   timeBeforeResetGame: 10
   startSignal: {fileID: 11400000, guid: 117d694d618b2ab43b6beb0bf6c8330a, type: 2}
   gameModes:

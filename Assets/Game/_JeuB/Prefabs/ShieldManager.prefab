@@ -935,10 +935,26 @@ MonoBehaviour:
       timePlayed: 0
       pausedTime: 0
   - signal: {fileID: 11400000, guid: 19402100b406e2d4683a1a2f7861cae7, type: 2}
-    randomize: 0
+    randomize: 1
     sounds:
-    - soundType: 2
-      clip: {fileID: 8300000, guid: ebda9ac543790f840ab6dc199b3947a2, type: 3}
+    - soundType: 0
+      clip: {fileID: 8300000, guid: 862770008c2e8bc4494d0bd7795f2540, type: 3}
+      timePlayed: 0
+      pausedTime: 0
+    - soundType: 0
+      clip: {fileID: 8300000, guid: c70bcacbbb9e9f548b612ba1dc1e9e8d, type: 3}
+      timePlayed: 0
+      pausedTime: 0
+    - soundType: 0
+      clip: {fileID: 8300000, guid: 82a37f94ef6d1a54583586df85f67ef7, type: 3}
+      timePlayed: 0
+      pausedTime: 0
+    - soundType: 0
+      clip: {fileID: 8300000, guid: b5e5f3f448301d34dbd96a203bda102a, type: 3}
+      timePlayed: 0
+      pausedTime: 0
+    - soundType: 0
+      clip: {fileID: 8300000, guid: 8362398e2adc104448190305e8855e05, type: 3}
       timePlayed: 0
       pausedTime: 0
 --- !u!1 &5856955998341863177
@@ -1417,10 +1433,26 @@ MonoBehaviour:
       timePlayed: 0
       pausedTime: 0
   - signal: {fileID: 11400000, guid: 19402100b406e2d4683a1a2f7861cae7, type: 2}
-    randomize: 0
+    randomize: 1
     sounds:
-    - soundType: 2
-      clip: {fileID: 8300000, guid: ebda9ac543790f840ab6dc199b3947a2, type: 3}
+    - soundType: 0
+      clip: {fileID: 8300000, guid: 862770008c2e8bc4494d0bd7795f2540, type: 3}
+      timePlayed: 0
+      pausedTime: 0
+    - soundType: 0
+      clip: {fileID: 8300000, guid: c70bcacbbb9e9f548b612ba1dc1e9e8d, type: 3}
+      timePlayed: 0
+      pausedTime: 0
+    - soundType: 0
+      clip: {fileID: 8300000, guid: 82a37f94ef6d1a54583586df85f67ef7, type: 3}
+      timePlayed: 0
+      pausedTime: 0
+    - soundType: 0
+      clip: {fileID: 8300000, guid: b5e5f3f448301d34dbd96a203bda102a, type: 3}
+      timePlayed: 0
+      pausedTime: 0
+    - soundType: 0
+      clip: {fileID: 8300000, guid: 8362398e2adc104448190305e8855e05, type: 3}
       timePlayed: 0
       pausedTime: 0
 --- !u!1001 &5445191491585519829
@@ -1637,7 +1669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 849aa46a0807ff142ae5fbd2df9ff224, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.27
+      value: 2.2700005
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 849aa46a0807ff142ae5fbd2df9ff224, type: 3}
       propertyPath: m_LocalRotation.w

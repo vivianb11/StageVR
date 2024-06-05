@@ -28,9 +28,9 @@ public class SoundEmiterSwitcher : MonoBehaviour
     protected virtual void OnSignalReceived(string value)
     {
         // checks if in the soundOnSignals array a certain signal is present
-        if (soundOnSignals.Where(x => x.signal.name == value).Count() < 1) value = JeuB.JeuBCommands.lastSkinSignal.name;
+        if (soundOnSignals.Where(x => x.signal.name == "BasicMusic").Count() < 1) value = JeuB.JeuBCommands.lastSkinSignal.name;
 
-        if (JeuB.JeuBCommands.lastModeSignal.name == "SophoriqueMusic") return;
+        if (JeuB.JeuBCommands.lastModeSignal.name == "SophoriqueMusic" && value != "BasicMusic") return;
 
         foreach (SoundOnSignal soundOnSignal in soundOnSignals)
         {

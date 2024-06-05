@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using Unity.VisualScripting;
+﻿using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -38,15 +36,15 @@ public class SoundEmiter_CI : Editor
 
             if (soundEmiter.lastPlayedSound >= 0)
             {
-                if (soundManager._audioSources.ToArray()[soundEmiter.lastPlayedSound].Key.time > 0)
+                if (soundManager._audioSources?.ToArray()[soundEmiter.lastPlayedSound].Key.time > 0)
                 {
                     EditorGUILayout.Slider("Sound Completion", soundManager._audioSources.ToArray()[soundEmiter.lastPlayedSound].Key.time / soundManager._audioSources.ToArray()[soundEmiter.lastPlayedSound].Key.clip.length, 0, 1);
-                
+
                     Repaint();
                 }
                 else
                 {
-                       EditorGUILayout.Slider("Sound Completion", 0, 0, 1);
+                    EditorGUILayout.Slider("Sound Completion", 0, 0, 1);
                 }
             }
             else if (soundManager._musicSource.time > 0)
@@ -135,7 +133,7 @@ public class SoundEmiter_CI : Editor
 
         EditorGUILayout.BeginVertical();
 
-        if(soundEmiter.lastPlayedSound >= 0)
+        if (soundEmiter.lastPlayedSound >= 0)
         {
             if (GUILayout.Button("Stop"))
             {

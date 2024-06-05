@@ -15,10 +15,10 @@ GameObject:
   - component: {fileID: 2543318322668161651}
   - component: {fileID: 3076696588940178710}
   - component: {fileID: 8285496669955875806}
+  - component: {fileID: 8568383659122881358}
   - component: {fileID: 207185742236015232}
   - component: {fileID: 593089163638709294}
   - component: {fileID: 9111355016841858779}
-  - component: {fileID: 8568383659122881358}
   m_Layer: 6
   m_Name: MobDroit
   m_TagString: Ennemy
@@ -179,6 +179,36 @@ MonoBehaviour:
   playRandomSfx: 0
   sfxs: []
   lastPlayedSound: 0
+--- !u!114 &8568383659122881358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6224022260222283880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e12ed223d166848a83ed0230fa9cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEmiter: {fileID: 8285496669955875806}
+  soundOnSignals:
+  - signal: {fileID: 11400000, guid: 0afb3c2f75d3ce142a91a24327006749, type: 2}
+    randomize: 0
+    soundType: 2
+    sounds:
+    - {fileID: 8300000, guid: 1fa3188af15811e4aabfb23d9008e7c9, type: 3}
+  - signal: {fileID: 11400000, guid: fb101b7d8ff4f7a4a9b4d551152c2da2, type: 2}
+    randomize: 0
+    soundType: 2
+    sounds:
+    - {fileID: 8300000, guid: 1db8b56198d37fd40b8c93b0542cd9f9, type: 3}
+  - signal: {fileID: 11400000, guid: 19402100b406e2d4683a1a2f7861cae7, type: 2}
+    randomize: 0
+    soundType: 2
+    sounds: []
+  SkinCheck: 1
+  ModeCheck: 1
 --- !u!114 &207185742236015232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,36 +359,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8568383659122881358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6224022260222283880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50e12ed223d166848a83ed0230fa9cc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundEmiter: {fileID: 7676536657634413543, guid: c76edd37e3c7fe647ab6c32c59930228, type: 3}
-  soundOnSignals:
-  - signal: {fileID: 11400000, guid: 0afb3c2f75d3ce142a91a24327006749, type: 2}
-    randomize: 0
-    soundType: 0
-    sounds:
-    - {fileID: 8300000, guid: 1fa3188af15811e4aabfb23d9008e7c9, type: 3}
-  - signal: {fileID: 11400000, guid: fb101b7d8ff4f7a4a9b4d551152c2da2, type: 2}
-    randomize: 0
-    soundType: 0
-    sounds:
-    - {fileID: 8300000, guid: 1db8b56198d37fd40b8c93b0542cd9f9, type: 3}
-  - signal: {fileID: 11400000, guid: 19402100b406e2d4683a1a2f7861cae7, type: 2}
-    randomize: 0
-    soundType: 0
-    sounds: []
-  SkinCheck: 1
-  ModeCheck: 1
 --- !u!1001 &65469839574252718
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -37,8 +37,8 @@ public class SoundEmiterSwitcher : MonoBehaviour
                 if (soundOnSignal.randomize) soundEmiter.sfxs = soundOnSignal.sounds;
                 else
                 {
-                    if (soundOnSignal.sounds.Length > 0 || soundOnSignal.sounds != null)
-                        soundEmiter.sound.clip = soundOnSignal.sounds[0];
+                    if (soundOnSignal.sounds != null)
+                    { soundEmiter.sound.clip = soundOnSignal.sounds[0]; Debug.Log(soundOnSignal.sounds[0].name); }
                     else soundEmiter.sound = null;
 
                     return;

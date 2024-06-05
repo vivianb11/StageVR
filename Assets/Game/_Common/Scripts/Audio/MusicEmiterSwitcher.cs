@@ -25,9 +25,9 @@ public class MusicEmiterSwitcher : MonoBehaviour
 
     protected virtual void OnSignalReceived(string value)
     {
-        if (musicOnSignals.Where(x => x.signal.name == "BasicMusic").Count() < 1) value = JeuB.JeuBCommands.lastSkinSignal.name;
+        if (musicOnSignals.Where(x => x.signal.name == value).Count() < 1) value = JeuB.JeuBCommands.lastSkinSignal.name;
 
-        if (JeuB.JeuBCommands.lastModeSignal.name == "SophoriqueMusic" && value != "BasicMusic") return;
+        if (JeuB.JeuBCommands.lastModeSignal.name == "SophoriqueMusic" && value != "BasicMusic") value = "SophoriqueMusic";
 
         foreach (MusicOnSignal musicOnSignal in musicOnSignals)
         {

@@ -197,23 +197,19 @@ MonoBehaviour:
     randomize: 0
     sounds:
     - soundType: 2
-      clip: {fileID: 0}
+      clip: {fileID: 8300000, guid: b5131605e66f1744ea66f0000cd8e108, type: 3}
       timePlayed: 0
       pausedTime: 0
   - signal: {fileID: 11400000, guid: fb101b7d8ff4f7a4a9b4d551152c2da2, type: 2}
     randomize: 0
     sounds:
     - soundType: 0
-      clip: {fileID: 0}
+      clip: {fileID: 8300000, guid: 88412ed980d53124bad7b86f8586b6f7, type: 3}
       timePlayed: 0
       pausedTime: 0
   - signal: {fileID: 11400000, guid: 19402100b406e2d4683a1a2f7861cae7, type: 2}
     randomize: 0
-    sounds:
-    - soundType: 2
-      clip: {fileID: 0}
-      timePlayed: 0
-      pausedTime: 0
+    sounds: []
   SkinCheck: 1
   ModeCheck: 1
 --- !u!114 &327356959002380300

@@ -1,5 +1,6 @@
 using SignalSystem;
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class SoundEmiterSwitcher : MonoBehaviour
@@ -26,6 +27,9 @@ public class SoundEmiterSwitcher : MonoBehaviour
 
     protected virtual void OnSignalReceived(string value)
     {
+        // checks if in the soundOnSignals array a certain signal is present
+        if (soundOnSignals.Where(x => x.signal.name == value).Count() < 1) value = JeuB.JeuBCommands.lastSkinSignal.name;
+
         foreach (SoundOnSignal soundOnSignal in soundOnSignals)
         {
             if (soundOnSignal.signal.name == value)
@@ -37,9 +41,8 @@ public class SoundEmiterSwitcher : MonoBehaviour
                 if (soundOnSignal.randomize) soundEmiter.sfxs = soundOnSignal.sounds;
                 else
                 {
-                    if (soundOnSignal.sounds != null)
-                    { soundEmiter.sound.clip = soundOnSignal.sounds[0]; Debug.Log(soundOnSignal.sounds[0].name); }
-                    else soundEmiter.sound = null;
+                    if (soundOnSignal.sounds == null || soundOnSignal.sounds.Length < 1) soundEmiter.sound = null;
+                    else soundEmiter.sound.clip = soundOnSignal.sounds[0];
 
                     return;
                 }

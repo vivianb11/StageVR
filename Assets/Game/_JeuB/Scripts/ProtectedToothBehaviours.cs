@@ -27,6 +27,17 @@ namespace JeuB
         [SerializeField] GameObject multiplierTexts;
 
         private bool scoreEnabled = true;
+        private bool Invincible
+        {
+            get
+            {
+                return JeuBCommands.listenersActiveStats["Invincible"];
+            }
+            set
+            {
+                JeuBCommands.SetObject("Invincible", value);
+            }
+        }
 
         private int killStreak = 0;
         public int multiplier = 1;
@@ -71,6 +82,8 @@ namespace JeuB
             HeadMotionTracker.Instance.Excited.AddListener(() => _lock.SetActive(true));
             HeadMotionTracker.Instance.Normal.AddListener(() => scoreEnabled = true);
             HeadMotionTracker.Instance.Normal.AddListener(() => _lock.SetActive(false));
+
+            if (!JeuBCommands.listeners.ContainsKey("Invincible")) JeuBCommands.AddKey("Invincible", null);
         }
 
         private void OnDestroy()
@@ -81,7 +94,7 @@ namespace JeuB
 
         public void Damaged()
         {
-            if (health == 0) return;
+            if (health == 0 || Invincible) return;
 
             health = Mathf.Clamp(health - receivedDamagedOnHit, 0, maxHealth);
             onDamaged.Invoke();
@@ -106,6 +119,11 @@ namespace JeuB
             onHeal.Invoke();
 
             _outlineEffect.OutlineColor = (health == 2) ? color2HP : (health == 1) ? color1HP : Color.clear;
+        }
+
+        public void SetInvincible(bool value)
+        {
+            Invincible = value;
         }
 
         public void OutlinePulsating()

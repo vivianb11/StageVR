@@ -61,13 +61,13 @@ public class SoundManager : MonoBehaviour
 
     public int PlaySound(Sound sound, SoundPlacing soundPlacing = SoundPlacing.Global, Transform location = null)
     {
+        if (sound == null || sound.clip == null) return -1;
+
         if (sound.soundType == SoundType.Music)
         {
             PlayMusic(sound.clip);
             return -1;
         }
-
-        if (sound == null || sound.clip == null) return -1;
 
         AudioSource audioSource = null;
         float clossestPercentage = 0;

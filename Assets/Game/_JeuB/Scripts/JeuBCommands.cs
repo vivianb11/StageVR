@@ -1,6 +1,7 @@
 using SignalSystem;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace JeuB
 {
@@ -13,10 +14,15 @@ namespace JeuB
         public static Dictionary<string, GameObject> listeners { get; private set; } = new();
         public static Dictionary<string, bool> listenersActiveStats { get; private set; } = new();
 
+        public UnityEvent OnToggleChange;
+
         public static void AddKey(string key, GameObject gameObject)
         {
             listeners[key] = gameObject;
-            listenersActiveStats[key] = gameObject.activeInHierarchy;
+
+            if (gameObject != null)
+                listenersActiveStats[key] = gameObject.activeInHierarchy;
+            else listenersActiveStats[key] = false;
         }
 
         public void ToggleActiveState(string key)
@@ -24,7 +30,9 @@ namespace JeuB
             if (listeners.ContainsKey(key))
             {
                 listenersActiveStats[key] = !listenersActiveStats[key];
-                listeners[key].SetActive(listenersActiveStats[key]);
+
+                if (listeners[key] != null)
+                    listeners[key].SetActive(listenersActiveStats[key]);
             }
         }
 
@@ -33,7 +41,9 @@ namespace JeuB
             if (listeners.ContainsKey(key))
             {
                 listenersActiveStats[key] = true;
-                listeners[key].SetActive(true);
+
+                if (listeners[key] != null)
+                    listeners[key].SetActive(true);
             }
         }
 
@@ -42,7 +52,20 @@ namespace JeuB
             if (listeners.ContainsKey(key))
             {
                 listenersActiveStats[key] = false;
-                listeners[key].SetActive(false);
+
+                if (listeners[key] != null)
+                    listeners[key].SetActive(false);
+            }
+        }
+
+        public static void SetObject(string key, bool value)
+        {
+            if (listeners.ContainsKey(key))
+            {
+                listenersActiveStats[key] = value;
+
+                if (listeners[key] != null)
+                    listeners[key].SetActive(value);
             }
         }
     }

@@ -1,6 +1,5 @@
 using SignalSystem;
 using System;
-using System.Linq;
 using UnityEngine;
 
 public class SoundEmiterSwitcher : MonoBehaviour
@@ -33,12 +32,15 @@ public class SoundEmiterSwitcher : MonoBehaviour
             {
                 soundEmiter.playRandomSfx = soundOnSignal.randomize;
 
-                soundEmiter.sound.soundType = soundOnSignal.sounds[0].soundType;
+                soundEmiter.sound.soundType = soundOnSignal.soundType;
 
-                if (soundOnSignal.randomize) soundEmiter.sfxs = soundOnSignal.sounds.Select(sound => sound.clip).ToArray();
+                if (soundOnSignal.randomize) soundEmiter.sfxs = soundOnSignal.sounds;
                 else
                 {
-                    soundEmiter.sound = soundOnSignal.sounds[0];
+                    if (soundOnSignal.sounds.Length > 0 || soundOnSignal.sounds != null)
+                        soundEmiter.sound.clip = soundOnSignal.sounds[0];
+                    else soundEmiter.sound = null;
+
                     return;
                 }
             }
@@ -52,6 +54,7 @@ public class SoundOnSignal
     public SO_Signal signal;
 
     public bool randomize;
+    public SoundType soundType;
 
-    public Sound[] sounds;
+    public AudioClip[] sounds;
 }

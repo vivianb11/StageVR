@@ -67,6 +67,8 @@ public class SoundManager : MonoBehaviour
             return -1;
         }
 
+        if (sound == null || sound.clip == null) return -1;
+
         AudioSource audioSource = null;
         float clossestPercentage = 0;
 

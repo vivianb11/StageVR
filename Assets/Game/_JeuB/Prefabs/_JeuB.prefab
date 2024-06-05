@@ -968,8 +968,9 @@ GameObject:
   - component: {fileID: 4152183791385505160}
   - component: {fileID: 3399630119200564790}
   - component: {fileID: 8311252492671691856}
+  - component: {fileID: 3308983188485667528}
   - component: {fileID: 4622476769891022016}
-  - component: {fileID: 2035699516700022170}
+  - component: {fileID: 7709844173001891715}
   m_Layer: 0
   m_Name: Tooth
   m_TagString: Protected
@@ -1182,18 +1183,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameOverOverlay, Assembly-CSharp
-        m_MethodName: DisplayScoreTab
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 4622476769891022016}
         m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
         m_MethodName: PlaySound
@@ -1221,7 +1210,7 @@ MonoBehaviour:
   onExplosion:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2035699516700022170}
+      - m_Target: {fileID: 4622476769891022016}
         m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 1
@@ -1307,6 +1296,34 @@ MonoBehaviour:
   playRandomSfx: 0
   sfxs: []
   lastPlayedSound: 0
+--- !u!114 &3308983188485667528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2533199044161739896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e12ed223d166848a83ed0230fa9cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEmiter: {fileID: 8311252492671691856}
+  soundOnSignals:
+  - signal: {fileID: 11400000, guid: 0afb3c2f75d3ce142a91a24327006749, type: 2}
+    randomize: 0
+    sounds:
+    - soundType: 2
+      clip: {fileID: 8300000, guid: 5d2fad9761eef384e89a704d0c7dd66f, type: 3}
+      timePlayed: 0
+      pausedTime: 0
+  - signal: {fileID: 11400000, guid: fb101b7d8ff4f7a4a9b4d551152c2da2, type: 2}
+    randomize: 0
+    sounds:
+    - soundType: 2
+      clip: {fileID: 8300000, guid: 250c6037c1b5e22409f4c1a6e110b0a9, type: 3}
+      timePlayed: 0
+      pausedTime: 0
 --- !u!114 &4622476769891022016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1328,7 +1345,7 @@ MonoBehaviour:
   playRandomSfx: 0
   sfxs: []
   lastPlayedSound: 0
---- !u!114 &2035699516700022170
+--- !u!114 &7709844173001891715
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1337,18 +1354,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 2533199044161739896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db5c2cb0433461840a9c6e40dff9d892, type: 3}
+  m_Script: {fileID: 11500000, guid: 50e12ed223d166848a83ed0230fa9cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  place: 1
-  sound:
-    soundType: 2
-    clip: {fileID: 8300000, guid: 5d205fdb4f137214b80cdae0bf888ae2, type: 3}
-    timePlayed: 0
-    pausedTime: 0
-  playRandomSfx: 0
-  sfxs: []
-  lastPlayedSound: 0
+  soundEmiter: {fileID: 4622476769891022016}
+  soundOnSignals:
+  - signal: {fileID: 11400000, guid: 0afb3c2f75d3ce142a91a24327006749, type: 2}
+    randomize: 0
+    sounds:
+    - soundType: 2
+      clip: {fileID: 8300000, guid: 5d205fdb4f137214b80cdae0bf888ae2, type: 3}
+      timePlayed: 0
+      pausedTime: 0
+  - signal: {fileID: 11400000, guid: fb101b7d8ff4f7a4a9b4d551152c2da2, type: 2}
+    randomize: 0
+    sounds:
+    - soundType: 2
+      clip: {fileID: 8300000, guid: cfe41faf5af820e43b073d149b154a7c, type: 3}
+      timePlayed: 0
+      pausedTime: 0
 --- !u!1 &2598114752896931244
 GameObject:
   m_ObjectHideFlags: 0

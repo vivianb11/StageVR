@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 514779265771394359}
   - component: {fileID: 7604659161403824294}
   - component: {fileID: 7492147893797775561}
+  - component: {fileID: -8921734278518686704}
   m_Layer: 6
   m_Name: MobRotate
   m_TagString: Ennemy
@@ -327,6 +328,39 @@ MonoBehaviour:
       m_Calls: []
   degree: 2d0000005a00000087000000b4000000e00000000e0100003b010000
   rotationMesh: {fileID: 5580171693664546993}
+--- !u!114 &-8921734278518686704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638022967405250282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e12ed223d166848a83ed0230fa9cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEmiter: {fileID: 7676536657634413543, guid: c76edd37e3c7fe647ab6c32c59930228, type: 3}
+  soundOnSignals:
+  - signal: {fileID: 11400000, guid: 0afb3c2f75d3ce142a91a24327006749, type: 2}
+    randomize: 0
+    sounds:
+    - soundType: 2
+      clip: {fileID: 8300000, guid: 7b7d68130e1683f48a7982fba72a725a, type: 3}
+      timePlayed: 0
+      pausedTime: 0
+  - signal: {fileID: 11400000, guid: fb101b7d8ff4f7a4a9b4d551152c2da2, type: 2}
+    randomize: 0
+    sounds:
+    - soundType: 0
+      clip: {fileID: 8300000, guid: d643ce9c2292ace4688ac2973fe8968f, type: 3}
+      timePlayed: 0
+      pausedTime: 0
+  - signal: {fileID: 11400000, guid: 19402100b406e2d4683a1a2f7861cae7, type: 2}
+    randomize: 0
+    sounds: []
+  SkinCheck: 1
+  ModeCheck: 1
 --- !u!1001 &2063328564741292210
 PrefabInstance:
   m_ObjectHideFlags: 0

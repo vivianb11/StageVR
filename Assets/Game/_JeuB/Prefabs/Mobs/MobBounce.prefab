@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4164943758443417}
   - component: {fileID: 3105006146038916852}
   - component: {fileID: 7676536657634413543}
+  - component: {fileID: 6051194754267499916}
   - component: {fileID: 327356959002380300}
   - component: {fileID: -4936888757795940695}
   - component: {fileID: 5485560971465345224}
@@ -178,6 +179,39 @@ MonoBehaviour:
   playRandomSfx: 0
   sfxs: []
   lastPlayedSound: 0
+--- !u!114 &6051194754267499916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638022967405250282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e12ed223d166848a83ed0230fa9cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEmiter: {fileID: 7676536657634413543}
+  soundOnSignals:
+  - signal: {fileID: 11400000, guid: 0afb3c2f75d3ce142a91a24327006749, type: 2}
+    randomize: 0
+    sounds:
+    - soundType: 2
+      clip: {fileID: 8300000, guid: b5131605e66f1744ea66f0000cd8e108, type: 3}
+      timePlayed: 0
+      pausedTime: 0
+  - signal: {fileID: 11400000, guid: fb101b7d8ff4f7a4a9b4d551152c2da2, type: 2}
+    randomize: 0
+    sounds:
+    - soundType: 0
+      clip: {fileID: 8300000, guid: 88412ed980d53124bad7b86f8586b6f7, type: 3}
+      timePlayed: 0
+      pausedTime: 0
+  - signal: {fileID: 11400000, guid: 19402100b406e2d4683a1a2f7861cae7, type: 2}
+    randomize: 0
+    sounds: []
+  SkinCheck: 1
+  ModeCheck: 1
 --- !u!114 &327356959002380300
 MonoBehaviour:
   m_ObjectHideFlags: 0

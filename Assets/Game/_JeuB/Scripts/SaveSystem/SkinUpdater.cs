@@ -13,7 +13,7 @@ public class SkinUpdater : MonoBehaviour
         if (JeuBCommands.lastSkinSignal == signal1)
         {
             GetComponent<Switch_2Events>().StartAsSwitched = false;
-            transform.GetChild(0).GetComponent<TextMeshPro>().text = "Dentaire";
+            transform.GetChild(0).GetComponent<TextMeshPro>().text = "Dental";
         }
         else if (JeuBCommands.lastSkinSignal == signal2)
         {

@@ -30,6 +30,8 @@ public class SoundEmiterSwitcher : MonoBehaviour
         // checks if in the soundOnSignals array a certain signal is present
         if (soundOnSignals.Where(x => x.signal.name == value).Count() < 1) value = JeuB.JeuBCommands.lastSkinSignal.name;
 
+        if (JeuB.JeuBCommands.lastModeSignal.name == "SophoriqueMusic") return;
+
         foreach (SoundOnSignal soundOnSignal in soundOnSignals)
         {
             if (soundOnSignal.signal.name == value)

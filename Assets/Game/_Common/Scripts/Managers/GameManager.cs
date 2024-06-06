@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
     private float _holdTimeMaxReset = 1f;
     private bool _resetHolded;
 
+    private static float difficulty = 1f;
+
     private void Awake()
     {
         if (Instance == null)

@@ -14,8 +14,6 @@ GameObject:
   - component: {fileID: 2902745736869667374}
   - component: {fileID: 4164943758443417}
   - component: {fileID: 3105006146038916852}
-  - component: {fileID: 7676536657634413543}
-  - component: {fileID: 6051194754267499916}
   - component: {fileID: 327356959002380300}
   - component: {fileID: -4936888757795940695}
   - component: {fileID: 5485560971465345224}
@@ -158,57 +156,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   resetScaleOnDisable: 1
---- !u!114 &7676536657634413543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638022967405250282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db5c2cb0433461840a9c6e40dff9d892, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  place: 1
-  sound:
-    soundType: 0
-    clip: {fileID: 8300000, guid: 1fa3188af15811e4aabfb23d9008e7c9, type: 3}
-    timePlayed: 0
-    pausedTime: 0
-  playRandomSfx: 0
-  sfxs: []
-  lastPlayedSound: 0
---- !u!114 &6051194754267499916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638022967405250282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50e12ed223d166848a83ed0230fa9cc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundEmiter: {fileID: 7676536657634413543}
-  soundOnSignals:
-  - signal: {fileID: 11400000, guid: 0afb3c2f75d3ce142a91a24327006749, type: 2}
-    randomize: 0
-    soundType: 2
-    sounds:
-    - {fileID: 8300000, guid: b5131605e66f1744ea66f0000cd8e108, type: 3}
-  - signal: {fileID: 11400000, guid: fb101b7d8ff4f7a4a9b4d551152c2da2, type: 2}
-    randomize: 0
-    soundType: 2
-    sounds:
-    - {fileID: 8300000, guid: 88412ed980d53124bad7b86f8586b6f7, type: 3}
-  - signal: {fileID: 11400000, guid: 19402100b406e2d4683a1a2f7861cae7, type: 2}
-    randomize: 0
-    soundType: 2
-    sounds: []
-  SkinCheck: 1
-  ModeCheck: 1
 --- !u!114 &327356959002380300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,19 +242,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4c017e3e4c7f4a1459630e4c47c2320b, type: 2}
   signalReceived:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Mob, Assembly-CSharp
-        m_MethodName: Freeze
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   signalLost:
     m_PersistentCalls:
       m_Calls: []
@@ -334,40 +269,15 @@ MonoBehaviour:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7676536657634413543}
-        m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   scoreOnDeath: 15
   knockCooldown: 1
   hpLossParticles: {fileID: 7194952087870367276, guid: 608c4f579bfcb1e49ba9b26e73b848bb, type: 3}
   deathParticles: {fileID: 6237553109302029157, guid: 3aa32e22076f75e43a4548461208757e, type: 3}
   outlineEffect: {fileID: 3799295983485137969}
-  sounds: []
   onKnocked:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1001 &525516162476373725
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,4 +1,4 @@
-using SignalSystem;
+﻿using SignalSystem;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -37,7 +37,14 @@ public class SoundEmiterSwitcher : MonoBehaviour
             {
                 soundEmiter.playRandomSfx = soundOnSignal.randomize;
 
-                soundEmiter.sound.soundType = soundOnSignal.soundType;
+                try
+                {
+                    soundEmiter.sound.soundType = soundOnSignal.soundType;
+                }
+                catch
+                {
+                    print("＼（〇_ｏ）／");
+                }
 
                 if (soundOnSignal.randomize) soundEmiter.sfxs = soundOnSignal.sounds;
                 else

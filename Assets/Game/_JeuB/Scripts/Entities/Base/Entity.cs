@@ -32,9 +32,16 @@ namespace JeuB
             EntityUpdate();
         }
 
+        private void FixedUpdate()
+        {
+            EntityFixedUpdate();
+        }
+
         protected abstract void EntityStart();
 
         protected abstract void EntityUpdate();
+
+        protected virtual void EntityFixedUpdate() { }
 
         public abstract void Kill();
 
@@ -46,7 +53,7 @@ namespace JeuB
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, Space.Self);
         }
 
-        public void Heal(int healAmount) 
+        public void Heal(int healAmount)
         {
             Health = Mathf.Clamp(Health + healAmount, 0, MaxHealth);
 

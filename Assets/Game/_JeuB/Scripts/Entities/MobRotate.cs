@@ -9,12 +9,7 @@ namespace JeuB
 
         public Transform rotationMesh;
 
-        protected override void EntityUpdate()
-        {
-            base.EntityUpdate();
-
-            RotateMesh();
-        }
+        public Transform _dragonMesh;
 
         protected override void EntityStart()
         {
@@ -24,6 +19,13 @@ namespace JeuB
 
             GetComponent<BoxCollider>().isTrigger = true;
             StartCoroutine(DelayRotation());
+        }
+
+        protected override void EntityUpdate()
+        {
+            base.EntityUpdate();
+
+            RotateMesh();
         }
 
         private void RotateMesh()
@@ -45,6 +47,15 @@ namespace JeuB
             int RandomRotationIndex = Random.Range(0, degree.Length);
             Quaternion startRotation = transform.parent.localRotation;
             Quaternion targetRotation = Quaternion.Euler(0f, degree[RandomRotationIndex], 0f);
+
+            if (startRotation.y > targetRotation.y)
+            {
+                print("Right");
+            }
+            else
+            {
+                print("Left");
+            }
 
             while (elapsedTime < rotationDuration)
             {

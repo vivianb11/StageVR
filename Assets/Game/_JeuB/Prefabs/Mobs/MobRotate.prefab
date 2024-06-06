@@ -14,8 +14,6 @@ GameObject:
   - component: {fileID: 2902745736869667374}
   - component: {fileID: 4164943758443417}
   - component: {fileID: 3950084660395824396}
-  - component: {fileID: -4735607365920841345}
-  - component: {fileID: -8921734278518686704}
   - component: {fileID: 514779265771394359}
   - component: {fileID: 7604659161403824294}
   - component: {fileID: 7492147893797775561}
@@ -158,57 +156,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   resetScaleOnDisable: 1
---- !u!114 &-4735607365920841345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638022967405250282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db5c2cb0433461840a9c6e40dff9d892, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  place: 1
-  sound:
-    soundType: 2
-    clip: {fileID: 8300000, guid: 7b7d68130e1683f48a7982fba72a725a, type: 3}
-    timePlayed: 0
-    pausedTime: 0
-  playRandomSfx: 0
-  sfxs: []
-  lastPlayedSound: 0
---- !u!114 &-8921734278518686704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638022967405250282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50e12ed223d166848a83ed0230fa9cc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundEmiter: {fileID: -4735607365920841345}
-  soundOnSignals:
-  - signal: {fileID: 11400000, guid: 0afb3c2f75d3ce142a91a24327006749, type: 2}
-    randomize: 0
-    soundType: 2
-    sounds:
-    - {fileID: 8300000, guid: 7b7d68130e1683f48a7982fba72a725a, type: 3}
-  - signal: {fileID: 11400000, guid: fb101b7d8ff4f7a4a9b4d551152c2da2, type: 2}
-    randomize: 0
-    soundType: 2
-    sounds:
-    - {fileID: 8300000, guid: d643ce9c2292ace4688ac2973fe8968f, type: 3}
-  - signal: {fileID: 11400000, guid: 19402100b406e2d4683a1a2f7861cae7, type: 2}
-    randomize: 0
-    soundType: 2
-    sounds: []
-  SkinCheck: 1
-  ModeCheck: 1
 --- !u!114 &514779265771394359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,30 +281,18 @@ MonoBehaviour:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -4735607365920841345}
-        m_TargetAssemblyTypeName: SoundEmiter, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   scoreOnDeath: 20
   knockCooldown: 0
   hpLossParticles: {fileID: 7194952087870367276, guid: 608c4f579bfcb1e49ba9b26e73b848bb, type: 3}
   deathParticles: {fileID: 6237553109302029157, guid: 51df40cb466f2c94c99385dcf6b2c0ff, type: 3}
   outlineEffect: {fileID: 1731465486316618718}
-  sounds: []
   onKnocked:
     m_PersistentCalls:
       m_Calls: []
   degree: 2d0000005a00000087000000b4000000e00000000e0100003b010000
   rotationMesh: {fileID: 5580171693664546993}
+  _dragonMesh: {fileID: 3431844020164993285}
 --- !u!1001 &2063328564741292210
 PrefabInstance:
   m_ObjectHideFlags: 0

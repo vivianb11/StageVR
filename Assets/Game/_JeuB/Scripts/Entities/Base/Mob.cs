@@ -17,9 +17,6 @@ namespace JeuB
         [SerializeField] GameObject deathParticles;
         [SerializeField] Outline outlineEffect;
 
-        [Header("Sounds")]
-        [SerializeField] Sound[] sounds;
-
         [SerializeField] UnityEvent onKnocked = new UnityEvent();
 
         FeedbackScale feedbackScale;

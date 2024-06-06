@@ -4358,9 +4358,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6519092877745636836}
     m_Modifications:
+    - target: {fileID: 389303429210303132, guid: 09a6be58118601945a3b934eb9ac26ff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.04
+      objectReference: {fileID: 0}
     - target: {fileID: 2320993867161404139, guid: 09a6be58118601945a3b934eb9ac26ff, type: 3}
       propertyPath: m_Name
       value: dragon
+      objectReference: {fileID: 0}
+    - target: {fileID: 3198859197156615246, guid: 09a6be58118601945a3b934eb9ac26ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3198859197156615246, guid: 09a6be58118601945a3b934eb9ac26ff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.704398
       objectReference: {fileID: 0}
     - target: {fileID: 9046483292117490264, guid: 09a6be58118601945a3b934eb9ac26ff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4372,7 +4384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9046483292117490264, guid: 09a6be58118601945a3b934eb9ac26ff, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.117
+      value: -0.51
       objectReference: {fileID: 0}
     - target: {fileID: 9046483292117490264, guid: 09a6be58118601945a3b934eb9ac26ff, type: 3}
       propertyPath: m_LocalRotation.w

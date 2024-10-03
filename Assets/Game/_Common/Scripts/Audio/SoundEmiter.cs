@@ -1,4 +1,3 @@
-using NaughtyAttributes;
 using UnityEngine;
 
 public class SoundEmiter : MonoBehaviour
@@ -7,7 +6,7 @@ public class SoundEmiter : MonoBehaviour
 
     public SoundPlacing place = SoundPlacing.Local;
 
-    public Sound sound = new Sound(default,SoundType.SFX);
+    public Sound sound = new Sound(default, SoundType.SFX);
 
     public bool playRandomSfx = false;
 

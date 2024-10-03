@@ -137,6 +137,12 @@ public class SoundManager : MonoBehaviour
     [Button("Play Music")]
     public void PlayMusic()
     {
+        if (musics.Length == 0)
+        {
+            Debug.LogWarning("No musics to play");
+            return;
+        }
+
         // sorts the musics by the times played
         Array.Sort(musics, (x, y) => x.timePlayed.CompareTo(y.timePlayed));
 
